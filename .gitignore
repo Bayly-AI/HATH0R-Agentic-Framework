@@ -14,7 +14,10 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+# Keep framework assets trackable; ignore only Python packaging lib trees
+lib/*
+!lib/assets/
+!lib/assets/**
 lib64/
 parts/
 sdist/
