@@ -3,9 +3,10 @@
 # Optional: Slack Incoming Webhook via repo secret SLACK_WEBHOOK_URL
 #
 # NOTE: workflow_run triggers only run from the default branch (development).
+# CRITICAL: "on" must be quoted — bare on: is a YAML 1.1 boolean.
 name: Notify PR Failure
 
-on:
+"on":
   workflow_run:
     types: [completed]
 
@@ -38,95 +39,38 @@ jobs:
           RUN_NAME: ${{ github.event.workflow_run.name }}
           RUN_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
           RUN_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
-          NOTIFY_USER: ${{ vars.PR_FAILURE_NOTIFY_USER || 'somesayray' }}
+          NOTIFY_USER: ${{ vars.PR_FAILURE_NOTIFY_USER }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           set -euo pipefail
-
+          NOTIFY_USER="${NOTIFY_USER:-somesayray}"
           echo "Failed workflow: ${RUN_NAME} (run ${RUN_ID})"
           echo "Head: ${RUN_HEAD_BRANCH} @ ${RUN_HEAD_SHA}"
 
           PR_NUMBER="$(gh api "repos/${REPO}/actions/runs/${RUN_ID}" --jq '(.pull_requests // []) | map(.number) | .[0] // empty' 2>/dev/null || true)"
-
           if [ -z "${PR_NUMBER}" ]; then
-            PR_NUMBER="$(gh api "repos/${REPO}/commits/${RUN_HEAD_SHA}/pulls" \
-              -H "Accept: application/vnd.github.groot-preview+json" \
-              --jq 'map(select(.state == "open")) | .[0].number // empty' 2>/dev/null || true)"
+            PR_NUMBER="$(gh api "repos/${REPO}/commits/${RUN_HEAD_SHA}/pulls" -H "Accept: application/vnd.github.groot-preview+json" --jq 'map(select(.state == "open")) | .[0].number // empty' 2>/dev/null || true)"
+          fi
+          if [ -z "${PR_NUMBER}" ]; then
+            PR_NUMBER="$(gh api "repos/${REPO}/pulls?state=open&head=${REPO%%/*}:${RUN_HEAD_BRANCH}" --jq '.[0].number // empty' 2>/dev/null || true)"
           fi
 
           if [ -z "${PR_NUMBER}" ]; then
-            PR_NUMBER="$(gh api "repos/${REPO}/pulls?state=open&head=${REPO%%/*}:${RUN_HEAD_BRANCH}" \
-              --jq '.[0].number // empty' 2>/dev/null || true)"
-          fi
-
-          if [ -z "${PR_NUMBER}" ]; then
-            echo "No open PR found for failed run; opening a tracking issue instead."
-            ISSUE_BODY="$(printf '%s\n' \
-              "### PR / CI failure alert" \
-              "" \
-              "@${NOTIFY_USER} a workflow failed and no open PR could be resolved." \
-              "" \
-              "| Field | Value |" \
-              "| --- | --- |" \
-              "| Workflow | \`${RUN_NAME}\` |" \
-              "| Branch | \`${RUN_HEAD_BRANCH}\` |" \
-              "| SHA | \`${RUN_HEAD_SHA}\` |" \
-              "| Run | ${RUN_URL} |" \
-              "" \
-              "_Automated by \`notify-pr-failure.yml\`._")"
-            gh issue create -R "${REPO}" \
-              --title "CI failure: ${RUN_NAME} on ${RUN_HEAD_BRANCH}" \
-              --body "${ISSUE_BODY}"
+            echo "No open PR found; creating tracking issue"
+            ISSUE_BODY="$(printf '%s\n' "### PR / CI failure alert" "" "@${NOTIFY_USER} a workflow failed and no open PR could be resolved." "" "| Field | Value |" "| --- | --- |" "| Workflow | \`${RUN_NAME}\` |" "| Branch | \`${RUN_HEAD_BRANCH}\` |" "| SHA | \`${RUN_HEAD_SHA}\` |" "| Run | ${RUN_URL} |" "" "_Automated by \`notify-pr-failure.yml\`._")"
+            gh issue create -R "${REPO}" --title "CI failure: ${RUN_NAME} on ${RUN_HEAD_BRANCH}" --body "${ISSUE_BODY}"
           else
             echo "Notifying on PR #${PR_NUMBER}"
-            COMMENT_BODY="$(printf '%s\n' \
-              "### CI failure alert" \
-              "" \
-              "@${NOTIFY_USER} **\`${RUN_NAME}\`** failed on this PR." \
-              "" \
-              "- **Branch:** \`${RUN_HEAD_BRANCH}\`" \
-              "- **SHA:** \`${RUN_HEAD_SHA}\`" \
-              "- **Run:** ${RUN_URL}" \
-              "" \
-              "_Automated by \`notify-pr-failure.yml\`._")"
+            COMMENT_BODY="$(printf '%s\n' "### CI failure alert" "" "@${NOTIFY_USER} **\`${RUN_NAME}\`** failed on this PR." "" "- **Branch:** \`${RUN_HEAD_BRANCH}\`" "- **SHA:** \`${RUN_HEAD_SHA}\`" "- **Run:** ${RUN_URL}" "" "_Automated by \`notify-pr-failure.yml\`._")"
             gh pr comment "${PR_NUMBER}" -R "${REPO}" --body "${COMMENT_BODY}"
           fi
 
-          if [ -n "${SLACK_WEBHOOK_URL}" ]; then
+          if [ -n "${SLACK_WEBHOOK_URL:-}" ]; then
             echo "Sending Slack webhook notification"
             PR_REF="${PR_NUMBER:-unknown}"
-            PAYLOAD="$(jq -n \
-              --arg text "CI failure: ${RUN_NAME} (PR #${PR_REF}) on ${RUN_HEAD_BRANCH}" \
-              --arg run_url "${RUN_URL}" \
-              --arg branch "${RUN_HEAD_BRANCH}" \
-              --arg sha "${RUN_HEAD_SHA}" \
-              --arg workflow "${RUN_NAME}" \
-              --arg user "${NOTIFY_USER}" \
-              --arg repo "${REPO}" \
-              '{
-                text: ("@" + $user + " " + $text),
-                blocks: [
-                  {
-                    type: "header",
-                    text: { type: "plain_text", text: "PR CI failure", emoji: true }
-                  },
-                  {
-                    type: "section",
-                    fields: [
-                      { type: "mrkdwn", text: ("*Repo:*\n" + $repo) },
-                      { type: "mrkdwn", text: ("*Workflow:*\n" + $workflow) },
-                      { type: "mrkdwn", text: ("*Branch:*\n`" + $branch + "`") },
-                      { type: "mrkdwn", text: ("*SHA:*\n`" + $sha + "`") }
-                    ]
-                  },
-                  {
-                    type: "section",
-                    text: { type: "mrkdwn", text: ("<" + $run_url + "|View failed run>") }
-                  }
-                ]
-              }')"
+            PAYLOAD="$(jq -n --arg text "CI failure: ${RUN_NAME} (PR #${PR_REF}) on ${RUN_HEAD_BRANCH}" --arg run_url "${RUN_URL}" --arg branch "${RUN_HEAD_BRANCH}" --arg sha "${RUN_HEAD_SHA}" --arg workflow "${RUN_NAME}" --arg user "${NOTIFY_USER}" --arg repo "${REPO}" '{text:("@"+$user+" "+$text),blocks:[{type:"header",text:{type:"plain_text",text:"PR CI failure",emoji:true}},{type:"section",fields:[{type:"mrkdwn",text:("*Repo:*\n"+$repo)},{type:"mrkdwn",text:("*Workflow:*\n"+$workflow)},{type:"mrkdwn",text:("*Branch:*\n`"+$branch+"`")},{type:"mrkdwn",text:("*SHA:*\n`"+$sha+"`")}]},{type:"section",text:{type:"mrkdwn",text:("<"+$run_url+"|View failed run>")}}]}')"
             curl -sS -X POST -H 'Content-type: application/json' --data "${PAYLOAD}" "${SLACK_WEBHOOK_URL}" >/dev/null
             echo "Slack notification sent"
           else
-            echo "SLACK_WEBHOOK_URL secret not set; skipped Slack notify (PR/issue mention still sent)"
+            echo "SLACK_WEBHOOK_URL secret not set; skipped Slack notify"
           fi
