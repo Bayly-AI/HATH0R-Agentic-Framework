@@ -1,5 +1,5 @@
 ---
-id: HATHOR-REPORT-001
+id: HATHOR-REPORT-007
 title: "HATHOR Documentation Framework — Adoption Summary"
 summary: "Executive summary of hathor-doc@1 (HATHOR-CANON-001): what shipped, corpus state, how to adopt, and open decisions for operators."
 doc_type: REPORT
@@ -24,9 +24,9 @@ amended_by: []
 parent: HATHOR-CANON-001
 sources: [HATHOR-CANON-001, HATHOR-CANON-005]
 ---
-# HATHOR-REPORT-001 — Documentation Framework Adoption Summary
+# HATHOR-REPORT-007 — Documentation Framework Adoption Summary
 
-- **Document ID:** HATHOR-REPORT-001
+- **Document ID:** HATHOR-REPORT-007
 - **Status:** DRAFT summary for operator/team adoption (issue #18)
 - **Date:** 2026-09-15
 - **Audience:** OpenSource group (`hath0r-opensource`) — Framework, CLI, POC

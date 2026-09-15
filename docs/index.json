@@ -3,7 +3,7 @@
   "generated_at": "2026-09-15",
   "canon": "HATHOR-CANON-001",
   "namespace": "HATHOR-*",
-  "count": 82,
+  "count": 83,
   "documents": [
     {
       "path": "docs/architect/aegis-adr-001-target-command-tree-20260911.md",
@@ -1082,6 +1082,26 @@
       "diataxis": "explanation",
       "audience": [
         "architect",
+        "agent"
+      ],
+      "tree": "architect"
+    },
+    {
+      "path": "docs/architect/hathor-report-007-documentation-framework-adoption-20260915.md",
+      "rel": "architect/hathor-report-007-documentation-framework-adoption-20260915.md",
+      "id": "HATHOR-REPORT-007",
+      "title": "HATHOR Documentation Framework \u2014 Adoption Summary",
+      "summary": "Executive summary of hathor-doc@1 (HATHOR-CANON-001): what shipped, corpus state, how to adopt, and open decisions for operators.",
+      "doc_type": "REPORT",
+      "status": "draft",
+      "version": "1.0.0",
+      "created": "2026-09-15",
+      "updated": "2026-09-15",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "developer",
+        "operator",
         "agent"
       ],
       "tree": "architect"

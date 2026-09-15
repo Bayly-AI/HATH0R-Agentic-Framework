@@ -84,6 +84,7 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 | [HATHOR-REPORT-004](./04-Spike-Schema-Runbook-Checklist-2026-09-11.md) | REPORT | draft | 04 — Spike Design: Schema Dump + Runbook→Checklist Lifecycle | `04-Spike-Schema-Runbook-Checklist-2026-09-11.md` |
 | [HATHOR-REPORT-005](./05-Token-Benchmark-CLI-vs-MCP-2026-09-11.md) | REPORT | draft | 05 — Token / Payload Baseline: `infraos-os`, InfraMCP Health, and MCP Catalog Proxies | `05-Token-Benchmark-CLI-vs-MCP-2026-09-11.md` |
 | [HATHOR-REPORT-006](./aegis-ticketing-economy-whitepaper-20260911.md) | REPORT | draft | The Ticketing Economy | `aegis-ticketing-economy-whitepaper-20260911.md` |
+| [HATHOR-REPORT-007](./hathor-report-007-documentation-framework-adoption-20260915.md) | REPORT | draft | HATHOR Documentation Framework — Adoption Summary | `hathor-report-007-documentation-framework-adoption-20260915.md` |
 | [HATHOR-SESSION-001](./sessions/2026-09-13-corpus-refactor-session-log.md) | SESSION | draft | Session Log — AEGIS Corpus Refactor (2026-09-13) | `sessions/2026-09-13-corpus-refactor-session-log.md` |
 | [HATHOR-SESSION-002](./sessions/2026-09-13-corpus-refactor-summary-report.md) | SESSION | draft | Summary Report — AEGIS Framework Documentation Refactor | `sessions/2026-09-13-corpus-refactor-summary-report.md` |
 
