@@ -13,7 +13,6 @@ name: Notify PR Failure
   workflow_run:
     workflows:
       - Enforce Promotion Path
-      - Intentional Fail
     types:
       - completed
 
