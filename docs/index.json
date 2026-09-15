@@ -1,0 +1,2725 @@
+{
+  "schema": "hathor-doc-index@1",
+  "generated_at": "2026-09-15T15:10:54Z",
+  "count": 82,
+  "documents": [
+    {
+      "id": "AEGIS-ADR-001",
+      "path": "docs/architect/aegis-adr-001-target-command-tree-20260911.md",
+      "title": "03 — ADR: Target Command Tree (Domains + Hierarchy Lifecycle)",
+      "summary": "infraos-os` 9.3.0 exposes **79 top-level command groups** and **525+** inventory paths. Sampled Communications usage (report 01) concentrates on ~30 normalized invocation patterns, mostly Operator + Process paths, wit...",
+      "doc_type": "ADR",
+      "diataxis": "decision",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "proposed",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-ADR-002",
+      "path": "docs/architect/aegis-adr-002-orchestration-coordination-model-20260913.md",
+      "title": "AEGIS-ADR-002 — Orchestration Coordination Model",
+      "summary": "RFC 2119 keywords apply where requirements are restated.",
+      "doc_type": "ADR",
+      "diataxis": "decision",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-ADR-003",
+      "path": "docs/architect/aegis-adr-003-greenfield-command-surface-20260913.md",
+      "title": "AEGIS-ADR-003 — Greenfield Binary, Canonical Command Surface & Exit-Code Boundaries",
+      "summary": "RFC 2119 keywords apply.",
+      "doc_type": "ADR",
+      "diataxis": "decision",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-ADR-004",
+      "path": "docs/architect/aegis-adr-004-layout-state-residency-20260913.md",
+      "title": "AEGIS-ADR-004 — Layout & State Residency",
+      "summary": "RFC 2119 keywords apply.",
+      "doc_type": "ADR",
+      "diataxis": "decision",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-ADR-005",
+      "path": "docs/architect/aegis-adr-005-backup-ticketing-system-20260913.md",
+      "title": "AEGIS-ADR-005 — Backup Ticketing System: Build vs Adopt",
+      "summary": "RP-006 §5 defines the Backup TS by four properties: implements Ticket Contract v1 verbatim; deliberately *small* (list/get/create/update/link — no sprints, boards, workflow engine); network-reachable so a multi-agent...",
+      "doc_type": "ADR",
+      "diataxis": "decision",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-ARCH-001",
+      "path": "docs/architect/AEGIS-ARCH-001-architecture-mermaid-20260911.md",
+      "title": "AEGIS — Architecture & Mermaid Reference",
+      "summary": "Diagrams are Mermaid so they render in Warp, GitHub, and most Markdown surfaces. Every diagram carries a legend and points back to the requirement(s) it illustrates.",
+      "doc_type": "ARCH",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-ARCH-002",
+      "path": "docs/architect/aegis-arch-002-bot-unit-compendium-20260914.md",
+      "title": "AEGIS-ARCH-002 — Bot Unit Compendium",
+      "summary": "RFC 2119 keywords are quoted from source papers, not minted here.",
+      "doc_type": "ARCH",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-CANON-001",
+      "path": "docs/architect/aegis-canon-001-registries-20260913.md",
+      "title": "AEGIS-CANON-001 — Canonical Registries",
+      "summary": "Per-paper lists drifted (CORE said ten gates; RP-007 added four; RP-009 added \"the 11th\"; RP-003's event list lagged CORE's). This document replaces scattered enumerations with one registry per concept. Where a source...",
+      "doc_type": "CANON",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "365d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-CANON-002",
+      "path": "docs/architect/aegis-canon-002-platform-principles-20260914.md",
+      "title": "AEGIS-CANON-002 — HATHOR Platform Principles",
+      "summary": "RFC 2119 keywords appear only inside quoted source requirements.",
+      "doc_type": "CANON",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "proposed",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "365d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-CANON-003",
+      "path": "docs/architect/aegis-canon-003-documentation-framework-20260915.md",
+      "title": "HATHOR Documentation Framework",
+      "summary": "Metadata schema, IDs, versioning, review, staleness, indexing, and enforcement for HATHOR docs.",
+      "doc_type": "CANON",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "0.2.1",
+      "updated": "2026-09-15",
+      "created": "2026-09-15",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "human-reviewed",
+        "interval": "365d",
+        "reviewed_at": "2026-09-15",
+        "next_review": "2027-09-15"
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": [
+          "AEGIS-CANON-001",
+          "AEGIS-CANON-002",
+          "AEGIS-RP-004",
+          "AEGIS-RP-012"
+        ]
+      },
+      "tags": [
+        "documentation",
+        "metadata",
+        "governance"
+      ]
+    },
+    {
+      "id": "AEGIS-CANON-004",
+      "path": "docs/architect/INDEX.md",
+      "title": "AEGIS Research Corpus",
+      "summary": "Canonical folder for AEGIS / CLI / HATHOR research artifacts.",
+      "doc_type": "CANON",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "365d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-CANON-005",
+      "path": "docs/architect/PENDING-EDITS.md",
+      "title": "AEGIS Corpus — Pending-Edits & Change-Control Register",
+      "summary": "Purpose: the single place where cross-document amendments are tracked, per the corpus refactor plan (2026-09-13). A paper that changes another paper's decision MUST add a row here in the same change. Rows are removed...",
+      "doc_type": "CANON",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "365d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-CANON-006",
+      "path": "docs/business/INDEX.md",
+      "title": "AEGIS Business Documentation",
+      "summary": "This documentation explains the business problem AEGIS is intended to solve, the value it is expected to create, the capabilities and operating model required to create that value, the controls that bound its use, and...",
+      "doc_type": "CANON",
+      "diataxis": "reference",
+      "audience": [
+        "business",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "365d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-CANON-007",
+      "path": "docs/developers/INDEX.md",
+      "title": "AEGIS Developer Documentation",
+      "summary": "Welcome to the AEGIS Developer Documentation. This section provides technical guidance for building, integrating, and operating the AEGIS agentic governance platform and the HATHOR framework.",
+      "doc_type": "CANON",
+      "diataxis": "reference",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "365d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-CANON-008",
+      "path": "docs/sales/INDEX.md",
+      "title": "AEGIS Sales Documentation",
+      "summary": "This library explains how to position, qualify, discuss, and evaluate AEGIS without overstating what the current project proves.",
+      "doc_type": "CANON",
+      "diataxis": "reference",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "365d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-001",
+      "path": "docs/architect/aegis-containerization-article-20260911.md",
+      "title": "Containerization in AEGIS: From Micro-Bot to Deployable Unit",
+      "summary": "Every architecture eventually has to answer the same question: what is the smallest unit you can trust? AEGIS answered it once at the capability layer with the Micro-Bot — one role, one contract, stateless between cal...",
+      "doc_type": "GUIDE",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-002",
+      "path": "docs/architect/aegis-containerization-presentation-script-20260911.md",
+      "title": "AEGIS Containerization — Presentation Script",
+      "summary": "flowchart LR Repo[\"Repo + micro-bots\"] --> Lint[\"Micro-linters<br/>build-time Q-Gate\"] Lint --> Build[\"Image build<br/>CVS metadata + labels\"] Build --> C[\"AEGIS Container<br/>bot + CLI + contracts\"] C --> Col[\"OTel C...",
+      "doc_type": "GUIDE",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-003",
+      "path": "docs/business/01-executive-overview.md",
+      "title": "AEGIS Executive Overview",
+      "summary": "AEGIS is a proposed agentic governance platform for organizations that want people and AI agents to work at machine speed without giving up authorization, accountability, evidence, or human control.",
+      "doc_type": "GUIDE",
+      "diataxis": "explanation",
+      "audience": [
+        "business",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-004",
+      "path": "docs/business/02-business-requirements.md",
+      "title": "AEGIS Business Requirements",
+      "summary": "OBJ-*` and `BIZ-*` labels are local traceability aids for this derived document. They do not add canonical AEGIS requirements or amend `AEGIS-CANON-001`.",
+      "doc_type": "GUIDE",
+      "diataxis": "reference",
+      "audience": [
+        "business",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-005",
+      "path": "docs/business/03-business-capability-model.md",
+      "title": "AEGIS Business Capability Model",
+      "summary": "The top-level business capability is **governed agentic delivery**:",
+      "doc_type": "GUIDE",
+      "diataxis": "reference",
+      "audience": [
+        "business",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-006",
+      "path": "docs/business/04-operating-model.md",
+      "title": "AEGIS Target Operating Model",
+      "summary": "The target operating model is based on the following source-grounded rules:",
+      "doc_type": "GUIDE",
+      "diataxis": "explanation",
+      "audience": [
+        "business",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-007",
+      "path": "docs/business/05-governance-risk-and-controls.md",
+      "title": "AEGIS Governance, Risk, and Controls",
+      "summary": "AEGIS is intended to let an organization increase the speed and volume of delegated work without weakening:",
+      "doc_type": "GUIDE",
+      "diataxis": "explanation",
+      "audience": [
+        "business",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-008",
+      "path": "docs/business/06-adoption-roadmap.md",
+      "title": "AEGIS Adoption Roadmap",
+      "summary": "Move from design to measurable, governed use without treating feature completion as operational readiness or business value.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "business",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-009",
+      "path": "docs/business/07-value-and-success-measures.md",
+      "title": "AEGIS Value and Success Measures",
+      "summary": "CTL-*` and `VAL-*` labels are local measurement aids. They do not add canonical AEGIS identifiers or alter source acceptance criteria.",
+      "doc_type": "GUIDE",
+      "diataxis": "reference",
+      "audience": [
+        "business",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-010",
+      "path": "docs/business/08-glossary-and-source-register.md",
+      "title": "AEGIS Business Glossary and Source Register",
+      "summary": "1. [`AEGIS-CANON-001`](../architect/aegis-canon-001-registries-20260913.md) is the authority for enumerated gates, events, refusal codes, linters, bot roster, and identifiers.",
+      "doc_type": "GUIDE",
+      "diataxis": "reference",
+      "audience": [
+        "business",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-011",
+      "path": "docs/developers/agent-integrator.md",
+      "title": "Agent Integrator Guide",
+      "summary": "As an Agent Integrator (or AI Agent), you interact with the AEGIS platform as an active participant—building, verifying, and navigating project state. You will drive your operations entirely through the `aegis` CLI.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-012",
+      "path": "docs/developers/bot-developer.md",
+      "title": "Bot Developer Guide",
+      "summary": "As a Bot Developer, your role is to build and maintain the single-role micro-bots that provide capabilities to the AEGIS platform. All bots strictly adhere to the HATHOR operating model.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-013",
+      "path": "docs/developers/devops-dvo.md",
+      "title": "DevOps & DVO Guide",
+      "summary": "As a DevOps Engineer or Deployment & Validation Operator (DVO), your responsibility is to manage the environments, container deployments, telemetry ingestion, and authorized promotions for the AEGIS platform.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-014",
+      "path": "docs/developers/platform-engineer.md",
+      "title": "Platform Engineer Guide",
+      "summary": "Platform Engineers build the core AEGIS platform: the CLI, the Go chassis, the orchestration bots, the validation fabric, and the Control Tower API.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-015",
+      "path": "docs/sales/01-executive-product-brief.md",
+      "title": "AEGIS Executive Product Brief",
+      "summary": "AI agents can increase the speed and volume of engineering work. They can also distribute intent, authority, credentials, evidence, and status across chats, repositories, trackers, CI systems, and provider consoles. W...",
+      "doc_type": "GUIDE",
+      "diataxis": "explanation",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-016",
+      "path": "docs/sales/02-buyer-problems-and-use-cases.md",
+      "title": "Buyer Problems and Use Cases",
+      "summary": "Organizations adopting AI-assisted engineering may increase activity faster than their existing governance practices can reconcile it. The relevant risk is not simply that an agent can make a mistake. It is that inten...",
+      "doc_type": "GUIDE",
+      "diataxis": "explanation",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-017",
+      "path": "docs/sales/03-platform-capabilities.md",
+      "title": "Platform Capabilities",
+      "summary": "AEGIS is designed around one top-level business capability: **governed agentic delivery**.",
+      "doc_type": "GUIDE",
+      "diataxis": "reference",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-018",
+      "path": "docs/sales/04-architecture-and-integrations.md",
+      "title": "Architecture and Integrations",
+      "summary": "AEGIS is designed as a provider-neutral governance layer between human or agent intent and the tools that execute or record work.",
+      "doc_type": "GUIDE",
+      "diataxis": "explanation",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-019",
+      "path": "docs/sales/05-security-governance-and-assurance.md",
+      "title": "Security, Governance, and Assurance",
+      "summary": "AEGIS is designed to add layered governance to human and AI-assisted work. It does not claim that a CLI, signature, ticket, gate, or telemetry stream is sufficient on its own.",
+      "doc_type": "GUIDE",
+      "diataxis": "reference",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-020",
+      "path": "docs/sales/06-adoption-and-pilot-guide.md",
+      "title": "Adoption and Pilot Guide",
+      "summary": "AEGIS should move from design to governed use incrementally:",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-021",
+      "path": "docs/sales/07-value-and-business-case.md",
+      "title": "Value and Business Case",
+      "summary": "AEGIS should be evaluated as both:",
+      "doc_type": "GUIDE",
+      "diataxis": "explanation",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-022",
+      "path": "docs/sales/08-ideal-customer-and-buying-committee.md",
+      "title": "Ideal Customer and Buying Committee",
+      "summary": "The strongest prospective fit is an organization that is increasing AI-assisted software delivery and already feels a material gap between automation speed and its ability to preserve authorization, evidence, credenti...",
+      "doc_type": "GUIDE",
+      "diataxis": "reference",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-023",
+      "path": "docs/sales/09-discovery-and-qualification.md",
+      "title": "Discovery and Qualification",
+      "summary": "Determine whether the buyer has a material governed-agentic-delivery problem, whether AEGIS fits the intended architecture, whether the organization can support a measured pilot, and what evidence would justify the ne...",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-024",
+      "path": "docs/sales/10-messaging-and-talk-tracks.md",
+      "title": "Messaging and Talk Tracks",
+      "summary": "Do not reverse these definitions or describe HATHOR as the entire platform.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-025",
+      "path": "docs/sales/11-objection-handling-and-faq.md",
+      "title": "Objection Handling and FAQ",
+      "summary": "For every objection:",
+      "doc_type": "GUIDE",
+      "diataxis": "reference",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-026",
+      "path": "docs/sales/12-sales-engagement-and-proof-of-value-playbook.md",
+      "title": "Sales Engagement and Proof-of-Value Playbook",
+      "summary": "Sell the right to evaluate a governance problem, not an unsupported production outcome.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-027",
+      "path": "docs/sales/13-claims-evidence-and-source-coverage.md",
+      "title": "Claims, Evidence, and Source Coverage",
+      "summary": "This document prevents architecture detail from being mistaken for product availability or business proof. It defines:",
+      "doc_type": "GUIDE",
+      "diataxis": "reference",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-028",
+      "path": "docs/sales/14-sales-glossary.md",
+      "title": "Sales Glossary",
+      "summary": "Sales Glossary",
+      "doc_type": "GUIDE",
+      "diataxis": "reference",
+      "audience": [
+        "sales",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-029",
+      "path": "README.md",
+      "title": "HATHOR",
+      "summary": "HATHOR is the language-agnostic agentic application framework within AEGIS: shared contracts for agents, CLI, project layout, knowledge, governance, and credentials.",
+      "doc_type": "GUIDE",
+      "diataxis": "explanation",
+      "audience": [
+        "all"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-GUIDE-030",
+      "path": "docs/developers/qa-test-engineer.md",
+      "title": "QA/Test Engineer Guide",
+      "summary": "How QA and Test Engineers exercise AEGIS validation altitudes, refuse bad claims, and keep promotion evidence honest.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-15",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": [
+          "AEGIS-CANON-001",
+          "AEGIS-CANON-002",
+          "AEGIS-RP-007",
+          "AEGIS-TS-001",
+          "AEGIS-ADR-003",
+          "AEGIS-GUIDE-013"
+        ]
+      },
+      "tags": [
+        "qa",
+        "testing",
+        "validation",
+        "gates"
+      ]
+    },
+    {
+      "id": "AEGIS-GUIDE-031",
+      "path": "docs/developers/product-manager.md",
+      "title": "Product Manager Guide",
+      "summary": "How Product Managers shape AEGIS work through tickets, planes of authority, and evidence-backed outcomes without bypassing gates.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-15",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": [
+          "AEGIS-CANON-001",
+          "AEGIS-CANON-002",
+          "AEGIS-ADR-003",
+          "AEGIS-RP-004",
+          "AEGIS-RP-012",
+          "AEGIS-GUIDE-011"
+        ]
+      },
+      "tags": [
+        "product",
+        "ticketing",
+        "roadmap",
+        "governance"
+      ]
+    },
+    {
+      "id": "AEGIS-GUIDE-032",
+      "path": "docs/developers/release-manager.md",
+      "title": "Release Manager Guide",
+      "summary": "How Release Managers run ticket-authorized, gate-enforced promotion along the AEGIS environment path without skipping stages.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-15",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": [
+          "AEGIS-CANON-001",
+          "AEGIS-CANON-002",
+          "AEGIS-RP-007",
+          "AEGIS-TS-001",
+          "AEGIS-GUIDE-013",
+          "AEGIS-ADR-003"
+        ]
+      },
+      "tags": [
+        "release",
+        "promotion",
+        "dvo",
+        "gates"
+      ]
+    },
+    {
+      "id": "AEGIS-GUIDE-033",
+      "path": "docs/developers/security-compliance-officer.md",
+      "title": "Security & Compliance Officer Guide",
+      "summary": "How Security and Compliance Officers use AEGIS gates, zero-secret invariants, and knowledge trust tiers as mechanical controls.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-15",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": [
+          "AEGIS-CANON-001",
+          "AEGIS-CANON-002",
+          "AEGIS-RP-004",
+          "AEGIS-RP-012",
+          "AEGIS-RP-007",
+          "AEGIS-GUIDE-013",
+          "AEGIS-ADR-003"
+        ]
+      },
+      "tags": [
+        "security",
+        "compliance",
+        "secrets",
+        "provenance"
+      ]
+    },
+    {
+      "id": "AEGIS-GUIDE-034",
+      "path": "docs/developers/technical-writer.md",
+      "title": "Technical Writer Guide",
+      "summary": "How Technical Writers author hathor-doc@1 corpus docs, keep IDs stable, and align docs with Knowledge Plane trust.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-15",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": [
+          "AEGIS-CANON-003",
+          "AEGIS-CANON-001",
+          "AEGIS-RP-004",
+          "AEGIS-RP-012",
+          "AEGIS-GUIDE-029"
+        ]
+      },
+      "tags": [
+        "documentation",
+        "hathor-doc",
+        "diataxis",
+        "knowledge"
+      ]
+    },
+    {
+      "id": "AEGIS-GUIDE-035",
+      "path": "docs/developers/engineering-manager.md",
+      "title": "Engineering Manager Guide",
+      "summary": "How Engineering Managers run AEGIS delivery through tickets, gates, validation altitudes, and honest promotion without heroics.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-15",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": [
+          "AEGIS-CANON-001",
+          "AEGIS-CANON-002",
+          "AEGIS-RP-007",
+          "AEGIS-TS-001",
+          "AEGIS-RP-014",
+          "AEGIS-GUIDE-011",
+          "AEGIS-GUIDE-014"
+        ]
+      },
+      "tags": [
+        "engineering-management",
+        "delivery",
+        "gates",
+        "teams"
+      ]
+    },
+    {
+      "id": "AEGIS-GUIDE-036",
+      "path": "docs/developers/ux-design.md",
+      "title": "UX/Design Guide",
+      "summary": "How UX and Design shape AEGIS agent/CLI experiences around envelopes, gates, trust tiers, and honest degradation.",
+      "doc_type": "GUIDE",
+      "diataxis": "how-to",
+      "audience": [
+        "developer",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-15",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": [
+          "AEGIS-CANON-002",
+          "AEGIS-ADR-003",
+          "AEGIS-RP-004",
+          "AEGIS-RP-012",
+          "AEGIS-CANON-001",
+          "AEGIS-GUIDE-011"
+        ]
+      },
+      "tags": [
+        "ux",
+        "design",
+        "cli",
+        "agents",
+        "trust"
+      ]
+    },
+    {
+      "id": "AEGIS-PLAN-001",
+      "path": "docs/architect/aegis-plan-001-platform-roadmap-20260913.md",
+      "title": "AEGIS-PLAN-001 — Platform Roadmap (v1)",
+      "summary": "Sequence the entire v1 platform (not just CVS) so every CORE §16 acceptance criterion has an owning workstream, and the two detailed plans (PLAN-002/003) slot into a whole. Estimates are planning-grade; re-baseline at...",
+      "doc_type": "PLAN",
+      "diataxis": "how-to",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "90d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-PLAN-002",
+      "path": "docs/architect/aegis-plan-002-cvs-p0-p2-roadmap-20260911.md",
+      "title": "AEGIS-PLAN-002 — Continuous Validation System: P0–P2 Delivery Roadmap & Task Breakdown",
+      "summary": "gantt title CVS P0–P2 Delivery (planning-grade, 2 engineers) dateFormat YYYY-MM-DD axisFormat %m-%d section P0 Foundations + change validation Repo & CLI foundation :p0e1, 2026-09-15, 5d Finding envelope & schemas :p0...",
+      "doc_type": "PLAN",
+      "diataxis": "how-to",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "90d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-PLAN-003",
+      "path": "docs/architect/aegis-plan-003-gateway-validators-roadmap-20260913.md",
+      "title": "AEGIS-PLAN-003 — Orchestration Gateway, Remaining Validators & Agent Skill Pack",
+      "summary": "Sizing: S ≤ 1.5d, M ≈ 2–3d, L ≈ 4–5d. Prereq: PLAN-002 M1 (linter runtime + suite runner exist).",
+      "doc_type": "PLAN",
+      "diataxis": "how-to",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "90d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-REPORT-001",
+      "path": "docs/architect/AEGIS-CLI-Research-Report-2026-09-11.md",
+      "title": "AEGIS CLI Research Report",
+      "summary": "The outline positions **CLI as the control plane**: the single contact surface between agents and everything else (code, assets, knowledge, systems).",
+      "doc_type": "REPORT",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-REPORT-002",
+      "path": "docs/architect/01-Invocation-Inventory-Top30-2026-09-11.md",
+      "title": "01 — Top 30 Real `infraos-os` Invocations (Communications)",
+      "summary": "These are heuristic analytical tags, not a mutually exclusive partition; chain-labelled rows can represent more than one layer.",
+      "doc_type": "REPORT",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-REPORT-003",
+      "path": "docs/architect/02-CLI-Spec-Scoring-2026-09-11.md",
+      "title": "02 — CLI Spec Scoring (`infraos-os` vs clispec.dev)",
+      "summary": "Principles (CLI Spec): 1. **Structured Output** — explicit JSON; prefer structured when piped; structured failures 2. **Schema Introspection** — discover commands/args/output/errors at runtime 3. **Stderr/Stdout Separ...",
+      "doc_type": "REPORT",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-REPORT-004",
+      "path": "docs/architect/04-Spike-Schema-Runbook-Checklist-2026-09-11.md",
+      "title": "04 — Spike Design: Schema Dump + Runbook→Checklist Lifecycle",
+      "summary": "Playbook: security-devops / dvo-deploy-handoff Runbook: security-devops / dvo-deploy-ticket Checklist: security-devops / dvo-deploy-ticket Workflow: devops/dvo-deploy-request",
+      "doc_type": "REPORT",
+      "diataxis": "how-to",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-REPORT-005",
+      "path": "docs/architect/05-Token-Benchmark-CLI-vs-MCP-2026-09-11.md",
+      "title": "05 — Token / Payload Baseline: `infraos-os`, InfraMCP Health, and MCP Catalog Proxies",
+      "summary": "1. Not a multi-run statistical benchmark (n=1 per command).",
+      "doc_type": "REPORT",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-REPORT-006",
+      "path": "docs/architect/aegis-ticketing-economy-whitepaper-20260911.md",
+      "title": "The Ticketing Economy",
+      "summary": "Software organizations have never been better at *doing* work. With AI agents now writing code, filing changes, and operating pipelines alongside human engineers, the constraint has shifted. The hard problem is no lon...",
+      "doc_type": "REPORT",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-REQ-BOT-001",
+      "path": "docs/architect/aegis-bot-taxonomy-requirements-20260911.md",
+      "title": "AEGIS — Bot Taxonomy, Anatomy & Default Command Contract",
+      "summary": "1. **Infra reuse only when better** — AEGIS may adopt Infra processes/architecture only where they demonstrably exceed a from-scratch AEGIS design. Every adoption is logged in §9.",
+      "doc_type": "REQ",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-REQ-CORE-001",
+      "path": "docs/architect/AEGIS-REQ-CORE-001-initial-requirements-20260911.md",
+      "title": "AEGIS — Initial Platform Requirements (Core)",
+      "summary": "RFC 2119 keywords apply: **MUST / SHOULD / MAY**. Every requirement in this document is prefixed `AEG-REQ-<AREA>-###`. Acceptance criteria are listed inline. Traceability tags to the source research paper appear in sq...",
+      "doc_type": "REQ",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-001",
+      "path": "docs/architect/aegis-rp-001-manifest-schema-v1-20260911.md",
+      "title": "AEGIS Research Paper 001 — Bot Manifest Schema v1 & Contract-Negotiation Handshake",
+      "summary": "AEG-BOT-ANA-002 mandates a machine-readable manifest for every bot, and AEG-BOT-ANA-003 mandates a versioned communication contract. Neither the exact JSON fields nor the negotiation handshake were defined. This paper...",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-002",
+      "path": "docs/architect/aegis-rp-002-registry-discovery-20260911.md",
+      "title": "AEGIS Research Paper 002 — Bot Registry & Discovery Model",
+      "summary": "Proctor-Bot routes requests by capability (AEG-MAN-003) and must verify provenance before dispatch (SEC-003). Question: does Proctor discover bots via the **Control Tower registry**, a **machine-local manifest scan**,...",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-003",
+      "path": "docs/architect/aegis-rp-003-telemetry-transport-20260911.md",
+      "title": "AEGIS Research Paper 003 — Telemetry Transport",
+      "summary": "Every bot emits standardized telemetry (ANA-007, OBS-001) consumed by the Observation family and rolled up to the Control Tower (OBS-002). Undecided: transport. Candidates were **a machine-local event bus** vs **CLI-m...",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-004",
+      "path": "docs/architect/aegis-rp-004-knowledge-promotion-20260911.md",
+      "title": "AEGIS Research Paper 004 — Draft→Verified Knowledge Promotion Workflow",
+      "summary": "Every knowledge write lands as `draft`; only human review promotes to `verified` (KNO-004). Undefined: **who reviews**, **where the queue lives**, and the full status lifecycle including demotion and expiry. The board...",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-005",
+      "path": "docs/architect/aegis-rp-005-hierarchy-consolidation-20260911.md",
+      "title": "AEGIS Research Paper 005 — Hierarchy Topology: Six Bots vs One Process-Bot with Six Tier Adapters",
+      "summary": "The boards draw six Information Hierarchy bots (Procedure → Strategy → Playbook → Runbook → Workflow → Checklist), each queried by Process-Bot. The open question: keep **six bots**, or consolidate into **one Process-B...",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-006",
+      "path": "docs/architect/aegis-rp-006-ticketing-plane-20260911.md",
+      "title": "AEGIS Research Paper 006 — The Ticketing Plane: Work as a Source of Truth",
+      "summary": "The bot taxonomy settled where **capability** lives (the micro-bot) and the containerization article settled where **deployment** lives (the container). Neither settled where **work** lives. Across the boards and the...",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-007",
+      "path": "docs/architect/aegis-rp-007-continuous-validation-20260911.md",
+      "title": "AEGIS-RP-007 — Continuous Validation System",
+      "summary": "RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-VAL-###`.",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-008",
+      "path": "docs/architect/aegis-rp-008-microbot-launch-roster-20260912.md",
+      "title": "AEGIS-RP-008 — Micro-Bot Launch Roster",
+      "summary": "RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-MBL-###` (Micro-Bot Launch).",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-009",
+      "path": "docs/architect/aegis-rp-009-orchestration-gateway-20260912.md",
+      "title": "AEGIS-RP-009 — Orchestration Gateway",
+      "summary": "RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-GW-###` (Gateway).",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-010",
+      "path": "docs/architect/aegis-rp-010-tower-surface-20260913.md",
+      "title": "AEGIS-RP-010 — Control Tower Surface v1",
+      "summary": "RFC 2119 keywords apply. Requirements use prefix `AEG-TWR-###`.",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-011",
+      "path": "docs/architect/aegis-rp-011-operator-brokering-20260913.md",
+      "title": "AEGIS-RP-011 — Operator-Bot Brokering Model",
+      "summary": "RFC 2119 keywords apply. Requirements use prefix `AEG-OPB-###`.",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-012",
+      "path": "docs/architect/aegis-rp-012-knowledge-storage-retrieval-20260913.md",
+      "title": "AEGIS-RP-012 — Knowledge Plane: Storage & Retrieval Mechanics",
+      "summary": "RFC 2119 keywords apply. Requirements use prefix `AEG-KST-###`.",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-013",
+      "path": "docs/architect/aegis-rp-013-threat-model-20260913.md",
+      "title": "AEGIS-RP-013 — Threat Model & Trust Boundaries",
+      "summary": "RFC 2119 keywords apply. Requirements use prefix `AEG-THR-###`.",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-RP-014",
+      "path": "docs/architect/aegis-rp-014-bot-unit-creation-operation-20260913.md",
+      "title": "AEGIS-RP-014 — The Bot Unit: Creating & Operating a HATHOR Micro-Bot",
+      "summary": "RFC 2119 keywords apply. Requirements in this paper extend the BOT-001 family with three sub-prefixes: `AEG-BOT-GOV-###` (governance: directive, rules, principles), `AEG-BOT-MEM-###` (state & memory), `AEG-BOT-LIF-###...",
+      "doc_type": "RP",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "accepted",
+      "version": "1.0.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "180d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-SESSION-001",
+      "path": "docs/architect/sessions/2026-09-13-corpus-refactor-session-log.md",
+      "title": "Session Log — AEGIS Corpus Refactor (2026-09-13)",
+      "summary": "Session Log — AEGIS Corpus Refactor (2026-09-13)",
+      "doc_type": "SESSION",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-SESSION-002",
+      "path": "docs/architect/sessions/2026-09-13-corpus-refactor-summary-report.md",
+      "title": "Summary Report — AEGIS Framework Documentation Refactor",
+      "summary": "The AEGIS research corpus was reviewed end-to-end, found to be strong in discipline but carrying **coherence debt** (later decisions contradicting earlier canonical documents), and refactored in one approved, seven-wa...",
+      "doc_type": "SESSION",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": null,
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-TS-001",
+      "path": "docs/architect/aegis-ts-001-continuous-validation-implementation-20260911.md",
+      "title": "AEGIS-TS-001 — Continuous Validation System: Technical Specification",
+      "summary": "RFC 2119 keywords apply. New identifiers introduced here: components `TS-C-###`, interfaces `TS-I-###`, decisions `TS-D-###`.",
+      "doc_type": "TS",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-11",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "90d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-TS-002",
+      "path": "docs/architect/aegis-ts-002-orchestration-gateway-implementation-20260913.md",
+      "title": "AEGIS-TS-002 — Orchestration Gateway: Technical Specification",
+      "summary": "RFC 2119 keywords apply. New identifiers: decisions `TS2-D-###`, components `TS2-C-###`, interfaces `TS2-I-###` (namespaced to avoid collision with TS-001's `TS-D/TS-C/TS-I`).",
+      "doc_type": "TS",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "90d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-TS-003",
+      "path": "docs/architect/aegis-ts-003-bot-unit-implementation-20260913.md",
+      "title": "AEGIS-TS-003 — Bot Unit Architecture: Implementation Specification",
+      "summary": "RFC 2119 keywords apply. New identifiers: decisions `TS3-D-###`, components `TS3-C-###`, interfaces `TS3-I-###` (namespaced to avoid collision with TS-001/TS-002).",
+      "doc_type": "TS",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-13",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "90d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    },
+    {
+      "id": "AEGIS-TS-004",
+      "path": "docs/architect/aegis-ts-004-dmz-integration-boundary-20260914.md",
+      "title": "AEGIS-TS-004 — The DMZ: Application ↔ Framework Integration Boundary",
+      "summary": "RFC 2119 keywords apply. New identifiers: decisions `TS4-D-###`, components `TS4-C-###`, interfaces `TS4-I-###`.",
+      "doc_type": "TS",
+      "diataxis": "reference",
+      "audience": [
+        "architect",
+        "agent"
+      ],
+      "status": "draft",
+      "version": "0.1.0",
+      "updated": "2026-09-15",
+      "created": "2026-09-14",
+      "owner": "Raymond Bayly (BaylyAI)",
+      "review": {
+        "trust": "unverified",
+        "interval": "90d",
+        "reviewed_at": null,
+        "next_review": null
+      },
+      "stale": false,
+      "relationships": {
+        "supersedes": [],
+        "superseded_by": null,
+        "amended_by": [],
+        "parent": null,
+        "sources": []
+      },
+      "tags": []
+    }
+  ]
+}
