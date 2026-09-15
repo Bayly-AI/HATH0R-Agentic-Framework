@@ -1,6 +1,6 @@
 # AGENTS.md — HATH0R Agentic Framework
 
-> Role: **OpenSource HATHOR framework + docs corpus** · member of group `hath0r-opensource`  
+> Role: **OpenSource HATHOR framework + docs corpus** · member of **OpenSource Project** (`hath0r-opensource`)  
 > Updated: 2026-09-15
 
 ## Group membership (CRITICAL)
@@ -8,7 +8,9 @@
 | Field | Value |
 |-------|-------|
 | Group | `hath0r-opensource` |
+| Project | **OpenSource Project** |
 | Group root | `/Users/raybayly/Development/OpenSource` |
+| **Control tower** | `/Users/raybayly/Development/OpenSource/HATH0R-CLI` (`Bayly-AI/HATH0R-CLI`) |
 | This product | `HATH0R-Agentic-Framework` |
 | GitHub | `Bayly-AI/HATH0R-Agentic-Framework` |
 | Local path | `/Users/raybayly/Development/OpenSource/hath0r` |
@@ -16,10 +18,10 @@
 | Operator CLI | `hath0r` |
 | Docs | `docs/` (canonical OpenSource documentation corpus) |
 
-### Canonical siblings
+### Canonical siblings (all under OpenSource are project members)
 
+- **Control tower / CLI**: `/Users/raybayly/Development/OpenSource/HATH0R-CLI` → `Bayly-AI/HATH0R-CLI`
 - Framework: `/Users/raybayly/Development/OpenSource/hath0r` → `Bayly-AI/HATH0R-Agentic-Framework`
-- CLI: `/Users/raybayly/Development/OpenSource/HATH0R-CLI` → `Bayly-AI/HATH0R-CLI`
 - POC: `/Users/raybayly/Development/OpenSource/hath0r-poc` → `Bayly-AI/HATH0R-Agentic-POC`
 
 Group rules: `/Users/raybayly/Development/OpenSource/AGENTS.md`  
@@ -35,15 +37,16 @@ Do **not** use `.ai/`, `.aegis/`, or `.infraOS/`.
 
 1. Point local knowledgebase operations at the OpenSource group hub.
 2. Keep member `.hath0r/knowledgebase` as stub/pointer only.
-3. Framework `docs/` is the **canonical OpenSource documentation** corpus.
-4. Do **not** treat private internal product trees as OpenSource canonical sources.
+3. Resolve control-tower / suite orientation to **HATH0R-CLI**.
+4. Framework `docs/` is the **canonical OpenSource documentation** corpus.
+5. Do **not** treat private internal product trees as OpenSource canonical sources.
 
 ## Branch & PR targets (CRITICAL — cr-branch-gov-001)
 
 1. **Issue first**: create a GitHub issue before any work branch. No issue → no branch.
 2. Branch from `development` only, using:
    `feature|bugfix|enhancement|research|fix|chore/<issue-number>-short-slug`
-   Example: `chore/2-branch-protection-governance`
+   Example: `chore/4-control-tower-cli`
 3. Open the PR with **base = `development`** (feature work never targets testing/staging/master).
 4. **Owner approval required** before merge (`@somesayray` via CODEOWNERS + branch protection).
 5. Merge into **`development` only** for feature work.
@@ -62,7 +65,7 @@ Forbidden: feature PRs targeting `master`, `testing`, or `staging`; PRs without 
 
 ## CR-BAI-001: Environment Promotion Path (CRITICAL — org-wide)
 
-Canonical policy: `/Users/raybayly/Development/BAI/WARP.md`
+Canonical policy: `/Users/raybayly/Development/BAI/WARP.md` (org-wide). Group mirror: `/Users/raybayly/Development/OpenSource/WARP.md`.
 
 Required order (never skip):
 
