@@ -1,6 +1,6 @@
 ---
-id: AEGIS-RP-014
-title: 'AEGIS-RP-014 — The Bot Unit: Creating & Operating a HATHOR Micro-Bot'
+id: HATHOR-RP-014
+title: 'HATHOR-RP-014 — The Bot Unit: Creating & Operating a HATHOR Micro-Bot'
 summary: 'RFC 2119 keywords apply. Requirements in this paper extend the BOT-001 family with three sub-prefixes: `AEG-BOT-GOV-###` (governance: directive, rules, principles), `AEG-BOT-MEM-###` (state & memory), `AEG-BOT-LIF-###...'
 doc_type: RP
 diataxis: explanation
@@ -19,14 +19,14 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-RP-014 — The Bot Unit: Creating & Operating a HATHOR Micro-Bot
+# HATHOR-RP-014 — The Bot Unit: Creating & Operating a HATHOR Micro-Bot
 ## Directive · Rules · Principles · State & Memory · Communication · Lifecycle
 
-- **Document ID:** AEGIS-RP-014
+- **Document ID:** HATHOR-RP-014
 - **Status:** ACCEPTED — operator sign-off 2026-09-13 (PENDING-EDITS D8); §13 open questions resolved by operator
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Parent:** AEGIS-REQ-BOT-001 (taxonomy, seven-block anatomy, default command contract)
+- **Parent:** HATHOR-REQ-BOT-001 (taxonomy, seven-block anatomy, default command contract)
 - **Builds on:** RP-001 (manifest v1 + handshake), RP-002 (MBI/TBR), RP-003 (spool-and-drain), RP-005 (six identities, one chassis), RP-007/TS-001 (validators, ledgers, config precedence), RP-009/TS-002 (conducted runs, run log), RP-011 (brokering), RP-012 (knowledge store), RP-013 (trust model, signing), ADR-002/003/004, CANON-001
 - **Amendments (ratified + applied 2026-09-13):** RP-001 §2 (manifest 1.1.0 `governance` triad + `runtime.requires_capabilities`/`config_schema`/`executor_kind`); BOT-001 `AEG-BOT-CMD-011/013/018`; CANON-001 §4/§5/§8; ADR-003 §2.2 surface note (`aegis tower bots init`); RP-007 §4.1; TS-001 §2.3/§13 — see §11 and `PENDING-EDITS.md` §2 (D8).
 - **Consistency reconciliation (2026-09-14, pending operator review):** applies already-accepted RP-011 Class-1/Class-2 brokering, ADR-003/CANON-001 capability-exit semantics, and RP-013's external DSSE representation; records the unresolved executable-artifact binding as R10 rather than claiming coverage the schema does not provide. Tracked in `PENDING-EDITS.md` §7–§8.
@@ -753,7 +753,7 @@ Retirement MUST be a CRL entry (`reason=retired`, optional `successor`); the MBI
 | BOT-001 `AEG-BOT-CMD-013` / `-018` | `manifest --with-governance`; `report.payload.decisions[]` | applied 2026-09-13 (D8) |
 | CANON-001 §4 | refusal code **`BOT_RULE_REFUSED`** (pre-rule refusal; envelope carries `rule_id`; CLI exit 2). Post-rule violations reuse `CONTRACT_OUTPUT_INVALID` (exit 1) with `rule_id` in `details`; source RP-014 §3.4 | applied 2026-09-13 (D8) |
 | CANON-001 §5 / RP-007 §4.1 | `ml-manifest-schema` scope note: validates the 1.1.0 bundle incl. governance files (no new linter) | applied 2026-09-13 (D8) |
-| CANON-001 §8 | rows: `AEG-BOT-GOV/MEM/LIF-###` → AEGIS-RP-014 | applied 2026-09-13 (D8) |
+| CANON-001 §8 | rows: `AEG-BOT-GOV/MEM/LIF-###` → HATHOR-RP-014 | applied 2026-09-13 (D8) |
 | ADR-003 §2.2 (surface note) | `aegis tower bots init` — additive verb under `tower`; domain count unchanged; no decision change | applied 2026-09-13 (D8) |
 | TS-001 §2.3 / §13 | per-bot config paths `.aegis/rules/bots/<name>.yaml` and `${XDG_CONFIG_HOME}/aegis/bots/<name>.yaml` | applied 2026-09-13 (D8) |
 
@@ -818,4 +818,4 @@ The 2026-09-14 audit does not reopen D8. It records R10 as an implementation blo
 
 ---
 
-*ACCEPTED 2026-09-13 — the bot-unit design and governance model. No implementation authorized by this document; implementation requires a ticket (AEGIS-TS-003 + CORE `AEG-REQ-TKT-004`).*
+*ACCEPTED 2026-09-13 — the bot-unit design and governance model. No implementation authorized by this document; implementation requires a ticket (HATHOR-TS-003 + CORE `AEG-REQ-TKT-004`).*

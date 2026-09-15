@@ -1,6 +1,6 @@
 ---
-id: AEGIS-ADR-005
-title: 'AEGIS-ADR-005 — Backup Ticketing System: Build vs Adopt'
+id: HATHOR-ADR-005
+title: 'HATHOR-ADR-005 — Backup Ticketing System: Build vs Adopt'
 summary: 'RP-006 §5 defines the Backup TS by four properties: implements Ticket Contract v1 verbatim; deliberately *small* (list/get/create/update/link — no sprints, boards, workflow engine); network-reachable so a multi-agent...'
 doc_type: ADR
 diataxis: decision
@@ -19,9 +19,9 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-ADR-005 — Backup Ticketing System: Build vs Adopt
+# HATHOR-ADR-005 — Backup Ticketing System: Build vs Adopt
 
-- **Document ID:** AEGIS-ADR-005
+- **Document ID:** HATHOR-ADR-005
 - **Status:** ACCEPTED — operator sign-off 2026-09-13 (PENDING-EDITS D3)
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)

@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-003
+id: HATHOR-GUIDE-003
 title: AEGIS Executive Overview
 summary: AEGIS is a proposed agentic governance platform for organizations that want people and AI agents to work at machine speed without giving up authorization, accountability, evidence, or human control.
 doc_type: GUIDE
@@ -24,7 +24,7 @@ sources: []
 - **Business document:** 01 of 08
 - **Status:** Derived draft for business review
 - **Source baseline:** Architecture corpus as of 2026-09-14
-- **Primary sources:** [`INDEX`](../architect/INDEX.md), [`AEGIS-REQ-CORE-001`](../architect/AEGIS-REQ-CORE-001-initial-requirements-20260911.md), [`AEGIS-ADR-002`](../architect/aegis-adr-002-orchestration-coordination-model-20260913.md), accepted RP-010 through RP-014 decisions, and [`AEGIS-PLAN-001`](../architect/aegis-plan-001-platform-roadmap-20260913.md)
+- **Primary sources:** [`INDEX`](../architect/INDEX.md), [`HATHOR-REQ-CORE-001`](../architect/HATHOR-REQ-CORE-001-initial-requirements-20260911.md), [`HATHOR-ADR-002`](../architect/aegis-adr-002-orchestration-coordination-model-20260913.md), accepted RP-010 through RP-014 decisions, and [`HATHOR-PLAN-001`](../architect/aegis-plan-001-platform-roadmap-20260913.md)
 
 ## Executive summary
 

@@ -1,5 +1,5 @@
 ---
-id: AEGIS-REPORT-006
+id: HATHOR-REPORT-006
 title: The Ticketing Economy
 summary: Software organizations have never been better at *doing* work. With AI agents now writing code, filing changes, and operating pipelines alongside human engineers, the constraint has shifted. The hard problem is no lon...
 doc_type: REPORT
@@ -27,7 +27,7 @@ sources: []
 - **Audience:** CTOs, VPs of Engineering, Heads of Platform / Developer Experience, Security & Compliance leaders
 - **Date:** 2026-09-11
 - **Status:** DRAFT for review — describes the AEGIS Ticketing Economy architecture at design stage; see the RP-006 specification for technical detail and open questions
-- **Technical companion:** `AEGIS-RP-006 — The Ticketing Plane: Work as a Source of Truth`
+- **Technical companion:** `HATHOR-RP-006 — The Ticketing Plane: Work as a Source of Truth`
 
 ---
 
@@ -103,7 +103,7 @@ The business value is threefold: **no rip-and-replace** (adopt AEGIS without for
 
 Enterprise trackers go down, throttle under load, or are simply unavailable in isolated and regulated environments. In an informal economy, an outage means work stalls or — worse — proceeds untracked.
 
-AEGIS's target design includes a small, self-hostable **Backup Ticketing System** that speaks the same canonical contract (implementation decision: AEGIS-ADR-005). When a primary provider is unreachable, work continues against the backup and is transparently marked as pending reconciliation. When the provider returns, buffered work is **automatically reconciled upstream**, with the enterprise provider always retained as the ultimate authority — no duplicates, no silent overwrites, no lost tickets.
+AEGIS's target design includes a small, self-hostable **Backup Ticketing System** that speaks the same canonical contract (implementation decision: HATHOR-ADR-005). When a primary provider is unreachable, work continues against the backup and is transparently marked as pending reconciliation. When the provider returns, buffered work is **automatically reconciled upstream**, with the enterprise provider always retained as the ultimate authority — no duplicates, no silent overwrites, no lost tickets.
 
 Crucially, degradation is **bounded and honest**: the system tells you it is running on backup, and it refuses to let an outage become a loophole (for example, it will not let a deployment be authorized from unreconciled backup-only state). Continuity without compromising the chain of authority.
 
@@ -143,10 +143,10 @@ The Ticketing Economy answers that by design. It is a single accountability mode
 
 ## Where to Go Next
 
-The concepts above are specified in full technical detail in the companion research paper, `AEGIS-RP-006 — The Ticketing Plane: Work as a Source of Truth`, including the canonical Ticket Contract, provider mappings, reconciliation model, and governance requirements.
+The concepts above are specified in full technical detail in the companion research paper, `HATHOR-RP-006 — The Ticketing Plane: Work as a Source of Truth`, including the canonical Ticket Contract, provider mappings, reconciliation model, and governance requirements.
 
 For teams evaluating AEGIS, the natural first step is a scoped pilot: connect one existing tracker, enable the Ticketing Economy gates in report-only mode to establish a baseline, then turn on enforcement and measure the change in traceability, cycle time, and deployment safety.
 
 ---
 
-*BaylyAI · AEGIS Whitepaper · Draft for review. Business-facing companion to the AEGIS-RP-006 specification. Capabilities described here reflect the AEGIS target design; see RP-006 for current design status and open questions.*
+*BaylyAI · AEGIS Whitepaper · Draft for review. Business-facing companion to the HATHOR-RP-006 specification. Capabilities described here reflect the AEGIS target design; see RP-006 for current design status and open questions.*

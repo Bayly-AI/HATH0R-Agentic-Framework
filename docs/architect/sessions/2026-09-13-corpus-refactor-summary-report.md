@@ -1,5 +1,5 @@
 ---
-id: AEGIS-SESSION-002
+id: HATHOR-SESSION-002
 title: Summary Report — AEGIS Framework Documentation Refactor
 summary: The AEGIS research corpus was reviewed end-to-end, found to be strong in discipline but carrying **coherence debt** (later decisions contradicting earlier canonical documents), and refactored in one approved, seven-wa...
 doc_type: SESSION
@@ -38,7 +38,7 @@ The AEGIS research corpus was reviewed end-to-end, found to be strong in discipl
 40 findings across three classes:
 - **E1–E18 — errors/contradictions.** Headliners: ADR-001 rejected the greenfield binary while CORE/TS-001 built one (unrecorded reversal); the ≤ 8 domain cap was violated by CORE's own 9-domain tree, RP-007's `validate` proposal, and TS-001's `aegis run` (arithmetic reached 11); exit code 2 meant both "usage error" (CLI) and "degraded" (bot boundary) in the same documents; gate counts drifted 10 → 14 → "the 11th" (really 15); a POSIX atomicity misconception (PIPE_BUF) in the ledger spec; three conflicting port-registry paths; ambiguous spool residency; a defective 29 MB board export.
 - **G1–G14 — gaps.** No Tower surface, no brokering mechanism behind "brokered sessions," no knowledge storage/retrieval mechanics, no threat model (TTY-spoofable "human-only" waivers; agent-writable run logs undermining the no-skip guarantee against adversaries), bespoke signing infrastructure, unscheduled highest-ROI skill pack, no platform-wide roadmap.
-- **R1–R8 — structural refactors.** No change control or supersession tracking; per-paper enumerations; document/requirement ID collision (`AEGIS-REQ-BOT-001` vs `AEG-REQ-BOT-001`).
+- **R1–R8 — structural refactors.** No change control or supersession tracking; per-paper enumerations; document/requirement ID collision (`HATHOR-REQ-BOT-001` vs `AEG-REQ-BOT-001`).
 
 ## 3. Delivered
 

@@ -1,6 +1,6 @@
 ---
-id: AEGIS-ADR-003
-title: AEGIS-ADR-003 — Greenfield Binary, Canonical Command Surface & Exit-Code Boundaries
+id: HATHOR-ADR-003
+title: HATHOR-ADR-003 — Greenfield Binary, Canonical Command Surface & Exit-Code Boundaries
 summary: RFC 2119 keywords apply.
 doc_type: ADR
 diataxis: decision
@@ -19,14 +19,14 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-ADR-003 — Greenfield Binary, Canonical Command Surface & Exit-Code Boundaries
+# HATHOR-ADR-003 — Greenfield Binary, Canonical Command Surface & Exit-Code Boundaries
 
-- **Document ID:** AEGIS-ADR-003
+- **Document ID:** HATHOR-ADR-003
 - **Status:** ACCEPTED — operator sign-off 2026-09-13 (PENDING-EDITS D1)
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Supersedes:** AEGIS-ADR-001 *in part* — specifically its "Greenfield AEGIS binary — rejected" alternative and its `infraos-os`-rooted target surface. ADR-001 remains authoritative for the domain taxonomy, lifecycle rule, and the InfraOS migration/alias path.
-- **Amends:** AEGIS-REQ-CORE-001 §4.1, §4.5, §14, `AEG-REQ-PLAT-008`, §16.1; AEGIS-ARCH-001 §15; AEGIS-TS-001 §10.1
+- **Supersedes:** HATHOR-ADR-001 *in part* — specifically its "Greenfield AEGIS binary — rejected" alternative and its `infraos-os`-rooted target surface. ADR-001 remains authoritative for the domain taxonomy, lifecycle rule, and the InfraOS migration/alias path.
+- **Amends:** HATHOR-REQ-CORE-001 §4.1, §4.5, §14, `AEG-REQ-PLAT-008`, §16.1; HATHOR-ARCH-001 §15; HATHOR-TS-001 §10.1
 - **Resolves findings:** E1 (unrecorded greenfield reversal), E2 (domain-count arithmetic), E3 (exit code 2 dual meaning), E5 (Epic gate exit code)
 - **Scope rule:** decision record only. No implementation authorized by this document.
 
@@ -38,7 +38,7 @@ RFC 2119 keywords apply.
 
 Three contradictions accumulated between ADR-001 (2026-09-11) and the later corpus:
 
-1. **Binary strategy.** ADR-001 rejected a "Greenfield AEGIS binary" ("splits control plane; violates AD-001 spirit") and rooted the target tree at `infraos-os`. AEGIS-REQ-CORE-001 §0.2 subsequently declared AEGIS "a greenfield core platform," and AEGIS-TS-001 `TS-D-005` selected a greenfield `aegis` CLI as the first build and dogfood target. The reversal was real and deliberate but never recorded as a decision.
+1. **Binary strategy.** ADR-001 rejected a "Greenfield AEGIS binary" ("splits control plane; violates AD-001 spirit") and rooted the target tree at `infraos-os`. HATHOR-REQ-CORE-001 §0.2 subsequently declared AEGIS "a greenfield core platform," and HATHOR-TS-001 `TS-D-005` selected a greenfield `aegis` CLI as the first build and dogfood target. The reversal was real and deliberate but never recorded as a decision.
 2. **Domain count.** `AEG-REQ-PLAT-008` mandates ≤ 8 top-level domains. CORE §4.1's own tree lists nine (`process, proctor, operator, tower, knowledge, work, repo, delivery, bots`). RP-007 §14 recommends a top-level `validate` (ten) and leaves the cap unresolved. TS-001 §10.1 introduces a top-level `aegis run --record` (eleven) that appears in no tree. RP-009 `AEG-GW-015` asserts ≤ 8 still holds.
 3. **Exit code 2.** The CLI table (ADR-001 / CORE §4.5) defines `2 = usage/validation error` and forbids reusing an error code for named non-error states. Yet "run flagged degraded (exit 2)" appears normatively in RP-002 §3.3, RP-006 §5.3, and CORE `AEG-REQ-TKT-009`/`AEG-REQ-SEC-001` — the Infra CR-017 *bot-boundary* scheme (0/1/2, where 2 = degraded) leaking into *CLI-boundary* text.
 
@@ -86,7 +86,7 @@ There are exactly **two exit-code boundaries**, and they never mix:
 
 **Reading rule for the existing corpus:** every occurrence of "run flagged degraded (exit 2)" in RP-002 §3.3, RP-006 §5.3/§5.4, CORE `AEG-REQ-TKT-009`, `AEG-REQ-SEC-001`, and `AEG-BOT-ANA-007` is to be read as "run flagged `degraded: true` in the response envelope; per-bot `status`-class commands may exit 2 *at the bot boundary only*." Documents are amended to this phrasing as they are next touched (tracked in `PENDING-EDITS.md`).
 
-**Gate exit correction:** the Epic-Linkage Gate exit changes from `5` (conflict/already exists) to `2` (usage/validation — precondition unmet). An epic-less ticket is a validation failure, not a conflict. CORE §14 and ARCH-001 §15 are amended accordingly; the canonical gate table lives in AEGIS-CANON-001.
+**Gate exit correction:** the Epic-Linkage Gate exit changes from `5` (conflict/already exists) to `2` (usage/validation — precondition unmet). An epic-less ticket is a validation failure, not a conflict. CORE §14 and ARCH-001 §15 are amended accordingly; the canonical gate table lives in HATHOR-CANON-010.
 
 ## 3. Consequences
 

@@ -1,6 +1,6 @@
 ---
-id: AEGIS-TS-003
-title: 'AEGIS-TS-003 — Bot Unit Architecture: Implementation Specification'
+id: HATHOR-TS-003
+title: 'HATHOR-TS-003 — Bot Unit Architecture: Implementation Specification'
 summary: 'RFC 2119 keywords apply. New identifiers: decisions `TS3-D-###`, components `TS3-C-###`, interfaces `TS3-I-###` (namespaced to avoid collision with TS-001/TS-002).'
 doc_type: TS
 diataxis: reference
@@ -19,17 +19,17 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-TS-003 — Bot Unit Architecture: Implementation Specification
+# HATHOR-TS-003 — Bot Unit Architecture: Implementation Specification
 ## Build, enforce, and operate a HATHOR micro-bot (directive · rules · principles · memory · lifecycle)
 
-- **Document ID:** AEGIS-TS-003
+- **Document ID:** HATHOR-TS-003
 - **Status:** DRAFT v0 — implementation specification, pending operator review
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Implements:** AEGIS-RP-014 (The Bot Unit) — requirements `AEG-BOT-GOV-001..008`, `AEG-BOT-MEM-001..005`, `AEG-BOT-LIF-001..005`
+- **Implements:** HATHOR-RP-014 (The Bot Unit) — requirements `AEG-BOT-GOV-001..008`, `AEG-BOT-MEM-001..005`, `AEG-BOT-LIF-001..005`
 - **Decision basis:** RP-014 §1 (independence), §3 (governance triad), §4 (memory model), §5 (communication), §6 (lifecycle)
-- **Conforms to:** AEGIS-REQ-CORE-001 (PLAT/CLI/BOT/TEL/SEC/NFR), AEGIS-REQ-BOT-001, AEGIS-RP-001 (manifest v1 + handshake), AEGIS-RP-002 (MBI/TBR), AEGIS-RP-013 (JCS/DSSE/TUF, `AEG-THR-001`), AEGIS-ADR-003 (exit-code boundaries), AEGIS-RP-007/TS-001 (ledgers, config precedence, dispatch seam), AEGIS-RP-009/TS-002 (run log, admission)
-- **Extends:** AEGIS-TS-001 (proctor dispatch seam, result cache, config), AEGIS-TS-002 (admission, run log)
+- **Conforms to:** HATHOR-REQ-CORE-001 (PLAT/CLI/BOT/TEL/SEC/NFR), HATHOR-REQ-BOT-001, HATHOR-RP-001 (manifest v1 + handshake), HATHOR-RP-002 (MBI/TBR), HATHOR-RP-013 (JCS/DSSE/TUF, `AEG-THR-001`), HATHOR-ADR-003 (exit-code boundaries), HATHOR-RP-007/TS-001 (ledgers, config precedence, dispatch seam), HATHOR-RP-009/TS-002 (run log, admission)
+- **Extends:** HATHOR-TS-001 (proctor dispatch seam, result cache, config), HATHOR-TS-002 (admission, run log)
 - **Gating note:** RP-014 is **ACCEPTED** (2026-09-13); its §11 identifier changes are now ratified and applied to RP-001/BOT-001/CANON-001/ADR-003/RP-007/TS-001. This spec remains **DRAFT** and is **not authorized for build** until a Ticketing Plane epic/ticket exists (CORE `AEG-REQ-TKT-004`).
 
 RFC 2119 keywords apply. New identifiers: decisions `TS3-D-###`, components `TS3-C-###`, interfaces `TS3-I-###` (namespaced to avoid collision with TS-001/TS-002).
@@ -532,4 +532,4 @@ Reuses TS-001 §14 / TS-002 §13 unchanged: governance evaluation speaks `(capab
 
 ---
 
-*Draft v0 — implementation specification for AEGIS-RP-014. Gated on RP-014 approval; no code authorized without a ticket. Amend before promotion to verified.*
+*Draft v0 — implementation specification for HATHOR-RP-014. Gated on RP-014 approval; no code authorized without a ticket. Amend before promotion to verified.*

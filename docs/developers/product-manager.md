@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-031
+id: HATHOR-GUIDE-031
 title: "Product Manager Guide"
 summary: "How Product Managers shape AEGIS work through tickets, planes of authority, and evidence-backed outcomes without bypassing gates."
 doc_type: GUIDE
@@ -22,7 +22,7 @@ supersedes: []
 superseded_by: null
 amended_by: []
 parent: null
-sources: [AEGIS-CANON-001, AEGIS-CANON-002, AEGIS-ADR-003, AEGIS-RP-004, AEGIS-RP-012, AEGIS-GUIDE-011]
+sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-ADR-003, HATHOR-RP-004, HATHOR-RP-012, HATHOR-GUIDE-011]
 ---
 # Product Manager Guide
 
@@ -30,12 +30,12 @@ As a Product Manager for AEGIS/HATHOR, you steer *what* gets built by authorizin
 
 ## 1. Three Planes of Authority
 
-Orient every epic to the planes (AEGIS-CANON-001 registries; AEGIS-GUIDE-011):
+Orient every epic to the planes (HATHOR-CANON-010 registries; HATHOR-GUIDE-011):
 
 | Plane | Question you own | Product implication |
 | --- | --- | --- |
 | **Registry** | What is allowed to run? | Capabilities, manifests, and CLI surface changes are product decisions with mechanical enforcement. |
-| **Knowledge** | What do we know, and at what trust? | Draft vs verified is a product trust signal, not a docs nicety (AEGIS-RP-004, AEGIS-RP-012). |
+| **Knowledge** | What do we know, and at what trust? | Draft vs verified is a product trust signal, not a docs nicety (HATHOR-RP-004, HATHOR-RP-012). |
 | **Ticketing** | What work exists and is authorized? | No ticket, no substantive mutation. Epics gate features; estimates live on the ticket. |
 
 If a request cannot name its plane impact, it is not ready for an agent or engineer to execute.
@@ -51,12 +51,12 @@ If a request cannot name its plane impact, it is not ready for an agent or engin
 ## 3. Knowledge and Claims
 
 * Product copy, runbooks, and “how we work” notes enter Knowledge as **draft** microbursts; promotion to **verified** is human-gated — no auto-promotion.
-* Sales or customer claims must map to evidence IDs (docs, run IDs, tickets). Prefer cite-by-ID over narrative memory (AEGIS-CANON-002).
+* Sales or customer claims must map to evidence IDs (docs, run IDs, tickets). Prefer cite-by-ID over narrative memory (HATHOR-CANON-011).
 * Stale knowledge (TTL/interval exceeded) is a product risk: schedule review rather than quietly relying on it.
 
 ## 4. CLI and Agent Operating Model
 
-* The `aegis` CLI is the single control plane (AEGIS-ADR-003). Ask agents to plan with `--dry-run` and to surface JSON refusals, not to “just apply the change.”
+* The `aegis` CLI is the single control plane (HATHOR-ADR-003). Ask agents to plan with `--dry-run` and to surface JSON refusals, not to “just apply the change.”
 * Governance Gate refusals (missing ticket, contract mismatch, failed micro-linter) are **correct behavior**. Your remediation is to fix scope, ticket, or acceptance criteria — not to request a bypass.
 * Exit codes and error envelopes are part of the user-visible product for agent operators; treat breaking envelope changes as breaking API changes.
 

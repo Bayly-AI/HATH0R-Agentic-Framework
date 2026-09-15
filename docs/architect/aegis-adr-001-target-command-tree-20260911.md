@@ -1,5 +1,5 @@
 ---
-id: AEGIS-ADR-001
+id: HATHOR-ADR-001
 title: '03 — ADR: Target Command Tree (Domains + Hierarchy Lifecycle)'
 summary: infraos-os` 9.3.0 exposes **79 top-level command groups** and **525+** inventory paths. Sampled Communications usage (report 01) concentrates on ~30 normalized invocation patterns, mostly Operator + Process paths, wit...
 doc_type: ADR
@@ -22,9 +22,9 @@ sources: []
 # 03 — ADR: Target Command Tree (Domains + Hierarchy Lifecycle)
 
 **Status:** Proposed (research only — no implementation authorized by this document)  
-**Superseded in part (2026-09-13):** AEGIS-ADR-003 supersedes the `infraos-os`-rooted binary strategy and the "Greenfield AEGIS binary — rejected" alternative below. The platform of record is the greenfield `aegis` binary; this ADR's surface is retained as the InfraOS migration/façade path. The domain taxonomy, lifecycle rule, global flags, and exit-code table remain authoritative.  
+**Superseded in part (2026-09-13):** HATHOR-ADR-003 supersedes the `infraos-os`-rooted binary strategy and the "Greenfield AEGIS binary — rejected" alternative below. The platform of record is the greenfield `aegis` binary; this ADR's surface is retained as the InfraOS migration/façade path. The domain taxonomy, lifecycle rule, global flags, and exit-code table remain authoritative.  
 **Date:** 2026-09-11  
-**ADR ID:** AEGIS-ADR-001  
+**ADR ID:** HATHOR-ADR-001  
 **Relates to:** InfraOS AD-001 (single entrypoint), AD-002 (plugin registry), AD-005 (connections vs MCP), baseline AEGIS CLI research report  
 **Deciders:** Unassigned — this proposal remains unapproved; any future acceptance requires an explicitly designated BaylyAI operator.
 
@@ -293,7 +293,7 @@ Run:
 
 | Alternative | Why rejected (for now) |
 |------------|-------------------------|
-| Greenfield AEGIS binary | ~~Splits control plane; violates AD-001 spirit~~ **Superseded by AEGIS-ADR-003 (2026-09-13):** greenfield `aegis` adopted; this façade becomes the InfraOS migration path |
+| Greenfield AEGIS binary | ~~Splits control plane; violates AD-001 spirit~~ **Superseded by HATHOR-ADR-003 (2026-09-13):** greenfield `aegis` adopted; this façade becomes the InfraOS migration path |
 | Makefile-only hierarchy | Not agent-native; dual plane worsens |
 | MCP-only agent API | Weak local-dev ergonomics plus the local payload baseline (report 05) and cited industry benchmark |
 | Action-first only (`get/run` everywhere) | Fights existing resource-ish jira/connections habits |

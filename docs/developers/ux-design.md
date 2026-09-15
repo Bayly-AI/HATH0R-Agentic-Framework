@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-036
+id: HATHOR-GUIDE-036
 title: "UX/Design Guide"
 summary: "How UX and Design shape AEGIS agent/CLI experiences around envelopes, gates, trust tiers, and honest degradation."
 doc_type: GUIDE
@@ -22,7 +22,7 @@ supersedes: []
 superseded_by: null
 amended_by: []
 parent: null
-sources: [AEGIS-CANON-002, AEGIS-ADR-003, AEGIS-RP-004, AEGIS-RP-012, AEGIS-CANON-001, AEGIS-GUIDE-011]
+sources: [HATHOR-CANON-011, HATHOR-ADR-003, HATHOR-RP-004, HATHOR-RP-012, HATHOR-CANON-010, HATHOR-GUIDE-011]
 ---
 # UX/Design Guide
 
@@ -30,9 +30,9 @@ As a UX Designer on AEGIS/HATHOR, your primary surfaces are often **CLI envelope
 
 ## 1. Design Principles (Productized)
 
-Anchor flows in platform principles (AEGIS-CANON-002) and the agent integrator model (AEGIS-GUIDE-011):
+Anchor flows in platform principles (HATHOR-CANON-011) and the agent integrator model (HATHOR-GUIDE-011):
 
-* **CLI as control plane** — one place to elevate trust (`guest → elevated → sovereign`) and mediate credentials (AEGIS-ADR-003).
+* **CLI as control plane** — one place to elevate trust (`guest → elevated → sovereign`) and mediate credentials (HATHOR-ADR-003).
 * **Local context wins** — project truth before generic model memory; show *where* an answer came from.
 * **Provenance over vibes** — cite article/doc IDs, run IDs, ticket keys in human-readable summaries.
 * **Degrade, don’t die** — missing Tower/MCP/org services remain operable with explicit trust loss.
@@ -48,11 +48,11 @@ Make the three planes legible in IA and empty states:
 | Knowledge | Is this true enough? | draft / verified, tier (project→public), stale/TTL |
 | Ticketing | Am I allowed to change this? | ticket/Epic binding, degraded adapter state |
 
-Knowledge promotion is human-gated (AEGIS-RP-004 / AEGIS-RP-012). UI copy must never imply auto-verify.
+Knowledge promotion is human-gated (HATHOR-RP-004 / HATHOR-RP-012). UI copy must never imply auto-verify.
 
 ## 3. Designing Gate Refusals
 
-Governance Gates will refuse work (AEGIS-CANON-001). Treat refusal UX as a happy path for integrity:
+Governance Gates will refuse work (HATHOR-CANON-010). Treat refusal UX as a happy path for integrity:
 
 * Surface the structured envelope fields: `code`, `message`, `remediation`, `provenance`, `ttl`.
 * Map CLI exit codes to consistent severity and next actions (`2` validation vs `4` auth vs `7` needs confirmation).

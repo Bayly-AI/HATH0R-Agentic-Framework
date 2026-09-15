@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-011
+id: HATHOR-GUIDE-011
 title: Agent Integrator Guide
 summary: As an Agent Integrator (or AI Agent), you interact with the AEGIS platform as an active participant—building, verifying, and navigating project state. You will drive your operations entirely through the `aegis` CLI.
 doc_type: GUIDE

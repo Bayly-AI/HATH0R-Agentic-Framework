@@ -1,6 +1,6 @@
 ---
-id: AEGIS-PLAN-003
-title: AEGIS-PLAN-003 — Orchestration Gateway, Remaining Validators & Agent Skill Pack
+id: HATHOR-PLAN-003
+title: HATHOR-PLAN-003 — Orchestration Gateway, Remaining Validators & Agent Skill Pack
 summary: 'Sizing: S ≤ 1.5d, M ≈ 2–3d, L ≈ 4–5d. Prereq: PLAN-002 M1 (linter runtime + suite runner exist).'
 doc_type: PLAN
 diataxis: how-to
@@ -19,14 +19,14 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-PLAN-003 — Orchestration Gateway, Remaining Validators & Agent Skill Pack
+# HATHOR-PLAN-003 — Orchestration Gateway, Remaining Validators & Agent Skill Pack
 
-- **Document ID:** AEGIS-PLAN-003
+- **Document ID:** HATHOR-PLAN-003
 - **Status:** APPROVED — operator sign-off 2026-09-13 (PENDING-EDITS D6)
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Implements planning for:** AEGIS-TS-002 (gateway P0–P5, per ADR-002 §10 follow-on), RP-008 §7 Q3 (four unscheduled validators), and the agent skill pack repeatedly identified as highest-ROI (reports 01/02/05, CLI Research §5-D) but never scheduled
-- **Relationship:** subordinate to AEGIS-PLAN-001 (WS3); sibling of AEGIS-PLAN-002 (CVS)
+- **Implements planning for:** HATHOR-TS-002 (gateway P0–P5, per ADR-002 §10 follow-on), RP-008 §7 Q3 (four unscheduled validators), and the agent skill pack repeatedly identified as highest-ROI (reports 01/02/05, CLI Research §5-D) but never scheduled
+- **Relationship:** subordinate to HATHOR-PLAN-001 (WS3); sibling of HATHOR-PLAN-002 (CVS)
 - **Scope rule:** planning artifact only. No code authorized without a ticket.
 
 ---

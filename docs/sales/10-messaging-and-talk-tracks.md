@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-024
+id: HATHOR-GUIDE-024
 title: Messaging and Talk Tracks
 summary: Do not reverse these definitions or describe HATHOR as the entire platform.
 doc_type: GUIDE

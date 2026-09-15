@@ -1,5 +1,5 @@
 ---
-id: AEGIS-RP-006
+id: HATHOR-RP-006
 title: 'AEGIS Research Paper 006 — The Ticketing Plane: Work as a Source of Truth'
 summary: The bot taxonomy settled where **capability** lives (the micro-bot) and the containerization article settled where **deployment** lives (the container). Neither settled where **work** lives. Across the boards and the...
 doc_type: RP
@@ -21,12 +21,12 @@ sources: []
 ---
 # AEGIS Research Paper 006 — The Ticketing Plane: Work as a Source of Truth
 
-- **Document ID:** AEGIS-RP-006
+- **Document ID:** HATHOR-RP-006
 - **Status:** DRAFT (research output — pending operator review) — session knowledge, pending Control Tower KB promotion
 - **Date:** 2026-09-11
-- **Parent:** AEGIS-REQ-BOT-001 (governance: the ticket-based economy)
-- **Related:** AEGIS-RP-002 (hybrid authority + bounded offline trust), AEGIS-RP-003 (spool-and-drain transport), AEGIS-RP-004 (status-on-record, queue-as-view), `aegis-containerization-article-20260911.md` (the DVO promotion arrow)
-- **Amended by:** AEGIS-ADR-003 §2.3 (degraded exit-2 phrasing reads as envelope `degraded:true`); AEGIS-ADR-005 (Backup TS implementation decision)
+- **Parent:** HATHOR-REQ-BOT-001 (governance: the ticket-based economy)
+- **Related:** HATHOR-RP-002 (hybrid authority + bounded offline trust), HATHOR-RP-003 (spool-and-drain transport), HATHOR-RP-004 (status-on-record, queue-as-view), `aegis-containerization-article-20260911.md` (the DVO promotion arrow)
+- **Amended by:** HATHOR-ADR-003 §2.3 (degraded exit-2 phrasing reads as envelope `degraded:true`); HATHOR-ADR-005 (Backup TS implementation decision)
 - **Author:** Oz (Agent), commissioned by Raymond Bayly
 - **Sources:** AEGIS "CLI" and "Overview" boards; InfraOS governance (cr-jira-ticket-001/002/003, cr-deploy-gov-001, cr-bug-intake-001, cr-branch-gov-001, cr-003/cr-004 connection-first, cr-005/cr-auth-token-001 secrets order, `jira-standards.md` estimation)
 
@@ -46,7 +46,7 @@ Design constraints inherited from the corpus:
 
 - **CLI is the sole control plane (TAX-006).** The Ticketing Plane must be reachable *through* the CLI, never as a second control surface bots call directly.
 - **Operator-Bot is the exclusive external-connection broker (TAX-003, ANA-006, SEC-002).** No worker bot links a Jira/ADO/GitHub SDK.
-- **Refuse-never-guess (ANA-003)** and **graceful degradation with bounded offline trust (RUN-003, AEGIS-RP-002).**
+- **Refuse-never-guess (ANA-003)** and **graceful degradation with bounded offline trust (RUN-003, HATHOR-RP-002).**
 - **No secrets in bots or records (KNO-006, SEC-001).**
 
 ## 2. The Ticketing Plane
@@ -63,8 +63,8 @@ The corpus now has three things that each claim authority over one domain, unifi
 
 | Plane | Source of truth for | Authority artifact | Governing paper |
 |---|---|---|---|
-| **Tower registry** | which **bots** may run | signed manifest digest (TBR) | AEGIS-RP-001/002 |
-| **Knowledge Plane** | what we **know** (verified) | status-on-record knowledge | AEGIS-RP-004 |
+| **Tower registry** | which **bots** may run | signed manifest digest (TBR) | HATHOR-RP-001/002 |
+| **Knowledge Plane** | what we **know** (verified) | status-on-record knowledge | HATHOR-RP-004 |
 | **Ticketing Plane** | what **work** exists, its state, and its authorization | the canonical ticket | **this paper** |
 
 The symmetry is the point, in the same voice as the containerization article's "N workers, zero secrets, one broker": **three planes of truth, one plane of control.** An engineer who understands why knowledge writes land as `draft` pending human promotion already understands why *work* lands as a ticket pending human authorization — it is the same discipline applied to a different noun.
@@ -92,7 +92,7 @@ One ticket references one or more execution chains; every completed run reports 
 
 ## 3. Canonical Ticket Contract
 
-Following the manifest/contract vocabulary of AEGIS-RP-001, the plane is defined by a single provider-agnostic schema. Every provider adapter maps into and out of this shape; every bot and agent sees only this shape.
+Following the manifest/contract vocabulary of HATHOR-RP-001, the plane is defined by a single provider-agnostic schema. Every provider adapter maps into and out of this shape; every bot and agent sees only this shape.
 
 ### 3.1 Structure (v1)
 
@@ -207,7 +207,7 @@ The backup is a **small, self-hostable, network-reachable ticketing service** th
 1. **Provider outage / rate-limit / auth failure** on Jira, ADO, or GitHub.
 2. **Provider absence** — an isolated development environment with no entitled enterprise tracker.
 
-Its governing doctrine is a direct lift of AEGIS-RP-002's registry model and AEGIS-RP-003's transport: **the enterprise provider is the authority; the backup is a buffer and read-cache, never a competing source of truth.** It is the concrete, *shared* form of the `degraded_fallback: "queue-local"` hint in RP-001 §2.7 and the spool-and-drain of RP-003 — elevated from a per-machine spool to a network service so that a multi-agent fleet stays *coordinated* during a provider outage instead of each machine spooling in isolation.
+Its governing doctrine is a direct lift of HATHOR-RP-002's registry model and HATHOR-RP-003's transport: **the enterprise provider is the authority; the backup is a buffer and read-cache, never a competing source of truth.** It is the concrete, *shared* form of the `degraded_fallback: "queue-local"` hint in RP-001 §2.7 and the spool-and-drain of RP-003 — elevated from a per-machine spool to a network service so that a multi-agent fleet stays *coordinated* during a provider outage instead of each machine spooling in isolation.
 
 ### 5.2 Why "small internet ticketing system" and not just a local spool
 
@@ -333,9 +333,9 @@ Every run reports its `ticket_ref` alongside its hierarchy chain and telemetry.
 | cr-deploy-gov-001 / DVO deploy ticket | **Adopt** | Deploy authority as a human-executed ticket is the origin of the containerization "promotion arrow"; AEG-TKT-011. |
 | `jira-standards.md` estimation (hours, 50% reduction) | **Adopt** | Stored as base + reduced under a named policy; AEG-TKT-007. |
 | cr-003/cr-004 connection-first + cr-005/cr-auth-token-001 secret order | **Adopt via Operator-Bot** | Provider access inherits the exclusive-broker model (SEC-001/002); AEG-TKT-003. |
-| AEGIS-RP-002 hybrid authority + bounded offline trust | **Adopt** | Provider = authority (TBR analogue); backup = degraded buffer (MBI analogue) with trust TTL; AEG-TKT-009/010. |
-| AEGIS-RP-003 spool-and-drain | **Adopt (shaped)** | Degraded writes buffer and drain on reconnect; elevated from local spool to a shared service for multi-agent coordination. |
-| AEGIS-RP-004 "reject Jira-style engine for the knowledge queue" | **Reconcile, not contradict** | RP-004 rejected external ticketing for *knowledge review* (would add a second store to a queue-as-view). This paper affirms external ticketing for *work* — a different domain whose truth is inherently external and human-owned. |
+| HATHOR-RP-002 hybrid authority + bounded offline trust | **Adopt** | Provider = authority (TBR analogue); backup = degraded buffer (MBI analogue) with trust TTL; AEG-TKT-009/010. |
+| HATHOR-RP-003 spool-and-drain | **Adopt (shaped)** | Degraded writes buffer and drain on reconnect; elevated from local spool to a shared service for multi-agent coordination. |
+| HATHOR-RP-004 "reject Jira-style engine for the knowledge queue" | **Reconcile, not contradict** | RP-004 rejected external ticketing for *knowledge review* (would add a second store to a queue-as-view). This paper affirms external ticketing for *work* — a different domain whose truth is inherently external and human-owned. |
 | Single-provider assumption (Jira-only, no abstraction) | **Reject** | The fleet spans Jira + ADO + GitHub; a canonical contract is required (AEG-TKT-002). |
 | Backup as a co-equal / competing source of truth | **Reject** | Backup is buffer + read-cache; authority always reconciles to the enterprise provider (AEG-TKT-010). |
 

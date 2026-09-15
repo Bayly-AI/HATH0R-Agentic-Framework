@@ -1,6 +1,6 @@
 ---
-id: AEGIS-ARCH-002
-title: AEGIS-ARCH-002 — Bot Unit Compendium
+id: HATHOR-ARCH-002
+title: HATHOR-ARCH-002 — Bot Unit Compendium
 summary: RFC 2119 keywords are quoted from source papers, not minted here.
 doc_type: ARCH
 diataxis: explanation
@@ -19,15 +19,15 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-ARCH-002 — Bot Unit Compendium
+# HATHOR-ARCH-002 — Bot Unit Compendium
 ## Taxonomy · Family Profiles · Anatomy · Operating Characteristics · Executive Summary (Stakeholder Companion)
 
-- **Document ID:** AEGIS-ARCH-002
+- **Document ID:** HATHOR-ARCH-002
 - **Status:** DRAFT — synthesis pending operator review (PENDING-EDITS §6, D9)
 - **Date:** 2026-09-14
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Synthesizes:** AEGIS-REQ-BOT-001 (taxonomy, seven-block anatomy, command contract); AEGIS-RP-005 (hierarchy chassis); AEGIS-RP-007 (validators, cost ladder); AEGIS-RP-008 (launch roster); AEGIS-RP-009 / TS-002 (conducted runs, `val-completeness-Bot`); AEGIS-RP-011 (Operator pool); AEGIS-RP-014 (governance triad, memory model, six channels, lifecycle); AEGIS-CANON-001 §6 (26-bot roster)
-- **Companion to:** AEGIS-ARCH-001 (platform diagrams); proposed AEGIS-CANON-002 (HATHOR platform principles)
+- **Synthesizes:** HATHOR-REQ-BOT-001 (taxonomy, seven-block anatomy, command contract); HATHOR-RP-005 (hierarchy chassis); HATHOR-RP-007 (validators, cost ladder); HATHOR-RP-008 (launch roster); HATHOR-RP-009 / TS-002 (conducted runs, `val-completeness-Bot`); HATHOR-RP-011 (Operator pool); HATHOR-RP-014 (governance triad, memory model, six channels, lifecycle); HATHOR-CANON-010 §6 (26-bot roster)
+- **Companion to:** HATHOR-ARCH-001 (platform diagrams); proposed HATHOR-CANON-011 (HATHOR platform principles)
 - **Scope rule:** synthesis and stakeholder communication only. This document introduces **no new doctrine**; where it appears to disagree with a source paper or CANON-001, the source wins and this document owes an amendment.
 
 RFC 2119 keywords are quoted from source papers, not minted here.

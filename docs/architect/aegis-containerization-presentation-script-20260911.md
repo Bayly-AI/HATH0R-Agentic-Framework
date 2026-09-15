@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-002
+id: HATHOR-GUIDE-002
 title: AEGIS Containerization — Presentation Script
 summary: flowchart LR Repo["Repo + micro-bots"] --> Lint["Micro-linters<br/>build-time Q-Gate"] Lint --> Build["Image build<br/>CVS metadata + labels"] Build --> C["AEGIS Container<br/>bot + CLI + contracts"] C --> Col["OTel C...
 doc_type: GUIDE

@@ -1,7 +1,7 @@
 ---
-id: AEGIS-GUIDE-010
+id: HATHOR-GUIDE-010
 title: AEGIS Business Glossary and Source Register
-summary: 1. [`AEGIS-CANON-001`](../architect/aegis-canon-001-registries-20260913.md) is the authority for enumerated gates, events, refusal codes, linters, bot roster, and identifiers.
+summary: 1. [`HATHOR-CANON-010`](../architect/aegis-canon-001-registries-20260913.md) is the authority for enumerated gates, events, refusal codes, linters, bot roster, and identifiers.
 doc_type: GUIDE
 diataxis: reference
 audience: [business, agent]
@@ -28,7 +28,7 @@ sources: []
 
 ## 1. Authority rules
 
-1. [`AEGIS-CANON-001`](../architect/aegis-canon-001-registries-20260913.md) is the authority for enumerated gates, events, refusal codes, linters, bot roster, and identifiers.
+1. [`HATHOR-CANON-010`](../architect/aegis-canon-001-registries-20260913.md) is the authority for enumerated gates, events, refusal codes, linters, bot roster, and identifiers.
 2. Accepted ADRs and accepted research/interface decisions own ratified choices.
 3. Draft or proposed requirements, research papers, architectures, and technical specifications remain review material except where later accepted decisions explicitly amend them.
 4. Approved plans schedule work but do not ratify a draft design, authorize code, prove delivery, or realize benefits.
@@ -36,7 +36,7 @@ sources: []
 6. This business set introduces business organization and recommended adoption practices; it does not create architecture doctrine.
 7. On conflict, the source architecture wins and this set must be amended.
 
-These files intentionally use descriptive business-series numbers rather than minting `AEGIS-BUS-*` identifiers. `AEGIS-CANON-001` reserves canonical AEGIS document IDs for the architecture document types it enumerates.
+These files intentionally use descriptive business-series numbers rather than minting `AEGIS-BUS-*` identifiers. `HATHOR-CANON-010` reserves canonical AEGIS document IDs for the architecture document types it enumerates.
 
 ## 2. Business glossary
 
@@ -119,57 +119,57 @@ These files intentionally use descriptive business-series numbers rather than mi
 |---|---|---|
 | [`INDEX.md`](../architect/INDEX.md) | Canonical corpus index | Framework boundary, reading order, source status, scope rule |
 | [`PENDING-EDITS.md`](../architect/PENDING-EDITS.md) | Living change-control register | Ratified amendments, pending sign-offs, external actions, unresolved decisions |
-| [`AEGIS-CANON-001`](../architect/aegis-canon-001-registries-20260913.md) | Accepted | Canonical gates, events, refusals, linters, bot roster, naming |
-| [`AEGIS-CANON-002`](../architect/aegis-canon-002-platform-principles-20260914.md) | Proposed; awaiting D10 sign-off | Platform-principle synthesis; may not be cited as accepted doctrine |
+| [`HATHOR-CANON-010`](../architect/aegis-canon-001-registries-20260913.md) | Accepted | Canonical gates, events, refusals, linters, bot roster, naming |
+| [`HATHOR-CANON-011`](../architect/aegis-canon-002-platform-principles-20260914.md) | Proposed; awaiting D10 sign-off | Platform-principle synthesis; may not be cited as accepted doctrine |
 
 ### 3.2 Requirements and architecture
 
 | Source | Status at baseline | Business use |
 |---|---|---|
-| [`AEGIS-REQ-CORE-001`](../architect/AEGIS-REQ-CORE-001-initial-requirements-20260911.md) | Draft, amended | Platform framing, actors, scope, core requirements, acceptance targets, open decisions |
-| [`AEGIS-REQ-BOT-001`](../architect/aegis-bot-taxonomy-requirements-20260911.md) | Draft | Bot families, anatomy, command and runtime contract |
-| [`AEGIS-ARCH-001`](../architect/AEGIS-ARCH-001-architecture-mermaid-20260911.md) | Draft, amended | End-to-end architecture and lifecycle diagrams |
-| [`AEGIS-ARCH-002`](../architect/aegis-arch-002-bot-unit-compendium-20260914.md) | Draft synthesis; awaiting D9 sign-off | Stakeholder bot summary; source papers remain authoritative |
+| [`HATHOR-REQ-CORE-001`](../architect/HATHOR-REQ-CORE-001-initial-requirements-20260911.md) | Draft, amended | Platform framing, actors, scope, core requirements, acceptance targets, open decisions |
+| [`HATHOR-REQ-BOT-001`](../architect/aegis-bot-taxonomy-requirements-20260911.md) | Draft | Bot families, anatomy, command and runtime contract |
+| [`HATHOR-ARCH-001`](../architect/HATHOR-ARCH-001-architecture-mermaid-20260911.md) | Draft, amended | End-to-end architecture and lifecycle diagrams |
+| [`HATHOR-ARCH-002`](../architect/aegis-arch-002-bot-unit-compendium-20260914.md) | Draft synthesis; awaiting D9 sign-off | Stakeholder bot summary; source papers remain authoritative |
 
 ### 3.3 Architecture decisions
 
 | Source | Status at baseline | Business use |
 |---|---|---|
-| [`AEGIS-ADR-001`](../architect/aegis-adr-001-target-command-tree-20260911.md) | Proposed; partly superseded by ADR-003 | Taxonomy and migration history only where retained |
-| [`AEGIS-ADR-002`](../architect/aegis-adr-002-orchestration-coordination-model-20260913.md) | Accepted | Central event-triggered orchestration; Process decision and Proctor enforcement |
-| [`AEGIS-ADR-003`](../architect/aegis-adr-003-greenfield-command-surface-20260913.md) | Accepted | Greenfield `aegis`, nine domains, exit boundaries, InfraOS façade |
-| [`AEGIS-ADR-004`](../architect/aegis-adr-004-layout-state-residency-20260913.md) | Accepted | Canonical paths, spool/state residency, macOS/Linux v1 boundary |
-| [`AEGIS-ADR-005`](../architect/aegis-adr-005-backup-ticketing-system-20260913.md) | Accepted | Minimal first-party backup ticket service rather than adopting a full tracker |
+| [`HATHOR-ADR-001`](../architect/aegis-adr-001-target-command-tree-20260911.md) | Proposed; partly superseded by ADR-003 | Taxonomy and migration history only where retained |
+| [`HATHOR-ADR-002`](../architect/aegis-adr-002-orchestration-coordination-model-20260913.md) | Accepted | Central event-triggered orchestration; Process decision and Proctor enforcement |
+| [`HATHOR-ADR-003`](../architect/aegis-adr-003-greenfield-command-surface-20260913.md) | Accepted | Greenfield `aegis`, nine domains, exit boundaries, InfraOS façade |
+| [`HATHOR-ADR-004`](../architect/aegis-adr-004-layout-state-residency-20260913.md) | Accepted | Canonical paths, spool/state residency, macOS/Linux v1 boundary |
+| [`HATHOR-ADR-005`](../architect/aegis-adr-005-backup-ticketing-system-20260913.md) | Accepted | Minimal first-party backup ticket service rather than adopting a full tracker |
 
 ### 3.4 Research and interface decisions
 
 | Source | Status at baseline | Business use |
 |---|---|---|
-| [`AEGIS-RP-001`](../architect/aegis-rp-001-manifest-schema-v1-20260911.md) | Draft, amended | Manifest, contract handshake, registration behavior |
-| [`AEGIS-RP-002`](../architect/aegis-rp-002-registry-discovery-20260911.md) | Draft, amended | Local/Tower registry, verification states, trust TTL |
-| [`AEGIS-RP-003`](../architect/aegis-rp-003-telemetry-transport-20260911.md) | Draft, amended | Spool-and-drain telemetry, event delivery and quota |
-| [`AEGIS-RP-004`](../architect/aegis-rp-004-knowledge-promotion-20260911.md) | Draft | Knowledge promotion, reviewer authority, dispute and aging |
-| [`AEGIS-RP-005`](../architect/aegis-rp-005-hierarchy-consolidation-20260911.md) | Draft, amended | Six identities, one chassis, chain resolution and degradation |
-| [`AEGIS-RP-006`](../architect/aegis-rp-006-ticketing-plane-20260911.md) | Draft, amended | Ticket Contract, providers, backup, reconciliation, work governance |
-| [`AEGIS-RP-007`](../architect/aegis-rp-007-continuous-validation-20260911.md) | Draft, partly superseded | Validation fabric, findings, assumptions, claims, evidence, gates |
-| [`AEGIS-RP-008`](../architect/aegis-rp-008-microbot-launch-roster-20260912.md) | Draft, amended | Launch phasing and roster reconciliation |
-| [`AEGIS-RP-009`](../architect/aegis-rp-009-orchestration-gateway-20260912.md) | Draft | Conducted run, sequence/barrier, graph, completion, resume |
-| [`AEGIS-RP-010`](../architect/aegis-rp-010-tower-surface-20260913.md) | Accepted design | Tower registration, distribution, curators, ingest, query, identity |
-| [`AEGIS-RP-011`](../architect/aegis-rp-011-operator-brokering-20260913.md) | Accepted design | Proxy default, scoped-token exception, idempotency and broker audit |
-| [`AEGIS-RP-012`](../architect/aegis-rp-012-knowledge-storage-retrieval-20260913.md) | Accepted design | Knowledge record, storage, retrieval, confidence, MCP contracts |
-| [`AEGIS-RP-013`](../architect/aegis-rp-013-threat-model-20260913.md) | Accepted design | Threat actors, trust boundary, identity, signing, hardening |
-| [`AEGIS-RP-014`](../architect/aegis-rp-014-bot-unit-creation-operation-20260913.md) | Accepted design | Governance triad, state/memory, channels, bot lifecycle |
+| [`HATHOR-RP-001`](../architect/aegis-rp-001-manifest-schema-v1-20260911.md) | Draft, amended | Manifest, contract handshake, registration behavior |
+| [`HATHOR-RP-002`](../architect/aegis-rp-002-registry-discovery-20260911.md) | Draft, amended | Local/Tower registry, verification states, trust TTL |
+| [`HATHOR-RP-003`](../architect/aegis-rp-003-telemetry-transport-20260911.md) | Draft, amended | Spool-and-drain telemetry, event delivery and quota |
+| [`HATHOR-RP-004`](../architect/aegis-rp-004-knowledge-promotion-20260911.md) | Draft | Knowledge promotion, reviewer authority, dispute and aging |
+| [`HATHOR-RP-005`](../architect/aegis-rp-005-hierarchy-consolidation-20260911.md) | Draft, amended | Six identities, one chassis, chain resolution and degradation |
+| [`HATHOR-RP-006`](../architect/aegis-rp-006-ticketing-plane-20260911.md) | Draft, amended | Ticket Contract, providers, backup, reconciliation, work governance |
+| [`HATHOR-RP-007`](../architect/aegis-rp-007-continuous-validation-20260911.md) | Draft, partly superseded | Validation fabric, findings, assumptions, claims, evidence, gates |
+| [`HATHOR-RP-008`](../architect/aegis-rp-008-microbot-launch-roster-20260912.md) | Draft, amended | Launch phasing and roster reconciliation |
+| [`HATHOR-RP-009`](../architect/aegis-rp-009-orchestration-gateway-20260912.md) | Draft | Conducted run, sequence/barrier, graph, completion, resume |
+| [`HATHOR-RP-010`](../architect/aegis-rp-010-tower-surface-20260913.md) | Accepted design | Tower registration, distribution, curators, ingest, query, identity |
+| [`HATHOR-RP-011`](../architect/aegis-rp-011-operator-brokering-20260913.md) | Accepted design | Proxy default, scoped-token exception, idempotency and broker audit |
+| [`HATHOR-RP-012`](../architect/aegis-rp-012-knowledge-storage-retrieval-20260913.md) | Accepted design | Knowledge record, storage, retrieval, confidence, MCP contracts |
+| [`HATHOR-RP-013`](../architect/aegis-rp-013-threat-model-20260913.md) | Accepted design | Threat actors, trust boundary, identity, signing, hardening |
+| [`HATHOR-RP-014`](../architect/aegis-rp-014-bot-unit-creation-operation-20260913.md) | Accepted design | Governance triad, state/memory, channels, bot lifecycle |
 
 ### 3.5 Technical specifications and plans
 
 | Source | Status at baseline | Business use |
 |---|---|---|
-| [`AEGIS-TS-001`](../architect/aegis-ts-001-continuous-validation-implementation-20260911.md) | Draft | Implementation-level CVS P0–P2 design and technical tests |
-| [`AEGIS-TS-002`](../architect/aegis-ts-002-orchestration-gateway-implementation-20260913.md) | Draft | Run log, conductor, admission, resume, reconciliation implementation design |
-| [`AEGIS-TS-003`](../architect/aegis-ts-003-bot-unit-implementation-20260913.md) | Draft | Bundle, governance engine, effects, scaffold, registration, memory implementation |
-| [`AEGIS-PLAN-001`](../architect/aegis-plan-001-platform-roadmap-20260913.md) | Approved planning artifact | Eight workstreams, six milestones, estimates, dependencies |
-| [`AEGIS-PLAN-002`](../architect/aegis-plan-002-cvs-p0-p2-roadmap-20260911.md) | Draft, amended | Detailed validation roadmap; ticket-sizing convention is not realized savings |
-| [`AEGIS-PLAN-003`](../architect/aegis-plan-003-gateway-validators-roadmap-20260913.md) | Approved planning artifact | Gateway epics, remaining validators, bounded agent skill pack |
+| [`HATHOR-TS-001`](../architect/aegis-ts-001-continuous-validation-implementation-20260911.md) | Draft | Implementation-level CVS P0–P2 design and technical tests |
+| [`HATHOR-TS-002`](../architect/aegis-ts-002-orchestration-gateway-implementation-20260913.md) | Draft | Run log, conductor, admission, resume, reconciliation implementation design |
+| [`HATHOR-TS-003`](../architect/aegis-ts-003-bot-unit-implementation-20260913.md) | Draft | Bundle, governance engine, effects, scaffold, registration, memory implementation |
+| [`HATHOR-PLAN-001`](../architect/aegis-plan-001-platform-roadmap-20260913.md) | Approved planning artifact | Eight workstreams, six milestones, estimates, dependencies |
+| [`HATHOR-PLAN-002`](../architect/aegis-plan-002-cvs-p0-p2-roadmap-20260911.md) | Draft, amended | Detailed validation roadmap; ticket-sizing convention is not realized savings |
+| [`HATHOR-PLAN-003`](../architect/aegis-plan-003-gateway-validators-roadmap-20260913.md) | Approved planning artifact | Gateway epics, remaining validators, bounded agent skill pack |
 
 ### 3.6 Research baselines and business narratives
 
@@ -241,7 +241,7 @@ The live authority remains [`PENDING-EDITS.md`](../architect/PENDING-EDITS.md). 
 
 - The repository `README.md` contains layout and credential-resolution descriptions that differ from the amended corpus. Use the architecture `INDEX`, CORE, ADR-004, and accepted brokering decisions for the target boundary until the README is aligned.
 - `AEGIS.pdf` is not legible enough to recover the complete board and has clipped source content.
-- Older papers may contain lists superseded by `AEGIS-CANON-001`.
+- Older papers may contain lists superseded by `HATHOR-CANON-010`.
 - ADR-001 is partly superseded by ADR-003.
 - RP-007 orchestration language is partly superseded by ADR-002 and RP-009.
 - D9 and D10 remain pending sign-off.

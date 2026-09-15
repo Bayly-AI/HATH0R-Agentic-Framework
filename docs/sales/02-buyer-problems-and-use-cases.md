@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-016
+id: HATHOR-GUIDE-016
 title: Buyer Problems and Use Cases
 summary: Organizations adopting AI-assisted engineering may increase activity faster than their existing governance practices can reconcile it. The relevant risk is not simply that an agent can make a mistake. It is that inten...
 doc_type: GUIDE

@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-013
+id: HATHOR-GUIDE-013
 title: DevOps & DVO Guide
 summary: As a DevOps Engineer or Deployment & Validation Operator (DVO), your responsibility is to manage the environments, container deployments, telemetry ingestion, and authorized promotions for the AEGIS platform.
 doc_type: GUIDE

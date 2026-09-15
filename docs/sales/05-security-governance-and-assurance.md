@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-019
+id: HATHOR-GUIDE-019
 title: Security, Governance, and Assurance
 summary: AEGIS is designed to add layered governance to human and AI-assisted work. It does not claim that a CLI, signature, ticket, gate, or telemetry stream is sufficient on its own.
 doc_type: GUIDE

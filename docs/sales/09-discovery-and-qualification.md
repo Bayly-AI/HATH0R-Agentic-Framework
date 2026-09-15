@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-023
+id: HATHOR-GUIDE-023
 title: Discovery and Qualification
 summary: Determine whether the buyer has a material governed-agentic-delivery problem, whether AEGIS fits the intended architecture, whether the organization can support a measured pilot, and what evidence would justify the ne...
 doc_type: GUIDE

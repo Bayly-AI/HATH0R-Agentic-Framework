@@ -6,7 +6,7 @@ doc_type: CANON
 diataxis: reference
 audience: [architect, developer, agent]
 tags: [documentation, metadata, governance, opensource]
-version: 0.1.0
+version: 0.1.1
 status: proposed
 created: 2026-09-15
 updated: 2026-09-15
@@ -31,7 +31,7 @@ sources: []
 
 - **Document ID:** HATHOR-CANON-001
 - **Status:** PROPOSED — awaiting operator sign-off (issue #5)
-- **Version:** 0.1.0
+- **Version:** 0.1.1
 - **Date:** 2026-09-15
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
 - **Group:** `hath0r-opensource` · Control tower: `HATH0R-CLI` · Corpus root: `docs/` in this repo
@@ -380,6 +380,7 @@ This file carries `hathor-doc@1` with `id: HATHOR-CANON-001`, `doc_type: CANON`,
 
 ## 16. Changelog
 
+- **0.1.1 — 2026-09-15:** live corpus ID namespace normalized to `HATHOR-*` (issue #12); archive retains `AEGIS-*` provenance.
 - **0.1.0 — 2026-09-15:** initial proposed OpenSource documentation framework (issue #5).
 
 ---

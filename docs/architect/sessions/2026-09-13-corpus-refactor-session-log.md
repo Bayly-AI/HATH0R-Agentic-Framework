@@ -1,5 +1,5 @@
 ---
-id: AEGIS-SESSION-001
+id: HATHOR-SESSION-001
 title: Session Log — AEGIS Corpus Refactor (2026-09-13)
 summary: Session Log — AEGIS Corpus Refactor (2026-09-13)
 doc_type: SESSION

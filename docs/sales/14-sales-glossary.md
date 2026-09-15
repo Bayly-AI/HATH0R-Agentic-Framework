@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-028
+id: HATHOR-GUIDE-028
 title: Sales Glossary
 summary: Sales Glossary
 doc_type: GUIDE

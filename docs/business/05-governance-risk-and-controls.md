@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-007
+id: HATHOR-GUIDE-007
 title: AEGIS Governance, Risk, and Controls
 summary: 'AEGIS is intended to let an organization increase the speed and volume of delegated work without weakening:'
 doc_type: GUIDE
@@ -24,7 +24,7 @@ sources: []
 - **Business document:** 05 of 08
 - **Status:** Derived draft for business review
 - **Source baseline:** Architecture corpus as of 2026-09-14
-- **Primary authorities:** [`AEGIS-CANON-001`](../architect/aegis-canon-001-registries-20260913.md), [`AEGIS-RP-013`](../architect/aegis-rp-013-threat-model-20260913.md), accepted ADRs, and accepted RP-010/011/014 designs
+- **Primary authorities:** [`HATHOR-CANON-010`](../architect/aegis-canon-001-registries-20260913.md), [`HATHOR-RP-013`](../architect/aegis-rp-013-threat-model-20260913.md), accepted ADRs, and accepted RP-010/011/014 designs
 
 ## 1. Governance objective
 
@@ -74,7 +74,7 @@ flowchart TB
 
 ## 3. Canonical mechanical gates
 
-The accepted gate registry contains 15 gates. Their business purpose is summarized below; exact identity and semantics remain in `AEGIS-CANON-001`.
+The accepted gate registry contains 15 gates. Their business purpose is summarized below; exact identity and semantics remain in `HATHOR-CANON-010`.
 
 | ID | Gate | Business control objective |
 |---|---|---|

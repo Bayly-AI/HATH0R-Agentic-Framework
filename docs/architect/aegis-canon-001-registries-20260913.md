@@ -1,6 +1,6 @@
 ---
-id: AEGIS-CANON-001
-title: AEGIS-CANON-001 — Canonical Registries
+id: HATHOR-CANON-010
+title: HATHOR-CANON-010 — Canonical Registries
 summary: Per-paper lists drifted (CORE said ten gates; RP-007 added four; RP-009 added "the 11th"; RP-003's event list lagged CORE's). This document replaces scattered enumerations with one registry per concept. Where a source...
 doc_type: CANON
 diataxis: reference
@@ -19,10 +19,10 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-CANON-001 — Canonical Registries
+# HATHOR-CANON-010 — Canonical Registries
 ## Gates · Telemetry Events · Refusal Codes · Micro-Linters · Bot Roster · Naming Conventions
 
-- **Document ID:** AEGIS-CANON-001
+- **Document ID:** HATHOR-CANON-010
 - **Status:** ACCEPTED — operator sign-off 2026-09-13 (PENDING-EDITS D4); amended 2026-09-15 by D12. This document is the **single source of enumeration** for everything it lists
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
@@ -140,7 +140,7 @@ The Control Tower is **not a bot** (`AEG-REQ-BOT-006`). Operator connection adap
 
 ## 7. Naming & ID conventions
 
-1. **`AEGIS-` prefix = document; `AEG-` prefix = requirement.** `AEGIS-REQ-BOT-001` is a *document*; `AEG-REQ-BOT-001` is a *requirement in CORE-001*. This near-collision is grandfathered for existing docs; **new documents** use `AEGIS-<TYPE>-<NNN>` with `TYPE ∈ {ADR, RP, TS, PLAN, REQ, ARCH, CANON, GUIDE, REPORT, SESSION}` and MUST NOT mint a document ID whose body matches an existing requirement prefix.
+1. **`AEGIS-` prefix = document; `AEG-` prefix = requirement.** `HATHOR-REQ-BOT-001` is a *document*; `AEG-REQ-BOT-001` is a *requirement in CORE-001*. This near-collision is grandfathered for existing docs; **new documents** use `AEGIS-<TYPE>-<NNN>` with `TYPE ∈ {ADR, RP, TS, PLAN, REQ, ARCH, CANON, GUIDE, REPORT, SESSION}` and MUST NOT mint a document ID whose body matches an existing requirement prefix.
 2. **File naming (new docs):** `aegis-<type>-<nnn>-<slug>-<yyyymmdd>.md`, lowercase. Existing files keep their names; INDEX.md carries the Doc-ID column for lookup.
 3. **Bot naming:** family bots are `<role>-Bot` with lowercase role in machine contexts (`runbook-Bot`, manifest `name`) — prose may capitalize the role (`Runbook-Bot`); the manifest form is authoritative. Observation children and validators are always lowercase-rooted (`task-Bot`, `val-diff-Bot`). Validators always carry the `val-` prefix where a plane-facing capability shares the root name (`AEG-MBL-006`).
 4. **Capabilities:** `<domain>.<noun>.<verb>@<major>` (RP-001 §2.5). **Events:** dot-namespaced lowercase (§3). **Refusal codes:** SCREAMING_SNAKE (§4). **Linters:** `ml-<class-slug>` (§5).
@@ -152,26 +152,26 @@ The Control Tower is **not a bot** (`AEG-REQ-BOT-006`). Operator connection adap
 
 | Prefix | Domain | Defining document |
 |---|---|---|
-| `AEG-REQ-PLAT/CLI/BOT/MAN/REG/UPL/KNO/TKT/TEL/OBS/CNT/SEC/NFR-###` | platform requirements | AEGIS-REQ-CORE-001 |
-| `AEG-BOT-TAX/ANA/RUN/KNO/CMD/SEC/OBS-###` | bot taxonomy/anatomy | AEGIS-REQ-BOT-001 |
-| `AEG-MAN-###` | manifest + handshake | AEGIS-RP-001 |
-| `AEG-REG-###` | registry & discovery | AEGIS-RP-002 |
-| `AEG-TEL-###` | telemetry transport | AEGIS-RP-003 |
-| `AEG-KPW-###` | knowledge promotion | AEGIS-RP-004 |
-| `AEG-HIE-###` | hierarchy topology | AEGIS-RP-005 |
-| `AEG-TKT-###` | ticketing plane | AEGIS-RP-006 |
-| `AEG-VAL-###` | continuous validation | AEGIS-RP-007 |
-| `AEG-MBL-###` | micro-bot launch | AEGIS-RP-008 |
-| `AEG-GW-###` | orchestration gateway | AEGIS-RP-009 |
-| `AEG-TWR-###` | tower surface | AEGIS-RP-010 |
-| `AEG-OPB-###` | operator brokering | AEGIS-RP-011 |
-| `AEG-KST-###` | knowledge storage/retrieval | AEGIS-RP-012 |
-| `AEG-THR-###` | threat model & trust | AEGIS-RP-013 |
-| `AEG-BOT-GOV/MEM/LIF-###` | bot-unit governance / memory / lifecycle | AEGIS-RP-014 |
-| `AEG-DOC-###` | HATHOR documentation framework | AEGIS-CANON-003 |
-| `TS-D/C/I-###` | CVS implementation ids | AEGIS-TS-001 |
-| `TS2-D/C/I-###` | gateway implementation ids | AEGIS-TS-002 |
-| `TS3-D/C/I-###` | bot-unit implementation ids | AEGIS-TS-003 |
+| `AEG-REQ-PLAT/CLI/BOT/MAN/REG/UPL/KNO/TKT/TEL/OBS/CNT/SEC/NFR-###` | platform requirements | HATHOR-REQ-CORE-001 |
+| `AEG-BOT-TAX/ANA/RUN/KNO/CMD/SEC/OBS-###` | bot taxonomy/anatomy | HATHOR-REQ-BOT-001 |
+| `AEG-MAN-###` | manifest + handshake | HATHOR-RP-001 |
+| `AEG-REG-###` | registry & discovery | HATHOR-RP-002 |
+| `AEG-TEL-###` | telemetry transport | HATHOR-RP-003 |
+| `AEG-KPW-###` | knowledge promotion | HATHOR-RP-004 |
+| `AEG-HIE-###` | hierarchy topology | HATHOR-RP-005 |
+| `AEG-TKT-###` | ticketing plane | HATHOR-RP-006 |
+| `AEG-VAL-###` | continuous validation | HATHOR-RP-007 |
+| `AEG-MBL-###` | micro-bot launch | HATHOR-RP-008 |
+| `AEG-GW-###` | orchestration gateway | HATHOR-RP-009 |
+| `AEG-TWR-###` | tower surface | HATHOR-RP-010 |
+| `AEG-OPB-###` | operator brokering | HATHOR-RP-011 |
+| `AEG-KST-###` | knowledge storage/retrieval | HATHOR-RP-012 |
+| `AEG-THR-###` | threat model & trust | HATHOR-RP-013 |
+| `AEG-BOT-GOV/MEM/LIF-###` | bot-unit governance / memory / lifecycle | HATHOR-RP-014 |
+| `AEG-DOC-###` | HATHOR documentation framework | HATHOR-CANON-012 |
+| `TS-D/C/I-###` | CVS implementation ids | HATHOR-TS-001 |
+| `TS2-D/C/I-###` | gateway implementation ids | HATHOR-TS-002 |
+| `TS3-D/C/I-###` | bot-unit implementation ids | HATHOR-TS-003 |
 
 ---
 

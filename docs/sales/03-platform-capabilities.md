@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-017
+id: HATHOR-GUIDE-017
 title: Platform Capabilities
 summary: 'AEGIS is designed around one top-level business capability: **governed agentic delivery**.'
 doc_type: GUIDE

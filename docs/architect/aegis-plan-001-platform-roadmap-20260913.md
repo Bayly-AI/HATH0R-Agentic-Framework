@@ -1,6 +1,6 @@
 ---
-id: AEGIS-PLAN-001
-title: AEGIS-PLAN-001 — Platform Roadmap (v1)
+id: HATHOR-PLAN-001
+title: HATHOR-PLAN-001 — Platform Roadmap (v1)
 summary: Sequence the entire v1 platform (not just CVS) so every CORE §16 acceptance criterion has an owning workstream, and the two detailed plans (PLAN-002/003) slot into a whole. Estimates are planning-grade; re-baseline at...
 doc_type: PLAN
 diataxis: how-to
@@ -19,14 +19,14 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-PLAN-001 — Platform Roadmap (v1)
+# HATHOR-PLAN-001 — Platform Roadmap (v1)
 
-- **Document ID:** AEGIS-PLAN-001
+- **Document ID:** HATHOR-PLAN-001
 - **Status:** APPROVED — operator sign-off 2026-09-13 (PENDING-EDITS D6); fills the slot previously "reserved" (CORE-001/ARCH-001 headers now resolve)
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Subordinate plans:** AEGIS-PLAN-002 (CVS P0–P2, detailed), AEGIS-PLAN-003 (gateway + validators + skill pack)
-- **Traces to:** AEGIS-REQ-CORE-001 §16 (v1 acceptance), ADR-003/004, RP-010..013
+- **Subordinate plans:** HATHOR-PLAN-002 (CVS P0–P2, detailed), HATHOR-PLAN-003 (gateway + validators + skill pack)
+- **Traces to:** HATHOR-REQ-CORE-001 §16 (v1 acceptance), ADR-003/004, RP-010..013
 - **Scope rule:** planning artifact only. Execution requires authorizing epics/tickets (AEG-REQ-TKT-004/005/007). No code authorized.
 
 ---

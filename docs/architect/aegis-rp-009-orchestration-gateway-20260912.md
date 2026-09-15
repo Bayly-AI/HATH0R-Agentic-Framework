@@ -1,6 +1,6 @@
 ---
-id: AEGIS-RP-009
-title: AEGIS-RP-009 — Orchestration Gateway
+id: HATHOR-RP-009
+title: HATHOR-RP-009 — Orchestration Gateway
 summary: RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-GW-###` (Gateway).
 doc_type: RP
 diataxis: explanation
@@ -19,14 +19,14 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-RP-009 — Orchestration Gateway
+# HATHOR-RP-009 — Orchestration Gateway
 ## Event-Driven, System-Native Enforcement of Mandatory Bot & Linter Execution
 
-- **Document ID:** AEGIS-RP-009
+- **Document ID:** HATHOR-RP-009
 - **Status:** DRAFT v0 — research/design output, pending operator review
 - **Date:** 2026-09-12
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Companion to:** AEGIS-REQ-CORE-001 (PLAT/CLI/BOT/TEL/SEC + §14 gates), AEGIS-REQ-BOT-001 (taxonomy/anatomy), AEGIS-ARCH-001 (§4 families, §5 lifecycle, §15 gates), AEGIS-RP-007 (Continuous Validation System), AEGIS-TS-001 (CVS implementation), AEGIS-RP-008 (launch roster), AEGIS-ADR-002 (coordination-model decision record — the *why* behind this design)
+- **Companion to:** HATHOR-REQ-CORE-001 (PLAT/CLI/BOT/TEL/SEC + §14 gates), HATHOR-REQ-BOT-001 (taxonomy/anatomy), HATHOR-ARCH-001 (§4 families, §5 lifecycle, §15 gates), HATHOR-RP-007 (Continuous Validation System), HATHOR-TS-001 (CVS implementation), HATHOR-RP-008 (launch roster), HATHOR-ADR-002 (coordination-model decision record — the *why* behind this design)
 - **Supersedes / extends:** RP-007 §6.1 (agent-driven validation contract → system-driven); elevates `AEG-VAL-015` (runbook-declared validation) from *opt-in / P4* to a **mandatory default**
 - **Scope rule:** research and design only. No implementation authorized by this document.
 
@@ -127,7 +127,7 @@ flowchart LR
 
 ### 2.1 Why not choreography (recap, load-bearing)
 
-Pure event-driven **choreography** (bots reacting to each other's events with no central authority) is rejected as the *authority* model — it cannot guarantee no-skip (completeness is emergent, not provable), and it would require both a machine-tier bus (contra `RP-003`) and a secondary control surface (contra `PLAT-001`). Events are adopted as **triggers**; a central conductor is adopted as the **authority**. (Full options analysis in **AEGIS-ADR-002 §3**; summarized here for self-containment.)
+Pure event-driven **choreography** (bots reacting to each other's events with no central authority) is rejected as the *authority* model — it cannot guarantee no-skip (completeness is emergent, not provable), and it would require both a machine-tier bus (contra `RP-003`) and a secondary control surface (contra `PLAT-001`). Events are adopted as **triggers**; a central conductor is adopted as the **authority**. (Full options analysis in **HATHOR-ADR-002 §3**; summarized here for self-containment.)
 
 ### 2.2 The two things the gateway guards
 

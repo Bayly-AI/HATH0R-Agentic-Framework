@@ -1,6 +1,6 @@
 ---
-id: AEGIS-ADR-002
-title: AEGIS-ADR-002 — Orchestration Coordination Model
+id: HATHOR-ADR-002
+title: HATHOR-ADR-002 — Orchestration Coordination Model
 summary: RFC 2119 keywords apply where requirements are restated.
 doc_type: ADR
 diataxis: decision
@@ -19,20 +19,20 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-ADR-002 — Orchestration Coordination Model
+# HATHOR-ADR-002 — Orchestration Coordination Model
 ## Event-Triggered Central Orchestration over Choreography (System-Native, No-Skip)
 
-- **Document ID:** AEGIS-ADR-002
+- **Document ID:** HATHOR-ADR-002
 - **Status:** ACCEPTED — operator sign-off 2026-09-13 (approved with the corpus sign-off; PENDING-EDITS §1 D7)
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
 - **Decision class:** Architecture Decision Record (coordination model)
-- **Companion to:** AEGIS-RP-009 (Orchestration Gateway — the design that implements this decision); AEGIS-REQ-CORE-001; AEGIS-REQ-BOT-001; AEGIS-ARCH-001; AEGIS-RP-007 (CVS); AEGIS-TS-001; AEGIS-RP-003 (telemetry transport)
+- **Companion to:** HATHOR-RP-009 (Orchestration Gateway — the design that implements this decision); HATHOR-REQ-CORE-001; HATHOR-REQ-BOT-001; HATHOR-ARCH-001; HATHOR-RP-007 (CVS); HATHOR-TS-001; HATHOR-RP-003 (telemetry transport)
 - **Scope rule:** decision record only. No implementation authorized by this document.
 
 RFC 2119 keywords apply where requirements are restated.
 
-> This ADR is the **companion analysis** referenced by AEGIS-RP-009 §2.1. RP-009 specifies *how* the Orchestration Gateway is built; this ADR records *why* the coordination model was chosen and *what alternatives were rejected*.
+> This ADR is the **companion analysis** referenced by HATHOR-RP-009 §2.1. RP-009 specifies *how* the Orchestration Gateway is built; this ADR records *why* the coordination model was chosen and *what alternatives were rejected*.
 
 ---
 
@@ -122,7 +122,7 @@ The synthesis: **events trigger, the conductor decides, the gateway enforces.**
 - **Gateway** (Proctor) consults live run state on every dispatch and refuses skip/out-of-order actions (a new **Sequence/Barrier Gate**).
 - **No-skip:** ✓ All three skip modes closed (declarative required-set + reconciler; barrier/join gate; evidence-gated completion).
 - **Single control plane:** ✓ No new surface; reached via `aegis process`/`aegis proctor`. **No bus.**
-- **Verdict:** **Accepted.** Specified in full by AEGIS-RP-009.
+- **Verdict:** **Accepted.** Specified in full by HATHOR-RP-009.
 
 ---
 
@@ -138,7 +138,7 @@ The synthesis: **events trigger, the conductor decides, the gateway enforces.**
 
 Per accepted RP-013 `AEG-THR-001`, these prevention claims apply to cooperative-but-fallible agents. An adversarial local process can rewrite workspace files; hash-chain anchoring and Tower/CI attestation are the phased integrity controls.
 
-The full component design, schemas, requirements (`AEG-GW-001..015`), and phasing are in **AEGIS-RP-009**.
+The full component design, schemas, requirements (`AEG-GW-001..015`), and phasing are in **HATHOR-RP-009**.
 
 ---
 
@@ -216,11 +216,11 @@ Events are the right **trigger** and a useful **branch primitive**; they are the
 
 ## 9. Related documents
 
-- **AEGIS-RP-009** — Orchestration Gateway (the design implementing this decision).
-- **AEGIS-RP-007 / TS-001** — CVS (the detection fabric this orchestrates; §6.1 inverted here).
-- **AEGIS-REQ-CORE-001** — §12 (persisted-state orchestration intent), §14 (canonical gate-registry pointer), §16 (acceptance).
-- **AEGIS-RP-003** — telemetry transport (the no-bus precedent this decision honors).
-- **AEGIS-ARCH-001** — §5 request-class routing, §15 canonical gates, §20 Orchestration Gateway.
+- **HATHOR-RP-009** — Orchestration Gateway (the design implementing this decision).
+- **HATHOR-RP-007 / TS-001** — CVS (the detection fabric this orchestrates; §6.1 inverted here).
+- **HATHOR-REQ-CORE-001** — §12 (persisted-state orchestration intent), §14 (canonical gate-registry pointer), §16 (acceptance).
+- **HATHOR-RP-003** — telemetry transport (the no-bus precedent this decision honors).
+- **HATHOR-ARCH-001** — §5 request-class routing, §15 canonical gates, §20 Orchestration Gateway.
 
 ---
 

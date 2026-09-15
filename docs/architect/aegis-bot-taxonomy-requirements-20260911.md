@@ -1,5 +1,5 @@
 ---
-id: AEGIS-REQ-BOT-001
+id: HATHOR-REQ-BOT-001
 title: AEGIS — Bot Taxonomy, Anatomy & Default Command Contract
 summary: 1. **Infra reuse only when better** — AEGIS may adopt Infra processes/architecture only where they demonstrably exceed a from-scratch AEGIS design. Every adoption is logged in §9.
 doc_type: REQ
@@ -22,11 +22,11 @@ sources: []
 # AEGIS — Bot Taxonomy, Anatomy & Default Command Contract
 ## Formal Requirements Document
 
-- **Document ID:** AEGIS-REQ-BOT-001
+- **Document ID:** HATHOR-REQ-BOT-001
 - **Status:** DRAFT (research output — pending operator review)
 - **Date:** 2026-09-11
 - **Author:** Oz (Agent), commissioned by Raymond Bayly
-- **Amended by:** AEGIS-RP-014 (2026-09-13, operator-approved): `status` gains a `governance` group; `manifest --with-governance`; `report.payload.decisions[]` (details in RP-014 §3/§11)
+- **Amended by:** HATHOR-RP-014 (2026-09-13, operator-approved): `status` gains a `governance` group; `manifest --with-governance`; `report.payload.decisions[]` (details in RP-014 §3/§11)
 - **Sources:** AEGIS "CLI" board, AEGIS/HATHOR "Overview" board (Agentic Application Framework)
 
 ---
@@ -102,7 +102,7 @@ UUID, canonical name (`<role>-Bot`), family, tier (where applicable), semver ver
 ### AEG-BOT-ANA-002 — Machine-readable manifest
 A JSON manifest declaring: commands + argument schemas, exit codes, capabilities, knowledge scopes read/written, and required connections (by name, never credentials).
 **Acceptance criteria:**
-- `manifest` command emits the manifest; it validates against AEGIS manifest schema 1.1.0 (AEGIS-RP-001, as amended by RP-014).
+- `manifest` command emits the manifest; it validates against AEGIS manifest schema 1.1.0 (HATHOR-RP-001, as amended by RP-014).
 - Any command not declared in the manifest is a contract violation and MUST be refused by the CLI.
 
 ### AEG-BOT-ANA-003 — Versioned communication contract
@@ -312,11 +312,11 @@ All observation data rolls up to the Control Tower for cross-project visibility.
 
 All five questions have dedicated research papers in this folder:
 
-1. **Manifest schema v1** → **AEGIS-RP-001** (`./aegis-rp-001-manifest-schema-v1-20260911.md`) — full JSON schema; 4-phase HELLO/OFFER/BIND/VERIFY handshake; capability-based routing; AEG-MAN-001..007.
-2. **Registry model** → **AEGIS-RP-002** (`./aegis-rp-002-registry-discovery-20260911.md`) — hybrid: machine-local index (MBI) for all runtime routing, Tower registry (TBR) as authority; bounded offline trust; AEG-REG-001..006.
-3. **Telemetry transport** → **AEGIS-RP-003** (`./aegis-rp-003-telemetry-transport-20260911.md`) — spool-and-drain (CLI append to local spool, Observation-Bot drains); event bus rejected at machine tier; AEG-TEL-001..007.
-4. **Draft→verified promotion** → **AEGIS-RP-004** (`./aegis-rp-004-knowledge-promotion-20260911.md`) — status-on-record, queue-as-view; tiered reviewer authority; dispute/supersede/expiry lifecycle; AEG-KPW-001..008.
-5. **Hierarchy consolidation** → **AEGIS-RP-005** (`./aegis-rp-005-hierarchy-consolidation-20260911.md`) — six identities, one chassis; consolidation rejected; fan-out chain resolution; AEG-HIE-001..006.
+1. **Manifest schema v1** → **HATHOR-RP-001** (`./aegis-rp-001-manifest-schema-v1-20260911.md`) — full JSON schema; 4-phase HELLO/OFFER/BIND/VERIFY handshake; capability-based routing; AEG-MAN-001..007.
+2. **Registry model** → **HATHOR-RP-002** (`./aegis-rp-002-registry-discovery-20260911.md`) — hybrid: machine-local index (MBI) for all runtime routing, Tower registry (TBR) as authority; bounded offline trust; AEG-REG-001..006.
+3. **Telemetry transport** → **HATHOR-RP-003** (`./aegis-rp-003-telemetry-transport-20260911.md`) — spool-and-drain (CLI append to local spool, Observation-Bot drains); event bus rejected at machine tier; AEG-TEL-001..007.
+4. **Draft→verified promotion** → **HATHOR-RP-004** (`./aegis-rp-004-knowledge-promotion-20260911.md`) — status-on-record, queue-as-view; tiered reviewer authority; dispute/supersede/expiry lifecycle; AEG-KPW-001..008.
+5. **Hierarchy consolidation** → **HATHOR-RP-005** (`./aegis-rp-005-hierarchy-consolidation-20260911.md`) — six identities, one chassis; consolidation rejected; fan-out chain resolution; AEG-HIE-001..006.
 
 Remaining open questions are tracked inside each paper's own Open Questions section.
 

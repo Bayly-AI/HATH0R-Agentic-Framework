@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-035
+id: HATHOR-GUIDE-035
 title: "Engineering Manager Guide"
 summary: "How Engineering Managers run AEGIS delivery through tickets, gates, validation altitudes, and honest promotion without heroics."
 doc_type: GUIDE
@@ -22,7 +22,7 @@ supersedes: []
 superseded_by: null
 amended_by: []
 parent: null
-sources: [AEGIS-CANON-001, AEGIS-CANON-002, AEGIS-RP-007, AEGIS-TS-001, AEGIS-RP-014, AEGIS-GUIDE-011, AEGIS-GUIDE-014]
+sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-RP-007, HATHOR-TS-001, HATHOR-RP-014, HATHOR-GUIDE-011, HATHOR-GUIDE-014]
 ---
 # Engineering Manager Guide
 
@@ -30,12 +30,12 @@ As an Engineering Manager in AEGIS, you optimize for **mechanical integrity unde
 
 ## 1. Operating Model You Staff For
 
-Staff and review work against the platform shape (AEGIS-GUIDE-014, AEGIS-GUIDE-011):
+Staff and review work against the platform shape (HATHOR-GUIDE-014, HATHOR-GUIDE-011):
 
 * **Single CLI control plane** — agents and humans share `aegis` contracts (exit codes, JSON envelopes, dry-run).
 * **Orchestration split** — events append; Process-Bot alone advances run state; Proctor enforces gates.
-* **Bot unit discipline** — new bots follow seven-block anatomy and Manifest v1 (AEGIS-RP-014).
-* **Four validation altitudes** — build, change, dispatch, runtime (AEGIS-RP-007 / AEGIS-TS-001).
+* **Bot unit discipline** — new bots follow seven-block anatomy and Manifest v1 (HATHOR-RP-014).
+* **Four validation altitudes** — build, change, dispatch, runtime (HATHOR-RP-007 / HATHOR-TS-001).
 
 Your 1:1s and planning rituals should name which altitude or plane a workstream hardens.
 
@@ -71,7 +71,7 @@ Reward the left column in performance conversations.
 
 * Control Tower downtime is expected in design: plan reviews must include trust TTL and `PROVENANCE_UNVERIFIED` behavior.
 * Telemetry must not block primary execution; spool quotas are capacity planning inputs, not “someone else’s pager only.”
-* Documentation and ADRs are delivery artifacts: unstable IDs or unreviewed canon are delivery risks (AEGIS-CANON-002).
+* Documentation and ADRs are delivery artifacts: unstable IDs or unreviewed canon are delivery risks (HATHOR-CANON-011).
 
 ## 6. Definition of Done (EM)
 

@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-033
+id: HATHOR-GUIDE-033
 title: "Security & Compliance Officer Guide"
 summary: "How Security and Compliance Officers use AEGIS gates, zero-secret invariants, and knowledge trust tiers as mechanical controls."
 doc_type: GUIDE
@@ -22,7 +22,7 @@ supersedes: []
 superseded_by: null
 amended_by: []
 parent: null
-sources: [AEGIS-CANON-001, AEGIS-CANON-002, AEGIS-RP-004, AEGIS-RP-012, AEGIS-RP-007, AEGIS-GUIDE-013, AEGIS-ADR-003]
+sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-RP-004, HATHOR-RP-012, HATHOR-RP-007, HATHOR-GUIDE-013, HATHOR-ADR-003]
 ---
 # Security & Compliance Officer Guide
 
@@ -30,14 +30,14 @@ As a Security or Compliance Officer, you treat AEGIS Governance Gates, credentia
 
 ## 1. Non-Negotiable Invariants
 
-* **Zero baked secrets:** Class C worker bots and ECR images carry no long-lived credentials. Operator-Bot brokers external effects; Class D OTel holds telemetry-backend credentials only (AEGIS-GUIDE-013).
-* **CLI mediation:** Credential lookup order is policy-owned (Secrets Manager → user credentials → project `.env` → allowed siblings). Agents request capability through the CLI; they do not scrape keys (repo-root HATHOR README / AEGIS-ADR-003).
-* **No auto-promotion:** Knowledge draft→verified and environment promotion always require human authorization (AEGIS-RP-004; CR-BAI-001).
-* **Provenance over recency:** Prefer attributable, reconstructable evidence (AEGIS-CANON-002 HP-11/HP-12).
+* **Zero baked secrets:** Class C worker bots and ECR images carry no long-lived credentials. Operator-Bot brokers external effects; Class D OTel holds telemetry-backend credentials only (HATHOR-GUIDE-013).
+* **CLI mediation:** Credential lookup order is policy-owned (Secrets Manager → user credentials → project `.env` → allowed siblings). Agents request capability through the CLI; they do not scrape keys (repo-root HATHOR README / HATHOR-ADR-003).
+* **No auto-promotion:** Knowledge draft→verified and environment promotion always require human authorization (HATHOR-RP-004; CR-BAI-001).
+* **Provenance over recency:** Prefer attributable, reconstructable evidence (HATHOR-CANON-011 HP-11/HP-12).
 
 ## 2. Gates as Controls (Map Them)
 
-Use the 15 Governance Gates (AEGIS-CANON-001 §2) and validation altitudes (AEGIS-RP-007) as your control catalog:
+Use the 15 Governance Gates (HATHOR-CANON-010 §2) and validation altitudes (HATHOR-RP-007) as your control catalog:
 
 | Control intent | Mechanical surface |
 | --- | --- |
@@ -51,7 +51,7 @@ Compliance evidence = run IDs + ticket keys + signed manifests — not screensho
 
 ## 3. Knowledge Plane Compliance
 
-* New knowledge is **draft**, session-scoped microbursts only; bulk sync is forbidden (AEGIS-RP-012).
+* New knowledge is **draft**, session-scoped microbursts only; bulk sync is forbidden (HATHOR-RP-012).
 * Promotion to **verified** requires human review **and** mechanical gates (secrets/PII). Fail closed.
 * Retrieval trust tiers: Project → Machine → Organization → Public. Lower tiers must not silently override higher trust without citation.
 * Stale/TTL flags force intentional use; do not allow “still online” to mean “still approved.”

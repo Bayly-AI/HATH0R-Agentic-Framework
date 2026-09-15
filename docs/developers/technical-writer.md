@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-034
+id: HATHOR-GUIDE-034
 title: "Technical Writer Guide"
 summary: "How Technical Writers author hathor-doc@1 corpus docs, keep IDs stable, and align docs with Knowledge Plane trust."
 doc_type: GUIDE
@@ -22,17 +22,17 @@ supersedes: []
 superseded_by: null
 amended_by: []
 parent: null
-sources: [AEGIS-CANON-003, AEGIS-CANON-001, AEGIS-RP-004, AEGIS-RP-012, AEGIS-GUIDE-029]
+sources: [HATHOR-CANON-012, HATHOR-CANON-010, HATHOR-RP-004, HATHOR-RP-012, HATHOR-GUIDE-029]
 ---
 # Technical Writer Guide
 
-As a Technical Writer on AEGIS/HATHOR, you author **one artifact for two readers**: humans and agents. The contract is `hathor-doc@1` (AEGIS-CANON-003). You do not maintain a separate “agent copy” of the same page.
+As a Technical Writer on AEGIS/HATHOR, you author **one artifact for two readers**: humans and agents. The contract is `hathor-doc@1` (HATHOR-CANON-012). You do not maintain a separate “agent copy” of the same page.
 
 ## 1. Corpus Rules You Enforce
 
 * **In scope:** `docs/architect/**`, `docs/business/**`, `docs/developers/**`, `docs/sales/**`, repo-root `README.md`.
 * **Out of scope for front-matter:** `AGENTS.md` (nearest-first instruction files), runtime Knowledge records, generated API bodies beyond their header/index entry.
-* **Stable IDs:** `AEGIS-(ADR|RP|TS|PLAN|REQ|ARCH|CANON|GUIDE|REPORT|SESSION)-NNN`. Never reuse requirement-style prefixes (`AEG-…`) as document IDs (AEGIS-CANON-001 §8).
+* **Stable IDs:** `AEGIS-(ADR|RP|TS|PLAN|REQ|ARCH|CANON|GUIDE|REPORT|SESSION)-NNN`. Never reuse requirement-style prefixes (`AEG-…`) as document IDs (HATHOR-CANON-010 §8).
 * **Diátaxis:** Prefer a single mode (`tutorial|how-to|reference|explanation|decision`). `mixed` needs a one-line justification in the first body section.
 
 ## 2. Front-Matter Checklist (every new doc)
@@ -57,14 +57,14 @@ python3 bin/docs/ml-doc-links docs/developers/your-doc.md
 ## 3. Body Craft for Agents and Humans
 
 * Lead with a one-sentence purpose that can feed `summary` and INDEX/llms.txt.
-* Prefer **cite-by-ID** (`AEGIS-RP-012`) over brittle path-only references when the concept is canonical.
+* Prefer **cite-by-ID** (`HATHOR-RP-012`) over brittle path-only references when the concept is canonical.
 * Keep local markdown links resolvable; CI `ml-doc-links` fails dead paths.
-* Do not put secrets, tokens, or live credentials in docs. Describe mediation order instead (AEGIS-GUIDE-029).
+* Do not put secrets, tokens, or live credentials in docs. Describe mediation order instead (HATHOR-GUIDE-029).
 * Dual header: YAML is canonical; a human bulleted header MAY mirror it for long canon papers — do not fork meaning between them.
 
 ## 4. Knowledge Plane Alignment
 
-Authored docs and runtime knowledge share vocabulary (AEGIS-RP-004 / AEGIS-RP-012):
+Authored docs and runtime knowledge share vocabulary (HATHOR-RP-004 / HATHOR-RP-012):
 
 * Docs lifecycle: draft → proposed → accepted (and superseded/retired).
 * Knowledge trust: draft → verified with **no auto-promotion**.
@@ -73,7 +73,7 @@ Authored docs and runtime knowledge share vocabulary (AEGIS-RP-004 / AEGIS-RP-01
 
 ## 5. Change Control and Indexes
 
-* Structural type/status/field changes amend AEGIS-CANON-003 in the same change.
+* Structural type/status/field changes amend HATHOR-CANON-012 in the same change.
 * Human `INDEX.md` files keep curated prose; optional `<!-- BEGIN:hathor-doc-list -->` regions may be machine-maintained.
 * `docs/index.json` / tree `llms.txt` are generated (`bin/docs/gen-index`) — do not hand-edit as source of truth.
 * Ticket your doc changes like code: no-ticket gate still applies to substantive corpus mutations executed by agents.

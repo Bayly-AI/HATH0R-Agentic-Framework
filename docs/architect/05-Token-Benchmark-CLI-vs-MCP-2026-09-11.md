@@ -1,5 +1,5 @@
 ---
-id: AEGIS-REPORT-005
+id: HATHOR-REPORT-005
 title: '05 — Token / Payload Baseline: `infraos-os`, InfraMCP Health, and MCP Catalog Proxies'
 summary: 1. Not a multi-run statistical benchmark (n=1 per command).
 doc_type: REPORT

@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-001
+id: HATHOR-GUIDE-001
 title: 'Containerization in AEGIS: From Micro-Bot to Deployable Unit'
 summary: 'Every architecture eventually has to answer the same question: what is the smallest unit you can trust? AEGIS answered it once at the capability layer with the Micro-Bot — one role, one contract, stateless between cal...'
 doc_type: GUIDE

@@ -1,6 +1,6 @@
 ---
-id: AEGIS-TS-004
-title: 'AEGIS-TS-004 — The DMZ: Application ↔ Framework Integration Boundary'
+id: HATHOR-TS-004
+title: 'HATHOR-TS-004 — The DMZ: Application ↔ Framework Integration Boundary'
 summary: 'RFC 2119 keywords apply. New identifiers: decisions `TS4-D-###`, components `TS4-C-###`, interfaces `TS4-I-###`.'
 doc_type: TS
 diataxis: reference
@@ -19,17 +19,17 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-TS-004 — The DMZ: Application ↔ Framework Integration Boundary
+# HATHOR-TS-004 — The DMZ: Application ↔ Framework Integration Boundary
 ## Implementation specification for static/dynamic admission, project rules, policy floors, conflict envelopes, and profile-staged onboarding
 
-- **Document ID:** AEGIS-TS-004
+- **Document ID:** HATHOR-TS-004
 - **Status:** DRAFT v0 — implementation specification, pending operator review
 - **Date:** 2026-09-14
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Implements:** the *DMZ Integration Boundary* report (2026-09-14, session output; proposed for filing as AEGIS-RP-015) — specifically its §5 conflict-resolution procedure, §6 onboarding ramp, and gaps G1–G5, G7
+- **Implements:** the *DMZ Integration Boundary* report (2026-09-14, session output; proposed for filing as HATHOR-RP-015) — specifically its §5 conflict-resolution procedure, §6 onboarding ramp, and gaps G1–G5, G7
 - **Decision basis (accepted):** RP-014 §3.3–§3.6 (precedence, narrowing-only rules, config-never-governs); ADR-002/RP-009 (Proctor as enforcing gateway); ADR-003 (surface + exit boundaries); ADR-004 (layout/state residency); RP-010 §3.2 (signed policy distribution); RP-013 (trust model, `AEG-THR-004` signed execution inputs); CANON-001 (registries)
-- **Conforms to:** AEGIS-REQ-CORE-001 (PLAT/CLI/UPL/SEC/NFR), AEGIS-REQ-BOT-001, RP-007 (validation fabric)
-- **Extends:** AEGIS-TS-001 (config precedence §13, suites §6, native linters §5), AEGIS-TS-002 (`proctor.Admit` §7, graph load §4, orchestration config §12), AEGIS-TS-003 (rules engine §5.2–§5.3, bundle verify §4, effects §6)
+- **Conforms to:** HATHOR-REQ-CORE-001 (PLAT/CLI/UPL/SEC/NFR), HATHOR-REQ-BOT-001, RP-007 (validation fabric)
+- **Extends:** HATHOR-TS-001 (config precedence §13, suites §6, native linters §5), HATHOR-TS-002 (`proctor.Admit` §7, graph load §4, orchestration config §12), HATHOR-TS-003 (rules engine §5.2–§5.3, bundle verify §4, effects §6)
 - **Gating note:** this spec is **not authorized for build**. Prerequisites: (a) the DMZ report is filed and accepted as a design paper; (b) the CANON-001 amendments in §19 are ratified; (c) operator decisions on the project-rules layer (report G1) and policy floors (report G2); (d) an authorizing Ticketing Plane ticket (`AEG-REQ-TKT-004`). §6 nested-root resolution is additionally gated on an ADR (report G7).
 - **Scope rule:** describes *how* to build. Authorizes no code by itself.
 
@@ -768,7 +768,7 @@ The `AEG-THR-001` statement applies: these controls hold against cooperative-but
 | CANON-001 §5 (linters) | `ml-agents-directive-conflict` (class `upl.agents_directive_conflict`) — catalog grows 20 → **21** | proposed |
 | CANON-001 §3 (events) | none | — |
 | CANON-001 §2 (gates) | none — project rules are rules, not gates | — |
-| CANON-001 §8 (prefixes) | row `TS4-D/C/I-###` → AEGIS-TS-004 | proposed |
+| CANON-001 §8 (prefixes) | row `TS4-D/C/I-###` → HATHOR-TS-004 | proposed |
 | RP-007 §4.1 | linter row for `ml-agents-directive-conflict` | proposed |
 | RP-007 §2.2 / TS-001 §4 | finding class `governance.conflict` registered | proposed |
 | TS-001 §6.1 | "overrides by `id`" → "overrides by `id` above the policy floor (TS-004 §6.2)" | proposed |

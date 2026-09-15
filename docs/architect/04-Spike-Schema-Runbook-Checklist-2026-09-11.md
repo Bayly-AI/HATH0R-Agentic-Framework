@@ -1,5 +1,5 @@
 ---
-id: AEGIS-REPORT-004
+id: HATHOR-REPORT-004
 title: '04 — Spike Design: Schema Dump + Runbook→Checklist Lifecycle'
 summary: 'Playbook: security-devops / dvo-deploy-handoff Runbook: security-devops / dvo-deploy-ticket Checklist: security-devops / dvo-deploy-ticket Workflow: devops/dvo-deploy-request'
 doc_type: REPORT
