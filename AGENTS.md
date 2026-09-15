@@ -38,6 +38,16 @@ Do **not** use `.ai/`, `.aegis/`, or `.infraOS/`.
 3. Framework `docs/` is the **canonical OpenSource documentation** corpus.
 4. Do **not** treat private internal product trees as OpenSource canonical sources.
 
+## Open issues tracking (group-wide)
+
+Use the verified multi-repo search (all three OpenSource products):
+
+```text
+is:issue state:open repo:Bayly-AI/HATH0R-Agentic-Framework repo:Bayly-AI/HATH0R-Agentic-POC repo:Bayly-AI/HATH0R-CLI
+```
+
+Canonical definition: group `AGENTS.md` (*Open issues tracking*). Also listed in `docs/README.md`.
+
 ## Branch & PR targets (CRITICAL — cr-branch-gov-001)
 
 1. **Issue first**: create a GitHub issue before any work branch. No issue → no branch.
