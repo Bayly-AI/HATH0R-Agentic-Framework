@@ -181,7 +181,8 @@ jobs:
           Work branches (require open GitHub issue number in name):
             feature|bugfix|enhancement|research|fix|chore/<issue>-short-slug
 
-          PR approvals: required (CODEOWNERS @somesayray)
+          PR approvals: not required (owner @somesayray may merge anytime; admin bypass on)
+          PR failures: notify @somesayray (notify-pr-failure.yml + optional Slack)
           Default branch: development
           Promotion: development → testing → staging → master only
           EOF
