@@ -1,6 +1,6 @@
 ---
-id: AEGIS-ADR-004
-title: AEGIS-ADR-004 — Layout & State Residency
+id: HATHOR-ADR-004
+title: HATHOR-ADR-004 — Layout & State Residency
 summary: RFC 2119 keywords apply.
 doc_type: ADR
 diataxis: decision
@@ -19,13 +19,13 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-ADR-004 — Layout & State Residency
+# HATHOR-ADR-004 — Layout & State Residency
 
-- **Document ID:** AEGIS-ADR-004
+- **Document ID:** HATHOR-ADR-004
 - **Status:** ACCEPTED — operator sign-off 2026-09-13 (PENDING-EDITS D2)
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Amends:** AEGIS-REQ-CORE-001 §7.1, `AEG-REQ-CNT-003`; AEGIS-RP-003 §3.1; AEGIS-ADR-001 (repo section, `.ai/aegis` reference); containerization article/presentation (port-registry references)
+- **Amends:** HATHOR-REQ-CORE-001 §7.1, `AEG-REQ-CNT-003`; HATHOR-RP-003 §3.1; HATHOR-ADR-001 (repo section, `.ai/aegis` reference); containerization article/presentation (port-registry references)
 - **Resolves findings:** E7 (three port-registry paths), E8 (spool residency ambiguity), E9 (stale `.ai/aegis` references), G8 (OS scope)
 - **Scope rule:** decision record only. No implementation authorized by this document.
 

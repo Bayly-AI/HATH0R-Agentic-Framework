@@ -1,6 +1,6 @@
 ---
-id: AEGIS-RP-010
-title: AEGIS-RP-010 — Control Tower Surface v1
+id: HATHOR-RP-010
+title: HATHOR-RP-010 — Control Tower Surface v1
 summary: RFC 2119 keywords apply. Requirements use prefix `AEG-TWR-###`.
 doc_type: RP
 diataxis: explanation
@@ -19,9 +19,9 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-RP-010 — Control Tower Surface v1
+# HATHOR-RP-010 — Control Tower Surface v1
 
-- **Document ID:** AEGIS-RP-010
+- **Document ID:** HATHOR-RP-010
 - **Status:** ACCEPTED (design) — operator sign-off 2026-09-13 (PENDING-EDITS D5); open questions tracked in §7
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)

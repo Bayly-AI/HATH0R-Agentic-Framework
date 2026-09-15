@@ -1,5 +1,5 @@
 ---
-id: AEGIS-REQ-CORE-001
+id: HATHOR-REQ-CORE-001
 title: AEGIS — Initial Platform Requirements (Core)
 summary: 'RFC 2119 keywords apply: **MUST / SHOULD / MAY**. Every requirement in this document is prefixed `AEG-REQ-<AREA>-###`. Acceptance criteria are listed inline. Traceability tags to the source research paper appear in sq...'
 doc_type: REQ
@@ -22,20 +22,20 @@ sources: []
 # AEGIS — Initial Platform Requirements (Core)
 ## Consolidated Requirements for the AEGIS Agentic Governance Platform
 
-- **Document ID:** AEGIS-REQ-CORE-001
+- **Document ID:** HATHOR-REQ-CORE-001
 - **Status:** DRAFT v0 — greenfield platform requirements, pending operator review
 - **Date:** 2026-09-11
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
 - **Supersedes:** N/A (new-project bootstrap)
 - **Consolidates:**
-  - AEGIS-REQ-BOT-001 (bot taxonomy, anatomy, default command contract)
-  - AEGIS-RP-001..006 (manifest, registry, telemetry, knowledge promotion, hierarchy topology, ticketing plane)
-  - AEGIS-ADR-001 (target command tree — `aegis-adr-001-target-command-tree-20260911.md`)
+  - HATHOR-REQ-BOT-001 (bot taxonomy, anatomy, default command contract)
+  - HATHOR-RP-001..006 (manifest, registry, telemetry, knowledge promotion, hierarchy topology, ticketing plane)
+  - HATHOR-ADR-001 (target command tree — `aegis-adr-001-target-command-tree-20260911.md`)
   - AEGIS Containerization article (bot ↔ container isomorphism)
   - AEGIS CLI Research Report (industry baseline)
   - InfraOS carry-overs (see §12 — decision log)
-- **Companion docs:** `AEGIS-ARCH-001-architecture-mermaid-20260911.md` (diagrams), plan `AEGIS-PLAN-001` (platform roadmap — `aegis-plan-001-platform-roadmap-20260913.md`)
-- **Amended by (2026-09-13):** AEGIS-ADR-002/RP-009 (Orchestration Gateway; gate registry grows to 15); AEGIS-ADR-003 (nine-domain surface; exit-code boundaries); AEGIS-ADR-004 (layout/state residency; OS scope); AEGIS-CANON-001 (canonical registries). Amended in place below; residual edits tracked in `PENDING-EDITS.md`.
+- **Companion docs:** `HATHOR-ARCH-001-architecture-mermaid-20260911.md` (diagrams), plan `HATHOR-PLAN-001` (platform roadmap — `aegis-plan-001-platform-roadmap-20260913.md`)
+- **Amended by (2026-09-13):** HATHOR-ADR-002/RP-009 (Orchestration Gateway; gate registry grows to 15); HATHOR-ADR-003 (nine-domain surface; exit-code boundaries); HATHOR-ADR-004 (layout/state residency; OS scope); HATHOR-CANON-010 (canonical registries). Amended in place below; residual edits tracked in `PENDING-EDITS.md`.
 
 RFC 2119 keywords apply: **MUST / SHOULD / MAY**. Every requirement in this document is prefixed `AEG-REQ-<AREA>-###`. Acceptance criteria are listed inline. Traceability tags to the source research paper appear in square brackets, e.g. `[RP-001 §2.4]`.
 
@@ -217,7 +217,7 @@ Named non-error data states (e.g. `degraded`, `changes_pending`) MUST be represe
 
 ## 5. Bot Taxonomy Requirements (AEG-REQ-BOT)
 
-Full taxonomy is defined in AEGIS-REQ-BOT-001. This section restates the load-bearing rules and adds the platform-level integration.
+Full taxonomy is defined in HATHOR-REQ-BOT-001. This section restates the load-bearing rules and adds the platform-level integration.
 
 ### AEG-REQ-BOT-001 — Microbot architecture
 Every capability MUST be delivered by a single-role bot. Composition happens only at Proctor/Process, never inside a bot. `[BOT-TAX-001]`
@@ -493,7 +493,7 @@ All observation data MUST roll up to the Control Tower for cross-project visibil
 Core event vocabulary (extensible per manifest `telemetry.events_emitted`):
 `task.start`, `task.end`, `retry`, `tokens`, `benchmark`, `contract.refused`, `registry.state_change`, `knowledge.microburst`, `knowledge.status_change`, `work.ticket.status_change`, `work.ticket.reconcile`, `degraded`.
 
-Extended vocabularies: `validation.*` (RP-007 §8), `knowledge.retrieval` (RP-012 §4), and `orchestration.*` (TS-002 §11). The canonical event registry is **AEGIS-CANON-001 §3**.
+Extended vocabularies: `validation.*` (RP-007 §8), `knowledge.retrieval` (RP-012 §4), and `orchestration.*` (TS-002 §11). The canonical event registry is **HATHOR-CANON-010 §3**.
 
 ---
 
@@ -591,7 +591,7 @@ Audit records MUST capture the caller's declared intent (capability) and hierarc
 
 ## 14. Governance Gates (mechanical enforcement)
 
-> **Registry note (2026-09-13):** the canonical gate registry is **AEGIS-CANON-001 §2** — fifteen gates (G01–G15), adding the four validation gates (RP-007 §5.2) and the Sequence/Barrier Gate (RP-009 §4.2, per ADR-002) to the ten below. Canonical evaluation order on the dispatch path: Provenance → Contract → Sequence/Barrier → domain gates.
+> **Registry note (2026-09-13):** the canonical gate registry is **HATHOR-CANON-010 §2** — fifteen gates (G01–G15), adding the four validation gates (RP-007 §5.2) and the Sequence/Barrier Gate (RP-009 §4.2, per ADR-002) to the ten below. Canonical evaluation order on the dispatch path: Provenance → Contract → Sequence/Barrier → domain gates.
 >
 > **Trust model (`AEG-THR-001`):** these mechanical guarantees hold against a *cooperative-but-fallible* agent; a fully adversarial local process is out of scope for v1 enforcement and in scope for detection + phased hardening (RP-013 §2/§4).
 
@@ -652,7 +652,7 @@ An AEGIS v1 release is accepted when *all* of the following pass:
 9. **DVO deploy** — `aegis process runbook run dvo-deploy-ticket --dry-run` produces a JSON plan with no side effects; live run refuses without `--yes` and human authority.
 10. **Universal layout** — `aegis repo init --from-infraos` migrates a reference InfraOS product cleanly; `aegis repo validate` returns 0.
 11. **Containers** — Reference Class A/B/C/D containers build, pass micro-linter gate, expose `/version` + `/health`, run with zero baked secrets.
-12. **Governance** — Fifteen mechanical gates (AEGIS-CANON-001 §2) all refuse in negative-path tests and pass in positive-path tests.
+12. **Governance** — Fifteen mechanical gates (HATHOR-CANON-010 §2) all refuse in negative-path tests and pass in positive-path tests.
 13. **NFR** — Cold command < 250 ms; orientation pack ≤ 2500 tokens; schema page ≤ 8 KB; CLI Spec score ≥ 12/16.
 
 ---
@@ -677,14 +677,14 @@ Research-paper questions are tracked in their owning papers. Resolved platform d
 
 | Source doc | Requirements folded in |
 |---|---|
-| AEGIS-REQ-BOT-001 (bot taxonomy) | §5, §8, §10, §13 |
-| AEGIS-RP-001 (manifest schema + handshake) | §6, §14 (Contract, Provenance gates) |
-| AEGIS-RP-002 (registry & discovery) | §6, §13 (SEC-003), §15 (offline trust) |
-| AEGIS-RP-003 (telemetry transport) | §10 |
-| AEGIS-RP-004 (knowledge promotion) | §8, §14 (Knowledge Promotion Gate) |
-| AEGIS-RP-005 (hierarchy topology) | §5 (six identities, chassis) |
-| AEGIS-RP-006 (ticketing plane) | §9, §14 (No-Ticket / Epic / PR-Bind / Deploy gates) |
-| AEGIS-ADR-001 (target command tree) | §4, §12 (InfraOS aliasing) |
+| HATHOR-REQ-BOT-001 (bot taxonomy) | §5, §8, §10, §13 |
+| HATHOR-RP-001 (manifest schema + handshake) | §6, §14 (Contract, Provenance gates) |
+| HATHOR-RP-002 (registry & discovery) | §6, §13 (SEC-003), §15 (offline trust) |
+| HATHOR-RP-003 (telemetry transport) | §10 |
+| HATHOR-RP-004 (knowledge promotion) | §8, §14 (Knowledge Promotion Gate) |
+| HATHOR-RP-005 (hierarchy topology) | §5 (six identities, chassis) |
+| HATHOR-RP-006 (ticketing plane) | §9, §14 (No-Ticket / Epic / PR-Bind / Deploy gates) |
+| HATHOR-ADR-001 (target command tree) | §4, §12 (InfraOS aliasing) |
 | Containerization article | §11 |
 | CLI Research Report + Scoring + Payload baseline | §4, §15 (NFR) |
 | InfraOS AGENTS / rules | §12 (adoption log) |

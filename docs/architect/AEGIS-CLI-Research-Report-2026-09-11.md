@@ -1,5 +1,5 @@
 ---
-id: AEGIS-REPORT-001
+id: HATHOR-REPORT-001
 title: AEGIS CLI Research Report
 summary: 'The outline positions **CLI as the control plane**: the single contact surface between agents and everything else (code, assets, knowledge, systems).'
 doc_type: REPORT
@@ -25,7 +25,7 @@ sources: []
 **Date:** 2026-09-11
 **Systems examined:** Four submitted AEGIS outline images, `infraos-os` 9.3.0, Communications (Hera) product surface, InfraOS architecture docs (AD-001–AD-008), and sampled industry CLI/agent sources
 **Status:** Outline terminology cross-checked against the source images; live CLI claims verified separately (see §9); external findings are source-attributed
-**Historical-baseline note (2026-09-13):** this report studies `infraos-os` 9.3.0 as the baseline. Strategy decisions taken since — greenfield `aegis` binary, nine-domain surface, `.aegis/` layout — are recorded in AEGIS-ADR-003/004; §1.7's `.ai/aegis` layout is the outline-era label (canonical: `.aegis/`, CORE §7.1).
+**Historical-baseline note (2026-09-13):** this report studies `infraos-os` 9.3.0 as the baseline. Strategy decisions taken since — greenfield `aegis` binary, nine-domain surface, `.aegis/` layout — are recorded in HATHOR-ADR-003/004; §1.7's `.ai/aegis` layout is the outline-era label (canonical: `.aegis/`, CORE §7.1).
 
 ---
 

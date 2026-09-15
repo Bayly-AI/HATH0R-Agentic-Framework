@@ -1,6 +1,6 @@
 ---
-id: AEGIS-RP-011
-title: AEGIS-RP-011 — Operator-Bot Brokering Model
+id: HATHOR-RP-011
+title: HATHOR-RP-011 — Operator-Bot Brokering Model
 summary: RFC 2119 keywords apply. Requirements use prefix `AEG-OPB-###`.
 doc_type: RP
 diataxis: explanation
@@ -19,9 +19,9 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-RP-011 — Operator-Bot Brokering Model
+# HATHOR-RP-011 — Operator-Bot Brokering Model
 
-- **Document ID:** AEGIS-RP-011
+- **Document ID:** HATHOR-RP-011
 - **Status:** ACCEPTED (design) — operator sign-off 2026-09-13 (PENDING-EDITS D5); open questions tracked in §7
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)

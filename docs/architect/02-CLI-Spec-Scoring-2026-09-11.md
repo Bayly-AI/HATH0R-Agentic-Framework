@@ -1,5 +1,5 @@
 ---
-id: AEGIS-REPORT-003
+id: HATHOR-REPORT-003
 title: 02 — CLI Spec Scoring (`infraos-os` vs clispec.dev)
 summary: 'Principles (CLI Spec): 1. **Structured Output** — explicit JSON; prefer structured when piped; structured failures 2. **Schema Introspection** — discover commands/args/output/errors at runtime 3. **Stderr/Stdout Separ...'
 doc_type: REPORT

@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-006
+id: HATHOR-GUIDE-006
 title: AEGIS Target Operating Model
 summary: 'The target operating model is based on the following source-grounded rules:'
 doc_type: GUIDE

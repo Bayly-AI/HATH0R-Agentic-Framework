@@ -1,5 +1,5 @@
 ---
-id: AEGIS-RP-003
+id: HATHOR-RP-003
 title: AEGIS Research Paper 003 — Telemetry Transport
 summary: 'Every bot emits standardized telemetry (ANA-007, OBS-001) consumed by the Observation family and rolled up to the Control Tower (OBS-002). Undecided: transport. Candidates were **a machine-local event bus** vs **CLI-m...'
 doc_type: RP
@@ -21,12 +21,12 @@ sources: []
 ---
 # AEGIS Research Paper 003 — Telemetry Transport
 
-- **Document ID:** AEGIS-RP-003
+- **Document ID:** HATHOR-RP-003
 - **Status:** DRAFT (research output — pending operator review)
 - **Date:** 2026-09-11
-- **Parent:** AEGIS-REQ-BOT-001 (§10 Q3)
-- **Related:** AEGIS-RP-001 (telemetry manifest block), AEGIS-RP-002 (reconciliation events)
-- **Amended by:** AEGIS-ADR-004 §2.2 (spool residency: project-tier canonical, machine-indexed — amends §3.1); event vocabulary extended by CORE-001 §10.1, RP-007 §8, TS-002 §11 — canonical registry: AEGIS-CANON-001 §3
+- **Parent:** HATHOR-REQ-BOT-001 (§10 Q3)
+- **Related:** HATHOR-RP-001 (telemetry manifest block), HATHOR-RP-002 (reconciliation events)
+- **Amended by:** HATHOR-ADR-004 §2.2 (spool residency: project-tier canonical, machine-indexed — amends §3.1); event vocabulary extended by CORE-001 §10.1, RP-007 §8, TS-002 §11 — canonical registry: HATHOR-CANON-010 §3
 - **Author:** Oz (Agent), commissioned by Raymond Bayly
 
 ---

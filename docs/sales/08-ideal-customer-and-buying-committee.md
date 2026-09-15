@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-022
+id: HATHOR-GUIDE-022
 title: Ideal Customer and Buying Committee
 summary: The strongest prospective fit is an organization that is increasing AI-assisted software delivery and already feels a material gap between automation speed and its ability to preserve authorization, evidence, credenti...
 doc_type: GUIDE

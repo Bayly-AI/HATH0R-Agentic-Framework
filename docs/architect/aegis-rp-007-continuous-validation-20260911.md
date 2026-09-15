@@ -1,6 +1,6 @@
 ---
-id: AEGIS-RP-007
-title: AEGIS-RP-007 — Continuous Validation System
+id: HATHOR-RP-007
+title: HATHOR-RP-007 — Continuous Validation System
 summary: RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-VAL-###`.
 doc_type: RP
 diataxis: explanation
@@ -19,16 +19,16 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-RP-007 — Continuous Validation System
+# HATHOR-RP-007 — Continuous Validation System
 ## Micro-Linters + Validator Micro-Bots as the Change-Time Immune System
 
-- **Document ID:** AEGIS-RP-007
+- **Document ID:** HATHOR-RP-007
 - **Status:** DRAFT v0 — research output, pending operator review
 - **Date:** 2026-09-11
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Companion to:** AEGIS-REQ-CORE-001, AEGIS-ARCH-001, AEGIS-REQ-BOT-001, containerization article
+- **Companion to:** HATHOR-REQ-CORE-001, HATHOR-ARCH-001, HATHOR-REQ-BOT-001, containerization article
 - **Supersedes / extends:** Infra "AI Agent Linting Enforcement Guide" (advisory), InfraAPI `make q-gates` / `make pr-ai` (batch-only), AEGIS Micro-Linter Gate (build-time only)
-- **Amended by:** AEGIS-ADR-002 + AEGIS-RP-009 (2026-09-13): §6.1's agent-driven contract is inverted to system-driven ("system calls on event"); `AEG-VAL-015` promoted to mandatory default; `ml-graph-integrity` added to the §4.1 catalog; `val-completeness-Bot` added to the §5 roster. Canonical registries: AEGIS-CANON-001.
+- **Amended by:** HATHOR-ADR-002 + HATHOR-RP-009 (2026-09-13): §6.1's agent-driven contract is inverted to system-driven ("system calls on event"); `AEG-VAL-015` promoted to mandatory default; `ml-graph-integrity` added to the §4.1 catalog; `val-completeness-Bot` added to the §5 roster. Canonical registries: HATHOR-CANON-010.
 - **Scope rule:** research and requirements only. No implementation authorized.
 
 RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-VAL-###`.
@@ -425,7 +425,7 @@ aegis validate suite list --fields id,tier,blocking --limit 10
 
 ### 6.1 Agent contract (normative behavior)
 
-> **⚠ Superseded (2026-09-13) by AEGIS-ADR-002 / AEGIS-RP-009.** Control flow is system-native: the conductor invokes validation on events (`AEG-GW-010`); the agent's obligations reduce to *open a run, do the step content, request completion*. The numbered rules below describe the pre-AOG contract and remain the fallback discipline outside a conducted run.
+> **⚠ Superseded (2026-09-13) by HATHOR-ADR-002 / HATHOR-RP-009.** Control flow is system-native: the conductor invokes validation on events (`AEG-GW-010`); the agent's obligations reduce to *open a run, do the step content, request completion*. The numbered rules below describe the pre-AOG contract and remain the fallback discipline outside a conducted run.
 
 Agents MUST:
 

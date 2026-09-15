@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-005
+id: HATHOR-GUIDE-005
 title: AEGIS Business Capability Model
 summary: 'The top-level business capability is **governed agentic delivery**:'
 doc_type: GUIDE

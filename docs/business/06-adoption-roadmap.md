@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-008
+id: HATHOR-GUIDE-008
 title: AEGIS Adoption Roadmap
 summary: Move from design to measurable, governed use without treating feature completion as operational readiness or business value.
 doc_type: GUIDE
@@ -24,7 +24,7 @@ sources: []
 - **Business document:** 06 of 08
 - **Status:** Derived draft for business review
 - **Source baseline:** Architecture corpus as of 2026-09-14
-- **Primary source:** Approved [`AEGIS-PLAN-001`](../architect/aegis-plan-001-platform-roadmap-20260913.md), supported by PLAN-002/003 and the draft Ticketing Economy pilot recommendation
+- **Primary source:** Approved [`HATHOR-PLAN-001`](../architect/aegis-plan-001-platform-roadmap-20260913.md), supported by PLAN-002/003 and the draft Ticketing Economy pilot recommendation
 
 ## 1. Roadmap objective
 

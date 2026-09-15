@@ -1,6 +1,6 @@
 ---
-id: AEGIS-TS-002
-title: 'AEGIS-TS-002 — Orchestration Gateway: Technical Specification'
+id: HATHOR-TS-002
+title: 'HATHOR-TS-002 — Orchestration Gateway: Technical Specification'
 summary: 'RFC 2119 keywords apply. New identifiers: decisions `TS2-D-###`, components `TS2-C-###`, interfaces `TS2-I-###` (namespaced to avoid collision with TS-001''s `TS-D/TS-C/TS-I`).'
 doc_type: TS
 diataxis: reference
@@ -19,17 +19,17 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-TS-002 — Orchestration Gateway: Technical Specification
+# HATHOR-TS-002 — Orchestration Gateway: Technical Specification
 ## Implementation spec for the event-driven, system-native bot & linter orchestration gateway
 
-- **Document ID:** AEGIS-TS-002
+- **Document ID:** HATHOR-TS-002
 - **Status:** DRAFT v0 — implementation specification, pending operator review
 - **Date:** 2026-09-13
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Implements:** AEGIS-RP-009 (Orchestration Gateway) — requirements `AEG-GW-001..015`
-- **Decision basis:** AEGIS-ADR-002 (event-triggered central orchestration over choreography)
-- **Conforms to:** AEGIS-REQ-CORE-001 (PLAT/CLI/BOT/TEL/SEC + §14 gates), AEGIS-ARCH-001, AEGIS-REQ-BOT-001, AEGIS-RP-001 (manifest), AEGIS-RP-002 (registry), AEGIS-RP-003 (telemetry)
-- **Extends:** AEGIS-TS-001 (CVS implementation) — reuses its Go chassis, event-sourced ledger primitive, evidence/claim engine, telemetry spool, and Proctor dispatch seam
+- **Implements:** HATHOR-RP-009 (Orchestration Gateway) — requirements `AEG-GW-001..015`
+- **Decision basis:** HATHOR-ADR-002 (event-triggered central orchestration over choreography)
+- **Conforms to:** HATHOR-REQ-CORE-001 (PLAT/CLI/BOT/TEL/SEC + §14 gates), HATHOR-ARCH-001, HATHOR-REQ-BOT-001, HATHOR-RP-001 (manifest), HATHOR-RP-002 (registry), HATHOR-RP-003 (telemetry)
+- **Extends:** HATHOR-TS-001 (CVS implementation) — reuses its Go chassis, event-sourced ledger primitive, evidence/claim engine, telemetry spool, and Proctor dispatch seam
 - **Scope rule:** describes *how* to build the system. Authorizes **no code by itself**; implementation requires an authorizing ticket per CORE `AEG-REQ-TKT-004`.
 
 RFC 2119 keywords apply. New identifiers: decisions `TS2-D-###`, components `TS2-C-###`, interfaces `TS2-I-###` (namespaced to avoid collision with TS-001's `TS-D/TS-C/TS-I`).
@@ -612,4 +612,4 @@ Observation-Bot drains `orchestration.*`; Tower exposes: skipped-unit / complete
 
 ---
 
-*Draft v0 — implementation specification for AEGIS-RP-009 (per ADR-002). No code authorized without a ticket. Amend before promotion to verified.*
+*Draft v0 — implementation specification for HATHOR-RP-009 (per ADR-002). No code authorized without a ticket. Amend before promotion to verified.*

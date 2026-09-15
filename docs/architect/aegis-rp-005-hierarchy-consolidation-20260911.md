@@ -1,5 +1,5 @@
 ---
-id: AEGIS-RP-005
+id: HATHOR-RP-005
 title: 'AEGIS Research Paper 005 — Hierarchy Topology: Six Bots vs One Process-Bot with Six Tier Adapters'
 summary: 'The boards draw six Information Hierarchy bots (Procedure → Strategy → Playbook → Runbook → Workflow → Checklist), each queried by Process-Bot. The open question: keep **six bots**, or consolidate into **one Process-B...'
 doc_type: RP
@@ -21,11 +21,11 @@ sources: []
 ---
 # AEGIS Research Paper 005 — Hierarchy Topology: Six Bots vs One Process-Bot with Six Tier Adapters
 
-- **Document ID:** AEGIS-RP-005
+- **Document ID:** HATHOR-RP-005
 - **Status:** DRAFT (research output — pending operator review)
 - **Date:** 2026-09-11
-- **Parent:** AEGIS-REQ-BOT-001 (§10 Q5)
-- **Related:** AEGIS-RP-001 (capability routing, fast path), AEGIS-RP-002 (per-bot registry entries), AEGIS-RP-003 (per-tier telemetry)
+- **Parent:** HATHOR-REQ-BOT-001 (§10 Q5)
+- **Related:** HATHOR-RP-001 (capability routing, fast path), HATHOR-RP-002 (per-bot registry entries), HATHOR-RP-003 (per-tier telemetry)
 - **Amended by:** batch-dispatch primitive formalized 2026-09-13 (§4, `AEG-HIE-007`) — closes the PENDING-EDITS §3 item behind ARCH-001 §6's wave model
 - **Author:** Oz (Agent), commissioned by Raymond Bayly
 
@@ -37,7 +37,7 @@ The boards draw six Information Hierarchy bots (Procedure → Strategy → Playb
 
 ## 2. Evaluation Criteria
 
-Drawn from AEGIS-REQ-BOT-001: microbot purity (TAX-001), taxonomy integrity (TAX-004), chain traceability, per-tier observability (OBS-001), operational overhead (manifests, versions, registry entries), chain latency (RUN-001 request lifecycle), and failure isolation (RUN-003).
+Drawn from HATHOR-REQ-BOT-001: microbot purity (TAX-001), taxonomy integrity (TAX-004), chain traceability, per-tier observability (OBS-001), operational overhead (manifests, versions, registry entries), chain latency (RUN-001 request lifecycle), and failure isolation (RUN-003).
 
 ## 3. Options
 
@@ -59,7 +59,7 @@ This captures Option B's real benefits where they actually live (shared implemen
 The strongest argument for consolidation is six sequential hops. It is answered at the orchestration layer, not by merging bots:
 
 1. **Fan-out resolution:** Process-Bot issues tier queries as a **batched fan-out** (one CLI round trip carrying six sub-requests) rather than a sequential walk. Tiers whose inputs depend on a parent's output (Strategy needs the chosen Procedure) resolve in dependency waves — worst case 2–3 waves, not 6 hops.
-2. **Handshake fast path:** per AEGIS-RP-001 §3.5, steady-state per-bot overhead is a digest comparison; there is no repeated negotiation cost across the chain.
+2. **Handshake fast path:** per HATHOR-RP-001 §3.5, steady-state per-bot overhead is a digest comparison; there is no repeated negotiation cost across the chain.
 3. **Chain caching:** resolved chains are cacheable keyed by (intent, project, manifests-digest-set) with TTL; repeat work on the same procedure re-resolves only invalidated links.
 
 **Batch-dispatch primitive (formalized 2026-09-13).** The fan-out in item 1 is realized by a Process-Bot-owned capability **`hierarchy.resolve.chain@1`**: one CLI round trip carries a wave's sub-requests `[{tier, ref | selector}]`; the response returns per-entry results or per-entry structured refusals. Partial tier failure degrades the affected entry (AEG-HIE-005 semantics) — it never fails the wave. Fan-out to the tier bots happens inside Process-Bot via Proctor dispatch; callers never batch across unrelated runs. Normative form: `AEG-HIE-007` below.

@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-032
+id: HATHOR-GUIDE-032
 title: "Release Manager Guide"
 summary: "How Release Managers run ticket-authorized, gate-enforced promotion along the AEGIS environment path without skipping stages."
 doc_type: GUIDE
@@ -22,7 +22,7 @@ supersedes: []
 superseded_by: null
 amended_by: []
 parent: null
-sources: [AEGIS-CANON-001, AEGIS-CANON-002, AEGIS-RP-007, AEGIS-TS-001, AEGIS-GUIDE-013, AEGIS-ADR-003]
+sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-RP-007, HATHOR-TS-001, HATHOR-GUIDE-013, HATHOR-ADR-003]
 ---
 # Release Manager Guide
 
@@ -45,26 +45,26 @@ CI enforcement lives in `.github/workflows/enforce-promotion-path.yml`. Treat fa
 
 ## 2. Ticketing and DVO Authority
 
-* **Human-executed promotion:** Higher environments require a DVO/deploy ticket you (or the designated operator) authorize; the system executes (AEGIS-GUIDE-013).
+* **Human-executed promotion:** Higher environments require a DVO/deploy ticket you (or the designated operator) authorize; the system executes (HATHOR-GUIDE-013).
 * **Agents do not promote:** Agents build and verify locally/development. They must not deploy testing→prod.
-* **No-Ticket Gate:** Release trains without an authorized ticket are refused at dispatch (AEGIS-CANON-001 gates).
+* **No-Ticket Gate:** Release trains without an authorized ticket are refused at dispatch (HATHOR-CANON-010 gates).
 * Keep ticket fields current: target stage, build/image digests, validation run IDs, rollback pointer.
 
 ## 3. Validation Gates Before You Cut a Release
 
-Align the release checklist to continuous validation (AEGIS-RP-007, AEGIS-TS-001):
+Align the release checklist to continuous validation (HATHOR-RP-007, HATHOR-TS-001):
 
 1. **Build-Time:** Micro-linters clean; nothing un-linted is containerized.
 2. **Change-Time:** `val-*` bots and PR checks green; known refused claims documented.
 3. **Dispatch-Time:** Proctor/Sequence/Barrier gates allow the release workflow only under lawful plan data.
 4. **Runtime:** Observation spool draining; no silent telemetry loss at quota hard-stop without a decision.
 
-Use `aegis process ... --dry-run` for the release playbook, then `--yes` only with ticket + plan match (AEGIS-ADR-003).
+Use `aegis process ... --dry-run` for the release playbook, then `--yes` only with ticket + plan match (HATHOR-ADR-003).
 
 ## 4. Artifacts and Provenance
 
 * Prefer signed manifests and digests verifiable offline via Control Tower artifacts.
-* Record image tags, chart versions, and config hashes on the ticket and in Knowledge as **draft** until human verification promotes them (AEGIS-RP-004).
+* Record image tags, chart versions, and config hashes on the ticket and in Knowledge as **draft** until human verification promotes them (HATHOR-RP-004).
 * On Control Tower disconnect, respect trust TTL (`verified-local` → `PROVENANCE_UNVERIFIED`). Do not mint production authority from stale local cache.
 
 ## 5. Coordination with Roles

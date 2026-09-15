@@ -1,19 +1,20 @@
-# AEGIS / HATHOR Developer Docs
+# HATHOR Developers docs
 
-> Role guides and developer-facing how-tos for building on HATHOR/AEGIS.
+> OpenSource HATHOR `developers` documentation map.
 
-## Canon
-- [AEGIS-CANON-007 — AEGIS Developer Documentation](./INDEX.md): Welcome to the AEGIS Developer Documentation. This section provides technical guidance for building, integrating, and operating the AEGIS agentic governance platform and the HATHOR framework.
+## CANON
+- [HATHOR-CANON-007 AEGIS Developer Documentation](./INDEX.md): Welcome to the AEGIS Developer Documentation. This section provides technical guidance for building, integrating, and operating the AEGIS ag
 
-## Guides
-- [AEGIS-GUIDE-011 — Agent Integrator Guide](./agent-integrator.md): As an Agent Integrator (or AI Agent), you interact with the AEGIS platform as an active participant—building, verifying, and navigating project state. You will drive your operations entirely through the `aegis` CLI.
-- [AEGIS-GUIDE-012 — Bot Developer Guide](./bot-developer.md): As a Bot Developer, your role is to build and maintain the single-role micro-bots that provide capabilities to the AEGIS platform. All bots strictly adhere to the HATHOR operating model.
-- [AEGIS-GUIDE-013 — DevOps & DVO Guide](./devops-dvo.md): As a DevOps Engineer or Deployment & Validation Operator (DVO), your responsibility is to manage the environments, container deployments, telemetry ingestion, and authorized promotions for the AEGIS platform.
-- [AEGIS-GUIDE-014 — Platform Engineer Guide](./platform-engineer.md): Platform Engineers build the core AEGIS platform: the CLI, the Go chassis, the orchestration bots, the validation fabric, and the Control Tower API.
-- [AEGIS-GUIDE-030 — QA/Test Engineer Guide](./qa-test-engineer.md): How QA and Test Engineers exercise AEGIS validation altitudes, refuse bad claims, and keep promotion evidence honest.
-- [AEGIS-GUIDE-031 — Product Manager Guide](./product-manager.md): How Product Managers shape AEGIS work through tickets, planes of authority, and evidence-backed outcomes without bypassing gates.
-- [AEGIS-GUIDE-032 — Release Manager Guide](./release-manager.md): How Release Managers run ticket-authorized, gate-enforced promotion along the AEGIS environment path without skipping stages.
-- [AEGIS-GUIDE-033 — Security & Compliance Officer Guide](./security-compliance-officer.md): How Security and Compliance Officers use AEGIS gates, zero-secret invariants, and knowledge trust tiers as mechanical controls.
-- [AEGIS-GUIDE-034 — Technical Writer Guide](./technical-writer.md): How Technical Writers author hathor-doc@1 corpus docs, keep IDs stable, and align docs with Knowledge Plane trust.
-- [AEGIS-GUIDE-035 — Engineering Manager Guide](./engineering-manager.md): How Engineering Managers run AEGIS delivery through tickets, gates, validation altitudes, and honest promotion without heroics.
-- [AEGIS-GUIDE-036 — UX/Design Guide](./ux-design.md): How UX and Design shape AEGIS agent/CLI experiences around envelopes, gates, trust tiers, and honest degradation.
+## GUIDE
+- [HATHOR-GUIDE-011 Agent Integrator Guide](./agent-integrator.md): As an Agent Integrator (or AI Agent), you interact with the AEGIS platform as an active participant—building, verifying, and navigating proj
+- [HATHOR-GUIDE-012 Bot Developer Guide](./bot-developer.md): As a Bot Developer, your role is to build and maintain the single-role micro-bots that provide capabilities to the AEGIS platform. All bots 
+- [HATHOR-GUIDE-013 DevOps & DVO Guide](./devops-dvo.md): As a DevOps Engineer or Deployment & Validation Operator (DVO), your responsibility is to manage the environments, container deployments, te
+- [HATHOR-GUIDE-014 Platform Engineer Guide](./platform-engineer.md): Platform Engineers build the core AEGIS platform: the CLI, the Go chassis, the orchestration bots, the validation fabric, and the Control To
+- [HATHOR-GUIDE-030 QA/Test Engineer Guide](./qa-test-engineer.md): How QA and Test Engineers exercise AEGIS validation altitudes, refuse bad claims, and keep promotion evidence honest.
+- [HATHOR-GUIDE-031 Product Manager Guide](./product-manager.md): How Product Managers shape AEGIS work through tickets, planes of authority, and evidence-backed outcomes without bypassing gates.
+- [HATHOR-GUIDE-032 Release Manager Guide](./release-manager.md): How Release Managers run ticket-authorized, gate-enforced promotion along the AEGIS environment path without skipping stages.
+- [HATHOR-GUIDE-033 Security & Compliance Officer Guide](./security-compliance-officer.md): How Security and Compliance Officers use AEGIS gates, zero-secret invariants, and knowledge trust tiers as mechanical controls.
+- [HATHOR-GUIDE-034 Technical Writer Guide](./technical-writer.md): How Technical Writers author hathor-doc@1 corpus docs, keep IDs stable, and align docs with Knowledge Plane trust.
+- [HATHOR-GUIDE-035 Engineering Manager Guide](./engineering-manager.md): How Engineering Managers run AEGIS delivery through tickets, gates, validation altitudes, and honest promotion without heroics.
+- [HATHOR-GUIDE-036 UX/Design Guide](./ux-design.md): How UX and Design shape AEGIS agent/CLI experiences around envelopes, gates, trust tiers, and honest degradation.
+

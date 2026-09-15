@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-009
+id: HATHOR-GUIDE-009
 title: AEGIS Value and Success Measures
 summary: CTL-*` and `VAL-*` labels are local measurement aids. They do not add canonical AEGIS identifiers or alter source acceptance criteria.
 doc_type: GUIDE

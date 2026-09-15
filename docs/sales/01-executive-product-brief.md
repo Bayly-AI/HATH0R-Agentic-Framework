@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-015
+id: HATHOR-GUIDE-015
 title: AEGIS Executive Product Brief
 summary: AI agents can increase the speed and volume of engineering work. They can also distribute intent, authority, credentials, evidence, and status across chats, repositories, trackers, CI systems, and provider consoles. W...
 doc_type: GUIDE

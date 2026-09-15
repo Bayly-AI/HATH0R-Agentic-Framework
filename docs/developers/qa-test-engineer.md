@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-030
+id: HATHOR-GUIDE-030
 title: "QA/Test Engineer Guide"
 summary: "How QA and Test Engineers exercise AEGIS validation altitudes, refuse bad claims, and keep promotion evidence honest."
 doc_type: GUIDE
@@ -22,7 +22,7 @@ supersedes: []
 superseded_by: null
 amended_by: []
 parent: null
-sources: [AEGIS-CANON-001, AEGIS-CANON-002, AEGIS-RP-007, AEGIS-TS-001, AEGIS-ADR-003, AEGIS-GUIDE-013]
+sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-RP-007, HATHOR-TS-001, HATHOR-ADR-003, HATHOR-GUIDE-013]
 ---
 # QA/Test Engineer Guide
 
@@ -30,11 +30,11 @@ As a QA or Test Engineer on AEGIS, you do not “hope the build is green.” You
 
 ## 1. Your Place in the Validation Fabric
 
-AEGIS continuous validation is specified across altitudes (AEGIS-RP-007, AEGIS-TS-001):
+AEGIS continuous validation is specified across altitudes (HATHOR-RP-007, HATHOR-TS-001):
 
 1. **Build-Time (1):** Micro-linters are pure and exit `0|2`. Un-linted images must fail the build.
 2. **Change-Time (2):** Micro-linters plus validator bots (`val-*`) refuse bad changes, assumptions, or claims.
-3. **Dispatch-Time (3):** Proctor gates (G01–G09 and the broader 15 Governance Gates in AEGIS-CANON-001 §2) refuse unlawful dispatch.
+3. **Dispatch-Time (3):** Proctor gates (G01–G09 and the broader 15 Governance Gates in HATHOR-CANON-010 §2) refuse unlawful dispatch.
 4. **Runtime (4):** Observation family records only — never refuses.
 
 Your job is to design suites that *prove* each altitude still holds, not to bypass them with privileged scripts.
@@ -43,12 +43,12 @@ Your job is to design suites that *prove* each altitude still holds, not to bypa
 
 * **No-Ticket Gate:** Substantive test automation changes, fixture data that affects shared environments, and promotion sign-offs require an authorized ticket linked to an Epic.
 * **Commands:** Prefer `aegis work ...` and `aegis process ...` over ad-hoc shell when mutating project state.
-* **Evidence on the record:** Attach run IDs, validator outputs, and URL checks to the ticket. Observation rollups live on the record; chat paste is not provenance (AEGIS-CANON-002 HP-11/HP-12).
-* **Promotion path (CR-BAI-001):** `local → development → testing → staging → master (Production)`. You own the *testing* gate quality bar: deploy + URL validation must pass before Release/DVO promote further (see AEGIS-GUIDE-013).
+* **Evidence on the record:** Attach run IDs, validator outputs, and URL checks to the ticket. Observation rollups live on the record; chat paste is not provenance (HATHOR-CANON-011 HP-11/HP-12).
+* **Promotion path (CR-BAI-001):** `local → development → testing → staging → master (Production)`. You own the *testing* gate quality bar: deploy + URL validation must pass before Release/DVO promote further (see HATHOR-GUIDE-013).
 
 ## 3. CLI Contracts and Exit Codes
 
-Drive verification through the `aegis` CLI (AEGIS-ADR-003 command surface):
+Drive verification through the `aegis` CLI (HATHOR-ADR-003 command surface):
 
 * Use `--output=json` (or pipe auto-detection) and assert on structured envelopes `{code, message, remediation, provenance, ttl}`.
 * Treat CLI exit codes as the public contract: `0` success, `1` runtime, `2` usage/validation, `3` not found, `4` auth, `5` conflict, `6` dependency unhealthy, `7` confirmation required.
@@ -59,7 +59,7 @@ Always start non-idempotent verification with `--dry-run`, then `--yes` only whe
 ## 4. What to Test by Plane
 
 * **Registry / Control Tower:** Offline verification of signed manifests and keys; TTL expiry degrades to `PROVENANCE_UNVERIFIED` without inventing authority.
-* **Knowledge Plane (AEGIS-RP-004 / AEGIS-RP-012):** Drafts are invisible without `--include-drafts`; no auto-promotion to `verified`; secrets/PII scanners must block promotion.
+* **Knowledge Plane (HATHOR-RP-004 / HATHOR-RP-012):** Drafts are invisible without `--include-drafts`; no auto-promotion to `verified`; secrets/PII scanners must block promotion.
 * **Ticketing adapters:** Authority reconciliation (upstream wins), buffered/`degraded: true` states, and UUIDv7 dedupe on reconnect.
 * **Telemetry spool:** JSONL Event Envelope v1; spool quotas (warn/shed/hard-stop) must not block primary execution under load tests.
 

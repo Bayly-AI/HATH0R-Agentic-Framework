@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-012
+id: HATHOR-GUIDE-012
 title: Bot Developer Guide
 summary: As a Bot Developer, your role is to build and maintain the single-role micro-bots that provide capabilities to the AEGIS platform. All bots strictly adhere to the HATHOR operating model.
 doc_type: GUIDE

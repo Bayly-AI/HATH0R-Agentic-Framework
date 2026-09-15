@@ -1,5 +1,5 @@
 ---
-id: AEGIS-RP-004
+id: HATHOR-RP-004
 title: AEGIS Research Paper 004 — Draft→Verified Knowledge Promotion Workflow
 summary: 'Every knowledge write lands as `draft`; only human review promotes to `verified` (KNO-004). Undefined: **who reviews**, **where the queue lives**, and the full status lifecycle including demotion and expiry. The board...'
 doc_type: RP
@@ -21,11 +21,11 @@ sources: []
 ---
 # AEGIS Research Paper 004 — Draft→Verified Knowledge Promotion Workflow
 
-- **Document ID:** AEGIS-RP-004
+- **Document ID:** HATHOR-RP-004
 - **Status:** DRAFT (research output — pending operator review)
 - **Date:** 2026-09-11
-- **Parent:** AEGIS-REQ-BOT-001 (§10 Q4)
-- **Related:** AEGIS-RP-003 (promotion/demotion telemetry events)
+- **Parent:** HATHOR-REQ-BOT-001 (§10 Q4)
+- **Related:** HATHOR-RP-003 (promotion/demotion telemetry events)
 - **Author:** Oz (Agent), commissioned by Raymond Bayly
 
 ---
@@ -91,7 +91,7 @@ Items 2, 3, 5 are hard mechanical gates (the CLI refuses promotion); 1, 4, 6, 7 
 
 - Draft age SLA: drafts older than a threshold (proposed 14 days project/machine, 30 days org) are flagged in `status --group knowledge` as degraded — unreviewed knowledge is a system smell, not background noise.
 - Auto-archive: drafts untouched past 2× SLA are archived with reason `expired-unreviewed` (recoverable — archive is not deletion).
-- Every transition emits a `knowledge.status_change` telemetry event (extends AEGIS-RP-003 vocabulary) so promotion throughput and queue depth are Tower-visible metrics.
+- Every transition emits a `knowledge.status_change` telemetry event (extends HATHOR-RP-003 vocabulary) so promotion throughput and queue depth are Tower-visible metrics.
 
 ## 3. Requirements (AEG-KPW)
 
@@ -135,7 +135,7 @@ Default retrieval serves only in-TTL `verified`; drafts require explicit opt-in;
 
 ## 5. Open Questions
 
-1. Curator registry shape: per-domain list vs capability-style grants (`knowledge.promote.org.<domain>@1`) — the latter would reuse the manifest/capability vocabulary (AEGIS-RP-001).
+1. Curator registry shape: per-domain list vs capability-style grants (`knowledge.promote.org.<domain>@1`) — the latter would reuse the manifest/capability vocabulary (HATHOR-RP-001).
 2. Should dispute by bots be rate-limited to prevent evidence-spam from a misbehaving bot? (Interaction with retry-Bot data.)
 3. TTL defaults per content class (procedure vs workflow vs checklist knowledge age very differently).
 4. Whether org-tier promotion should require two curators (four-eyes) for governance-class records.

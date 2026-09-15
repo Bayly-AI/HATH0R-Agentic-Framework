@@ -1,6 +1,6 @@
 ---
-id: AEGIS-RP-008
-title: AEGIS-RP-008 — Micro-Bot Launch Roster
+id: HATHOR-RP-008
+title: HATHOR-RP-008 — Micro-Bot Launch Roster
 summary: RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-MBL-###` (Micro-Bot Launch).
 doc_type: RP
 diataxis: explanation
@@ -19,15 +19,15 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-RP-008 — Micro-Bot Launch Roster
+# HATHOR-RP-008 — Micro-Bot Launch Roster
 ## Reconciling the Outline Micro-Bot Architecture Against Canonical Taxonomy; Initial Launch List
 
-- **Document ID:** AEGIS-RP-008
+- **Document ID:** HATHOR-RP-008
 - **Status:** DRAFT v0 — research output, pending operator review
 - **Date:** 2026-09-12
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Companion to:** AEGIS-REQ-BOT-001 (taxonomy/anatomy), AEGIS-REQ-CORE-001 §5 (bot integration), AEGIS-ARCH-001 §4 (bot family diagram), AEGIS-RP-007 (validator roster + naming note), `01-Invocation-Inventory-Top30-2026-09-11.md` (usage evidence), `images/03-outline-micro-bot-architecture.png` (source outline reconciled here)
-- **Amended by:** AEGIS-RP-009 / AEGIS-TS-002 (2026-09-13): the Validator-Bot roster gains `val-completeness-Bot` (P2, TS-002 §9.1) — the canonical roster is now **26** bots; see AEGIS-CANON-001 §6.
+- **Companion to:** HATHOR-REQ-BOT-001 (taxonomy/anatomy), HATHOR-REQ-CORE-001 §5 (bot integration), HATHOR-ARCH-001 §4 (bot family diagram), HATHOR-RP-007 (validator roster + naming note), `01-Invocation-Inventory-Top30-2026-09-11.md` (usage evidence), `images/03-outline-micro-bot-architecture.png` (source outline reconciled here)
+- **Amended by:** HATHOR-RP-009 / HATHOR-TS-002 (2026-09-13): the Validator-Bot roster gains `val-completeness-Bot` (P2, TS-002 §9.1) — the canonical roster is now **26** bots; see HATHOR-CANON-010 §6.
 - **Scope rule:** research and roster/sequencing design only. No implementation authorized.
 
 RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-MBL-###` (Micro-Bot Launch).
@@ -38,7 +38,7 @@ RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-MBL-###` (Mi
 
 The submitted outline (`images/03-outline-micro-bot-architecture.png`) proposes fifteen "services" as the Micro-Bot roster: Knowledge, Cleaner, Tower, Init, Human, Connection, Documentation, Ticket, GitHub, Atlassian, AWS, Azure, Firebase, Provenance, Task.
 
-That list predates the ratified taxonomy. AEGIS-REQ-BOT-001 subsequently fixed **three canonical families with enumerated rosters**, and AEGIS-RP-007 added the **only sanctioned extension** (a Proctor-owned Validator-Bot roster, deliberately kept out of a fourth family — RP-007 §1.3). This paper does two things:
+That list predates the ratified taxonomy. HATHOR-REQ-BOT-001 subsequently fixed **three canonical families with enumerated rosters**, and HATHOR-RP-007 added the **only sanctioned extension** (a Proctor-owned Validator-Bot roster, deliberately kept out of a fourth family — RP-007 §1.3). This paper does two things:
 
 1. **Reconciles** every outline item against that ratified structure (§3) — adopting, correcting, reclassifying, or deferring each one, the same way BOT-001 §9 and RP-007 §11 logged Infra-adoption decisions.
 2. **Produces the initial launch roster** (§4) in the same table shape as the Micro-Linter catalog (`aegis-rp-007` §4.1): **Group · Name · What it does · Drift it stops** — with a **Launch** column added, since this is a phased launch list rather than an always-on set.
@@ -53,10 +53,10 @@ That list predates the ratified taxonomy. AEGIS-REQ-BOT-001 subsequently fixed *
 
 | Input | What it fixes |
 |---|---|
-| AEGIS-REQ-BOT-001 §2 (`AEG-BOT-TAX-001..006`) | Three canonical families, each with an enumerated, fixed roster |
-| AEGIS-REQ-CORE-001 §5 (`AEG-REQ-BOT-001..010`) | Restates rosters at platform level; seven-block anatomy; default command contract |
-| AEGIS-ARCH-001 §4 | Visual roster (Orchestration / Hierarchy / Observation) + "Tower is not a bot" |
-| AEGIS-RP-007 §1.3, §5 | Validator-Bots as Orchestration-adjacent, Proctor-owned; naming note on `val-<x>-Bot` to avoid collisions |
+| HATHOR-REQ-BOT-001 §2 (`AEG-BOT-TAX-001..006`) | Three canonical families, each with an enumerated, fixed roster |
+| HATHOR-REQ-CORE-001 §5 (`AEG-REQ-BOT-001..010`) | Restates rosters at platform level; seven-block anatomy; default command contract |
+| HATHOR-ARCH-001 §4 | Visual roster (Orchestration / Hierarchy / Observation) + "Tower is not a bot" |
+| HATHOR-RP-007 §1.3, §5 | Validator-Bots as Orchestration-adjacent, Proctor-owned; naming note on `val-<x>-Bot` to avoid collisions |
 | `aegis-ts-001` / `aegis-plan-002` / `aegis-plan-003` | Where validator phases and the remaining-validator placements are already scheduled; everything else here is this paper's own proposal |
 | `01-Invocation-Inventory-Top30` | Real usage weighting for adapter/P0 sequencing (Jira/GitHub dominate history) |
 | `images/03-outline-micro-bot-architecture.png` | The fifteen-item outline being reconciled |
@@ -84,7 +84,7 @@ Same pattern as the Infra adoption logs (`aegis-bot-taxonomy-requirements` §9, 
 | 2 | Cleaner Service | **Gap — deferred pending ADR** | No canonical owner for `.aegis/state/` retention/purge (run dirs, spool quota, expired drafts). Candidate homes: a Process-Bot subcommand, or a new Proctor-owned maintenance-Bot justified the same way RP-007 justified Validator-Bots. Not decided here. |
 | 3 | Tower Service | **Correction — not a bot** | Control Tower is the authenticated platform authority, explicitly excluded from the bot roster and not a universal terminal hop. `[AEG-REQ-BOT-006, RP-010 §2]` Reached directly via authenticated `aegis tower …` commands. |
 | 4 | Init Service | **Fold into existing capability** | `aegis repo init\|validate` (UPL bootstrap) is a Process-Bot-mediated CLI capability, not a standalone bot. |
-| 5 | Human Service | **Correction — not a bot** | Maps to the Human operator actor/persona (`AEGIS-REQ-CORE-001` §2); authority-bearing actions require Tower-issued short-lived human tokens, while TTY is a UX hint only (`AEG-THR-002`). |
+| 5 | Human Service | **Correction — not a bot** | Maps to the Human operator actor/persona (`HATHOR-REQ-CORE-001` §2); authority-bearing actions require Tower-issued short-lived human tokens, while TTY is a UX hint only (`AEG-THR-002`). |
 | 6 | Connection Service | **Correction — is Operator-Bot** | This is Operator-Bot's defining responsibility (`AEG-BOT-TAX-003`), not a separate bot. |
 | 7 | Documentation Service | **Fold into existing capability** | Link/metadata integrity already owned by `val-hierarchy-Bot` (chain/link sync) and `val-knowledge-Bot` (mandatory metadata). No new bot justified yet. |
 | 8 | Ticket Service | **Correction — split across existing roles** | Active side is Operator-Bot's ticketing adapters (`AEG-REQ-TKT-003`); validation side is `val-ticket-Bot`. Not a new peer bot. |

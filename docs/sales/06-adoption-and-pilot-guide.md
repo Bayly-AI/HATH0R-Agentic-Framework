@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-020
+id: HATHOR-GUIDE-020
 title: Adoption and Pilot Guide
 summary: 'AEGIS should move from design to governed use incrementally:'
 doc_type: GUIDE

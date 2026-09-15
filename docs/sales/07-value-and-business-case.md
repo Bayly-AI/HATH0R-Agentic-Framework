@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-021
+id: HATHOR-GUIDE-021
 title: Value and Business Case
 summary: 'AEGIS should be evaluated as both:'
 doc_type: GUIDE

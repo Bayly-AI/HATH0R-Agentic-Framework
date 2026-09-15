@@ -1,6 +1,6 @@
 ---
-id: AEGIS-TS-001
-title: 'AEGIS-TS-001 — Continuous Validation System: Technical Specification'
+id: HATHOR-TS-001
+title: 'HATHOR-TS-001 — Continuous Validation System: Technical Specification'
 summary: 'RFC 2119 keywords apply. New identifiers introduced here: components `TS-C-###`, interfaces `TS-I-###`, decisions `TS-D-###`.'
 doc_type: TS
 diataxis: reference
@@ -19,15 +19,15 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-TS-001 — Continuous Validation System: Technical Specification
+# HATHOR-TS-001 — Continuous Validation System: Technical Specification
 ## Implementation spec for the change-time immune system (micro-linters + validator micro-bots)
 
-- **Document ID:** AEGIS-TS-001
+- **Document ID:** HATHOR-TS-001
 - **Status:** DRAFT v0 — implementation specification, pending operator review
 - **Date:** 2026-09-11
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Implements:** AEGIS-RP-007 (Continuous Validation System) — requirements `AEG-VAL-001..015`
-- **Conforms to:** AEGIS-REQ-CORE-001 (PLAT/CLI/BOT/TEL/SEC/NFR), AEGIS-ARCH-001, AEGIS-REQ-BOT-001, RP-001 (manifest), RP-002 (registry), RP-003 (telemetry)
+- **Implements:** HATHOR-RP-007 (Continuous Validation System) — requirements `AEG-VAL-001..015`
+- **Conforms to:** HATHOR-REQ-CORE-001 (PLAT/CLI/BOT/TEL/SEC/NFR), HATHOR-ARCH-001, HATHOR-REQ-BOT-001, RP-001 (manifest), RP-002 (registry), RP-003 (telemetry)
 - **Scope rule:** This specification describes *how* to build the system. It authorizes **no code by itself**; implementation requires an authorizing ticket per AEGIS governance (CORE AEG-REQ-TKT-004).
 
 RFC 2119 keywords apply. New identifiers introduced here: components `TS-C-###`, interfaces `TS-I-###`, decisions `TS-D-###`.
@@ -785,4 +785,4 @@ Language-specific surface is confined to: `cmd/aegis`, `internal/linter/native`,
 
 ---
 
-*Draft v0 — implementation specification for AEGIS-RP-007. No code authorized without a ticket. Amend before promotion to verified.*
+*Draft v0 — implementation specification for HATHOR-RP-007. No code authorized without a ticket. Amend before promotion to verified.*

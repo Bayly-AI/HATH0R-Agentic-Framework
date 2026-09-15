@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-018
+id: HATHOR-GUIDE-018
 title: Architecture and Integrations
 summary: AEGIS is designed as a provider-neutral governance layer between human or agent intent and the tools that execute or record work.
 doc_type: GUIDE
@@ -259,8 +259,8 @@ Before a technical commitment, confirm:
 ## Sources
 
 - [Architecture Corpus Index](../architect/INDEX.md)
-- [Architecture Diagrams](../architect/AEGIS-ARCH-001-architecture-mermaid-20260911.md)
-- [Core Requirements](../architect/AEGIS-REQ-CORE-001-initial-requirements-20260911.md)
+- [Architecture Diagrams](../architect/HATHOR-ARCH-001-architecture-mermaid-20260911.md)
+- [Core Requirements](../architect/HATHOR-REQ-CORE-001-initial-requirements-20260911.md)
 - [Central Orchestration Decision](../architect/aegis-adr-002-orchestration-coordination-model-20260913.md)
 - [Command Surface Decision](../architect/aegis-adr-003-greenfield-command-surface-20260913.md)
 - [State Residency Decision](../architect/aegis-adr-004-layout-state-residency-20260913.md)

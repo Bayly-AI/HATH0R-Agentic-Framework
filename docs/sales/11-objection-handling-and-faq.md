@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-025
+id: HATHOR-GUIDE-025
 title: Objection Handling and FAQ
 summary: 'For every objection:'
 doc_type: GUIDE

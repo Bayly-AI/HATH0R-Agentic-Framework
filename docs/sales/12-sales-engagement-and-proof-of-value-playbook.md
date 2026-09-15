@@ -1,5 +1,5 @@
 ---
-id: AEGIS-GUIDE-026
+id: HATHOR-GUIDE-026
 title: Sales Engagement and Proof-of-Value Playbook
 summary: Sell the right to evaluate a governance problem, not an unsupported production outcome.
 doc_type: GUIDE

@@ -1,5 +1,5 @@
 ---
-id: AEGIS-CANON-003
+id: HATHOR-CANON-012
 title: "HATHOR Documentation Framework"
 summary: "Metadata schema, IDs, versioning, review, staleness, indexing, and enforcement for HATHOR docs."
 doc_type: CANON
@@ -22,20 +22,20 @@ supersedes: []
 superseded_by: null
 amended_by: []
 parent: null
-sources: [AEGIS-CANON-001, AEGIS-CANON-002, AEGIS-RP-004, AEGIS-RP-012]
+sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-RP-004, HATHOR-RP-012]
 ---
-# AEGIS-CANON-003 — HATHOR Documentation Framework
+# HATHOR-CANON-012 — HATHOR Documentation Framework
 ## Metadata Schema · Document Types · IDs · Versioning · Review & Sign-off · Staleness · Indexing · Enforcement
 
 > This document carries a machine-readable `hathor-doc@1` front-matter block (above) as the canonical header and the human-readable bulleted header (below) as the rendered view — the dual form defined in §3.1. It is the first conformant example of the standard it specifies.
 
-- **Document ID:** AEGIS-CANON-003
+- **Document ID:** HATHOR-CANON-012
 - **Status:** ACCEPTED — operator ratification 2026-09-15 (PENDING-EDITS D12)
 - **Version:** 0.2.1
 - **Date:** 2026-09-15
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Derived from / Consolidates:** README knowledge properties (discoverability, digital provenance, TTL/staleness, draft/verified status, machine-readable manifest); AEGIS-CANON-001 §7 (naming & ID conventions) and §8 (requirement-prefix index); INDEX.md (corpus index + reading order); PENDING-EDITS.md (change-control register); AEGIS-RP-004 (knowledge promotion: draft→verified, TTL) and AEGIS-RP-012 (knowledge storage/retrieval, record v1); AEGIS-CANON-002 HP-11 (provenance over recency) and HP-12 (attributable & reconstructable)
-- **Companion to:** AEGIS-CANON-001 (registries — this document is the registry authority for documentation types, statuses, and metadata), AEGIS-CANON-002 (platform principles)
+- **Derived from / Consolidates:** README knowledge properties (discoverability, digital provenance, TTL/staleness, draft/verified status, machine-readable manifest); HATHOR-CANON-010 §7 (naming & ID conventions) and §8 (requirement-prefix index); INDEX.md (corpus index + reading order); PENDING-EDITS.md (change-control register); HATHOR-RP-004 (knowledge promotion: draft→verified, TTL) and HATHOR-RP-012 (knowledge storage/retrieval, record v1); HATHOR-CANON-011 HP-11 (provenance over recency) and HP-12 (attributable & reconstructable)
+- **Companion to:** HATHOR-CANON-010 (registries — this document is the registry authority for documentation types, statuses, and metadata), HATHOR-CANON-011 (platform principles)
 - **External standards adopted:** Diátaxis (content architecture), llms.txt v2 (agent-facing index), docs-as-code (CI-validated docs in VCS), Dublin Core / DCMI + PAV (metadata vocabulary), Semantic Versioning 2.0.0 (document versioning), Keep a Changelog (change history), RFC 2119 (normative keywords), Michael Nygard ADRs (decision records). Adoption rationale and rejected alternatives are logged in §14.
 - **Maintenance rule:** any paper that adds a document type, status value, review tier, or metadata field MUST amend this document in the same change. Semantics may live in a source paper; **membership and the canonical metadata schema live here**. Drift between a paper and this registry is a defect in the paper (mirrors CANON-001).
 - **Scope rule:** standard/interface definition only. No implementation is authorized by this document; tooling (linters, indexer, CI) is scheduled through the owning plan and an authorizing ticket.
@@ -111,7 +111,7 @@ Rationale: a bulleted Markdown header is human-readable but not reliably machine
 ```yaml
 ---
 # ---- Identity (required) ----
-id: AEGIS-CANON-003                 # stable Document ID (§5); immutable for the life of the doc
+id: HATHOR-CANON-012                 # stable Document ID (§5); immutable for the life of the doc
 title: "HATHOR Documentation Framework"
 summary: "Metadata schema, IDs, versioning, review, staleness, indexing, and enforcement for HATHOR docs."
                                      # one sentence; feeds INDEX + llms.txt + blockquote
@@ -145,7 +145,7 @@ supersedes: []                      # list of doc IDs this replaces
 superseded_by: null                 # doc ID that replaces this, once superseded
 amended_by: []                      # doc IDs that amend sections here (mirror in PENDING-EDITS)
 parent: null                        # parent doc ID (e.g., RP-014 parent = REQ-BOT-001)
-sources: [AEGIS-CANON-001, AEGIS-CANON-002, AEGIS-RP-004, AEGIS-RP-012]  # source doc IDs, requirement IDs, or code globs (§8.3)
+sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-RP-004, HATHOR-RP-012]  # source doc IDs, requirement IDs, or code globs (§8.3)
 ---
 ```
 
@@ -332,11 +332,11 @@ Example (`docs/architect/llms.txt`):
 > Governance and control-plane design for the HATHOR agentic application framework. Start with the canon, then accepted ADRs and RPs.
 
 ## Canon
-- [AEGIS-CANON-001 Registries](./aegis-canon-001-registries-20260913.md): gates, events, refusal codes, linters, bot roster, IDs.
-- [AEGIS-CANON-003 Documentation Framework](./aegis-canon-003-documentation-framework-20260915.md): how every doc is structured, versioned, reviewed, and indexed.
+- [HATHOR-CANON-010 Registries](./aegis-canon-001-registries-20260913.md): gates, events, refusal codes, linters, bot roster, IDs.
+- [HATHOR-CANON-012 Documentation Framework](./aegis-canon-003-documentation-framework-20260915.md): how every doc is structured, versioned, reviewed, and indexed.
 
 ## Decisions
-- [AEGIS-ADR-003 Greenfield command surface](./aegis-adr-003-greenfield-command-surface-20260913.md): nine-domain CLI.
+- [HATHOR-ADR-003 Greenfield command surface](./aegis-adr-003-greenfield-command-surface-20260913.md): nine-domain CLI.
 ```
 
 ### 9.4 Generation, not duplication
@@ -390,7 +390,7 @@ This file demonstrates conformance: the `hathor-doc@1` front-matter block at the
 - **AEG-DOC-009 — Generated machine index.** `index.json` and `llms.txt` are generated from front-matter. **AC:** regeneration is byte-reproducible from sources.
 - **AEG-DOC-010 — Docs-as-code gate.** Blocking checks pass before merge; sign-off recorded in `PENDING-EDITS`. **AC:** §10 policy enforced in CI.
 
-Registered CANON-001 §8 row (D12): `AEG-DOC-###` → *HATHOR documentation framework* → **AEGIS-CANON-003**.
+Registered CANON-001 §8 row (D12): `AEG-DOC-###` → *HATHOR documentation framework* → **HATHOR-CANON-012**.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
-id: AEGIS-CANON-002
-title: AEGIS-CANON-002 — HATHOR Platform Principles
+id: HATHOR-CANON-011
+title: HATHOR-CANON-011 — HATHOR Platform Principles
 summary: RFC 2119 keywords appear only inside quoted source requirements.
 doc_type: CANON
 diataxis: reference
@@ -19,15 +19,15 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-CANON-002 — HATHOR Platform Principles
+# HATHOR-CANON-011 — HATHOR Platform Principles
 ## The Platform-Altitude Principle Set (`hathor-principles@1`) and Its Relationship to the Bot-Carried Set (`aegis-principles@1`)
 
-- **Document ID:** AEGIS-CANON-002
+- **Document ID:** HATHOR-CANON-011
 - **Status:** PROPOSED — awaiting operator ratification (PENDING-EDITS §6, D10)
 - **Date:** 2026-09-14
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Derived from:** AEGIS-ARCH-002 §1 (executive summary); AEGIS-REQ-CORE-001 §0.3 (canonical rules); AEGIS-RP-014 §3.5.1 (`aegis-principles@1`, P01–P12); AEGIS-REQ-BOT-001; AEGIS-RP-007/009/011/013; AEGIS-ADR-002/003
-- **Companion to:** AEGIS-CANON-001 (registries); AEGIS-ARCH-002 (bot unit compendium)
+- **Derived from:** HATHOR-ARCH-002 §1 (executive summary); HATHOR-REQ-CORE-001 §0.3 (canonical rules); HATHOR-RP-014 §3.5.1 (`aegis-principles@1`, P01–P12); HATHOR-REQ-BOT-001; HATHOR-RP-007/009/011/013; HATHOR-ADR-002/003
+- **Companion to:** HATHOR-CANON-010 (registries); HATHOR-ARCH-002 (bot unit compendium)
 - **Maintenance rule:** if ratified, this document becomes the single enumeration of platform-altitude principles. A principle is added, reworded, or retired only by operator sign-off recorded in `PENDING-EDITS.md`, and every accepted change bumps the set version (`hathor-principles@<n>`).
 - **Scope rule:** proposed doctrine restatement only. The principles below are intended to restate accepted decisions and cite them, but the set itself is not canon until D10 is signed off. No implementation is authorized by this document.
 
@@ -194,7 +194,7 @@ The usages below apply only after D10 is ratified. Until then, reviewers may dis
 
 | Prefix | Domain | Defining document |
 |---|---|---|
-| `HP-##` | HATHOR platform principles (review criteria, non-enforcing) | AEGIS-CANON-002 |
+| `HP-##` | HATHOR platform principles (review criteria, non-enforcing) | HATHOR-CANON-011 |
 
 Recorded in `PENDING-EDITS.md` §6 as awaiting sign-off; CANON-001 is not edited by this paper.
 

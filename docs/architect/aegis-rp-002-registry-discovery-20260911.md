@@ -1,5 +1,5 @@
 ---
-id: AEGIS-RP-002
+id: HATHOR-RP-002
 title: AEGIS Research Paper 002 — Bot Registry & Discovery Model
 summary: 'Proctor-Bot routes requests by capability (AEG-MAN-003) and must verify provenance before dispatch (SEC-003). Question: does Proctor discover bots via the **Control Tower registry**, a **machine-local manifest scan**,...'
 doc_type: RP
@@ -21,12 +21,12 @@ sources: []
 ---
 # AEGIS Research Paper 002 — Bot Registry & Discovery Model
 
-- **Document ID:** AEGIS-RP-002
+- **Document ID:** HATHOR-RP-002
 - **Status:** DRAFT (research output — pending operator review)
 - **Date:** 2026-09-11
-- **Parent:** AEGIS-REQ-BOT-001 (§10 Q2)
-- **Related:** AEGIS-RP-001 (manifest digest, signed provenance)
-- **Amended by:** AEGIS-ADR-003 §2.3 (exit-code boundaries — §3.3's "degraded (exit 2)" reads as envelope `degraded:true`; exit 2 applies at the bot boundary only); AEGIS-RP-013 §6 (2026-09-13, operator-approved: key distribution/rotation/revocation via TUF roles served by the Tower — resolves §6 Q3)
+- **Parent:** HATHOR-REQ-BOT-001 (§10 Q2)
+- **Related:** HATHOR-RP-001 (manifest digest, signed provenance)
+- **Amended by:** HATHOR-ADR-003 §2.3 (exit-code boundaries — §3.3's "degraded (exit 2)" reads as envelope `degraded:true`; exit 2 applies at the bot boundary only); HATHOR-RP-013 §6 (2026-09-13, operator-approved: key distribution/rotation/revocation via TUF roles served by the Tower — resolves §6 Q3)
 - **Author:** Oz (Agent), commissioned by Raymond Bayly
 
 ---
@@ -68,7 +68,7 @@ Signed manifests (AEG-MAN-006) make the hybrid safe: verification is cryptograph
 
 ### 3.3 Runtime resolution (Proctor)
 
-- Lookup is **always MBI-only** — no Tower call in the request path. Steady-state routing cost is one local index hit plus the digest comparison from the handshake fast path (AEGIS-RP-001 §3.5).
+- Lookup is **always MBI-only** — no Tower call in the request path. Steady-state routing cost is one local index hit plus the digest comparison from the handshake fast path (HATHOR-RP-001 §3.5).
 - Trust rules by verification state:
   - `verified-tower` → route normally.
   - `verified-local` (Tower ack pending/unreachable) → route, but mark the run **degraded** (exit 2 semantics propagate to `status`), and cap at a trust TTL.
@@ -78,14 +78,14 @@ Signed manifests (AEG-MAN-006) make the hybrid safe: verification is cryptograph
 
 - CLI ↔ Tower sync on connect and on schedule: push pending registrations, pull CRL + key updates, demote revoked digests to `quarantined` immediately. Key/CRL/policy distribution uses the TUF role layout with client rollback protection (RP-013 §6, RP-010 §3.2).
 - **Trust TTL:** `verified-local` entries and cached keys/CRL carry a TTL (proposed: 72h). Beyond it, unreconciled entries stop routing — bounded offline autonomy, not indefinite drift.
-- All reconciliation outcomes are telemetry events (AEGIS-RP-003) rolled up to the Tower (OBS-002).
+- All reconciliation outcomes are telemetry events (HATHOR-RP-003) rolled up to the Tower (OBS-002).
 
 ### 3.5 Failure modes
 
 - **Tower unreachable:** routing continues on `verified-tower` + in-TTL `verified-local`; degraded flags surface honestly. Matches the boards' graceful-degradation doctrine.
 - **Manifest drift (binary changed, manifest didn't):** `selftest`/digest mismatch fails closed (AEG-MAN-001); MBI entry quarantined.
 - **Revocation while offline:** bounded by trust TTL; on reconnect CRL wins immediately.
-- **Two bots claim one capability:** both listed; Proctor picks by (verification state, contract version, benchmark score from benchmark-Bot). Tie-break policy is Proctor-owned (AEGIS-RP-001 open question 2).
+- **Two bots claim one capability:** both listed; Proctor picks by (verification state, contract version, benchmark score from benchmark-Bot). Tie-break policy is Proctor-owned (HATHOR-RP-001 open question 2).
 
 ## 4. Requirements (AEG-REG)
 

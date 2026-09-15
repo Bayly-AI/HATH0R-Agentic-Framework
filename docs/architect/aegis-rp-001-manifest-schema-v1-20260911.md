@@ -1,5 +1,5 @@
 ---
-id: AEGIS-RP-001
+id: HATHOR-RP-001
 title: AEGIS Research Paper 001 — Bot Manifest Schema v1 & Contract-Negotiation Handshake
 summary: AEG-BOT-ANA-002 mandates a machine-readable manifest for every bot, and AEG-BOT-ANA-003 mandates a versioned communication contract. Neither the exact JSON fields nor the negotiation handshake were defined. This paper...
 doc_type: RP
@@ -21,12 +21,12 @@ sources: []
 ---
 # AEGIS Research Paper 001 — Bot Manifest Schema v1 & Contract-Negotiation Handshake
 
-- **Document ID:** AEGIS-RP-001
+- **Document ID:** HATHOR-RP-001
 - **Status:** DRAFT (research output — pending operator review)
 - **Date:** 2026-09-11
-- **Parent:** AEGIS-REQ-BOT-001 (§10 Q1)
-- **Amended by:** AEGIS-RP-013 §6 (2026-09-13, operator-approved): canonicalization = RFC 8785 (JCS); signatures = Ed25519 in DSSE envelopes; key rotation/revocation/bootstrap via TUF (resolves §6 Q1)
-- **Amended by:** AEGIS-RP-014 (2026-09-13, operator-approved): manifest schema **1.1.0** — additive, mandatory `governance` triad; `runtime.requires_capabilities`/`config_schema`/`executor_kind`; `AEG-MAN-007` gains the bot-governance refusal classes (no transition profile)
+- **Parent:** HATHOR-REQ-BOT-001 (§10 Q1)
+- **Amended by:** HATHOR-RP-013 §6 (2026-09-13, operator-approved): canonicalization = RFC 8785 (JCS); signatures = Ed25519 in DSSE envelopes; key rotation/revocation/bootstrap via TUF (resolves §6 Q1)
+- **Amended by:** HATHOR-RP-014 (2026-09-13, operator-approved): manifest schema **1.1.0** — additive, mandatory `governance` triad; `runtime.requires_capabilities`/`config_schema`/`executor_kind`; `AEG-MAN-007` gains the bot-governance refusal classes (no transition profile)
 - **Author:** Oz (Agent), commissioned by Raymond Bayly
 
 ---
@@ -35,7 +35,7 @@ sources: []
 
 AEG-BOT-ANA-002 mandates a machine-readable manifest for every bot, and AEG-BOT-ANA-003 mandates a versioned communication contract. Neither the exact JSON fields nor the negotiation handshake were defined. This paper specifies both.
 
-Design constraints inherited from AEGIS-REQ-BOT-001:
+Design constraints inherited from HATHOR-REQ-BOT-001:
 - CLI is the sole control plane (TAX-006); the manifest is the CLI's routing and enforcement input.
 - Code-agnostic executors (ANA-004): the manifest is the only conformance surface.
 - Refuse-never-guess on contract mismatch (ANA-003).
@@ -43,7 +43,7 @@ Design constraints inherited from AEGIS-REQ-BOT-001:
 
 ## 2. Manifest Schema v1
 
-The manifest is a single JSON document, UTF-8, canonicalized per **RFC 8785 (JSON Canonicalization Scheme)** before digesting *(amended 2026-09-13 per RP-013 §6; previously ad hoc "sorted keys, no insignificant whitespace")*. Its **sha256 digest** is the bot's registration fingerprint (consumed by the registry — see AEGIS-RP-002 — and by the handshake below).
+The manifest is a single JSON document, UTF-8, canonicalized per **RFC 8785 (JSON Canonicalization Scheme)** before digesting *(amended 2026-09-13 per RP-013 §6; previously ad hoc "sorted keys, no insignificant whitespace")*. Its **sha256 digest** is the bot's registration fingerprint (consumed by the registry — see HATHOR-RP-002 — and by the handshake below).
 
 ### 2.1 Top-level structure
 
@@ -62,7 +62,7 @@ The manifest is a single JSON document, UTF-8, canonicalized per **RFC 8785 (JSO
 }
 ```
 
-Manifest v1.1.0 is additive over v1.0.0 (`AEGIS-RP-014`): the `governance` block (§2.10) is **mandatory**, and `runtime` gains `requires_capabilities`, `config_schema`, and `executor_kind` (§2.9). A 1.0.0 manifest without `governance` is refused at registration — no transition profile.
+Manifest v1.1.0 is additive over v1.0.0 (`HATHOR-RP-014`): the `governance` block (§2.10) is **mandatory**, and `runtime` gains `requires_capabilities`, `config_schema`, and `executor_kind` (§2.9). A 1.0.0 manifest without `governance` is refused at registration — no transition profile.
 
 ### 2.2 `identity` (all fields required)
 
@@ -85,7 +85,7 @@ Manifest v1.1.0 is additive over v1.0.0 (`AEGIS-RP-014`): the `governance` block
 
 - `family` ∈ `orchestration | hierarchy | observation` (TAX-002).
 - `tier` required for hierarchy family (`procedure|strategy|playbook|runbook|workflow|checklist`), `null` otherwise.
-- The signature is **not a field in the signed manifest payload**. A sibling `manifest.dsse.json` carries the Ed25519 **DSSE envelope** whose payload is the JCS-canonical `manifest.json` bytes *(amended 2026-09-13 per RP-013 §6)*. This removes circular representation and remains verifiable offline against TUF-distributed public keys (see AEGIS-RP-002).
+- The signature is **not a field in the signed manifest payload**. A sibling `manifest.dsse.json` carries the Ed25519 **DSSE envelope** whose payload is the JCS-canonical `manifest.json` bytes *(amended 2026-09-13 per RP-013 §6)*. This removes circular representation and remains verifiable offline against TUF-distributed public keys (see HATHOR-RP-002).
 - **Coverage limit:** schema 1.1.0 binds the manifest and the governance files referenced by digest, but it declares no executor/image/artifact digest. The envelope therefore MUST NOT be described as covering executor bytes until the executable-artifact binding in `PENDING-EDITS.md` R10 is frozen.
 
 ### 2.3 `contract`
@@ -159,7 +159,7 @@ Capabilities are the routing vocabulary: Proctor matches request intents to capa
 }
 ```
 
-Event names come from the uniform event vocabulary (AEGIS-RP-003 §4).
+Event names come from the uniform event vocabulary (HATHOR-RP-003 §4).
 
 ### 2.9 `runtime`
 
@@ -190,7 +190,7 @@ Event names come from the uniform event vocabulary (AEGIS-RP-003 §4).
 }
 ```
 
-The governance triad (directive, rules, principles) is specified in **AEGIS-RP-014 §3**. Its three file digests are manifest fields, so the external DSSE envelope over the JCS-canonical manifest (RP-013 §6) covers the manifest and governance triad; editing any governance file changes the manifest digest (`MANIFEST_DIGEST_STALE`). Executor-byte coverage is excluded pending R10. `rules.count` equals the rule-set size; `platform_set` is `aegis-principles@1`. `governance` is **mandatory**—a manifest without it is refused (RP-014 §3.2).
+The governance triad (directive, rules, principles) is specified in **HATHOR-RP-014 §3**. Its three file digests are manifest fields, so the external DSSE envelope over the JCS-canonical manifest (RP-013 §6) covers the manifest and governance triad; editing any governance file changes the manifest digest (`MANIFEST_DIGEST_STALE`). Executor-byte coverage is excluded pending R10. `rules.count` equals the rule-set size; `platform_set` is `aegis-principles@1`. `governance` is **mandatory**—a manifest without it is refused (RP-014 §3.2).
 
 ## 3. Contract-Negotiation Handshake
 
@@ -212,7 +212,7 @@ Caller (agent or bot) sends its supported contract range and the intent (capabil
 
 ### 3.2 Phase 2 — OFFER (Proctor → caller)
 
-Proctor resolves the capability to a bot (via the registry, AEGIS-RP-002), verifies provenance (SEC-003), and returns:
+Proctor resolves the capability to a bot (via the registry, HATHOR-RP-002), verifies provenance (SEC-003), and returns:
 
 ```json
 {
@@ -239,7 +239,7 @@ Caller accepts the offer and receives a **session binding**: `{binding_id, manif
 
 ### 3.5 Fast path
 
-Callers cache `{capability → binding}`. On each request the CLI compares the cached `manifest_digest` against the registry; on match, dispatch proceeds directly. This makes the steady-state overhead one digest comparison, satisfying microbot latency goals (relevant to the chain-latency concern in AEGIS-RP-005).
+Callers cache `{capability → binding}`. On each request the CLI compares the cached `manifest_digest` against the registry; on match, dispatch proceeds directly. This makes the steady-state overhead one digest comparison, satisfying microbot latency goals (relevant to the chain-latency concern in HATHOR-RP-005).
 
 ### 3.6 Refusal codes (handshake-specific)
 

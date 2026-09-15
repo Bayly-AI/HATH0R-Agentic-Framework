@@ -1,5 +1,5 @@
 ---
-id: AEGIS-ARCH-001
+id: HATHOR-ARCH-001
 title: AEGIS — Architecture & Mermaid Reference
 summary: Diagrams are Mermaid so they render in Warp, GitHub, and most Markdown surfaces. Every diagram carries a legend and points back to the requirement(s) it illustrates.
 doc_type: ARCH
@@ -21,12 +21,12 @@ sources: []
 ---
 # AEGIS — Architecture & Mermaid Reference
 
-- **Document ID:** AEGIS-ARCH-001
-- **Status:** DRAFT v0 — visual companion to AEGIS-REQ-CORE-001
+- **Document ID:** HATHOR-ARCH-001
+- **Status:** DRAFT v0 — visual companion to HATHOR-REQ-CORE-001
 - **Date:** 2026-09-11
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Companion to:** `AEGIS-REQ-CORE-001-initial-requirements-20260911.md`, plan `AEGIS-PLAN-001` (`aegis-plan-001-platform-roadmap-20260913.md`)
-- **Amended by (2026-09-13):** AEGIS-ADR-002/RP-009 (Orchestration Gateway — new §20; §15 grows to fifteen gates); AEGIS-ADR-003 (exit-code boundaries; Epic gate exit); AEGIS-ADR-004 (spool residency, environment naming); AEGIS-RP-007 (validation fabric — new §19); AEGIS-CANON-001 (canonical registries)
+- **Companion to:** `HATHOR-REQ-CORE-001-initial-requirements-20260911.md`, plan `HATHOR-PLAN-001` (`aegis-plan-001-platform-roadmap-20260913.md`)
+- **Amended by (2026-09-13):** HATHOR-ADR-002/RP-009 (Orchestration Gateway — new §20; §15 grows to fifteen gates); HATHOR-ADR-003 (exit-code boundaries; Epic gate exit); HATHOR-ADR-004 (spool residency, environment naming); HATHOR-RP-007 (validation fabric — new §19); HATHOR-CANON-010 (canonical registries)
 - **Purpose:** Provide a single visual reference for the AEGIS core platform — planes, bot families, container taxonomy, request flow, hierarchy chain resolution, knowledge and ticketing lifecycles, universal project layout, validation fabric, orchestration gateway, and deployment topology.
 
 Diagrams are Mermaid so they render in Warp, GitHub, and most Markdown surfaces. Every diagram carries a legend and points back to the requirement(s) it illustrates.
@@ -479,7 +479,7 @@ flowchart LR
 
 ## 15. Governance gates — the fifteen refusal points
 
-> **Registry note (2026-09-13):** the canonical registry is **AEGIS-CANON-001 §2** (G01–G15): the ten below plus the four validation gates (RP-007 §5.2) and the Sequence/Barrier Gate (RP-009 §4.2). Canonical dispatch-path order is **Provenance → Contract → Sequence/Barrier → domain gates** — the traversal drawn below is illustrative, not an ordering contract.
+> **Registry note (2026-09-13):** the canonical registry is **HATHOR-CANON-010 §2** (G01–G15): the ten below plus the four validation gates (RP-007 §5.2) and the Sequence/Barrier Gate (RP-009 §4.2). Canonical dispatch-path order is **Provenance → Contract → Sequence/Barrier → domain gates** — the traversal drawn below is illustrative, not an ordering contract.
 
 ```mermaid
 flowchart TB
@@ -610,4 +610,4 @@ flowchart LR
 
 ---
 
-*Draft v0 — visual companion to AEGIS-REQ-CORE-001 (amended 2026-09-13 per ADR-002/003/004, RP-007/009, CANON-001). Diagrams are non-normative; the numbered requirements are authoritative. Amend as designs evolve.*
+*Draft v0 — visual companion to HATHOR-REQ-CORE-001 (amended 2026-09-13 per ADR-002/003/004, RP-007/009, CANON-001). Diagrams are non-normative; the numbered requirements are authoritative. Amend as designs evolve.*

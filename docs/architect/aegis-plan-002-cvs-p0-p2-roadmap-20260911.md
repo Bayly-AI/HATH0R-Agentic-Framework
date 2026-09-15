@@ -1,6 +1,6 @@
 ---
-id: AEGIS-PLAN-002
-title: 'AEGIS-PLAN-002 — Continuous Validation System: P0–P2 Delivery Roadmap & Task Breakdown'
+id: HATHOR-PLAN-002
+title: 'HATHOR-PLAN-002 — Continuous Validation System: P0–P2 Delivery Roadmap & Task Breakdown'
 summary: gantt title CVS P0–P2 Delivery (planning-grade, 2 engineers) dateFormat YYYY-MM-DD axisFormat %m-%d section P0 Foundations + change validation Repo & CLI foundation :p0e1, 2026-09-15, 5d Finding envelope & schemas :p0...
 doc_type: PLAN
 diataxis: how-to
@@ -19,15 +19,15 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS-PLAN-002 — Continuous Validation System: P0–P2 Delivery Roadmap & Task Breakdown
+# HATHOR-PLAN-002 — Continuous Validation System: P0–P2 Delivery Roadmap & Task Breakdown
 
-- **Document ID:** AEGIS-PLAN-002
+- **Document ID:** HATHOR-PLAN-002
 - **Status:** DRAFT v0 — delivery plan, pending operator review
 - **Date:** 2026-09-11
 - **Author:** Oz (Agent), commissioned by Raymond Bayly (BaylyAI)
-- **Implements:** AEGIS-TS-001 (Continuous Validation System technical spec), phases **P0–P2**
-- **Traces to:** AEGIS-RP-007 (`AEG-VAL-001..015`), AEGIS-REQ-CORE-001
-- **Relationship:** Subordinate work plan feeding the reserved platform-wide **AEGIS-PLAN-001**. Covers only the change-time immune system; P3–P5 are tracked separately.
+- **Implements:** HATHOR-TS-001 (Continuous Validation System technical spec), phases **P0–P2**
+- **Traces to:** HATHOR-RP-007 (`AEG-VAL-001..015`), HATHOR-REQ-CORE-001
+- **Relationship:** Subordinate work plan feeding the reserved platform-wide **HATHOR-PLAN-001**. Covers only the change-time immune system; P3–P5 are tracked separately.
 - **Scope rule:** planning artifact only. Execution requires an authorizing epic/ticket per AEGIS governance (CORE AEG-REQ-TKT-004/005/007). This document does **not** authorize code.
 
 ---
@@ -331,4 +331,4 @@ Sequencing constraint: A/B parallel in P0; C after M1; D after M2. Each child wo
 
 ---
 
-*Draft v0 — delivery roadmap for AEGIS-TS-001 P0–P2. No code authorized without a ticket. Amend before promotion to verified.*
+*Draft v0 — delivery roadmap for HATHOR-TS-001 P0–P2. No code authorized without a ticket. Amend before promotion to verified.*
