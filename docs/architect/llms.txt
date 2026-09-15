@@ -1,0 +1,68 @@
+# AEGIS / HATHOR Architecture Corpus
+
+> Governance and control-plane design for the HATHOR agentic application framework.
+
+## Canon
+- [AEGIS-CANON-001 — AEGIS-CANON-001 — Canonical Registries](./aegis-canon-001-registries-20260913.md): Per-paper lists drifted (CORE said ten gates; RP-007 added four; RP-009 added "the 11th"; RP-003's event list lagged CORE's). This document replaces scattered enumerations with one registry per concept. Where a source...
+- [AEGIS-CANON-002 — AEGIS-CANON-002 — HATHOR Platform Principles](./aegis-canon-002-platform-principles-20260914.md): RFC 2119 keywords appear only inside quoted source requirements.
+- [AEGIS-CANON-003 — HATHOR Documentation Framework](./aegis-canon-003-documentation-framework-20260915.md): Metadata schema, IDs, versioning, review, staleness, indexing, and enforcement for HATHOR docs.
+- [AEGIS-CANON-004 — AEGIS Research Corpus](./INDEX.md): Canonical folder for AEGIS / CLI / HATHOR research artifacts.
+- [AEGIS-CANON-005 — AEGIS Corpus — Pending-Edits & Change-Control Register](./PENDING-EDITS.md): Purpose: the single place where cross-document amendments are tracked, per the corpus refactor plan (2026-09-13). A paper that changes another paper's decision MUST add a row here in the same change. Rows are removed...
+
+## Decisions
+- [AEGIS-ADR-001 — 03 — ADR: Target Command Tree (Domains + Hierarchy Lifecycle)](./aegis-adr-001-target-command-tree-20260911.md): infraos-os` 9.3.0 exposes **79 top-level command groups** and **525+** inventory paths. Sampled Communications usage (report 01) concentrates on ~30 normalized invocation patterns, mostly Operator + Process paths, wit...
+- [AEGIS-ADR-002 — AEGIS-ADR-002 — Orchestration Coordination Model](./aegis-adr-002-orchestration-coordination-model-20260913.md): RFC 2119 keywords apply where requirements are restated.
+- [AEGIS-ADR-003 — AEGIS-ADR-003 — Greenfield Binary, Canonical Command Surface & Exit-Code Boundaries](./aegis-adr-003-greenfield-command-surface-20260913.md): RFC 2119 keywords apply.
+- [AEGIS-ADR-004 — AEGIS-ADR-004 — Layout & State Residency](./aegis-adr-004-layout-state-residency-20260913.md): RFC 2119 keywords apply.
+- [AEGIS-ADR-005 — AEGIS-ADR-005 — Backup Ticketing System: Build vs Adopt](./aegis-adr-005-backup-ticketing-system-20260913.md): RP-006 §5 defines the Backup TS by four properties: implements Ticket Contract v1 verbatim; deliberately *small* (list/get/create/update/link — no sprints, boards, workflow engine); network-reachable so a multi-agent...
+
+## Research papers
+- [AEGIS-RP-001 — AEGIS Research Paper 001 — Bot Manifest Schema v1 & Contract-Negotiation Handshake](./aegis-rp-001-manifest-schema-v1-20260911.md): AEG-BOT-ANA-002 mandates a machine-readable manifest for every bot, and AEG-BOT-ANA-003 mandates a versioned communication contract. Neither the exact JSON fields nor the negotiation handshake were defined. This paper...
+- [AEGIS-RP-002 — AEGIS Research Paper 002 — Bot Registry & Discovery Model](./aegis-rp-002-registry-discovery-20260911.md): Proctor-Bot routes requests by capability (AEG-MAN-003) and must verify provenance before dispatch (SEC-003). Question: does Proctor discover bots via the **Control Tower registry**, a **machine-local manifest scan**,...
+- [AEGIS-RP-003 — AEGIS Research Paper 003 — Telemetry Transport](./aegis-rp-003-telemetry-transport-20260911.md): Every bot emits standardized telemetry (ANA-007, OBS-001) consumed by the Observation family and rolled up to the Control Tower (OBS-002). Undecided: transport. Candidates were **a machine-local event bus** vs **CLI-m...
+- [AEGIS-RP-004 — AEGIS Research Paper 004 — Draft→Verified Knowledge Promotion Workflow](./aegis-rp-004-knowledge-promotion-20260911.md): Every knowledge write lands as `draft`; only human review promotes to `verified` (KNO-004). Undefined: **who reviews**, **where the queue lives**, and the full status lifecycle including demotion and expiry. The board...
+- [AEGIS-RP-005 — AEGIS Research Paper 005 — Hierarchy Topology: Six Bots vs One Process-Bot with Six Tier Adapters](./aegis-rp-005-hierarchy-consolidation-20260911.md): The boards draw six Information Hierarchy bots (Procedure → Strategy → Playbook → Runbook → Workflow → Checklist), each queried by Process-Bot. The open question: keep **six bots**, or consolidate into **one Process-B...
+- [AEGIS-RP-006 — AEGIS Research Paper 006 — The Ticketing Plane: Work as a Source of Truth](./aegis-rp-006-ticketing-plane-20260911.md): The bot taxonomy settled where **capability** lives (the micro-bot) and the containerization article settled where **deployment** lives (the container). Neither settled where **work** lives. Across the boards and the...
+- [AEGIS-RP-007 — AEGIS-RP-007 — Continuous Validation System](./aegis-rp-007-continuous-validation-20260911.md): RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-VAL-###`.
+- [AEGIS-RP-008 — AEGIS-RP-008 — Micro-Bot Launch Roster](./aegis-rp-008-microbot-launch-roster-20260912.md): RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-MBL-###` (Micro-Bot Launch).
+- [AEGIS-RP-009 — AEGIS-RP-009 — Orchestration Gateway](./aegis-rp-009-orchestration-gateway-20260912.md): RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-GW-###` (Gateway).
+- [AEGIS-RP-010 — AEGIS-RP-010 — Control Tower Surface v1](./aegis-rp-010-tower-surface-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-TWR-###`.
+- [AEGIS-RP-011 — AEGIS-RP-011 — Operator-Bot Brokering Model](./aegis-rp-011-operator-brokering-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-OPB-###`.
+- [AEGIS-RP-012 — AEGIS-RP-012 — Knowledge Plane: Storage & Retrieval Mechanics](./aegis-rp-012-knowledge-storage-retrieval-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-KST-###`.
+- [AEGIS-RP-013 — AEGIS-RP-013 — Threat Model & Trust Boundaries](./aegis-rp-013-threat-model-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-THR-###`.
+- [AEGIS-RP-014 — AEGIS-RP-014 — The Bot Unit: Creating & Operating a HATHOR Micro-Bot](./aegis-rp-014-bot-unit-creation-operation-20260913.md): RFC 2119 keywords apply. Requirements in this paper extend the BOT-001 family with three sub-prefixes: `AEG-BOT-GOV-###` (governance: directive, rules, principles), `AEG-BOT-MEM-###` (state & memory), `AEG-BOT-LIF-###...
+
+## Technical specs
+- [AEGIS-TS-001 — AEGIS-TS-001 — Continuous Validation System: Technical Specification](./aegis-ts-001-continuous-validation-implementation-20260911.md): RFC 2119 keywords apply. New identifiers introduced here: components `TS-C-###`, interfaces `TS-I-###`, decisions `TS-D-###`.
+- [AEGIS-TS-002 — AEGIS-TS-002 — Orchestration Gateway: Technical Specification](./aegis-ts-002-orchestration-gateway-implementation-20260913.md): RFC 2119 keywords apply. New identifiers: decisions `TS2-D-###`, components `TS2-C-###`, interfaces `TS2-I-###` (namespaced to avoid collision with TS-001's `TS-D/TS-C/TS-I`).
+- [AEGIS-TS-003 — AEGIS-TS-003 — Bot Unit Architecture: Implementation Specification](./aegis-ts-003-bot-unit-implementation-20260913.md): RFC 2119 keywords apply. New identifiers: decisions `TS3-D-###`, components `TS3-C-###`, interfaces `TS3-I-###` (namespaced to avoid collision with TS-001/TS-002).
+- [AEGIS-TS-004 — AEGIS-TS-004 — The DMZ: Application ↔ Framework Integration Boundary](./aegis-ts-004-dmz-integration-boundary-20260914.md): RFC 2119 keywords apply. New identifiers: decisions `TS4-D-###`, components `TS4-C-###`, interfaces `TS4-I-###`.
+
+## Requirements
+- [AEGIS-REQ-BOT-001 — AEGIS — Bot Taxonomy, Anatomy & Default Command Contract](./aegis-bot-taxonomy-requirements-20260911.md): 1. **Infra reuse only when better** — AEGIS may adopt Infra processes/architecture only where they demonstrably exceed a from-scratch AEGIS design. Every adoption is logged in §9.
+- [AEGIS-REQ-CORE-001 — AEGIS — Initial Platform Requirements (Core)](./AEGIS-REQ-CORE-001-initial-requirements-20260911.md): RFC 2119 keywords apply: **MUST / SHOULD / MAY**. Every requirement in this document is prefixed `AEG-REQ-<AREA>-###`. Acceptance criteria are listed inline. Traceability tags to the source research paper appear in sq...
+
+## Architecture
+- [AEGIS-ARCH-001 — AEGIS — Architecture & Mermaid Reference](./AEGIS-ARCH-001-architecture-mermaid-20260911.md): Diagrams are Mermaid so they render in Warp, GitHub, and most Markdown surfaces. Every diagram carries a legend and points back to the requirement(s) it illustrates.
+- [AEGIS-ARCH-002 — AEGIS-ARCH-002 — Bot Unit Compendium](./aegis-arch-002-bot-unit-compendium-20260914.md): RFC 2119 keywords are quoted from source papers, not minted here.
+
+## Plans
+- [AEGIS-PLAN-001 — AEGIS-PLAN-001 — Platform Roadmap (v1)](./aegis-plan-001-platform-roadmap-20260913.md): Sequence the entire v1 platform (not just CVS) so every CORE §16 acceptance criterion has an owning workstream, and the two detailed plans (PLAN-002/003) slot into a whole. Estimates are planning-grade; re-baseline at...
+- [AEGIS-PLAN-002 — AEGIS-PLAN-002 — Continuous Validation System: P0–P2 Delivery Roadmap & Task Breakdown](./aegis-plan-002-cvs-p0-p2-roadmap-20260911.md): gantt title CVS P0–P2 Delivery (planning-grade, 2 engineers) dateFormat YYYY-MM-DD axisFormat %m-%d section P0 Foundations + change validation Repo & CLI foundation :p0e1, 2026-09-15, 5d Finding envelope & schemas :p0...
+- [AEGIS-PLAN-003 — AEGIS-PLAN-003 — Orchestration Gateway, Remaining Validators & Agent Skill Pack](./aegis-plan-003-gateway-validators-roadmap-20260913.md): Sizing: S ≤ 1.5d, M ≈ 2–3d, L ≈ 4–5d. Prereq: PLAN-002 M1 (linter runtime + suite runner exist).
+
+## Guides
+- [AEGIS-GUIDE-001 — Containerization in AEGIS: From Micro-Bot to Deployable Unit](./aegis-containerization-article-20260911.md): Every architecture eventually has to answer the same question: what is the smallest unit you can trust? AEGIS answered it once at the capability layer with the Micro-Bot — one role, one contract, stateless between cal...
+- [AEGIS-GUIDE-002 — AEGIS Containerization — Presentation Script](./aegis-containerization-presentation-script-20260911.md): flowchart LR Repo["Repo + micro-bots"] --> Lint["Micro-linters<br/>build-time Q-Gate"] Lint --> Build["Image build<br/>CVS metadata + labels"] Build --> C["AEGIS Container<br/>bot + CLI + contracts"] C --> Col["OTel C...
+
+## Reports
+- [AEGIS-REPORT-001 — AEGIS CLI Research Report](./AEGIS-CLI-Research-Report-2026-09-11.md): The outline positions **CLI as the control plane**: the single contact surface between agents and everything else (code, assets, knowledge, systems).
+- [AEGIS-REPORT-002 — 01 — Top 30 Real `infraos-os` Invocations (Communications)](./01-Invocation-Inventory-Top30-2026-09-11.md): These are heuristic analytical tags, not a mutually exclusive partition; chain-labelled rows can represent more than one layer.
+- [AEGIS-REPORT-003 — 02 — CLI Spec Scoring (`infraos-os` vs clispec.dev)](./02-CLI-Spec-Scoring-2026-09-11.md): Principles (CLI Spec): 1. **Structured Output** — explicit JSON; prefer structured when piped; structured failures 2. **Schema Introspection** — discover commands/args/output/errors at runtime 3. **Stderr/Stdout Separ...
+- [AEGIS-REPORT-004 — 04 — Spike Design: Schema Dump + Runbook→Checklist Lifecycle](./04-Spike-Schema-Runbook-Checklist-2026-09-11.md): Playbook: security-devops / dvo-deploy-handoff Runbook: security-devops / dvo-deploy-ticket Checklist: security-devops / dvo-deploy-ticket Workflow: devops/dvo-deploy-request
+- [AEGIS-REPORT-005 — 05 — Token / Payload Baseline: `infraos-os`, InfraMCP Health, and MCP Catalog Proxies](./05-Token-Benchmark-CLI-vs-MCP-2026-09-11.md): 1. Not a multi-run statistical benchmark (n=1 per command).
+- [AEGIS-REPORT-006 — The Ticketing Economy](./aegis-ticketing-economy-whitepaper-20260911.md): Software organizations have never been better at *doing* work. With AI agents now writing code, filing changes, and operating pipelines alongside human engineers, the constraint has shifted. The hard problem is no lon...
+
+## Sessions
+- [AEGIS-SESSION-001 — Session Log — AEGIS Corpus Refactor (2026-09-13)](./sessions/2026-09-13-corpus-refactor-session-log.md): Session Log — AEGIS Corpus Refactor (2026-09-13)
+- [AEGIS-SESSION-002 — Summary Report — AEGIS Framework Documentation Refactor](./sessions/2026-09-13-corpus-refactor-summary-report.md): The AEGIS research corpus was reviewed end-to-end, found to be strong in discipline but carrying **coherence debt** (later decisions contradicting earlier canonical documents), and refactored in one approved, seven-wa...
