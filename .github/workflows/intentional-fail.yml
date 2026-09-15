@@ -1,0 +1,16 @@
+# Temporary workflow to verify notify-pr-failure.yml. Delete after verification.
+name: Intentional Fail
+
+"on":
+  pull_request:
+    branches: [development]
+
+jobs:
+  fail-on-purpose:
+    name: intentional-fail
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail intentionally
+        run: |
+          echo "This job is supposed to fail to exercise notify-pr-failure.yml"
+          exit 1
