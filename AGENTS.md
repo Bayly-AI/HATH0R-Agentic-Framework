@@ -55,9 +55,10 @@ Canonical definition: group `AGENTS.md` (*Open issues tracking*). Also listed in
    `feature|bugfix|enhancement|research|fix|chore/<issue-number>-short-slug`
    Example: `chore/2-branch-protection-governance`
 3. Open the PR with **base = `development`** (feature work never targets testing/staging/master).
-4. **Owner approval required** before merge (`@somesayray` via CODEOWNERS + branch protection).
+4. **Owner (`@somesayray`) may merge any PR at any time** (admin bypass enabled; approvals not required).
 5. Merge into **`development` only** for feature work.
 6. Promote via `development → testing → staging → master` — do not skip stages.
+7. **PR CI failures notify `@somesayray`** via `.github/workflows/notify-pr-failure.yml` (PR comment + optional Slack `SLACK_WEBHOOK_URL`).
 
 ### Canonical branches (locked)
 
@@ -66,7 +67,7 @@ Canonical definition: group `AGENTS.md` (*Open issues tracking*). Also listed in
 - Must not be deleted
 - Must not be used as feature/work branches
 - Must not be merged into each other except along the promotion path above
-- Branch protection: PR required, 1 approving review, code-owner review, no force-push, no deletions, `validate-promotion-path` required
+- Branch protection: PR required (0 approvals), no code-owner gate, admin bypass on, no force-push, no deletions, `validate-promotion-path` required (non-strict; admin can bypass)
 
 Forbidden: feature PRs targeting `master`, `testing`, or `staging`; PRs without an issue number in the branch name; merging canonical branches sideways.
 
