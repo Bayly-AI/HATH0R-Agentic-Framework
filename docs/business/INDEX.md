@@ -1,7 +1,33 @@
+---
+id: HATHOR-CANON-006
+title: "HATHOR Business Documentation Index"
+summary: "Human index for the business documentation tree."
+doc_type: CANON
+diataxis: reference
+audience: [business, agent]
+tags: [index]
+version: 0.2.0
+status: draft
+created: 2026-09-15
+updated: 2026-09-15
+owner: "Raymond Bayly (BaylyAI)"
+review:
+  trust: unverified
+  reviewed_by: null
+  reviewed_at: null
+  interval: 365d
+  next_review: null
+stale: false
+supersedes: []
+superseded_by: null
+amended_by: []
+parent: null
+sources: [HATHOR-CANON-001]
+---
 # HATHOR Business Documentation Index
 
 Business-facing guides derived for OpenSource HATHOR.  
-Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-map-20260915.json`).
+Corpus root: `docs/` · Document namespace: **`HATHOR-*`** · Map: [`id-namespace-map-20260915.json`](../architect/id-namespace-map-20260915.json).
 
 ## Reading order
 
@@ -13,7 +39,7 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 
 | ID | Type | Status | Title | Path |
 |---|---|---|---|---|
-| [HATHOR-CANON-006](./INDEX.md) | CANON | draft | AEGIS Business Documentation | `INDEX.md` |
+| [HATHOR-CANON-006](./INDEX.md) | CANON | draft | HATHOR Business Documentation Index | `INDEX.md` |
 | [HATHOR-GUIDE-003](./01-executive-overview.md) | GUIDE | draft | AEGIS Executive Overview | `01-executive-overview.md` |
 | [HATHOR-GUIDE-004](./02-business-requirements.md) | GUIDE | draft | AEGIS Business Requirements | `02-business-requirements.md` |
 | [HATHOR-GUIDE-005](./03-business-capability-model.md) | GUIDE | draft | AEGIS Business Capability Model | `03-business-capability-model.md` |
@@ -26,4 +52,4 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 ## Notes
 
 - Document IDs use the public **`HATHOR-*`** namespace.
-- See `docs/architect/HATHOR-CANON-001` for metadata, review, and staleness rules.
+- See [`HATHOR-CANON-001`](../architect/hathor-canon-001-documentation-framework-20260915.md) for metadata, review, and staleness rules.

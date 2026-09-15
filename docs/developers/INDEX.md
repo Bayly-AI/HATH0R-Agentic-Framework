@@ -1,7 +1,33 @@
+---
+id: HATHOR-CANON-007
+title: "HATHOR Developer & Role Guides Index"
+summary: "Human index for the developer documentation tree."
+doc_type: CANON
+diataxis: reference
+audience: [developer, agent]
+tags: [index]
+version: 0.2.0
+status: draft
+created: 2026-09-15
+updated: 2026-09-15
+owner: "Raymond Bayly (BaylyAI)"
+review:
+  trust: unverified
+  reviewed_by: null
+  reviewed_at: null
+  interval: 365d
+  next_review: null
+stale: false
+supersedes: []
+superseded_by: null
+amended_by: []
+parent: null
+sources: [HATHOR-CANON-001]
+---
 # HATHOR Developer & Role Guides Index
 
 Role-based how-to guides for building and operating on HATHOR.  
-Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-map-20260915.json`).
+Corpus root: `docs/` · Document namespace: **`HATHOR-*`** · Map: [`id-namespace-map-20260915.json`](../architect/id-namespace-map-20260915.json).
 
 ## Reading order
 
@@ -12,7 +38,7 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 
 | ID | Type | Status | Title | Path |
 |---|---|---|---|---|
-| [HATHOR-CANON-007](./INDEX.md) | CANON | draft | AEGIS Developer Documentation | `INDEX.md` |
+| [HATHOR-CANON-007](./INDEX.md) | CANON | draft | HATHOR Developer & Role Guides Index | `INDEX.md` |
 | [HATHOR-GUIDE-011](./agent-integrator.md) | GUIDE | draft | Agent Integrator Guide | `agent-integrator.md` |
 | [HATHOR-GUIDE-012](./bot-developer.md) | GUIDE | draft | Bot Developer Guide | `bot-developer.md` |
 | [HATHOR-GUIDE-013](./devops-dvo.md) | GUIDE | draft | DevOps & DVO Guide | `devops-dvo.md` |
@@ -28,4 +54,4 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 ## Notes
 
 - Document IDs use the public **`HATHOR-*`** namespace.
-- See `docs/architect/HATHOR-CANON-001` for metadata, review, and staleness rules.
+- See [`HATHOR-CANON-001`](../architect/hathor-canon-001-documentation-framework-20260915.md) for metadata, review, and staleness rules.

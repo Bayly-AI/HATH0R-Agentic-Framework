@@ -1,17 +1,17 @@
 # HATHOR Business docs
 
-> OpenSource HATHOR `business` documentation map.
+> OpenSource HATHOR `business` documentation map (HATHOR-* IDs).
 
 ## CANON
-- [HATHOR-CANON-006 AEGIS Business Documentation](./INDEX.md): This documentation explains the business problem AEGIS is intended to solve, the value it is expected to create, the capabilities and operat
+- [HATHOR-CANON-006 — HATHOR Business Documentation Index](./INDEX.md): Human index for the business documentation tree.
 
 ## GUIDE
-- [HATHOR-GUIDE-003 AEGIS Executive Overview](./01-executive-overview.md): AEGIS is a proposed agentic governance platform for organizations that want people and AI agents to work at machine speed without giving up 
-- [HATHOR-GUIDE-004 AEGIS Business Requirements](./02-business-requirements.md): OBJ-*` and `BIZ-*` labels are local traceability aids for this derived document. They do not add canonical AEGIS requirements or amend `HATH
-- [HATHOR-GUIDE-005 AEGIS Business Capability Model](./03-business-capability-model.md): The top-level business capability is **governed agentic delivery**:
-- [HATHOR-GUIDE-006 AEGIS Target Operating Model](./04-operating-model.md): The target operating model is based on the following source-grounded rules:
-- [HATHOR-GUIDE-007 AEGIS Governance, Risk, and Controls](./05-governance-risk-and-controls.md): AEGIS is intended to let an organization increase the speed and volume of delegated work without weakening:
-- [HATHOR-GUIDE-008 AEGIS Adoption Roadmap](./06-adoption-roadmap.md): Move from design to measurable, governed use without treating feature completion as operational readiness or business value.
-- [HATHOR-GUIDE-009 AEGIS Value and Success Measures](./07-value-and-success-measures.md): CTL-*` and `VAL-*` labels are local measurement aids. They do not add canonical AEGIS identifiers or alter source acceptance criteria.
-- [HATHOR-GUIDE-010 AEGIS Business Glossary and Source Register](./08-glossary-and-source-register.md): 1. [`HATHOR-CANON-010`](../architect/aegis-canon-001-registries-20260913.md) is the authority for enumerated gates, events, refusal codes, l
+- [HATHOR-GUIDE-003 — AEGIS Executive Overview](./01-executive-overview.md): AEGIS is a proposed agentic governance platform for organizations that want people and AI agents to work at machine speed without giving up 
+- [HATHOR-GUIDE-004 — AEGIS Business Requirements](./02-business-requirements.md): OBJ-*` and `BIZ-*` labels are local traceability aids for this derived document. They do not add canonical AEGIS requirements or amend `HATH
+- [HATHOR-GUIDE-005 — AEGIS Business Capability Model](./03-business-capability-model.md): The top-level business capability is **governed agentic delivery**:
+- [HATHOR-GUIDE-006 — AEGIS Target Operating Model](./04-operating-model.md): The target operating model is based on the following source-grounded rules:
+- [HATHOR-GUIDE-007 — AEGIS Governance, Risk, and Controls](./05-governance-risk-and-controls.md): AEGIS is intended to let an organization increase the speed and volume of delegated work without weakening:
+- [HATHOR-GUIDE-008 — AEGIS Adoption Roadmap](./06-adoption-roadmap.md): Move from design to measurable, governed use without treating feature completion as operational readiness or business value.
+- [HATHOR-GUIDE-009 — AEGIS Value and Success Measures](./07-value-and-success-measures.md): CTL-*` and `VAL-*` labels are local measurement aids. They do not add canonical AEGIS identifiers or alter source acceptance criteria.
+- [HATHOR-GUIDE-010 — AEGIS Business Glossary and Source Register](./08-glossary-and-source-register.md): 1. [`HATHOR-CANON-010`](../architect/aegis-canon-001-registries-20260913.md) is the authority for enumerated gates, events, refusal codes, l
 
