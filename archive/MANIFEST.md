@@ -1,3 +1,5 @@
+> **Frozen provenance:** archive paths keep private-era `AEGIS-*` IDs and pre-migration bytes. Live corpus uses `HATHOR-*` (issue #12). Do not re-ID files under `archive/`.
+
 # Archive manifest
 
 Generated: 2026-09-15T15:07:20Z
