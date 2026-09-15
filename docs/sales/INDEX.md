@@ -1,7 +1,33 @@
+---
+id: HATHOR-CANON-008
+title: "HATHOR Sales Documentation Index"
+summary: "Human index for the sales documentation tree."
+doc_type: CANON
+diataxis: reference
+audience: [sales, agent]
+tags: [index]
+version: 0.2.0
+status: draft
+created: 2026-09-15
+updated: 2026-09-15
+owner: "Raymond Bayly (BaylyAI)"
+review:
+  trust: unverified
+  reviewed_by: null
+  reviewed_at: null
+  interval: 365d
+  next_review: null
+stale: false
+supersedes: []
+superseded_by: null
+amended_by: []
+parent: null
+sources: [HATHOR-CANON-001]
+---
 # HATHOR Sales Documentation Index
 
 Sales enablement guides for the OpenSource HATHOR product surface.  
-Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-map-20260915.json`).
+Corpus root: `docs/` · Document namespace: **`HATHOR-*`** · Map: [`id-namespace-map-20260915.json`](../architect/id-namespace-map-20260915.json).
 
 ## Reading order
 
@@ -13,7 +39,7 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 
 | ID | Type | Status | Title | Path |
 |---|---|---|---|---|
-| [HATHOR-CANON-008](./INDEX.md) | CANON | draft | AEGIS Sales Documentation | `INDEX.md` |
+| [HATHOR-CANON-008](./INDEX.md) | CANON | draft | HATHOR Sales Documentation Index | `INDEX.md` |
 | [HATHOR-GUIDE-015](./01-executive-product-brief.md) | GUIDE | draft | AEGIS Executive Product Brief | `01-executive-product-brief.md` |
 | [HATHOR-GUIDE-016](./02-buyer-problems-and-use-cases.md) | GUIDE | draft | Buyer Problems and Use Cases | `02-buyer-problems-and-use-cases.md` |
 | [HATHOR-GUIDE-017](./03-platform-capabilities.md) | GUIDE | draft | Platform Capabilities | `03-platform-capabilities.md` |
@@ -32,4 +58,4 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 ## Notes
 
 - Document IDs use the public **`HATHOR-*`** namespace.
-- See `docs/architect/HATHOR-CANON-001` for metadata, review, and staleness rules.
+- See [`HATHOR-CANON-001`](../architect/hathor-canon-001-documentation-framework-20260915.md) for metadata, review, and staleness rules.

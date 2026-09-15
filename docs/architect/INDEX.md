@@ -1,3 +1,29 @@
+---
+id: HATHOR-CANON-004
+title: "HATHOR Architecture & Canon Index"
+summary: "Human index for the architect documentation tree."
+doc_type: CANON
+diataxis: reference
+audience: [architect, agent]
+tags: [index]
+version: 0.2.0
+status: draft
+created: 2026-09-15
+updated: 2026-09-15
+owner: "Raymond Bayly (BaylyAI)"
+review:
+  trust: unverified
+  reviewed_by: null
+  reviewed_at: null
+  interval: 365d
+  next_review: null
+stale: false
+supersedes: []
+superseded_by: null
+amended_by: []
+parent: null
+sources: [HATHOR-CANON-001]
+---
 # HATHOR Architecture & Canon Index
 
 Canonical OpenSource architecture/canon corpus for group `hath0r-opensource`.  
@@ -15,6 +41,8 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 | ID | Type | Status | Title | Path |
 |---|---|---|---|---|
 | [HATHOR-CANON-001](./hathor-canon-001-documentation-framework-20260915.md) | CANON | proposed | HATHOR Documentation Framework | `hathor-canon-001-documentation-framework-20260915.md` |
+| [HATHOR-CANON-004](./INDEX.md) | CANON | draft | HATHOR Architecture & Canon Index | `INDEX.md` |
+| [HATHOR-CANON-005](./PENDING-EDITS.md) | CANON | draft | HATHOR Corpus — Pending-Edits & Change-Control Register | `PENDING-EDITS.md` |
 | [HATHOR-CANON-010](./aegis-canon-001-registries-20260913.md) | CANON | accepted | HATHOR-CANON-010 — Canonical Registries | `aegis-canon-001-registries-20260913.md` |
 | [HATHOR-CANON-011](./aegis-canon-002-platform-principles-20260914.md) | CANON | proposed | HATHOR-CANON-011 — HATHOR Platform Principles | `aegis-canon-002-platform-principles-20260914.md` |
 | [HATHOR-CANON-012](./aegis-canon-003-documentation-framework-20260915.md) | CANON | accepted | HATHOR Documentation Framework | `aegis-canon-003-documentation-framework-20260915.md` |
@@ -63,7 +91,7 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 
 | File | Purpose |
 |---|---|
-| [PENDING-EDITS.md](./PENDING-EDITS.md) | Cross-document change-control register |
+| [PENDING-EDITS.md](./PENDING-EDITS.md) (`HATHOR-CANON-005`) | Cross-document change-control register |
 | [id-namespace-map-20260915.json](./id-namespace-map-20260915.json) | AEGIS→HATHOR document ID map (live corpus) |
 
 ## Notes

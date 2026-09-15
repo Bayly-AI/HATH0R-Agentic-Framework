@@ -1,23 +1,23 @@
 # HATHOR Sales docs
 
-> OpenSource HATHOR `sales` documentation map.
+> OpenSource HATHOR `sales` documentation map (HATHOR-* IDs).
 
 ## CANON
-- [HATHOR-CANON-008 AEGIS Sales Documentation](./INDEX.md): This library explains how to position, qualify, discuss, and evaluate AEGIS without overstating what the current project proves.
+- [HATHOR-CANON-008 — HATHOR Sales Documentation Index](./INDEX.md): Human index for the sales documentation tree.
 
 ## GUIDE
-- [HATHOR-GUIDE-015 AEGIS Executive Product Brief](./01-executive-product-brief.md): AI agents can increase the speed and volume of engineering work. They can also distribute intent, authority, credentials, evidence, and stat
-- [HATHOR-GUIDE-016 Buyer Problems and Use Cases](./02-buyer-problems-and-use-cases.md): Organizations adopting AI-assisted engineering may increase activity faster than their existing governance practices can reconcile it. The r
-- [HATHOR-GUIDE-017 Platform Capabilities](./03-platform-capabilities.md): AEGIS is designed around one top-level business capability: **governed agentic delivery**.
-- [HATHOR-GUIDE-018 Architecture and Integrations](./04-architecture-and-integrations.md): AEGIS is designed as a provider-neutral governance layer between human or agent intent and the tools that execute or record work.
-- [HATHOR-GUIDE-019 Security, Governance, and Assurance](./05-security-governance-and-assurance.md): AEGIS is designed to add layered governance to human and AI-assisted work. It does not claim that a CLI, signature, ticket, gate, or telemet
-- [HATHOR-GUIDE-020 Adoption and Pilot Guide](./06-adoption-and-pilot-guide.md): AEGIS should move from design to governed use incrementally:
-- [HATHOR-GUIDE-021 Value and Business Case](./07-value-and-business-case.md): AEGIS should be evaluated as both:
-- [HATHOR-GUIDE-022 Ideal Customer and Buying Committee](./08-ideal-customer-and-buying-committee.md): The strongest prospective fit is an organization that is increasing AI-assisted software delivery and already feels a material gap between a
-- [HATHOR-GUIDE-023 Discovery and Qualification](./09-discovery-and-qualification.md): Determine whether the buyer has a material governed-agentic-delivery problem, whether AEGIS fits the intended architecture, whether the orga
-- [HATHOR-GUIDE-024 Messaging and Talk Tracks](./10-messaging-and-talk-tracks.md): Do not reverse these definitions or describe HATHOR as the entire platform.
-- [HATHOR-GUIDE-025 Objection Handling and FAQ](./11-objection-handling-and-faq.md): For every objection:
-- [HATHOR-GUIDE-026 Sales Engagement and Proof-of-Value Playbook](./12-sales-engagement-and-proof-of-value-playbook.md): Sell the right to evaluate a governance problem, not an unsupported production outcome.
-- [HATHOR-GUIDE-027 Claims, Evidence, and Source Coverage](./13-claims-evidence-and-source-coverage.md): This document prevents architecture detail from being mistaken for product availability or business proof. It defines:
-- [HATHOR-GUIDE-028 Sales Glossary](./14-sales-glossary.md): Sales Glossary
+- [HATHOR-GUIDE-015 — AEGIS Executive Product Brief](./01-executive-product-brief.md): AI agents can increase the speed and volume of engineering work. They can also distribute intent, authority, credentials, evidence, and stat
+- [HATHOR-GUIDE-016 — Buyer Problems and Use Cases](./02-buyer-problems-and-use-cases.md): Organizations adopting AI-assisted engineering may increase activity faster than their existing governance practices can reconcile it. The r
+- [HATHOR-GUIDE-017 — Platform Capabilities](./03-platform-capabilities.md): AEGIS is designed around one top-level business capability: **governed agentic delivery**.
+- [HATHOR-GUIDE-018 — Architecture and Integrations](./04-architecture-and-integrations.md): AEGIS is designed as a provider-neutral governance layer between human or agent intent and the tools that execute or record work.
+- [HATHOR-GUIDE-019 — Security, Governance, and Assurance](./05-security-governance-and-assurance.md): AEGIS is designed to add layered governance to human and AI-assisted work. It does not claim that a CLI, signature, ticket, gate, or telemet
+- [HATHOR-GUIDE-020 — Adoption and Pilot Guide](./06-adoption-and-pilot-guide.md): AEGIS should move from design to governed use incrementally:
+- [HATHOR-GUIDE-021 — Value and Business Case](./07-value-and-business-case.md): AEGIS should be evaluated as both:
+- [HATHOR-GUIDE-022 — Ideal Customer and Buying Committee](./08-ideal-customer-and-buying-committee.md): The strongest prospective fit is an organization that is increasing AI-assisted software delivery and already feels a material gap between a
+- [HATHOR-GUIDE-023 — Discovery and Qualification](./09-discovery-and-qualification.md): Determine whether the buyer has a material governed-agentic-delivery problem, whether AEGIS fits the intended architecture, whether the orga
+- [HATHOR-GUIDE-024 — Messaging and Talk Tracks](./10-messaging-and-talk-tracks.md): Do not reverse these definitions or describe HATHOR as the entire platform.
+- [HATHOR-GUIDE-025 — Objection Handling and FAQ](./11-objection-handling-and-faq.md): For every objection:
+- [HATHOR-GUIDE-026 — Sales Engagement and Proof-of-Value Playbook](./12-sales-engagement-and-proof-of-value-playbook.md): Sell the right to evaluate a governance problem, not an unsupported production outcome.
+- [HATHOR-GUIDE-027 — Claims, Evidence, and Source Coverage](./13-claims-evidence-and-source-coverage.md): This document prevents architecture detail from being mistaken for product availability or business proof. It defines:
+- [HATHOR-GUIDE-028 — Sales Glossary](./14-sales-glossary.md): Sales Glossary
 
