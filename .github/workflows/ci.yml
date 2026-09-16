@@ -1,0 +1,205 @@
+# CI quality gate for Framework artifacts (issue #23)
+# Validates JSON Schemas, docs YAML front matter, cfg YAML, and contracts YAML.
+# Tolerant of lib/schemas/, lib/contracts/, and cfg/ being absent until parallel PRs land.
+
+name: CI
+
+on:
+  pull_request:
+    branches: [development]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate-artifacts:
+    name: validate-artifacts
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validators
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "check-jsonschema>=0.29" "pyyaml>=6.0"
+
+      - name: Validate JSON Schema files (lib/schemas)
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          schemas=(lib/schemas/*.schema.json)
+          if (( ${#schemas[@]} == 0 )); then
+            echo "No lib/schemas/*.schema.json files present — skipping (tolerant until issue #21 lands)."
+            exit 0
+          fi
+          echo "Validating ${#schemas[@]} JSON Schema file(s) against metaschema..."
+          failed=0
+          for schema in "${schemas[@]}"; do
+            echo "::group::check-jsonschema --check-metaschema ${schema}"
+            if ! check-jsonschema --check-metaschema "${schema}"; then
+              echo "::error file=${schema}::Invalid JSON Schema: ${schema}"
+              failed=1
+            else
+              echo "OK ${schema}"
+            fi
+            echo "::endgroup::"
+          done
+          if (( failed != 0 )); then
+            echo "One or more JSON Schema files failed metaschema validation."
+            exit 1
+          fi
+          echo "All JSON Schema files are valid."
+
+      - name: Validate docs YAML front matter (docs/**/*.md)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python <<'PY'
+          from __future__ import annotations
+
+          import sys
+          from pathlib import Path
+
+          import yaml
+
+          root = Path("docs")
+          if not root.is_dir():
+              print("docs/ not present — skipping front matter validation.")
+              sys.exit(0)
+
+          errors: list[str] = []
+          checked = 0
+          skipped = 0
+
+          for path in sorted(root.rglob("*.md")):
+              text = path.read_text(encoding="utf-8")
+              # Normalize newlines for delimiter detection only
+              if not (text.startswith("---\n") or text.startswith("---\r\n")):
+                  skipped += 1
+                  print(f"SKIP (no front matter): {path}")
+                  continue
+
+              # Find closing --- on its own line
+              # Support both LF and CRLF bodies
+              rest = text[3:]  # drop opening ---
+              # Strip optional leading newline already consumed by startswith check pattern
+              if rest.startswith("\n"):
+                  rest = rest[1:]
+              elif rest.startswith("\r\n"):
+                  rest = rest[2:]
+
+              end = None
+              for delim in ("\n---\n", "\n---\r\n", "\r\n---\r\n", "\r\n---\n", "\n---", "\r\n---"):
+                  idx = rest.find(delim)
+                  if idx != -1 and (end is None or idx < end[0]):
+                      end = (idx, delim)
+
+              if end is None:
+                  errors.append(f"{path}: opening '---' found but closing front-matter delimiter is missing")
+                  continue
+
+              fm_body = rest[: end[0]]
+              checked += 1
+              try:
+                  data = yaml.safe_load(fm_body)
+              except yaml.YAMLError as exc:
+                  errors.append(f"{path}: unparseable YAML front matter: {exc}")
+                  continue
+
+              if data is not None and not isinstance(data, dict):
+                  errors.append(
+                      f"{path}: front matter must be a YAML mapping, got {type(data).__name__}"
+                  )
+                  continue
+
+              print(f"OK {path}")
+
+          print(f"Checked {checked} file(s) with front matter; skipped {skipped} without.")
+          if errors:
+              print("Front matter validation failures:")
+              for err in errors:
+                  print(f"  - {err}")
+              sys.exit(1)
+          print("All docs YAML front matter is valid.")
+          PY
+
+      - name: Validate cfg YAML (cfg/*.yaml)
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(cfg/*.yaml)
+          if (( ${#files[@]} == 0 )); then
+            echo "No cfg/*.yaml files present — skipping."
+            exit 0
+          fi
+          python <<'PY'
+          from __future__ import annotations
+
+          import sys
+          from pathlib import Path
+
+          import yaml
+
+          files = sorted(Path("cfg").glob("*.yaml"))
+          errors: list[str] = []
+          for path in files:
+              try:
+                  with path.open(encoding="utf-8") as fh:
+                      yaml.safe_load(fh)
+              except yaml.YAMLError as exc:
+                  errors.append(f"{path}: {exc}")
+                  continue
+              print(f"OK {path}")
+
+          if errors:
+              print("cfg YAML validation failures:")
+              for err in errors:
+                  print(f"  - {err}")
+              sys.exit(1)
+          print(f"All {len(files)} cfg YAML file(s) are valid.")
+          PY
+
+      - name: Validate contracts YAML (lib/contracts/*.yaml)
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(lib/contracts/*.yaml)
+          if (( ${#files[@]} == 0 )); then
+            echo "No lib/contracts/*.yaml files present — skipping (tolerant until issue #22 lands)."
+            exit 0
+          fi
+          python <<'PY'
+          from __future__ import annotations
+
+          import sys
+          from pathlib import Path
+
+          import yaml
+
+          files = sorted(Path("lib/contracts").glob("*.yaml"))
+          errors: list[str] = []
+          for path in files:
+              try:
+                  with path.open(encoding="utf-8") as fh:
+                      yaml.safe_load(fh)
+              except yaml.YAMLError as exc:
+                  errors.append(f"{path}: {exc}")
+                  continue
+              print(f"OK {path}")
+
+          if errors:
+              print("contracts YAML validation failures:")
+              for err in errors:
+                  print(f"  - {err}")
+              sys.exit(1)
+          print(f"All {len(files)} contracts YAML file(s) are valid.")
+          PY
