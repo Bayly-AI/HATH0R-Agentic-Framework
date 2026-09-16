@@ -1,7 +1,8 @@
 # Temporary workflow used only to verify notify-pr-failure.yml.
 # Safe to delete after verification.
 name: Intentional Fail
-on:
+
+"on":
   pull_request:
     branches: [development]
 jobs:
