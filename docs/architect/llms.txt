@@ -57,6 +57,7 @@
 - [HATHOR-GUIDE-002 — AEGIS Containerization — Presentation Script](./aegis-containerization-presentation-script-20260911.md): flowchart LR Repo[
 
 ## REPORT
+- [HATHOR-REPORT-007 — HATHOR Documentation Framework — Adoption Summary](./hathor-report-007-documentation-framework-adoption-20260915.md): Executive summary of hathor-doc@1 readiness, corpus stats, and adoption checklist.
 - [HATHOR-REPORT-001 — AEGIS CLI Research Report](./AEGIS-CLI-Research-Report-2026-09-11.md): The outline positions **CLI as the control plane**: the single contact surface between agents and everything else (code, assets, knowledge, 
 - [HATHOR-REPORT-002 — 01 — Top 30 Real `infraos-os` Invocations (Communications)](./01-Invocation-Inventory-Top30-2026-09-11.md): These are heuristic analytical tags, not a mutually exclusive partition; chain-labelled rows can represent more than one layer.
 - [HATHOR-REPORT-003 — 02 — CLI Spec Scoring (`infraos-os` vs clispec.dev)](./02-CLI-Spec-Scoring-2026-09-11.md): Principles (CLI Spec): 1. **Structured Output** — explicit JSON; prefer structured when piped; structured failures 2. **Schema Introspection
@@ -67,4 +68,3 @@
 ## SESSION
 - [HATHOR-SESSION-001 — Session Log — AEGIS Corpus Refactor (2026-09-13)](./sessions/2026-09-13-corpus-refactor-session-log.md): Session Log — AEGIS Corpus Refactor (2026-09-13)
 - [HATHOR-SESSION-002 — Summary Report — AEGIS Framework Documentation Refactor](./sessions/2026-09-13-corpus-refactor-summary-report.md): The AEGIS research corpus was reviewed end-to-end, found to be strong in discipline but carrying **coherence debt** (later decisions contrad
-

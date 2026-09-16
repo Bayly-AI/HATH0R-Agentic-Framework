@@ -36,6 +36,7 @@ Status legend: **proposed** · **applied** · **accepted** · **external**
 |---|---|---|---|
 | D1 | HATHOR-CANON-001 | `hathor-doc@1` metadata schema; ID/version/review/stale/index model; `HT-DOC-###` requirements; docs-as-code linters | proposed (issue #5; corpus landed via PR #8) |
 | D2 | ID namespace | Live corpus document IDs are `HATHOR-*`; archive retains `AEGIS-*` provenance | **applied 2026-09-15 (issue #12)** |
+| N1 | Adoption notice | Team notified via issue #18 + HATHOR-REPORT-007 adoption summary | **applied 2026-09-15 (issue #18)** |
 
 ## 2. Applied amendments
 
@@ -57,4 +58,4 @@ Status legend: **proposed** · **applied** · **accepted** · **external**
 
 ---
 
-*Last updated: 2026-09-15 — D2 ID/index/archive normalization applied (issue #12).*
+*Last updated: 2026-09-15 — adoption summary HATHOR-REPORT-007 + team notice #18. Prior:  2026-09-15 — D2 ID/index/archive normalization applied (issue #12).*
