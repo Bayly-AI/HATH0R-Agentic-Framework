@@ -14,10 +14,12 @@ dist/
 downloads/
 eggs/
 .eggs/
-# Keep framework assets/contracts trackable; ignore only Python packaging lib trees
+# Keep framework assets, schemas, and contracts trackable; ignore only Python packaging lib trees
 lib/*
 !lib/assets/
 !lib/assets/**
+!lib/schemas/
+!lib/schemas/**
 !lib/contracts/
 !lib/contracts/**
 lib64/
