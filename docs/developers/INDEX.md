@@ -55,3 +55,5 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** · Map: [`id-namespac
 
 - Document IDs use the public **`HATHOR-*`** namespace.
 - See [`HATHOR-CANON-001`](../architect/hathor-canon-001-documentation-framework-20260915.md) for metadata, review, and staleness rules.
+
+- [HATHOR-PLAYBOOK-001 Repo init setup](hathor-playbook-001-repo-init-setup-20260919.md) — CR-HATH0R-INIT-001 entry gate
