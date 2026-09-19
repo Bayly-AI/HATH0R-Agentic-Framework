@@ -42,7 +42,7 @@ This document prevents architecture detail from being mistaken for product avail
 
 When sources disagree:
 
-1. [`HATHOR-CANON-010`](../architect/aegis-canon-001-registries-20260913.md) owns enumerated registries and identifiers.
+1. [`HATHOR-CANON-010`](../architect/hathor-canon-001-registries-20260913.md) owns enumerated registries and identifiers.
 2. Accepted architecture decisions and accepted research/interface decisions own ratified choices.
 3. Draft or proposed requirements, research, architectures, and technical specifications remain review material.
 4. Approved plans own sequence, not implementation approval or availability.
@@ -68,7 +68,7 @@ The repository supports:
 
 It does not establish:
 
-- greenfield AEGIS implementation;
+- greenfield HATHOR implementation;
 - a production release;
 - a running Control Tower;
 - verified provider adapters;
@@ -85,13 +85,13 @@ It does not establish:
 | Claim class | Evidence represented | Permitted language |
 |---|---|---|
 | Framework identity | README and license | “HATHOR is documented as…” |
-| Accepted design | Accepted ADR, CANON, or RP decision | “The accepted AEGIS design specifies…” |
+| Accepted design | Accepted ADR, CANON, or RP decision | “The accepted HATHOR design specifies…” |
 | Draft target | Draft requirement, research, architecture, or specification | “The target design proposes…” |
 | Approved sequence | Approved plan | “The approved roadmap sequences…” |
 | Proposed item | Awaiting sign-off | “A proposal under review would…” |
 | Legacy/current baseline | Fact-checked InfraOS research | “The baseline system currently provided…” |
-| Implemented AEGIS | Authorized code and configuration | Use only with repository/version evidence |
-| Verified AEGIS | Positive, negative, recovery, and boundary tests | Use only with test scope and result |
+| Implemented HATHOR | Authorized code and configuration | Use only with repository/version evidence |
+| Verified HATHOR | Positive, negative, recovery, and boundary tests | Use only with test scope and result |
 | Piloted | Real users and workloads in bounded scope | Use only with pilot design and data |
 | Operational | Ownership, support, SLOs, retention, access, and incidents active | Use only with operating evidence |
 | Scaled | Multiple teams/providers retain outcomes | Use only with longitudinal evidence |
@@ -101,10 +101,10 @@ It does not establish:
 
 | Topic | Approved formulation |
 |---|---|
-| Category | “AEGIS is a proposed agentic governance and assurance platform.” |
-| Framework relationship | “HATHOR is the broader agentic application framework; AEGIS is its proposed governance/control-plane realization.” |
-| Value proposition | “AEGIS is designed to make human-and-agent delivery bounded, evidence-backed, and human-governed.” |
-| CLI | “The accepted design uses one public `aegis` operational ingress.” |
+| Category | “HATHOR is a proposed agentic governance and assurance platform.” |
+| Framework relationship | “HATHOR is the broader agentic application framework; HATHOR is its proposed governance/control-plane realization.” |
+| Value proposition | “HATHOR is designed to make human-and-agent delivery bounded, evidence-backed, and human-governed.” |
+| CLI | “The accepted design uses one public `hath0r` operational ingress.” |
 | Authority | “The target architecture separates capability, knowledge, work, run-state, and human decision authority.” |
 | Completion | “The target design makes completion a system-evaluated transition based on required work and evidence.” |
 | Bots | “The accepted canonical design enumerates 26 single-purpose bot roles; implementation is not established.” |
@@ -117,13 +117,13 @@ It does not establish:
 | Compliance | “The design may support organization-specific controls; it is not a certification.” |
 | Value | “The documentation defines value hypotheses and a measurement plan; realized ROI is not established.” |
 | License | “The repository is distributed under Apache License 2.0, subject to its terms.” |
-| Existing baseline | “Operational InfraOS research informed the AEGIS design; it is not AEGIS implementation proof.” |
+| Existing baseline | “Operational InfraOS research informed the HATHOR design; it is not HATHOR implementation proof.” |
 
 ## Claims requiring implementation and tests
 
 Do not say these until scoped evidence exists:
 
-- AEGIS blocks unauthorized work.
+- HATHOR blocks unauthorized work.
 - Runs cannot skip required work.
 - False completion is prevented.
 - Revoked capabilities receive no work.
@@ -140,15 +140,15 @@ Do not say these until scoped evidence exists:
 
 Do not say these based on design or tests alone:
 
-- AEGIS reduces incidents.
-- AEGIS improves cycle time.
-- AEGIS lowers cost.
-- AEGIS accelerates onboarding.
-- AEGIS provides governance without drag.
-- AEGIS works across the enterprise.
-- Customers are using AEGIS.
-- AEGIS meets an SLA.
-- AEGIS has proven ROI.
+- HATHOR reduces incidents.
+- HATHOR improves cycle time.
+- HATHOR lowers cost.
+- HATHOR accelerates onboarding.
+- HATHOR provides governance without drag.
+- HATHOR works across the enterprise.
+- Customers are using HATHOR.
+- HATHOR meets an SLA.
+- HATHOR has proven ROI.
 
 ## Prohibited or tightly scoped language
 
@@ -230,7 +230,7 @@ Avoid:
 
 ### README versus architecture canon
 
-The README includes legacy hidden-folder and credential-resolution behavior, including project and sibling environment-file fallback. Later architecture sources center `.aegis/` and accepted Operator brokering. Use architecture sources for target behavior.
+The README includes legacy hidden-folder and credential-resolution behavior, including project and sibling environment-file fallback. Later architecture sources center `.hath0r/` and accepted Operator brokering. Use architecture sources for target behavior.
 
 ### Present tense versus early formation
 
@@ -321,72 +321,72 @@ The inventory included all Markdown, text/license, PDF, and documentation-image 
 |---|---|---|
 | [`docs/architect/INDEX.md`](../architect/INDEX.md) | Canonical corpus index | Product boundary, reading order, source status, implementation-authority rule |
 | [`PENDING-EDITS.md`](../architect/PENDING-EDITS.md) | Live change-control register | Accepted amendments, pending sign-offs, open design and assurance gaps |
-| [`HATHOR-REQ-CORE-001`](../architect/HATHOR-REQ-CORE-001-initial-requirements-20260911.md) | Draft, amended | Platform scope, actors, requirements, non-functional targets, exclusions |
-| [`aegis-bot-taxonomy-requirements`](../architect/aegis-bot-taxonomy-requirements-20260911.md) | Draft | Bot families, anatomy, runtime and command contracts |
-| [`HATHOR-ARCH-001`](../architect/HATHOR-ARCH-001-architecture-mermaid-20260911.md) | Draft visual companion | Logical architecture and lifecycle diagrams |
-| [`HATHOR-ARCH-002`](../architect/aegis-arch-002-bot-unit-compendium-20260914.md) | Draft synthesis awaiting sign-off | Stakeholder bot model; not independent authority |
-| [`HATHOR-CANON-010`](../architect/aegis-canon-001-registries-20260913.md) | Accepted canonical authority | Fifteen gates, refusal/event/linter registries, 26-bot roster, identifiers |
-| [`HATHOR-CANON-011`](../architect/aegis-canon-002-platform-principles-20260914.md) | Proposed, awaiting sign-off | Platform-principle synthesis; not accepted doctrine |
-| [`HATHOR-CANON-012`](../architect/aegis-canon-003-documentation-framework-20260915.md) | Proposed, awaiting sign-off | Documentation metadata, types, review, staleness, indexing, and docs-as-code model; not yet binding on this sales set |
+| [`HATHOR-REQ-CORE-001`](../architect/hathor-req-core-001-initial-requirements-20260911.md) | Draft, amended | Platform scope, actors, requirements, non-functional targets, exclusions |
+| [`hath0r-bot-taxonomy-requirements`](../architect/hathor-bot-taxonomy-requirements-20260911.md) | Draft | Bot families, anatomy, runtime and command contracts |
+| [`HATHOR-ARCH-001`](../architect/hathor-arch-001-architecture-mermaid-20260911.md) | Draft visual companion | Logical architecture and lifecycle diagrams |
+| [`HATHOR-ARCH-002`](../architect/hathor-arch-002-bot-unit-compendium-20260914.md) | Draft synthesis awaiting sign-off | Stakeholder bot model; not independent authority |
+| [`HATHOR-CANON-010`](../architect/hathor-canon-001-registries-20260913.md) | Accepted canonical authority | Fifteen gates, refusal/event/linter registries, 26-bot roster, identifiers |
+| [`HATHOR-CANON-011`](../architect/hathor-canon-002-platform-principles-20260914.md) | Proposed, awaiting sign-off | Platform-principle synthesis; not accepted doctrine |
+| [`HATHOR-CANON-012`](../architect/hathor-canon-003-documentation-framework-20260915.md) | Proposed, awaiting sign-off | Documentation metadata, types, review, staleness, indexing, and docs-as-code model; not yet binding on this sales set |
 
 ## Architecture decision coverage
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`HATHOR-ADR-001`](../architect/aegis-adr-001-target-command-tree-20260911.md) | Proposed, partly superseded | Historical taxonomy and InfraOS migration context |
-| [`HATHOR-ADR-002`](../architect/aegis-adr-002-orchestration-coordination-model-20260913.md) | Accepted | Event-triggered central orchestration; Process decides, Proctor enforces |
-| [`HATHOR-ADR-003`](../architect/aegis-adr-003-greenfield-command-surface-20260913.md) | Accepted | Greenfield `aegis`, nine domains, CLI/bot exit boundary, no-code maturity evidence |
-| [`HATHOR-ADR-004`](../architect/aegis-adr-004-layout-state-residency-20260913.md) | Accepted | `.aegis` residency, project spool, macOS/Linux v1 |
-| [`HATHOR-ADR-005`](../architect/aegis-adr-005-backup-ticketing-system-20260913.md) | Accepted | Minimal first-party backup work service direction |
+| [`HATHOR-ADR-001`](../architect/hathor-adr-001-target-command-tree-20260911.md) | Proposed, partly superseded | Historical taxonomy and InfraOS migration context |
+| [`HATHOR-ADR-002`](../architect/hathor-adr-002-orchestration-coordination-model-20260913.md) | Accepted | Event-triggered central orchestration; Process decides, Proctor enforces |
+| [`HATHOR-ADR-003`](../architect/hathor-adr-003-greenfield-command-surface-20260913.md) | Accepted | Greenfield `hath0r`, nine domains, CLI/bot exit boundary, no-code maturity evidence |
+| [`HATHOR-ADR-004`](../architect/hathor-adr-004-layout-state-residency-20260913.md) | Accepted | `.hath0r` residency, project spool, macOS/Linux v1 |
+| [`HATHOR-ADR-005`](../architect/hathor-adr-005-backup-ticketing-system-20260913.md) | Accepted | Minimal first-party backup work service direction |
 
 ## Architecture research and interface coverage
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`HATHOR-RP-001`](../architect/aegis-rp-001-manifest-schema-v1-20260911.md) | Draft, amended | Definition schema, contracts, handshake, signing boundary |
-| [`HATHOR-RP-002`](../architect/aegis-rp-002-registry-discovery-20260911.md) | Draft, amended | Local/Tower registry, verification state, trust TTL |
-| [`HATHOR-RP-003`](../architect/aegis-rp-003-telemetry-transport-20260911.md) | Draft, amended | Spool-and-drain, at-least-once delivery, quotas, deduplication |
-| [`HATHOR-RP-004`](../architect/aegis-rp-004-knowledge-promotion-20260911.md) | Draft | Draft-to-verified lifecycle, human review, dispute, aging |
-| [`HATHOR-RP-005`](../architect/aegis-rp-005-hierarchy-consolidation-20260911.md) | Draft, amended | Six-level hierarchy and bounded resolution |
-| [`HATHOR-RP-006`](../architect/aegis-rp-006-ticketing-plane-20260911.md) | Draft, amended | Canonical Ticket Contract, providers, backup, reconciliation |
-| [`HATHOR-RP-007`](../architect/aegis-rp-007-continuous-validation-20260911.md) | Draft, partly superseded | Validation fabric, findings, assumptions, claims, evidence, latency |
-| [`HATHOR-RP-008`](../architect/aegis-rp-008-microbot-launch-roster-20260912.md) | Draft, amended | Launch sequencing and canonical roster reconciliation |
-| [`HATHOR-RP-009`](../architect/aegis-rp-009-orchestration-gateway-20260912.md) | Draft | Conducted run, sequence, graph, completion, resume |
-| [`HATHOR-RP-010`](../architect/aegis-rp-010-tower-surface-20260913.md) | Accepted design | Tower registry, distribution, curators, identity, ingest, query |
-| [`HATHOR-RP-011`](../architect/aegis-rp-011-operator-brokering-20260913.md) | Accepted design | Proxy default, scoped token exception, provider sessions and receipts |
-| [`HATHOR-RP-012`](../architect/aegis-rp-012-knowledge-storage-retrieval-20260913.md) | Accepted design | Files as truth, FTS5/optional vectors, thresholds, status-honest retrieval |
-| [`HATHOR-RP-013`](../architect/aegis-rp-013-threat-model-20260913.md) | Accepted design | Trust scope, signing standards, identity, integrity, hardening |
-| [`HATHOR-RP-014`](../architect/aegis-rp-014-bot-unit-creation-operation-20260913.md) | Accepted design | Governance triad, state/memory, channels, lifecycle |
+| [`HATHOR-RP-001`](../architect/hathor-rp-001-manifest-schema-v1-20260911.md) | Draft, amended | Definition schema, contracts, handshake, signing boundary |
+| [`HATHOR-RP-002`](../architect/hathor-rp-002-registry-discovery-20260911.md) | Draft, amended | Local/Tower registry, verification state, trust TTL |
+| [`HATHOR-RP-003`](../architect/hathor-rp-003-telemetry-transport-20260911.md) | Draft, amended | Spool-and-drain, at-least-once delivery, quotas, deduplication |
+| [`HATHOR-RP-004`](../architect/hathor-rp-004-knowledge-promotion-20260911.md) | Draft | Draft-to-verified lifecycle, human review, dispute, aging |
+| [`HATHOR-RP-005`](../architect/hathor-rp-005-hierarchy-consolidation-20260911.md) | Draft, amended | Six-level hierarchy and bounded resolution |
+| [`HATHOR-RP-006`](../architect/hathor-rp-006-ticketing-plane-20260911.md) | Draft, amended | Canonical Ticket Contract, providers, backup, reconciliation |
+| [`HATHOR-RP-007`](../architect/hathor-rp-007-continuous-validation-20260911.md) | Draft, partly superseded | Validation fabric, findings, assumptions, claims, evidence, latency |
+| [`HATHOR-RP-008`](../architect/hathor-rp-008-microbot-launch-roster-20260912.md) | Draft, amended | Launch sequencing and canonical roster reconciliation |
+| [`HATHOR-RP-009`](../architect/hathor-rp-009-orchestration-gateway-20260912.md) | Draft | Conducted run, sequence, graph, completion, resume |
+| [`HATHOR-RP-010`](../architect/hathor-rp-010-tower-surface-20260913.md) | Accepted design | Tower registry, distribution, curators, identity, ingest, query |
+| [`HATHOR-RP-011`](../architect/hathor-rp-011-operator-brokering-20260913.md) | Accepted design | Proxy default, scoped token exception, provider sessions and receipts |
+| [`HATHOR-RP-012`](../architect/hathor-rp-012-knowledge-storage-retrieval-20260913.md) | Accepted design | Files as truth, FTS5/optional vectors, thresholds, status-honest retrieval |
+| [`HATHOR-RP-013`](../architect/hathor-rp-013-threat-model-20260913.md) | Accepted design | Trust scope, signing standards, identity, integrity, hardening |
+| [`HATHOR-RP-014`](../architect/hathor-rp-014-bot-unit-creation-operation-20260913.md) | Accepted design | Governance triad, state/memory, channels, lifecycle |
 
 ## Technical specification coverage
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`HATHOR-TS-001`](../architect/aegis-ts-001-continuous-validation-implementation-20260911.md) | Draft | Go chassis, validation implementation, tests, performance targets |
-| [`HATHOR-TS-002`](../architect/aegis-ts-002-orchestration-gateway-implementation-20260913.md) | Draft | Run ledger, conductor, admission, resume, reconciliation |
-| [`HATHOR-TS-003`](../architect/aegis-ts-003-bot-unit-implementation-20260913.md) | Draft | Bundle, governance engine, effects, scaffold, memory enforcement |
-| [`HATHOR-TS-004`](../architect/aegis-ts-004-dmz-integration-boundary-20260914.md) | Draft, blocked, awaiting decisions | Proposed policy DMZ, project rules, floors, profiles, conflict envelope; internal future concept only |
+| [`HATHOR-TS-001`](../architect/hathor-ts-001-continuous-validation-implementation-20260911.md) | Draft | Go chassis, validation implementation, tests, performance targets |
+| [`HATHOR-TS-002`](../architect/hathor-ts-002-orchestration-gateway-implementation-20260913.md) | Draft | Run ledger, conductor, admission, resume, reconciliation |
+| [`HATHOR-TS-003`](../architect/hathor-ts-003-bot-unit-implementation-20260913.md) | Draft | Bundle, governance engine, effects, scaffold, memory enforcement |
+| [`HATHOR-TS-004`](../architect/hathor-ts-004-dmz-integration-boundary-20260914.md) | Draft, blocked, awaiting decisions | Proposed policy DMZ, project rules, floors, profiles, conflict envelope; internal future concept only |
 
 ## Roadmap coverage
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`HATHOR-PLAN-001`](../architect/aegis-plan-001-platform-roadmap-20260913.md) | Approved planning artifact | Eight workstreams, six milestones, dependencies, planning estimate |
-| [`HATHOR-PLAN-002`](../architect/aegis-plan-002-cvs-p0-p2-roadmap-20260911.md) | Draft, amended | Detailed validation build sequence and exclusions |
-| [`HATHOR-PLAN-003`](../architect/aegis-plan-003-gateway-validators-roadmap-20260913.md) | Approved planning artifact | Gateway, validators, and bounded skill-pack sequence |
+| [`HATHOR-PLAN-001`](../architect/hathor-plan-001-platform-roadmap-20260913.md) | Approved planning artifact | Eight workstreams, six milestones, dependencies, planning estimate |
+| [`HATHOR-PLAN-002`](../architect/hathor-plan-002-cvs-p0-p2-roadmap-20260911.md) | Draft, amended | Detailed validation build sequence and exclusions |
+| [`HATHOR-PLAN-003`](../architect/hathor-plan-003-gateway-validators-roadmap-20260913.md) | Approved planning artifact | Gateway, validators, and bounded skill-pack sequence |
 
 ## Research baseline and narrative coverage
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`AEGIS CLI Research Report`](../architect/AEGIS-CLI-Research-Report-2026-09-11.md) | Historical/current baseline, annotated | Verified InfraOS 9.3.0 capabilities, gaps, target rationale |
+| [`HATHOR CLI Research Report`](../architect/hathor-cli-research-report-2026-09-11.md) | Historical/current baseline, annotated | Verified InfraOS 9.3.0 capabilities, gaps, target rationale |
 | [`Invocation Inventory`](../architect/01-Invocation-Inventory-Top30-2026-09-11.md) | One-machine baseline | 378 history matches and top-30 use discovery; not fleet evidence |
 | [`CLI Spec Scoring`](../architect/02-CLI-Spec-Scoring-2026-09-11.md) | Baseline | Provisional 5.7/16 interface score and improvement need |
 | [`Schema/Runbook Spike`](../architect/04-Spike-Schema-Runbook-Checklist-2026-09-11.md) | Spike design | Bounded discovery and runbook/checklist learning |
 | [`Token Benchmark`](../architect/05-Token-Benchmark-CLI-vs-MCP-2026-09-11.md) | Limited baseline | Bounded-context evidence with n=1 and non-equivalent-path limits |
-| [`Ticketing Economy Whitepaper`](../architect/aegis-ticketing-economy-whitepaper-20260911.md) | Draft, annotated | Ticket-as-authorization narrative and pilot hypothesis |
-| [`Containerization Article`](../architect/aegis-containerization-article-20260911.md) | Draft, annotated | Container classes, build gates, human promotion, reference deployment |
-| [`Containerization Presentation`](../architect/aegis-containerization-presentation-script-20260911.md) | Draft, annotated | Presentation narrative; not independent authority |
+| [`Ticketing Economy Whitepaper`](../architect/hathor-ticketing-economy-whitepaper-20260911.md) | Draft, annotated | Ticket-as-authorization narrative and pilot hypothesis |
+| [`Containerization Article`](../architect/hathor-containerization-article-20260911.md) | Draft, annotated | Container classes, build gates, human promotion, reference deployment |
+| [`Containerization Presentation`](../architect/hathor-containerization-presentation-script-20260911.md) | Draft, annotated | Presentation narrative; not independent authority |
 
 ## Session-record coverage
 
@@ -409,9 +409,9 @@ The inventory included all Markdown, text/license, PDF, and documentation-image 
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`docs/architect/AEGIS.pdf`](../architect/AEGIS.pdf) | Known-defective image-only board export | Legacy concept coverage; clipped and unsuitable as authority or external collateral |
-| [`lib/AEGIS Overview.pdf`](../../lib/AEGIS%20Overview.pdf) | Untracked image-only overview at review time | More complete internal poster; target concepts only |
-| [`lib/assets/AEGIS Overview.pdf`](../../lib/assets/AEGIS%20Overview.pdf) | Tracked image-only overview asset | Internal overview poster; target concepts only |
+| [`docs/architect/hathor.pdf`](../architect/hathor.pdf) | Known-defective image-only board export | Legacy concept coverage; clipped and unsuitable as authority or external collateral |
+| [`lib/HATHOR Overview.pdf`](../../lib/HATHOR%20Overview.pdf) | Untracked image-only overview at review time | More complete internal poster; target concepts only |
+| [`lib/assets/HATHOR Overview.pdf`](../../lib/assets/HATHOR%20Overview.pdf) | Tracked image-only overview asset | Internal overview poster; target concepts only |
 | [`00-outline-agent-anatomy-taxonomy.png`](../architect/images/00-outline-agent-anatomy-taxonomy.png) | Legacy visual | CLI, hierarchy, connection broker, observation concept |
 | [`01-outline-universal-project-layout.png`](../architect/images/01-outline-universal-project-layout.png) | Legacy visual | Framework, project layout, knowledge, security concept |
 | [`02-outline-universal-project-layout-detailed.png`](../architect/images/02-outline-universal-project-layout-detailed.png) | Legacy visual | Detailed version of the same concept; not canonical text |

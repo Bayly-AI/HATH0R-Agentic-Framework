@@ -1,7 +1,7 @@
 ---
 id: HATHOR-GUIDE-009
-title: AEGIS Value and Success Measures
-summary: CTL-*` and `VAL-*` labels are local measurement aids. They do not add canonical AEGIS identifiers or alter source acceptance criteria.
+title: HATHOR Value and Success Measures
+summary: CTL-*` and `VAL-*` labels are local measurement aids. They do not add canonical HATHOR identifiers or alter source acceptance criteria.
 doc_type: GUIDE
 diataxis: reference
 audience: [business, agent]
@@ -19,18 +19,18 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS Value and Success Measures
+# HATHOR Value and Success Measures
 
 - **Business document:** 07 of 08
 - **Status:** Derived draft for business review
 - **Source baseline:** Architecture corpus as of 2026-09-14
 - **Purpose:** Separate control effectiveness, operational performance, adoption, and business value into measurable outcomes
 
-`CTL-*` and `VAL-*` labels are local measurement aids. They do not add canonical AEGIS identifiers or alter source acceptance criteria.
+`CTL-*` and `VAL-*` labels are local measurement aids. They do not add canonical HATHOR identifiers or alter source acceptance criteria.
 
 ## 1. Measurement objective
 
-AEGIS should be evaluated as both:
+HATHOR should be evaluated as both:
 
 1. a **governance and assurance capability**, which must prove that its controls work; and
 2. a **business investment**, which must prove that improved control does not cost more than the value it creates.
@@ -294,7 +294,7 @@ Use repeated equivalent tasks where possible. Record:
 
 ### 9.3 Attribution
 
-AEGIS adoption may coincide with model, staffing, process, or workload changes. Where controlled comparison is impractical:
+HATHOR adoption may coincide with model, staffing, process, or workload changes. Where controlled comparison is impractical:
 
 - use matched workflow cohorts;
 - report confounders;
@@ -373,7 +373,7 @@ Set numerical pilot thresholds after baseline. At minimum, require:
 
 ## 13. Success definition
 
-AEGIS is successful only if the organization can demonstrate that:
+HATHOR is successful only if the organization can demonstrate that:
 
 1. more delegated work is authorized, attributable, and reconstructable;
 2. evidence and completion controls behave correctly under positive and negative tests;

@@ -9,7 +9,7 @@ tags: [governance, change-control]
 version: 0.2.0
 status: draft
 created: 2026-09-15
-updated: 2026-09-15
+updated: 2026-09-19
 owner: "Raymond Bayly (BaylyAI)"
 review:
   trust: unverified
@@ -42,10 +42,10 @@ Status legend: **proposed** · **applied** · **accepted** · **external**
 
 | Target | Edit | Owner | Status |
 |---|---|---|---|
-| Live `docs/**` | Remap document IDs `AEGIS-<TYPE>-…` → `HATHOR-<TYPE>-…`; special CANON map 001/002/003 → 010/011/012 to protect `HATHOR-CANON-001` | issue #12 | **applied** |
+| Live `docs/**` | Remap document IDs `HATHOR-<TYPE>-…` → `HATHOR-<TYPE>-…`; special CANON map 001/002/003 → 010/011/012 to protect `HATHOR-CANON-001` | issue #12 | **applied** |
 | Tree INDEX.md | Full document tables for architect/business/developers/sales | issue #12 | **applied** |
 | `docs/index.json` + `llms.txt` | Regenerated from front-matter | issue #12 | **applied** |
-| `archive/**` | Provenance policy: frozen AEGIS-era snapshot; not re-ID'd | issue #12 | **applied** |
+| `archive/**` | Provenance policy: frozen HATHOR-era snapshot; not re-ID'd | issue #12 | **applied** |
 | `id-namespace-map-20260915.json` | Machine-readable AEGIS→HATHOR map | issue #12 | **applied** |
 
 ## 3. Open follow-ups
@@ -54,8 +54,19 @@ Status legend: **proposed** · **applied** · **accepted** · **external**
 |---|---|---|
 | D1 sign-off | Operator ratify HATHOR-CANON-001 | operator |
 | Tooling | `ml-doc-*` linters + gen-index automation | operator |
-| Filename hygiene | Optional later rename `aegis-*.md` filenames (IDs already HATHOR; filenames may stay for link stability) | authors |
+| Filename hygiene | Optional later rename `hath0r-*.md` filenames (IDs already HATHOR; filenames may stay for link stability) | authors |
 
 ---
 
 *Last updated: 2026-09-15 — adoption summary HATHOR-REPORT-007 + team notice #18. Prior:  2026-09-15 — D2 ID/index/archive normalization applied (issue #12).*
+
+
+## 4. Gap closure log (2026-09-19)
+
+| Item | Action | Status |
+|------|--------|--------|
+| F2 filenames | Live `aegis-*.md` renamed to `hathor-*.md`; refs + INDEX/index.json updated | **applied** |
+| F3 narrative | Live corpus operator AEGIS teaching scrubbed to HATHOR/`hath0r`/`.hath0r/` (archive frozen) | **applied** |
+| F5 discovery | CLI `hath0r schema` + `hath0r planes` expose ADR-003 surface with shipped|planned status | **applied** (HATH0R-CLI) |
+
+*Last updated: 2026-09-19 — F2/F3/F5 gap closure.*

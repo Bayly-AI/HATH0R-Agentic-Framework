@@ -37,15 +37,15 @@ For every objection:
 
 ## Product and maturity
 
-### Is AEGIS available and production-ready?
+### Is HATHOR available and production-ready?
 
-No such claim is supported by the repository. HATHOR is in early formation, AEGIS is described as a greenfield implementation, and the corpus primarily contains accepted designs, draft specifications, and plans.
+No such claim is supported by the repository. HATHOR is in early formation, HATHOR is described as a greenfield implementation, and the corpus primarily contains accepted designs, draft specifications, and plans.
 
 The safe motion is design-partner discovery or a bounded development pilot once authorized implementation evidence exists.
 
 ### Is there working technology behind the design?
 
-The research includes verified facts about an existing `infraos-os` 9.3.0 baseline and one-machine usage history. Those facts informed AEGIS but are not greenfield AEGIS runtime evidence.
+The research includes verified facts about an existing `infraos-os` 9.3.0 baseline and one-machine usage history. Those facts informed HATHOR but are not greenfield HATHOR runtime evidence.
 
 Ask product engineering for a current implementation inventory, test results, and versioned release evidence before making availability claims.
 
@@ -61,9 +61,9 @@ Escalate commercial questions; do not infer a package from the license.
 
 ## Category and ecosystem
 
-### Is AEGIS another AI model or agent framework?
+### Is HATHOR another AI model or agent framework?
 
-It is not a foundation model or agent harness. HATHOR is the agentic application framework; AEGIS is the proposed governance and control-plane realization intended to operate above models and harnesses.
+It is not a foundation model or agent harness. HATHOR is the agentic application framework; HATHOR is the proposed governance and control-plane realization intended to operate above models and harnesses.
 
 ### Is this another issue tracker?
 
@@ -85,7 +85,7 @@ The repository does not prove that CLI is universally superior. Existing payload
 
 ## Security and control
 
-### Can agents bypass AEGIS?
+### Can agents bypass HATHOR?
 
 The v1 prevention scope covers cooperative-but-fallible actors using platform interfaces. It does not claim prevention against a malicious local process with arbitrary workspace access.
 
@@ -111,7 +111,7 @@ The target requires short-lived Tower-issued human identity for reserved actions
 
 Chat, terminal presence, or a machine identity must not be presented as sufficient proof.
 
-### Does AEGIS guarantee that required steps cannot be skipped?
+### Does HATHOR guarantee that required steps cannot be skipped?
 
 The accepted orchestration direction and draft gateway are designed to make required work and sequence explicit. A no-skip claim requires implementation, negative tests, and the cooperative-but-fallible trust qualifier.
 
@@ -119,13 +119,13 @@ The accepted orchestration direction and draft gateway are designed to make requ
 
 No guaranteed exactly-once claim is supported. The target uses idempotency, bounded retry, receipts, and reconciliation. Provider semantics, interruption, and ambiguity must be tested per integration.
 
-### Is AEGIS compliant with a named standard?
+### Is HATHOR compliant with a named standard?
 
 No certification is documented. The architecture may support organization-specific controls for change authorization, separation of duties, least privilege, credential management, provenance, evidence, continuity, and audit. Compliance requires mapping, implementation, operation, evidence, and independent assessment.
 
 ## Integrations and deployment
 
-### Does AEGIS integrate with Jira, Azure DevOps, and GitHub?
+### Does HATHOR integrate with Jira, Azure DevOps, and GitHub?
 
 They are documented target work adapters, with Jira-first adoption sequencing. Do not call every adapter available until implementation and conformance evidence exists.
 
@@ -135,7 +135,7 @@ The design is provider-neutral and extensible through contracts and adapters. Th
 
 ### Is it language-agnostic?
 
-HATHOR’s contracts and project model are intended to be language-agnostic. The AEGIS reference implementation direction is primarily Go. Distinguish contract portability from implementation language.
+HATHOR’s contracts and project model are intended to be language-agnostic. The HATHOR reference implementation direction is primarily Go. Distinguish contract portability from implementation language.
 
 ### Does it run on Windows?
 
@@ -157,7 +157,7 @@ Availability, HA, capacity, backup, tenancy, and SLOs still require implementati
 
 ## Knowledge
 
-### Does AEGIS use RAG or vector search?
+### Does HATHOR use RAG or vector search?
 
 The accepted knowledge design uses files as truth, rebuildable full-text indexes, optional vectors, tiered retrieval, and explicit confidence. The buyer value is status-honest retrieval, not a specific retrieval buzzword.
 
@@ -212,7 +212,7 @@ The identity, artifact, recovery, operating, and value controls must be proven b
 
 ## Licensing
 
-### Is AEGIS open source?
+### Is HATHOR open source?
 
 The repository is licensed under Apache License 2.0. The license permits broad use, modification, and distribution subject to its conditions and includes an applicable patent grant.
 

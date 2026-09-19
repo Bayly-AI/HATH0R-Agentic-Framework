@@ -1,15 +1,15 @@
 ---
 id: HATHOR-GUIDE-032
 title: "Release Manager Guide"
-summary: "How Release Managers run ticket-authorized, gate-enforced promotion along the AEGIS environment path without skipping stages."
+summary: "How Release Managers run ticket-authorized, gate-enforced promotion along the HATHOR environment path without skipping stages."
 doc_type: GUIDE
 diataxis: how-to
 audience: [developer, agent]
 tags: [release, promotion, dvo, gates]
-version: 0.1.0
+version: 0.1.1
 status: draft
 created: 2026-09-15
-updated: 2026-09-15
+P26-09-19
 owner: "Raymond Bayly (BaylyAI)"
 review:
   trust: unverified
@@ -26,7 +26,7 @@ sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-RP-007, HATHOR-TS-001, HATH
 ---
 # Release Manager Guide
 
-As a Release Manager, you choreograph *authorized* movement of change across environments. AEGIS treats promotion as a governed operation: ticket first, validate at every altitude, never skip CR-BAI-001 stages.
+As a Release Manager, you choreograph *authorized* movement of change across environments. HATHOR treats promotion as a governed operation: ticket first, validate at every altitude, never skip CR-BAI-001 stages.
 
 ## 1. Canonical Promotion Path
 
@@ -59,7 +59,7 @@ Align the release checklist to continuous validation (HATHOR-RP-007, HATHOR-TS-0
 3. **Dispatch-Time:** Proctor/Sequence/Barrier gates allow the release workflow only under lawful plan data.
 4. **Runtime:** Observation spool draining; no silent telemetry loss at quota hard-stop without a decision.
 
-Use `aegis process ... --dry-run` for the release playbook, then `--yes` only with ticket + plan match (HATHOR-ADR-003).
+Use `hath0r process ... --dry-run` for the release playbook, then `--yes` only with ticket + plan match (HATHOR-ADR-003).
 
 ## 4. Artifacts and Provenance
 

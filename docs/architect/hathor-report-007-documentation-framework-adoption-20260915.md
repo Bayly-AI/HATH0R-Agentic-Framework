@@ -107,15 +107,15 @@ Warn: `ml-doc-staleness`, `ml-doc-diataxis`
 | Trees | architect 46 · business 9 · developers 12 · sales 15 |
 | Types | CANON 9 · GUIDE 35 · RP 14 · REPORT 6 · ADR 5 · TS 4 · PLAN 3 · ARCH 2 · REQ 2 · SESSION 2 |
 | Status mix | draft 66 · accepted 13 · proposed 3 |
-| Archive MD files | 75 (historical `AEGIS-*` retained) |
+| Archive MD files | 75 (historical `HATHOR-*` retained) |
 
 Special CANON map (protect OpenSource framework ID):
 
 | Historical | Live |
 |---|---|
-| AEGIS-CANON-001 (registries) | HATHOR-CANON-010 |
-| AEGIS-CANON-002 (principles) | HATHOR-CANON-011 |
-| AEGIS-CANON-003 (private doc framework) | HATHOR-CANON-012 |
+| HATHOR-CANON-001 (registries) | HATHOR-CANON-010 |
+| HATHOR-CANON-002 (principles) | HATHOR-CANON-011 |
+| HATHOR-CANON-003 (private doc framework) | HATHOR-CANON-012 |
 | OpenSource doc framework | **HATHOR-CANON-001** |
 
 ---
@@ -152,9 +152,9 @@ is:issue state:open repo:Bayly-AI/HATH0R-Agentic-Framework repo:Bayly-AI/HATH0R-
 | ID | Topic | Status |
 |---|---|---|
 | **D1** | Accept HATHOR-CANON-001 / `hathor-doc@1` | **proposed** — needs operator sign-off |
-| **D2** | Live IDs = `HATHOR-*`; archive keeps `AEGIS-*` | **applied** (issue #12) |
+| **D2** | Live IDs = `HATHOR-*`; archive keeps `HATHOR-*` | **applied** (issue #12) |
 | Tooling | `bin/docs` ml-doc-* + gen-index automation | open follow-up |
-| Filenames | Optional rename `aegis-*.md` paths (IDs already HATHOR) | optional later |
+| Filenames | Optional rename `hath0r-*.md` paths (IDs already HATHOR) | optional later |
 
 HATHOR-CANON-001 §15 still lists ratification questions (ID namespace confirmation, requirement prefix, trees, tooling home, set version). Namespace practice already matches the proposed `HATHOR-*` answer via D2.
 

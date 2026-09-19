@@ -27,35 +27,35 @@ sources: []
 
 ## Category
 
-**AEGIS is a proposed agentic governance and assurance platform.**
+**HATHOR is a proposed agentic governance and assurance platform.**
 
-**HATHOR is the broader agentic application framework that AEGIS is designed to realize.**
+**HATHOR is the broader agentic application framework that HATHOR is designed to realize.**
 
 Do not reverse these definitions or describe HATHOR as the entire platform.
 
 ## Positioning statement
 
-For organizations scaling AI-assisted software delivery that need to preserve authorization, evidence, human control, and accountability, AEGIS is a proposed governance layer that connects people, agents, work systems, knowledge, validation, and external services under one operating contract. Unlike governance embedded separately in each agent harness or tool, its target architecture separates authoritative work, knowledge, capability, run state, and human decisions while keeping existing engineering systems in place.
+For organizations scaling AI-assisted software delivery that need to preserve authorization, evidence, human control, and accountability, HATHOR is a proposed governance layer that connects people, agents, work systems, knowledge, validation, and external services under one operating contract. Unlike governance embedded separately in each agent harness or tool, its target architecture separates authoritative work, knowledge, capability, run state, and human decisions while keeping existing engineering systems in place.
 
 This is positioning based on design intent, not a competitively validated superiority claim.
 
 ## One-line message
 
-AEGIS is designed to make AI-assisted delivery bounded, evidence-backed, and human-governed.
+HATHOR is designed to make AI-assisted delivery bounded, evidence-backed, and human-governed.
 
 ## 15-second pitch
 
-AEGIS is a proposed governance layer for human-and-agent software delivery. It is designed to connect authorized work, trusted knowledge, validation evidence, external effects, and human approvals through one consistent operating contract.
+HATHOR is a proposed governance layer for human-and-agent software delivery. It is designed to connect authorized work, trusted knowledge, validation evidence, external effects, and human approvals through one consistent operating contract.
 
 ## 30-second pitch
 
-As engineering agents take on more work, authorization, evidence, credentials, and completion can become fragmented across chats, trackers, repositories, and providers. AEGIS is designed to place a common governance layer above those tools: work stays ticket-authorized, completion is evaluated from evidence, external access is brokered, and high-risk promotion remains human. The current project is at defined design maturity, so the right next step is a bounded, measured development pilot—not a production-readiness claim.
+As engineering agents take on more work, authorization, evidence, credentials, and completion can become fragmented across chats, trackers, repositories, and providers. HATHOR is designed to place a common governance layer above those tools: work stays ticket-authorized, completion is evaluated from evidence, external access is brokered, and high-risk promotion remains human. The current project is at defined design maturity, so the right next step is a bounded, measured development pilot—not a production-readiness claim.
 
 ## Two-minute narrative
 
 AI agents can produce and act at a speed that manual reconciliation was not designed to govern. The risk is not just an incorrect code change. It is the inability to show what authorized the action, which capability ran, what evidence supported completion, which provider changed, and which person approved the final promotion.
 
-HATHOR defines a durable framework for projects, knowledge, governance, credentials, and attributable work. AEGIS is the proposed control-plane realization.
+HATHOR defines a durable framework for projects, knowledge, governance, credentials, and attributable work. HATHOR is the proposed control-plane realization.
 
 Its target architecture has four important distinctions:
 
@@ -148,7 +148,7 @@ Lead with:
 - modular capabilities; and
 - phased adoption.
 
-Close with: “Let’s map AEGIS to your current source, work, identity, pipeline, and agent architecture.”
+Close with: “Let’s map HATHOR to your current source, work, identity, pipeline, and agent architecture.”
 
 ### CISO or risk
 
@@ -222,9 +222,9 @@ Agentic activity can grow faster than manual governance.
 
 Intent, authorization, work, evidence, credentials, and completion live in separate systems.
 
-### Slide 3 — HATHOR and AEGIS
+### Slide 3 — HATHOR and HATHOR
 
-HATHOR is the framework; AEGIS is the proposed governance/control-plane realization.
+HATHOR is the framework; HATHOR is the proposed governance/control-plane realization.
 
 ### Slide 4 — One operating contract, separate authorities
 
@@ -274,16 +274,16 @@ When implementation exists, add only verified scenarios with captured test evide
 
 ## Current baseline versus greenfield target
 
-The corpus records an existing `infraos-os` 9.3.0 baseline with live CLI facts and one-machine usage research. It also documents weaknesses that motivate AEGIS. Do not:
+The corpus records an existing `infraos-os` 9.3.0 baseline with live CLI facts and one-machine usage research. It also documents weaknesses that motivate HATHOR. Do not:
 
-- rename InfraOS capabilities as AEGIS;
-- imply that InfraOS usage proves AEGIS adoption;
+- rename InfraOS capabilities as HATHOR;
+- imply that InfraOS usage proves HATHOR adoption;
 - combine legacy and greenfield screenshots or metrics without labels; or
-- use a baseline command inventory as shipped AEGIS scope.
+- use a baseline command inventory as shipped HATHOR scope.
 
 Safe wording:
 
-> The AEGIS design was informed by an operational InfraOS baseline and documented interface gaps. Greenfield AEGIS availability must be evidenced independently.
+> The HATHOR design was informed by an operational InfraOS baseline and documented interface gaps. Greenfield HATHOR availability must be evidenced independently.
 
 ## Language guide
 
@@ -328,7 +328,7 @@ Create new sales visuals with:
 - large, readable labels;
 - target-state watermark;
 - no internal file paths, gate IDs, bot roster, ticket keys, or unresolved implementation detail;
-- consistent HATHOR/AEGIS hierarchy; and
+- consistent HATHOR/HATHOR hierarchy; and
 - a source and maturity footer.
 
 ## Call to action
@@ -339,10 +339,10 @@ Preferred:
 
 Avoid:
 
-> Deploy AEGIS to production now.
+> Deploy HATHOR to production now.
 
 ## Sources
 
 - [Executive Product Brief](./01-executive-product-brief.md)
 - [Claims and Evidence](./13-claims-evidence-and-source-coverage.md)
-- [CLI Research Baseline](../architect/AEGIS-CLI-Research-Report-2026-09-11.md)
+- [CLI Research Baseline](../architect/hathor-cli-research-report-2026-09-11.md)

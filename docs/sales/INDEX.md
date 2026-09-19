@@ -40,7 +40,7 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** · Map: [`id-namespac
 | ID | Type | Status | Title | Path |
 |---|---|---|---|---|
 | [HATHOR-CANON-008](./INDEX.md) | CANON | draft | HATHOR Sales Documentation Index | `INDEX.md` |
-| [HATHOR-GUIDE-015](./01-executive-product-brief.md) | GUIDE | draft | AEGIS Executive Product Brief | `01-executive-product-brief.md` |
+| [HATHOR-GUIDE-015](./01-executive-product-brief.md) | GUIDE | draft | HATHOR Executive Product Brief | `01-executive-product-brief.md` |
 | [HATHOR-GUIDE-016](./02-buyer-problems-and-use-cases.md) | GUIDE | draft | Buyer Problems and Use Cases | `02-buyer-problems-and-use-cases.md` |
 | [HATHOR-GUIDE-017](./03-platform-capabilities.md) | GUIDE | draft | Platform Capabilities | `03-platform-capabilities.md` |
 | [HATHOR-GUIDE-018](./04-architecture-and-integrations.md) | GUIDE | draft | Architecture and Integrations | `04-architecture-and-integrations.md` |

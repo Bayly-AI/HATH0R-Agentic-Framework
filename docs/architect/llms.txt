@@ -6,65 +6,65 @@
 - [HATHOR-CANON-001 — HATHOR Documentation Framework](./hathor-canon-001-documentation-framework-20260915.md): Metadata schema, IDs, versioning, review, staleness, indexing, and enforcement for OpenSource HATHOR docs (hathor-doc@1).
 - [HATHOR-CANON-004 — HATHOR Architecture & Canon Index](./INDEX.md): Human index for the architect documentation tree.
 - [HATHOR-CANON-005 — HATHOR Corpus — Pending-Edits & Change-Control Register](./PENDING-EDITS.md): Cross-document amendments and decision sign-offs for the OpenSource documentation corpus.
-- [HATHOR-CANON-010 — HATHOR-CANON-010 — Canonical Registries](./aegis-canon-001-registries-20260913.md): Per-paper lists drifted (CORE said ten gates; RP-007 added four; RP-009 added
-- [HATHOR-CANON-011 — HATHOR-CANON-011 — HATHOR Platform Principles](./aegis-canon-002-platform-principles-20260914.md): RFC 2119 keywords appear only inside quoted source requirements.
-- [HATHOR-CANON-012 — HATHOR Documentation Framework](./aegis-canon-003-documentation-framework-20260915.md): Metadata schema, IDs, versioning, review, staleness, indexing, and enforcement for HATHOR docs.
+- [HATHOR-CANON-010 — HATHOR-CANON-010 — Canonical Registries](./hathor-canon-001-registries-20260913.md): Per-paper lists drifted (CORE said ten gates; RP-007 added four; RP-009 added
+- [HATHOR-CANON-011 — HATHOR-CANON-011 — HATHOR Platform Principles](./hathor-canon-002-platform-principles-20260914.md): RFC 2119 keywords appear only inside quoted source requirements.
+- [HATHOR-CANON-012 — HATHOR Documentation Framework](./hathor-canon-003-documentation-framework-20260915.md): Metadata schema, IDs, versioning, review, staleness, indexing, and enforcement for HATHOR docs.
 
 ## ADR
-- [HATHOR-ADR-001 — 03 — ADR: Target Command Tree (Domains + Hierarchy Lifecycle)](./aegis-adr-001-target-command-tree-20260911.md): infraos-os` 9.3.0 exposes **79 top-level command groups** and **525+** inventory paths. Sampled Communications usage (report 01) concentrate
-- [HATHOR-ADR-002 — HATHOR-ADR-002 — Orchestration Coordination Model](./aegis-adr-002-orchestration-coordination-model-20260913.md): RFC 2119 keywords apply where requirements are restated.
-- [HATHOR-ADR-003 — HATHOR-ADR-003 — Greenfield Binary, Canonical Command Surface & Exit-Code Boundaries](./aegis-adr-003-greenfield-command-surface-20260913.md): RFC 2119 keywords apply.
-- [HATHOR-ADR-004 — HATHOR-ADR-004 — Layout & State Residency](./aegis-adr-004-layout-state-residency-20260913.md): RFC 2119 keywords apply.
-- [HATHOR-ADR-005 — HATHOR-ADR-005 — Backup Ticketing System: Build vs Adopt](./aegis-adr-005-backup-ticketing-system-20260913.md): RP-006 §5 defines the Backup TS by four properties: implements Ticket Contract v1 verbatim; deliberately *small* (list/get/create/update/lin
+- [HATHOR-ADR-001 — 03 — ADR: Target Command Tree (Domains + Hierarchy Lifecycle)](./hathor-adr-001-target-command-tree-20260911.md): infraos-os` 9.3.0 exposes **79 top-level command groups** and **525+** inventory paths. Sampled Communications usage (report 01) concentrate
+- [HATHOR-ADR-002 — HATHOR-ADR-002 — Orchestration Coordination Model](./hathor-adr-002-orchestration-coordination-model-20260913.md): RFC 2119 keywords apply where requirements are restated.
+- [HATHOR-ADR-003 — HATHOR-ADR-003 — Greenfield Binary, Canonical Command Surface & Exit-Code Boundaries](./hathor-adr-003-greenfield-command-surface-20260913.md): RFC 2119 keywords apply.
+- [HATHOR-ADR-004 — HATHOR-ADR-004 — Layout & State Residency](./hathor-adr-004-layout-state-residency-20260913.md): RFC 2119 keywords apply.
+- [HATHOR-ADR-005 — HATHOR-ADR-005 — Backup Ticketing System: Build vs Adopt](./hathor-adr-005-backup-ticketing-system-20260913.md): RP-006 §5 defines the Backup TS by four properties: implements Ticket Contract v1 verbatim; deliberately *small* (list/get/create/update/lin
 
 ## REQ
-- [HATHOR-REQ-BOT-001 — AEGIS — Bot Taxonomy, Anatomy & Default Command Contract](./aegis-bot-taxonomy-requirements-20260911.md): 1. **Infra reuse only when better** — AEGIS may adopt Infra processes/architecture only where they demonstrably exceed a from-scratch AEGIS 
-- [HATHOR-REQ-CORE-001 — AEGIS — Initial Platform Requirements (Core)](./AEGIS-REQ-CORE-001-initial-requirements-20260911.md): RFC 2119 keywords apply: **MUST / SHOULD / MAY**. Every requirement in this document is prefixed `AEG-REQ-<AREA>-###`. Acceptance criteria a
+- [HATHOR-REQ-BOT-001 — HATHOR — Bot Taxonomy, Anatomy & Default Command Contract](./hathor-bot-taxonomy-requirements-20260911.md): 1. **Infra reuse only when better** — HATHOR may adopt Infra processes/architecture only where they demonstrably exceed a from-scratch HATHOR 
+- [HATHOR-REQ-CORE-001 — HATHOR — Initial Platform Requirements (Core)](./hathor-req-core-001-initial-requirements-20260911.md): RFC 2119 keywords apply: **MUST / SHOULD / MAY**. Every requirement in this document is prefixed `AEG-REQ-<AREA>-###`. Acceptance criteria a
 
 ## ARCH
-- [HATHOR-ARCH-001 — AEGIS — Architecture & Mermaid Reference](./AEGIS-ARCH-001-architecture-mermaid-20260911.md): Diagrams are Mermaid so they render in Warp, GitHub, and most Markdown surfaces. Every diagram carries a legend and points back to the requi
-- [HATHOR-ARCH-002 — HATHOR-ARCH-002 — Bot Unit Compendium](./aegis-arch-002-bot-unit-compendium-20260914.md): RFC 2119 keywords are quoted from source papers, not minted here.
+- [HATHOR-ARCH-001 — HATHOR — Architecture & Mermaid Reference](./hathor-arch-001-architecture-mermaid-20260911.md): Diagrams are Mermaid so they render in Warp, GitHub, and most Markdown surfaces. Every diagram carries a legend and points back to the requi
+- [HATHOR-ARCH-002 — HATHOR-ARCH-002 — Bot Unit Compendium](./hathor-arch-002-bot-unit-compendium-20260914.md): RFC 2119 keywords are quoted from source papers, not minted here.
 
 ## RP
-- [HATHOR-RP-001 — AEGIS Research Paper 001 — Bot Manifest Schema v1 & Contract-Negotiation Handshake](./aegis-rp-001-manifest-schema-v1-20260911.md): AEG-BOT-ANA-002 mandates a machine-readable manifest for every bot, and AEG-BOT-ANA-003 mandates a versioned communication contract. Neither
-- [HATHOR-RP-002 — AEGIS Research Paper 002 — Bot Registry & Discovery Model](./aegis-rp-002-registry-discovery-20260911.md): Proctor-Bot routes requests by capability (AEG-MAN-003) and must verify provenance before dispatch (SEC-003). Question: does Proctor discove
-- [HATHOR-RP-003 — AEGIS Research Paper 003 — Telemetry Transport](./aegis-rp-003-telemetry-transport-20260911.md): Every bot emits standardized telemetry (ANA-007, OBS-001) consumed by the Observation family and rolled up to the Control Tower (OBS-002). U
-- [HATHOR-RP-004 — AEGIS Research Paper 004 — Draft→Verified Knowledge Promotion Workflow](./aegis-rp-004-knowledge-promotion-20260911.md): Every knowledge write lands as `draft`; only human review promotes to `verified` (KNO-004). Undefined: **who reviews**, **where the queue li
-- [HATHOR-RP-005 — AEGIS Research Paper 005 — Hierarchy Topology: Six Bots vs One Process-Bot with Six Tier Adapters](./aegis-rp-005-hierarchy-consolidation-20260911.md): The boards draw six Information Hierarchy bots (Procedure → Strategy → Playbook → Runbook → Workflow → Checklist), each queried by Process-B
-- [HATHOR-RP-006 — AEGIS Research Paper 006 — The Ticketing Plane: Work as a Source of Truth](./aegis-rp-006-ticketing-plane-20260911.md): The bot taxonomy settled where **capability** lives (the micro-bot) and the containerization article settled where **deployment** lives (the
-- [HATHOR-RP-007 — HATHOR-RP-007 — Continuous Validation System](./aegis-rp-007-continuous-validation-20260911.md): RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-VAL-###`.
-- [HATHOR-RP-008 — HATHOR-RP-008 — Micro-Bot Launch Roster](./aegis-rp-008-microbot-launch-roster-20260912.md): RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-MBL-###` (Micro-Bot Launch).
-- [HATHOR-RP-009 — HATHOR-RP-009 — Orchestration Gateway](./aegis-rp-009-orchestration-gateway-20260912.md): RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-GW-###` (Gateway).
-- [HATHOR-RP-010 — HATHOR-RP-010 — Control Tower Surface v1](./aegis-rp-010-tower-surface-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-TWR-###`.
-- [HATHOR-RP-011 — HATHOR-RP-011 — Operator-Bot Brokering Model](./aegis-rp-011-operator-brokering-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-OPB-###`.
-- [HATHOR-RP-012 — HATHOR-RP-012 — Knowledge Plane: Storage & Retrieval Mechanics](./aegis-rp-012-knowledge-storage-retrieval-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-KST-###`.
-- [HATHOR-RP-013 — HATHOR-RP-013 — Threat Model & Trust Boundaries](./aegis-rp-013-threat-model-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-THR-###`.
-- [HATHOR-RP-014 — HATHOR-RP-014 — The Bot Unit: Creating & Operating a HATHOR Micro-Bot](./aegis-rp-014-bot-unit-creation-operation-20260913.md): RFC 2119 keywords apply. Requirements in this paper extend the BOT-001 family with three sub-prefixes: `AEG-BOT-GOV-###` (governance: direct
+- [HATHOR-RP-001 — HATHOR Research Paper 001 — Bot Manifest Schema v1 & Contract-Negotiation Handshake](./hathor-rp-001-manifest-schema-v1-20260911.md): AEG-BOT-ANA-002 mandates a machine-readable manifest for every bot, and AEG-BOT-ANA-003 mandates a versioned communication contract. Neither
+- [HATHOR-RP-002 — HATHOR Research Paper 002 — Bot Registry & Discovery Model](./hathor-rp-002-registry-discovery-20260911.md): Proctor-Bot routes requests by capability (AEG-MAN-003) and must verify provenance before dispatch (SEC-003). Question: does Proctor discove
+- [HATHOR-RP-003 — HATHOR Research Paper 003 — Telemetry Transport](./hathor-rp-003-telemetry-transport-20260911.md): Every bot emits standardized telemetry (ANA-007, OBS-001) consumed by the Observation family and rolled up to the Control Tower (OBS-002). U
+- [HATHOR-RP-004 — HATHOR Research Paper 004 — Draft→Verified Knowledge Promotion Workflow](./hathor-rp-004-knowledge-promotion-20260911.md): Every knowledge write lands as `draft`; only human review promotes to `verified` (KNO-004). Undefined: **who reviews**, **where the queue li
+- [HATHOR-RP-005 — HATHOR Research Paper 005 — Hierarchy Topology: Six Bots vs One Process-Bot with Six Tier Adapters](./hathor-rp-005-hierarchy-consolidation-20260911.md): The boards draw six Information Hierarchy bots (Procedure → Strategy → Playbook → Runbook → Workflow → Checklist), each queried by Process-B
+- [HATHOR-RP-006 — HATHOR Research Paper 006 — The Ticketing Plane: Work as a Source of Truth](./hathor-rp-006-ticketing-plane-20260911.md): The bot taxonomy settled where **capability** lives (the micro-bot) and the containerization article settled where **deployment** lives (the
+- [HATHOR-RP-007 — HATHOR-RP-007 — Continuous Validation System](./hathor-rp-007-continuous-validation-20260911.md): RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-VAL-###`.
+- [HATHOR-RP-008 — HATHOR-RP-008 — Micro-Bot Launch Roster](./hathor-rp-008-microbot-launch-roster-20260912.md): RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-MBL-###` (Micro-Bot Launch).
+- [HATHOR-RP-009 — HATHOR-RP-009 — Orchestration Gateway](./hathor-rp-009-orchestration-gateway-20260912.md): RFC 2119 keywords apply. Requirements in this paper use prefix `AEG-GW-###` (Gateway).
+- [HATHOR-RP-010 — HATHOR-RP-010 — Control Tower Surface v1](./hathor-rp-010-tower-surface-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-TWR-###`.
+- [HATHOR-RP-011 — HATHOR-RP-011 — Operator-Bot Brokering Model](./hathor-rp-011-operator-brokering-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-OPB-###`.
+- [HATHOR-RP-012 — HATHOR-RP-012 — Knowledge Plane: Storage & Retrieval Mechanics](./hathor-rp-012-knowledge-storage-retrieval-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-KST-###`.
+- [HATHOR-RP-013 — HATHOR-RP-013 — Threat Model & Trust Boundaries](./hathor-rp-013-threat-model-20260913.md): RFC 2119 keywords apply. Requirements use prefix `AEG-THR-###`.
+- [HATHOR-RP-014 — HATHOR-RP-014 — The Bot Unit: Creating & Operating a HATHOR Micro-Bot](./hathor-rp-014-bot-unit-creation-operation-20260913.md): RFC 2119 keywords apply. Requirements in this paper extend the BOT-001 family with three sub-prefixes: `AEG-BOT-GOV-###` (governance: direct
 
 ## TS
-- [HATHOR-TS-001 — HATHOR-TS-001 — Continuous Validation System: Technical Specification](./aegis-ts-001-continuous-validation-implementation-20260911.md): RFC 2119 keywords apply. New identifiers introduced here: components `TS-C-###`, interfaces `TS-I-###`, decisions `TS-D-###`.
-- [HATHOR-TS-002 — HATHOR-TS-002 — Orchestration Gateway: Technical Specification](./aegis-ts-002-orchestration-gateway-implementation-20260913.md): RFC 2119 keywords apply. New identifiers: decisions `TS2-D-###`, components `TS2-C-###`, interfaces `TS2-I-###` (namespaced to avoid collisi
-- [HATHOR-TS-003 — HATHOR-TS-003 — Bot Unit Architecture: Implementation Specification](./aegis-ts-003-bot-unit-implementation-20260913.md): RFC 2119 keywords apply. New identifiers: decisions `TS3-D-###`, components `TS3-C-###`, interfaces `TS3-I-###` (namespaced to avoid collisi
-- [HATHOR-TS-004 — HATHOR-TS-004 — The DMZ: Application ↔ Framework Integration Boundary](./aegis-ts-004-dmz-integration-boundary-20260914.md): RFC 2119 keywords apply. New identifiers: decisions `TS4-D-###`, components `TS4-C-###`, interfaces `TS4-I-###`.
+- [HATHOR-TS-001 — HATHOR-TS-001 — Continuous Validation System: Technical Specification](./hathor-ts-001-continuous-validation-implementation-20260911.md): RFC 2119 keywords apply. New identifiers introduced here: components `TS-C-###`, interfaces `TS-I-###`, decisions `TS-D-###`.
+- [HATHOR-TS-002 — HATHOR-TS-002 — Orchestration Gateway: Technical Specification](./hathor-ts-002-orchestration-gateway-implementation-20260913.md): RFC 2119 keywords apply. New identifiers: decisions `TS2-D-###`, components `TS2-C-###`, interfaces `TS2-I-###` (namespaced to avoid collisi
+- [HATHOR-TS-003 — HATHOR-TS-003 — Bot Unit Architecture: Implementation Specification](./hathor-ts-003-bot-unit-implementation-20260913.md): RFC 2119 keywords apply. New identifiers: decisions `TS3-D-###`, components `TS3-C-###`, interfaces `TS3-I-###` (namespaced to avoid collisi
+- [HATHOR-TS-004 — HATHOR-TS-004 — The DMZ: Application ↔ Framework Integration Boundary](./hathor-ts-004-dmz-integration-boundary-20260914.md): RFC 2119 keywords apply. New identifiers: decisions `TS4-D-###`, components `TS4-C-###`, interfaces `TS4-I-###`.
 
 ## PLAN
-- [HATHOR-PLAN-001 — HATHOR-PLAN-001 — Platform Roadmap (v1)](./aegis-plan-001-platform-roadmap-20260913.md): Sequence the entire v1 platform (not just CVS) so every CORE §16 acceptance criterion has an owning workstream, and the two detailed plans (
-- [HATHOR-PLAN-002 — HATHOR-PLAN-002 — Continuous Validation System: P0–P2 Delivery Roadmap & Task Breakdown](./aegis-plan-002-cvs-p0-p2-roadmap-20260911.md): gantt title CVS P0–P2 Delivery (planning-grade, 2 engineers) dateFormat YYYY-MM-DD axisFormat %m-%d section P0 Foundations + change validati
-- [HATHOR-PLAN-003 — HATHOR-PLAN-003 — Orchestration Gateway, Remaining Validators & Agent Skill Pack](./aegis-plan-003-gateway-validators-roadmap-20260913.md): Sizing: S ≤ 1.5d, M ≈ 2–3d, L ≈ 4–5d. Prereq: PLAN-002 M1 (linter runtime + suite runner exist).
+- [HATHOR-PLAN-001 — HATHOR-PLAN-001 — Platform Roadmap (v1)](./hathor-plan-001-platform-roadmap-20260913.md): Sequence the entire v1 platform (not just CVS) so every CORE §16 acceptance criterion has an owning workstream, and the two detailed plans (
+- [HATHOR-PLAN-002 — HATHOR-PLAN-002 — Continuous Validation System: P0–P2 Delivery Roadmap & Task Breakdown](./hathor-plan-002-cvs-p0-p2-roadmap-20260911.md): gantt title CVS P0–P2 Delivery (planning-grade, 2 engineers) dateFormat YYYY-MM-DD axisFormat %m-%d section P0 Foundations + change validati
+- [HATHOR-PLAN-003 — HATHOR-PLAN-003 — Orchestration Gateway, Remaining Validators & Agent Skill Pack](./hathor-plan-003-gateway-validators-roadmap-20260913.md): Sizing: S ≤ 1.5d, M ≈ 2–3d, L ≈ 4–5d. Prereq: PLAN-002 M1 (linter runtime + suite runner exist).
 
 ## GUIDE
-- [HATHOR-GUIDE-001 — Containerization in AEGIS: From Micro-Bot to Deployable Unit](./aegis-containerization-article-20260911.md): Every architecture eventually has to answer the same question: what is the smallest unit you can trust? AEGIS answered it once at the capabi
-- [HATHOR-GUIDE-002 — AEGIS Containerization — Presentation Script](./aegis-containerization-presentation-script-20260911.md): flowchart LR Repo[
+- [HATHOR-GUIDE-001 — Containerization in HATHOR: From Micro-Bot to Deployable Unit](./hathor-containerization-article-20260911.md): Every architecture eventually has to answer the same question: what is the smallest unit you can trust? HATHOR answered it once at the capabi
+- [HATHOR-GUIDE-002 — HATHOR Containerization — Presentation Script](./hathor-containerization-presentation-script-20260911.md): flowchart LR Repo[
 
 ## REPORT
 - [HATHOR-REPORT-007 — HATHOR Documentation Framework — Adoption Summary](./hathor-report-007-documentation-framework-adoption-20260915.md): Executive summary of hathor-doc@1 readiness, corpus stats, and adoption checklist.
-- [HATHOR-REPORT-001 — AEGIS CLI Research Report](./AEGIS-CLI-Research-Report-2026-09-11.md): The outline positions **CLI as the control plane**: the single contact surface between agents and everything else (code, assets, knowledge, 
+- [HATHOR-REPORT-001 — HATHOR CLI Research Report](./hathor-cli-research-report-2026-09-11.md): The outline positions **CLI as the control plane**: the single contact surface between agents and everything else (code, assets, knowledge, 
 - [HATHOR-REPORT-002 — 01 — Top 30 Real `infraos-os` Invocations (Communications)](./01-Invocation-Inventory-Top30-2026-09-11.md): These are heuristic analytical tags, not a mutually exclusive partition; chain-labelled rows can represent more than one layer.
 - [HATHOR-REPORT-003 — 02 — CLI Spec Scoring (`infraos-os` vs clispec.dev)](./02-CLI-Spec-Scoring-2026-09-11.md): Principles (CLI Spec): 1. **Structured Output** — explicit JSON; prefer structured when piped; structured failures 2. **Schema Introspection
 - [HATHOR-REPORT-004 — 04 — Spike Design: Schema Dump + Runbook→Checklist Lifecycle](./04-Spike-Schema-Runbook-Checklist-2026-09-11.md): Playbook: security-devops / dvo-deploy-handoff Runbook: security-devops / dvo-deploy-ticket Checklist: security-devops / dvo-deploy-ticket W
 - [HATHOR-REPORT-005 — 05 — Token / Payload Baseline: `infraos-os`, InfraMCP Health, and MCP Catalog Proxies](./05-Token-Benchmark-CLI-vs-MCP-2026-09-11.md): 1. Not a multi-run statistical benchmark (n=1 per command).
-- [HATHOR-REPORT-006 — The Ticketing Economy](./aegis-ticketing-economy-whitepaper-20260911.md): Software organizations have never been better at *doing* work. With AI agents now writing code, filing changes, and operating pipelines alon
+- [HATHOR-REPORT-006 — The Ticketing Economy](./hathor-ticketing-economy-whitepaper-20260911.md): Software organizations have never been better at *doing* work. With AI agents now writing code, filing changes, and operating pipelines alon
 
 ## SESSION
-- [HATHOR-SESSION-001 — Session Log — AEGIS Corpus Refactor (2026-09-13)](./sessions/2026-09-13-corpus-refactor-session-log.md): Session Log — AEGIS Corpus Refactor (2026-09-13)
-- [HATHOR-SESSION-002 — Summary Report — AEGIS Framework Documentation Refactor](./sessions/2026-09-13-corpus-refactor-summary-report.md): The AEGIS research corpus was reviewed end-to-end, found to be strong in discipline but carrying **coherence debt** (later decisions contrad
+- [HATHOR-SESSION-001 — Session Log — HATHOR Corpus Refactor (2026-09-13)](./sessions/2026-09-13-corpus-refactor-session-log.md): Session Log — HATHOR Corpus Refactor (2026-09-13)
+- [HATHOR-SESSION-002 — Summary Report — HATHOR Framework Documentation Refactor](./sessions/2026-09-13-corpus-refactor-summary-report.md): The HATHOR research corpus was reviewed end-to-end, found to be strong in discipline but carrying **coherence debt** (later decisions contrad

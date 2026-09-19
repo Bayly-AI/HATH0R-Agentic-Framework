@@ -191,7 +191,7 @@ infraos-os workflows describe devops/dvo-deploy-request
 # source catalogs remain the markdown/yaml definitions
 ```
 
-The spike deliberately uses the current Communications `.infraOS` convention. The outline's target `.ai/aegis` layout and migration/compatibility rules are ADR work, not part of this throwaway experiment. Local JSON updates use write-to-temp + atomic rename; this protects the file, not external side effects.
+The spike deliberately uses the current Communications `.infraOS` convention. The outline's target `.ai/hath0r` layout and migration/compatibility rules are ADR work, not part of this throwaway experiment. Local JSON updates use write-to-temp + atomic rename; this protects the file, not external side effects.
 
 ### 4.3 Run algorithm
 
@@ -281,7 +281,7 @@ function runbook_run(id, ctx, dry_run):
 If a disposable script is written later under BaylyAI research (not product):
 
 ```text
-BaylyAI/AEGIS/spikes/2026-09-11/
+BaylyAI/HATHOR/spikes/2026-09-11/
   README.md
   schema_filter.py      # inventory → schema v0
   runbook_sim.py        # dry-run lifecycle simulator

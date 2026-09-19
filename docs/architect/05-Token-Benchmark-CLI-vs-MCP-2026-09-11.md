@@ -171,7 +171,7 @@ infraos-os status --json                   # unless tower posture required
 
 ---
 
-## 7. Implications for AEGIS design
+## 7. Implications for HATHOR design
 
 1. **Operator-Bot list endpoints must stay tiny** — connections list is the gold pattern.  
 2. **Tower inventory must be domain-filtered** — never default full command dump.  
@@ -198,7 +198,7 @@ Measure: input tokens (schemas) + output tokens + wall time + success rate over 
 
 For the five local control-plane tasks sampled from Communications agent bootstrap, measured CLI payloads were generally compact, except for **catalog dumps** (`mcp list`, `commands inventory`) and **verbose diagnostics** (`connections health`, fat `status --json`).
 
-The highest-ROI AEGIS/CLI Spec moves are therefore:
+The highest-ROI HATHOR/CLI Spec moves are therefore:
 1. Prevent catalog dumps as defaults.  
 2. Add bounded schema domains (spike 04).  
 3. Ship a short agent skill for the top 15 commands (report 01).  

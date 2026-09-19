@@ -1,7 +1,7 @@
 ---
 id: HATHOR-GUIDE-023
 title: Discovery and Qualification
-summary: Determine whether the buyer has a material governed-agentic-delivery problem, whether AEGIS fits the intended architecture, whether the organization can support a measured pilot, and what evidence would justify the ne...
+summary: Determine whether the buyer has a material governed-agentic-delivery problem, whether HATHOR fits the intended architecture, whether the organization can support a measured pilot, and what evidence would justify the ne...
 doc_type: GUIDE
 diataxis: how-to
 audience: [sales, agent]
@@ -27,7 +27,7 @@ sources: []
 
 ## Discovery objective
 
-Determine whether the buyer has a material governed-agentic-delivery problem, whether AEGIS fits the intended architecture, whether the organization can support a measured pilot, and what evidence would justify the next step.
+Determine whether the buyer has a material governed-agentic-delivery problem, whether HATHOR fits the intended architecture, whether the organization can support a measured pilot, and what evidence would justify the next step.
 
 Discovery is not a product demonstration. Do not lead the buyer toward claims the repository cannot prove.
 
