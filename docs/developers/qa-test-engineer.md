@@ -1,15 +1,15 @@
 ---
 id: HATHOR-GUIDE-030
 title: "QA/Test Engineer Guide"
-summary: "How QA and Test Engineers exercise AEGIS validation altitudes, refuse bad claims, and keep promotion evidence honest."
+summary: "How QA and Test Engineers exercise HATHOR validation altitudes, refuse bad claims, and keep promotion evidence honest."
 doc_type: GUIDE
 diataxis: how-to
 audience: [developer, agent]
 tags: [qa, testing, validation, gates]
-version: 0.1.0
+version: 0.1.1
 status: draft
 created: 2026-09-15
-updated: 2026-09-15
+updated: 2026-09-19
 owner: "Raymond Bayly (BaylyAI)"
 review:
   trust: unverified
@@ -26,11 +26,11 @@ sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-RP-007, HATHOR-TS-001, HATH
 ---
 # QA/Test Engineer Guide
 
-As a QA or Test Engineer on AEGIS, you do not “hope the build is green.” You exercise the four-altitude validation fabric, treat refusals as success when they protect integrity, and attach evidence to tickets before any environment promote.
+As a QA or Test Engineer on HATHOR, you do not “hope the build is green.” You exercise the four-altitude validation fabric, treat refusals as success when they protect integrity, and attach evidence to tickets before any environment promote.
 
 ## 1. Your Place in the Validation Fabric
 
-AEGIS continuous validation is specified across altitudes (HATHOR-RP-007, HATHOR-TS-001):
+HATHOR continuous validation is specified across altitudes (HATHOR-RP-007, HATHOR-TS-001):
 
 1. **Build-Time (1):** Micro-linters are pure and exit `0|2`. Un-linted images must fail the build.
 2. **Change-Time (2):** Micro-linters plus validator bots (`val-*`) refuse bad changes, assumptions, or claims.
@@ -42,13 +42,13 @@ Your job is to design suites that *prove* each altitude still holds, not to bypa
 ## 2. Ticketing Plane: Evidence, Not Vibes
 
 * **No-Ticket Gate:** Substantive test automation changes, fixture data that affects shared environments, and promotion sign-offs require an authorized ticket linked to an Epic.
-* **Commands:** Prefer `aegis work ...` and `aegis process ...` over ad-hoc shell when mutating project state.
+* **Commands:** Prefer `hath0r work ...` and `hath0r process ...` over ad-hoc shell when mutating project state.
 * **Evidence on the record:** Attach run IDs, validator outputs, and URL checks to the ticket. Observation rollups live on the record; chat paste is not provenance (HATHOR-CANON-011 HP-11/HP-12).
 * **Promotion path (CR-BAI-001):** `local → development → testing → staging → master (Production)`. You own the *testing* gate quality bar: deploy + URL validation must pass before Release/DVO promote further (see HATHOR-GUIDE-013).
 
 ## 3. CLI Contracts and Exit Codes
 
-Drive verification through the `aegis` CLI (HATHOR-ADR-003 command surface):
+Drive verification through the `hath0r` CLI (HATHOR-ADR-003 command surface):
 
 * Use `--output=json` (or pipe auto-detection) and assert on structured envelopes `{code, message, remediation, provenance, ttl}`.
 * Treat CLI exit codes as the public contract: `0` success, `1` runtime, `2` usage/validation, `3` not found, `4` auth, `5` conflict, `6` dependency unhealthy, `7` confirmation required.

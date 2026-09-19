@@ -1,15 +1,15 @@
 ---
 id: HATHOR-GUIDE-035
 title: "Engineering Manager Guide"
-summary: "How Engineering Managers run AEGIS delivery through tickets, gates, validation altitudes, and honest promotion without heroics."
+summary: "How Engineering Managers run HATHOR delivery through tickets, gates, validation altitudes, and honest promotion without heroics."
 doc_type: GUIDE
 diataxis: how-to
 audience: [developer, agent]
 tags: [engineering-management, delivery, gates, teams]
-version: 0.1.0
+version: 0.1.1
 status: draft
 created: 2026-09-15
-updated: 2026-09-15
+updated: 2026-09-19
 owner: "Raymond Bayly (BaylyAI)"
 review:
   trust: unverified
@@ -26,13 +26,13 @@ sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-RP-007, HATHOR-TS-001, HATH
 ---
 # Engineering Manager Guide
 
-As an Engineering Manager in AEGIS, you optimize for **mechanical integrity under delivery pressure**. Throughput that skips tickets, linters, or promotion stages is regression, not velocity.
+As an Engineering Manager in HATHOR, you optimize for **mechanical integrity under delivery pressure**. Throughput that skips tickets, linters, or promotion stages is regression, not velocity.
 
 ## 1. Operating Model You Staff For
 
 Staff and review work against the platform shape (HATHOR-GUIDE-014, HATHOR-GUIDE-011):
 
-* **Single CLI control plane** — agents and humans share `aegis` contracts (exit codes, JSON envelopes, dry-run).
+* **Single CLI control plane** — agents and humans share `hath0r` contracts (exit codes, JSON envelopes, dry-run).
 * **Orchestration split** — events append; Process-Bot alone advances run state; Proctor enforces gates.
 * **Bot unit discipline** — new bots follow seven-block anatomy and Manifest v1 (HATHOR-RP-014).
 * **Four validation altitudes** — build, change, dispatch, runtime (HATHOR-RP-007 / HATHOR-TS-001).

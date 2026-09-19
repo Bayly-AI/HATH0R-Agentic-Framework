@@ -29,13 +29,13 @@ sources: []
 
 | Term | Sales definition | Usage guidance |
 |---|---|---|
-| AEGIS | Proposed agentic governance and assurance platform that realizes HATHOR’s control-plane concerns | Do not call it implemented or production-ready without evidence |
-| HATHOR | Broader agentic application framework for portable project structure, knowledge, governance, secure capability access, and attributable work | Do not use as a synonym for the full AEGIS platform |
+| HATHOR | Proposed agentic governance and assurance platform that realizes HATHOR’s control-plane concerns | Do not call it implemented or production-ready without evidence |
+| HATHOR | Broader agentic application framework for portable project structure, knowledge, governance, secure capability access, and attributable work | Do not use as a synonym for the full HATHOR platform |
 | Governed agentic delivery | Delegating work to humans and AI agents while retaining authorization, evidence, strategic lineage, secure access, human decisions, and reconstructability | Preferred category outcome |
 | Agentic governance | Policies, authority, evidence, identity, and controls applied to agent-assisted work | Avoid reducing it to prompt rules |
 | Control plane | Coordination and governance layer that applies contracts and routes to authorities | Does not mean one centralized source of truth |
-| Greenfield | New AEGIS implementation direction rather than a rename of InfraOS | Implies design/build work remains |
-| InfraOS | Existing baseline system studied to inform AEGIS design and migration | Never present InfraOS runtime proof as AEGIS proof |
+| Greenfield | New HATHOR implementation direction rather than a rename of InfraOS | Implies design/build work remains |
+| InfraOS | Existing baseline system studied to inform HATHOR design and migration | Never present InfraOS runtime proof as HATHOR proof |
 
 ## Actors and platform components
 
@@ -45,7 +45,7 @@ sources: []
 | Agent | Model-backed or other AI worker using platform interfaces | Requests action; does not own platform authority |
 | Bot or microbot | Single-purpose governed capability unit with a contract and lifecycle | Canonical design has 26 roles; not 26 proven implementations |
 | Capability | Versioned intent used for routing independently of implementation name | Supports replaceability |
-| `aegis` CLI | Accepted public operational ingress for supported humans and agents | It is a control surface, not every domain’s authority |
+| `hath0r` CLI | Accepted public operational ingress for supported humans and agents | It is a control surface, not every domain’s authority |
 | Control Tower | Asynchronous authority for registration, trust/policy distribution, identity, revocation, ingest, and query | Not a bot, general workflow engine, or every request’s terminus |
 | Proctor | Admission and routing authority that evaluates provenance, contract, sequence, and applicable gates | Proctor enforces but does not own run state |
 | Process | Conductor and sole target writer of authoritative run transitions | Agents request; Process decides |
@@ -168,7 +168,7 @@ sources: []
 | Term | Sales definition | Usage guidance |
 |---|---|---|
 | Universal Project Layout | Target predictable repository structure for humans and agents | Canonical details need README alignment |
-| `.aegis/` | Target hidden metadata location for manifests, rules, state, and knowledge | Preferred over legacy folder references |
+| `.hath0r/` | Target hidden metadata location for manifests, rules, state, and knowledge | Preferred over legacy folder references |
 | Class A container | Target control-plane interface class | Technical diligence term |
 | Class B container | Target stateful knowledge-service class | Technical diligence term |
 | Class C container | Target stateless worker/bot-host class | Technical diligence term |
@@ -184,7 +184,7 @@ sources: []
 | Draft target | Requirement, research, architecture, or specification under review | Not commitment |
 | Approved sequence | Planned order accepted for scheduling | Not code authorization |
 | Proposed | Awaiting sign-off | Do not present as accepted |
-| Defined | Outcome, authority, interface, and control intent documented | Strongest broadly evidenced AEGIS maturity |
+| Defined | Outcome, authority, interface, and control intent documented | Strongest broadly evidenced HATHOR maturity |
 | Implemented | Authorized code and configuration exist | Require version and scope |
 | Verified | Positive, negative, recovery, and boundary tests pass | Require test evidence |
 | Piloted | Real users and workloads operate in a bounded evaluation | Require baseline and pilot record |
@@ -241,5 +241,5 @@ Avoid unexplained:
 ## Sources
 
 - [Business Glossary and Source Register](../business/08-glossary-and-source-register.md)
-- [Canonical Registries](../architect/aegis-canon-001-registries-20260913.md)
+- [Canonical Registries](../architect/hathor-canon-001-registries-20260913.md)
 - [Claims and Evidence](./13-claims-evidence-and-source-coverage.md)

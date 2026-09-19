@@ -29,7 +29,7 @@ sources: []
 
 Organizations adopting AI-assisted engineering may increase activity faster than their existing governance practices can reconcile it. The relevant risk is not simply that an agent can make a mistake. It is that intent, authorization, identity, evidence, external effects, and completion may live in different systems and be interpreted differently by humans, agents, and tools.
 
-AEGIS is relevant when a buyer needs to answer several of these questions consistently:
+HATHOR is relevant when a buyer needs to answer several of these questions consistently:
 
 - What work authorized this action?
 - Which business initiative did the work support?
@@ -42,11 +42,11 @@ AEGIS is relevant when a buyer needs to answer several of these questions consis
 - Can the sequence be reconstructed after an incident?
 - What happened during a tracker, Tower, or telemetry outage?
 
-Discovery must test whether this is a material problem for the buyer. It must not assume that every organization has the same gap or that AEGIS already solves it operationally.
+Discovery must test whether this is a material problem for the buyer. It must not assume that every organization has the same gap or that HATHOR already solves it operationally.
 
 ## Problem-to-capability map
 
-| Buyer problem | Operational symptom | AEGIS target response | Evidence needed in an evaluation |
+| Buyer problem | Operational symptom | HATHOR target response | Evidence needed in an evaluation |
 |---|---|---|---|
 | Work begins without durable authorization | Changes originate in chat or agent sessions with incomplete ticket linkage | No-ticket, epic-linkage, and change-binding controls | Pre/post linkage coverage and refused negative cases |
 | “Done” is self-declared | Reviewers reconstruct tests and required work after the fact | Conducted run, required-set reconciliation, claims and evidence | False-completion tests and sampled run reconstruction |
@@ -200,7 +200,7 @@ Discovery must test whether this is a material problem for the buyer. It must no
 - The buyer wants immediate production autonomy with no human promotion boundary.
 - The buyer requires a production-proven product, certification, or customer references today.
 - The organization will not establish durable work authorization or evidence.
-- The buyer expects AEGIS to replace its model, harness, tracker, or CI/CD platform.
+- The buyer expects HATHOR to replace its model, harness, tracker, or CI/CD platform.
 - No team can own controls, service operations, identity, retention, or curation.
 - The buyer will not tolerate report-only learning before enforcement.
 - The primary requirement is prevention against a malicious process with arbitrary local workspace access.

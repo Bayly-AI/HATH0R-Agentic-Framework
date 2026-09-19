@@ -1,7 +1,7 @@
 ---
 id: HATHOR-GUIDE-003
-title: AEGIS Executive Overview
-summary: AEGIS is a proposed agentic governance platform for organizations that want people and AI agents to work at machine speed without giving up authorization, accountability, evidence, or human control.
+title: HATHOR Executive Overview
+summary: HATHOR is a proposed agentic governance platform for organizations that want people and AI agents to work at machine speed without giving up authorization, accountability, evidence, or human control.
 doc_type: GUIDE
 diataxis: explanation
 audience: [business, agent]
@@ -19,20 +19,20 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS Executive Overview
+# HATHOR Executive Overview
 
 - **Business document:** 01 of 08
 - **Status:** Derived draft for business review
 - **Source baseline:** Architecture corpus as of 2026-09-14
-- **Primary sources:** [`INDEX`](../architect/INDEX.md), [`HATHOR-REQ-CORE-001`](../architect/HATHOR-REQ-CORE-001-initial-requirements-20260911.md), [`HATHOR-ADR-002`](../architect/aegis-adr-002-orchestration-coordination-model-20260913.md), accepted RP-010 through RP-014 decisions, and [`HATHOR-PLAN-001`](../architect/aegis-plan-001-platform-roadmap-20260913.md)
+- **Primary sources:** [`INDEX`](../architect/INDEX.md), [`HATHOR-REQ-CORE-001`](../architect/hathor-req-core-001-initial-requirements-20260911.md), [`HATHOR-ADR-002`](../architect/hathor-adr-002-orchestration-coordination-model-20260913.md), accepted RP-010 through RP-014 decisions, and [`HATHOR-PLAN-001`](../architect/hathor-plan-001-platform-roadmap-20260913.md)
 
 ## Executive summary
 
-AEGIS is a proposed agentic governance platform for organizations that want people and AI agents to work at machine speed without giving up authorization, accountability, evidence, or human control.
+HATHOR is a proposed agentic governance platform for organizations that want people and AI agents to work at machine speed without giving up authorization, accountability, evidence, or human control.
 
-HATHOR is the broader framework: it defines a durable, portable operating model for agent navigation, knowledge, governance, credentials, and attributable work. AEGIS is the concrete realization of that model through a single command surface, small governed automation units, three explicit sources of truth, continuous validation, conducted runs, secure connection brokering, and centralized trust and audit services.
+HATHOR is the broader framework: it defines a durable, portable operating model for agent navigation, knowledge, governance, credentials, and attributable work. HATHOR is the concrete realization of that model through a single command surface, small governed automation units, three explicit sources of truth, continuous validation, conducted runs, secure connection brokering, and centralized trust and audit services.
 
-AEGIS is not intended to be an AI model, an agent harness, another issue tracker, or a replacement for existing engineering tools. It is intended to be the governance layer that connects those tools and actors under one consistent contract.
+HATHOR is not intended to be an AI model, an agent harness, another issue tracker, or a replacement for existing engineering tools. It is intended to be the governance layer that connects those tools and actors under one consistent contract.
 
 The design responds to a simple executive concern:
 
@@ -54,13 +54,13 @@ Without a common operating layer, organizations are exposed to:
 - inconsistent evidence that is expensive to reconstruct for incidents and audits; and
 - vendor and agent-harness lock-in at the point where governance should be stable.
 
-AEGIS treats these as operating-model problems, not prompt-engineering problems.
+HATHOR treats these as operating-model problems, not prompt-engineering problems.
 
 ## The business proposition
 
 ### One governed front door
 
-Every human, agent, and automation capability uses the `aegis` CLI as the public operational entry point. The goal is one place to authenticate intent, apply policy, route capabilities, produce structured refusals, and record evidence.
+Every human, agent, and automation capability uses the `hath0r` CLI as the public operational entry point. The goal is one place to authenticate intent, apply policy, route capabilities, produce structured refusals, and record evidence.
 
 This does not collapse all authority into one service. The design deliberately keeps separate authorities for:
 
@@ -159,7 +159,7 @@ These are **value hypotheses** until implementation and pilot evidence establish
 
 The draft core requirements and accepted roadmap target:
 
-- one `aegis` CLI with a bounded, progressively disclosed command surface;
+- one `hath0r` CLI with a bounded, progressively disclosed command surface;
 - a shared bot chassis and the canonical bot roster;
 - signed manifests, local and Tower registries, contract negotiation, and revocation;
 - conducted runs, sequence enforcement, run-state reconstruction, and completion reconciliation;
@@ -226,5 +226,5 @@ Before broad enforcement, sponsors and control owners should decide:
 
 ## Recommended executive position
 
-Treat AEGIS as a control and operating-model investment whose product claim must be earned incrementally. Fund a narrow pilot that first measures current authorization and evidence gaps, then introduces low-risk controls, and only expands enforcement after identity, artifact integrity, recovery, false-refusal, and value measures meet agreed thresholds.
+Treat HATHOR as a control and operating-model investment whose product claim must be earned incrementally. Fund a narrow pilot that first measures current authorization and evidence gaps, then introduces low-risk controls, and only expands enforcement after identity, artifact integrity, recovery, false-refusal, and value measures meet agreed thresholds.
 

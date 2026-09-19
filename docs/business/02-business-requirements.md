@@ -1,7 +1,7 @@
 ---
 id: HATHOR-GUIDE-004
-title: AEGIS Business Requirements
-summary: OBJ-*` and `BIZ-*` labels are local traceability aids for this derived document. They do not add canonical AEGIS requirements or amend `HATHOR-CANON-010`.
+title: HATHOR Business Requirements
+summary: OBJ-*` and `BIZ-*` labels are local traceability aids for this derived document. They do not add canonical HATHOR requirements or amend `HATHOR-CANON-010`.
 doc_type: GUIDE
 diataxis: reference
 audience: [business, agent]
@@ -19,14 +19,14 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS Business Requirements
+# HATHOR Business Requirements
 
 - **Business document:** 02 of 08
 - **Status:** Derived draft for business review
 - **Source baseline:** Architecture corpus as of 2026-09-14
 - **Purpose:** Translate the architecture corpus into business outcomes, scope, requirements, dependencies, and acceptance conditions
 
-`OBJ-*` and `BIZ-*` labels are local traceability aids for this derived document. They do not add canonical AEGIS requirements or amend `HATHOR-CANON-010`.
+`OBJ-*` and `BIZ-*` labels are local traceability aids for this derived document. They do not add canonical HATHOR requirements or amend `HATHOR-CANON-010`.
 
 ## 1. Business problem
 

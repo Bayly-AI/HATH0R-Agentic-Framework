@@ -35,7 +35,7 @@ sources: []
 | Workflow file references | connections/workflows/jira/vectra/mcp-servers/knowledge/dvo heavily |
 | Docs canonical | AGENTS start sequence + README orient block |
 
-### AEGIS classification keys
+### HATHOR classification keys
 **Hierarchy layer:** Procedure · Strategy · Playbook · Runbook · Workflow · Checklist · (Meta/Utility outside hierarchy)  
 **Bot role:** Process-Bot · Proctor-Bot · Operator-Bot · Observation-Bot · Control Tower authority · (Human/Agent direct)
 
@@ -136,7 +136,7 @@ This is the strongest natural spike target for step 4 (runbook run → checklist
 
 ---
 
-## Implications for AEGIS design
+## Implications for HATHOR design
 1. Any hierarchy UX must **wrap** the already-dominant Operator + Workflow paths, not replace them on day one.
 2. Proctor should front the high-risk Operator mutations already in top 30: `jira create/transition`, `teams announce`, deploy workflows, secrets, repo refresh.
 3. `commands inventory` must not be the default agent discovery path (see report 05 — ~41k tokens).

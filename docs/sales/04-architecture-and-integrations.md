@@ -1,7 +1,7 @@
 ---
 id: HATHOR-GUIDE-018
 title: Architecture and Integrations
-summary: AEGIS is designed as a provider-neutral governance layer between human or agent intent and the tools that execute or record work.
+summary: HATHOR is designed as a provider-neutral governance layer between human or agent intent and the tools that execute or record work.
 doc_type: GUIDE
 diataxis: explanation
 audience: [sales, agent]
@@ -27,11 +27,11 @@ sources: []
 
 ## Architectural intent
 
-AEGIS is designed as a provider-neutral governance layer between human or agent intent and the tools that execute or record work.
+HATHOR is designed as a provider-neutral governance layer between human or agent intent and the tools that execute or record work.
 
 ```mermaid
 flowchart LR
-  Actor["Human or AI agent"] --> CLI["aegis CLI<br/>public operational ingress"]
+  Actor["Human or AI agent"] --> CLI["hath0r CLI<br/>public operational ingress"]
   CLI --> Proctor["Proctor<br/>admission and routing"]
   Proctor --> Process["Process<br/>run conductor"]
   Proctor --> Registry["Registry Plane<br/>what may run"]
@@ -51,14 +51,14 @@ This is a logical target architecture. It is not evidence that the services are 
 
 ## Major boundaries
 
-### HATHOR and AEGIS
+### HATHOR and HATHOR
 
 - **HATHOR** defines the framework: portable project structure, discoverable knowledge, governance, secure capability access, and attributable work.
-- **AEGIS** is the proposed realization through the CLI, bot runtime, validation and orchestration fabrics, authority planes, and Control Tower.
+- **HATHOR** is the proposed realization through the CLI, bot runtime, validation and orchestration fabrics, authority planes, and Control Tower.
 
 ### CLI
 
-The `aegis` CLI is the accepted public operational ingress. It is not itself the source of truth for capability, knowledge, work, or run state.
+The `hath0r` CLI is the accepted public operational ingress. It is not itself the source of truth for capability, knowledge, work, or run state.
 
 ### Authority planes
 
@@ -92,7 +92,7 @@ This avoids making event emitters or individual workers the owner of workflow st
 
 ## Command and capability model
 
-The accepted direction uses a greenfield `aegis` command with nine bounded domains. Callers request versioned capabilities rather than invoking implementation names directly.
+The accepted direction uses a greenfield `hath0r` command with nine bounded domains. Callers request versioned capabilities rather than invoking implementation names directly.
 
 The target interaction includes:
 
@@ -147,7 +147,7 @@ Target adapters are documented for:
 - GitHub; and
 - a minimal first-party backup ticket service.
 
-The enterprise provider remains authoritative. AEGIS intends to normalize common work operations and control outcomes through a canonical Ticket Contract.
+The enterprise provider remains authoritative. HATHOR intends to normalize common work operations and control outcomes through a canonical Ticket Contract.
 
 **Sales boundary:** These are target adapters, not verified integration availability.
 
@@ -259,10 +259,10 @@ Before a technical commitment, confirm:
 ## Sources
 
 - [Architecture Corpus Index](../architect/INDEX.md)
-- [Architecture Diagrams](../architect/HATHOR-ARCH-001-architecture-mermaid-20260911.md)
-- [Core Requirements](../architect/HATHOR-REQ-CORE-001-initial-requirements-20260911.md)
-- [Central Orchestration Decision](../architect/aegis-adr-002-orchestration-coordination-model-20260913.md)
-- [Command Surface Decision](../architect/aegis-adr-003-greenfield-command-surface-20260913.md)
-- [State Residency Decision](../architect/aegis-adr-004-layout-state-residency-20260913.md)
-- [Tower Surface](../architect/aegis-rp-010-tower-surface-20260913.md)
-- [Operator Brokering](../architect/aegis-rp-011-operator-brokering-20260913.md)
+- [Architecture Diagrams](../architect/hathor-arch-001-architecture-mermaid-20260911.md)
+- [Core Requirements](../architect/hathor-req-core-001-initial-requirements-20260911.md)
+- [Central Orchestration Decision](../architect/hathor-adr-002-orchestration-coordination-model-20260913.md)
+- [Command Surface Decision](../architect/hathor-adr-003-greenfield-command-surface-20260913.md)
+- [State Residency Decision](../architect/hathor-adr-004-layout-state-residency-20260913.md)
+- [Tower Surface](../architect/hathor-rp-010-tower-surface-20260913.md)
+- [Operator Brokering](../architect/hathor-rp-011-operator-brokering-20260913.md)

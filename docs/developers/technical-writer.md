@@ -6,10 +6,10 @@ doc_type: GUIDE
 diataxis: how-to
 audience: [developer, agent]
 tags: [documentation, hathor-doc, diataxis, knowledge]
-version: 0.1.0
+version: 0.1.1
 status: draft
 created: 2026-09-15
-updated: 2026-09-15
+updated: 2026-09-19
 owner: "Raymond Bayly (BaylyAI)"
 review:
   trust: unverified
@@ -26,13 +26,13 @@ sources: [HATHOR-CANON-012, HATHOR-CANON-010, HATHOR-RP-004, HATHOR-RP-012, HATH
 ---
 # Technical Writer Guide
 
-As a Technical Writer on AEGIS/HATHOR, you author **one artifact for two readers**: humans and agents. The contract is `hathor-doc@1` (HATHOR-CANON-012). You do not maintain a separate “agent copy” of the same page.
+As a Technical Writer on HATHOR/HATHOR, you author **one artifact for two readers**: humans and agents. The contract is `hathor-doc@1` (HATHOR-CANON-012). You do not maintain a separate “agent copy” of the same page.
 
 ## 1. Corpus Rules You Enforce
 
 * **In scope:** `docs/architect/**`, `docs/business/**`, `docs/developers/**`, `docs/sales/**`, repo-root `README.md`.
 * **Out of scope for front-matter:** `AGENTS.md` (nearest-first instruction files), runtime Knowledge records, generated API bodies beyond their header/index entry.
-* **Stable IDs:** `AEGIS-(ADR|RP|TS|PLAN|REQ|ARCH|CANON|GUIDE|REPORT|SESSION)-NNN`. Never reuse requirement-style prefixes (`AEG-…`) as document IDs (HATHOR-CANON-010 §8).
+* **Stable IDs:** `HATHOR-(ADR|RP|TS|PLAN|REQ|ARCH|CANON|GUIDE|REPORT|SESSION)-NNN`. Never reuse requirement-style prefixes (`AEG-…`) as document IDs (HATHOR-CANON-010 §8).
 * **Diátaxis:** Prefer a single mode (`tutorial|how-to|reference|explanation|decision`). `mixed` needs a one-line justification in the first body section.
 
 ## 2. Front-Matter Checklist (every new doc)
@@ -69,7 +69,7 @@ Authored docs and runtime knowledge share vocabulary (HATHOR-RP-004 / HATHOR-RP-
 * Docs lifecycle: draft → proposed → accepted (and superseded/retired).
 * Knowledge trust: draft → verified with **no auto-promotion**.
 * Staleness/TTL: set honest `review.interval`; let CI mark `stale` rather than pretending freshness.
-* When promoting doc insight into `.aegis/knowledge/`, keep `status: draft` until human review; `source:` must point at the docs path.
+* When promoting doc insight into `.hath0r/knowledgebase/`, keep `status: draft` until human review; `source:` must point at the docs path.
 
 ## 5. Change Control and Indexes
 

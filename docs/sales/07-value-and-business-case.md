@@ -1,7 +1,7 @@
 ---
 id: HATHOR-GUIDE-021
 title: Value and Business Case
-summary: 'AEGIS should be evaluated as both:'
+summary: 'HATHOR should be evaluated as both:'
 doc_type: GUIDE
 diataxis: explanation
 audience: [sales, agent]
@@ -27,7 +27,7 @@ sources: []
 
 ## Value position
 
-AEGIS should be evaluated as both:
+HATHOR should be evaluated as both:
 
 1. a governance and assurance capability that must prove its controls work; and
 2. a business investment that must prove the value of improved control exceeds implementation, operating, and user cost.
@@ -325,7 +325,7 @@ At minimum:
 
 ## Decision rule
 
-AEGIS creates value only if:
+HATHOR creates value only if:
 
 - accountability and assurance improve;
 - human authority remains verifiable;

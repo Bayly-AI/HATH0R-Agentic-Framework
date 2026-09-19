@@ -370,7 +370,7 @@ This file carries `hathor-doc@1` with `id: HATHOR-CANON-001`, `doc_type: CANON`,
 
 ## 15. Open questions (for operator sign-off)
 
-1. Confirm `HATHOR-<TYPE>-<NNN>` as the public ID namespace (vs reusing private `AEGIS-` IDs).
+1. Confirm `HATHOR-<TYPE>-<NNN>` as the public ID namespace (vs reusing private `HATHOR-` IDs).
 2. Confirm requirement prefix `HT-DOC-###` / `HT-<AREA>-###`.
 3. Confirm initial trees: `docs/architect`, `docs/developers`, `docs/operators` (create on demand).
 4. Confirm tooling home: Framework `bin/docs/` vs Control Tower (`HATH0R-CLI`) commands.

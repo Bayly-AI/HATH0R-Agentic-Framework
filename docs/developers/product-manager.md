@@ -1,15 +1,15 @@
 ---
 id: HATHOR-GUIDE-031
 title: "Product Manager Guide"
-summary: "How Product Managers shape AEGIS work through tickets, planes of authority, and evidence-backed outcomes without bypassing gates."
+summary: "How Product Managers shape HATHOR work through tickets, planes of authority, and evidence-backed outcomes without bypassing gates."
 doc_type: GUIDE
 diataxis: how-to
 audience: [developer, agent]
 tags: [product, ticketing, roadmap, governance]
-version: 0.1.0
+version: 0.1.1
 status: draft
 created: 2026-09-15
-updated: 2026-09-15
+updated: 2026-09-19
 owner: "Raymond Bayly (BaylyAI)"
 review:
   trust: unverified
@@ -26,7 +26,7 @@ sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-ADR-003, HATHOR-RP-004, HAT
 ---
 # Product Manager Guide
 
-As a Product Manager for AEGIS/HATHOR, you steer *what* gets built by authorizing work on the Ticketing Plane and by insisting that claims, knowledge, and releases carry provenance. You do not ask engineers or agents to skip Governance Gates for speed.
+As a Product Manager for HATHOR/HATHOR, you steer *what* gets built by authorizing work on the Ticketing Plane and by insisting that claims, knowledge, and releases carry provenance. You do not ask engineers or agents to skip Governance Gates for speed.
 
 ## 1. Three Planes of Authority
 
@@ -56,7 +56,7 @@ If a request cannot name its plane impact, it is not ready for an agent or engin
 
 ## 4. CLI and Agent Operating Model
 
-* The `aegis` CLI is the single control plane (HATHOR-ADR-003). Ask agents to plan with `--dry-run` and to surface JSON refusals, not to “just apply the change.”
+* The `hath0r` CLI is the single control plane (HATHOR-ADR-003). Ask agents to plan with `--dry-run` and to surface JSON refusals, not to “just apply the change.”
 * Governance Gate refusals (missing ticket, contract mismatch, failed micro-linter) are **correct behavior**. Your remediation is to fix scope, ticket, or acceptance criteria — not to request a bypass.
 * Exit codes and error envelopes are part of the user-visible product for agent operators; treat breaking envelope changes as breaking API changes.
 

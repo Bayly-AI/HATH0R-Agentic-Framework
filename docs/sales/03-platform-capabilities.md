@@ -1,7 +1,7 @@
 ---
 id: HATHOR-GUIDE-017
 title: Platform Capabilities
-summary: 'AEGIS is designed around one top-level business capability: **governed agentic delivery**.'
+summary: 'HATHOR is designed around one top-level business capability: **governed agentic delivery**.'
 doc_type: GUIDE
 diataxis: reference
 audience: [sales, agent]
@@ -27,7 +27,7 @@ sources: []
 
 ## Capability model
 
-AEGIS is designed around one top-level business capability: **governed agentic delivery**.
+HATHOR is designed around one top-level business capability: **governed agentic delivery**.
 
 This means delegating work to humans and AI agents while preserving authorization, strategic lineage, trusted knowledge, evidence-based completion, controlled external access, human decision rights, and reconstructable outcomes.
 
@@ -47,7 +47,7 @@ The platform capability areas are:
 
 **Target behavior:**
 
-- one public `aegis` command surface;
+- one public `hath0r` command surface;
 - structured text or JSON outputs;
 - bounded schema discovery;
 - stable exit and refusal behavior;
@@ -283,7 +283,7 @@ These are design distinctions, not competitively validated superiority claims.
 
 ### Governance above the model and harness
 
-AEGIS is intended to remain stable when models, agent harnesses, repositories, and work providers change.
+HATHOR is intended to remain stable when models, agent harnesses, repositories, and work providers change.
 
 ### Separate authorities, one operating contract
 
@@ -329,6 +329,6 @@ The documentation establishes substantial **Defined** maturity. Later levels req
 ## Sources
 
 - [Business Capability Model](../business/03-business-capability-model.md)
-- [Canonical Registries](../architect/aegis-canon-001-registries-20260913.md)
-- [Bot Unit Model](../architect/aegis-rp-014-bot-unit-creation-operation-20260913.md)
+- [Canonical Registries](../architect/hathor-canon-001-registries-20260913.md)
+- [Bot Unit Model](../architect/hathor-rp-014-bot-unit-creation-operation-20260913.md)
 - [Architecture Corpus Index](../architect/INDEX.md)

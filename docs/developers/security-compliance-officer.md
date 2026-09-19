@@ -1,15 +1,15 @@
 ---
 id: HATHOR-GUIDE-033
 title: "Security & Compliance Officer Guide"
-summary: "How Security and Compliance Officers use AEGIS gates, zero-secret invariants, and knowledge trust tiers as mechanical controls."
+summary: "How Security and Compliance Officers use HATHOR gates, zero-secret invariants, and knowledge trust tiers as mechanical controls."
 doc_type: GUIDE
 diataxis: how-to
 audience: [developer, agent]
 tags: [security, compliance, secrets, provenance]
-version: 0.1.0
+version: 0.1.1
 status: draft
 created: 2026-09-15
-updated: 2026-09-15
+updated: 2026-09-19
 owner: "Raymond Bayly (BaylyAI)"
 review:
   trust: unverified
@@ -26,7 +26,7 @@ sources: [HATHOR-CANON-010, HATHOR-CANON-011, HATHOR-RP-004, HATHOR-RP-012, HATH
 ---
 # Security & Compliance Officer Guide
 
-As a Security or Compliance Officer, you treat AEGIS Governance Gates, credential mediation, and knowledge promotion as **controls**, not documentation theater. Your how-to is: verify the control still fires, evidence it on the ticket, and refuse silent exceptions.
+As a Security or Compliance Officer, you treat HATHOR Governance Gates, credential mediation, and knowledge promotion as **controls**, not documentation theater. Your how-to is: verify the control still fires, evidence it on the ticket, and refuse silent exceptions.
 
 ## 1. Non-Negotiable Invariants
 

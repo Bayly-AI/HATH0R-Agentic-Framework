@@ -1,6 +1,6 @@
 ---
 id: HATHOR-GUIDE-006
-title: AEGIS Target Operating Model
+title: HATHOR Target Operating Model
 summary: 'The target operating model is based on the following source-grounded rules:'
 doc_type: GUIDE
 diataxis: explanation
@@ -19,7 +19,7 @@ amended_by: []
 parent: null
 sources: []
 ---
-# AEGIS Target Operating Model
+# HATHOR Target Operating Model
 
 - **Business document:** 04 of 08
 - **Status:** Derived draft for business review
@@ -55,7 +55,7 @@ The proposed `hathor-principles@1` synthesis expresses similar concepts but is n
 | Process run ledger | Conducted-run events and reconstructed run state | Provider work truth or organization knowledge |
 | Human authority | Waiver, deployment or promotion, curation, revocation, and other reserved actions | Unrecorded authority by chat, memory, or TTY presence |
 | Control Tower | Registration, trust distribution, revocation, curator identity, human identity, rollup ingest, and bounded query | Ordinary bot dispatch, third-party brokering, or every local request |
-| Provider system | Provider-native record and ultimate reconciliation authority for mapped work | AEGIS run state or capability authorization |
+| Provider system | Provider-native record and ultimate reconciliation authority for mapped work | HATHOR run state or capability authorization |
 
 ## 3. Actors and responsibilities
 
@@ -116,7 +116,7 @@ These roles must be assigned by the adopting organization. The architecture does
 ```mermaid
 sequenceDiagram
   participant U as Human or agent
-  participant C as aegis CLI
+  participant C as hath0r CLI
   participant T as Ticketing Plane
   participant P as Proctor
   participant R as Process

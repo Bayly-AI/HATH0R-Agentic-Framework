@@ -1,20 +1,22 @@
 # HATHOR Developers docs
 
-> OpenSource HATHOR `developers` documentation map (HATHOR-* IDs).
+> OpenSource HATHOR `developers` documentation map (HATHOR-* IDs). Operator CLI: `hath0r`. Hidden root: `.hath0r/` only — never `.hath0r/`.
 
 ## CANON
 - [HATHOR-CANON-007 — HATHOR Developer & Role Guides Index](./INDEX.md): Human index for the developer documentation tree.
 
 ## GUIDE
-- [HATHOR-GUIDE-011 — Agent Integrator Guide](./agent-integrator.md): As an Agent Integrator (or AI Agent), you interact with the AEGIS platform as an active participant—building, verifying, and navigating proj
-- [HATHOR-GUIDE-012 — Bot Developer Guide](./bot-developer.md): As a Bot Developer, your role is to build and maintain the single-role micro-bots that provide capabilities to the AEGIS platform. All bots 
-- [HATHOR-GUIDE-013 — DevOps & DVO Guide](./devops-dvo.md): As a DevOps Engineer or Deployment & Validation Operator (DVO), your responsibility is to manage the environments, container deployments, te
-- [HATHOR-GUIDE-014 — Platform Engineer Guide](./platform-engineer.md): Platform Engineers build the core AEGIS platform: the CLI, the Go chassis, the orchestration bots, the validation fabric, and the Control To
-- [HATHOR-GUIDE-030 — QA/Test Engineer Guide](./qa-test-engineer.md): How QA and Test Engineers exercise AEGIS validation altitudes, refuse bad claims, and keep promotion evidence honest.
-- [HATHOR-GUIDE-031 — Product Manager Guide](./product-manager.md): How Product Managers shape AEGIS work through tickets, planes of authority, and evidence-backed outcomes without bypassing gates.
-- [HATHOR-GUIDE-032 — Release Manager Guide](./release-manager.md): How Release Managers run ticket-authorized, gate-enforced promotion along the AEGIS environment path without skipping stages.
-- [HATHOR-GUIDE-033 — Security & Compliance Officer Guide](./security-compliance-officer.md): How Security and Compliance Officers use AEGIS gates, zero-secret invariants, and knowledge trust tiers as mechanical controls.
-- [HATHOR-GUIDE-034 — Technical Writer Guide](./technical-writer.md): How Technical Writers author hathor-doc@1 corpus docs, keep IDs stable, and align docs with Knowledge Plane trust.
-- [HATHOR-GUIDE-035 — Engineering Manager Guide](./engineering-manager.md): How Engineering Managers run AEGIS delivery through tickets, gates, validation altitudes, and honest promotion without heroics.
-- [HATHOR-GUIDE-036 — UX/Design Guide](./ux-design.md): How UX and Design shape AEGIS agent/CLI experiences around envelopes, gates, trust tiers, and honest degradation.
+- [HATHOR-GUIDE-011 — Agent Integrator Guide](./agent-integrator.md): Interact with HATHOR via hath0r CLI, AGENTS.md, docs indexes, and .hath0r/ layout (CLI 0.2 shipped surface + target domains).
+- [HATHOR-GUIDE-012 — Bot Developer Guide](./bot-developer.md): Build single-role micro-bots for the HATHOR platform under the HATHOR operating model.
+- [HATHOR-GUIDE-013 — DevOps & DVO Guide](./devops-dvo.md): Environments, containers, telemetry spool/drain under .hath0r/, and authorized promotions for HATHOR.
+- [HATHOR-GUIDE-014 — Platform Engineer Guide](./platform-engineer.md): Build the HATHOR CLI (hath0r), chassis, orchestration bots, validation fabric, and Control Tower API.
+- [HATHOR-GUIDE-030 — QA/Test Engineer Guide](./qa-test-engineer.md): Exercise HATHOR validation altitudes, refuse bad claims, keep promotion evidence honest via hath0r.
+- [HATHOR-GUIDE-031 — Product Manager Guide](./product-manager.md): Shape HATHOR work through tickets, planes of authority, and evidence-backed outcomes without bypassing gates.
+- [HATHOR-GUIDE-032 — Release Manager Guide](./release-manager.md): Ticket-authorized, gate-enforced promotion along the HATHOR environment path without skipping stages.
+- [HATHOR-GUIDE-033 — Security & Compliance Officer Guide](./security-compliance-officer.md): Use HATHOR gates, zero-secret invariants, and knowledge trust tiers as mechanical controls.
+- [HATHOR-GUIDE-034 — Technical Writer Guide](./technical-writer.md): Author hathor-doc@1 corpus docs, keep IDs stable, align docs with Knowledge Plane trust under .hath0r/.
+- [HATHOR-GUIDE-035 — Engineering Manager Guide](./engineering-manager.md): Run HATHOR delivery through tickets, gates, validation altitudes, and honest promotion without heroics.
+- [HATHOR-GUIDE-036 — UX/Design Guide](./ux-design.md): Shape HATHOR agent/CLI experiences around envelopes, gates, trust tiers, and honest degradation.
 
+## PLAYBOOK
+- [HATHOR-PLAYBOOK-001 — Repo init setup](./hathor-playbook-001-repo-init-setup-20260919.md): CR-HATH0R-INIT-001 entry gate (playbook + same-tech runbook before layout).

@@ -1,15 +1,15 @@
 ---
 id: HATHOR-GUIDE-036
 title: "UX/Design Guide"
-summary: "How UX and Design shape AEGIS agent/CLI experiences around envelopes, gates, trust tiers, and honest degradation."
+summary: "How UX and Design shape HATHOR agent/CLI experiences around envelopes, gates, trust tiers, and honest degradation."
 doc_type: GUIDE
 diataxis: how-to
 audience: [developer, agent]
 tags: [ux, design, cli, agents, trust]
-version: 0.1.0
+version: 0.1.1
 status: draft
 created: 2026-09-15
-updated: 2026-09-15
+updated: 2026-09-19
 owner: "Raymond Bayly (BaylyAI)"
 review:
   trust: unverified
@@ -26,7 +26,7 @@ sources: [HATHOR-CANON-011, HATHOR-ADR-003, HATHOR-RP-004, HATHOR-RP-012, HATHOR
 ---
 # UX/Design Guide
 
-As a UX Designer on AEGIS/HATHOR, your primary surfaces are often **CLI envelopes, agent workflows, and Control Tower-facing status** — not only graphical UI. Design for refusal, provenance, and degradation as first-class states.
+As a UX Designer on HATHOR/HATHOR, your primary surfaces are often **CLI envelopes, agent workflows, and Control Tower-facing status** — not only graphical UI. Design for refusal, provenance, and degradation as first-class states.
 
 ## 1. Design Principles (Productized)
 

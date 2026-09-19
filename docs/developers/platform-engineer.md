@@ -1,15 +1,15 @@
 ---
 id: HATHOR-GUIDE-014
 title: Platform Engineer Guide
-summary: 'Platform Engineers build the core AEGIS platform: the CLI, the Go chassis, the orchestration bots, the validation fabric, and the Control Tower API.'
+summary: 'Platform Engineers build the core HATHOR platform: the CLI, the Go chassis, the orchestration bots, the validation fabric, and the Control Tower API.'
 doc_type: GUIDE
 diataxis: how-to
 audience: [developer, agent]
 tags: []
-version: 0.1.0
+version: 0.1.1
 status: draft
 created: '2026-09-14'
-updated: '2026-09-15'
+updated: '2026-09-19'
 owner: Raymond Bayly (BaylyAI)
 review: {trust: unverified, reviewed_by: null, reviewed_at: null, interval: 180d, next_review: null}
 stale: false
@@ -21,14 +21,14 @@ sources: []
 ---
 # Platform Engineer Guide
 
-Platform Engineers build the core AEGIS platform: the CLI, the Go chassis, the orchestration bots, the validation fabric, and the Control Tower API.
+Platform Engineers build the core HATHOR platform: the CLI, the Go chassis, the orchestration bots, the validation fabric, and the Control Tower API.
 
 ## 1. CLI and Core Chassis (Go)
 
-AEGIS is a greenfield implementation written primarily in Go 1.23+. 
+HATHOR is a greenfield implementation written primarily in Go 1.23+. 
 * **Exit-Code Boundaries:** The CLI enforces the canonical 0-7 exit codes. Any deviation must be caught during development.
 * **CLI Spec:** All top-level commands must support `--output json|text|auto`, `--profile`, `--quiet`, and pagination (`--fields`, `--limit`, `--cursor`).
-* **Schema Introspection:** Must expose a bounded schema surface (`aegis schema --domain <x>`) mapped to the CLI Spec error envelope and bounded to ≤ 8 KB per page default.
+* **Schema Introspection:** Must expose a bounded schema surface (`hath0r schema --domain <x>`) mapped to the CLI Spec error envelope and bounded to ≤ 8 KB per page default.
 * **Routing:** `Proctor-Bot` handles capability-based routing (e.g., `domain.noun.verb@major`). The CLI negotiates the HELLO/OFFER/BIND/VERIFY handshake via the Machine-Local Index (MBI).
 
 ## 2. Orchestration Gateway

@@ -9,13 +9,13 @@ tags: [index]
 version: 0.2.0
 status: draft
 created: 2026-09-15
-updated: 2026-09-15
+updated: 2026-09-19
 owner: "Raymond Bayly (BaylyAI)"
 review:
   trust: unverified
   reviewed_by: null
   reviewed_at: null
-  interval: 365d
+  interval: 180d
   next_review: null
 stale: false
 supersedes: []

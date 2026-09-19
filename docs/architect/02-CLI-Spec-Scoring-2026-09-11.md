@@ -206,7 +206,7 @@ Because CLI Spec v0.3 is still a candidate, pin the exact schema snapshot and ch
 |------|-------|---------|
 | Human operability | B | Large surface, Make wrappers, works for power users |
 | Agent operability (CLI Spec) | D+ | Uneven JSON, no effects, huge discovery payloads |
-| Hierarchy AEGIS readiness | D | Catalog-only; no run lifecycle machine contract |
+| Hierarchy HATHOR readiness | D | Catalog-only; no run lifecycle machine contract |
 | Operator plane | C- | High use, weak machine I/O |
 | Proctor plane | C | Gates exist but not unified/dry-runnable |
 | Manifest / schema | C+ | inventory exists but unbounded |
