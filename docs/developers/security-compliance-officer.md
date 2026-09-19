@@ -9,7 +9,7 @@ tags: [security, compliance, secrets, provenance]
 version: 0.1.1
 status: draft
 created: 2026-09-15
-P26-09-19
+updated: 2026-09-19
 owner: "Raymond Bayly (BaylyAI)"
 review:
   trust: unverified
