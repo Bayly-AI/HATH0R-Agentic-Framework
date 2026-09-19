@@ -100,3 +100,8 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 - Instruction files (`AGENTS.md`, `WARP.md`) are **out of** `hathor-doc@1` scope.
 - Live document IDs are **`HATHOR-*`**. The `archive/` tree keeps private-era **`AEGIS-*`** IDs as frozen provenance.
 - Private-era documentation framework import is `HATHOR-CANON-012` (historical); OpenSource authority is **`HATHOR-CANON-001`**.
+
+## Session records (OpenSource milestone)
+
+- [2026-09-19 session log](sessions/2026-09-19-opensource-trio-milestone-session-log.md)
+- [2026-09-19 summary report](sessions/2026-09-19-opensource-trio-milestone-summary-report.md)
