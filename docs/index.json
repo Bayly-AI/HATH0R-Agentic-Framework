@@ -3,7 +3,7 @@
   "generated_at": "2026-09-15",
   "canon": "HATHOR-CANON-001",
   "namespace": "HATHOR-*",
-  "count": 83,
+  "count": 84,
   "documents": [
     {
       "path": "docs/architect/hathor-adr-001-target-command-tree-20260911.md",
@@ -326,6 +326,25 @@
       "diataxis": "explanation",
       "audience": [
         "architect",
+        "agent"
+      ],
+      "tree": "architect"
+    },
+    {
+      "path": "docs/architect/hathor-governed-capability-fabric-20260922.md",
+      "rel": "architect/hathor-governed-capability-fabric-20260922.md",
+      "id": "HATHOR-GUIDE-037",
+      "title": "The Governed Capability Fabric: Integrating Enterprise AI Service Servers",
+      "summary": "A governed capability fabric turns multiple enterprise AI service servers into one contract-driven surface with shared provenance, policy, bounded degradation, routing, and audit semantics.",
+      "doc_type": "GUIDE",
+      "status": "draft",
+      "version": "0.1.0",
+      "created": "2026-09-22",
+      "updated": "2026-09-22",
+      "diataxis": "explanation",
+      "audience": [
+        "architect",
+        "developer",
         "agent"
       ],
       "tree": "architect"

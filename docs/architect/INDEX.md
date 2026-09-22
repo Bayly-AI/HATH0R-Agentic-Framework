@@ -78,6 +78,7 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 | [HATHOR-PLAN-003](./hathor-plan-003-gateway-validators-roadmap-20260913.md) | PLAN | accepted | HATHOR-PLAN-003 — Orchestration Gateway, Remaining Validators & Agent Skill Pack | `hathor-plan-003-gateway-validators-roadmap-20260913.md` |
 | [HATHOR-GUIDE-001](./hathor-containerization-article-20260911.md) | GUIDE | draft | Containerization in HATHOR: From Micro-Bot to Deployable Unit | `hathor-containerization-article-20260911.md` |
 | [HATHOR-GUIDE-002](./hathor-containerization-presentation-script-20260911.md) | GUIDE | draft | HATHOR Containerization — Presentation Script | `hathor-containerization-presentation-script-20260911.md` |
+| [HATHOR-GUIDE-037](./hathor-governed-capability-fabric-20260922.md) | GUIDE | draft | The Governed Capability Fabric: Integrating Enterprise AI Service Servers | `hathor-governed-capability-fabric-20260922.md` |
 | [HATHOR-REPORT-001](./hathor-cli-research-report-2026-09-11.md) | REPORT | draft | HATHOR CLI Research Report | `hathor-cli-research-report-2026-09-11.md` |
 | [HATHOR-REPORT-002](./01-Invocation-Inventory-Top30-2026-09-11.md) | REPORT | draft | 01 — Top 30 Real `infraos-os` Invocations (Communications) | `01-Invocation-Inventory-Top30-2026-09-11.md` |
 | [HATHOR-REPORT-003](./02-CLI-Spec-Scoring-2026-09-11.md) | REPORT | draft | 02 — CLI Spec Scoring (`infraos-os` vs clispec.dev) | `02-CLI-Spec-Scoring-2026-09-11.md` |

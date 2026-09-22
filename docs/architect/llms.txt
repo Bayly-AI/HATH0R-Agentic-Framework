@@ -55,6 +55,7 @@
 ## GUIDE
 - [HATHOR-GUIDE-001 — Containerization in HATHOR: From Micro-Bot to Deployable Unit](./hathor-containerization-article-20260911.md): Every architecture eventually has to answer the same question: what is the smallest unit you can trust? HATHOR answered it once at the capabi
 - [HATHOR-GUIDE-002 — HATHOR Containerization — Presentation Script](./hathor-containerization-presentation-script-20260911.md): flowchart LR Repo[
+- [HATHOR-GUIDE-037 — The Governed Capability Fabric: Integrating Enterprise AI Service Servers](./hathor-governed-capability-fabric-20260922.md): A governed capability fabric turns multiple enterprise AI service servers into one contract-driven surface with shared provenance, policy, bounded degradation, routing, and audit semantics.
 
 ## REPORT
 - [HATHOR-REPORT-007 — HATHOR Documentation Framework — Adoption Summary](./hathor-report-007-documentation-framework-adoption-20260915.md): Executive summary of hathor-doc@1 readiness, corpus stats, and adoption checklist.
