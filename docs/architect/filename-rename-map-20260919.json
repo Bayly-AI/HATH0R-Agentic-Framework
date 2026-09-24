@@ -1,0 +1,158 @@
+{
+  "generated": "2026-09-19",
+  "purpose": "F2 live corpus filename hygiene hath0r* -> hathor*",
+  "renames": [
+    {
+      "from": "hathor-arch-001-architecture-mermaid-20260911.md",
+      "to": "hathor-arch-001-architecture-mermaid-20260911.md"
+    },
+    {
+      "from": "hathor-cli-research-report-2026-09-11.md",
+      "to": "hathor-cli-research-report-2026-09-11.md"
+    },
+    {
+      "from": "hathor-req-core-001-initial-requirements-20260911.md",
+      "to": "hathor-req-core-001-initial-requirements-20260911.md"
+    },
+    {
+      "from": "hathor.pdf",
+      "to": "hathor.pdf"
+    },
+    {
+      "from": "hathor-adr-001-target-command-tree-20260911.md",
+      "to": "hathor-adr-001-target-command-tree-20260911.md"
+    },
+    {
+      "from": "hathor-adr-002-orchestration-coordination-model-20260913.md",
+      "to": "hathor-adr-002-orchestration-coordination-model-20260913.md"
+    },
+    {
+      "from": "hathor-adr-003-greenfield-command-surface-20260913.md",
+      "to": "hathor-adr-003-greenfield-command-surface-20260913.md"
+    },
+    {
+      "from": "hathor-adr-004-layout-state-residency-20260913.md",
+      "to": "hathor-adr-004-layout-state-residency-20260913.md"
+    },
+    {
+      "from": "hathor-adr-005-backup-ticketing-system-20260913.md",
+      "to": "hathor-adr-005-backup-ticketing-system-20260913.md"
+    },
+    {
+      "from": "hathor-arch-002-bot-unit-compendium-20260914.md",
+      "to": "hathor-arch-002-bot-unit-compendium-20260914.md"
+    },
+    {
+      "from": "hathor-bot-taxonomy-requirements-20260911.md",
+      "to": "hathor-bot-taxonomy-requirements-20260911.md"
+    },
+    {
+      "from": "hathor-canon-001-registries-20260913.md",
+      "to": "hathor-canon-001-registries-20260913.md"
+    },
+    {
+      "from": "hathor-canon-002-platform-principles-20260914.md",
+      "to": "hathor-canon-002-platform-principles-20260914.md"
+    },
+    {
+      "from": "hathor-canon-003-documentation-framework-20260915.md",
+      "to": "hathor-canon-003-documentation-framework-20260915.md"
+    },
+    {
+      "from": "hathor-containerization-article-20260911.md",
+      "to": "hathor-containerization-article-20260911.md"
+    },
+    {
+      "from": "hathor-containerization-presentation-script-20260911.md",
+      "to": "hathor-containerization-presentation-script-20260911.md"
+    },
+    {
+      "from": "hathor-plan-001-platform-roadmap-20260913.md",
+      "to": "hathor-plan-001-platform-roadmap-20260913.md"
+    },
+    {
+      "from": "hathor-plan-002-cvs-p0-p2-roadmap-20260911.md",
+      "to": "hathor-plan-002-cvs-p0-p2-roadmap-20260911.md"
+    },
+    {
+      "from": "hathor-plan-003-gateway-validators-roadmap-20260913.md",
+      "to": "hathor-plan-003-gateway-validators-roadmap-20260913.md"
+    },
+    {
+      "from": "hathor-rp-001-manifest-schema-v1-20260911.md",
+      "to": "hathor-rp-001-manifest-schema-v1-20260911.md"
+    },
+    {
+      "from": "hathor-rp-002-registry-discovery-20260911.md",
+      "to": "hathor-rp-002-registry-discovery-20260911.md"
+    },
+    {
+      "from": "hathor-rp-003-telemetry-transport-20260911.md",
+      "to": "hathor-rp-003-telemetry-transport-20260911.md"
+    },
+    {
+      "from": "hathor-rp-004-knowledge-promotion-20260911.md",
+      "to": "hathor-rp-004-knowledge-promotion-20260911.md"
+    },
+    {
+      "from": "hathor-rp-005-hierarchy-consolidation-20260911.md",
+      "to": "hathor-rp-005-hierarchy-consolidation-20260911.md"
+    },
+    {
+      "from": "hathor-rp-006-ticketing-plane-20260911.md",
+      "to": "hathor-rp-006-ticketing-plane-20260911.md"
+    },
+    {
+      "from": "hathor-rp-007-continuous-validation-20260911.md",
+      "to": "hathor-rp-007-continuous-validation-20260911.md"
+    },
+    {
+      "from": "hathor-rp-008-microbot-launch-roster-20260912.md",
+      "to": "hathor-rp-008-microbot-launch-roster-20260912.md"
+    },
+    {
+      "from": "hathor-rp-009-orchestration-gateway-20260912.md",
+      "to": "hathor-rp-009-orchestration-gateway-20260912.md"
+    },
+    {
+      "from": "hathor-rp-010-tower-surface-20260913.md",
+      "to": "hathor-rp-010-tower-surface-20260913.md"
+    },
+    {
+      "from": "hathor-rp-011-operator-brokering-20260913.md",
+      "to": "hathor-rp-011-operator-brokering-20260913.md"
+    },
+    {
+      "from": "hathor-rp-012-knowledge-storage-retrieval-20260913.md",
+      "to": "hathor-rp-012-knowledge-storage-retrieval-20260913.md"
+    },
+    {
+      "from": "hathor-rp-013-threat-model-20260913.md",
+      "to": "hathor-rp-013-threat-model-20260913.md"
+    },
+    {
+      "from": "hathor-rp-014-bot-unit-creation-operation-20260913.md",
+      "to": "hathor-rp-014-bot-unit-creation-operation-20260913.md"
+    },
+    {
+      "from": "hathor-ticketing-economy-whitepaper-20260911.md",
+      "to": "hathor-ticketing-economy-whitepaper-20260911.md"
+    },
+    {
+      "from": "hathor-ts-001-continuous-validation-implementation-20260911.md",
+      "to": "hathor-ts-001-continuous-validation-implementation-20260911.md"
+    },
+    {
+      "from": "hathor-ts-002-orchestration-gateway-implementation-20260913.md",
+      "to": "hathor-ts-002-orchestration-gateway-implementation-20260913.md"
+    },
+    {
+      "from": "hathor-ts-003-bot-unit-implementation-20260913.md",
+      "to": "hathor-ts-003-bot-unit-implementation-20260913.md"
+    },
+    {
+      "from": "hathor-ts-004-dmz-integration-boundary-20260914.md",
+      "to": "hathor-ts-004-dmz-integration-boundary-20260914.md"
+    }
+  ]
+}
