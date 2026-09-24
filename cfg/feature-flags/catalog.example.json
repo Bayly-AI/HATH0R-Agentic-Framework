@@ -1,0 +1,28 @@
+{
+  "apiVersion": "hath0r.feature-flags.catalog/v1",
+  "kind": "FeatureFlagCatalog",
+  "metadata": {
+    "name": "hath0r-framework-catalog-example",
+    "note": "Examples only — not production secrets"
+  },
+  "flags": [
+    {
+      "key": "framework.docs_mcp_publish",
+      "type": "boolean",
+      "default": true,
+      "description": "Publish framework docs corpus to group MCP"
+    },
+    {
+      "key": "framework.otel_export",
+      "type": "boolean",
+      "default": false,
+      "description": "Enable OTLP export when endpoint configured"
+    },
+    {
+      "key": "framework.docker_group_profile",
+      "type": "string",
+      "default": "core",
+      "description": "Docker group profile hint: core | apps"
+    }
+  ]
+}
