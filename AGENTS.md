@@ -108,3 +108,21 @@ CI enforcement: `.github/workflows/enforce-promotion-path.yml`
 3. Only after (1) and (2) are satisfied: apply fileset/layout, `.hath0r/`, `cfg/`, contracts pin, `AGENTS.md` identity, and `./bin/hath0r-bootstrap.sh`.
 
 Do not skip the playbook/runbook gate. Layout scaffolding without a documented ops path is incomplete initialization.
+
+## Branch rules (pointer)
+
+See `docs/governance/branch-rules.md` (cr-branch-gov-001 / CR-BAI-001). Work PRs → `development` only; release trains use `release/x.x.x`.
+## PR workflow hardening
+
+See `docs/governance/pr-workflow.md`. Work PRs → `development` (agents + CODEOWNERS). **Human gate** before staging/master.
+## SonarCloud Quality Gate (CRITICAL)
+
+- Canonical thresholds: SonarCloud Quality Gate only — do not modify gate thresholds ad hoc.
+- PR check **SonarCloud Quality Gate** is a hard stop on failure.
+- See `docs/governance/sonarcloud-quality-gates.md`
+- Secret required: `SONAR_TOKEN`
+## Documentation → MCP
+
+Docs are published to the **proper group MCP** via control-tower
+`python3 scripts/publish-docs-to-mcp.py` (`cfg/mcp-doc-publish.json`).
+See HATH0R-CLI `docs/governance/mcp-doc-publish.md`.
