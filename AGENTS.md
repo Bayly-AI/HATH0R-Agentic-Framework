@@ -1,7 +1,7 @@
 # AGENTS.md — HATH0R Agentic Framework
 
 > Role: **OpenSource HATHOR framework + docs corpus** · member of **OpenSource Project** (`hath0r-opensource`)  
-> Updated: 2026-09-15
+> Updated: 2026-09-24
 
 ## Group membership (CRITICAL)
 
@@ -26,6 +26,20 @@
 
 Group rules: `/Users/raybayly/Development/OpenSource/AGENTS.md`  
 Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
+
+## CLI-First & Missing Capability Offer (CRITICAL — cr-cli-first-001)
+
+1. **CLI-First**: For any request involving a connection, MCP, workflow, factory, Docker workflow, KB path, or suite orientation, invoke **`hath0r`** (control-tower operator CLI) rather than inventing ad-hoc scripts.
+2. **Missing Capability Offer**: If the required connection, MCP, workflow, or factory does not exist, do not silently improvise. Offer to create/register the missing capability and use the original request as the acceptance test.
+3. **Docs before code**: Require procedure/strategy/playbook/runbook (see `docs/governance/workflow-documentation-standard.md`) before scaffolding implementation.
+4. **Detail**: `docs/governance/cli-first-rules.md` · tower canonical: https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md
+
+## Suite standards (member pointers)
+
+Index: `docs/governance/SUITE_STANDARDS.md`  
+Local cfg: `cfg/observability/`, `cfg/feature-flags/`, `cfg/docker/`  
+Adopt audit: `.hath0r/ADOPT_AUDIT.md`  
+Control tower epic: HATH0R-CLI #58–#63 / PR #111
 
 ## Framework hidden root (CRITICAL — cr-hath0r-root-001)
 

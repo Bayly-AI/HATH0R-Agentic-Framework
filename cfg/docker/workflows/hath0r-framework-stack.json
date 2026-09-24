@@ -1,0 +1,52 @@
+{
+  "apiVersion": "hath0r.docker.workflow/v1",
+  "kind": "DockerWorkflow",
+  "metadata": {
+    "id": "hath0r-framework-stack",
+    "name": "Hath0r Framework OpenSource Stack",
+    "group": "hath0r-opensource",
+    "product": "HATH0R-Agentic-Framework",
+    "description": "Hathor validate then Docker Factory execute for ATC+MCP+Redis+Nginx. Compose canonical on Bayly-AI/HATH0R-CLI cfg/docker/groups/hath0r/docker-compose.yml. Docs under docs/governance/* docker-framework-stack*. Issue #41."
+  },
+  "spec": {
+    "factory": "docker-factory",
+    "compose": {
+      "file": "cfg/docker/groups/hath0r/docker-compose.yml",
+      "project": "hath0r-opensource-core"
+    },
+    "services": [
+      "atc",
+      "mcp",
+      "redis",
+      "nginx"
+    ],
+    "env_refs": [
+      "Development/.credentials/hath0r/.env"
+    ],
+    "steps": [
+      {
+        "op": "validate",
+        "on_failure": "abort"
+      },
+      {
+        "op": "up",
+        "params": {
+          "detach": true
+        },
+        "on_failure": "abort"
+      },
+      {
+        "op": "healthcheck",
+        "params": {
+          "services": ["atc", "mcp", "redis", "nginx"],
+          "timeout": 10
+        },
+        "on_failure": "abort"
+      }
+    ],
+    "progress": {
+      "report_to": "hath0r",
+      "checkpoints": true
+    }
+  }
+}
