@@ -14,10 +14,14 @@ dist/
 downloads/
 eggs/
 .eggs/
-# Keep framework assets trackable; ignore only Python packaging lib trees
+# Keep framework assets, schemas, and contracts trackable; ignore only Python packaging lib trees
 lib/*
 !lib/assets/
 !lib/assets/**
+!lib/schemas/
+!lib/schemas/**
+!lib/contracts/
+!lib/contracts/**
 lib64/
 parts/
 sdist/
@@ -219,3 +223,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+.DS_Store
+**/.DS_Store
