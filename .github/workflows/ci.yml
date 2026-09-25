@@ -203,3 +203,11 @@ jobs:
               sys.exit(1)
           print(f"All {len(files)} contracts YAML file(s) are valid.")
           PY
+
+      - name: Run JEV tool-guard tests (pytest)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install "pytest>=7.0" "httpx>=0.24" "structlog>=23.0"
+          PYTHONPATH=. pytest tests/test_jev_tool_guard.py -v
+
