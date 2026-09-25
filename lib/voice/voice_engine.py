@@ -203,15 +203,23 @@ class HeuristicDecisionRouter(SystemOneRouter):
         t = transcript.strip().lower()
 
         # Hath0r CLI direct commands
-        if t.startswith("hathor ") or t.startswith("hath0r "):
+        if t in ("hathor", "hath0r") or t.startswith("hathor ") or t.startswith("hath0r "):
             parts = t.split()
+            valid_subcmds = {
+                "doctor", "version", "status", "exec", "listen", "voice", "init",
+                "validate", "workflow", "run", "build", "test", "help", "kb", "check", "info",
+            }
+            if len(parts) > 1 and parts[1] not in valid_subcmds:
+                return None
+
             subcmd = parts[1] if len(parts) > 1 else "doctor"
             args = parts[2:]
+            conf = 0.98 if len(parts) > 1 else 0.88
             return VoiceAction(
                 transcript=transcript,
                 routing_tier="system_one",
                 intent="cli_command",
-                confidence=0.98,
+                confidence=conf,
                 payload={
                     "command": f"hath0r {subcmd}",
                     "args": args,
