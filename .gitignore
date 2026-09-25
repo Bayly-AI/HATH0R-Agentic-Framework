@@ -22,6 +22,14 @@ lib/*
 !lib/schemas/**
 !lib/contracts/
 !lib/contracts/**
+!lib/jev/
+!lib/jev/**
+lib/jev/**/__pycache__/
+lib/jev/**/*.pyc
+!lib/voice/
+!lib/voice/**
+lib/voice/**/__pycache__/
+lib/voice/**/*.pyc
 lib64/
 parts/
 sdist/
