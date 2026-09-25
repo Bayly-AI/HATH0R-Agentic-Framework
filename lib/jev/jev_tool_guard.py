@@ -12,12 +12,28 @@ from typing import Any, Mapping, Optional, Sequence
 
 import structlog
 
-from knowledgebase.core.jev_client import (
-    JevClient,
-    ToolGuardRequest,
-    ToolGuardResult,
-    get_jev_client,
-)
+try:
+    from lib.jev.jev_client import (
+        JevClient,
+        ToolGuardRequest,
+        ToolGuardResult,
+        get_jev_client,
+    )
+except ImportError:
+    try:
+        from jev_client import (  # type: ignore[no-redef]
+            JevClient,
+            ToolGuardRequest,
+            ToolGuardResult,
+            get_jev_client,
+        )
+    except ImportError:
+        from knowledgebase.core.jev_client import (  # type: ignore[no-redef]
+            JevClient,
+            ToolGuardRequest,
+            ToolGuardResult,
+            get_jev_client,
+        )
 
 logger = structlog.get_logger(__name__)
 
@@ -148,6 +164,34 @@ GUARDED_TOOL_PROFILES: dict[str, ToolRiskProfile] = {
         policy=("Do not log secrets",),
         reversibility="reversible",
     ),
+    "fs_write": ToolRiskProfile(
+        action_template="Write to filesystem path {path}",
+        side_effects=("Modifies filesystem state", "Overwrites file content"),
+        safeguards=("Path validation against approved project roots",),
+        policy=("Do not write secrets or overwrite canonical files without justification",),
+        reversibility="reversible",
+    ),
+    "fs_delete": ToolRiskProfile(
+        action_template="Delete filesystem path {path}",
+        side_effects=("Deletes file or directory", "Data loss if no version control"),
+        safeguards=("Restricted to non-canonical paths",),
+        policy=("Deletion of canonical repository assets is strictly prohibited",),
+        reversibility="irreversible",
+    ),
+    "shell_execute": ToolRiskProfile(
+        action_template="Execute shell command {command}",
+        side_effects=("Spawns subprocess", "Potential environment mutation"),
+        safeguards=("Command whitelisting and timeout bounding",),
+        policy=("Destructive shell commands require explicit justification",),
+        reversibility="partially_reversible",
+    ),
+    "network_request": ToolRiskProfile(
+        action_template="Send external network request to {url}",
+        side_effects=("Outbound network I/O", "Data egress"),
+        safeguards=("Target URL host validation",),
+        policy=("Requests must not transmit credentials or unauthorized data",),
+        reversibility="reversible",
+    ),
 }
 
 
@@ -190,7 +234,7 @@ def build_tool_guard_request(tool_name: str, args: Mapping[str, Any]) -> Optiona
 
     format_args = {
         key: args.get(key, "")
-        for key in ("name", "id", "doc_id", "target", "path", "index", "index_name")
+        for key in ("name", "id", "doc_id", "target", "path", "index", "index_name", "command", "url")
     }
     try:
         action = profile.action_template.format_map(format_args)
