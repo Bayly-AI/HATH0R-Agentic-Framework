@@ -1,7 +1,7 @@
 ---
 id: HATHOR-GUIDE-011
 title: Agent Integrator Guide
-summary: "As an Agent Integrator (or AI Agent), interact with HATHOR through the hath0r CLI, AGENTS.md, docs indexes, and .hath0r/ layout — never aegis or .aegis/."
+summary: "As an Agent Integrator (or AI Agent), interact with HATHOR through the hath0r CLI, AGENTS.md, docs indexes, and .hath0r/ layout — never customerSystem or .customerSystem/."
 doc_type: GUIDE
 diataxis: how-to
 audience: [developer, agent]
@@ -24,7 +24,7 @@ sources: [HATHOR-ADR-003, HATHOR-ADR-004, HATHOR-PLAYBOOK-001, HATHOR-CANON-001]
 As an Agent Integrator (or AI Agent), you interact with the **HATHOR** platform as an active participant—building, verifying, and navigating project state.
 
 **Operator binary:** `hath0r` (package `hath0r-cli`).  
-**Do not** call `aegis`, create `.aegis/`, `.ai/`, or `.infraOS/` for framework metadata (`cr-hath0r-root-001`).
+**Do not** call `customerSystem`, create `.customerSystem/`, `.ai/`, or `.infraOS/` for framework metadata (`cr-hath0r-root-001`).
 
 ## 0. Shipped vs target surface (read this first)
 
@@ -38,7 +38,7 @@ As an Agent Integrator (or AI Agent), you interact with the **HATHOR** platform 
 | `hath0r planes` / `hath0r schema` | **Shipped** | ADR-003 surface map with honest planned status |
 | Domains from HATHOR-ADR-003 (`process`, `work`, `knowledge` write, `validate`, `repo`, …) | **Target / not fully shipped in 0.2** | Do **not** invent commands; follow product runbooks and git/host tooling until CLI grows behind contracts |
 
-Private-era text that still says `aegis` is **stale**. Live document IDs are `HATHOR-*`.
+Private-era text that still says `customerSystem` is **stale**. Live document IDs are `HATHOR-*`.
 
 ## 1. The single control plane
 
@@ -103,7 +103,7 @@ HATHOR policy still applies even when `hath0r work …` is not shipped:
 * Prefer **issue-first** branches: `feature|fix|chore/<issue>-slug` from `development` (group AGENTS).
 * **CR-BAI-001** promotion path: `local → development → testing → staging → master (Production)`.
   * PRs into `testing` only from `development`; `staging` from `testing`; `master` from `staging`.
-* When ticketing-plane CLI lands, it will be `hath0r work …` (not `aegis work`). Until then use GitHub/Jira hosts per product runbook—do not bypass product quality gates.
+* When ticketing-plane CLI lands, it will be `hath0r work …` (not `customerSystem work`). Until then use GitHub/Jira hosts per product runbook—do not bypass product quality gates.
 
 ## 5. Knowledge plane (today vs target)
 
@@ -117,7 +117,7 @@ HATHOR policy still applies even when `hath0r work …` is not shipped:
 
 * Tiered retrieval Project → Machine → Organization → Public.
 * Microburst writes; draft → verified only after human review; no auto-promotion.
-* Future CLI verbs will be under `hath0r` (historically drafted as `knowledge` domain)—never `.aegis/knowledge/`.
+* Future CLI verbs will be under `hath0r` (historically drafted as `knowledge` domain)—never `.customerSystem/knowledge/`.
 
 ## 6. Runs, playbooks, and governance (target)
 
@@ -138,5 +138,5 @@ Until then:
 3. If product has bin/hath0r-bootstrap.sh → run it
 4. Open docs/llms.txt or framework docs/index.json
 5. Follow runbook; create missing task docs before large changes
-6. Never introduce aegis binary or .aegis/ roots
+6. Never introduce customerSystem binary or .customerSystem/ roots
 ```

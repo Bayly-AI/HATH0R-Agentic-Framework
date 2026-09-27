@@ -1,9 +1,9 @@
-# AEGIS Adoption Roadmap
+# customerSystem Adoption Roadmap
 
 - **Business document:** 06 of 08
 - **Status:** Derived draft for business review
 - **Source baseline:** Architecture corpus as of 2026-09-14
-- **Primary source:** Approved [`AEGIS-PLAN-001`](../architect/aegis-plan-001-platform-roadmap-20260913.md), supported by PLAN-002/003 and the draft Ticketing Economy pilot recommendation
+- **Primary source:** Approved [`customerSystem-PLAN-001`](../architect/customerSystem-plan-001-platform-roadmap-20260913.md), supported by PLAN-002/003 and the draft Ticketing Economy pilot recommendation
 
 ## 1. Roadmap objective
 
@@ -226,7 +226,7 @@ flowchart LR
 - add complete observation metrics;
 - introduce explicit complex graphs only after semantics and recovery are frozen;
 - add container and build governance;
-- expand from the AEGIS repository to the InfraAPI façade and one Communications workflow as planned; and
+- expand from the customerSystem repository to the InfraAPI façade and one Communications workflow as planned; and
 - onboard another team only after the first operating model is stable.
 
 Each expansion repeats baseline, threat, recovery, user-friction, and value review for the new scope.

@@ -45,7 +45,7 @@ Control tower epic: HATH0R-CLI #58–#63 / PR #111
 
 Use **only** `.hath0r/` for framework-created / modified / saved project metadata.
 
-Do **not** use `.ai/`, `.aegis/`, or `.infraOS/`.
+Do **not** use `.ai/`, `.customerSystem/`, or `.infraOS/`.
 
 ## Knowledgebase (CRITICAL — cr-kb-tower-001)
 

@@ -1,5 +1,5 @@
 {
-  "description": "JEV System One tool-guard POC for AegisCMCP agent control loops",
+  "description": "JEV System One tool-guard POC for customerSystemCMCP agent control loops",
   "enabled_by_default": false,
   "modes": {
     "off": "Guard disabled; all tools execute as before",

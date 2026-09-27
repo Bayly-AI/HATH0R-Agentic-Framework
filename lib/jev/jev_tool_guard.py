@@ -1,4 +1,4 @@
-"""JEV tool-guard control loop for AegisCMCP MCP tools.
+"""JEV tool-guard control loop for customerSystemCMCP MCP tools.
 
 Maps consequential MCP tools to side-effect metadata, calls JEV, and returns
 a block/allow decision for the agent tool execution path.

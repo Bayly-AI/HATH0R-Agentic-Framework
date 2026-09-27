@@ -37,23 +37,23 @@
       "bytes": 9802
     },
     {
-      "archived": "archive/docs/architect/AEGIS-ARCH-001-architecture-mermaid-20260911.md",
-      "live": "docs/architect/AEGIS-ARCH-001-architecture-mermaid-20260911.md",
-      "source": ".migration-snapshot/docs/architect/AEGIS-ARCH-001-architecture-mermaid-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-ARCH-001-architecture-mermaid-20260911.md",
+      "live": "docs/architect/customerSystem-ARCH-001-architecture-mermaid-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-ARCH-001-architecture-mermaid-20260911.md",
       "sha256": "fa3272008c2f73282828b7ef173ae39a414ccbabc2527d0399d94eca4df1802a",
       "bytes": 26599
     },
     {
-      "archived": "archive/docs/architect/AEGIS-CLI-Research-Report-2026-09-11.md",
-      "live": "docs/architect/AEGIS-CLI-Research-Report-2026-09-11.md",
-      "source": ".migration-snapshot/docs/architect/AEGIS-CLI-Research-Report-2026-09-11.md",
+      "archived": "archive/docs/architect/customerSystem-CLI-Research-Report-2026-09-11.md",
+      "live": "docs/architect/customerSystem-CLI-Research-Report-2026-09-11.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-CLI-Research-Report-2026-09-11.md",
       "sha256": "b427d2cc69db37667ce837398be6d74099c0edf3f6b8516e75521b25ecbc80b6",
       "bytes": 30724
     },
     {
-      "archived": "archive/docs/architect/AEGIS-REQ-CORE-001-initial-requirements-20260911.md",
-      "live": "docs/architect/AEGIS-REQ-CORE-001-initial-requirements-20260911.md",
-      "source": ".migration-snapshot/docs/architect/AEGIS-REQ-CORE-001-initial-requirements-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-REQ-CORE-001-initial-requirements-20260911.md",
+      "live": "docs/architect/customerSystem-REQ-CORE-001-initial-requirements-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-REQ-CORE-001-initial-requirements-20260911.md",
       "sha256": "73e6ba30372174597e0e3376194d2264296af12b83444c2ff128044b13361a61",
       "bytes": 46430
     },
@@ -72,233 +72,233 @@
       "bytes": 17431
     },
     {
-      "archived": "archive/docs/architect/aegis-adr-001-target-command-tree-20260911.md",
-      "live": "docs/architect/aegis-adr-001-target-command-tree-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-adr-001-target-command-tree-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-adr-001-target-command-tree-20260911.md",
+      "live": "docs/architect/customerSystem-adr-001-target-command-tree-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-adr-001-target-command-tree-20260911.md",
       "sha256": "5be721a2778db467ca4c95de29a1cd9e6a34b78c1e260868699f9e76f4e41e5c",
       "bytes": 12796
     },
     {
-      "archived": "archive/docs/architect/aegis-adr-002-orchestration-coordination-model-20260913.md",
-      "live": "docs/architect/aegis-adr-002-orchestration-coordination-model-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-adr-002-orchestration-coordination-model-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-adr-002-orchestration-coordination-model-20260913.md",
+      "live": "docs/architect/customerSystem-adr-002-orchestration-coordination-model-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-adr-002-orchestration-coordination-model-20260913.md",
       "sha256": "e5131c987470ce1a5665ddaf9f612b5cc7c56658e862f68d131cf14182be588a",
       "bytes": 14092
     },
     {
-      "archived": "archive/docs/architect/aegis-adr-003-greenfield-command-surface-20260913.md",
-      "live": "docs/architect/aegis-adr-003-greenfield-command-surface-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-adr-003-greenfield-command-surface-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-adr-003-greenfield-command-surface-20260913.md",
+      "live": "docs/architect/customerSystem-adr-003-greenfield-command-surface-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-adr-003-greenfield-command-surface-20260913.md",
       "sha256": "953f5e4c573daa15e5f4a51c9f2ba772b46d2bb1557bd336fce785271961a294",
       "bytes": 8901
     },
     {
-      "archived": "archive/docs/architect/aegis-adr-004-layout-state-residency-20260913.md",
-      "live": "docs/architect/aegis-adr-004-layout-state-residency-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-adr-004-layout-state-residency-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-adr-004-layout-state-residency-20260913.md",
+      "live": "docs/architect/customerSystem-adr-004-layout-state-residency-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-adr-004-layout-state-residency-20260913.md",
       "sha256": "ef01e24addf1bcedb9586e2030072e83586f09c5c1f6d8a8accb6e1fa85b1b3c",
       "bytes": 6213
     },
     {
-      "archived": "archive/docs/architect/aegis-adr-005-backup-ticketing-system-20260913.md",
-      "live": "docs/architect/aegis-adr-005-backup-ticketing-system-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-adr-005-backup-ticketing-system-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-adr-005-backup-ticketing-system-20260913.md",
+      "live": "docs/architect/customerSystem-adr-005-backup-ticketing-system-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-adr-005-backup-ticketing-system-20260913.md",
       "sha256": "637814860eff6ddcc93d9b95b9fd927d4afa49b5ed3d45daaf8690cc9cdaa1a7",
       "bytes": 3821
     },
     {
-      "archived": "archive/docs/architect/aegis-arch-002-bot-unit-compendium-20260914.md",
-      "live": "docs/architect/aegis-arch-002-bot-unit-compendium-20260914.md",
-      "source": ".migration-snapshot/docs/architect/aegis-arch-002-bot-unit-compendium-20260914.md",
+      "archived": "archive/docs/architect/customerSystem-arch-002-bot-unit-compendium-20260914.md",
+      "live": "docs/architect/customerSystem-arch-002-bot-unit-compendium-20260914.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-arch-002-bot-unit-compendium-20260914.md",
       "sha256": "31a84dce68fca93ae681e64973ecc6b30b0d1305de87bf1e14553a2d41aecc16",
       "bytes": 53026
     },
     {
-      "archived": "archive/docs/architect/aegis-bot-taxonomy-requirements-20260911.md",
-      "live": "docs/architect/aegis-bot-taxonomy-requirements-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-bot-taxonomy-requirements-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-bot-taxonomy-requirements-20260911.md",
+      "live": "docs/architect/customerSystem-bot-taxonomy-requirements-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-bot-taxonomy-requirements-20260911.md",
       "sha256": "b71ceea433d9deebe4a9c57f9b97a498a2026aad963d8f661cbc07037f72ed06",
       "bytes": 18742
     },
     {
-      "archived": "archive/docs/architect/aegis-canon-001-registries-20260913.md",
-      "live": "docs/architect/aegis-canon-001-registries-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-canon-001-registries-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-canon-001-registries-20260913.md",
+      "live": "docs/architect/customerSystem-canon-001-registries-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-canon-001-registries-20260913.md",
       "sha256": "b20878ef17302ca72e574828a44d1a9e0aae7eb8daa5c4c90af7f285e9db497d",
       "bytes": 13659
     },
     {
-      "archived": "archive/docs/architect/aegis-canon-002-platform-principles-20260914.md",
-      "live": "docs/architect/aegis-canon-002-platform-principles-20260914.md",
-      "source": ".migration-snapshot/docs/architect/aegis-canon-002-platform-principles-20260914.md",
+      "archived": "archive/docs/architect/customerSystem-canon-002-platform-principles-20260914.md",
+      "live": "docs/architect/customerSystem-canon-002-platform-principles-20260914.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-canon-002-platform-principles-20260914.md",
       "sha256": "a39145a5202a48b24de01838d99961291420462aeef3e020bf7269e4e332874a",
       "bytes": 19413
     },
     {
-      "archived": "archive/docs/architect/aegis-containerization-article-20260911.md",
-      "live": "docs/architect/aegis-containerization-article-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-containerization-article-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-containerization-article-20260911.md",
+      "live": "docs/architect/customerSystem-containerization-article-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-containerization-article-20260911.md",
       "sha256": "a8b3e688f765cf82528e3a14f84cf13b016a3b2b18a940df788eff8679d6e37a",
       "bytes": 12264
     },
     {
-      "archived": "archive/docs/architect/aegis-containerization-presentation-script-20260911.md",
-      "live": "docs/architect/aegis-containerization-presentation-script-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-containerization-presentation-script-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-containerization-presentation-script-20260911.md",
+      "live": "docs/architect/customerSystem-containerization-presentation-script-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-containerization-presentation-script-20260911.md",
       "sha256": "060321362c8c88bcd1a56aa916a6c8c70d5764d207539b88dd316dbc00414b0e",
       "bytes": 12686
     },
     {
-      "archived": "archive/docs/architect/aegis-plan-001-platform-roadmap-20260913.md",
-      "live": "docs/architect/aegis-plan-001-platform-roadmap-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-plan-001-platform-roadmap-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-plan-001-platform-roadmap-20260913.md",
+      "live": "docs/architect/customerSystem-plan-001-platform-roadmap-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-plan-001-platform-roadmap-20260913.md",
       "sha256": "c6b3ad03580fccf3ffe8bbe0d6ac32c7e568285389a7ef0deab77f9e47392662",
       "bytes": 5596
     },
     {
-      "archived": "archive/docs/architect/aegis-plan-002-cvs-p0-p2-roadmap-20260911.md",
-      "live": "docs/architect/aegis-plan-002-cvs-p0-p2-roadmap-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-plan-002-cvs-p0-p2-roadmap-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-plan-002-cvs-p0-p2-roadmap-20260911.md",
+      "live": "docs/architect/customerSystem-plan-002-cvs-p0-p2-roadmap-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-plan-002-cvs-p0-p2-roadmap-20260911.md",
       "sha256": "5bd917b2c9a3978aa103cd3bfdf4b6168be38049a5ecdc7fa337a5ba29081e43",
       "bytes": 18266
     },
     {
-      "archived": "archive/docs/architect/aegis-plan-003-gateway-validators-roadmap-20260913.md",
-      "live": "docs/architect/aegis-plan-003-gateway-validators-roadmap-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-plan-003-gateway-validators-roadmap-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-plan-003-gateway-validators-roadmap-20260913.md",
+      "live": "docs/architect/customerSystem-plan-003-gateway-validators-roadmap-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-plan-003-gateway-validators-roadmap-20260913.md",
       "sha256": "f4494be0d38602883e3e76ecde48b6974131cc83b0844a1f1a2d04e6822be6c8",
       "bytes": 5184
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-001-manifest-schema-v1-20260911.md",
-      "live": "docs/architect/aegis-rp-001-manifest-schema-v1-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-001-manifest-schema-v1-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-rp-001-manifest-schema-v1-20260911.md",
+      "live": "docs/architect/customerSystem-rp-001-manifest-schema-v1-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-001-manifest-schema-v1-20260911.md",
       "sha256": "87c435ef1251de002b5e9e1793f2e7e30cc8b2f21f8a3ed974461a5cbfc6991c",
       "bytes": 13290
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-002-registry-discovery-20260911.md",
-      "live": "docs/architect/aegis-rp-002-registry-discovery-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-002-registry-discovery-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-rp-002-registry-discovery-20260911.md",
+      "live": "docs/architect/customerSystem-rp-002-registry-discovery-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-002-registry-discovery-20260911.md",
       "sha256": "486b3fa877c440bff429c94dc7d400247758c6809a7e17315a4c512666b051d5",
       "bytes": 7525
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-003-telemetry-transport-20260911.md",
-      "live": "docs/architect/aegis-rp-003-telemetry-transport-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-003-telemetry-transport-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-rp-003-telemetry-transport-20260911.md",
+      "live": "docs/architect/customerSystem-rp-003-telemetry-transport-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-003-telemetry-transport-20260911.md",
       "sha256": "f3565fdffb81002f04dc9a7184c66f496c32d084b029a4cb0459e2df64300a4b",
       "bytes": 8806
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-004-knowledge-promotion-20260911.md",
-      "live": "docs/architect/aegis-rp-004-knowledge-promotion-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-004-knowledge-promotion-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-rp-004-knowledge-promotion-20260911.md",
+      "live": "docs/architect/customerSystem-rp-004-knowledge-promotion-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-004-knowledge-promotion-20260911.md",
       "sha256": "98c7f7aec035f57df58aec3b95274257b5a2d9c38fb2ef1e97fe46134431f048",
       "bytes": 8832
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-005-hierarchy-consolidation-20260911.md",
-      "live": "docs/architect/aegis-rp-005-hierarchy-consolidation-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-005-hierarchy-consolidation-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-rp-005-hierarchy-consolidation-20260911.md",
+      "live": "docs/architect/customerSystem-rp-005-hierarchy-consolidation-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-005-hierarchy-consolidation-20260911.md",
       "sha256": "5ce040cf234ce98d6f6f30eb5f2a9803d64adbe162d903108ae5c30ab3272392",
       "bytes": 8831
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-006-ticketing-plane-20260911.md",
-      "live": "docs/architect/aegis-rp-006-ticketing-plane-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-006-ticketing-plane-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-rp-006-ticketing-plane-20260911.md",
+      "live": "docs/architect/customerSystem-rp-006-ticketing-plane-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-006-ticketing-plane-20260911.md",
       "sha256": "a657bf9a3a0bbb82ff1ba52383fb261706960cb7079502a7339bd877bd5806cc",
       "bytes": 28319
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-007-continuous-validation-20260911.md",
-      "live": "docs/architect/aegis-rp-007-continuous-validation-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-007-continuous-validation-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-rp-007-continuous-validation-20260911.md",
+      "live": "docs/architect/customerSystem-rp-007-continuous-validation-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-007-continuous-validation-20260911.md",
       "sha256": "743c793e8383a47c084175e9b363f31284fd6706b9da169efcc9a2dedf749d52",
       "bytes": 32665
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-008-microbot-launch-roster-20260912.md",
-      "live": "docs/architect/aegis-rp-008-microbot-launch-roster-20260912.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-008-microbot-launch-roster-20260912.md",
+      "archived": "archive/docs/architect/customerSystem-rp-008-microbot-launch-roster-20260912.md",
+      "live": "docs/architect/customerSystem-rp-008-microbot-launch-roster-20260912.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-008-microbot-launch-roster-20260912.md",
       "sha256": "8b49e2ee665f920951ad7bba81d6911d25bc768477ff408ce7970a64057db2d1",
       "bytes": 22744
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-009-orchestration-gateway-20260912.md",
-      "live": "docs/architect/aegis-rp-009-orchestration-gateway-20260912.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-009-orchestration-gateway-20260912.md",
+      "archived": "archive/docs/architect/customerSystem-rp-009-orchestration-gateway-20260912.md",
+      "live": "docs/architect/customerSystem-rp-009-orchestration-gateway-20260912.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-009-orchestration-gateway-20260912.md",
       "sha256": "32203ebb3e18883c91f7d001b1c97efadd83480739e64911f08a35052e8546f5",
       "bytes": 37591
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-010-tower-surface-20260913.md",
-      "live": "docs/architect/aegis-rp-010-tower-surface-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-010-tower-surface-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-rp-010-tower-surface-20260913.md",
+      "live": "docs/architect/customerSystem-rp-010-tower-surface-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-010-tower-surface-20260913.md",
       "sha256": "b61876650ffed43091d0236212fa346fe90e25cf11fe4ebcefa083ac0382c4cd",
       "bytes": 7142
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-011-operator-brokering-20260913.md",
-      "live": "docs/architect/aegis-rp-011-operator-brokering-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-011-operator-brokering-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-rp-011-operator-brokering-20260913.md",
+      "live": "docs/architect/customerSystem-rp-011-operator-brokering-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-011-operator-brokering-20260913.md",
       "sha256": "0618b900efabc4906c80151a2149a590e032919bc81eaabd0d98524a9158b050",
       "bytes": 7611
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-012-knowledge-storage-retrieval-20260913.md",
-      "live": "docs/architect/aegis-rp-012-knowledge-storage-retrieval-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-012-knowledge-storage-retrieval-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-rp-012-knowledge-storage-retrieval-20260913.md",
+      "live": "docs/architect/customerSystem-rp-012-knowledge-storage-retrieval-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-012-knowledge-storage-retrieval-20260913.md",
       "sha256": "57cf1e19e03af075da5bb7d640fb093f93b34faf2ca4e7ddc728885f89ed2426",
       "bytes": 7475
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-013-threat-model-20260913.md",
-      "live": "docs/architect/aegis-rp-013-threat-model-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-013-threat-model-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-rp-013-threat-model-20260913.md",
+      "live": "docs/architect/customerSystem-rp-013-threat-model-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-013-threat-model-20260913.md",
       "sha256": "a727bd30e8fba59414d156292e6b50cf03871bc222fc111f0a10e28591038561",
       "bytes": 9258
     },
     {
-      "archived": "archive/docs/architect/aegis-rp-014-bot-unit-creation-operation-20260913.md",
-      "live": "docs/architect/aegis-rp-014-bot-unit-creation-operation-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-rp-014-bot-unit-creation-operation-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-rp-014-bot-unit-creation-operation-20260913.md",
+      "live": "docs/architect/customerSystem-rp-014-bot-unit-creation-operation-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-rp-014-bot-unit-creation-operation-20260913.md",
       "sha256": "50c11a1c39e4bda8f5b0570c223e2619f057f2c8af50ce3741c17cfa5d35be3c",
       "bytes": 66823
     },
     {
-      "archived": "archive/docs/architect/aegis-ticketing-economy-whitepaper-20260911.md",
-      "live": "docs/architect/aegis-ticketing-economy-whitepaper-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-ticketing-economy-whitepaper-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-ticketing-economy-whitepaper-20260911.md",
+      "live": "docs/architect/customerSystem-ticketing-economy-whitepaper-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-ticketing-economy-whitepaper-20260911.md",
       "sha256": "5b1dc993ce23ba8fcdae407bc7e314eebbd6cbb6fc24ddf88322e0b410c2c1dd",
       "bytes": 12370
     },
     {
-      "archived": "archive/docs/architect/aegis-ts-001-continuous-validation-implementation-20260911.md",
-      "live": "docs/architect/aegis-ts-001-continuous-validation-implementation-20260911.md",
-      "source": ".migration-snapshot/docs/architect/aegis-ts-001-continuous-validation-implementation-20260911.md",
+      "archived": "archive/docs/architect/customerSystem-ts-001-continuous-validation-implementation-20260911.md",
+      "live": "docs/architect/customerSystem-ts-001-continuous-validation-implementation-20260911.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-ts-001-continuous-validation-implementation-20260911.md",
       "sha256": "8481e863c44d7189c896e230c01ed8ae873e0df82c574d57b179227495d426b2",
       "bytes": 36925
     },
     {
-      "archived": "archive/docs/architect/aegis-ts-002-orchestration-gateway-implementation-20260913.md",
-      "live": "docs/architect/aegis-ts-002-orchestration-gateway-implementation-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-ts-002-orchestration-gateway-implementation-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-ts-002-orchestration-gateway-implementation-20260913.md",
+      "live": "docs/architect/customerSystem-ts-002-orchestration-gateway-implementation-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-ts-002-orchestration-gateway-implementation-20260913.md",
       "sha256": "5867ead0b7fe97940a10080211b5558d40cdfb3f13a324f42bcf917d91140cbd",
       "bytes": 32698
     },
     {
-      "archived": "archive/docs/architect/aegis-ts-003-bot-unit-implementation-20260913.md",
-      "live": "docs/architect/aegis-ts-003-bot-unit-implementation-20260913.md",
-      "source": ".migration-snapshot/docs/architect/aegis-ts-003-bot-unit-implementation-20260913.md",
+      "archived": "archive/docs/architect/customerSystem-ts-003-bot-unit-implementation-20260913.md",
+      "live": "docs/architect/customerSystem-ts-003-bot-unit-implementation-20260913.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-ts-003-bot-unit-implementation-20260913.md",
       "sha256": "d9c83719b436f902e711baea762cdaaa5640cc578d2f0951e35fbc0f83712295",
       "bytes": 30227
     },
     {
-      "archived": "archive/docs/architect/aegis-ts-004-dmz-integration-boundary-20260914.md",
-      "live": "docs/architect/aegis-ts-004-dmz-integration-boundary-20260914.md",
-      "source": ".migration-snapshot/docs/architect/aegis-ts-004-dmz-integration-boundary-20260914.md",
+      "archived": "archive/docs/architect/customerSystem-ts-004-dmz-integration-boundary-20260914.md",
+      "live": "docs/architect/customerSystem-ts-004-dmz-integration-boundary-20260914.md",
+      "source": ".migration-snapshot/docs/architect/customerSystem-ts-004-dmz-integration-boundary-20260914.md",
       "sha256": "fde091b1a4a507a72c7f198d233e47c1cd29fc4a4907dc10be19becab9b11540",
       "bytes": 55822
     },
