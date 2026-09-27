@@ -146,3 +146,21 @@ See HATH0R-CLI `docs/governance/mcp-doc-publish.md`.
 - Canonical source of truth: `VERSION` in repo root.
 - PRs must declare version impact (`major`, `minor`, `patch`, or `none`).
 - See `docs/governance/semantic-versioning.md` and `docs/governance/playbooks/release-runbook.md`.
+
+## Hyper Context Pointers
+- **Archive Subsystem**: `archive/AGENTS.md`
+
+## Hyper Context Pointers
+- **Contracts Subsystem**: `contracts/AGENTS.md`
+
+## Hyper Context Pointers
+- **Tests Subsystem**: `tests/AGENTS.md`
+
+## Hyper Context Pointers
+- **Docs Subsystem**: `docs/AGENTS.md`
+
+## Hyper Context Pointers
+- **Cfg Subsystem**: `cfg/AGENTS.md`
+
+## Hyper Context Pointers
+- **Lib Subsystem**: `lib/AGENTS.md`
