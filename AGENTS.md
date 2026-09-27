@@ -108,3 +108,15 @@ CI enforcement: `.github/workflows/enforce-promotion-path.yml`
 3. Only after (1) and (2) are satisfied: apply fileset/layout, `.hath0r/`, `cfg/`, contracts pin, `AGENTS.md` identity, and `./bin/hath0r-bootstrap.sh`.
 
 Do not skip the playbook/runbook gate. Layout scaffolding without a documented ops path is incomplete initialization.
+
+## Hyper Context Pointers
+- **Archive Subsystem**: `archive/AGENTS.md`
+
+## Hyper Context Pointers
+- **Docs Subsystem**: `docs/AGENTS.md`
+
+## Hyper Context Pointers
+- **Cfg Subsystem**: `cfg/AGENTS.md`
+
+## Hyper Context Pointers
+- **Lib Subsystem**: `lib/AGENTS.md`
