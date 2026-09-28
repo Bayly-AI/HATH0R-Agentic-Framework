@@ -290,6 +290,17 @@ class HeuristicDecisionRouter(SystemOneRouter):
                     metadata={"addressed_wake": matched_wake},
                 )
 
+            # Known Hath0r CLI subcommands
+            known_subcmds = {
+                "doctor", "version", "status", "kb", "knowledgebase", "config",
+                "run", "start", "stop", "test", "init", "factory", "workflow",
+                "mcp", "context", "graph", "build", "check", "info", "help"
+            }
+            if parts and subcmd not in known_subcmds:
+                # If addressed utterance isn't a recognized CLI subcommand or system action,
+                # escalate to System 2 for natural language / conversational processing
+                return None
+
             conf = 0.98 if len(parts) > 0 else 0.88
             return VoiceAction(
                 transcript=transcript,
