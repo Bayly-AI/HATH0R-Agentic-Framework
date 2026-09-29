@@ -1,12 +1,12 @@
 {
   "schema": "hath0r.fileset.manifest/1",
-  "fileset_version": "0.2.0",
-  "cli_version": "0.2.0",
-  "contracts_version": "0.2.0",
+  "fileset_version": "1.0.0",
+  "cli_version": "1.0.0",
+  "contracts_version": "1.0.0",
   "product_id_default": "hath0r-framework",
   "product_name": "HATH0R Agentic Framework",
   "mode": "member",
-  "generated_at": "2026-09-23T20:00:17Z",
+  "generated_at": "2026-09-29T18:17:00Z",
   "modes": [
     "member",
     "standalone"
