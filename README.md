@@ -112,19 +112,24 @@ HATHOR treats knowledge as infrastructure, not chat history:
 
 ### KnowledgeGraph & ContextGraph Substrate
 
-HATHOR evolves the traditional file-and-vector knowledgebase into a dual-layer graph architecture:
+HATHOR evolves the traditional file-and-vector knowledgebase into a **Tri-Graph Cognitive Substrate**:
 
 1. **KnowledgeGraph (KG — Static Layer):**
    - **Files-as-truth**: Markdown records with YAML frontmatter (`.hath0r/knowledgebase/**`, `docs/**`, `contracts/**`) remain the canonical source of truth in Git.
    - **Compiled Graph Engine**: Extracted into SQLite relational tables (`nodes`, `edges`) in `.hath0r/state/cache/knowledge.db`.
    - **Relational Lineage**: Deterministically links `depends_on`, `implements`, `governed_by`, and `references` relationships across policies, tools, contracts, and procedures.
-   - **Schema Contract**: `contracts/hath0r-knowledgegraph-v1.schema.json`.
+   - **Schema Contract**: `contracts/schemas/knowledge-graph-schema.json`.
 
-2. **ContextGraph (CG — Runtime Layer):**
+2. **ContextGraph (CG — Dynamic Runtime Layer):**
    - **Dynamic Session Topologies**: In-memory and session-cached graph capturing parent-child subagent delegations, task trees, and active context slices.
    - **JEV Guard Audit Trails**: Every mutating tool execution automatically logs a `guarded_by` validation edge connecting the action to its Justified Execution Verification (JEV) policy check.
    - **Context Pruning**: Provides targeted subgraphs for subagents instead of token-heavy flat context dumps.
-   - **Schema Contract**: `contracts/hath0r-contextgraph-v1.schema.json`.
+   - **Schema Contract**: `contracts/schemas/context-graph-schema.json`.
+
+3. **MemoryGraph (MG — Semantic Working Memory Layer):**
+   - **Semantic Topic Network**: Structured memory space (`.hath0r/memory/`) organizing rules, architectural concepts, episodic learnings, and decision records.
+   - **Relational Knowledge Retrieval**: Enables context-aware memory recall and subgraph extraction across `ENFORCES`, `REQUIRES`, `DERIVES_FROM`, and `RELATES_TO` edge topologies.
+   - **Schema Contract**: `contracts/schemas/memory-graph-schema.json`.
 
 ### Knowledge priority order (conceptual)
 

@@ -38,6 +38,10 @@ lib/graph/**/*.pyc
 !lib/context/**
 lib/context/**/__pycache__/
 lib/context/**/*.pyc
+!lib/memory/
+!lib/memory/**
+lib/memory/**/__pycache__/
+lib/memory/**/*.pyc
 !lib/*.md
 !lib/**/*.md
 lib64/
