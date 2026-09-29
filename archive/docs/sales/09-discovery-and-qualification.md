@@ -6,7 +6,7 @@
 
 ## Discovery objective
 
-Determine whether the buyer has a material governed-agentic-delivery problem, whether AEGIS fits the intended architecture, whether the organization can support a measured pilot, and what evidence would justify the next step.
+Determine whether the buyer has a material governed-agentic-delivery problem, whether customerSystem fits the intended architecture, whether the organization can support a measured pilot, and what evidence would justify the next step.
 
 Discovery is not a product demonstration. Do not lead the buyer toward claims the repository cannot prove.
 

@@ -1,4 +1,4 @@
-# AEGIS Business Capability Model
+# customerSystem Business Capability Model
 
 - **Business document:** 03 of 08
 - **Status:** Derived draft for business review
@@ -104,7 +104,7 @@ The Ticketing Plane is intended to make work the durable unit of authorization. 
 
 `strategic epic → authorized ticket → branch/change/run → evidence → outcome`
 
-Tracker-native details remain behind adapters. The enterprise provider remains authoritative, while AEGIS supplies a canonical contract and policy layer.
+Tracker-native details remain behind adapters. The enterprise provider remains authoritative, while customerSystem supplies a canonical contract and policy layer.
 
 #### Conducted runs and hierarchy
 

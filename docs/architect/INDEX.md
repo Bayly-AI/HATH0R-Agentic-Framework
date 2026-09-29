@@ -94,7 +94,7 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 | File | Purpose |
 |---|---|
 | [PENDING-EDITS.md](./PENDING-EDITS.md) (`HATHOR-CANON-005`) | Cross-document change-control register |
-| [id-namespace-map-20260915.json](./id-namespace-map-20260915.json) | AEGIS→HATHOR document ID map (live corpus) |
+| [id-namespace-map-20260915.json](./id-namespace-map-20260915.json) | customerSystem→HATHOR document ID map (live corpus) |
 
 ## Notes
 

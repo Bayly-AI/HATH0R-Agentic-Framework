@@ -35,7 +35,7 @@ Status legend: **proposed** · **applied** · **accepted** · **external**
 | Item | Document | What sign-off would ratify | Status |
 |---|---|---|---|
 | D1 | HATHOR-CANON-001 | `hathor-doc@1` metadata schema; ID/version/review/stale/index model; `HT-DOC-###` requirements; docs-as-code linters | proposed (issue #5; corpus landed via PR #8) |
-| D2 | ID namespace | Live corpus document IDs are `HATHOR-*`; archive retains `AEGIS-*` provenance | **applied 2026-09-15 (issue #12)** |
+| D2 | ID namespace | Live corpus document IDs are `HATHOR-*`; archive retains `customerSystem-*` provenance | **applied 2026-09-15 (issue #12)** |
 | N1 | Adoption notice | Team notified via issue #18 + HATHOR-REPORT-007 adoption summary | **applied 2026-09-15 (issue #18)** |
 
 ## 2. Applied amendments
@@ -46,7 +46,7 @@ Status legend: **proposed** · **applied** · **accepted** · **external**
 | Tree INDEX.md | Full document tables for architect/business/developers/sales | issue #12 | **applied** |
 | `docs/index.json` + `llms.txt` | Regenerated from front-matter | issue #12 | **applied** |
 | `archive/**` | Provenance policy: frozen HATHOR-era snapshot; not re-ID'd | issue #12 | **applied** |
-| `id-namespace-map-20260915.json` | Machine-readable AEGIS→HATHOR map | issue #12 | **applied** |
+| `id-namespace-map-20260915.json` | Machine-readable customerSystem→HATHOR map | issue #12 | **applied** |
 
 ## 3. Open follow-ups
 
@@ -65,8 +65,8 @@ Status legend: **proposed** · **applied** · **accepted** · **external**
 
 | Item | Action | Status |
 |------|--------|--------|
-| F2 filenames | Live `aegis-*.md` renamed to `hathor-*.md`; refs + INDEX/index.json updated | **applied** |
-| F3 narrative | Live corpus operator AEGIS teaching scrubbed to HATHOR/`hath0r`/`.hath0r/` (archive frozen) | **applied** |
+| F2 filenames | Live `customerSystem-*.md` renamed to `hathor-*.md`; refs + INDEX/index.json updated | **applied** |
+| F3 narrative | Live corpus operator customerSystem teaching scrubbed to HATHOR/`hath0r`/`.hath0r/` (archive frozen) | **applied** |
 | F5 discovery | CLI `hath0r schema` + `hath0r planes` expose ADR-003 surface with shipped|planned status | **applied** (HATH0R-CLI) |
 
 *Last updated: 2026-09-19 — F2/F3/F5 gap closure.*
