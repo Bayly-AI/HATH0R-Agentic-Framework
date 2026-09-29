@@ -209,5 +209,6 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install "pytest>=7.0" "httpx>=0.24" "structlog>=23.0" "check-jsonschema>=0.29" "jsonschema>=4.0"
-          PYTHONPATH=. pytest tests/ -v
+          python -m pip install -e .
+          PYTHONPATH=.:src pytest tests/ -v
 
