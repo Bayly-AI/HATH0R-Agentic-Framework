@@ -110,14 +110,30 @@ HATHOR treats knowledge as infrastructure, not chat history:
 | **Graceful degradation** | If a system or service is not available, look to see if there are other known options for the connection/type/service; if not, the agent marks it and continues |
 | **Draft / verified status** | Status signals so agents know whether content is draft, verified, or authoritative |
 
+### KnowledgeGraph & ContextGraph Substrate
+
+HATHOR evolves the traditional file-and-vector knowledgebase into a dual-layer graph architecture:
+
+1. **KnowledgeGraph (KG — Static Layer):**
+   - **Files-as-truth**: Markdown records with YAML frontmatter (`.hath0r/knowledgebase/**`, `docs/**`, `contracts/**`) remain the canonical source of truth in Git.
+   - **Compiled Graph Engine**: Extracted into SQLite relational tables (`nodes`, `edges`) in `.hath0r/state/cache/knowledge.db`.
+   - **Relational Lineage**: Deterministically links `depends_on`, `implements`, `governed_by`, and `references` relationships across policies, tools, contracts, and procedures.
+   - **Schema Contract**: `contracts/hath0r-knowledgegraph-v1.schema.json`.
+
+2. **ContextGraph (CG — Runtime Layer):**
+   - **Dynamic Session Topologies**: In-memory and session-cached graph capturing parent-child subagent delegations, task trees, and active context slices.
+   - **JEV Guard Audit Trails**: Every mutating tool execution automatically logs a `guarded_by` validation edge connecting the action to its Justified Execution Verification (JEV) policy check.
+   - **Context Pruning**: Provides targeted subgraphs for subagents instead of token-heavy flat context dumps.
+   - **Schema Contract**: `contracts/hath0r-contextgraph-v1.schema.json`.
+
 ### Knowledge priority order (conceptual)
 
-1. Project-local, verified knowledge  
+1. Project-local, verified knowledge & KnowledgeGraph  
 2. Machine-local knowledge relevant to the current work  
 3. Organization knowledge via MCP  
 4. Public / external sources (lowest trust, highest need for citation and caution)
 
-Agents are expected to **cite article IDs** in their reasoning when knowledge infrastructure is available.
+Agents are expected to **cite article IDs and graph node references** in their reasoning when knowledge infrastructure is available.
 
 ### “The Tower of Power”
 
