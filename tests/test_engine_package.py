@@ -1,7 +1,5 @@
 """Unit and contract tests for hath0r_engine package distribution and exports."""
 
-import importlib
-import pytest
 
 
 def test_hath0r_engine_top_level_exports():
@@ -27,11 +25,9 @@ def test_hath0r_engine_top_level_exports():
 
 def test_hath0r_engine_submodule_imports():
     """Verify clean importing from submodules."""
-    from hath0r_engine.graph import KnowledgeGraph, KnowledgeNode
-    from hath0r_engine.context import ContextGraph, ContextNode
-    from hath0r_engine.memory import MemoryGraph, MemoryNode
-    from hath0r_engine.jev import JevClient, ToolGuardRequest
-    from hath0r_engine.voice import VoiceEngine, VoiceConfig
+    from hath0r_engine.context import ContextGraph
+    from hath0r_engine.graph import KnowledgeGraph
+    from hath0r_engine.memory import MemoryGraph
 
     kg = KnowledgeGraph()
     assert kg.schema_version.startswith("hath0r.knowledgegraph")
@@ -45,10 +41,10 @@ def test_hath0r_engine_submodule_imports():
 
 def test_backward_compatibility_lib_imports():
     """Verify legacy lib.* import paths still function seamlessly."""
-    from lib.graph.knowledge_graph import KnowledgeGraph
     from lib.context.context_graph import ContextGraph
-    from lib.memory.memory_graph import MemoryGraph
+    from lib.graph.knowledge_graph import KnowledgeGraph
     from lib.jev.jev_client import JevClient
+    from lib.memory.memory_graph import MemoryGraph
     from lib.voice.voice_engine import VoiceEngine
 
     assert KnowledgeGraph is not None

@@ -9,7 +9,7 @@ from __future__ import annotations
 import time
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import AsyncIterator, Callable, Iterator, List, Optional
+from typing import List, Optional
 
 
 @dataclass

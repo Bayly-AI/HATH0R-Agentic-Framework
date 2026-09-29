@@ -8,7 +8,6 @@ agent escalation.
 from __future__ import annotations
 
 import datetime
-import os
 import re
 import shutil
 import subprocess
@@ -19,8 +18,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional
 
-
-from lib.voice.voice_config import VoiceConfig, detect_platform
+from lib.voice.voice_config import VoiceConfig
 
 
 @dataclass

@@ -5,17 +5,12 @@ from __future__ import annotations
 import asyncio
 from typing import Any, Mapping
 
-import pytest
-
 from lib.jev.jev_client import (
     JevClient,
     JevSettings,
-    ToolGuardRequest,
-    ToolGuardResult,
     stub_tool_guard,
 )
 from lib.jev.jev_tool_guard import (
-    GUARDED_TOOL_PROFILES,
     build_tool_guard_request,
     evaluate_tool_guard,
     format_block_message,

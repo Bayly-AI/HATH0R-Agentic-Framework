@@ -3,9 +3,10 @@ and governance document ingestion (playbooks, runbooks, policies, procedures, st
 """
 
 from pathlib import Path
-from lib.graph.knowledge_graph import KnowledgeGraph, KnowledgeNode, KnowledgeEdge
-from lib.context.context_graph import ContextGraph, ContextNode, ContextEdge
-from lib.memory.memory_graph import MemoryGraph, MemoryNode, MemoryEdge
+
+from lib.context.context_graph import ContextGraph
+from lib.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeNode
+from lib.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 
 
 def test_tri_graph_persistence_and_roundtrip(tmp_path: Path) -> None:
@@ -28,6 +29,7 @@ def test_tri_graph_persistence_and_roundtrip(tmp_path: Path) -> None:
     cg = ContextGraph(session_id="test-session-123")
     subagent_node = cg.register_subagent(subagent_id="subagent-42", label="Code Reviewer")
     tool_id = cg.record_tool_execution(tool_name="view_file", caller_id=subagent_node.id, jev_status="approved")
+    assert tool_id.startswith("tool-")
 
     cg_file = tmp_path / "context_graph.json"
     cg.save_to_file(cg_file)
