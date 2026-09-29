@@ -9,12 +9,12 @@ from __future__ import annotations
 
 import time
 import uuid
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Callable, Optional
 
 from lib.voice.streaming_stt import StreamingTranscriptEvent
 from lib.voice.telemetry import VoiceLatencyMetrics, VoiceTelemetry
-from lib.voice.voice_engine import SystemOneRouter, VoiceAction, VoiceEngine
+from lib.voice.voice_engine import VoiceAction, VoiceEngine
 
 
 @dataclass
