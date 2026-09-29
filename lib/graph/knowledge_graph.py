@@ -181,4 +181,11 @@ class KnowledgeGraphExtractor:
             for gov in fm.get("governed_by", []) if isinstance(fm.get("governed_by"), list) else [fm.get("governed_by")] if fm.get("governed_by") else []:
                 kg.add_edge(KnowledgeEdge(source=node_id, target=gov, relation="governed_by"))
 
+            # Extract markdown link references: [text](path.md)
+            for m in re.finditer(r"\[([^\]]+)\]\(([^)]+\.md)\)", content):
+                target_link = m.group(2).strip()
+                # Clean target link relative to root or file
+                if not target_link.startswith("http"):
+                    kg.add_edge(KnowledgeEdge(source=node_id, target=target_link, relation="references"))
+
         return kg

@@ -16,6 +16,8 @@ for path in \
   cfg/knowledge-tower.yaml \
   .hath0r/knowledgebase/README.md \
   contracts/hath0r-cli-response-v1.schema.json \
+  contracts/hath0r-knowledgegraph-v1.schema.json \
+  contracts/hath0r-contextgraph-v1.schema.json \
   contracts/exit-codes.yaml \
   MANIFEST.json \
   VERSION \

@@ -11,4 +11,12 @@ legacy_roots_forbidden:
   - .ai
   - .customerSystem
   - .infraOS
-updated_at: 2026-09-16T00:00:00Z
+knowledgegraph:
+  enabled: true
+  schema: contracts/hath0r-knowledgegraph-v1.schema.json
+  cache_db: .hath0r/state/cache/knowledge.db
+contextgraph:
+  enabled: true
+  schema: contracts/hath0r-contextgraph-v1.schema.json
+  ephemeral_tracing: true
+updated_at: 2026-09-28T19:55:00Z
