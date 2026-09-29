@@ -1,106 +1,176 @@
-# HATH0R Framework — Technical Reference & Architecture Guide
+# HATHOR Framework — Technical Architecture & Developer Reference
 
-> **Core agentic architecture, contract specifications, and graph substrate for the HATH0R ecosystem.**
-
-| Field | Value |
-|---|---|
-| Product | `HATH0R-Agentic-Framework` |
-| Group | `hath0r-opensource` |
-| Local Path | `/Users/raybayly/Development/OpenSource/hath0r` |
-| Control Tower | `/Users/raybayly/Development/OpenSource/HATH0R-CLI` (`Bayly-AI/HATH0R-CLI`) |
-| Canonical Knowledgebase | `/Users/raybayly/Development/OpenSource/.hath0r/knowledgebase` |
-| Canonical Docs Corpus | `docs/` |
-| GitHub | [Bayly-AI/HATH0R-Agentic-Framework](https://github.com/Bayly-AI/HATH0R-Agentic-Framework) |
+> Language-agnostic agentic application framework and cognitive substrate for the Enterprise Agentic Platform.
 
 ---
 
-## 1. Technical Overview
+## 🛠️ Developers Working on HATH0R-CLI & Core Framework
 
-The HATH0R Framework provides the foundational protocols, contracts, schemas, security guards, and graph execution layers that govern how AI agents operate deterministically across codebases.
+This document contains deep technical specifications, Tri-Graph substrate data structures, repository layouts, and governance systems for developers building or contributing to `hath0r`, `hath0r-framework`, and the underlying engine.
 
-### Key Capabilities
-- **Static KnowledgeGraph (`lib/graph/`):** Frontmatter and Markdown cross-reference extractor that compiles repository truth into an indexed entity-relationship graph (`hath0r-knowledgegraph-v1`).
-- **Dynamic ContextGraph (`lib/context/`):** Runtime multi-agent session tracker for subagent delegation topologies, ephemeral state, and JEV guard execution trails (`hath0r-contextgraph-v1`).
-- **Justified Execution Verification (`lib/jev/`):** Zero-trust execution boundary intercepting and verifying mutating agent tool invocations against signed policies.
-- **Voice Interface Subsystem (`lib/voice/`):** Low-latency streaming voice engine with speculative routing, VAD endpointing, and System 1 / System 2 escalation.
+> **Looking to install and use Hath0r in your own projects?**  
+> You only need the **HATH0R CLI** (`hath0r-cli`). See the [CLI Quick Start](#-quick-start-operators--users) below or visit [Bayly-AI/HATH0R-CLI](https://github.com/Bayly-AI/HATH0R-CLI).
 
 ---
 
-## 2. Architecture & Subsystems
+## 🚀 Quick Start: Operators & Users
+
+To use the HATHOR platform on your machine and align any repository with the framework, install the CLI:
+
+### 1. Install `hath0r`
+```sh
+pipx install hath0r-cli
+# or: python3 -m pip install hath0r-cli
+```
+
+### 2. Verify Installation
+```sh
+hath0r --version
+hath0r doctor
+```
+
+### 3. Initialize & Align Any Repository
+Navigate to any repository (Python, Node/TS, Go, Rust, polyglot) and run:
+```sh
+cd /path/to/my-repo
+hath0r init
+```
+This automatically scaffolds governance (`AGENTS.md`), refactors documentation, provisions test harnesses, and compiles the **Tri-Graph Cognitive Substrate**.
+
+---
+
+## Why HATHOR
+
+Most agent tooling assumes a chat session and a pile of files. HATHOR assumes a **durable operating environment**:
+
+- A standard project shape every agent can navigate.
+- A single CLI as the agent’s first interface.
+- Layered knowledge (project → machine → organization → public).
+- Provenance, freshness, and governance on what agents read and write.
+- Credential mediation that never dumps secrets into source control.
+
+---
+
+## Architecture at a Glance
 
 ```text
-                        ┌──────────────────────────────────────┐
-                        │          Active LLM Agent            │
-                        └──────────────────┬───────────────────┘
-                                           │
-                        ┌──────────────────▼───────────────────┐
-                        │      Operator CLI (`hath0r`)         │
-                        └─────────┬──────────────────┬─────────┘
-                                  │                  │
-                ┌─────────────────▼────────┐  ┌──────▼──────────────────┐
-                │   Static KnowledgeGraph  │  │   Dynamic ContextGraph  │
-                │   (Files-as-Truth / KG)  │  │   (Session Topologies)  │
-                └─────────────────┬────────┘  └──────┬──────────────────┘
-                                  │                  │
-                ┌─────────────────▼──────────────────▼─────────┐
-                │      JEV Guard & Security Mediation          │
-                └──────────────────────────┬───────────────────┘
-                                           │
-                        ┌──────────────────▼───────────────────┐
-                        │      Universal Project Layout        │
-                        │    (cfg / bin / lib / contracts)     │
-                        └──────────────────────────────────────┘
+Agent ──► CLI ──► Universal Project Layout
+              │
+              ├─ Knowledge Infrastructure (MCP / CLI / Project)
+              ├─ Governance & Rules
+              └─ Security & Credentials
 ```
 
-### Subsystem Directory Map
-- **`cfg/`**: Declarative configuration for observability (OpenTelemetry), feature flags (OpenFeature), Docker stacks, MCP servers (`cfg/mcp.servers.json`), and tower pointers (`cfg/knowledge-tower.yaml`).
-- **`contracts/`**: Authoritative JSON Schema definitions (`hath0r-*.schema.json`) and exit codes (`contracts/exit-codes.yaml`).
-- **`docs/`**: Canonical documentation corpus (Governance, Procedures, Strategies, Playbooks, Runbooks, Checklists).
-- **`lib/`**: Core runtime engines:
-  - `lib/graph/`: KnowledgeGraph extractor and lineage traversal.
-  - `lib/context/`: ContextGraph session and subagent hierarchy management.
-  - `lib/jev/`: JEV client and tool execution guard.
-  - `lib/voice/`: Voice engine, speculative pipeline, and audio adapters.
-- **`bin/`**: Member initialization and bootstrap scripts (`bin/hath0r-bootstrap.sh`).
-- **`tests/`**: Pytest regression and contract verification suite.
+### Agent
+The agent is the worker. It does not own the project layout or secret store. It discovers authority, knowledge, and tools through HATHOR’s interfaces.
+
+### CLI
+The CLI is a **globally installed** application on every machine that uses the Enterprise Agentic Platform. It is the first thing agents consent to interface with.
+
+It provides:
+- Commands, models, research, and context access.
+- Elevation of authority across trust tiers: **guest → elevated → sovereign**.
+- Mediation of credentials and knowledge lookups.
+- A stable boundary between agent intent and host capabilities.
+
+### Universal Project Layout
+The project layout is code- and framework-agnostic. It lets file agents (and humans) orient quickly **before** building out any application.
+
+| Path | Role |
+| --- | --- |
+| **CFG** | All project configuration files that aren’t required at the root |
+| **BIN** | Executables and scripts, organized by folder, allowing script organization at the project level. Standard wrapper scripts live here. |
+| **LIB** | Static assets, files, images, etc. Reports, artifacts, and documents that are not docs live here. |
+| **docker** | Docker files kept alongside to keep deployment files out of the main repo root noise. |
+| **SRC** | Application source. All code writes happen here prior to building and testing. |
+| **DIST** | Build output. Transpiled/compiled code placed here for testing and packaging. |
+| **Test** | Unit, pre- and post-deploy tests, test cases, and testing scripts. |
+| **docs** | Canonical human- and agent-facing documentation. |
+
+#### Hidden Agent Configuration (`.hath0r/`)
+All agent state, caches, working memory, and lineage graphs consolidate strictly under `.hath0r/`.
+- Every significant folder contains a localized `AGENTS.md` covering that folder and its constraints.
+- Avoids source clutter while remaining instantly discoverable for agents.
 
 ---
 
-## 3. Contracts & Schemas
+## Tri-Graph Cognitive Substrate
 
-| Contract Schema | Version | Purpose |
-|---|---|---|
-| [`contracts/hath0r-knowledgegraph-v1.schema.json`](contracts/hath0r-knowledgegraph-v1.schema.json) | `1.0.0` | Entity nodes and relational edges for static codebase knowledge. |
-| [`contracts/hath0r-contextgraph-v1.schema.json`](contracts/hath0r-contextgraph-v1.schema.json) | `1.0.0` | Dynamic session snapshot, subagent delegation, and tool guard tracking. |
-| [`contracts/hath0r-cli-response-v1.schema.json`](contracts/hath0r-cli-response-v1.schema.json) | `1.0.0` | Standardized JSON payload envelope for all CLI command responses. |
-| [`contracts/hath0r-voice-action-v1.schema.json`](contracts/hath0r-voice-action-v1.schema.json) | `1.0.0` | Typed voice intent and platform action execution contract. |
-| [`contracts/hath0r-factory-v1.schema.json`](contracts/hath0r-factory-v1.schema.json) | `1.0.0` | Declarative automation factory and orchestrated bot manifest. |
+HATHOR features a unified **Tri-Graph Cognitive Substrate** providing AST lineage, dynamic agent topology, and semantic working memory:
 
----
-
-## 4. Developer Quickstart & Testing
-
-### Environment Setup
-```sh
-cd /path/to/OpenSource/hath0r-framework
-./bin/hath0r-bootstrap.sh
+```text
+                                Tri-Graph Substrate
+                                         │
+        ┌────────────────────────────────┼────────────────────────────────┐
+        ▼                                ▼                                ▼
+1. KnowledgeGraph (KG)           2. ContextGraph (CG)             3. MemoryGraph (MG)
+   • Static Codebase Lineage        • Dynamic Agent Topologies       • Semantic Working Memory
+   • Markdown & Contract Parsing    • JEV Guard Action Audit         • Rules, Decisions & Playbooks
+   • .hath0r/state/cache/           • .hath0r/state/context/         • .hath0r/memory/graph.json
 ```
 
-### Running Test Suite
-```sh
-PYTHONPATH=. pytest -v
+### 1. KnowledgeGraph (KG — Static Layer)
+- **Files-as-truth**: Markdown records with YAML frontmatter (`.hath0r/knowledgebase/**`, `docs/**`, `contracts/**`) remain canonical.
+- **Compiled Engine**: Relational lineage connecting `depends_on`, `implements`, `governed_by`, and `references` relationships across policies, tools, and procedures.
+- **Contract Schema**: `contracts/schemas/knowledge-graph-schema.json`.
+
+### 2. ContextGraph (CG — Dynamic Runtime Layer)
+- **Dynamic Session Topologies**: In-memory and session-cached graph capturing parent-child subagent delegations, task trees, and active context slices.
+- **JEV Guard Audit Trails**: Every mutating tool execution automatically logs a `guarded_by` validation edge connecting the action to its Justified Execution Verification (JEV) policy check.
+- **Context Pruning**: Provides targeted subgraphs for subagents instead of token-heavy flat context dumps.
+- **Contract Schema**: `contracts/schemas/context-graph-schema.json`.
+
+### 3. MemoryGraph (MG — Semantic Working Memory Layer)
+- **Semantic Topic Network**: Structured memory space (`.hath0r/memory/graph.json`) organizing rules, architectural concepts, episodic learnings, and decision records.
+- **Relational Memory Retrieval**: Enables context-aware memory recall and neighborhood extraction across `ENFORCES`, `REQUIRES`, `DERIVES_FROM`, and `RELATES_TO` edge topologies.
+- **Contract Schema**: `contracts/schemas/memory-graph-schema.json`.
+
+---
+
+## Knowledge Hierarchy & Search Order
+
+```text
+Project  →  Machine  →  Organization (MCP)  →  Public
 ```
 
+If a higher-priority tier answers the query, lower tiers are not required. Missing tiers **degrade gracefully**.
+
+| Level | Surface | Purpose |
+| --- | --- | --- |
+| **Project** | Project knowledge / Tri-Graph | Authoritative project truth |
+| **Machine** | CLI knowledge | Local library standard to the host machine |
+| **Organization** | MCP server | Shared organization knowledge accessible via MCP |
+| **Public** | Web / Search | Lowest trust, requires explicit citation and scrutiny |
+
 ---
 
-## 5. Governance & Policy Rules
+## Security and Credentials
 
-1. **`CR-CLI-ENTRY-001` (Start with the CLI):** Agents must begin every task via the `hath0r` CLI rather than ad-hoc scripts (`docs/governance/rules/cr-cli-entry-001.md`).
-2. **`cr-hath0r-root-001` (Hidden Root):** Only `.hath0r/` is permitted for framework metadata. Legacy roots (`.ai/`, `.customerSystem/`, `.infraOS/`) are strictly forbidden.
-3. **`cr-branch-gov-001` (Branching & Promotion):** Feature branches follow `feature/<issue-number>-slug` branching from and targeting `development`.
+The CLI mediates credential resolution in a fixed priority order:
+1. **AWS Secrets Manager** — first priority when available.
+2. **User root credentials file** — if Secrets Manager is not available (`~/.credentials/<service>/.env`).
+3. **Project repo `.env` file** — if the secret is scoped locally.
+4. **Sibling repos’ `.env` files** — nearby project envs if configured/allowed.
+
+Principles:
+- Secrets never touch `SRC` or chat transcripts.
+- Agents request capabilities through the CLI; they do not scrape raw disk files for API keys.
+- Missing credentials trigger guided onboarding rather than silent crashes.
 
 ---
 
-## 6. License
+## Design Principles
 
-Apache License 2.0 — see [LICENSE](LICENSE).
+1. **Language agnostic** — layout and contracts are not tied to one runtime.
+2. **Agent-first navigation** — every important folder explains itself (`AGENTS.md`).
+3. **CLI as control plane** — one elevation and mediation path.
+4. **Local context wins** — project truth beats generic model memory.
+5. **Provenance over vibes** — cite, timestamp, and mark staleness.
+6. **Degrade, don’t die** — missing MCP/org/machine services still allow useful work.
+7. **Secure by mediation** — credentials flow through policy, not copy-paste.
+
+---
+
+## License
+
+Licensed under the [Apache License, Version 2.0](LICENSE).
