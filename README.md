@@ -6,70 +6,119 @@
 
 **The Cognitive Architecture & Governance Framework for Autonomous AI Software Engineering**
 
-HATHOR provides the language-agnostic cognitive substrate, repository layout standards, and cryptographic governance protocols for the **Enterprise Agentic Platform**.
+HATHOR transforms any software repository into a self-governing, durable operating environment for autonomous AI coding agents and human engineers.
 
-> **Note for Users, Operators & Developers:**  
-> To run, operate, and enable Hath0r in your projects, **all you need is the HATH0R CLI**.  
-> 👉 **[Download & Get Started with HATH0R-CLI](https://github.com/Bayly-AI/HATH0R-CLI)**
+> ### ⚡ The Single Tool You Need: HATH0R CLI
+> **You do NOT need complex installations, Python environments, or multi-step dependency setups.**  
+> Everything required to operate, govern, audit, and orchestrate autonomous agents across your projects is bundled in the standalone **HATH0R CLI** (`hath0r`).
+>
+> 📦 **Download Standalone Binaries directly from the repository:**
+> - 🍏 **macOS (Apple Silicon):** [`release/hath0r-darwin-arm64`](release/hath0r-darwin-arm64)
+> - 🍏 **macOS (Intel):** [`release/hath0r-darwin-x86_64`](release/hath0r-darwin-x86_64)
+> - 🐧 **Linux (x86_64):** [`release/hath0r-linux-x86_64`](release/hath0r-linux-x86_64)
+> - 🐧 **Linux (ARM64):** [`release/hath0r-linux-arm64`](release/hath0r-linux-arm64)
+> - 🪟 **Windows (x64):** [`release/hath0r-windows-x64.cmd`](release/hath0r-windows-x64.cmd)
+>
+> Or install globally via Python package managers:  
+> `pipx install hath0r-cli` (or `pip install hath0r-cli`)
 
 ---
 
-## ⚡ Quick Start: Get the CLI
+## 🚀 30-Second Quick Start
 
-The HATH0R CLI (`hath0r`) is the single global interface required on your machine.
+Get your autonomous agent operating environment running in three steps:
 
-### 1. Install via pipx or pip
+### 1. Download & Verify Binary
 ```sh
-pipx install hath0r-cli
-# or: python3 -m pip install hath0r-cli
+# Make the downloaded standalone binary executable (macOS / Linux)
+chmod +x release/hath0r-darwin-arm64
+
+# Verify system health and operational readiness
+./release/hath0r-darwin-arm64 doctor
 ```
 
-### 2. Verify Your Setup
-```sh
-hath0r --version
-hath0r doctor
-```
-
-### 3. Initialize & Align Any Repository
-Transform any existing or new codebase (Python, TypeScript, Go, Rust, polyglot) into a fully aligned Hath0r project with one command:
+### 2. Initialize Any Existing or New Repository
+Navigate to any codebase (Python, TypeScript, Go, Rust, C#, polyglot) and initialize Hath0r:
 ```sh
 cd /path/to/your-project
-hath0r init
+/path/to/release/hath0r-darwin-arm64 init
 ```
 
-That's it! `hath0r init` automatically configures governance, refactors documentation, provisions test harnesses, and compiles your repository's **Tri-Graph Cognitive Substrate**.
+### 3. Run Autonomous Agent Workflows
+```sh
+hath0r run --workflow repo-onboarding
+hath0r status
+```
 
 ---
 
-## 🌟 Why Choose HATHOR?
+## 🌟 Why Enterprises Choose HATHOR
 
-Traditional AI agent workflows rely on raw chat prompts and disorganized file dumps. HATHOR turns repositories into **self-governing, durable operating environments**:
+Traditional AI coding assistants rely on ephemeral chat windows, flat-file dumps, and unverified prompt injections. HATHOR establishes a **resilient, cryptographically governed runtime** for autonomous engineering teams:
 
-- 🧠 **Tri-Graph Cognitive Substrate:** Combines **KnowledgeGraph** (AST lineage & documentation dependencies), **ContextGraph** (dynamic runtime agent topologies), and **MemoryGraph** (persistent semantic working memory space) for zero-tribal-memory execution.
-- 🛡️ **Zero-Trust Security & JEV Guard:** Cryptographically verifies mutating tool calls against formal governance policies before execution.
-- 🚀 **Universal Language-Agnostic Alignment:** Works seamlessly with any programming language or technology stack.
-- 🎙️ **Streaming Voice & Ambient Daemon:** Talk directly to your autonomous agents with low-latency streaming voice synthesis.
-- ⚡ **Autonomous Multi-Bot Factories:** Declarative workflows for git lifecycle, automated PR generation, release packaging, and code hygiene.
+```text
+┌────────────────────────────────────────────────────────────────────────┐
+│                        Enterprise AI Engineering                       │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                    HATH0R CLI (Single Operator Tool)                   │
+├────────────────────────────────────────────────────────────────────────┤
+│ • Automated Repo Onboarding (`hath0r init`)                            │
+│ • Universal Bot & Factory Orchestrator                                 │
+│ • Streaming Voice Interface & Ambient Daemon                           │
+│ • Cryptographic JEV Policy Enforcement                                 │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    │
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                      Tri-Graph Cognitive Substrate                     │
+├───────────────────┬────────────────────────────┬───────────────────────┤
+│  KnowledgeGraph   │        ContextGraph        │      MemoryGraph      │
+│  (Static Lineage) │     (Dynamic Session)      │   (Working Memory)    │
+└───────────────────┴────────────────────────────┴───────────────────────┘
+```
+
+### 💎 Key Business & Architectural Advantages
+
+1. 🧠 **Tri-Graph Cognitive Substrate (Zero Tribal Memory Loss):**
+   - **KnowledgeGraph (KG):** Compiles code ASTs, API contracts, and governance policies into relational graph lineage (`depends_on`, `implements`, `governed_by`).
+   - **ContextGraph (CG):** Dynamically prunes context windows and visualizes live subagent delegation trees with zero context window bloat.
+   - **MemoryGraph (MG):** Persists semantic rules, decisions, and failure learnings across developer turns with causal `ENFORCES` / `RESOLVES` relations.
+
+2. 🛡️ **Zero-Trust Security & JEV Guard:**
+   - Every mutating action (file write, git commit, shell execution) is evaluated against Justified Execution Verification (JEV) policies before touching your filesystem.
+
+3. 🚀 **Universal & Language Agnostic:**
+   - Works immediately out of the box with any stack: React/Vite, Next.js, Python FastAPI/Django, Go, Rust, Java, or C#.
+
+4. 🎙️ **Streaming Voice & Ambient CLI:**
+   - Low-latency conversational audio interface allows engineers to interact verbally with their agentic workspace in real time.
+
+5. ⚡ **Declarative Multi-Bot Factories:**
+   - Pre-configured micro-bot pipelines automate repository onboarding, PR generation, CI testing, and release artifact packaging.
 
 ---
 
-## 🛠️ For Framework & CLI Core Developers
+## 🛠️ For Framework & Engine Developers
 
-If you are developing or contributing to the core HATHOR framework engine, contracts, or CLI control plane:
+If you are developing core cognitive algorithms, contract schemas, or CLI extensions:
 
-- 📖 **In-Depth Technical Guide:** See [TECH_README.md](TECH_README.md) for full architectural maps, data schemas, and subsystem specifications.
-- 📐 **Contracts & Schemas:** Located under [`contracts/schemas/`](contracts/schemas/).
-- 🧪 **Test Suite:** Run `pytest tests/ -v` to verify framework graph engines and persistence.
+- 📖 **Deep Technical Architecture:** See [TECH_README.md](TECH_README.md) for data schemas, graph engines, and subsystem specifications.
+- 📐 **Contract Schemas:** Located in [`contracts/schemas/`](contracts/schemas/).
+- 🧪 **Unit Tests:** Run `pytest tests/ -v` (35+ unit tests covering graph compilation and persistence).
 - 🏛️ **Control Tower:** Located in [Bayly-AI/HATH0R-CLI](https://github.com/Bayly-AI/HATH0R-CLI).
 
 ---
 
 ## 📜 Documentation Index
 
-- [Technical Reference Guide (TECH_README.md)](TECH_README.md)
-- [Operator Control Tower (HATH0R-CLI)](https://github.com/Bayly-AI/HATH0R-CLI)
+- [Standalone Releases & Binaries (release/README.md)](release/README.md)
+- [Technical Developer Reference (TECH_README.md)](TECH_README.md)
+- [Control Tower Repository (HATH0R-CLI)](https://github.com/Bayly-AI/HATH0R-CLI)
 - [Governance Rules & Promotion Standards](docs/governance/)
-- [Documentation Corpus](docs/README.md)
+- [Canonical Documentation Corpus](docs/README.md)
 
 ---
 
