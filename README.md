@@ -6,7 +6,7 @@
 
 **Agentic Application Framework**
 
-HATHOR is a language-agnostic agentic framework for optimizing how agents work inside real projects. It is part of the **customerSystem** platform and defines the shared contract between agents, the CLI, project layout, knowledge infrastructure, governance, and credentials.
+HATHOR is a language-agnostic agentic framework for optimizing how agents work inside real projects. It is part of the **Enterprise Agentic Platform** and defines the shared contract between agents, the CLI, project layout, knowledge infrastructure, governance, and credentials.
 
 > Agents should spend less time rediscovering a codebase and more time shipping correct work.
 
@@ -40,7 +40,7 @@ The agent is the worker. It does not own the project layout or secret store. It 
 
 ### CLI
 
-The CLI is a **globally installed** application on every machine that uses customerSystem. It is the first thing agents consent to interface with.
+The CLI is a **globally installed** application on every machine that uses the Enterprise Agentic Platform. It is the first thing agents consent to interface with.
 
 It provides:
 
@@ -196,6 +196,6 @@ Licensed under the [Apache License, Version 2.0](LICENSE).
 
 ---
 
-## Part of customerSystem
-
-HATHOR is the agentic application framework within the broader **customerSystem** ecosystem — standardizing how agents interface with projects, knowledge, and secure host capabilities.
+## Part of the Enterprise Agentic Platform
+ 
+HATHOR is the agentic application framework within the broader **Enterprise Agentic Platform** ecosystem — standardizing how agents interface with projects, knowledge, and secure host capabilities.
