@@ -38,6 +38,8 @@ lib/graph/**/*.pyc
 !lib/context/**
 lib/context/**/__pycache__/
 lib/context/**/*.pyc
+!lib/*.md
+!lib/**/*.md
 lib64/
 parts/
 sdist/
