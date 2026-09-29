@@ -169,6 +169,79 @@ class MemoryGraph:
 
         return {"nodes": sub_nodes, "edges": sub_edges}
 
+    def ingest_markdown_documents(self, docs_root: Path | str) -> int:
+        """Scan and ingest playbooks, runbooks, policies, procedures, and strategies into MemoryGraph."""
+        import re
+        root = Path(docs_root)
+        ingested_count = 0
+
+        # Type mapping based on directory or filename patterns
+        type_patterns = {
+            "playbook": "concept",
+            "runbook": "concept",
+            "rule": "rule",
+            "policy": "rule",
+            "procedure": "concept",
+            "strategy": "concept",
+            "decision": "decision",
+            "adr": "decision",
+        }
+
+        for md_path in root.rglob("*.md"):
+            # Skip hidden except .hath0r
+            parts = md_path.relative_to(root).parts
+            if any(p.startswith(".") and p != ".hath0r" for p in parts[:-1]):
+                continue
+
+            try:
+                content = md_path.read_text(encoding="utf-8")
+            except Exception:
+                continue
+
+            rel_str = str(md_path.relative_to(root))
+            stem_lower = md_path.stem.lower()
+
+            # Determine type
+            inferred_type = "topic"
+            for keyword, mapped_type in type_patterns.items():
+                if keyword in stem_lower or keyword in rel_str.lower():
+                    inferred_type = mapped_type
+                    break
+
+            # Extract title / heading
+            match_title = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
+            label = match_title.group(1).strip() if match_title else md_path.stem
+
+            node_id = f"doc:{rel_str}"
+            importance = 0.9 if inferred_type == "rule" else 0.7
+
+            # Extract tags
+            tags = [p for p in parts[:-1]]
+            if inferred_type not in tags:
+                tags.append(inferred_type)
+
+            node = MemoryNode(
+                id=node_id,
+                type=inferred_type,
+                label=label,
+                content=content[:2000],  # Bounded summary content for memory
+                importance=importance,
+                tags=tags,
+                metadata={"path": rel_str, "file_name": md_path.name},
+            )
+            self.add_node(node)
+            ingested_count += 1
+
+            # Extract markdown references and create RELATES_TO or ENFORCES edges
+            for m in re.finditer(r"\[([^\]]+)\]\(([^)]+\.md)\)", content):
+                target_file = m.group(2).strip()
+                target_id = f"doc:{target_file}" if not target_file.startswith("http") else target_file
+                if not target_file.startswith("http") and target_id in self.nodes:
+                    rel = "ENFORCES" if inferred_type == "rule" else "RELATES_TO"
+                    self.add_edge(MemoryEdge(source=node_id, target=target_id, relation=rel))
+
+        return ingested_count
+
     def _touch(self) -> None:
         self.updated_at = datetime.now(timezone.utc).isoformat()
 

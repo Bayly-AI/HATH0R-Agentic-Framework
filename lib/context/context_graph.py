@@ -103,3 +103,27 @@ class ContextGraph:
             "nodes": [asdict(n) for n in self.nodes.values()],
             "edges": [asdict(e) for e in self.edges],
         }
+
+    def save_to_file(self, file_path: Path | str) -> None:
+        """Persist ContextGraph snapshot to a JSON file."""
+        import json
+        from pathlib import Path
+        path = Path(file_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(self.to_dict(), indent=2), encoding="utf-8")
+
+    @classmethod
+    def load_from_file(cls, file_path: Path | str) -> ContextGraph:
+        """Load ContextGraph from a JSON snapshot file."""
+        import json
+        from pathlib import Path
+        path = Path(file_path)
+        data = json.loads(path.read_text(encoding="utf-8"))
+        cg = cls(session_id=data.get("session_id"))
+        cg.schema_version = data.get("schema_version", "hath0r.contextgraph/1")
+        cg.active_subagent_id = data.get("active_subagent_id")
+        for n_dict in data.get("nodes", []):
+            cg.add_node(ContextNode(**n_dict))
+        for e_dict in data.get("edges", []):
+            cg.add_edge(ContextEdge(**e_dict))
+        return cg
