@@ -1,4 +1,4 @@
-# AEGIS Business Documentation
+# customerSystem Business Documentation
 
 - **Status:** Derived draft for business review
 - **Source baseline:** `docs/architect` as indexed on 2026-09-14
@@ -7,11 +7,11 @@
 
 ## Purpose
 
-This documentation explains the business problem AEGIS is intended to solve, the value it is expected to create, the capabilities and operating model required to create that value, the controls that bound its use, and the roadmap and measures needed to assess adoption.
+This documentation explains the business problem customerSystem is intended to solve, the value it is expected to create, the capabilities and operating model required to create that value, the controls that bound its use, and the roadmap and measures needed to assess adoption.
 
 The central proposition is:
 
-> HATHOR defines a durable operating framework for people and agents; AEGIS realizes its governance and control plane so automation can scale without losing authorization, evidence, human accountability, or operational control.
+> HATHOR defines a durable operating framework for people and agents; customerSystem realizes its governance and control plane so automation can scale without losing authorization, evidence, human accountability, or operational control.
 
 The documents describe a **target operating model and target product design**. They must not be read as evidence that the platform is implemented, deployed, or producing realized benefits.
 
@@ -19,13 +19,13 @@ The documents describe a **target operating model and target product design**. T
 
 | Document | Primary question | Recommended readers |
 |---|---|---|
-| [01 — Executive Overview](./01-executive-overview.md) | What is AEGIS, why does it matter, and what decisions does it support? | Executives, sponsors, product and technology leaders |
+| [01 — Executive Overview](./01-executive-overview.md) | What is customerSystem, why does it matter, and what decisions does it support? | Executives, sponsors, product and technology leaders |
 | [02 — Business Requirements](./02-business-requirements.md) | What business outcomes and conditions must the platform satisfy? | Product, architecture, governance, program leadership |
 | [03 — Business Capability Model](./03-business-capability-model.md) | Which business capabilities are required and how do they depend on one another? | Product, platform, enterprise architecture |
 | [04 — Operating Model](./04-operating-model.md) | Who decides, who acts, what records are authoritative, and how does work flow? | Engineering, delivery operations, knowledge owners, auditors |
 | [05 — Governance, Risk, and Controls](./05-governance-risk-and-controls.md) | How is risk controlled, what can be claimed, and what gaps remain? | Security, risk, compliance, architecture, audit |
 | [06 — Adoption Roadmap](./06-adoption-roadmap.md) | How should the design move from foundations to governed use? | Sponsors, program leadership, platform teams |
-| [07 — Value and Success Measures](./07-value-and-success-measures.md) | How will the organization know whether AEGIS creates value safely? | Sponsors, finance, product, operations, governance |
+| [07 — Value and Success Measures](./07-value-and-success-measures.md) | How will the organization know whether customerSystem creates value safely? | Sponsors, finance, product, operations, governance |
 | [08 — Glossary and Source Register](./08-glossary-and-source-register.md) | What do the terms mean and which architecture sources support each business claim? | All readers |
 
 ## Business context in one page
@@ -45,7 +45,7 @@ AI-assisted engineering may increase the volume and speed of work beyond what ma
 
 ### The proposed response
 
-AEGIS adds a single governed command surface over three distinct sources of truth:
+customerSystem adds a single governed command surface over three distinct sources of truth:
 
 1. **Registry Plane:** which automation units may run.
 2. **Knowledge Plane:** what information is trusted and how it was verified.
@@ -55,7 +55,7 @@ Conducted runs connect these authorities to an evidence-backed hierarchy from bu
 
 ### The intended business result
 
-AEGIS is intended to create **bounded, evidence-backed automation**, not autonomy without constraint. Its business value depends on five outcomes:
+customerSystem is intended to create **bounded, evidence-backed automation**, not autonomy without constraint. Its business value depends on five outcomes:
 
 - **Accountability:** every substantive change traces to authorized work, strategic lineage, actors, evidence, and outcome.
 - **Assurance:** completion and claims are evaluated against recorded evidence rather than accepted from narrative.
@@ -67,7 +67,7 @@ AEGIS is intended to create **bounded, evidence-backed automation**, not autonom
 
 Business readers should apply the following precedence:
 
-1. [`AEGIS-CANON-001`](../architect/aegis-canon-001-registries-20260913.md) owns enumerated registries and identifiers.
+1. [`customerSystem-CANON-001`](../architect/customerSystem-canon-001-registries-20260913.md) owns enumerated registries and identifiers.
 2. Accepted architecture decisions and accepted research/interface decisions define ratified choices.
 3. Draft and proposed requirements, research papers, architecture syntheses, and technical specifications remain review material unless an amendment is explicitly ratified.
 4. Approved plans sequence work; they do not approve a draft design or authorize implementation.
@@ -87,7 +87,7 @@ Business readers should apply the following precedence:
 
 As of the source baseline:
 
-- The greenfield `aegis` command surface, central orchestration model, state-residency model, backup ticketing approach, canonical registries, Control Tower surface, Operator brokering, Knowledge storage/retrieval, threat model, and bot-unit model have accepted design decisions.
+- The greenfield `customerSystem` command surface, central orchestration model, state-residency model, backup ticketing approach, canonical registries, Control Tower surface, Operator brokering, Knowledge storage/retrieval, threat model, and bot-unit model have accepted design decisions.
 - The platform roadmap and gateway/validator roadmap are approved as planning artifacts.
 - Core platform requirements, several foundational research papers, and implementation specifications remain draft.
 - The bot-unit stakeholder compendium and HATHOR platform-principle synthesis await operator sign-off.

@@ -6,7 +6,7 @@
 
 ## Value position
 
-AEGIS should be evaluated as both:
+customerSystem should be evaluated as both:
 
 1. a governance and assurance capability that must prove its controls work; and
 2. a business investment that must prove the value of improved control exceeds implementation, operating, and user cost.
@@ -304,7 +304,7 @@ At minimum:
 
 ## Decision rule
 
-AEGIS creates value only if:
+customerSystem creates value only if:
 
 - accountability and assurance improve;
 - human authority remains verifiable;

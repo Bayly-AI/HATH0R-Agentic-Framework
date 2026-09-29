@@ -1,6 +1,6 @@
 # JEV (System One) — portable reference
 
-Canonical copies of the AegisCMCP JEV tool-guard client for reuse across Hath0r / BAI / 1-Nation.
+Canonical copies of the customerSystemCMCP JEV tool-guard client for reuse across Hath0r / BAI / 1-Nation.
 
 | File | Purpose |
 |------|---------|

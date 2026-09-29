@@ -23,6 +23,12 @@
       "type": "string",
       "default": "core",
       "description": "Docker group profile hint: core | apps"
+    },
+    {
+      "key": "jev.tool_guard.enabled",
+      "type": "boolean",
+      "default": false,
+      "description": "Enforce JEV pre-execution tool-guard and runtime interception"
     }
   ]
 }

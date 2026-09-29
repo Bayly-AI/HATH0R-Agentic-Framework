@@ -6,7 +6,7 @@
 
 ## Security position
 
-AEGIS is designed to add layered governance to human and AI-assisted work. It does not claim that a CLI, signature, ticket, gate, or telemetry stream is sufficient on its own.
+customerSystem is designed to add layered governance to human and AI-assisted work. It does not claim that a CLI, signature, ticket, gate, or telemetry stream is sufficient on its own.
 
 The control objective is to scale delegated work without weakening:
 
@@ -176,7 +176,7 @@ Telemetry provides correlation and analysis. It must not be the sole authoritati
 
 ## Resilience and degraded trust
 
-AEGIS aims to make degraded operation explicit:
+customerSystem aims to make degraded operation explicit:
 
 - cached signed trust may remain usable within policy and TTL;
 - expired authority-originating actions refuse;
@@ -219,7 +219,7 @@ The design may support an organization’s controls for:
 - data and knowledge quality; and
 - third-party integration oversight.
 
-AEGIS does not create certification or compliance by architecture alone. The buyer remains responsible for control mapping, configuration, access review, retention, operating evidence, testing, and independent assessment.
+customerSystem does not create certification or compliance by architecture alone. The buyer remains responsible for control mapping, configuration, access review, retention, operating evidence, testing, and independent assessment.
 
 ## Material residual risks
 
@@ -273,6 +273,6 @@ Do not expand to higher-risk environments if:
 ## Sources
 
 - [Governance, Risk, and Controls](../business/05-governance-risk-and-controls.md)
-- [Threat Model](../architect/aegis-rp-013-threat-model-20260913.md)
-- [Canonical Registries](../architect/aegis-canon-001-registries-20260913.md)
+- [Threat Model](../architect/customerSystem-rp-013-threat-model-20260913.md)
+- [Canonical Registries](../architect/customerSystem-canon-001-registries-20260913.md)
 - [Pending Decisions and Risks](../architect/PENDING-EDITS.md)

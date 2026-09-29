@@ -1,11 +1,11 @@
-# AEGIS Business Requirements
+# customerSystem Business Requirements
 
 - **Business document:** 02 of 08
 - **Status:** Derived draft for business review
 - **Source baseline:** Architecture corpus as of 2026-09-14
 - **Purpose:** Translate the architecture corpus into business outcomes, scope, requirements, dependencies, and acceptance conditions
 
-`OBJ-*` and `BIZ-*` labels are local traceability aids for this derived document. They do not add canonical AEGIS requirements or amend `AEGIS-CANON-001`.
+`OBJ-*` and `BIZ-*` labels are local traceability aids for this derived document. They do not add canonical customerSystem requirements or amend `customerSystem-CANON-001`.
 
 ## 1. Business problem
 

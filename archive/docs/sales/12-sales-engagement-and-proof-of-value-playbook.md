@@ -49,7 +49,7 @@ Proceed only if the problem is material and the buyer accepts architecture/pilot
 
 ### Objective
 
-Map the buyer’s environment to AEGIS authority and control boundaries.
+Map the buyer’s environment to customerSystem authority and control boundaries.
 
 ### Participants
 
@@ -266,7 +266,7 @@ PR source branches, deployment, and URL validation must comply with the organiza
 
 ## Mutual action plan template
 
-| Milestone | Buyer owner | AEGIS owner | Evidence | Exit decision |
+| Milestone | Buyer owner | customerSystem owner | Evidence | Exit decision |
 |---|---|---|---|---|
 | Problem validated | Sponsor | Account lead | Opportunity brief | Workshop |
 | Architecture mapped | Platform/security | Solutions | Authority and integration map | Baseline |

@@ -1,10 +1,10 @@
 # DevOps & DVO Guide
 
-As a DevOps Engineer or Deployment & Validation Operator (DVO), your responsibility is to manage the environments, container deployments, telemetry ingestion, and authorized promotions for the AEGIS platform.
+As a DevOps Engineer or Deployment & Validation Operator (DVO), your responsibility is to manage the environments, container deployments, telemetry ingestion, and authorized promotions for the customerSystem platform.
 
 ## 1. Container Taxonomy and Build Pipeline
 
-AEGIS relies on a strict container taxonomy:
+customerSystem relies on a strict container taxonomy:
 * **Class A (Control Plane):** CLI, Orchestration bots, MCP servers. Only these terminate agent traffic.
 * **Class B (Knowledge):** Stateful stores (VectorDB, Embeddings API). Governed by backup policies.
 * **Class C (Worker / Bot-Host):** Stateless micro-bots. Zero secrets.
@@ -27,14 +27,14 @@ Testing, staging, and production environments target Amazon EKS.
 
 ## 3. Telemetry: Spool-and-Drain
 
-AEGIS uses a decoupled telemetry model to ensure observability never blocks business logic.
-* **Spool:** Bots append JSONL events to `.aegis/state/spool/` locally.
+customerSystem uses a decoupled telemetry model to ensure observability never blocks business logic.
+* **Spool:** Bots append JSONL events to `.customerSystem/state/spool/` locally.
 * **Drain:** `Observation-Bot` (or Class D OTel Collectors in EKS) tails the spool and forwards batched rollups to the Control Tower or your observability backend (e.g., OpenObserve).
 * **Quotas:** The local spool obeys a strict quota (80% warn, 90% shed debug, 100% hard stop) to protect node disk space. EKS volumes should be provisioned with this in mind.
 
 ## 4. Control Tower and Degraded Operations
 
-You operate the Control Tower. Ensure its uptime, but understand AEGIS's offline capabilities.
+You operate the Control Tower. Ensure its uptime, but understand customerSystem's offline capabilities.
 * **Bounded Offline Trust:** If the Tower goes down, local environments operate in `verified-local` mode until their trust TTL expires.
 * **Registry (TBR):** The Tower is the authority for the registry, keys, and revocations. Local machines cache this in their Machine-Local Index (MBI).
 * **Reconciliation:** Upon reconnection, the platform automatically reconciles buffered tickets, telemetry rollups, and registry CRLs. Ensure your ingests can handle UUIDv7 deduplication to achieve at-least-once delivery guarantees without duplicating data.

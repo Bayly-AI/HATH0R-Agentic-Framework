@@ -57,7 +57,11 @@ class JevSettings:
           JEV_MIN_CONFIDENCE
         """
         env: Mapping[str, str] = environ if environ is not None else os.environ
-        enabled_raw = (env.get("JEV_TOOL_GUARD_ENABLED") or "").strip().lower()
+        enabled_raw = (
+            env.get("JEV_TOOL_GUARD_ENABLED")
+            or env.get("HATH0R_FLAG_JEV_TOOL_GUARD_ENABLED")
+            or ""
+        ).strip().lower()
         mode_raw = (env.get("JEV_MODE") or "").strip().lower()
         if mode_raw in {"off", "live", "stub"}:
             mode: Literal["off", "live", "stub"] = mode_raw  # type: ignore[assignment]
