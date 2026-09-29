@@ -55,8 +55,8 @@ def test_tri_graph_persistence_and_roundtrip(tmp_path: Path) -> None:
 
 
 def test_memory_graph_governance_docs_ingestion(tmp_path: Path) -> None:
-    # Point at the live framework docs directory
-    framework_docs = Path("/Users/raybayly/Development/OpenSource/hath0r-framework/docs")
+    # Point at the live framework docs directory relative to repo root
+    framework_docs = Path(__file__).resolve().parents[1] / "docs"
     mg = MemoryGraph(graph_id="hathor-framework-governance-memory")
 
     count = mg.ingest_markdown_documents(framework_docs)
