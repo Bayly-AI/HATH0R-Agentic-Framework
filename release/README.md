@@ -1,20 +1,30 @@
-# Hath0r CLI Standalone Executable Releases
+# Hath0r CLI Standalone Executable & Package Releases
 
-This directory contains pre-compiled, zero-dependency standalone binaries of the **Hath0r CLI Operator** (`hath0r`).
+This directory contains pre-compiled, zero-dependency standalone binaries, Python packages, and fileset archives of the **Hath0r CLI Operator** (`hath0r`).
 
 The Hath0r CLI is the single, definitive tool required to initialize, govern, audit, and orchestrate autonomous AI multi-agent workflows across any repository or codebase.
 
 ---
 
-## 📦 Available Binaries
+## 📦 Available Release Artifacts
+
+### Standalone Executable Binaries (Zero Dependencies)
 
 | Platform | Architecture | Binary File |
 | :--- | :--- | :--- |
-| **macOS** | Apple Silicon (`arm64`) | [`release/hath0r-darwin-arm64`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/release/hath0r-darwin-arm64) |
-| **macOS** | Intel (`x86_64`) | [`release/hath0r-darwin-x86_64`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/release/hath0r-darwin-x86_64) |
-| **Linux** | ARM64 (`aarch64`) | [`release/hath0r-linux-arm64`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/release/hath0r-linux-arm64) |
-| **Linux** | x86_64 (`amd64`) | [`release/hath0r-linux-x86_64`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/release/hath0r-linux-x86_64) |
-| **Windows**| x64 | [`release/hath0r-windows-x64.cmd`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/release/hath0r-windows-x64.cmd) |
+| **macOS** | Apple Silicon (`arm64`) | [`release/hath0r-darwin-arm64`](hath0r-darwin-arm64) |
+| **macOS** | Intel (`x86_64`) | [`release/hath0r-darwin-x86_64`](hath0r-darwin-x86_64) |
+| **Linux** | ARM64 (`aarch64`) | [`release/hath0r-linux-arm64`](hath0r-linux-arm64) |
+| **Linux** | x86_64 (`amd64`) | [`release/hath0r-linux-x86_64`](hath0r-linux-x86_64) |
+| **Windows**| x64 | [`release/hath0r-windows-x64.cmd`](hath0r-windows-x64.cmd) |
+
+### Python Package & Fileset Distributions
+
+| Distribution | Type | File |
+| :--- | :--- | :--- |
+| **Python Wheel** | Pip Wheel (`.whl`) | [`release/hath0r_cli-0.3.0-py3-none-any.whl`](hath0r_cli-0.3.0-py3-none-any.whl) |
+| **Source Tarball** | Source (`.tar.gz`) | [`release/hath0r_cli-0.3.0.tar.gz`](hath0r_cli-0.3.0.tar.gz) |
+| **Hath0r Fileset** | Member Template Archive | [`release/hath0r-fileset-0.3.0.tar.gz`](hath0r-fileset-0.3.0.tar.gz) |
 
 ---
 
@@ -42,7 +52,7 @@ cd /path/to/target-project
 
 ## 🔒 Verification & Checksums
 
-Integrity checksums for all binary artifacts are recorded in [`release/CHECKSUMS.sha256`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/release/CHECKSUMS.sha256).
+Integrity checksums for all binary and package artifacts are recorded in [`release/CHECKSUMS.sha256`](CHECKSUMS.sha256).
 
 Verify with:
 ```bash
