@@ -1,6 +1,7 @@
 """Tests for Hath0r MemoryGraph engine and schema conformance."""
 
 from pathlib import Path
+
 from lib.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 
 

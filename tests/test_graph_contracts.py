@@ -1,9 +1,8 @@
 """Tests for KnowledgeGraph and ContextGraph contracts, extraction, and runtime topologies."""
 
-import json
 from pathlib import Path
 
-from lib.context.context_graph import ContextEdge, ContextGraph, ContextNode
+from lib.context.context_graph import ContextGraph, ContextNode
 from lib.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeGraphExtractor, KnowledgeNode
 
 
