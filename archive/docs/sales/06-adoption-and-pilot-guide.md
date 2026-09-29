@@ -6,7 +6,7 @@
 
 ## Adoption principle
 
-AEGIS should move from design to governed use incrementally:
+customerSystem should move from design to governed use incrementally:
 
 > Establish ownership and baseline evidence, introduce visible low-risk controls, prove negative and recovery paths, then expand enforcement only when control effectiveness and measured value pass together.
 
@@ -271,7 +271,7 @@ Re-baseline after foundations.
 
 ## Mutual responsibilities
 
-### AEGIS product or implementation team
+### customerSystem product or implementation team
 
 - maintain source and claim status;
 - define interfaces and acceptance tests;
@@ -296,5 +296,5 @@ Re-baseline after foundations.
 
 - [Adoption Roadmap](../business/06-adoption-roadmap.md)
 - [Value and Success Measures](../business/07-value-and-success-measures.md)
-- [Platform Roadmap](../architect/aegis-plan-001-platform-roadmap-20260913.md)
-- [Gateway and Validator Roadmap](../architect/aegis-plan-003-gateway-validators-roadmap-20260913.md)
+- [Platform Roadmap](../architect/customerSystem-plan-001-platform-roadmap-20260913.md)
+- [Gateway and Validator Roadmap](../architect/customerSystem-plan-003-gateway-validators-roadmap-20260913.md)

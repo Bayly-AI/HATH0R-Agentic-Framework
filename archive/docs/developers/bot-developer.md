@@ -1,6 +1,6 @@
 # Bot Developer Guide
 
-As a Bot Developer, your role is to build and maintain the single-role micro-bots that provide capabilities to the AEGIS platform. All bots strictly adhere to the HATHOR operating model.
+As a Bot Developer, your role is to build and maintain the single-role micro-bots that provide capabilities to the customerSystem platform. All bots strictly adhere to the HATHOR operating model.
 
 ## 1. Bot Taxonomy & Roles
 
@@ -17,7 +17,7 @@ Every bot you build MUST carry the following seven architectural blocks:
 1. **Identity:** A unique UUID and capability registration.
 2. **Manifest (v1):** A canonical JSON manifest defining capabilities, `args_schema`, `output_schema` (using JSON Schema 2020-12), and a detached signature verifiable offline.
 3. **Contract:** Implementation of the standard command set (`health`, `status`, `version`, `manifest`, `contract`, `config`, `selftest`, `knowledge`, `report`).
-4. **Executor:** The core business logic, conforming strictly to the AEGIS exit-code boundary (0, 1, or 2 where 2=degraded).
+4. **Executor:** The core business logic, conforming strictly to the customerSystem exit-code boundary (0, 1, or 2 where 2=degraded).
 5. **Knowledge Interface:** Standardized access to read/write Knowledge Plane microbursts.
 6. **Connection Interface:** Brokered interactions for external effects (MUST go through Operator-Bot).
 7. **Telemetry Surface:** Standardized JSONL output to the local spool.
@@ -27,7 +27,7 @@ Every bot you build MUST carry the following seven architectural blocks:
 * **Statelessness (v1):** Bots must be stateless between invocations. Do not store state in memory or local disk across runs. Use the authoritative run ledger and Knowledge Plane.
 * **Zero Secrets:** Never bake credentials into your bot, and never request them directly via provider SDKs. External API calls must be brokered by the Operator-Bot.
 * **Exit-Code Contract:**
-  Your bot executable must return `0` (Success), `1` (Runtime/Internal error), or `2` (Degraded). The AEGIS CLI maps this to the broader CLI exit-code contract and structured JSON error envelopes.
+  Your bot executable must return `0` (Success), `1` (Runtime/Internal error), or `2` (Degraded). The customerSystem CLI maps this to the broader CLI exit-code contract and structured JSON error envelopes.
 * **Telemetry:** Emit telemetry as JSONL to `stderr` (or a designated descriptor) using the Event Envelope v1 (`event_id`, `schema_version`, `event`, `emitter`, `run`, `severity`, `payload`). It must never block the primary execution.
 * **Bounded Retry:** Transient failures must retry ≤ 5 times with backoff; retries are recorded by retry-Bot. Exhaustion produces a failure report.
 

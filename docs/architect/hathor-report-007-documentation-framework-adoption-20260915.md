@@ -54,8 +54,8 @@ The framework is **on `development` and ready for adoption**. Remaining operator
 | Human indexes | per-tree `INDEX.md` | Full ID/type/status tables |
 | Machine index | `docs/index.json` | 82 entries, namespace `HATHOR-*` |
 | Agent maps | per-tree `llms.txt` | Token-bounded discovery |
-| ID map | `docs/architect/id-namespace-map-20260915.json` | AEGIS→HATHOR remap record |
-| Archive | `archive/` | Frozen private-era **AEGIS-*** provenance (not re-ID'd) |
+| ID map | `docs/architect/id-namespace-map-20260915.json` | customerSystem→HATHOR remap record |
+| Archive | `archive/` | Frozen private-era **customerSystem-*** provenance (not re-ID'd) |
 | Group open-issues query | `docs/README.md`, group/member `AGENTS.md` | Multi-repo search verified |
 
 ### Key merges

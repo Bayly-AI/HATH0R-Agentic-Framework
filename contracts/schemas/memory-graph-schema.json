@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/Bayly-AI/HATH0R-Agentic-Framework/development/contracts/schemas/memory-graph-schema.json",
+  "title": "Hath0rMemoryGraph",
+  "description": "Schema for Hath0r Semantic Working Memory Graph, representing episodic and semantic memory nodes, rules, concepts, decisions, and their relational links.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "graph_id",
+    "updated_at",
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": ["1.0.0"]
+    },
+    "graph_id": {
+      "type": "string",
+      "description": "Unique identifier of the memory space graph"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the last graph modification"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "label",
+          "content"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the memory node"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "rule",
+              "concept",
+              "decision",
+              "fact",
+              "episode",
+              "topic"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable label or title of the memory node"
+          },
+          "content": {
+            "type": "string",
+            "description": "Detailed text content, markdown, or rule specification"
+          },
+          "importance": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "default": 0.5
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "target",
+          "relation"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Source node ID"
+          },
+          "target": {
+            "type": "string",
+            "description": "Target node ID"
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "ENFORCES",
+              "REQUIRES",
+              "DERIVES_FROM",
+              "RELATES_TO",
+              "RESOLVES",
+              "PRECEDES",
+              "SUPERSEDES"
+            ]
+          },
+          "weight": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "default": 1.0
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

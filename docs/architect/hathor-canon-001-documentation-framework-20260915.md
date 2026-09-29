@@ -380,7 +380,7 @@ This file carries `hathor-doc@1` with `id: HATHOR-CANON-001`, `doc_type: CANON`,
 
 ## 16. Changelog
 
-- **0.1.1 — 2026-09-15:** live corpus ID namespace normalized to `HATHOR-*` (issue #12); archive retains `AEGIS-*` provenance.
+- **0.1.1 — 2026-09-15:** live corpus ID namespace normalized to `HATHOR-*` (issue #12); archive retains `customerSystem-*` provenance.
 - **0.1.0 — 2026-09-15:** initial proposed OpenSource documentation framework (issue #5).
 
 ---

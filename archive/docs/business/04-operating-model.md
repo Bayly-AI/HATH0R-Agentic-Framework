@@ -1,4 +1,4 @@
-# AEGIS Target Operating Model
+# customerSystem Target Operating Model
 
 - **Business document:** 04 of 08
 - **Status:** Derived draft for business review
@@ -34,7 +34,7 @@ The proposed `hathor-principles@1` synthesis expresses similar concepts but is n
 | Process run ledger | Conducted-run events and reconstructed run state | Provider work truth or organization knowledge |
 | Human authority | Waiver, deployment or promotion, curation, revocation, and other reserved actions | Unrecorded authority by chat, memory, or TTY presence |
 | Control Tower | Registration, trust distribution, revocation, curator identity, human identity, rollup ingest, and bounded query | Ordinary bot dispatch, third-party brokering, or every local request |
-| Provider system | Provider-native record and ultimate reconciliation authority for mapped work | AEGIS run state or capability authorization |
+| Provider system | Provider-native record and ultimate reconciliation authority for mapped work | customerSystem run state or capability authorization |
 
 ## 3. Actors and responsibilities
 
@@ -95,7 +95,7 @@ These roles must be assigned by the adopting organization. The architecture does
 ```mermaid
 sequenceDiagram
   participant U as Human or agent
-  participant C as aegis CLI
+  participant C as customerSystem CLI
   participant T as Ticketing Plane
   participant P as Proctor
   participant R as Process

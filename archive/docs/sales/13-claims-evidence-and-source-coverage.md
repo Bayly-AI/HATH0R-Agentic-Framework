@@ -21,7 +21,7 @@ This document prevents architecture detail from being mistaken for product avail
 
 When sources disagree:
 
-1. [`AEGIS-CANON-001`](../architect/aegis-canon-001-registries-20260913.md) owns enumerated registries and identifiers.
+1. [`customerSystem-CANON-001`](../architect/customerSystem-canon-001-registries-20260913.md) owns enumerated registries and identifiers.
 2. Accepted architecture decisions and accepted research/interface decisions own ratified choices.
 3. Draft or proposed requirements, research, architectures, and technical specifications remain review material.
 4. Approved plans own sequence, not implementation approval or availability.
@@ -47,7 +47,7 @@ The repository supports:
 
 It does not establish:
 
-- greenfield AEGIS implementation;
+- greenfield customerSystem implementation;
 - a production release;
 - a running Control Tower;
 - verified provider adapters;
@@ -64,13 +64,13 @@ It does not establish:
 | Claim class | Evidence represented | Permitted language |
 |---|---|---|
 | Framework identity | README and license | “HATHOR is documented as…” |
-| Accepted design | Accepted ADR, CANON, or RP decision | “The accepted AEGIS design specifies…” |
+| Accepted design | Accepted ADR, CANON, or RP decision | “The accepted customerSystem design specifies…” |
 | Draft target | Draft requirement, research, architecture, or specification | “The target design proposes…” |
 | Approved sequence | Approved plan | “The approved roadmap sequences…” |
 | Proposed item | Awaiting sign-off | “A proposal under review would…” |
 | Legacy/current baseline | Fact-checked InfraOS research | “The baseline system currently provided…” |
-| Implemented AEGIS | Authorized code and configuration | Use only with repository/version evidence |
-| Verified AEGIS | Positive, negative, recovery, and boundary tests | Use only with test scope and result |
+| Implemented customerSystem | Authorized code and configuration | Use only with repository/version evidence |
+| Verified customerSystem | Positive, negative, recovery, and boundary tests | Use only with test scope and result |
 | Piloted | Real users and workloads in bounded scope | Use only with pilot design and data |
 | Operational | Ownership, support, SLOs, retention, access, and incidents active | Use only with operating evidence |
 | Scaled | Multiple teams/providers retain outcomes | Use only with longitudinal evidence |
@@ -80,10 +80,10 @@ It does not establish:
 
 | Topic | Approved formulation |
 |---|---|
-| Category | “AEGIS is a proposed agentic governance and assurance platform.” |
-| Framework relationship | “HATHOR is the broader agentic application framework; AEGIS is its proposed governance/control-plane realization.” |
-| Value proposition | “AEGIS is designed to make human-and-agent delivery bounded, evidence-backed, and human-governed.” |
-| CLI | “The accepted design uses one public `aegis` operational ingress.” |
+| Category | “customerSystem is a proposed agentic governance and assurance platform.” |
+| Framework relationship | “HATHOR is the broader agentic application framework; customerSystem is its proposed governance/control-plane realization.” |
+| Value proposition | “customerSystem is designed to make human-and-agent delivery bounded, evidence-backed, and human-governed.” |
+| CLI | “The accepted design uses one public `customerSystem` operational ingress.” |
 | Authority | “The target architecture separates capability, knowledge, work, run-state, and human decision authority.” |
 | Completion | “The target design makes completion a system-evaluated transition based on required work and evidence.” |
 | Bots | “The accepted canonical design enumerates 26 single-purpose bot roles; implementation is not established.” |
@@ -96,13 +96,13 @@ It does not establish:
 | Compliance | “The design may support organization-specific controls; it is not a certification.” |
 | Value | “The documentation defines value hypotheses and a measurement plan; realized ROI is not established.” |
 | License | “The repository is distributed under Apache License 2.0, subject to its terms.” |
-| Existing baseline | “Operational InfraOS research informed the AEGIS design; it is not AEGIS implementation proof.” |
+| Existing baseline | “Operational InfraOS research informed the customerSystem design; it is not customerSystem implementation proof.” |
 
 ## Claims requiring implementation and tests
 
 Do not say these until scoped evidence exists:
 
-- AEGIS blocks unauthorized work.
+- customerSystem blocks unauthorized work.
 - Runs cannot skip required work.
 - False completion is prevented.
 - Revoked capabilities receive no work.
@@ -119,15 +119,15 @@ Do not say these until scoped evidence exists:
 
 Do not say these based on design or tests alone:
 
-- AEGIS reduces incidents.
-- AEGIS improves cycle time.
-- AEGIS lowers cost.
-- AEGIS accelerates onboarding.
-- AEGIS provides governance without drag.
-- AEGIS works across the enterprise.
-- Customers are using AEGIS.
-- AEGIS meets an SLA.
-- AEGIS has proven ROI.
+- customerSystem reduces incidents.
+- customerSystem improves cycle time.
+- customerSystem lowers cost.
+- customerSystem accelerates onboarding.
+- customerSystem provides governance without drag.
+- customerSystem works across the enterprise.
+- Customers are using customerSystem.
+- customerSystem meets an SLA.
+- customerSystem has proven ROI.
 
 ## Prohibited or tightly scoped language
 
@@ -209,7 +209,7 @@ Avoid:
 
 ### README versus architecture canon
 
-The README includes legacy hidden-folder and credential-resolution behavior, including project and sibling environment-file fallback. Later architecture sources center `.aegis/` and accepted Operator brokering. Use architecture sources for target behavior.
+The README includes legacy hidden-folder and credential-resolution behavior, including project and sibling environment-file fallback. Later architecture sources center `.customerSystem/` and accepted Operator brokering. Use architecture sources for target behavior.
 
 ### Present tense versus early formation
 
@@ -221,7 +221,7 @@ Visual material suggests actions terminate at Control Tower. Accepted architectu
 
 ### Gate, bot, and validation counts
 
-Legacy visuals and guides contain differing counts. Use `AEGIS-CANON-001` for the accepted 15-gate and 26-bot enumerations. A count still does not prove implementation.
+Legacy visuals and guides contain differing counts. Use `customerSystem-CANON-001` for the accepted 15-gate and 26-bot enumerations. A count still does not prove implementation.
 
 ### Telemetry topology and authority
 
@@ -300,72 +300,72 @@ The inventory included all Markdown, text/license, PDF, and documentation-image 
 |---|---|---|
 | [`docs/architect/INDEX.md`](../architect/INDEX.md) | Canonical corpus index | Product boundary, reading order, source status, implementation-authority rule |
 | [`PENDING-EDITS.md`](../architect/PENDING-EDITS.md) | Live change-control register | Accepted amendments, pending sign-offs, open design and assurance gaps |
-| [`AEGIS-REQ-CORE-001`](../architect/AEGIS-REQ-CORE-001-initial-requirements-20260911.md) | Draft, amended | Platform scope, actors, requirements, non-functional targets, exclusions |
-| [`aegis-bot-taxonomy-requirements`](../architect/aegis-bot-taxonomy-requirements-20260911.md) | Draft | Bot families, anatomy, runtime and command contracts |
-| [`AEGIS-ARCH-001`](../architect/AEGIS-ARCH-001-architecture-mermaid-20260911.md) | Draft visual companion | Logical architecture and lifecycle diagrams |
-| [`AEGIS-ARCH-002`](../architect/aegis-arch-002-bot-unit-compendium-20260914.md) | Draft synthesis awaiting sign-off | Stakeholder bot model; not independent authority |
-| [`AEGIS-CANON-001`](../architect/aegis-canon-001-registries-20260913.md) | Accepted canonical authority | Fifteen gates, refusal/event/linter registries, 26-bot roster, identifiers |
-| [`AEGIS-CANON-002`](../architect/aegis-canon-002-platform-principles-20260914.md) | Proposed, awaiting sign-off | Platform-principle synthesis; not accepted doctrine |
-| [`AEGIS-CANON-003`](../architect/aegis-canon-003-documentation-framework-20260915.md) | Proposed, awaiting sign-off | Documentation metadata, types, review, staleness, indexing, and docs-as-code model; not yet binding on this sales set |
+| [`customerSystem-REQ-CORE-001`](../architect/customerSystem-REQ-CORE-001-initial-requirements-20260911.md) | Draft, amended | Platform scope, actors, requirements, non-functional targets, exclusions |
+| [`customerSystem-bot-taxonomy-requirements`](../architect/customerSystem-bot-taxonomy-requirements-20260911.md) | Draft | Bot families, anatomy, runtime and command contracts |
+| [`customerSystem-ARCH-001`](../architect/customerSystem-ARCH-001-architecture-mermaid-20260911.md) | Draft visual companion | Logical architecture and lifecycle diagrams |
+| [`customerSystem-ARCH-002`](../architect/customerSystem-arch-002-bot-unit-compendium-20260914.md) | Draft synthesis awaiting sign-off | Stakeholder bot model; not independent authority |
+| [`customerSystem-CANON-001`](../architect/customerSystem-canon-001-registries-20260913.md) | Accepted canonical authority | Fifteen gates, refusal/event/linter registries, 26-bot roster, identifiers |
+| [`customerSystem-CANON-002`](../architect/customerSystem-canon-002-platform-principles-20260914.md) | Proposed, awaiting sign-off | Platform-principle synthesis; not accepted doctrine |
+| [`customerSystem-CANON-003`](../architect/customerSystem-canon-003-documentation-framework-20260915.md) | Proposed, awaiting sign-off | Documentation metadata, types, review, staleness, indexing, and docs-as-code model; not yet binding on this sales set |
 
 ## Architecture decision coverage
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`AEGIS-ADR-001`](../architect/aegis-adr-001-target-command-tree-20260911.md) | Proposed, partly superseded | Historical taxonomy and InfraOS migration context |
-| [`AEGIS-ADR-002`](../architect/aegis-adr-002-orchestration-coordination-model-20260913.md) | Accepted | Event-triggered central orchestration; Process decides, Proctor enforces |
-| [`AEGIS-ADR-003`](../architect/aegis-adr-003-greenfield-command-surface-20260913.md) | Accepted | Greenfield `aegis`, nine domains, CLI/bot exit boundary, no-code maturity evidence |
-| [`AEGIS-ADR-004`](../architect/aegis-adr-004-layout-state-residency-20260913.md) | Accepted | `.aegis` residency, project spool, macOS/Linux v1 |
-| [`AEGIS-ADR-005`](../architect/aegis-adr-005-backup-ticketing-system-20260913.md) | Accepted | Minimal first-party backup work service direction |
+| [`customerSystem-ADR-001`](../architect/customerSystem-adr-001-target-command-tree-20260911.md) | Proposed, partly superseded | Historical taxonomy and InfraOS migration context |
+| [`customerSystem-ADR-002`](../architect/customerSystem-adr-002-orchestration-coordination-model-20260913.md) | Accepted | Event-triggered central orchestration; Process decides, Proctor enforces |
+| [`customerSystem-ADR-003`](../architect/customerSystem-adr-003-greenfield-command-surface-20260913.md) | Accepted | Greenfield `customerSystem`, nine domains, CLI/bot exit boundary, no-code maturity evidence |
+| [`customerSystem-ADR-004`](../architect/customerSystem-adr-004-layout-state-residency-20260913.md) | Accepted | `.customerSystem` residency, project spool, macOS/Linux v1 |
+| [`customerSystem-ADR-005`](../architect/customerSystem-adr-005-backup-ticketing-system-20260913.md) | Accepted | Minimal first-party backup work service direction |
 
 ## Architecture research and interface coverage
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`AEGIS-RP-001`](../architect/aegis-rp-001-manifest-schema-v1-20260911.md) | Draft, amended | Definition schema, contracts, handshake, signing boundary |
-| [`AEGIS-RP-002`](../architect/aegis-rp-002-registry-discovery-20260911.md) | Draft, amended | Local/Tower registry, verification state, trust TTL |
-| [`AEGIS-RP-003`](../architect/aegis-rp-003-telemetry-transport-20260911.md) | Draft, amended | Spool-and-drain, at-least-once delivery, quotas, deduplication |
-| [`AEGIS-RP-004`](../architect/aegis-rp-004-knowledge-promotion-20260911.md) | Draft | Draft-to-verified lifecycle, human review, dispute, aging |
-| [`AEGIS-RP-005`](../architect/aegis-rp-005-hierarchy-consolidation-20260911.md) | Draft, amended | Six-level hierarchy and bounded resolution |
-| [`AEGIS-RP-006`](../architect/aegis-rp-006-ticketing-plane-20260911.md) | Draft, amended | Canonical Ticket Contract, providers, backup, reconciliation |
-| [`AEGIS-RP-007`](../architect/aegis-rp-007-continuous-validation-20260911.md) | Draft, partly superseded | Validation fabric, findings, assumptions, claims, evidence, latency |
-| [`AEGIS-RP-008`](../architect/aegis-rp-008-microbot-launch-roster-20260912.md) | Draft, amended | Launch sequencing and canonical roster reconciliation |
-| [`AEGIS-RP-009`](../architect/aegis-rp-009-orchestration-gateway-20260912.md) | Draft | Conducted run, sequence, graph, completion, resume |
-| [`AEGIS-RP-010`](../architect/aegis-rp-010-tower-surface-20260913.md) | Accepted design | Tower registry, distribution, curators, identity, ingest, query |
-| [`AEGIS-RP-011`](../architect/aegis-rp-011-operator-brokering-20260913.md) | Accepted design | Proxy default, scoped token exception, provider sessions and receipts |
-| [`AEGIS-RP-012`](../architect/aegis-rp-012-knowledge-storage-retrieval-20260913.md) | Accepted design | Files as truth, FTS5/optional vectors, thresholds, status-honest retrieval |
-| [`AEGIS-RP-013`](../architect/aegis-rp-013-threat-model-20260913.md) | Accepted design | Trust scope, signing standards, identity, integrity, hardening |
-| [`AEGIS-RP-014`](../architect/aegis-rp-014-bot-unit-creation-operation-20260913.md) | Accepted design | Governance triad, state/memory, channels, lifecycle |
+| [`customerSystem-RP-001`](../architect/customerSystem-rp-001-manifest-schema-v1-20260911.md) | Draft, amended | Definition schema, contracts, handshake, signing boundary |
+| [`customerSystem-RP-002`](../architect/customerSystem-rp-002-registry-discovery-20260911.md) | Draft, amended | Local/Tower registry, verification state, trust TTL |
+| [`customerSystem-RP-003`](../architect/customerSystem-rp-003-telemetry-transport-20260911.md) | Draft, amended | Spool-and-drain, at-least-once delivery, quotas, deduplication |
+| [`customerSystem-RP-004`](../architect/customerSystem-rp-004-knowledge-promotion-20260911.md) | Draft | Draft-to-verified lifecycle, human review, dispute, aging |
+| [`customerSystem-RP-005`](../architect/customerSystem-rp-005-hierarchy-consolidation-20260911.md) | Draft, amended | Six-level hierarchy and bounded resolution |
+| [`customerSystem-RP-006`](../architect/customerSystem-rp-006-ticketing-plane-20260911.md) | Draft, amended | Canonical Ticket Contract, providers, backup, reconciliation |
+| [`customerSystem-RP-007`](../architect/customerSystem-rp-007-continuous-validation-20260911.md) | Draft, partly superseded | Validation fabric, findings, assumptions, claims, evidence, latency |
+| [`customerSystem-RP-008`](../architect/customerSystem-rp-008-microbot-launch-roster-20260912.md) | Draft, amended | Launch sequencing and canonical roster reconciliation |
+| [`customerSystem-RP-009`](../architect/customerSystem-rp-009-orchestration-gateway-20260912.md) | Draft | Conducted run, sequence, graph, completion, resume |
+| [`customerSystem-RP-010`](../architect/customerSystem-rp-010-tower-surface-20260913.md) | Accepted design | Tower registry, distribution, curators, identity, ingest, query |
+| [`customerSystem-RP-011`](../architect/customerSystem-rp-011-operator-brokering-20260913.md) | Accepted design | Proxy default, scoped token exception, provider sessions and receipts |
+| [`customerSystem-RP-012`](../architect/customerSystem-rp-012-knowledge-storage-retrieval-20260913.md) | Accepted design | Files as truth, FTS5/optional vectors, thresholds, status-honest retrieval |
+| [`customerSystem-RP-013`](../architect/customerSystem-rp-013-threat-model-20260913.md) | Accepted design | Trust scope, signing standards, identity, integrity, hardening |
+| [`customerSystem-RP-014`](../architect/customerSystem-rp-014-bot-unit-creation-operation-20260913.md) | Accepted design | Governance triad, state/memory, channels, lifecycle |
 
 ## Technical specification coverage
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`AEGIS-TS-001`](../architect/aegis-ts-001-continuous-validation-implementation-20260911.md) | Draft | Go chassis, validation implementation, tests, performance targets |
-| [`AEGIS-TS-002`](../architect/aegis-ts-002-orchestration-gateway-implementation-20260913.md) | Draft | Run ledger, conductor, admission, resume, reconciliation |
-| [`AEGIS-TS-003`](../architect/aegis-ts-003-bot-unit-implementation-20260913.md) | Draft | Bundle, governance engine, effects, scaffold, memory enforcement |
-| [`AEGIS-TS-004`](../architect/aegis-ts-004-dmz-integration-boundary-20260914.md) | Draft, blocked, awaiting decisions | Proposed policy DMZ, project rules, floors, profiles, conflict envelope; internal future concept only |
+| [`customerSystem-TS-001`](../architect/customerSystem-ts-001-continuous-validation-implementation-20260911.md) | Draft | Go chassis, validation implementation, tests, performance targets |
+| [`customerSystem-TS-002`](../architect/customerSystem-ts-002-orchestration-gateway-implementation-20260913.md) | Draft | Run ledger, conductor, admission, resume, reconciliation |
+| [`customerSystem-TS-003`](../architect/customerSystem-ts-003-bot-unit-implementation-20260913.md) | Draft | Bundle, governance engine, effects, scaffold, memory enforcement |
+| [`customerSystem-TS-004`](../architect/customerSystem-ts-004-dmz-integration-boundary-20260914.md) | Draft, blocked, awaiting decisions | Proposed policy DMZ, project rules, floors, profiles, conflict envelope; internal future concept only |
 
 ## Roadmap coverage
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`AEGIS-PLAN-001`](../architect/aegis-plan-001-platform-roadmap-20260913.md) | Approved planning artifact | Eight workstreams, six milestones, dependencies, planning estimate |
-| [`AEGIS-PLAN-002`](../architect/aegis-plan-002-cvs-p0-p2-roadmap-20260911.md) | Draft, amended | Detailed validation build sequence and exclusions |
-| [`AEGIS-PLAN-003`](../architect/aegis-plan-003-gateway-validators-roadmap-20260913.md) | Approved planning artifact | Gateway, validators, and bounded skill-pack sequence |
+| [`customerSystem-PLAN-001`](../architect/customerSystem-plan-001-platform-roadmap-20260913.md) | Approved planning artifact | Eight workstreams, six milestones, dependencies, planning estimate |
+| [`customerSystem-PLAN-002`](../architect/customerSystem-plan-002-cvs-p0-p2-roadmap-20260911.md) | Draft, amended | Detailed validation build sequence and exclusions |
+| [`customerSystem-PLAN-003`](../architect/customerSystem-plan-003-gateway-validators-roadmap-20260913.md) | Approved planning artifact | Gateway, validators, and bounded skill-pack sequence |
 
 ## Research baseline and narrative coverage
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`AEGIS CLI Research Report`](../architect/AEGIS-CLI-Research-Report-2026-09-11.md) | Historical/current baseline, annotated | Verified InfraOS 9.3.0 capabilities, gaps, target rationale |
+| [`customerSystem CLI Research Report`](../architect/customerSystem-CLI-Research-Report-2026-09-11.md) | Historical/current baseline, annotated | Verified InfraOS 9.3.0 capabilities, gaps, target rationale |
 | [`Invocation Inventory`](../architect/01-Invocation-Inventory-Top30-2026-09-11.md) | One-machine baseline | 378 history matches and top-30 use discovery; not fleet evidence |
 | [`CLI Spec Scoring`](../architect/02-CLI-Spec-Scoring-2026-09-11.md) | Baseline | Provisional 5.7/16 interface score and improvement need |
 | [`Schema/Runbook Spike`](../architect/04-Spike-Schema-Runbook-Checklist-2026-09-11.md) | Spike design | Bounded discovery and runbook/checklist learning |
 | [`Token Benchmark`](../architect/05-Token-Benchmark-CLI-vs-MCP-2026-09-11.md) | Limited baseline | Bounded-context evidence with n=1 and non-equivalent-path limits |
-| [`Ticketing Economy Whitepaper`](../architect/aegis-ticketing-economy-whitepaper-20260911.md) | Draft, annotated | Ticket-as-authorization narrative and pilot hypothesis |
-| [`Containerization Article`](../architect/aegis-containerization-article-20260911.md) | Draft, annotated | Container classes, build gates, human promotion, reference deployment |
-| [`Containerization Presentation`](../architect/aegis-containerization-presentation-script-20260911.md) | Draft, annotated | Presentation narrative; not independent authority |
+| [`Ticketing Economy Whitepaper`](../architect/customerSystem-ticketing-economy-whitepaper-20260911.md) | Draft, annotated | Ticket-as-authorization narrative and pilot hypothesis |
+| [`Containerization Article`](../architect/customerSystem-containerization-article-20260911.md) | Draft, annotated | Container classes, build gates, human promotion, reference deployment |
+| [`Containerization Presentation`](../architect/customerSystem-containerization-presentation-script-20260911.md) | Draft, annotated | Presentation narrative; not independent authority |
 
 ## Session-record coverage
 
@@ -388,9 +388,9 @@ The inventory included all Markdown, text/license, PDF, and documentation-image 
 
 | Source | Status/use | Sales contribution |
 |---|---|---|
-| [`docs/architect/AEGIS.pdf`](../architect/AEGIS.pdf) | Known-defective image-only board export | Legacy concept coverage; clipped and unsuitable as authority or external collateral |
-| [`lib/AEGIS Overview.pdf`](../../lib/AEGIS%20Overview.pdf) | Untracked image-only overview at review time | More complete internal poster; target concepts only |
-| [`lib/assets/AEGIS Overview.pdf`](../../lib/assets/AEGIS%20Overview.pdf) | Tracked image-only overview asset | Internal overview poster; target concepts only |
+| [`docs/architect/customerSystem.pdf`](../architect/customerSystem.pdf) | Known-defective image-only board export | Legacy concept coverage; clipped and unsuitable as authority or external collateral |
+| [`lib/customerSystem Overview.pdf`](../../lib/customerSystem%20Overview.pdf) | Untracked image-only overview at review time | More complete internal poster; target concepts only |
+| [`lib/assets/customerSystem Overview.pdf`](../../lib/assets/customerSystem%20Overview.pdf) | Tracked image-only overview asset | Internal overview poster; target concepts only |
 | [`00-outline-agent-anatomy-taxonomy.png`](../architect/images/00-outline-agent-anatomy-taxonomy.png) | Legacy visual | CLI, hierarchy, connection broker, observation concept |
 | [`01-outline-universal-project-layout.png`](../architect/images/01-outline-universal-project-layout.png) | Legacy visual | Framework, project layout, knowledge, security concept |
 | [`02-outline-universal-project-layout-detailed.png`](../architect/images/02-outline-universal-project-layout-detailed.png) | Legacy visual | Detailed version of the same concept; not canonical text |

@@ -61,7 +61,7 @@ The corpus does not establish an industry, company-size, revenue, geography, or 
 
 ## Priority customer scenarios
 
-| Scenario | Why AEGIS may fit | Entry motion |
+| Scenario | Why customerSystem may fit | Entry motion |
 |---|---|---|
 | Regulated or high-assurance engineering | Authorization, evidence, separation of duties, reconstruction | Control-gap workshop and development-only pilot |
 | Enterprise platform standardization | Many agent tools need a common contract | Architecture and operating-model assessment |
@@ -108,7 +108,7 @@ The opportunity is not ready when:
 
 ### CIO or CTO
 
-**Mandate:** Align AEGIS with enterprise architecture and engineering strategy.
+**Mandate:** Align customerSystem with enterprise architecture and engineering strategy.
 
 **Cares about:**
 
@@ -241,7 +241,7 @@ The opportunity is not ready when:
 - conflicts; and
 - migration impact.
 
-**Likely objection:** “Will AEGIS become another tracker?”
+**Likely objection:** “Will customerSystem become another tracker?”
 
 **Evidence needed:** Authority-wins model, minimal backup scope, and canonical contract mapping.
 

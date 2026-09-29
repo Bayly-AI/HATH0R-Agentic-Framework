@@ -1,13 +1,13 @@
-# AEGIS Governance, Risk, and Controls
+# customerSystem Governance, Risk, and Controls
 
 - **Business document:** 05 of 08
 - **Status:** Derived draft for business review
 - **Source baseline:** Architecture corpus as of 2026-09-14
-- **Primary authorities:** [`AEGIS-CANON-001`](../architect/aegis-canon-001-registries-20260913.md), [`AEGIS-RP-013`](../architect/aegis-rp-013-threat-model-20260913.md), accepted ADRs, and accepted RP-010/011/014 designs
+- **Primary authorities:** [`customerSystem-CANON-001`](../architect/customerSystem-canon-001-registries-20260913.md), [`customerSystem-RP-013`](../architect/customerSystem-rp-013-threat-model-20260913.md), accepted ADRs, and accepted RP-010/011/014 designs
 
 ## 1. Governance objective
 
-AEGIS is intended to let an organization increase the speed and volume of delegated work without weakening:
+customerSystem is intended to let an organization increase the speed and volume of delegated work without weakening:
 
 - authorization;
 - separation of duties;
@@ -53,7 +53,7 @@ flowchart TB
 
 ## 3. Canonical mechanical gates
 
-The accepted gate registry contains 15 gates. Their business purpose is summarized below; exact identity and semantics remain in `AEGIS-CANON-001`.
+The accepted gate registry contains 15 gates. Their business purpose is summarized below; exact identity and semantics remain in `customerSystem-CANON-001`.
 
 | ID | Gate | Business control objective |
 |---|---|---|
@@ -127,7 +127,7 @@ Automated compensation for a post-rule external-effect violation is explicitly e
 
 ### 5.1 Accepted v1 statement
 
-AEGIS v1 prevention guarantees apply to a **cooperative-but-fallible** agent using platform interfaces—an actor that may drift, forget, reorder, hallucinate, or overclaim but does not deliberately subvert platform files.
+customerSystem v1 prevention guarantees apply to a **cooperative-but-fallible** agent using platform interfaces—an actor that may drift, forget, reorder, hallucinate, or overclaim but does not deliberately subvert platform files.
 
 A fully adversarial local process with arbitrary workspace access is:
 
@@ -248,7 +248,7 @@ The design may support organization-specific controls for:
 - data quality and provenance; and
 - third-party integration oversight.
 
-AEGIS does not create compliance by architecture alone. Control mapping, implementation, operating evidence, policy, access review, testing, and independent assessment remain organization responsibilities.
+customerSystem does not create compliance by architecture alone. Control mapping, implementation, operating evidence, policy, access review, testing, and independent assessment remain organization responsibilities.
 
 ## 10. Conditions that prohibit enforcement expansion
 
@@ -277,7 +277,7 @@ Do not expand to stricter profiles, higher-risk environments, or more teams if a
 
 ### Requires implementation and test evidence
 
-- “AEGIS blocks unauthorized work.”
+- “customerSystem blocks unauthorized work.”
 - “Runs cannot skip mandatory steps.”
 - “Provider effects occur exactly once.”
 - “Revoked bots receive no work.”
@@ -286,12 +286,12 @@ Do not expand to stricter profiles, higher-risk environments, or more teams if a
 
 ### Requires operational and business evidence
 
-- “AEGIS reduces incidents.”
-- “AEGIS improves cycle time.”
-- “AEGIS lowers cost.”
-- “AEGIS accelerates onboarding.”
-- “AEGIS provides governance without drag.”
-- “AEGIS works across the enterprise.”
+- “customerSystem reduces incidents.”
+- “customerSystem improves cycle time.”
+- “customerSystem lowers cost.”
+- “customerSystem accelerates onboarding.”
+- “customerSystem provides governance without drag.”
+- “customerSystem works across the enterprise.”
 
 ### Must remain scoped or avoided
 

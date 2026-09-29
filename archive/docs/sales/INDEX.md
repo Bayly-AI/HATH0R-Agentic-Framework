@@ -1,4 +1,4 @@
-# AEGIS Sales Documentation
+# customerSystem Sales Documentation
 
 - **Status:** Derived sales-enablement draft
 - **Source baseline:** Project documentation through 2026-09-15; the derived business set remains based on the 2026-09-14 architecture index
@@ -7,13 +7,13 @@
 
 ## Purpose
 
-This library explains how to position, qualify, discuss, and evaluate AEGIS without overstating what the current project proves.
+This library explains how to position, qualify, discuss, and evaluate customerSystem without overstating what the current project proves.
 
-HATHOR is the broader agentic application framework. AEGIS is its proposed governance and control-plane realization: a common operating layer intended to connect people, AI agents, automation units, project knowledge, work systems, validation, and external services under explicit authority and evidence rules.
+HATHOR is the broader agentic application framework. customerSystem is its proposed governance and control-plane realization: a common operating layer intended to connect people, AI agents, automation units, project knowledge, work systems, validation, and external services under explicit authority and evidence rules.
 
 The concise proposition is:
 
-> AEGIS is designed to help organizations scale AI-assisted delivery while preserving authorization, evidence, human decision rights, and reconstructable accountability.
+> customerSystem is designed to help organizations scale AI-assisted delivery while preserving authorization, evidence, human decision rights, and reconstructable accountability.
 
 That is a target proposition, not a claim that the system is implemented or producing customer outcomes today.
 
@@ -94,7 +94,7 @@ These documents are internal working material and are not customer collateral wi
 
 ## Non-negotiable sales rules
 
-1. Do not call AEGIS production-ready.
+1. Do not call customerSystem production-ready.
 2. Do not claim customers, deployments, certifications, SLAs, or realized ROI without evidence outside this corpus.
 3. Do not describe accepted designs as implemented features.
 4. Do not promise “tamper-proof,” “impossible to bypass,” “fully autonomous and safe,” or “guaranteed exactly once.”
@@ -109,7 +109,7 @@ These documents are internal working material and are not customer collateral wi
 
 When sources conflict, use this order:
 
-1. [`AEGIS-CANON-001`](../architect/aegis-canon-001-registries-20260913.md) for canonical registries and identifiers.
+1. [`customerSystem-CANON-001`](../architect/customerSystem-canon-001-registries-20260913.md) for canonical registries and identifiers.
 2. Accepted architecture decisions and accepted research/interface decisions.
 3. Draft requirements, research, architecture, and technical specifications, preserving their status.
 4. Approved plans for sequence only.

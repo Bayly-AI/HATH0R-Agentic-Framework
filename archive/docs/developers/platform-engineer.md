@@ -1,13 +1,13 @@
 # Platform Engineer Guide
 
-Platform Engineers build the core AEGIS platform: the CLI, the Go chassis, the orchestration bots, the validation fabric, and the Control Tower API.
+Platform Engineers build the core customerSystem platform: the CLI, the Go chassis, the orchestration bots, the validation fabric, and the Control Tower API.
 
 ## 1. CLI and Core Chassis (Go)
 
-AEGIS is a greenfield implementation written primarily in Go 1.23+. 
+customerSystem is a greenfield implementation written primarily in Go 1.23+. 
 * **Exit-Code Boundaries:** The CLI enforces the canonical 0-7 exit codes. Any deviation must be caught during development.
 * **CLI Spec:** All top-level commands must support `--output json|text|auto`, `--profile`, `--quiet`, and pagination (`--fields`, `--limit`, `--cursor`).
-* **Schema Introspection:** Must expose a bounded schema surface (`aegis schema --domain <x>`) mapped to the CLI Spec error envelope and bounded to ≤ 8 KB per page default.
+* **Schema Introspection:** Must expose a bounded schema surface (`customerSystem schema --domain <x>`) mapped to the CLI Spec error envelope and bounded to ≤ 8 KB per page default.
 * **Routing:** `Proctor-Bot` handles capability-based routing (e.g., `domain.noun.verb@major`). The CLI negotiates the HELLO/OFFER/BIND/VERIFY handshake via the Machine-Local Index (MBI).
 
 ## 2. Orchestration Gateway
@@ -15,7 +15,7 @@ AEGIS is a greenfield implementation written primarily in Go 1.23+.
 The Orchestration Gateway consists of three distinct layers:
 1. **Events Trigger:** External actions (e.g., file writes, git staging, step completion) append to `events.jsonl`.
 2. **Conductor Decides:** `Process-Bot` acts as the saga state machine, folding the run log. The plan is treated as data, and `Process-Bot` alone advances the run state.
-3. **Gateway Enforces:** `Proctor-Bot` and the Sequence/Barrier Gates refuse unlawful dispatch based on the 15 Governance Gates (AEGIS-CANON-001 §2).
+3. **Gateway Enforces:** `Proctor-Bot` and the Sequence/Barrier Gates refuse unlawful dispatch based on the 15 Governance Gates (customerSystem-CANON-001 §2).
 
 ## 3. Validation Fabric (Four Altitudes)
 

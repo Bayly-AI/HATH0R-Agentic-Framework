@@ -4,7 +4,7 @@
 
 | Check | Status | Evidence |
 |-------|--------|----------|
-| Hidden root `.hath0r/` only | OK | `.hath0r/` present; no `.ai/` / `.aegis/` / `.infraOS/` |
+| Hidden root `.hath0r/` only | OK | `.hath0r/` present; no `.ai/` / `.customerSystem/` / `.infraOS/` |
 | Knowledgebase stub | OK | `.hath0r/knowledgebase/README.md` → group hub |
 | `VERSION` SemVer | OK | root `VERSION` = `0.2.0` · `docs/governance/semantic-versioning.md` |
 | Product runbook | OK | `docs/runbook.md` |
