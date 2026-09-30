@@ -15,6 +15,7 @@ from hath0r_engine.jev.jev_tool_guard import (
     is_guarded_tool,
 )
 from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
+from hath0r_engine.memory.reflection import ReflectionEngine
 from hath0r_engine.voice.voice_config import VoiceConfig
 from hath0r_engine.voice.voice_engine import VoiceEngine
 
@@ -31,6 +32,7 @@ __all__ = [
     "MemoryGraph",
     "MemoryNode",
     "MemoryEdge",
+    "ReflectionEngine",
     "JevClient",
     "JevSettings",
     "ToolGuardRequest",
