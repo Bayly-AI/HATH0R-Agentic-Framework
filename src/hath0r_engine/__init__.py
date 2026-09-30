@@ -17,6 +17,15 @@ from hath0r_engine.gateway.client import AIGatewayClient
 from hath0r_engine.gateway.routing import TieredRouter
 from hath0r_engine.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeGraphExtractor, KnowledgeNode
 from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
+from hath0r_engine.guardrails.ast_validator import SyntaxGuardrail
+from hath0r_engine.guardrails.escalation import EscalationEvent, HumanEscalationAuditHook
+from hath0r_engine.guardrails.manager import GuardrailsManager
+from hath0r_engine.guardrails.models import (
+    GuardrailAction,
+    GuardrailEvaluation,
+    ToolCallDescriptor,
+)
+from hath0r_engine.guardrails.schema_repair import SchemaRepairEngine
 from hath0r_engine.jev.jev_client import JevClient, JevSettings, ToolGuardRequest, ToolGuardResult
 from hath0r_engine.jev.jev_tool_guard import (
     build_tool_guard_request,
@@ -135,6 +144,14 @@ __all__ = [
     "Predictor",
     "ChainOfThought",
     "BootstrapFewShotCompiler",
+    "GuardrailAction",
+    "ToolCallDescriptor",
+    "GuardrailEvaluation",
+    "SyntaxGuardrail",
+    "SchemaRepairEngine",
+    "EscalationEvent",
+    "HumanEscalationAuditHook",
+    "GuardrailsManager",
     "ComplexityTier",
     "ModelProvider",
     "GatewayConfig",
