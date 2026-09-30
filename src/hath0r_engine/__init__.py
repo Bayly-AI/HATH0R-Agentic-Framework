@@ -5,6 +5,16 @@ from __future__ import annotations
 __version__ = "1.0.0"
 
 from hath0r_engine.context.context_graph import ContextEdge, ContextGraph, ContextNode
+from hath0r_engine.gateway.base import (
+    CompletionRequest,
+    CompletionResponse,
+    ComplexityTier,
+    GatewayConfig,
+    ModelProvider,
+)
+from hath0r_engine.gateway.cache import SemanticCache
+from hath0r_engine.gateway.client import AIGatewayClient
+from hath0r_engine.gateway.routing import TieredRouter
 from hath0r_engine.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeGraphExtractor, KnowledgeNode
 from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
 from hath0r_engine.jev.jev_client import JevClient, JevSettings, ToolGuardRequest, ToolGuardResult
@@ -91,6 +101,14 @@ __all__ = [
     "WorkflowStatus",
     "DurableWorkflowEngine",
     "durable_task",
+    "ComplexityTier",
+    "ModelProvider",
+    "GatewayConfig",
+    "CompletionRequest",
+    "CompletionResponse",
+    "SemanticCache",
+    "TieredRouter",
+    "AIGatewayClient",
     "OTELTracerBot",
     "TelemetrySpan",
     "JevClient",
