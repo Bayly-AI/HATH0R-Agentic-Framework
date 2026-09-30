@@ -87,6 +87,16 @@ from hath0r_engine.sandbox.e2b_provider import E2BSandboxProvider
 from hath0r_engine.sandbox.local_provider import LocalSandboxProvider
 from hath0r_engine.sandbox.manager import SandboxManager
 from hath0r_engine.telemetry.otel_tracer import OTELTracerBot, TelemetrySpan
+from hath0r_engine.ui.components import UIComponentBuilder
+from hath0r_engine.ui.crypto_signoff import generate_cryptographic_signature
+from hath0r_engine.ui.protocol import (
+    EvidenceComponent,
+    EvidenceType,
+    HandshakeSession,
+    HandshakeState,
+    SignOffRecord,
+)
+from hath0r_engine.ui.synchronizer import BiDirectionalStateSync
 from hath0r_engine.voice.voice_config import VoiceConfig
 from hath0r_engine.voice.voice_engine import VoiceEngine
 
@@ -162,6 +172,14 @@ __all__ = [
     "AIGatewayClient",
     "OTELTracerBot",
     "TelemetrySpan",
+    "EvidenceType",
+    "HandshakeState",
+    "EvidenceComponent",
+    "SignOffRecord",
+    "HandshakeSession",
+    "UIComponentBuilder",
+    "BiDirectionalStateSync",
+    "generate_cryptographic_signature",
     "JevClient",
     "JevSettings",
     "ToolGuardRequest",
