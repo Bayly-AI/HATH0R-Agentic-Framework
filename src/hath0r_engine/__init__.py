@@ -16,6 +16,7 @@ from hath0r_engine.jev.jev_tool_guard import (
 )
 from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 from hath0r_engine.memory.reflection import ReflectionEngine
+from hath0r_engine.telemetry.otel_tracer import OTELTracerBot, TelemetrySpan
 from hath0r_engine.voice.voice_config import VoiceConfig
 from hath0r_engine.voice.voice_engine import VoiceEngine
 
@@ -33,6 +34,8 @@ __all__ = [
     "MemoryNode",
     "MemoryEdge",
     "ReflectionEngine",
+    "OTELTracerBot",
+    "TelemetrySpan",
     "JevClient",
     "JevSettings",
     "ToolGuardRequest",
