@@ -95,6 +95,18 @@
             "type": "number",
             "description": "Optional edge weight or confidence score (0.0 to 1.0)."
           },
+          "valid_from": {
+            "type": ["string", "null"],
+            "description": "Optional ISO 8601 start timestamp of edge validity."
+          },
+          "valid_to": {
+            "type": ["string", "null"],
+            "description": "Optional ISO 8601 end timestamp of edge validity."
+          },
+          "is_current": {
+            "type": "boolean",
+            "description": "Flag indicating whether the relationship is currently active."
+          },
           "metadata": {
             "type": "object",
             "description": "Additional edge metadata."

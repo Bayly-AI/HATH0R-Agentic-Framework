@@ -48,9 +48,7 @@ Contracts under `lib/contracts/` make that intent **executable**:
 from pathlib import Path
 import yaml
 
-contract = yaml.safe_load(
-    Path("lib/contracts/exit-codes.yaml").read_text(encoding="utf-8")
-)
+contract = yaml.safe_load(Path("lib/contracts/exit-codes.yaml").read_text(encoding="utf-8"))
 assert contract["schema"] == "hath0r.cli.exit-codes/1"
 by_code = {row["code"]: row for row in contract["exits"]}
 ```
