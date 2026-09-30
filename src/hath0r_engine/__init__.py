@@ -46,6 +46,26 @@ from hath0r_engine.orchestration.state_machine import (
     DurableWorkflowEngine,
     WorkflowStatus,
 )
+from hath0r_engine.pipeline.assertions import (
+    Assert,
+    SchemaAssertionError,
+    SchemaSuggestionWarning,
+    Suggest,
+    validate_json_contract,
+)
+from hath0r_engine.pipeline.module import (
+    ChainOfThought,
+    PipelineModule,
+    Predictor,
+)
+from hath0r_engine.pipeline.signature import (
+    Field,
+    InputField,
+    OutputField,
+    Prediction,
+    Signature,
+)
+from hath0r_engine.pipeline.teleprompter import BootstrapFewShotCompiler
 from hath0r_engine.sandbox.base import (
     ExecutionResult,
     NetworkPolicy,
@@ -101,6 +121,20 @@ __all__ = [
     "WorkflowStatus",
     "DurableWorkflowEngine",
     "durable_task",
+    "Field",
+    "InputField",
+    "OutputField",
+    "Prediction",
+    "Signature",
+    "SchemaAssertionError",
+    "SchemaSuggestionWarning",
+    "Assert",
+    "Suggest",
+    "validate_json_contract",
+    "PipelineModule",
+    "Predictor",
+    "ChainOfThought",
+    "BootstrapFewShotCompiler",
     "ComplexityTier",
     "ModelProvider",
     "GatewayConfig",
