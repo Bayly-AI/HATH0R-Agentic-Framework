@@ -12,8 +12,22 @@ from lib.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 def test_tri_graph_persistence_and_roundtrip(tmp_path: Path) -> None:
     # 1. Test KnowledgeGraph Persistence
     kg = KnowledgeGraph()
-    kg.add_node(KnowledgeNode(id="doc:playbook-coding", type="playbook", title="Coding Playbook", path="docs/governance/playbooks/playbook-coding.md"))
-    kg.add_node(KnowledgeNode(id="rule:cr-cli-entry-001", type="policy", title="CLI Entry Gate", path="docs/governance/rules/cr-cli-entry-001.md"))
+    kg.add_node(
+        KnowledgeNode(
+            id="doc:playbook-coding",
+            type="playbook",
+            title="Coding Playbook",
+            path="docs/governance/playbooks/playbook-coding.md",
+        )
+    )
+    kg.add_node(
+        KnowledgeNode(
+            id="rule:cr-cli-entry-001",
+            type="policy",
+            title="CLI Entry Gate",
+            path="docs/governance/rules/cr-cli-entry-001.md",
+        )
+    )
     kg.add_edge(KnowledgeEdge(source="doc:playbook-coding", target="rule:cr-cli-entry-001", relation="governed_by"))
 
     kg_file = tmp_path / "knowledge_graph.json"

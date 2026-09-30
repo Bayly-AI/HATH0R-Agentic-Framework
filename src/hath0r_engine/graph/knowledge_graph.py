@@ -337,6 +337,7 @@ class KnowledgeGraph:
     def save_to_file(self, file_path: Path | str) -> None:
         """Persist KnowledgeGraph snapshot to a JSON file."""
         import json
+
         path = Path(file_path)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(self.to_dict(), indent=2), encoding="utf-8")
@@ -345,6 +346,7 @@ class KnowledgeGraph:
     def load_from_file(cls, file_path: Path | str) -> KnowledgeGraph:
         """Load KnowledgeGraph from a JSON snapshot file."""
         import json
+
         path = Path(file_path)
         data = json.loads(path.read_text(encoding="utf-8"))
         kg = cls(schema_version=data.get("schema_version", "hath0r.knowledgegraph/1"))
@@ -352,6 +354,74 @@ class KnowledgeGraph:
             kg.add_node(KnowledgeNode(**n_dict))
         for e_dict in data.get("edges", []):
             kg.add_edge(KnowledgeEdge(**e_dict))
+        return kg
+
+    def to_sqlite(self, db_path_or_store: Any) -> Any:
+        """Persist KnowledgeGraph snapshot into SQLiteGraphStore."""
+        from .sqlite_graph import SQLiteGraphStore
+
+        store = (
+            db_path_or_store if isinstance(db_path_or_store, SQLiteGraphStore) else SQLiteGraphStore(db_path_or_store)
+        )
+        self._build_search_index()
+        for node in self.nodes.values():
+            emb = self._vector_index.vectors.get(node.id) if self._vector_index else None
+            store.upsert_node(
+                node_id=node.id,
+                node_type=node.type,
+                title=node.title,
+                graph_type="knowledge",
+                path=node.path,
+                subsystem=node.subsystem,
+                content=node.content,
+                properties=node.properties,
+                embedding=emb,
+            )
+        for edge in self.edges:
+            store.add_edge(
+                source=edge.source,
+                target=edge.target,
+                relation=edge.relation,
+                graph_type="knowledge",
+                weight=edge.weight,
+                metadata=edge.metadata,
+            )
+        return store
+
+    @classmethod
+    def load_from_sqlite(cls, db_path_or_store: Any) -> KnowledgeGraph:
+        """Load KnowledgeGraph snapshot from SQLiteGraphStore."""
+        from .sqlite_graph import SQLiteGraphStore
+
+        store = (
+            db_path_or_store if isinstance(db_path_or_store, SQLiteGraphStore) else SQLiteGraphStore(db_path_or_store)
+        )
+        kg = cls()
+        cursor = store._conn.execute("SELECT * FROM nodes WHERE graph_type = 'knowledge'")
+        for row in cursor.fetchall():
+            node_dict = store._row_to_node_dict(row)
+            node = KnowledgeNode(
+                id=node_dict["id"],
+                type=node_dict["type"],
+                title=node_dict["title"],
+                path=node_dict["path"],
+                subsystem=node_dict["subsystem"],
+                content=node_dict["content"],
+                properties=node_dict["properties"],
+            )
+            kg.add_node(node)
+
+        edges = store.get_edges(graph_type="knowledge")
+        for e in edges:
+            kg.add_edge(
+                KnowledgeEdge(
+                    source=e["source"],
+                    target=e["target"],
+                    relation=e["relation"],
+                    weight=e["weight"],
+                    metadata=e["metadata"],
+                )
+            )
         return kg
 
 
@@ -375,10 +445,10 @@ class KnowledgeGraphExtractor:
             if ":" in line:
                 k, v = line.split(":", 1)
                 key = k.strip()
-                val = v.strip().strip('"\'')
+                val = v.strip().strip("\"'")
                 # Simple list parsing [a, b]
                 if val.startswith("[") and val.endswith("]"):
-                    items = [x.strip().strip('"\'') for x in val[1:-1].split(",") if x.strip()]
+                    items = [x.strip().strip("\"'") for x in val[1:-1].split(",") if x.strip()]
                     data[key] = items
                 else:
                     data[key] = val
@@ -428,11 +498,29 @@ class KnowledgeGraphExtractor:
             kg.add_node(node)
 
             # Extract frontmatter edges
-            for dep in fm.get("depends_on", []) if isinstance(fm.get("depends_on"), list) else [fm.get("depends_on")] if fm.get("depends_on") else []:
+            for dep in (
+                fm.get("depends_on", [])
+                if isinstance(fm.get("depends_on"), list)
+                else [fm.get("depends_on")]
+                if fm.get("depends_on")
+                else []
+            ):
                 kg.add_edge(KnowledgeEdge(source=node_id, target=dep, relation="depends_on"))
-            for imp in fm.get("implements", []) if isinstance(fm.get("implements"), list) else [fm.get("implements")] if fm.get("implements") else []:
+            for imp in (
+                fm.get("implements", [])
+                if isinstance(fm.get("implements"), list)
+                else [fm.get("implements")]
+                if fm.get("implements")
+                else []
+            ):
                 kg.add_edge(KnowledgeEdge(source=node_id, target=imp, relation="implements"))
-            for gov in fm.get("governed_by", []) if isinstance(fm.get("governed_by"), list) else [fm.get("governed_by")] if fm.get("governed_by") else []:
+            for gov in (
+                fm.get("governed_by", [])
+                if isinstance(fm.get("governed_by"), list)
+                else [fm.get("governed_by")]
+                if fm.get("governed_by")
+                else []
+            ):
                 kg.add_edge(KnowledgeEdge(source=node_id, target=gov, relation="governed_by"))
 
             # Extract markdown link references: [text](path.md)

@@ -87,10 +87,12 @@ def test_evaluate_tool_guard_stub_blocks_mutating() -> None:
 
 
 def test_jev_settings_from_openfeature_env() -> None:
-    settings = JevSettings.from_env({
-        "HATH0R_FLAG_JEV_TOOL_GUARD_ENABLED": "true",
-        "JEV_MODE": "stub",
-    })
+    settings = JevSettings.from_env(
+        {
+            "HATH0R_FLAG_JEV_TOOL_GUARD_ENABLED": "true",
+            "JEV_MODE": "stub",
+        }
+    )
     assert settings.enabled is True
     assert settings.mode == "stub"
 

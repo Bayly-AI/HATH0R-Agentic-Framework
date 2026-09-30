@@ -185,4 +185,3 @@ def test_voice_action_schema_contract():
         with open(schema_path, "r", encoding="utf-8") as f:
             schema = json.load(f)
         jsonschema.validate(instance=d, schema=schema)
-

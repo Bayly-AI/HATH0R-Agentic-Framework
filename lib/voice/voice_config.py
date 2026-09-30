@@ -100,9 +100,21 @@ class VoiceConfig:
         if not platform_val or platform_val == "auto":
             platform_val = detect_platform()
 
-        stt_val = cfg_dict.get("stt", {}).get("provider") if isinstance(cfg_dict.get("stt"), dict) else cfg_dict.get("stt_provider")
-        tts_val = cfg_dict.get("tts", {}).get("provider") if isinstance(cfg_dict.get("tts"), dict) else cfg_dict.get("tts_provider")
-        router_val = cfg_dict.get("router", {}).get("provider") if isinstance(cfg_dict.get("router"), dict) else cfg_dict.get("router_provider")
+        stt_val = (
+            cfg_dict.get("stt", {}).get("provider")
+            if isinstance(cfg_dict.get("stt"), dict)
+            else cfg_dict.get("stt_provider")
+        )
+        tts_val = (
+            cfg_dict.get("tts", {}).get("provider")
+            if isinstance(cfg_dict.get("tts"), dict)
+            else cfg_dict.get("tts_provider")
+        )
+        router_val = (
+            cfg_dict.get("router", {}).get("provider")
+            if isinstance(cfg_dict.get("router"), dict)
+            else cfg_dict.get("router_provider")
+        )
 
         return cls(
             enabled=bool(cfg_dict.get("enabled", False) or mode_env in ("stub", "live")),
@@ -111,8 +123,12 @@ class VoiceConfig:
             stt_provider=str(stt_val or "auto"),
             tts_provider=str(tts_val or "auto"),
             router_provider=str(router_val or "jev"),
-            min_confidence=float(cfg_dict.get("router", {}).get("min_confidence", cfg_dict.get("min_confidence", 0.85))),
+            min_confidence=float(
+                cfg_dict.get("router", {}).get("min_confidence", cfg_dict.get("min_confidence", 0.85))
+            ),
             timeout_ms=int(cfg_dict.get("router", {}).get("timeout_ms", cfg_dict.get("timeout_ms", 250))),
-            cli_binary=str(cfg_dict.get("agent_dispatcher", {}).get("cli_binary", cfg_dict.get("cli_binary", "hath0r"))),
+            cli_binary=str(
+                cfg_dict.get("agent_dispatcher", {}).get("cli_binary", cfg_dict.get("cli_binary", "hath0r"))
+            ),
             extra=cfg_dict,
         )

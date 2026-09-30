@@ -23,12 +23,8 @@ class MemoryNode:
     content: str
     importance: float = 0.5
     tags: List[str] = field(default_factory=list)
-    created_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
-    updated_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    updated_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -103,11 +99,7 @@ class MemoryGraph:
 
         # Avoid exact duplicate edge
         for existing in self.edges:
-            if (
-                existing.source == edge.source
-                and existing.target == edge.target
-                and existing.relation == edge.relation
-            ):
+            if existing.source == edge.source and existing.target == edge.target and existing.relation == edge.relation:
                 existing.weight = edge.weight
                 existing.metadata = edge.metadata
                 self._touch()
@@ -161,17 +153,14 @@ class MemoryGraph:
                 break
 
         sub_nodes = [self.nodes[n].to_dict() for n in visited_nodes]
-        sub_edges = [
-            e.to_dict()
-            for e in self.edges
-            if e.source in visited_nodes and e.target in visited_nodes
-        ]
+        sub_edges = [e.to_dict() for e in self.edges if e.source in visited_nodes and e.target in visited_nodes]
 
         return {"nodes": sub_nodes, "edges": sub_edges}
 
     def ingest_markdown_documents(self, docs_root: Path | str) -> int:
         """Scan and ingest playbooks, runbooks, policies, procedures, and strategies into MemoryGraph."""
         import re
+
         root = Path(docs_root)
         ingested_count = 0
 

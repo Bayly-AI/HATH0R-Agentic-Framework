@@ -37,9 +37,7 @@ class JevSettings:
     # When live JEV is unreachable: allow | deny
     on_error: Literal["allow", "deny"] = "allow"
     # Decisions that block tool execution (POC treats confirm/review as block).
-    block_decisions: frozenset[str] = field(
-        default_factory=lambda: frozenset({"deny", "confirm", "review"})
-    )
+    block_decisions: frozenset[str] = field(default_factory=lambda: frozenset({"deny", "confirm", "review"}))
     min_confidence: float = 0.0
 
     @classmethod
@@ -58,10 +56,8 @@ class JevSettings:
         """
         env: Mapping[str, str] = environ if environ is not None else os.environ
         enabled_raw = (
-            env.get("JEV_TOOL_GUARD_ENABLED")
-            or env.get("HATH0R_FLAG_JEV_TOOL_GUARD_ENABLED")
-            or ""
-        ).strip().lower()
+            (env.get("JEV_TOOL_GUARD_ENABLED") or env.get("HATH0R_FLAG_JEV_TOOL_GUARD_ENABLED") or "").strip().lower()
+        )
         mode_raw = (env.get("JEV_MODE") or "").strip().lower()
         if mode_raw in {"off", "live", "stub"}:
             mode: Literal["off", "live", "stub"] = mode_raw  # type: ignore[assignment]
@@ -72,15 +68,10 @@ class JevSettings:
         else:
             mode = "off"
 
-        api_key = (
-            (env.get("JEV_API_KEY") or env.get("TYPESAFE_API_KEY") or env.get("AUTOJEV_API_KEY") or "")
-            .strip()
-        )
+        api_key = (env.get("JEV_API_KEY") or env.get("TYPESAFE_API_KEY") or env.get("AUTOJEV_API_KEY") or "").strip()
         endpoint = (env.get("JEV_ENDPOINT") or DEFAULT_TOOL_GUARD_URL).strip()
         protocol_raw = (env.get("JEV_PROTOCOL") or "preset").strip().lower()
-        protocol: Literal["preset", "systemone"] = (
-            "systemone" if protocol_raw == "systemone" else "preset"
-        )
+        protocol: Literal["preset", "systemone"] = "systemone" if protocol_raw == "systemone" else "preset"
         try:
             timeout_seconds = float(env.get("JEV_TIMEOUT_SECONDS") or DEFAULT_TIMEOUT_SECONDS)
         except ValueError:
@@ -261,10 +252,7 @@ def stub_tool_guard(request: ToolGuardRequest) -> ToolGuardResult:
         decision: GuardDecision = "deny"
         guidance = "Stub policy: destructive tool patterns require explicit human override."
         confidence = 0.92
-    elif any(
-        tok in blob
-        for tok in ("sync", "reindex", "batch", "directory", "create", "upsert", "add", "write")
-    ):
+    elif any(tok in blob for tok in ("sync", "reindex", "batch", "directory", "create", "upsert", "add", "write")):
         decision = "confirm"
         guidance = "Stub policy: mutating write requires confirmation before execution."
         confidence = 0.8
@@ -396,11 +384,7 @@ class JevClient:
 
     def _apply_block_policy(self, result: ToolGuardResult) -> ToolGuardResult:
         blocked = result.decision in self.settings.block_decisions
-        if (
-            not blocked
-            and result.decision == "allow"
-            and result.confidence < self.settings.min_confidence
-        ):
+        if not blocked and result.decision == "allow" and result.confidence < self.settings.min_confidence:
             blocked = True
             guidance = (
                 f"{result.guidance} Low confidence "
