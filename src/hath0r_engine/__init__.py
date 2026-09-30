@@ -21,6 +21,17 @@ from hath0r_engine.mcp.tool_router import DynamicToolRouter, ToolDefinition
 from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 from hath0r_engine.memory.memory_tools import MemoryPagingManager
 from hath0r_engine.memory.reflection import ReflectionEngine
+from hath0r_engine.sandbox.base import (
+    ExecutionResult,
+    NetworkPolicy,
+    SandboxConfig,
+    SandboxProvider,
+    SandboxType,
+)
+from hath0r_engine.sandbox.daytona_provider import DaytonaSandboxProvider
+from hath0r_engine.sandbox.e2b_provider import E2BSandboxProvider
+from hath0r_engine.sandbox.local_provider import LocalSandboxProvider
+from hath0r_engine.sandbox.manager import SandboxManager
 from hath0r_engine.telemetry.otel_tracer import OTELTracerBot, TelemetrySpan
 from hath0r_engine.voice.voice_config import VoiceConfig
 from hath0r_engine.voice.voice_engine import VoiceEngine
@@ -47,6 +58,15 @@ __all__ = [
     "CallerIdentity",
     "MCPRoutingTelemetry",
     "RoutingMetric",
+    "SandboxType",
+    "NetworkPolicy",
+    "SandboxConfig",
+    "ExecutionResult",
+    "SandboxProvider",
+    "E2BSandboxProvider",
+    "DaytonaSandboxProvider",
+    "LocalSandboxProvider",
+    "SandboxManager",
     "OTELTracerBot",
     "TelemetrySpan",
     "JevClient",
