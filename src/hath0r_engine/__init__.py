@@ -14,7 +14,12 @@ from hath0r_engine.jev.jev_tool_guard import (
     format_block_message,
     is_guarded_tool,
 )
+from hath0r_engine.mcp.identity import CallerIdentity
+from hath0r_engine.mcp.schema_pruner import PruningMode, SchemaPruner
+from hath0r_engine.mcp.telemetry import MCPRoutingTelemetry, RoutingMetric
+from hath0r_engine.mcp.tool_router import DynamicToolRouter, ToolDefinition
 from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
+from hath0r_engine.memory.memory_tools import MemoryPagingManager
 from hath0r_engine.memory.reflection import ReflectionEngine
 from hath0r_engine.telemetry.otel_tracer import OTELTracerBot, TelemetrySpan
 from hath0r_engine.voice.voice_config import VoiceConfig
@@ -33,7 +38,15 @@ __all__ = [
     "MemoryGraph",
     "MemoryNode",
     "MemoryEdge",
+    "MemoryPagingManager",
     "ReflectionEngine",
+    "DynamicToolRouter",
+    "ToolDefinition",
+    "SchemaPruner",
+    "PruningMode",
+    "CallerIdentity",
+    "MCPRoutingTelemetry",
+    "RoutingMetric",
     "OTELTracerBot",
     "TelemetrySpan",
     "JevClient",
