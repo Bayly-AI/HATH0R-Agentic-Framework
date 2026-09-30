@@ -6,7 +6,7 @@
 
 ## 🛠️ Developers Working on HATH0R-CLI & Core Framework
 
-This document contains deep technical specifications, Tri-Graph substrate data structures, repository layouts, binary build pipelines, and governance systems for developers building or extending `hath0r`, `hath0r-framework`, and the underlying engine.
+This document contains deep technical specifications, Tri-Graph substrate data structures, repository layouts, binary build pipelines, and cognitive engine modules for developers building or extending `hath0r`, `hath0r-framework`, and `hath0r-engine`.
 
 > **Looking to install and use Hath0r in your own projects?**  
 > You only need the **HATH0R CLI** (`hath0r`). Download pre-compiled standalone binaries in [`release/`](release/) or see the [CLI Quick Start](#-quick-start-operators--users) below.
@@ -44,6 +44,7 @@ Operator / Human Developer / Autonomous Agent
 │ • Elevation of Authority (`guest` → `sovereign`)       │
 │ • Credential Mediation (`AWS Secrets` → `~/.env`)      │
 │ • Voice Streaming Interface (Ambient Daemon)           │
+│ • Preflight & Quality Hard Gates (`preflight`, `qual`) │
 └────────────────────┬───────────────────────────────────┘
                      │
                      ▼
@@ -56,80 +57,87 @@ Operator / Human Developer / Autonomous Agent
                      │
                      ▼
 ┌────────────────────────────────────────────────────────┐
-│               Universal Project Layout                 │
-├────────────────────────────────────────────────────────┤
-│ `CFG/`  `BIN/`  `LIB/`  `SRC/`  `DIST/`  `tests/`      │
-│ `.hath0r/` (State, Caches, Working Memory, Lineage)   │
-└────────────────────────────────────────────────────────┘
+│            Hath0r Cognitive Engine Subsystems          │
+├────────────────────┬───────────────────┬───────────────┤
+│ GuardrailsManager  │ DynamicToolRouter │ AIGateway     │
+│ DurableWorkflow    │ DSPy Declarative  │ Generative UI │
+│ SandboxManager     │ OTELTracerBot     │ VoiceEngine   │
+└────────────────────┴───────────────────┴───────────────┘
 ```
 
 ---
 
-## 📦 Standalone CLI Binary Pipeline & Distribution
+## 🧠 Cognitive Engine Modules (`hath0r_engine`)
 
-The CLI operator is packaged with PyInstaller into single-file drop-in executables for all major operating systems:
+The cognitive engine is packaged under `src/hath0r_engine/` and installable as `hath0r-engine`:
 
-```text
-hathor-cli/ (Source)
-     │
-     ├── packaging/binary/hath0r-entry.py
-     └── scripts/build_binary.py
-              │
-              ▼ (PyInstaller --onefile)
-hath0r-framework/release/
-     ├── hath0r-darwin-arm64       (macOS Apple Silicon)
-     ├── hath0r-darwin-x86_64      (macOS Intel)
-     ├── hath0r-linux-x86_64       (Linux x86_64)
-     ├── hath0r-linux-arm64        (Linux ARM64)
-     ├── hath0r-windows-x64.cmd    (Windows x64)
-     ├── CHECKSUMS.sha256          (Cryptographic Signatures)
-     └── README.md                 (Execution Guide)
+### 1. Pre-Execution Guardrails & Schema Repair
+```python
+from hath0r_engine import GuardrailsManager, SyntaxGuardrail, SchemaRepairEngine
+
+manager = GuardrailsManager(guardrails=[SyntaxGuardrail()])
+manager.register_schema("execute_sql", {"type": "object", "properties": {"query": {"type": "string"}}})
+
+evaluation = manager.evaluate_and_repair("execute_sql", {"query": "SELECT * FROM users;"})
+assert evaluation.is_allowed is True
 ```
 
-To build and package standalone binaries from source:
-```bash
-python3 scripts/build_binary.py --out dist/binary
+### 2. Multi-Provider AI Gateway & Tiered Routing
+```python
+from hath0r_engine import AIGatewayClient, ModelTier, TieredRouter, SemanticCache
+
+client = AIGatewayClient(api_base="https://ai-gateway.local", default_tier=ModelTier.STANDARD)
+cache = SemanticCache(similarity_threshold=0.92)
+
+# Cosine-similarity memoized routing
+cached_resp = cache.get("Summarize PR 142")
 ```
 
----
+### 3. Declarative DSPy Pipelines with Assertions
+```python
+from hath0r_engine import Signature, InputField, OutputField, Assert, ChainOfThought
 
-## 🧠 Tri-Graph Cognitive Substrate Deep Dive
+class CodeRefactor(Signature):
+    """Refactor code while preserving interface invariants."""
+    source_code: str = InputField(desc="Legacy code block")
+    target_code: str = OutputField(desc="Modernized code")
 
-HATHOR replaces flat prompt buffers with an interconnected, three-tier cognitive graph model:
-
-```text
-                                Tri-Graph Substrate
-                                         │
-        ┌────────────────────────────────┼────────────────────────────────┐
-        ▼                                ▼                                ▼
-1. KnowledgeGraph (KG)           2. ContextGraph (CG)             3. MemoryGraph (MG)
-   • Static Codebase Lineage        • Dynamic Agent Topologies       • Semantic Working Memory
-   • Markdown & Contract Parsing    • JEV Guard Action Audit         • Rules, Decisions & Playbooks
-   • .hath0r/state/cache/           • .hath0r/state/context/         • .hath0r/memory/graph.json
+module = ChainOfThought(CodeRefactor)
+Assert(len(result.target_code) > 0, "Target code must not be empty")
 ```
 
-### 1. KnowledgeGraph (KG — Static Layer)
-- **Engine Module:** [`lib/graph/knowledge_graph.py`](lib/graph/knowledge_graph.py)
-- **Role:** Maps static AST code structures, markdown governance docs with YAML frontmatter, and schema contracts into relational tables.
-- **Relational Edges:** `depends_on`, `implements`, `governed_by`, `references`.
-- **Contract Schema:** [`contracts/schemas/knowledge-graph-schema.json`](contracts/schemas/knowledge-graph-schema.json).
+### 4. Durable Execution & Replayable Workflows
+```python
+from hath0r_engine import DurableWorkflowEngine, EventJournal, HumanHibernationGate, durable_task
 
-### 2. ContextGraph (CG — Dynamic Runtime Layer)
-- **Engine Module:** [`lib/context/context_graph.py`](lib/context/context_graph.py)
-- **Role:** Tracks real-time multi-agent execution hierarchies, subagent delegations, and task lifecycles during active turns.
-- **JEV Guard Audit:** Attaches `guarded_by` relationships to all mutating tool executions, ensuring zero-trust verification.
-- **Dynamic Pruning:** Subagents receive tailored context subgraphs instead of full transcript dumps.
-- **Contract Schema:** [`contracts/schemas/context-graph-schema.json`](contracts/schemas/context-graph-schema.json).
+journal = EventJournal(db_path=":memory:")
+engine = DurableWorkflowEngine(journal=journal)
 
-### 3. MemoryGraph (MG — Semantic Working Memory Layer)
-- **Engine Module:** [`lib/memory/memory_graph.py`](lib/memory/memory_graph.py)
-- **Role:** Persists episodic memory, architectural decisions, and operational rules in `.hath0r/memory/graph.json`.
-- **Relational Edge Semantics:**
-  - `ENFORCES` (e.g. *Branch Policy* $\rightarrow$ *Issue First Enforcement*)
-  - `REQUIRES` (e.g. *Onboarding Factory* $\rightarrow$ *Layout Validation*)
-  - `DERIVES_FROM` / `SUPERSEDES` (capturing evolving architectural decisions)
-  - `RESOLVES` / `RELATES_TO`
-- **Contract Schema:** [`contracts/schemas/memory-graph-schema.json`](contracts/schemas/memory-graph-schema.json).
+@durable_task(name="build_binaries")
+def build_step(ctx):
+    return {"status": "ok"}
+```
+
+### 5. Generative UI & Cryptographic Evidence Handshake
+```python
+from hath0r_engine import HandshakeSession, UIComponentBuilder, BiDirectionalStateSync
+
+session = HandshakeSession(task_name="release_v1_0_1")
+diff_card = UIComponentBuilder.build_diff_viewer("VERSION", "1.0.0", "1.0.1")
+session.add_component(diff_card)
+
+# Cryptographic immutable sign-off
+sign_off = session.sign_off(reviewer="somesayray", role="architect", decision=True)
+assert len(sign_off.signature) == 64  # SHA-256 HMAC
+```
+
+### 6. Dynamic MCP Tool Router & Schema Pruning
+```python
+from hath0r_engine import DynamicToolRouter, SchemaPruner, PruningLevel
+
+router = DynamicToolRouter(similarity_threshold=0.6)
+pruner = SchemaPruner(level=PruningLevel.AGGRESSIVE)
+```
 
 ---
 
@@ -139,6 +147,7 @@ The HATHOR layout is strictly language-agnostic and organized for autonomous age
 
 | Directory | Subsystem Role | Governance Pointer |
 | :--- | :--- | :--- |
+| **`src/hath0r_engine/`** | Cognitive substrate, guardrails, gateway, durable orchestration | `src/hath0r_engine/AGENTS.md` |
 | **`cfg/`** | Configuration files, factory workflows, docker setups | `cfg/AGENTS.md` |
 | **`bin/`** | Executables, hooks, and member bootstrap scripts | `bin/hath0r-bootstrap.sh` |
 | **`lib/`** | Graph engines, cognitive substrate, shared libraries | `lib/AGENTS.md` |
@@ -150,27 +159,23 @@ The HATHOR layout is strictly language-agnostic and organized for autonomous age
 
 ---
 
-## 🔒 Security & Zero-Trust Credential Resolution
-
-The CLI resolves credentials through a fixed four-tier elevation order:
-1. **AWS Secrets Manager** (Primary enterprise source when configured).
-2. **User Root Credentials File** (`~/.credentials/<service>/.env`).
-3. **Project Scoped Environment File** (`.env`).
-4. **Sibling / Workspace Environment Files** (if explicitly permitted).
-
-**Zero Leakage Guarantee:** Credentials are never printed in transcripts, passed into AST graphs, or committed to Git.
-
----
-
 ## 🧪 Testing & Verification
 
-Run the framework test harness across all graph engines and schema validators:
+Run the comprehensive test suite across all cognitive subsystems:
 
 ```bash
-pytest tests/ -v
+pytest -v
 ```
 
-All 35+ test cases validate `MemoryGraph` serialization, `KnowledgeGraph` relational indexing, `ContextGraph` delegation trees, and contract schema compliance.
+**97 passed unit tests** validate:
+- Temporal Knowledge Graphs & SQLite graph persistence
+- Dynamic MCP Tool Router ranking & Schema Pruning
+- AI Gateway Tiered Routing & Semantic Cache
+- Durable Workflow Engine & Event Journal replay
+- Declarative DSPy signatures & Assert invariants
+- Deterministic Tool Guardrails & AST security
+- Generative UI evidence handshakes & Cryptographic sign-offs
+- Zero-Trust Sandboxes & OpenTelemetry tracing
 
 ---
 
