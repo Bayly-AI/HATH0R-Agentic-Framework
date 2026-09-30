@@ -20,7 +20,7 @@ HATHOR transforms any software repository into a self-governing, durable operati
 > - 🪟 **Windows (x64):** [`release/hath0r-windows-x64.cmd`](release/hath0r-windows-x64.cmd)
 >
 > Or install globally via Python package managers:  
-> `pipx install hath0r-cli` (or `pip install hath0r-cli`)
+> `pipx install hath0r-cli` (or `pip install hath0r-cli` / `pip install hath0r-engine`)
 
 ---
 
@@ -44,17 +44,23 @@ cd /path/to/your-project
 /path/to/release/hath0r-darwin-arm64 init
 ```
 
-### 3. Run Autonomous Agent Workflows
+### 3. Run Autonomous Agent Workflows & RAG Queries
 ```sh
-hath0r run --workflow repo-onboarding
-hath0r status
+# Query knowledge base and memory graph via CLI
+hath0r kb path
+hath0r memory search "architectural rules"
+hath0r context query
+
+# Execute preflight quality gates
+hath0r preflight
+hath0r quality
 ```
 
 ---
 
-## 🌟 Why Enterprises Choose HATHOR
+## 🌟 Cognitive Substrate & Engine Capabilities (`hath0r_engine`)
 
-Traditional AI coding assistants rely on ephemeral chat windows, flat-file dumps, and unverified prompt injections. HATHOR establishes a **resilient, cryptographically governed runtime** for autonomous engineering teams:
+Hath0r provides an enterprise-grade cognitive substrate exported via `src/hath0r_engine/`:
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -68,7 +74,7 @@ Traditional AI coding assistants rely on ephemeral chat windows, flat-file dumps
 │ • Automated Repo Onboarding (`hath0r init`)                            │
 │ • Universal Bot & Factory Orchestrator                                 │
 │ • Streaming Voice Interface & Ambient Daemon                           │
-│ • Cryptographic JEV Policy Enforcement                                 │
+│ • Preflight & Quality Hard Gates (`hath0r preflight / quality`)        │
 └───────────────────────────────────┬────────────────────────────────────┘
                                     │
                                     ▼
@@ -76,49 +82,79 @@ Traditional AI coding assistants rely on ephemeral chat windows, flat-file dumps
 │                      Tri-Graph Cognitive Substrate                     │
 ├───────────────────┬────────────────────────────┬───────────────────────┤
 │  KnowledgeGraph   │        ContextGraph        │      MemoryGraph      │
-│  (Static Lineage) │     (Dynamic Session)      │   (Working Memory)    │
+│  (Static Lineage) │     (Dynamic Session)      │ (Temporal & Reflection)│
 └───────────────────┴────────────────────────────┴───────────────────────┘
+                                    │
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│                 Modern Cognitive Subsystems (v1.0.1)                   │
+├──────────────────────┬─────────────────────────┬───────────────────────┤
+│ • AST Guardrails     │ • Dynamic Tool Router   │ • Durable Replay      │
+│ • AI Gateway Tiering │ • Declarative DSPy      │ • Generative UI Sign  │
+│ • Zero-Trust Sandbox │ • OpenTelemetry Tracing │ • Voice Speculation   │
+└──────────────────────┴─────────────────────────┴───────────────────────┘
 ```
 
-### 💎 Key Business & Architectural Advantages
+### 💎 Key Architectural Modules
 
-1. 🧠 **Tri-Graph Cognitive Substrate (Zero Tribal Memory Loss):**
-   - **KnowledgeGraph (KG):** Compiles code ASTs, API contracts, and governance policies into relational graph lineage (`depends_on`, `implements`, `governed_by`).
-   - **ContextGraph (CG):** Dynamically prunes context windows and visualizes live subagent delegation trees with zero context window bloat.
-   - **MemoryGraph (MG):** Persists semantic rules, decisions, and failure learnings across developer turns with causal `ENFORCES` / `RESOLVES` relations.
+1. 🧠 **Temporal Tri-Graph Substrate (`hath0r_engine.memory` / `graph`):**
+   - **KnowledgeGraph (KG):** Compiles code ASTs, API contracts, and governance policies into relational graph lineage.
+   - **ContextGraph (CG):** Dynamically tracks live session spans and subagent delegations.
+   - **MemoryGraph (MG):** Stores entities with temporal validity windows (`valid_from`, `valid_to`, `is_valid_at(as_of)`), Letta-compatible paging (`MemoryPagingManager`), and sleep-cycle reflection consolidation (`ReflectionEngine`).
 
-2. 🛡️ **Zero-Trust Security & JEV Guard:**
-   - Every mutating action (file write, git commit, shell execution) is evaluated against Justified Execution Verification (JEV) policies before touching your filesystem.
+2. 🛡️ **Deterministic Pre-Execution Guardrails (`hath0r_engine.guardrails`):**
+   - Static Python AST, destructive shell script, and SQL drop blocking via `SyntaxGuardrail`.
+   - In-flight parameter type coercion and JSON schema recovery via `SchemaRepairEngine`.
+   - Security incident escalation to human authorization gates via `HumanEscalationAuditHook`.
 
-3. 🚀 **Universal & Language Agnostic:**
-   - Works immediately out of the box with any stack: React/Vite, Next.js, Python FastAPI/Django, Go, Rust, Java, or C#.
+3. 🔀 **Dynamic MCP Tool Router & Schema Pruning (`hath0r_engine.mcp`):**
+   - Hybrid BM25 + dense vector tool ranking (`DynamicToolRouter`) across massive MCP server swarms.
+   - Context compression via `SchemaPruner` (`AGGRESSIVE`, `STANDARD`, `MINIMAL`, `NONE`).
 
-4. 🎙️ **Streaming Voice & Ambient CLI:**
-   - Low-latency conversational audio interface allows engineers to interact verbally with their agentic workspace in real time.
+4. 🌐 **Multi-Provider AI Gateway & Tiered Routing (`hath0r_engine.gateway`):**
+   - Universal LLM routing across `LIGHT`, `STANDARD`, and `REASONING` model tiers.
+   - Cosine-similarity `SemanticCache` with FinOps token and cost savings tracking.
 
-5. ⚡ **Declarative Multi-Bot Factories:**
-   - Pre-configured micro-bot pipelines automate repository onboarding, PR generation, CI testing, and release artifact packaging.
+5. ⏱️ **Durable Orchestration & Event Replay (`hath0r_engine.orchestration`):**
+   - SQLite append-only `EventJournal` with deterministic step memoization and replay recovery in `DurableWorkflowEngine`.
+   - Zero-compute human suspension with `HumanHibernationGate` and `@durable_task`.
+
+6. 🧩 **Declarative DSPy Pipelines (`hath0r_engine.pipeline`):**
+   - Typed declarative `Signature`, `InputField`, `OutputField`, and step-by-step `ChainOfThought`.
+   - Programmatic assertion validation and automated self-correction (`Assert`, `Suggest`).
+   - Automated few-shot demonstration synthesis via `BootstrapFewShotCompiler`.
+
+7. 🎨 **Generative UI & Evidence Handshake Protocol (`hath0r_engine.ui`):**
+   - Structured visual dashboard components: diff viewers, test status badges, parameter tuning sliders, and cryptographic sign-off cards.
+   - Bi-directional state synchronization (`BiDirectionalStateSync`) and deterministic HMAC SHA-256 signature verification (`generate_cryptographic_signature`).
+
+8. 📦 **Zero-Trust Isolated Sandboxes (`hath0r_engine.sandbox`):**
+   - Ephemeral micro-VM execution environments (`E2BSandboxProvider`, `DaytonaSandboxProvider`, `LocalSandboxProvider`) with zero-trust network policies managed via `SandboxManager`.
 
 ---
 
 ## 🛠️ For Framework & Engine Developers
 
-If you are developing core cognitive algorithms, contract schemas, or CLI extensions:
-
-- 📖 **Deep Technical Architecture:** See [TECH_README.md](TECH_README.md) for data schemas, graph engines, and subsystem specifications.
-- 📐 **Contract Schemas:** Located in [`contracts/schemas/`](contracts/schemas/).
-- 🧪 **Unit Tests:** Run `pytest tests/ -v` (35+ unit tests covering graph compilation and persistence).
+- 📖 **Deep Technical Architecture:** See [TECH_README.md](TECH_README.md).
+- 📐 **Contract Schemas:** Located in [`contracts/`](contracts/).
+- 🧪 **Unit Tests:** Run `pytest -v` (**97 unit tests passing** across all cognitive subsystems).
 - 🏛️ **Control Tower:** Located in [Bayly-AI/HATH0R-CLI](https://github.com/Bayly-AI/HATH0R-CLI).
 
 ---
 
-## 📜 Documentation Index
+## 📜 Governance Strategies & Playbooks Index
 
-- [Standalone Releases & Binaries (release/README.md)](release/README.md)
-- [Technical Developer Reference (TECH_README.md)](TECH_README.md)
-- [Control Tower Repository (HATH0R-CLI)](https://github.com/Bayly-AI/HATH0R-CLI)
-- [Governance Rules & Promotion Standards](docs/governance/)
-- [Canonical Documentation Corpus](docs/README.md)
+| Capability | Architecture Strategy | Operator Playbook |
+| :--- | :--- | :--- |
+| **Agent Rules & CLI-First RAG** | [`strategies/agent-rules-rag-cli-first-strategy.md`](docs/governance/strategies/agent-rules-rag-cli-first-strategy.md) | [`playbooks/agent-rules-rag-cli-first-playbook.md`](docs/governance/playbooks/agent-rules-rag-cli-first-playbook.md) |
+| **Generative UI & Sign-Off** | [`strategies/generative-ui-evidence-handshake-strategy.md`](docs/governance/strategies/generative-ui-evidence-handshake-strategy.md) | [`playbooks/generative-ui-evidence-handshake-playbook.md`](docs/governance/playbooks/generative-ui-evidence-handshake-playbook.md) |
+| **Pre-Execution Guardrails** | [`strategies/deterministic-tool-guardrails-strategy.md`](docs/governance/strategies/deterministic-tool-guardrails-strategy.md) | [`playbooks/deterministic-tool-guardrails-playbook.md`](docs/governance/playbooks/deterministic-tool-guardrails-playbook.md) |
+| **Declarative DSPy Pipelines** | [`strategies/declarative-dspy-pipeline-strategy.md`](docs/governance/strategies/declarative-dspy-pipeline-strategy.md) | [`playbooks/declarative-dspy-pipeline-playbook.md`](docs/governance/playbooks/declarative-dspy-pipeline-playbook.md) |
+| **AI Gateway & Tiered Routing** | [`strategies/ai-gateway-tiered-routing-strategy.md`](docs/governance/strategies/ai-gateway-tiered-routing-strategy.md) | [`playbooks/ai-gateway-tiered-routing-playbook.md`](docs/governance/playbooks/ai-gateway-tiered-routing-playbook.md) |
+| **Durable Workflow Replay** | [`strategies/durable-execution-checkpointing-strategy.md`](docs/governance/strategies/durable-execution-checkpointing-strategy.md) | [`playbooks/durable-execution-checkpointing-playbook.md`](docs/governance/playbooks/durable-execution-checkpointing-playbook.md) |
+| **Zero-Trust Compute Sandbox** | [`strategies/isolated-compute-sandbox-strategy.md`](docs/governance/strategies/isolated-compute-sandbox-strategy.md) | [`playbooks/isolated-compute-sandbox-playbook.md`](docs/governance/playbooks/isolated-compute-sandbox-playbook.md) |
+| **Dynamic MCP Tool Routing** | [`strategies/dynamic-mcp-tool-router-strategy.md`](docs/governance/strategies/dynamic-mcp-tool-router-strategy.md) | [`playbooks/dynamic-mcp-tool-router-playbook.md`](docs/governance/playbooks/dynamic-mcp-tool-router-playbook.md) |
+| **Temporal Knowledge Graphs** | [`strategies/temporal-knowledge-graph-strategy.md`](docs/governance/strategies/temporal-knowledge-graph-strategy.md) | [`playbooks/temporal-knowledge-graph-playbook.md`](docs/governance/playbooks/temporal-knowledge-graph-playbook.md) |
 
 ---
 

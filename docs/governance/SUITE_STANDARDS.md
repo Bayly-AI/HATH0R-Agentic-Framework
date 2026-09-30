@@ -18,6 +18,15 @@ This repository **adopts** suite governance from the control tower. Canonical pr
 | Docker group | https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/docker-group-standard.md |
 | Semantic versioning | https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/semantic-versioning.md |
 | MCP configuration | https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/mcp-configuration.md |
+| Agent RAG & CLI-First Doctrine | `docs/governance/strategies/agent-rules-rag-cli-first-strategy.md` |
+| Generative UI Evidence Handshake | `docs/governance/strategies/generative-ui-evidence-handshake-strategy.md` |
+| Deterministic Tool Guardrails | `docs/governance/strategies/deterministic-tool-guardrails-strategy.md` |
+| Declarative DSPy Agent Pipelines | `docs/governance/strategies/declarative-dspy-pipeline-strategy.md` |
+| AI Gateway Tiered Routing | `docs/governance/strategies/ai-gateway-tiered-routing-strategy.md` |
+| Durable Workflow Replay Engine | `docs/governance/strategies/durable-execution-checkpointing-strategy.md` |
+| Zero-Trust Sandbox Isolation | `docs/governance/strategies/isolated-compute-sandbox-strategy.md` |
+| Dynamic MCP Tool Router & Pruning | `docs/governance/strategies/dynamic-mcp-tool-router-strategy.md` |
+| Temporal Knowledge Graphs | `docs/governance/strategies/temporal-knowledge-graph-strategy.md` |
 
 ## Local product stubs
 
