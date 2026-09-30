@@ -26,12 +26,27 @@ class ContextNode:
 
 @dataclass
 class ContextEdge:
-    """A dynamic runtime relationship edge between context entities."""
+    """A dynamic runtime relationship edge between context entities with temporal support."""
 
     source: str
     target: str
     relation: str  # spawned_by | delegated_to | executed_tool | guarded_by | produced_artifact | consumed_context
+    valid_from: Optional[str] = None
+    valid_to: Optional[str] = None
+    is_current: bool = True
     metadata: Dict[str, Any] = field(default_factory=dict)
+
+    def is_valid_at(self, as_of: Optional[str] = None, only_current: bool = False) -> bool:
+        """Check whether this edge is valid at a given timestamp or in current state."""
+        if only_current and not self.is_current:
+            return False
+        if not as_of:
+            return True if not only_current else self.is_current
+        if self.valid_from and self.valid_from > as_of:
+            return False
+        if self.valid_to and self.valid_to < as_of:
+            return False
+        return True
 
 
 class ContextGraph:

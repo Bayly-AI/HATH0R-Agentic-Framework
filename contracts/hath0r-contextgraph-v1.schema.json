@@ -91,6 +91,18 @@
             "enum": ["spawned_by", "delegated_to", "executed_tool", "guarded_by", "produced_artifact", "consumed_context"],
             "description": "Dynamic runtime relationship type."
           },
+          "valid_from": {
+            "type": ["string", "null"],
+            "description": "Optional ISO 8601 start timestamp of edge validity."
+          },
+          "valid_to": {
+            "type": ["string", "null"],
+            "description": "Optional ISO 8601 end timestamp of edge validity."
+          },
+          "is_current": {
+            "type": "boolean",
+            "description": "Flag indicating whether the relationship is currently active."
+          },
           "metadata": {
             "type": "object",
             "description": "Execution metadata or timestamp."

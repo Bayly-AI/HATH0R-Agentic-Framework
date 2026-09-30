@@ -15,17 +15,32 @@ from typing import Any, Dict, List, Optional, Set
 
 @dataclass
 class MemoryNode:
-    """A node in the Hath0r Memory Graph."""
+    """A node in the Hath0r Memory Graph with temporal interval support."""
 
     id: str
-    type: str  # rule, concept, decision, fact, episode, topic
+    type: str  # rule, concept, decision, fact, episode, topic, insight
     label: str
     content: str
     importance: float = 0.5
     tags: List[str] = field(default_factory=list)
+    valid_from: Optional[str] = None
+    valid_to: Optional[str] = None
+    is_current: bool = True
     created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     updated_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     metadata: Dict[str, Any] = field(default_factory=dict)
+
+    def is_valid_at(self, as_of: Optional[str] = None, only_current: bool = False) -> bool:
+        """Check whether this node is valid at a given timestamp or in the current state."""
+        if only_current and not self.is_current:
+            return False
+        if not as_of:
+            return True if not only_current else self.is_current
+        if self.valid_from and self.valid_from > as_of:
+            return False
+        if self.valid_to and self.valid_to < as_of:
+            return False
+        return True
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -39,6 +54,9 @@ class MemoryNode:
             content=data["content"],
             importance=data.get("importance", 0.5),
             tags=data.get("tags", []),
+            valid_from=data.get("valid_from"),
+            valid_to=data.get("valid_to"),
+            is_current=data.get("is_current", True),
             created_at=data.get("created_at", datetime.now(timezone.utc).isoformat()),
             updated_at=data.get("updated_at", datetime.now(timezone.utc).isoformat()),
             metadata=data.get("metadata", {}),
@@ -47,13 +65,28 @@ class MemoryNode:
 
 @dataclass
 class MemoryEdge:
-    """A relational edge between two memory nodes."""
+    """A relational edge between two memory nodes with temporal interval support."""
 
     source: str
     target: str
     relation: str  # ENFORCES, REQUIRES, DERIVES_FROM, RELATES_TO, RESOLVES, PRECEDES, SUPERSEDES
     weight: float = 1.0
+    valid_from: Optional[str] = None
+    valid_to: Optional[str] = None
+    is_current: bool = True
     metadata: Dict[str, Any] = field(default_factory=dict)
+
+    def is_valid_at(self, as_of: Optional[str] = None, only_current: bool = False) -> bool:
+        """Check whether this edge is valid at a given timestamp or in the current state."""
+        if only_current and not self.is_current:
+            return False
+        if not as_of:
+            return True if not only_current else self.is_current
+        if self.valid_from and self.valid_from > as_of:
+            return False
+        if self.valid_to and self.valid_to < as_of:
+            return False
+        return True
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -65,6 +98,9 @@ class MemoryEdge:
             target=data["target"],
             relation=data["relation"],
             weight=data.get("weight", 1.0),
+            valid_from=data.get("valid_from"),
+            valid_to=data.get("valid_to"),
+            is_current=data.get("is_current", True),
             metadata=data.get("metadata", {}),
         )
 
@@ -108,17 +144,29 @@ class MemoryGraph:
         self.edges.append(edge)
         self._touch()
 
-    def get_edges_for_node(self, node_id: str) -> List[MemoryEdge]:
-        """Get all incoming and outgoing edges for a given node."""
-        return [e for e in self.edges if e.source == node_id or e.target == node_id]
+    def get_edges_for_node(
+        self,
+        node_id: str,
+        as_of: Optional[str] = None,
+        only_current: bool = False,
+    ) -> List[MemoryEdge]:
+        """Get all incoming and outgoing edges for a given node with temporal filtering."""
+        return [
+            e
+            for e in self.edges
+            if (e.source == node_id or e.target == node_id)
+            and e.is_valid_at(as_of=as_of, only_current=only_current)
+        ]
 
     def find_nodes(
         self,
         node_type: Optional[str] = None,
         tag: Optional[str] = None,
         min_importance: float = 0.0,
+        as_of: Optional[str] = None,
+        only_current: bool = False,
     ) -> List[MemoryNode]:
-        """Find memory nodes matching specified criteria."""
+        """Find memory nodes matching specified criteria and temporal validity."""
         results = []
         for node in self.nodes.values():
             if node_type and node.type != node_type:
@@ -127,11 +175,19 @@ class MemoryGraph:
                 continue
             if node.importance < min_importance:
                 continue
+            if not node.is_valid_at(as_of=as_of, only_current=only_current):
+                continue
             results.append(node)
         return results
 
-    def get_neighborhood(self, node_id: str, depth: int = 1) -> Dict[str, Any]:
-        """Extract a subgraph neighborhood around a central node up to a given depth."""
+    def get_neighborhood(
+        self,
+        node_id: str,
+        depth: int = 1,
+        as_of: Optional[str] = None,
+        only_current: bool = False,
+    ) -> Dict[str, Any]:
+        """Extract a subgraph neighborhood around a central node up to a given depth with temporal filtering."""
         if node_id not in self.nodes:
             return {"nodes": [], "edges": []}
 
@@ -142,6 +198,8 @@ class MemoryGraph:
             next_frontier: Set[str] = set()
             for curr in current_frontier:
                 for edge in self.edges:
+                    if not edge.is_valid_at(as_of=as_of, only_current=only_current):
+                        continue
                     if edge.source == curr and edge.target not in visited_nodes:
                         next_frontier.add(edge.target)
                         visited_nodes.add(edge.target)
@@ -153,7 +211,13 @@ class MemoryGraph:
                 break
 
         sub_nodes = [self.nodes[n].to_dict() for n in visited_nodes]
-        sub_edges = [e.to_dict() for e in self.edges if e.source in visited_nodes and e.target in visited_nodes]
+        sub_edges = [
+            e.to_dict()
+            for e in self.edges
+            if e.source in visited_nodes
+            and e.target in visited_nodes
+            and e.is_valid_at(as_of=as_of, only_current=only_current)
+        ]
 
         return {"nodes": sub_nodes, "edges": sub_edges}
 
@@ -307,6 +371,9 @@ class MemoryGraph:
                 relation=edge.relation,
                 graph_type="memory",
                 weight=edge.weight,
+                valid_from=edge.valid_from,
+                valid_to=edge.valid_to,
+                is_current=edge.is_current,
                 metadata=edge.metadata,
             )
         return store
@@ -344,6 +411,9 @@ class MemoryGraph:
                     target=e["target"],
                     relation=e["relation"],
                     weight=e["weight"],
+                    valid_from=e.get("valid_from"),
+                    valid_to=e.get("valid_to"),
+                    is_current=e.get("is_current", True),
                     metadata=e["metadata"],
                 )
             )
