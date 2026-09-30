@@ -3,7 +3,7 @@ id: lib-subsystem
 type: subsystem
 title: Library Engine Subsystem
 depends_on: [contracts-subsystem]
-governed_by: [cr-branch-gov-001, CR-CLI-ENTRY-001]
+governed_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, cr-branch-gov-001]
 ---
 # Library Engine Subsystem — AGENTS Context
 
@@ -18,3 +18,4 @@ governed_by: [cr-branch-gov-001, CR-CLI-ENTRY-001]
 ## 2. Constraints & Rules
 - Zero external runtime dependencies for core graph modules (`lib/graph`, `lib/context`).
 - All tool execution events recorded in `ContextGraph` must link to JEV guard verification nodes.
+- High-level cognitive extensions are exported through `src/hath0r_engine/`.

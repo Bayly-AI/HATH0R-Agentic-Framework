@@ -30,13 +30,28 @@ class KnowledgeNode:
 
 @dataclass
 class KnowledgeEdge:
-    """A directed relational edge in the KnowledgeGraph."""
+    """A directed relational edge in the KnowledgeGraph with temporal interval support."""
 
     source: str
     target: str
     relation: str  # depends_on | implements | references | governed_by | validates | contains | routes_to | invokes
     weight: float = 1.0
+    valid_from: Optional[str] = None
+    valid_to: Optional[str] = None
+    is_current: bool = True
     metadata: Dict[str, Any] = field(default_factory=dict)
+
+    def is_valid_at(self, as_of: Optional[str] = None, only_current: bool = False) -> bool:
+        """Check whether this edge is valid at a given timestamp or in the current state."""
+        if only_current and not self.is_current:
+            return False
+        if not as_of:
+            return True if not only_current else self.is_current
+        if self.valid_from and self.valid_from > as_of:
+            return False
+        if self.valid_to and self.valid_to < as_of:
+            return False
+        return True
 
 
 class BM25Index:
@@ -188,17 +203,53 @@ class KnowledgeGraph:
             self._adjacency[edge.source] = []
         self._adjacency[edge.source].append(edge)
 
-    def get_neighbors(self, node_id: str, relation: Optional[str] = None) -> List[KnowledgeNode]:
-        """Find neighboring nodes for a given entity."""
+    def get_neighbors(
+        self,
+        node_id: str,
+        relation: Optional[str] = None,
+        as_of: Optional[str] = None,
+        only_current: bool = False,
+    ) -> List[KnowledgeNode]:
+        """Find neighboring nodes for a given entity with optional temporal filtering."""
         neighbors = []
         for edge in self._adjacency.get(node_id, []):
+            if not edge.is_valid_at(as_of=as_of, only_current=only_current):
+                continue
             if relation is None or edge.relation == relation:
                 if edge.target in self.nodes:
                     neighbors.append(self.nodes[edge.target])
         return neighbors
 
-    def get_lineage(self, node_id: str, max_depth: int = 3) -> Dict[str, Any]:
-        """Traverse upstream/downstream lineage tree for a given entity."""
+    def get_edges(
+        self,
+        source: Optional[str] = None,
+        target: Optional[str] = None,
+        relation: Optional[str] = None,
+        as_of: Optional[str] = None,
+        only_current: bool = False,
+    ) -> List[KnowledgeEdge]:
+        """Filter graph edges matching criteria and temporal validity."""
+        matched = []
+        for edge in self.edges:
+            if source and edge.source != source:
+                continue
+            if target and edge.target != target:
+                continue
+            if relation and edge.relation != relation:
+                continue
+            if not edge.is_valid_at(as_of=as_of, only_current=only_current):
+                continue
+            matched.append(edge)
+        return matched
+
+    def get_lineage(
+        self,
+        node_id: str,
+        max_depth: int = 3,
+        as_of: Optional[str] = None,
+        only_current: bool = False,
+    ) -> Dict[str, Any]:
+        """Traverse upstream/downstream lineage tree for a given entity at a specific point in time."""
         visited: Set[str] = set()
         tree: Dict[str, Any] = {"id": node_id, "children": []}
 
@@ -207,12 +258,17 @@ class KnowledgeGraph:
                 return
             visited.add(current_id)
             for edge in self._adjacency.get(current_id, []):
+                if not edge.is_valid_at(as_of=as_of, only_current=only_current):
+                    continue
                 child_node = self.nodes.get(edge.target)
                 child_repr = {
                     "id": edge.target,
                     "relation": edge.relation,
                     "title": child_node.title if child_node else edge.target,
                     "type": child_node.type if child_node else "unknown",
+                    "valid_from": edge.valid_from,
+                    "valid_to": edge.valid_to,
+                    "is_current": edge.is_current,
                     "children": [],
                 }
                 current_tree["children"].append(child_repr)
@@ -384,6 +440,9 @@ class KnowledgeGraph:
                 relation=edge.relation,
                 graph_type="knowledge",
                 weight=edge.weight,
+                valid_from=edge.valid_from,
+                valid_to=edge.valid_to,
+                is_current=edge.is_current,
                 metadata=edge.metadata,
             )
         return store
@@ -419,6 +478,9 @@ class KnowledgeGraph:
                     target=e["target"],
                     relation=e["relation"],
                     weight=e["weight"],
+                    valid_from=e.get("valid_from"),
+                    valid_to=e.get("valid_to"),
+                    is_current=e.get("is_current", True),
                     metadata=e["metadata"],
                 )
             )
