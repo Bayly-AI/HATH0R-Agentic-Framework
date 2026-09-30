@@ -1,7 +1,7 @@
 # AGENTS.md — HATH0R Agentic Framework
 
 > Role: **OpenSource HATHOR framework + docs corpus** · member of **OpenSource Project** (`hath0r-opensource`)  
-> Updated: 2026-09-24
+> Updated: 2026-09-30
 
 ## Group membership (CRITICAL)
 
@@ -34,6 +34,26 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 3. **Docs before code**: Require procedure/strategy/playbook/runbook (see `docs/governance/workflow-documentation-standard.md`) before scaffolding implementation.
 4. **Detail**: `docs/governance/rules/cr-cli-entry-001.md` · `docs/governance/cli-first-rules.md` · tower canonical: https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md
 
+## CR-RAG-RETRIEVAL-001: Hybrid Tri-Graph RAG & Memory Doctrine (CRITICAL — org-wide)
+
+1. **No Context Stuffing**: Agents must never load whole unbounded file trees into prompt context.
+2. **Tri-Graph Hybrid Retrieval**:
+   - **KnowledgeGraph (`lib.graph` / `contracts/` / `docs/`)**: Static architecture, contracts, schemas, and rule invariants.
+   - **ContextGraph (`lib.context` / `hath0r context`)**: Dynamic session state, active subagent executions, and span lineages.
+   - **MemoryGraph (`hath0r_engine.memory` / `hath0r memory`)**: Long-term temporal entity nodes, Letta-compatible memory paging (`MemoryPagingManager`), and consolidation reflections (`ReflectionEngine`).
+3. **Temporal Validity Filtering**: Edges and nodes must be evaluated using `is_valid_at(as_of)` to respect entity state mutations over time.
+4. **Tool Dynamic Routing & Pruning**: Use `DynamicToolRouter` with BM25 + dense vector ranking and `SchemaPruner` to compress tool descriptions.
+
+## CR-SUBSTRATE-001: Mandatory Cognitive Substrate Technology Utilization (CRITICAL — org-wide)
+
+All agents executing tasks within Hath0r must utilize our unified cognitive modules (`src/hath0r_engine/`):
+- **Pre-Execution Safety**: Apply `GuardrailsManager` and `SyntaxGuardrail` (AST/SQL validation) with in-flight `SchemaRepairEngine` parameter coercion.
+- **AI Gateway & FinOps**: Route completion requests through `AIGatewayClient` and `TieredRouter` (`LIGHT`, `STANDARD`, `REASONING`) with `SemanticCache` memoization.
+- **Durable Orchestration**: Execute multi-step flows via `DurableWorkflowEngine` and `EventJournal` to support replayability and `HumanHibernationGate` suspension.
+- **Declarative DSPy Pipelines**: Build structured reasoning with `Signature`, `ChainOfThought`, programmatic `Assert`, and `BootstrapFewShotCompiler`.
+- **Generative UI & Evidence Handshake**: Emit interactive diffs, sliders, and HMAC SHA-256 signatures via `HandshakeSession` and `UIComponentBuilder`.
+- **Zero-Trust Sandboxing**: Run untrusted user commands inside isolated providers (`E2BSandboxProvider`, `DaytonaSandboxProvider`, `LocalSandboxProvider`).
+
 ## Suite standards (member pointers)
 
 Index: `docs/governance/SUITE_STANDARDS.md`  
@@ -49,7 +69,7 @@ Do **not** use `.ai/`, `.customerSystem/`, or `.infraOS/`.
 
 ## Knowledgebase (CRITICAL — cr-kb-tower-001)
 
-1. Point local knowledgebase operations at the OpenSource group hub.
+1. Point local knowledgebase operations at the OpenSource group hub (`hath0r kb path`).
 2. Keep member `.hath0r/knowledgebase` as stub/pointer only.
 3. Resolve control-tower / suite orientation to **HATH0R-CLI**.
 4. Framework `docs/` is the **canonical OpenSource documentation** corpus.
@@ -71,11 +91,12 @@ Canonical definition: group `AGENTS.md` (*Open issues tracking*). Also listed in
 2. Branch from `development` only, using:
    `feature|bugfix|enhancement|research|fix|chore/<issue-number>-short-slug`
    Example: `chore/4-control-tower-cli`
-3. Open the PR with **base = `development`** (feature work never targets testing/staging/master).
-4. **Owner (`@somesayray`) may merge any PR at any time** (admin bypass enabled; approvals not required).
-5. Merge into **`development` only** for feature work.
-6. Promote via `development → testing → staging → master` — do not skip stages.
-7. **PR CI failures notify `@somesayray`** via `.github/workflows/notify-pr-failure.yml` (PR comment + optional Slack `SLACK_WEBHOOK_URL`).
+3. Validate branch: `hath0r branch validate <branch-name>`.
+4. Open the PR with **base = `development`** (feature work never targets testing/staging/master).
+5. **Owner (`@somesayray`) may merge any PR at any time** (admin bypass enabled; approvals not required).
+6. Merge into **`development` only** for feature work.
+7. Promote via `development → testing → staging → master` — do not skip stages.
+8. **PR CI failures notify `@somesayray`** via `.github/workflows/notify-pr-failure.yml`.
 
 ### Canonical branches (locked)
 
@@ -126,19 +147,22 @@ Do not skip the playbook/runbook gate. Layout scaffolding without a documented o
 ## Branch rules (pointer)
 
 See `docs/governance/branch-rules.md` (cr-branch-gov-001 / CR-BAI-001). Work PRs → `development` only; release trains use `release/x.x.x`.
+
 ## PR workflow hardening
 
 See `docs/governance/pr-workflow.md`. Work PRs → `development` (agents + CODEOWNERS). **Human gate** before staging/master.
+
 ## SonarCloud Quality Gate (CRITICAL)
 
 - Canonical thresholds: SonarCloud Quality Gate only — do not modify gate thresholds ad hoc.
 - PR check **SonarCloud Quality Gate** is a hard stop on failure.
 - See `docs/governance/sonarcloud-quality-gates.md`
 - Secret required: `SONAR_TOKEN`
+
 ## Documentation → MCP
 
-Docs are published to the **proper group MCP** via control-tower
-`python3 scripts/publish-docs-to-mcp.py` (`cfg/mcp-doc-publish.json`).
+Docs are published to the **proper group MCP** via control-tower:
+`hath0r docs share --pr <pr-number>` or `python3 scripts/publish-docs-to-mcp.py` (`cfg/mcp-doc-publish.json`).
 See HATH0R-CLI `docs/governance/mcp-doc-publish.md`.
 
 ## Semantic Versioning (SemVer)
@@ -147,20 +171,11 @@ See HATH0R-CLI `docs/governance/mcp-doc-publish.md`.
 - PRs must declare version impact (`major`, `minor`, `patch`, or `none`).
 - See `docs/governance/semantic-versioning.md` and `docs/governance/playbooks/release-runbook.md`.
 
-## Hyper Context Pointers
-- **Archive Subsystem**: `archive/AGENTS.md`
-
-## Hyper Context Pointers
-- **Contracts Subsystem**: `contracts/AGENTS.md`
-
-## Hyper Context Pointers
-- **Tests Subsystem**: `tests/AGENTS.md`
-
-## Hyper Context Pointers
+## Hyper Context Subsystem Pointers
+- **Engine Core Subsystem**: `src/hath0r_engine/AGENTS.md`
 - **Docs Subsystem**: `docs/AGENTS.md`
-
-## Hyper Context Pointers
-- **Cfg Subsystem**: `cfg/AGENTS.md`
-
-## Hyper Context Pointers
-- **Lib Subsystem**: `lib/AGENTS.md`
+- **Contracts Subsystem**: `contracts/AGENTS.md`
+- **Testing Subsystem**: `tests/AGENTS.md`
+- **Configuration Subsystem**: `cfg/AGENTS.md`
+- **Library Subsystem**: `lib/AGENTS.md`
+- **Archive Subsystem**: `archive/AGENTS.md`

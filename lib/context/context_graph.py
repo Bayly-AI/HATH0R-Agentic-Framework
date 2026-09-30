@@ -9,6 +9,7 @@ from __future__ import annotations
 import datetime
 import uuid
 from dataclasses import asdict, dataclass, field
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 
@@ -108,6 +109,7 @@ class ContextGraph:
         """Persist ContextGraph snapshot to a JSON file."""
         import json
         from pathlib import Path
+
         path = Path(file_path)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(self.to_dict(), indent=2), encoding="utf-8")
@@ -117,6 +119,7 @@ class ContextGraph:
         """Load ContextGraph from a JSON snapshot file."""
         import json
         from pathlib import Path
+
         path = Path(file_path)
         data = json.loads(path.read_text(encoding="utf-8"))
         cg = cls(session_id=data.get("session_id"))

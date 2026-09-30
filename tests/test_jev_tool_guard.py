@@ -5,17 +5,12 @@ from __future__ import annotations
 import asyncio
 from typing import Any, Mapping
 
-import pytest
-
 from lib.jev.jev_client import (
     JevClient,
     JevSettings,
-    ToolGuardRequest,
-    ToolGuardResult,
     stub_tool_guard,
 )
 from lib.jev.jev_tool_guard import (
-    GUARDED_TOOL_PROFILES,
     build_tool_guard_request,
     evaluate_tool_guard,
     format_block_message,
@@ -92,10 +87,12 @@ def test_evaluate_tool_guard_stub_blocks_mutating() -> None:
 
 
 def test_jev_settings_from_openfeature_env() -> None:
-    settings = JevSettings.from_env({
-        "HATH0R_FLAG_JEV_TOOL_GUARD_ENABLED": "true",
-        "JEV_MODE": "stub",
-    })
+    settings = JevSettings.from_env(
+        {
+            "HATH0R_FLAG_JEV_TOOL_GUARD_ENABLED": "true",
+            "JEV_MODE": "stub",
+        }
+    )
     assert settings.enabled is True
     assert settings.mode == "stub"
 

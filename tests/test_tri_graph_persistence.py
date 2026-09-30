@@ -3,16 +3,31 @@ and governance document ingestion (playbooks, runbooks, policies, procedures, st
 """
 
 from pathlib import Path
-from lib.graph.knowledge_graph import KnowledgeGraph, KnowledgeNode, KnowledgeEdge
-from lib.context.context_graph import ContextGraph, ContextNode, ContextEdge
-from lib.memory.memory_graph import MemoryGraph, MemoryNode, MemoryEdge
+
+from lib.context.context_graph import ContextGraph
+from lib.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeNode
+from lib.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 
 
 def test_tri_graph_persistence_and_roundtrip(tmp_path: Path) -> None:
     # 1. Test KnowledgeGraph Persistence
     kg = KnowledgeGraph()
-    kg.add_node(KnowledgeNode(id="doc:playbook-coding", type="playbook", title="Coding Playbook", path="docs/governance/playbooks/playbook-coding.md"))
-    kg.add_node(KnowledgeNode(id="rule:cr-cli-entry-001", type="policy", title="CLI Entry Gate", path="docs/governance/rules/cr-cli-entry-001.md"))
+    kg.add_node(
+        KnowledgeNode(
+            id="doc:playbook-coding",
+            type="playbook",
+            title="Coding Playbook",
+            path="docs/governance/playbooks/playbook-coding.md",
+        )
+    )
+    kg.add_node(
+        KnowledgeNode(
+            id="rule:cr-cli-entry-001",
+            type="policy",
+            title="CLI Entry Gate",
+            path="docs/governance/rules/cr-cli-entry-001.md",
+        )
+    )
     kg.add_edge(KnowledgeEdge(source="doc:playbook-coding", target="rule:cr-cli-entry-001", relation="governed_by"))
 
     kg_file = tmp_path / "knowledge_graph.json"
@@ -28,6 +43,7 @@ def test_tri_graph_persistence_and_roundtrip(tmp_path: Path) -> None:
     cg = ContextGraph(session_id="test-session-123")
     subagent_node = cg.register_subagent(subagent_id="subagent-42", label="Code Reviewer")
     tool_id = cg.record_tool_execution(tool_name="view_file", caller_id=subagent_node.id, jev_status="approved")
+    assert tool_id.startswith("tool-")
 
     cg_file = tmp_path / "context_graph.json"
     cg.save_to_file(cg_file)
@@ -55,8 +71,8 @@ def test_tri_graph_persistence_and_roundtrip(tmp_path: Path) -> None:
 
 
 def test_memory_graph_governance_docs_ingestion(tmp_path: Path) -> None:
-    # Point at the live framework docs directory
-    framework_docs = Path("/Users/raybayly/Development/OpenSource/hath0r-framework/docs")
+    # Point at the live framework docs directory relative to repo root
+    framework_docs = Path(__file__).resolve().parents[1] / "docs"
     mg = MemoryGraph(graph_id="hathor-framework-governance-memory")
 
     count = mg.ingest_markdown_documents(framework_docs)
