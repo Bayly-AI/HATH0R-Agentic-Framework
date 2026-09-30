@@ -173,6 +173,7 @@ def test_mcp_server_manifest_registration_and_pruned_llm_tools():
             {
                 "name": "voice_synthesizer",
                 "description": "Synthesizes real-time streaming audio from markdown text using neural voice engine.",
+                "tags": ["synthesizer", "tts", "speech", "synthesize"],
                 "inputSchema": {
                     "type": "object",
                     "properties": {
@@ -185,6 +186,7 @@ def test_mcp_server_manifest_registration_and_pruned_llm_tools():
             {
                 "name": "voice_transcriber",
                 "description": "Transcribes incoming PCM streaming audio buffers into text transcript.",
+                "tags": ["transcription", "stt", "transcribe"],
                 "inputSchema": {
                     "type": "object",
                     "properties": {
