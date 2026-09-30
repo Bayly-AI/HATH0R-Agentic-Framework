@@ -3,8 +3,6 @@
 import os
 from unittest.mock import patch
 
-import pytest
-
 from lib.voice.voice_config import VoiceConfig, detect_platform
 from lib.voice.voice_engine import (
     AgentDispatcher,
@@ -162,6 +160,7 @@ def test_voice_engine_e2e_system_two_escalation():
 def test_voice_action_schema_contract():
     import json
     from pathlib import Path
+
     import jsonschema
 
     action = VoiceAction(
@@ -186,4 +185,3 @@ def test_voice_action_schema_contract():
         with open(schema_path, "r", encoding="utf-8") as f:
             schema = json.load(f)
         jsonschema.validate(instance=d, schema=schema)
-

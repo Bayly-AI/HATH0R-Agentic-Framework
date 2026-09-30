@@ -208,6 +208,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -m pip install "pytest>=7.0" "httpx>=0.24" "structlog>=23.0" "check-jsonschema>=0.29" "jsonschema>=4.0"
-          PYTHONPATH=. pytest tests/ -v
+          python -m pip install "setuptools>=68" "wheel"
+          python -m pip install "pytest>=7.0" "pytest-cov>=4.0" "httpx>=0.24" "structlog>=23.0" "check-jsonschema>=0.29" "jsonschema>=4.0"
+          python -m pip install -e .
+          PYTHONPATH=.:src pytest tests/ --cov=hath0r_engine --cov=lib --cov-report=xml -v
 

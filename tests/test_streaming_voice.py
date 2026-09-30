@@ -7,8 +7,6 @@ import struct
 import time
 from typing import List
 
-import pytest
-
 from lib.voice import (
     AdaptiveEnergyVAD,
     MockAudioAdapter,
