@@ -93,6 +93,9 @@ class SQLiteGraphStore:
                     target TEXT NOT NULL,
                     relation TEXT NOT NULL,
                     weight REAL NOT NULL DEFAULT 1.0,
+                    valid_from TEXT,
+                    valid_to TEXT,
+                    is_current INTEGER NOT NULL DEFAULT 1,
                     metadata TEXT NOT NULL DEFAULT '{}',
                     FOREIGN KEY(source) REFERENCES nodes(id) ON DELETE CASCADE,
                     FOREIGN KEY(target) REFERENCES nodes(id) ON DELETE CASCADE
@@ -107,6 +110,9 @@ class SQLiteGraphStore:
             """)
             self._conn.execute("""
                 CREATE INDEX IF NOT EXISTS idx_edges_relation ON edges(relation);
+            """)
+            self._conn.execute("""
+                CREATE INDEX IF NOT EXISTS idx_edges_is_current ON edges(is_current);
             """)
 
             # Full Text Search virtual table (FTS5)
@@ -224,17 +230,20 @@ class SQLiteGraphStore:
         *,
         graph_type: str = "knowledge",
         weight: float = 1.0,
+        valid_from: Optional[str] = None,
+        valid_to: Optional[str] = None,
+        is_current: bool = True,
         metadata: Optional[Dict[str, Any]] = None,
     ) -> None:
-        """Add a directed relational edge."""
+        """Add a directed relational edge with optional temporal validity bounds."""
         meta_json = json.dumps(metadata or {})
         with self._conn:
             self._conn.execute(
                 """
-                INSERT INTO edges (graph_type, source, target, relation, weight, metadata)
-                VALUES (?, ?, ?, ?, ?, ?)
+                INSERT INTO edges (graph_type, source, target, relation, weight, valid_from, valid_to, is_current, metadata)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
-                (graph_type, source, target, relation, weight, meta_json),
+                (graph_type, source, target, relation, weight, valid_from, valid_to, 1 if is_current else 0, meta_json),
             )
 
     def get_edges(
@@ -244,8 +253,10 @@ class SQLiteGraphStore:
         target: Optional[str] = None,
         relation: Optional[str] = None,
         graph_type: Optional[str] = None,
+        as_of: Optional[str] = None,
+        only_current: bool = False,
     ) -> List[Dict[str, Any]]:
-        """Query edges matching given criteria."""
+        """Query edges matching given criteria, including temporal interval filtering."""
         clauses = []
         params: List[Any] = []
         if source:
@@ -260,10 +271,17 @@ class SQLiteGraphStore:
         if graph_type:
             clauses.append("graph_type = ?")
             params.append(graph_type)
+        if only_current:
+            clauses.append("is_current = 1")
+        if as_of:
+            clauses.append("(valid_from IS NULL OR valid_from <= ?)")
+            params.append(as_of)
+            clauses.append("(valid_to IS NULL OR valid_to >= ?)")
+            params.append(as_of)
 
         where = f"WHERE {' AND '.join(clauses)}" if clauses else ""
         cursor = self._conn.execute(
-            f"SELECT id, graph_type, source, target, relation, weight, metadata FROM edges {where}",
+            f"SELECT id, graph_type, source, target, relation, weight, valid_from, valid_to, is_current, metadata FROM edges {where}",
             params,
         )
         edges = []
@@ -276,6 +294,9 @@ class SQLiteGraphStore:
                     "target": row["target"],
                     "relation": row["relation"],
                     "weight": row["weight"],
+                    "valid_from": row["valid_from"],
+                    "valid_to": row["valid_to"],
+                    "is_current": bool(row["is_current"]),
                     "metadata": json.loads(row["metadata"]),
                 }
             )

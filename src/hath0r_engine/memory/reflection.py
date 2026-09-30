@@ -57,8 +57,13 @@ class ReflectionEngine:
         node: MemoryNode,
         query: str = "",
         reference_time: Optional[datetime] = None,
+        as_of: Optional[str] = None,
+        only_current: bool = False,
     ) -> Dict[str, float]:
-        """Compute composite retrieval relevance score for a memory node."""
+        """Compute composite retrieval relevance score for a memory node with temporal filtering."""
+        if not node.is_valid_at(as_of=as_of, only_current=only_current):
+            return {"composite": 0.0, "recency": 0.0, "importance": 0.0, "similarity": 0.0}
+
         recency = self.score_recency(node.created_at, reference_time=reference_time)
         importance = max(0.0, min(1.0, float(node.importance)))
 
@@ -87,19 +92,55 @@ class ReflectionEngine:
         query: str = "",
         top_k: int = 10,
         node_types: Optional[Sequence[str]] = None,
+        as_of: Optional[str] = None,
+        only_current: bool = False,
     ) -> List[Tuple[MemoryNode, Dict[str, float]]]:
-        """Rank memory nodes by composite relevance score."""
+        """Rank memory nodes by composite relevance score with temporal filtering."""
         allowed_types = set(node_types) if node_types else None
         scored: List[Tuple[MemoryNode, Dict[str, float]]] = []
 
         for node in memory_graph.nodes.values():
             if allowed_types and node.type not in allowed_types:
                 continue
-            scores = self.score_relevance(node, query=query)
-            scored.append((node, scores))
+            if not node.is_valid_at(as_of=as_of, only_current=only_current):
+                continue
+            scores = self.score_relevance(node, query=query, as_of=as_of, only_current=only_current)
+            if scores["composite"] > 0.0:
+                scored.append((node, scores))
 
         scored.sort(key=lambda x: x[1]["composite"], reverse=True)
         return scored[:top_k]
+
+    def consolidate_sleep_cycle(
+        self,
+        memory_graph: MemoryGraph,
+        cluster_threshold: int = 2,
+        max_insights: int = 5,
+        prune_below_importance: float = 0.1,
+    ) -> Dict[str, Any]:
+        """Execute autonomous sleep-cycle memory consolidation.
+
+        Clusters episodic memories into insights, links them via relational edges,
+        and prunes stale low-importance ephemeral nodes.
+        """
+        new_insights = self.synthesize_reflections(
+            memory_graph, cluster_threshold=cluster_threshold, max_insights=max_insights
+        )
+
+        # Prune very low importance ephemeral nodes
+        pruned_ids = []
+        for nid, node in list(memory_graph.nodes.items()):
+            if node.type in ("episode", "topic") and node.importance < prune_below_importance:
+                del memory_graph.nodes[nid]
+                memory_graph.edges = [e for e in memory_graph.edges if e.source != nid and e.target != nid]
+                pruned_ids.append(nid)
+
+        return {
+            "insights_generated": len(new_insights),
+            "insights": [n.to_dict() for n in new_insights],
+            "pruned_nodes_count": len(pruned_ids),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }
 
     def synthesize_reflections(
         self,
