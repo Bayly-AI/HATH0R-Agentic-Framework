@@ -7,6 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] - 2026-09-30
+
+### Advanced Cognitive Engine, Temporal RAG & Tri-Graph Substrates
+
+This release introduces the complete next-generation cognitive architecture for Hath0r, adding temporal graph memory, dynamic tool routing, multi-provider AI gateway tiering, pre-execution guardrails, DSPy declarative pipelines, durable replayable workflows, generative UI evidence handshakes, zero-trust compute sandboxes, and unified agent governance.
+
+### Added & Enhanced
+
+- **Temporal Knowledge Graphs & Letta Memory Substrate (#126)**:
+  - Temporal graph edges with `valid_from`, `valid_to`, `is_current`, and point-in-time validity filtering `is_valid_at(as_of)`.
+  - Letta-compatible `MemoryPagingManager` and `ReflectionEngine.consolidate_sleep_cycle`.
+- **Dynamic Semantic Tool Router & Context Schema Pruning (#127)**:
+  - Hybrid BM25 + dense vector tool ranking (`DynamicToolRouter`) for massive MCP server swarms.
+  - Aggressive context compression via `SchemaPruner` (`AGGRESSIVE`, `STANDARD`, `MINIMAL`, `NONE`).
+  - Caller identity tracking and OpenTelemetry metrics (`MCPRoutingTelemetry`).
+- **Zero-Trust Isolated Compute Sandboxes (#128)**:
+  - Pluggable provider hierarchy (`E2BSandboxProvider`, `DaytonaSandboxProvider`, `LocalSandboxProvider`) with zero-trust network egress controls managed via `SandboxManager`.
+- **Durable Orchestration & Event-Sourced Replay Engine (#129)**:
+  - SQLite-backed append-only `EventJournal` with deterministic step memoization and crash recovery in `DurableWorkflowEngine`.
+  - Zero-compute human suspension with `HumanHibernationGate` and `@durable_task` decorator.
+- **Multi-Provider AI Gateway & Tiered Routing (#130)**:
+  - Universal gateway adapter `AIGatewayClient` with dynamic tiered model routing (`LIGHT`, `STANDARD`, `REASONING`).
+  - Cosine-similarity `SemanticCache` with FinOps token and cost savings tracking.
+- **Declarative Agent Pipelines with DSPy Module Compilation (#131)**:
+  - Typed declarative `Signature` with `InputField` and `OutputField`.
+  - Programmatic invariant validation and auto-correction (`Assert`, `Suggest`, `validate_json_contract`).
+  - Step-by-step reasoning modules (`ChainOfThought`, `Predictor`) and teleprompter compilation (`BootstrapFewShotCompiler`).
+- **Deterministic Pre-Execution Tool Guardrails (#132)**:
+  - Static Python AST analyzer (`SyntaxGuardrail`) preventing unauthorized execution, destructive shell scripts, and SQL drops.
+  - Automated in-flight parameter coercion (`SchemaRepairEngine`) and `HumanEscalationAuditHook`.
+- **Generative UI & Evidence Handshake Protocol (#133)**:
+  - Structured dashboard streaming cards (`DiffViewer`, `TestBadge`, `ParameterSlider`, `CryptoSignoffCard`).
+  - Bi-directional state synchronization (`BiDirectionalStateSync`) and cryptographic HMAC SHA-256 sign-offs (`generate_cryptographic_signature`).
+- **Agent Governance & CLI-First RAG Doctrine (#142)**:
+  - Formally codified `CR-RAG-RETRIEVAL-001` and `CR-SUBSTRATE-001` across `AGENTS.md` and all subsystem contexts.
+  - Added `docs/governance/strategies/` and `docs/governance/playbooks/` specifications.
+
+---
+
 ## [1.0.0] - 2026-09-29
 
 ### Official 1.0.0 Release — Enterprise Agentic Framework & Standalone CLI Operator
