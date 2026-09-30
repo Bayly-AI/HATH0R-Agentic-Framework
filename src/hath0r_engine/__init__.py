@@ -21,6 +21,21 @@ from hath0r_engine.mcp.tool_router import DynamicToolRouter, ToolDefinition
 from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 from hath0r_engine.memory.memory_tools import MemoryPagingManager
 from hath0r_engine.memory.reflection import ReflectionEngine
+from hath0r_engine.orchestration.durable_agent import durable_task
+from hath0r_engine.orchestration.hibernation import (
+    GateStatus,
+    HumanGateRequest,
+    WorkflowSuspendedException,
+)
+from hath0r_engine.orchestration.journal import (
+    EventJournal,
+    EventRecord,
+    EventType,
+)
+from hath0r_engine.orchestration.state_machine import (
+    DurableWorkflowEngine,
+    WorkflowStatus,
+)
 from hath0r_engine.sandbox.base import (
     ExecutionResult,
     NetworkPolicy,
@@ -67,6 +82,15 @@ __all__ = [
     "DaytonaSandboxProvider",
     "LocalSandboxProvider",
     "SandboxManager",
+    "EventType",
+    "EventRecord",
+    "EventJournal",
+    "GateStatus",
+    "HumanGateRequest",
+    "WorkflowSuspendedException",
+    "WorkflowStatus",
+    "DurableWorkflowEngine",
+    "durable_task",
     "OTELTracerBot",
     "TelemetrySpan",
     "JevClient",
