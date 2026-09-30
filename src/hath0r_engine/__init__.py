@@ -6,6 +6,7 @@ __version__ = "1.0.0"
 
 from hath0r_engine.context.context_graph import ContextEdge, ContextGraph, ContextNode
 from hath0r_engine.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeGraphExtractor, KnowledgeNode
+from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
 from hath0r_engine.jev.jev_client import JevClient, JevSettings, ToolGuardRequest, ToolGuardResult
 from hath0r_engine.jev.jev_tool_guard import (
     build_tool_guard_request,
@@ -23,6 +24,7 @@ __all__ = [
     "KnowledgeNode",
     "KnowledgeEdge",
     "KnowledgeGraphExtractor",
+    "SQLiteGraphStore",
     "ContextGraph",
     "ContextNode",
     "ContextEdge",

@@ -32,9 +32,7 @@ class VoiceAction:
     payload: Dict[str, Any]
     platform: str = "agnostic"
     action_id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    timestamp: str = field(
-        default_factory=lambda: datetime.datetime.now(datetime.timezone.utc).isoformat()
-    )
+    timestamp: str = field(default_factory=lambda: datetime.datetime.now(datetime.timezone.utc).isoformat())
     metadata: Dict[str, Any] = field(default_factory=dict)
     schema: str = "hath0r.voice.action/1"
 
@@ -148,7 +146,9 @@ class WindowsAudioAdapter(PlatformAudioAdapter):
     def execute_computer_action(self, target: str, action: str, args: Optional[List[str]] = None) -> bool:
         try:
             if action in ("open_app", "open_url"):
-                subprocess.run(["powershell", "-NoProfile", "-Command", f"Start-Process '{target}'"], check=False, timeout=3)
+                subprocess.run(
+                    ["powershell", "-NoProfile", "-Command", f"Start-Process '{target}'"], check=False, timeout=3
+                )
                 return True
         except Exception:
             pass
@@ -215,6 +215,7 @@ class HeuristicDecisionRouter(SystemOneRouter):
                 if path.is_file():
                     try:
                         import json
+
                         data = json.loads(path.read_text(encoding="utf-8"))
                         v_name = data.get("voice_name") or data.get("tts", {}).get("voice_name")
                         if v_name:
@@ -224,7 +225,6 @@ class HeuristicDecisionRouter(SystemOneRouter):
                     except Exception:
                         pass
         return wake_words
-
 
     def route(self, transcript: str) -> Optional[VoiceAction]:
         t = transcript.strip().lower()
@@ -290,9 +290,26 @@ class HeuristicDecisionRouter(SystemOneRouter):
 
             # Known Hath0r CLI subcommands
             known_subcmds = {
-                "doctor", "version", "status", "kb", "knowledgebase", "config",
-                "run", "start", "stop", "test", "init", "factory", "workflow",
-                "mcp", "context", "graph", "build", "check", "info", "help"
+                "doctor",
+                "version",
+                "status",
+                "kb",
+                "knowledgebase",
+                "config",
+                "run",
+                "start",
+                "stop",
+                "test",
+                "init",
+                "factory",
+                "workflow",
+                "mcp",
+                "context",
+                "graph",
+                "build",
+                "check",
+                "info",
+                "help",
             }
             if parts and subcmd not in known_subcmds:
                 # If addressed utterance isn't a recognized CLI subcommand or system action,
@@ -344,7 +361,6 @@ class HeuristicDecisionRouter(SystemOneRouter):
             )
 
         return None
-
 
 
 class JevDecisionRouter(SystemOneRouter):

@@ -23,12 +23,8 @@ class MemoryNode:
     content: str
     importance: float = 0.5
     tags: List[str] = field(default_factory=list)
-    created_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
-    updated_at: str = field(
-        default_factory=lambda: datetime.now(timezone.utc).isoformat()
-    )
+    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    updated_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -103,11 +99,7 @@ class MemoryGraph:
 
         # Avoid exact duplicate edge
         for existing in self.edges:
-            if (
-                existing.source == edge.source
-                and existing.target == edge.target
-                and existing.relation == edge.relation
-            ):
+            if existing.source == edge.source and existing.target == edge.target and existing.relation == edge.relation:
                 existing.weight = edge.weight
                 existing.metadata = edge.metadata
                 self._touch()
@@ -161,17 +153,14 @@ class MemoryGraph:
                 break
 
         sub_nodes = [self.nodes[n].to_dict() for n in visited_nodes]
-        sub_edges = [
-            e.to_dict()
-            for e in self.edges
-            if e.source in visited_nodes and e.target in visited_nodes
-        ]
+        sub_edges = [e.to_dict() for e in self.edges if e.source in visited_nodes and e.target in visited_nodes]
 
         return {"nodes": sub_nodes, "edges": sub_edges}
 
     def ingest_markdown_documents(self, docs_root: Path | str) -> int:
         """Scan and ingest playbooks, runbooks, policies, procedures, and strategies into MemoryGraph."""
         import re
+
         root = Path(docs_root)
         ingested_count = 0
 
@@ -290,3 +279,72 @@ class MemoryGraph:
         path = Path(file_path)
         data = json.loads(path.read_text(encoding="utf-8"))
         return cls.from_dict(data)
+
+    def to_sqlite(self, db_path_or_store: Any) -> Any:
+        """Persist MemoryGraph snapshot into SQLiteGraphStore."""
+        from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
+
+        store = (
+            db_path_or_store if isinstance(db_path_or_store, SQLiteGraphStore) else SQLiteGraphStore(db_path_or_store)
+        )
+        for node in self.nodes.values():
+            store.upsert_node(
+                node_id=node.id,
+                node_type=node.type,
+                title=node.label,
+                graph_type="memory",
+                content=node.content,
+                importance=node.importance,
+                tags=node.tags,
+                properties=node.metadata,
+                created_at=node.created_at,
+                updated_at=node.updated_at,
+            )
+        for edge in self.edges:
+            store.add_edge(
+                source=edge.source,
+                target=edge.target,
+                relation=edge.relation,
+                graph_type="memory",
+                weight=edge.weight,
+                metadata=edge.metadata,
+            )
+        return store
+
+    @classmethod
+    def load_from_sqlite(cls, db_path_or_store: Any, graph_id: str = "default-memory-space") -> MemoryGraph:
+        """Load MemoryGraph snapshot from SQLiteGraphStore."""
+        from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
+
+        store = (
+            db_path_or_store if isinstance(db_path_or_store, SQLiteGraphStore) else SQLiteGraphStore(db_path_or_store)
+        )
+        graph = cls(graph_id=graph_id)
+        cursor = store._conn.execute("SELECT * FROM nodes WHERE graph_type = 'memory'")
+        for row in cursor.fetchall():
+            node_dict = store._row_to_node_dict(row)
+            node = MemoryNode(
+                id=node_dict["id"],
+                type=node_dict["type"],
+                label=node_dict["title"],
+                content=node_dict["content"],
+                importance=node_dict["importance"],
+                tags=node_dict["tags"],
+                created_at=node_dict["created_at"],
+                updated_at=node_dict["updated_at"],
+                metadata=node_dict["properties"],
+            )
+            graph.nodes[node.id] = node
+
+        edges = store.get_edges(graph_type="memory")
+        for e in edges:
+            graph.edges.append(
+                MemoryEdge(
+                    source=e["source"],
+                    target=e["target"],
+                    relation=e["relation"],
+                    weight=e["weight"],
+                    metadata=e["metadata"],
+                )
+            )
+        return graph

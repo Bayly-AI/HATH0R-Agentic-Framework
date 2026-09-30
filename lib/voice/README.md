@@ -97,10 +97,12 @@ Default settings reside in `cfg/voice.json`. Environment variable overrides:
 ```python
 from lib.voice import VoiceEngine, VoiceConfig, AgentDispatcher
 
+
 # Define callback for whichever model is active in the project
 def my_active_agent(prompt: str) -> str:
     # Delegate to active model (e.g. Gemini, Claude, GPT, or local agent)
     return f"Active agent received: {prompt}"
+
 
 dispatcher = AgentDispatcher(agent_callback=my_active_agent)
 engine = VoiceEngine(agent_dispatcher=dispatcher)

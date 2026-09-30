@@ -1,7 +1,6 @@
 """Unit and contract tests for hath0r_engine package distribution and exports."""
 
 
-
 def test_hath0r_engine_top_level_exports():
     """Verify top-level package exposes all cognitive substrate and safety classes."""
     import hath0r_engine
