@@ -4,16 +4,9 @@ import struct
 import tempfile
 from pathlib import Path
 
-import pytest
 from hath0r_engine.vision import (
-    DesignToCodeSynthesizer,
-    DocumentLayoutParser,
-    DocumentStructure,
-    GroundedTarget,
-    ImageMetadata,
     MultimodalPerceptionManager,
     VisionEngine,
-    VisionResult,
 )
 
 

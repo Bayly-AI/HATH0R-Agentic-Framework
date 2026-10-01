@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import hashlib
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Optional
 
-from hath0r_engine.vision.models import GroundedTarget, ImageMetadata, VisionResult
+from hath0r_engine.vision.models import GroundedTarget, VisionResult
 from hath0r_engine.vision.perception import MultimodalPerceptionManager
 
 

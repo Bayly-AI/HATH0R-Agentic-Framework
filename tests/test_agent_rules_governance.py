@@ -1,7 +1,6 @@
 """Unit tests verifying Agent Rules, Governance Subsystem files, and RAG/CLI specifications."""
 
 from pathlib import Path
-import pytest
 
 
 def test_root_agents_md_governance():

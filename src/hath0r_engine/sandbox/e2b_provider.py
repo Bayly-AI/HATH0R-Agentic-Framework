@@ -6,14 +6,13 @@ import os
 import subprocess
 import time
 import uuid
-from typing import Any, Dict, List, Optional
+from typing import Dict, Optional
 
 from hath0r_engine.sandbox.base import (
     ExecutionResult,
     NetworkPolicy,
     SandboxConfig,
     SandboxProvider,
-    SandboxType,
 )
 
 

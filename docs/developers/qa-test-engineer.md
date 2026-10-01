@@ -62,17 +62,20 @@ Always start non-idempotent verification with `--dry-run`, then `--yes` only whe
 * **Knowledge Plane (HATHOR-RP-004 / HATHOR-RP-012):** Drafts are invisible without `--include-drafts`; no auto-promotion to `verified`; secrets/PII scanners must block promotion.
 * **Ticketing adapters:** Authority reconciliation (upstream wins), buffered/`degraded: true` states, and UUIDv7 dedupe on reconnect.
 * **Telemetry spool:** JSONL Event Envelope v1; spool quotas (warn/shed/hard-stop) must not block primary execution under load tests.
+* **UI & Frontend Plane (CR-PLAYWRIGHT-UI-001):** Playwright automated end-to-end suites; visual regression snapshot baselines; master test case catalog synchronization (`tests/e2e/master-playwright-tests.json`).
 
 ## 5. Working with Agents and Bots
 
 * Agents and bots are subjects under test, not privileged oracles. Refuse “the model said it passed.”
 * Class C worker bots: zero baked secrets, `/health` + `/version`, stateless between invocations.
 * When Proctor or a validator refuses, read `remediation`, fix the cause, re-run — do not open a backdoor path around the gate.
+* Ensure testing bots execute Playwright test suites and update master test cases during the clean-repo lifecycle.
 
 ## 6. Definition of Done (QA)
 
 1. Ticket authorized; branch naming `feature/<KEY>-<initials>-<slug>` when code changes ship.
 2. Build-time micro-linters clean; change-time validators green or intentionally refused with ticket notes.
-3. Dispatch-time dry-run plan reviewed; live run IDs cited.
-4. Environment URL/health checks recorded for the stage under test.
-5. Knowledge or claims introduced by the change are draft-or-verified explicitly — never silently trusted.
+3. Playwright UI tests and visual regression snapshots green; master test case catalog (`tests/e2e/master-playwright-tests.json`) synchronized.
+4. Dispatch-time dry-run plan reviewed; live run IDs cited.
+5. Environment URL/health checks recorded for the stage under test.
+6. Knowledge or claims introduced by the change are draft-or-verified explicitly — never silently trusted.

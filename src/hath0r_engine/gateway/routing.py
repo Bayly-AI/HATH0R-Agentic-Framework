@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 
-from hath0r_engine.gateway.base import ComplexityTier, ModelProvider
+from hath0r_engine.gateway.base import ComplexityTier
 
 
 class TieredRouter:

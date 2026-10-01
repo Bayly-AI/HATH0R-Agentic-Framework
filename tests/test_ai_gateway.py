@@ -1,6 +1,5 @@
 """Unit tests for Multi-Provider AI Gateway, Tiered Routing, and Semantic Caching."""
 
-import pytest
 
 from hath0r_engine.gateway import (
     AIGatewayClient,

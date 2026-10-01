@@ -7,7 +7,7 @@ import re
 import time
 from collections import Counter
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 from hath0r_engine.gateway.base import CompletionResponse
 

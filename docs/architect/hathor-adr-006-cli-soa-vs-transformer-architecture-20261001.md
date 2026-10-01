@@ -1,7 +1,7 @@
 ---
 id: HATHOR-ADR-006
-title: HATHOR-ADR-006 — CLI Architectural Evaluation: Service-Oriented Architecture (SOA) vs. Transformer Architecture
-summary: Evaluates the architectural proposal to replace Hath0r CLI's Service-Oriented Architecture (SOA) with a pure Transformer/Neural architecture. Decision is to retain SOA as the deterministic control plane and leverage Transformers as modular cognitive services (Hybrid Cognitive Substrate).
+title: "HATHOR-ADR-006 — CLI Architectural Evaluation: Service-Oriented Architecture (SOA) vs. Transformer Architecture"
+summary: "Evaluates the architectural proposal to replace Hath0r CLI's Service-Oriented Architecture (SOA) with a pure Transformer/Neural architecture. Decision is to retain SOA as the deterministic control plane and leverage Transformers as modular cognitive services (Hybrid Cognitive Substrate)."
 doc_type: ADR
 diataxis: decision
 audience: [architect, agent, developer]

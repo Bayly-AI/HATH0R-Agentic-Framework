@@ -2,7 +2,7 @@
 
 import pytest
 
-from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
+from hath0r_engine.memory.memory_graph import MemoryGraph, MemoryNode
 from hath0r_engine.memory.memory_tools import MemoryPagingManager
 from hath0r_engine.memory.reflection import ReflectionEngine
 

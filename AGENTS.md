@@ -52,7 +52,15 @@ All agents executing tasks within Hath0r must utilize our unified cognitive modu
 - **Durable Orchestration**: Execute multi-step flows via `DurableWorkflowEngine` and `EventJournal` to support replayability and `HumanHibernationGate` suspension.
 - **Declarative DSPy Pipelines**: Build structured reasoning with `Signature`, `ChainOfThought`, programmatic `Assert`, and `BootstrapFewShotCompiler`.
 - **Generative UI & Evidence Handshake**: Emit interactive diffs, sliders, and HMAC SHA-256 signatures via `HandshakeSession` and `UIComponentBuilder`.
+- **Playwright UI Testing & Test Catalog**: Execute UI verification with `PlaywrightTestRunner` and maintain Playwright-compliant master test specifications via `PlaywrightMasterCatalogManager`.
 - **Zero-Trust Sandboxing**: Run untrusted user commands inside isolated providers (`E2BSandboxProvider`, `DaytonaSandboxProvider`, `LocalSandboxProvider`).
+
+## CR-PLAYWRIGHT-UI-001: Mandatory Playwright UI Testing & Master Test Catalog (CRITICAL — org-wide)
+
+1. **Mandatory Playwright UI Validation**: All UI components, Generative UI widgets, dashboard panels, and web views MUST have automated test coverage executed via Playwright (`PlaywrightTestRunner` / `pytest tests/test_playwright_testing.py`).
+2. **Master Test Case Specification**: Maintain the single source of truth at `tests/e2e/master-playwright-tests.json` conforming to `contracts/hath0r-playwright-test-spec-v1.schema.json`.
+3. **Clean Repo Synchronization**: During Step 7 of the Clean Repo lifecycle (`.agents/skills/clean-repos/`), agents and bots MUST execute test catalog synchronization (`PlaywrightMasterCatalogManager.audit_and_sync_test_cases()`), ensuring all new or modified UI components are cataloged before committing and opening PRs.
+4. **Visual Regression Baselines**: Maintain verified snapshot baselines for visual regression testing (`expectVisualMatch`).
 
 ## Suite standards (member pointers)
 
