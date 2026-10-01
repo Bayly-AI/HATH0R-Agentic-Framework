@@ -97,6 +97,16 @@ from hath0r_engine.ui.protocol import (
     SignOffRecord,
 )
 from hath0r_engine.ui.synchronizer import BiDirectionalStateSync
+from hath0r_engine.vision import (
+    DesignToCodeSynthesizer,
+    DocumentLayoutParser,
+    DocumentStructure,
+    GroundedTarget,
+    ImageMetadata,
+    MultimodalPerceptionManager,
+    VisionEngine,
+    VisionResult,
+)
 from hath0r_engine.voice.voice_config import VoiceConfig
 from hath0r_engine.voice.voice_engine import VoiceEngine
 
@@ -190,4 +200,13 @@ __all__ = [
     "format_block_message",
     "VoiceEngine",
     "VoiceConfig",
+    "VisionEngine",
+    "MultimodalPerceptionManager",
+    "VisualGroundingEngine",
+    "DocumentLayoutParser",
+    "DesignToCodeSynthesizer",
+    "ImageMetadata",
+    "VisionResult",
+    "DocumentStructure",
+    "GroundedTarget",
 ]
