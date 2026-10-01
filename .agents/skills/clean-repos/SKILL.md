@@ -48,17 +48,21 @@ Whenever the user requests **"clean repo"** or **"clean repos"**, execute the fo
   - Ray-MCP knowledge roots (OneDrive knowledge roots: Author, Career, Documents, Books, Businesses, Cars, Projects).
   - Sync indexed data to `.hath0r/knowledgebase` single source of truth when applicable.
 
-### Step 7: Update Documentation
+### Step 7: Update Documentation & Playwright Master Test Case Catalog
 - Ensure all recent features, API modifications, database schemas, and architectural changes are documented in:
   - `README.md`
   - `AGENTS.md`
   - `docs/` (playbooks, runbooks, architecture specs)
+- **Playwright Master Test Case Catalog Sync (CR-PLAYWRIGHT-UI-001)**:
+  - Audit UI components, Generative UI builders, and web interfaces across the repo.
+  - Verify that all new or modified UI components have corresponding test suites and test cases registered in the master test case document (`tests/e2e/master-playwright-tests.json` in Playwright-compliant format).
+  - Automatically append any missing UI test cases with status `pending_generation` or `automated` into the master test catalog before finalizing clean repo.
 
-### Step 8: Commit Documentation & Knowledge Changes
-- Stage any updated documentation, governance files, or knowledge sync artifacts.
+### Step 8: Commit Documentation, Test Specs & Knowledge Changes
+- Stage any updated documentation, governance files, Playwright master test specifications, or knowledge sync artifacts.
 - Commit them cleanly:
   ```bash
-  git add -A && git commit -m "docs: update documentation, runbooks, and knowledge sync"
+  git add -A && git commit -m "docs: update documentation, Playwright test specs, and knowledge sync"
   ```
 
 ### Step 9: Ensure All Changes Are PR'd

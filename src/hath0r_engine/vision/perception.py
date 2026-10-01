@@ -4,13 +4,10 @@ from __future__ import annotations
 
 import base64
 import hashlib
-import json
 import math
 import struct
-import urllib.error
-import urllib.request
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import List, Optional, Tuple
 
 from hath0r_engine.vision.models import ImageMetadata, VisionResult
 

@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
-from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
+from hath0r_engine.memory.memory_graph import MemoryGraph, MemoryNode
 from hath0r_engine.memory.reflection import ReflectionEngine
 
 

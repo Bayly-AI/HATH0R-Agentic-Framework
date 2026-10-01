@@ -5,7 +5,6 @@ from __future__ import annotations
 import hashlib
 import hmac
 import json
-from typing import Any, Dict
 
 
 def generate_cryptographic_signature(

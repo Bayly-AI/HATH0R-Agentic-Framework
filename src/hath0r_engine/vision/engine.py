@@ -8,7 +8,6 @@ from typing import Any, Dict, List, Optional
 from hath0r_engine.vision.design_to_code import DesignToCodeSynthesizer
 from hath0r_engine.vision.document_parser import DocumentLayoutParser
 from hath0r_engine.vision.grounding import VisualGroundingEngine
-from hath0r_engine.vision.models import VisionResult
 from hath0r_engine.vision.perception import MultimodalPerceptionManager
 
 

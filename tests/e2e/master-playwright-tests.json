@@ -1,0 +1,204 @@
+{
+  "schema_version": "hath0r.playwright.testspec/1",
+  "project": "Bayly-AI/HATH0R-Agentic-Framework",
+  "last_synced_at": "2026-10-01T14:30:00Z",
+  "metadata": {
+    "framework": "playwright",
+    "default_browser": "chromium",
+    "default_timeout_ms": 30000,
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "suites": [
+    {
+      "suite_id": "suite-diff-viewer",
+      "title": "Interactive DiffViewer UI Component Suite",
+      "description": "Playwright end-to-end and visual regression suite for Generative UI DiffViewer",
+      "target_component": "DiffViewer",
+      "target_path": "src/hath0r_engine/ui/components.py",
+      "tags": ["ui", "generative-ui", "diff-viewer", "visual-regression"],
+      "test_cases": [
+        {
+          "test_id": "TC-DIFF-001",
+          "title": "DiffViewer renders side-by-side code diffs accurately",
+          "description": "Verify that DiffViewer component renders original code and modified code side-by-side with syntax highlighting",
+          "status": "automated",
+          "browser": "chromium",
+          "tags": ["smoke", "rendering"],
+          "steps": [
+            {
+              "step_number": 1,
+              "action": "goto",
+              "value": "http://localhost:3000/components/diff-viewer"
+            },
+            {
+              "step_number": 2,
+              "action": "waitForSelector",
+              "selector": "[data-testid='diff-viewer-container']",
+              "timeout_ms": 5000
+            },
+            {
+              "step_number": 3,
+              "action": "expectVisible",
+              "selector": "[data-testid='diff-viewer-left-pane']"
+            },
+            {
+              "step_number": 4,
+              "action": "expectVisible",
+              "selector": "[data-testid='diff-viewer-right-pane']"
+            },
+            {
+              "step_number": 5,
+              "action": "expectVisualMatch",
+              "snapshot_name": "diff-viewer-side-by-side.png"
+            }
+          ],
+          "expected_outcome": "DiffViewer displays both panes with valid syntax coloring and matching snapshot",
+          "created_at": "2026-10-01T14:30:00Z",
+          "updated_at": "2026-10-01T14:30:00Z"
+        }
+      ]
+    },
+    {
+      "suite_id": "suite-param-slider",
+      "title": "Parameter Slider Interactive Tuning Suite",
+      "description": "Playwright tests for live parameter adjustment slider and bidirectional state sync",
+      "target_component": "ParameterSlider",
+      "target_path": "src/hath0r_engine/ui/components.py",
+      "tags": ["ui", "tuning", "slider", "state-sync"],
+      "test_cases": [
+        {
+          "test_id": "TC-SLIDER-001",
+          "title": "ParameterSlider dispatches state updates on drag/input",
+          "description": "Verify sliding the temperature parameter emits bidirectional state updates",
+          "status": "automated",
+          "browser": "chromium",
+          "tags": ["interactive", "sync"],
+          "steps": [
+            {
+              "step_number": 1,
+              "action": "goto",
+              "value": "http://localhost:3000/components/parameter-slider"
+            },
+            {
+              "step_number": 2,
+              "action": "waitForSelector",
+              "selector": "[data-testid='param-slider-temperature']",
+              "timeout_ms": 5000
+            },
+            {
+              "step_number": 3,
+              "action": "fill",
+              "selector": "[data-testid='param-slider-temperature']",
+              "value": "0.85"
+            },
+            {
+              "step_number": 4,
+              "action": "expectValue",
+              "selector": "[data-testid='param-slider-temperature']",
+              "expected": "0.85"
+            },
+            {
+              "step_number": 5,
+              "action": "expectText",
+              "selector": "[data-testid='slider-value-display']",
+              "expected": "0.85"
+            }
+          ],
+          "expected_outcome": "Slider position and bound value display update instantly to 0.85",
+          "created_at": "2026-10-01T14:30:00Z",
+          "updated_at": "2026-10-01T14:30:00Z"
+        }
+      ]
+    },
+    {
+      "suite_id": "suite-crypto-signoff",
+      "title": "Crypto Signoff Card and Authorization Gate Suite",
+      "description": "Playwright tests for cryptographic sign-off interactive card and HMAC hash emission",
+      "target_component": "CryptoSignoffCard",
+      "target_path": "src/hath0r_engine/ui/components.py",
+      "tags": ["ui", "security", "signoff", "crypto"],
+      "test_cases": [
+        {
+          "test_id": "TC-SIGNOFF-001",
+          "title": "CryptoSignoffCard captures approval and generates SHA-256 signature badge",
+          "description": "Verify reviewer clicks Sign & Approve, generating cryptographic hash verification badge",
+          "status": "automated",
+          "browser": "chromium",
+          "tags": ["security", "gate"],
+          "steps": [
+            {
+              "step_number": 1,
+              "action": "goto",
+              "value": "http://localhost:3000/components/crypto-signoff"
+            },
+            {
+              "step_number": 2,
+              "action": "waitForSelector",
+              "selector": "[data-testid='crypto-signoff-card']"
+            },
+            {
+              "step_number": 3,
+              "action": "click",
+              "selector": "[data-testid='btn-approve-signoff']"
+            },
+            {
+              "step_number": 4,
+              "action": "expectVisible",
+              "selector": "[data-testid='signature-badge-success']"
+            },
+            {
+              "step_number": 5,
+              "action": "expectVisualMatch",
+              "snapshot_name": "crypto-signoff-approved.png"
+            }
+          ],
+          "expected_outcome": "Cryptographic signature badge appears and matches visual baseline",
+          "created_at": "2026-10-01T14:30:00Z",
+          "updated_at": "2026-10-01T14:30:00Z"
+        }
+      ]
+    },
+    {
+      "suite_id": "suite-test-badge",
+      "title": "Test Badge Component Suite",
+      "description": "Playwright tests for test execution badge status indicators",
+      "target_component": "TestBadge",
+      "target_path": "src/hath0r_engine/ui/components.py",
+      "tags": ["ui", "badge", "status"],
+      "test_cases": [
+        {
+          "test_id": "TC-BADGE-001",
+          "title": "TestBadge displays PASS state with green badge and coverage percentage",
+          "description": "Verify badge component displays green indicator when passed count > 0 and failed is 0",
+          "status": "automated",
+          "browser": "chromium",
+          "tags": ["visual", "status"],
+          "steps": [
+            {
+              "step_number": 1,
+              "action": "goto",
+              "value": "http://localhost:3000/components/test-badge"
+            },
+            {
+              "step_number": 2,
+              "action": "waitForSelector",
+              "selector": "[data-testid='test-badge-container']"
+            },
+            {
+              "step_number": 3,
+              "action": "expectText",
+              "selector": "[data-testid='test-badge-status']",
+              "expected": "PASS"
+            }
+          ],
+          "expected_outcome": "Test badge displays PASS and 100% coverage indicator",
+          "created_at": "2026-10-01T14:30:00Z",
+          "updated_at": "2026-10-01T14:30:00Z"
+        }
+      ]
+    }
+  ]
+}

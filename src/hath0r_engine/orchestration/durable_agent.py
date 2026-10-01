@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import functools
-from typing import Any, Callable, Optional, TypeVar
+from typing import Any, Callable, TypeVar
 
 from hath0r_engine.orchestration.journal import EventJournal
 from hath0r_engine.orchestration.state_machine import DurableWorkflowEngine
