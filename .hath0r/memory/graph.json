@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "graph_id": "canonical-memory-space",
+  "nodes": [
+    {
+      "id": "rule:cr-cli-entry-001",
+      "type": "rule",
+      "label": "Start with CLI Rule",
+      "content": "Always start with hath0r operator CLI before inventing ad-hoc actions.",
+      "importance": 1.0,
+      "tags": [
+        "rule",
+        "governance",
+        "cli"
+      ]
+    },
+    {
+      "id": "rule:cr-bai-001",
+      "type": "rule",
+      "label": "Promotion Path Policy",
+      "content": "Promotion order: local -> development -> testing -> staging -> master.",
+      "importance": 1.0,
+      "tags": [
+        "rule",
+        "governance",
+        "ci"
+      ]
+    },
+    {
+      "id": "concept:tri-graph",
+      "type": "concept",
+      "label": "Tri-Graph Substrate",
+      "content": "Three-layer cognitive graph architecture: KnowledgeGraph, ContextGraph, MemoryGraph.",
+      "importance": 0.9,
+      "tags": [
+        "architecture",
+        "substrate",
+        "tri-graph"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "rule:cr-cli-entry-001",
+      "target": "concept:tri-graph",
+      "relation": "ENFORCES",
+      "weight": 1.0
+    }
+  ]
+}
