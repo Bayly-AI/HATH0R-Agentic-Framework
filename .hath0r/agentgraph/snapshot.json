@@ -1,0 +1,505 @@
+{
+  "schema_version": "hath0r.agentgraph/1",
+  "graph_id": "agentgraph-hath0r-framework",
+  "timestamp": "2026-10-02T22:20:26.210747+00:00",
+  "nodes": [
+    {
+      "id": "doc:agents-root",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "AGENTS.md (root)",
+      "content": "# AGENTS.md — HATH0R Agentic Framework\n\n> Role: **OpenSource HATHOR framework + docs corpus** · member of **OpenSource Project** (`hath0r-opensource`)  \n> Updated: 2026-09-30\n\n## Group membership (CRITICAL)\n\n| Field | Value |\n|-------|-------|\n| Group | `hath0r-opensource` |\n| Project | **OpenSource Project** |\n| Group root | `/Users/raybayly/Development/OpenSource` |\n| **Control tower** | `/Users/raybayly/Development/OpenSource/HATH0R-CLI` (`Bayly-AI/HATH0R-CLI`) |\n| This product | `HATH0R-Agentic-Framework` |\n| GitHub | `Bayly-AI/HATH0R-Agentic-Framework` |\n| Local path | `/Users/raybayly/Development/OpenSource/hath0r` |\n| Canonical KB | `/Users/raybayly/Development/OpenSource/.hath0r/knowledgebase` |\n| Operator CLI | `hath0r` |\n| Docs | `docs/` (canonical OpenSource documentation corpus) |\n\n### Canonical siblings (all under OpenSource are project members)\n\n- **Control tower / CLI**: `/Users/raybayly/Development/OpenSource/HATH0R-CLI` → `Bayly-AI/HATH0R-CLI`\n- Framework: `/Users/rayb",
+      "properties": {
+        "path": "AGENTS.md",
+        "subsystem": "root"
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:agents-archive",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "AGENTS.md (archive)",
+      "content": "---\nid: archive-subsystem\ntype: subsystem\ntitle: Archive Subsystem\ndepends_on: [hath0r-framework]\ngoverned_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, cr-branch-gov-001]\n---\n# Archive Subsystem — AGENTS Context\n\n> **Subsystem Role:** Historical repository assets, legacy POC implementations, and historical migration artifacts preserved for provenance.\n\n## 1. Operating Rules\n- Files in `archive/` are read-only and preserved for historical reference and auditability.\n- Do not import active runtime code from `archive/`. Active modules belong in `src/hath0r_engine/` or `lib/`.\n- Query historical context via `hath0r kb` or `hath0r memory search`.\n",
+      "properties": {
+        "path": "archive/AGENTS.md",
+        "subsystem": "archive"
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:agents-contracts",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "AGENTS.md (contracts)",
+      "content": "---\nid: contracts-subsystem\ntype: subsystem\ntitle: Contracts & Schemas Subsystem\ndepends_on: [hath0r-framework]\ngoverned_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, cr-branch-gov-001]\n---\n# Contracts Subsystem — AGENTS Context\n\n> **Subsystem Role:** Authoritative source for JSON Schemas, exit code specifications, API payloads, and graph contracts across the HATH0R ecosystem.\n\n## 1. Subsystem KnowledgeGraph Entity Nodes\n- [`contracts/hath0r-knowledgegraph-v1.schema.json`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/contracts/hath0r-knowledgegraph-v1.schema.json): Static KnowledgeGraph entity nodes & edge schema.\n- [`contracts/hath0r-contextgraph-v1.schema.json`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/contracts/hath0r-contextgraph-v1.schema.json): Runtime ContextGraph session & JEV guard schema.\n- [`contracts/hath0r-playwright-test-spec-v1.schema.json`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/contracts/h",
+      "properties": {
+        "path": "contracts/AGENTS.md",
+        "subsystem": "contracts"
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:agents-tests",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "AGENTS.md (tests)",
+      "content": "---\nid: tests-subsystem\ntype: subsystem\ntitle: Testing Subsystem\ndepends_on: [contracts-subsystem, lib-subsystem, engine-core-subsystem]\ngoverned_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, CR-PLAYWRIGHT-UI-001, cr-branch-gov-001]\n---\n# Testing Subsystem — AGENTS Context\n\n> **Subsystem Role:** Unit, regression, contract verification, cognitive substrate validation, Playwright UI testing, and latency benchmark test harness.\n\n## 1. Subsystem KnowledgeGraph Entity Nodes\n- [`tests/test_dspy_pipeline.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/tests/test_dspy_pipeline.py): Declarative DSPy pipeline and teleprompter tests.\n- [`tests/test_tool_guardrails.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/tests/test_tool_guardrails.py): Pre-execution AST security and schema repair tests.\n- [`tests/test_generative_ui.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/tests/test_generative_ui.py): Generative UI evidence",
+      "properties": {
+        "path": "tests/AGENTS.md",
+        "subsystem": "tests"
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:agents-docs",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "AGENTS.md (docs)",
+      "content": "---\nid: docs-subsystem\ntype: subsystem\ntitle: Documentation Corpus Subsystem\ndepends_on: [hath0r-framework]\ngoverned_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, cr-branch-gov-001]\n---\n# Documentation Corpus Subsystem — AGENTS Context\n\n> **Subsystem Role:** Canonical documentation corpus for the HATH0R OpenSource ecosystem. Authoritative source for strategies, playbooks, procedures, runbooks, and architectural RFCs.\n\n## 1. Subsystem KnowledgeGraph Entity Nodes\n- [`docs/governance/strategies/agent-rules-rag-cli-first-strategy.md`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/docs/governance/strategies/agent-rules-rag-cli-first-strategy.md): Unified Agent Rules, RAG Strategy & CLI-First doctrine.\n- [`docs/governance/playbooks/agent-rules-rag-cli-first-playbook.md`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/docs/governance/playbooks/agent-rules-rag-cli-first-playbook.md): Operator workflow for CLI execution and RAG retrieval.\n- [`do",
+      "properties": {
+        "path": "docs/AGENTS.md",
+        "subsystem": "docs"
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:agents-cfg",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "AGENTS.md (cfg)",
+      "content": "---\nid: cfg-subsystem\ntype: subsystem\ntitle: Configuration Subsystem\ndepends_on: [contracts-subsystem]\ngoverned_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, cr-branch-gov-001]\n---\n# Configuration Subsystem — AGENTS Context\n\n> **Subsystem Role:** Declarative product, suite, observability, feature flags, and knowledge tower configuration.\n\n## 1. Subsystem KnowledgeGraph Entity Nodes\n- [`cfg/knowledge-tower.yaml`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/cfg/knowledge-tower.yaml): Knowledge tower location and KnowledgeGraph/ContextGraph engine configuration.\n- [`cfg/mcp.servers.json`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/cfg/mcp.servers.json): Configured MCP server endpoints.\n- [`cfg/suite.yaml`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/cfg/suite.yaml): Suite orientation and group definitions.\n\n## 2. Constraints & Rules\n- Do not store raw secrets or bearer tokens in `cfg/` (use `/Users/raybayly/Develop",
+      "properties": {
+        "path": "cfg/AGENTS.md",
+        "subsystem": "cfg"
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:agents-lib",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "AGENTS.md (lib)",
+      "content": "---\nid: lib-subsystem\ntype: subsystem\ntitle: Library Engine Subsystem\ndepends_on: [contracts-subsystem]\ngoverned_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, cr-branch-gov-001]\n---\n# Library Engine Subsystem — AGENTS Context\n\n> **Subsystem Role:** Core runtime packages, graph extraction engines, security guards, and streaming voice pipelines.\n\n## 1. Subsystem KnowledgeGraph Entity Nodes\n- [`lib/graph/knowledge_graph.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/lib/graph/knowledge_graph.py): Frontmatter parsing, static KnowledgeGraph model, and lineage traversal.\n- [`lib/context/context_graph.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/lib/context/context_graph.py): Dynamic ContextGraph session tracker and JEV audit logging.\n- [`lib/jev/jev_tool_guard.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/lib/jev/jev_tool_guard.py): Zero-trust tool execution guard.\n- [`lib/voice/voice_engine.py`](file:///Users",
+      "properties": {
+        "path": "lib/AGENTS.md",
+        "subsystem": "lib"
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:agents-hath0r_engine",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "AGENTS.md (hath0r_engine)",
+      "content": "---\nid: engine-core-subsystem\ntype: subsystem\ntitle: Hath0r Cognitive Engine Core Subsystem\ndepends_on: [contracts-subsystem, lib-subsystem]\ngoverned_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, CR-PLAYWRIGHT-UI-001, cr-branch-gov-001]\n---\n# Engine Core Subsystem — AGENTS Context\n\n> **Subsystem Role:** Canonical cognitive substrate providing Tri-Graph memory, deterministic pre-execution guardrails, dynamic tool routing, AI gateway tiered routing, durable event replay, declarative DSPy pipelines, generative UI handshakes, Playwright UI testing, zero-trust sandboxes, and OpenTelemetry instrumentation.\n\n## 1. Subsystem KnowledgeGraph Entity Nodes\n- [`src/hath0r_engine/memory/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/memory/): `MemoryGraph`, `MemoryNode`, `MemoryEdge` (with temporal `valid_from`/`valid_to`), `MemoryPagingManager`, `ReflectionEngine`.\n- [`src/hath0r_engine/guardrails/`](file:///Users/raybayly/Development/OpenSource",
+      "properties": {
+        "path": "src/hath0r_engine/AGENTS.md",
+        "subsystem": "hath0r_engine"
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Archive Subsystem - Local Rules\n\n> Specific rules and constraints for the Archive Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "archive/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Contracts Subsystem - Local Rules\n\n> Specific rules and constraints for the Contracts Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "contracts/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Tests Subsystem - Local Rules\n\n> Specific rules and constraints for the Tests Subsystem module.\n\n## Constraints\n- All UI component changes and new frontend features MUST include Playwright test coverage.\n- The master Playwright test case document (`tests/e2e/master-playwright-tests.json`) MUST be kept in sync with all UI components in the codebase.\n- Clean Repo lifecycle (Step 7) MUST run `PlaywrightMasterCatalogManager.audit_and_sync_test_cases()` to prevent untested UI drift.\n- Visual regressions MUST be validated against baseline snapshots with 0% unintended visual difference.\n",
+      "properties": {
+        "path": "tests/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Docs Subsystem - Local Rules\n\n> Specific rules and constraints for the Docs Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "docs/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Cfg Subsystem - Local Rules\n\n> Specific rules and constraints for the Cfg Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "cfg/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Lib Subsystem - Local Rules\n\n> Specific rules and constraints for the Lib Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "lib/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-cli-entry-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule cr-cli-entry-001",
+      "content": "# CR-CLI-ENTRY-001: Start with the CLI (CRITICAL — Org-Wide & Suite-Wide)\n\n> **Rule ID:** `CR-CLI-ENTRY-001` (also tracked as `cr-cli-first-001`)  \n> **Status:** RATIFIED & MANDATORY ENTRY GATE  \n> **Applies to:** All Agents, Workflows, Subagents, and Automation Scripts across HATH0R OpenSource & Enterprise Products.  \n> **Effective Date:** 2026-09-28  \n\n---\n\n## 1. Main Entry Statement (CRITICAL ENTRY GATE)\n\n> **Upon receiving ANY user request or initializing any task, agents MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`).**\n>\n> Ad-hoc shell scripting, direct file mutation without CLI discovery, or inventing custom pipelines when a canonical `hath0r` CLI subcommand, factory, bot, workflow, or MCP endpoint exists (or can be registered) is **STRICTLY FORBIDDEN**.\n\n---\n\n## 2. Core Directives\n\n1. **CLI as Primary Operating Substrate:**\n   - Always query, validate, inspect, and execute through `hath0r <subcommand>` (e.g. `hath0r kb ...`, `hath0r doctor`, `hath0r factory ...`, `hath0r workflow ...`, `hath0r mcp ...`, `hath0r context ...`).\n   - The CLI is the control tower interface guaranteeing audit trails, JEV security validation, schema contract compliance, and telemetry recording.\n\n2. **Missing Capability Offer (No Silent Improvisation):**\n   - If the required command, workflow, connection, or factory does not exist in `hath0r`, agents **MUST NOT** silently invent non-standard scripts.\n   - Agents must explicitly offer to build/register the missing capability in `hath0r` /",
+      "properties": {
+        "path": "docs/governance/rules/cr-cli-entry-001.md",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-playwright-ui-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule cr-playwright-ui-001",
+      "content": "# CR-PLAYWRIGHT-UI-001: Mandatory Playwright UI Testing & Master Test Case Registration (CRITICAL — Org-Wide)\n\n> **Rule ID:** `CR-PLAYWRIGHT-UI-001` (also tracked as `cr-playwright-ui-001`)  \n> **Status:** RATIFIED & MANDATORY ENTRY GATE  \n> **Applies to:** All Agents, Workflows, Bots, Subagents, and Clean Repo Lifecycles across HATH0R OpenSource & Enterprise Products.  \n> **Effective Date:** 2026-10-01  \n\n---\n\n## 1. Main Entry Statement (CRITICAL ENTRY GATE)\n\n> **All UI components, Generative UI widgets, dashboard views, web applications, and interactive interfaces MUST be integrated with Playwright for headless, end-to-end, and visual regression verification.**\n>\n> In addition, every repository containing UI code **MUST maintain a canonical Master Test Case Document (`tests/e2e/master-playwright-tests.json`) in Playwright-compliant format**. During the Clean Repo / Clean Repos lifecycle, agents and bots must audit all UI components and ensure newly added or modified UI components have corresponding test cases registered in the master test case document.\n\n---\n\n## 2. Core Directives\n\n1. **Playwright as Canonical UI Testing Standard:**\n   - Playwright is the authoritative framework for cross-browser (Chromium, Firefox, WebKit), headless, component, and visual regression testing across Hath0r.\n   - Bots and test runners must execute Playwright test suites using `PlaywrightTestRunner` or `pytest -k playwright` / `npx playwright test`.\n\n2. **Playwright-Compliant Master Test Case ",
+      "properties": {
+        "path": "docs/governance/rules/cr-playwright-ui-001.md",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-vision-response-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "hath0r.vision.response/1",
+      "content": "Structured schema for Hath0r Vision Transformers & Multimodal pipeline results.",
+      "properties": {
+        "schema_id": "https://schemas.hath0r.dev/hath0r-vision-response-v1.schema.json",
+        "path": "contracts/hath0r-vision-response-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-voice-action-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "HATH0R Voice Action Contract v1",
+      "content": "Standardized contract for voice-driven intent recognition, routing, and dispatch across platforms and agents in HATHOR.",
+      "properties": {
+        "schema_id": "https://hath0r.dev/schemas/hath0r-voice-action-v1.schema.json",
+        "path": "contracts/hath0r-voice-action-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-knowledgegraph-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0rKnowledgeGraphManifest",
+      "content": "Schema definition for static and compiled Hath0r KnowledgeGraph entity nodes and relational edges.",
+      "properties": {
+        "schema_id": "https://raw.githubusercontent.com/Bayly-AI/HATH0R-Agentic-Framework/development/contracts/hath0r-knowledgegraph-v1.schema.json",
+        "path": "contracts/hath0r-knowledgegraph-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-cli-response-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "hath0r.cli.response/1",
+      "content": "Top-level structured JSON response envelope for hath0r CLI machine output (HATHOR-TS-005 §4).",
+      "properties": {
+        "schema_id": "https://schemas.hath0r.dev/hath0r-cli-response-v1.schema.json",
+        "path": "contracts/hath0r-cli-response-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-docker-workflow-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0r Docker Workflow Specification",
+      "content": "Declarative Docker workflow contract for Hath0r container validation and Docker Factory execution.",
+      "properties": {
+        "schema_id": "https://schemas.baylyai.com/hath0r/contracts/hath0r-docker-workflow-v1.schema.json",
+        "path": "contracts/hath0r-docker-workflow-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-playwright-test-spec-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "hath0r.playwright.testspec/1",
+      "content": "JSON Schema specification for Hath0r Master Playwright Test Case Catalog and UI test definitions.",
+      "properties": {
+        "schema_id": "https://schemas.hath0r.dev/hath0r-playwright-test-spec-v1.schema.json",
+        "path": "contracts/hath0r-playwright-test-spec-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-cli-diagnostic-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "hath0r.cli.diagnostic/1",
+      "content": "Structured diagnostic entry for hath0r CLI machine responses (HATHOR-TS-005 §5).",
+      "properties": {
+        "schema_id": "https://schemas.hath0r.dev/hath0r-cli-diagnostic-v1.schema.json",
+        "path": "contracts/hath0r-cli-diagnostic-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-agent-role-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0rAgentRoleNode",
+      "content": "Canonical schema contract for AgentGraph AgentRoleNode role capability and governance entities.",
+      "properties": {
+        "schema_id": "https://raw.githubusercontent.com/Bayly-AI/HATH0R-Agentic-Framework/development/contracts/hath0r-agent-role-v1.schema.json",
+        "path": "contracts/hath0r-agent-role-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-cli-doctor-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "hath0r.cli.doctor.data/1",
+      "content": "Command-specific data payload for the doctor operation (HATHOR-TS-005 §10). Placed under response envelope field data when command is doctor.",
+      "properties": {
+        "schema_id": "https://schemas.hath0r.dev/hath0r-cli-doctor-v1.schema.json",
+        "path": "contracts/hath0r-cli-doctor-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-rule-node-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0rRuleNode",
+      "content": "Canonical schema contract for AgentGraph RuleNode / rule_policy governance entities.",
+      "properties": {
+        "schema_id": "https://raw.githubusercontent.com/Bayly-AI/HATH0R-Agentic-Framework/development/contracts/hath0r-rule-node-v1.schema.json",
+        "path": "contracts/hath0r-rule-node-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-mcp-servers-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0r MCP Servers Configuration",
+      "content": "Configuration specification for Model Context Protocol (MCP) servers with priority ordering and scope rules.",
+      "properties": {
+        "schema_id": "https://schema.bayly.ai/hath0r/contracts/hath0r-mcp-servers-v1.schema.json",
+        "path": "contracts/hath0r-mcp-servers-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-cli-kb-products-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "hath0r.cli.kb-products.data/1",
+      "content": "Command-specific data payload for the kb.products operation (HATHOR-TS-005 §12). Placed under response envelope field data when command is kb.products.",
+      "properties": {
+        "schema_id": "https://schemas.hath0r.dev/hath0r-cli-kb-products-v1.schema.json",
+        "path": "contracts/hath0r-cli-kb-products-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-agentgraph-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0rAgentGraphSnapshot",
+      "content": "Canonical schema contract for Hath0r AgentGraph unified cognitive substrate snapshots, nodes, and relational edges.",
+      "properties": {
+        "schema_id": "https://raw.githubusercontent.com/Bayly-AI/HATH0R-Agentic-Framework/development/contracts/hath0r-agentgraph-v1.schema.json",
+        "path": "contracts/hath0r-agentgraph-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-cli-kb-path-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "hath0r.cli.kb-path.data/1",
+      "content": "Command-specific data payload for the kb.path operation (HATHOR-TS-005 §11). Placed under response envelope field data when command is kb.path. Path is operator data; POC adapters must strip it from normal browser responses.",
+      "properties": {
+        "schema_id": "https://schemas.hath0r.dev/hath0r-cli-kb-path-v1.schema.json",
+        "path": "contracts/hath0r-cli-kb-path-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-contextgraph-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0rContextGraphSnapshot",
+      "content": "Schema definition for dynamic runtime ContextGraph tracking sessions, subagent topologies, and task context.",
+      "properties": {
+        "schema_id": "https://raw.githubusercontent.com/Bayly-AI/HATH0R-Agentic-Framework/development/contracts/hath0r-contextgraph-v1.schema.json",
+        "path": "contracts/hath0r-contextgraph-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-factory-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0rFactoryManifest",
+      "content": "Schema definition for Hath0r declarative automation factories and orchestrated micro-bots.",
+      "properties": {
+        "schema_id": "https://raw.githubusercontent.com/Bayly-AI/HATH0R-Agentic-Framework/development/contracts/hath0r-factory-v1.schema.json",
+        "path": "contracts/hath0r-factory-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-cli-version-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "hath0r.cli.version.data/1",
+      "content": "Command-specific data payload for the version operation (HATHOR-TS-005 §9). Placed under response envelope field data when command is version.",
+      "properties": {
+        "schema_id": "https://schemas.hath0r.dev/hath0r-cli-version-v1.schema.json",
+        "path": "contracts/hath0r-cli-version-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "role:developer",
+      "plane": "rules",
+      "type": "agent_role",
+      "label": "Developer Agent",
+      "content": "Full access software engineer role permitted to run commands, edit files, and build.",
+      "properties": {
+        "role_name": "developer",
+        "permitted_tools": [
+          "read_file",
+          "write_file",
+          "run_command",
+          "search_code"
+        ],
+        "forbidden_tools": [
+          "direct_push_master"
+        ]
+      },
+      "is_current": true
+    },
+    {
+      "id": "role:reader",
+      "plane": "rules",
+      "type": "agent_role",
+      "label": "Read-Only Agent",
+      "content": "Read-only inspection role strictly prohibited from modifying code or executing commands.",
+      "properties": {
+        "role_name": "reader",
+        "permitted_tools": [
+          "read_file",
+          "search_code"
+        ],
+        "forbidden_tools": [
+          "run_command",
+          "write_file",
+          "git_push"
+        ]
+      },
+      "is_current": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "rule:rules",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:rules",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:rules",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:rules",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:rules",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:rules",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-cli-entry-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:cr-playwright-ui-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    }
+  ],
+  "metadata": {
+    "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-framework",
+    "synced_sources": 33
+  }
+}
