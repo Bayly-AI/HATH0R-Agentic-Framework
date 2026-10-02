@@ -2,7 +2,8 @@
 
 import pytest
 from pathlib import Path
-from PIL import Image
+
+Image = pytest.importorskip("PIL.Image")
 
 from hath0r_engine.testing.models import (
     PlaywrightActionType,
