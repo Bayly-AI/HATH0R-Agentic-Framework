@@ -18,6 +18,7 @@ governed_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, CR-PLAYW
 - [`src/hath0r_engine/pipeline/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/pipeline/): `Signature`, `InputField`, `OutputField`, `ChainOfThought`, `Assert`, `BootstrapFewShotCompiler`.
 - [`src/hath0r_engine/ui/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/ui/): `HandshakeSession`, `UIComponentBuilder`, `BiDirectionalStateSync`, `generate_cryptographic_signature`.
 - [`src/hath0r_engine/testing/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/testing/): `PlaywrightMasterCatalogManager`, `PlaywrightTestRunner`, `PlaywrightTestCase`, `PlaywrightTestSuite`.
+- [`src/hath0r_engine/optimization/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/optimization/): `TaguchiEngine`, `OrthogonalArray`, `Factor`, `ExperimentMatrix`, `calculate_snr`, `TaguchiLossFunction` (OATS & Robust Parameter Design).
 - [`src/hath0r_engine/sandbox/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/sandbox/): `SandboxManager`, `E2BSandboxProvider`, `DaytonaSandboxProvider`, `LocalSandboxProvider`.
 - [`src/hath0r_engine/telemetry/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/telemetry/): `OTELTracerBot`, `TelemetrySpan`.
 

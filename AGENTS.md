@@ -54,6 +54,7 @@ All agents executing tasks within Hath0r must utilize our unified cognitive modu
 - **Generative UI & Evidence Handshake**: Emit interactive diffs, sliders, and HMAC SHA-256 signatures via `HandshakeSession` and `UIComponentBuilder`.
 - **Playwright UI Testing & Test Catalog**: Execute UI verification with `PlaywrightTestRunner` and maintain Playwright-compliant master test specifications via `PlaywrightMasterCatalogManager`.
 - **Zero-Trust Sandboxing**: Run untrusted user commands inside isolated providers (`E2BSandboxProvider`, `DaytonaSandboxProvider`, `LocalSandboxProvider`).
+- **Robust Design & Optimization**: Apply Taguchi Methods (`TaguchiEngine`, `calculate_snr`, `TaguchiLossFunction`) for Orthogonal Array Testing Strategy (OATS) matrix reduction and hyperparameter tuning.
 
 ## CR-PLAYWRIGHT-UI-001: Mandatory Playwright UI Testing & Master Test Catalog (CRITICAL — org-wide)
 
