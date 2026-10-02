@@ -774,6 +774,11 @@ class AgentGraphEngine:
     # Serialization & Snapshots
     # ---------------------------------------------------------------------
 
+    def get_authorized_tools(self, role_id: str, scope: Optional[str] = None) -> Set[str]:
+        """Return authorized tools for an agent role after traversing inheritance and pruning forbidden tools."""
+        resolved = self.resolve_agent_rules(role_id=role_id, scope=scope)
+        return set(resolved.authorized_tools)
+
     def export_snapshot(self, path: Path) -> None:
         """Export full graph state to JSON."""
         data = {
@@ -795,3 +800,73 @@ class AgentGraphEngine:
             self.add_node(AgentGraphNode.from_dict(n_dict))
         for e_dict in data.get("edges", []):
             self.add_edge(AgentGraphEdge.from_dict(e_dict))
+
+    def persist_sqlite(self, db_path: str | Path) -> None:
+        """Persist all nodes and edges into SQLiteGraphStore."""
+        from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
+        store = SQLiteGraphStore(db_path=db_path)
+        try:
+            for node in self.nodes.values():
+                store.upsert_node(
+                    node_id=node.id,
+                    node_type=node.type,
+                    title=node.label,
+                    graph_type=node.plane,
+                    content=node.content,
+                    properties=node.properties,
+                    created_at=node.created_at,
+                    updated_at=node.updated_at,
+                )
+            for edge in self.edges:
+                store.add_edge(
+                    source=edge.source,
+                    target=edge.target,
+                    relation=edge.relation,
+                    graph_type=edge.plane or "rules",
+                    weight=edge.weight,
+                    valid_from=edge.valid_from,
+                    valid_to=edge.valid_to,
+                    is_current=edge.is_current,
+                    metadata=edge.metadata,
+                )
+        finally:
+            store.close()
+
+    def load_sqlite(self, db_path: str | Path) -> None:
+        """Load nodes and edges from SQLiteGraphStore."""
+        from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
+        store = SQLiteGraphStore(db_path=db_path)
+        try:
+            edges = store.get_edges()
+            cursor = store._conn.execute(
+                "SELECT id, graph_type, type, title, path, subsystem, content, importance, tags, properties, created_at, updated_at FROM nodes"
+            )
+            for row in cursor.fetchall():
+                node = AgentGraphNode(
+                    id=row["id"],
+                    plane=row["graph_type"],
+                    type=row["type"],
+                    label=row["title"],
+                    content=row["content"],
+                    properties=json.loads(row["properties"]) if row["properties"] else {},
+                    created_at=row["created_at"],
+                    updated_at=row["updated_at"],
+                )
+                self.add_node(node)
+            for e in edges:
+                self.add_edge(
+                    AgentGraphEdge(
+                        source=e["source"],
+                        target=e["target"],
+                        relation=e["relation"],
+                        plane=e["graph_type"],
+                        weight=e["weight"],
+                        valid_from=e["valid_from"],
+                        valid_to=e["valid_to"],
+                        is_current=e["is_current"],
+                        metadata=e["metadata"],
+                    )
+                )
+        finally:
+            store.close()
+
