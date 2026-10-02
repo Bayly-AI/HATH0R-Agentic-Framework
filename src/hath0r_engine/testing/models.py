@@ -55,6 +55,8 @@ class PlaywrightStep:
     timeout_ms: Optional[int] = None
     expected: Optional[str] = None
     snapshot_name: Optional[str] = None
+    coordinates: Optional[Dict[str, float]] = None
+    bounding_box: Optional[List[float]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         data: Dict[str, Any] = {
@@ -71,6 +73,10 @@ class PlaywrightStep:
             data["expected"] = self.expected
         if self.snapshot_name is not None:
             data["snapshot_name"] = self.snapshot_name
+        if self.coordinates is not None:
+            data["coordinates"] = self.coordinates
+        if self.bounding_box is not None:
+            data["bounding_box"] = self.bounding_box
         return data
 
     @classmethod
@@ -83,6 +89,8 @@ class PlaywrightStep:
             timeout_ms=data.get("timeout_ms"),
             expected=data.get("expected"),
             snapshot_name=data.get("snapshot_name"),
+            coordinates=data.get("coordinates"),
+            bounding_box=data.get("bounding_box"),
         )
 
 
