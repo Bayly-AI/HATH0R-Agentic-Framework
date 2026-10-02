@@ -15,6 +15,12 @@ from hath0r_engine.gateway.base import (
 from hath0r_engine.gateway.cache import SemanticCache
 from hath0r_engine.gateway.client import AIGatewayClient
 from hath0r_engine.gateway.routing import TieredRouter
+from hath0r_engine.gateway.tokenizer_tax import (
+    ScriptBreakdown,
+    TaxAuditReport,
+    TokenizerTaxAuditor,
+    VocabVRAMFootprint,
+)
 from hath0r_engine.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeGraphExtractor, KnowledgeNode
 from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
 from hath0r_engine.guardrails.ast_validator import SyntaxGuardrail
@@ -207,6 +213,10 @@ __all__ = [
     "SemanticCache",
     "TieredRouter",
     "AIGatewayClient",
+    "ScriptBreakdown",
+    "VocabVRAMFootprint",
+    "TaxAuditReport",
+    "TokenizerTaxAuditor",
     "OTELTracerBot",
     "TelemetrySpan",
     "EvidenceType",
