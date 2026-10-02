@@ -15,6 +15,12 @@ from hath0r_engine.gateway.base import (
 from hath0r_engine.gateway.cache import SemanticCache
 from hath0r_engine.gateway.client import AIGatewayClient
 from hath0r_engine.gateway.routing import TieredRouter
+from hath0r_engine.gateway.tokenizer_tax import (
+    ScriptBreakdown,
+    TaxAuditReport,
+    TokenizerTaxAuditor,
+    VocabVRAMFootprint,
+)
 from hath0r_engine.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeGraphExtractor, KnowledgeNode
 from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
 from hath0r_engine.guardrails.ast_validator import SyntaxGuardrail
@@ -40,6 +46,19 @@ from hath0r_engine.mcp.tool_router import DynamicToolRouter, ToolDefinition
 from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 from hath0r_engine.memory.memory_tools import MemoryPagingManager
 from hath0r_engine.memory.reflection import ReflectionEngine
+from hath0r_engine.optimization import (
+    ArrayType,
+    ExperimentMatrix,
+    ExperimentRun,
+    Factor,
+    FactorAnalysis,
+    FactorLevelEffect,
+    SNRType,
+    TaguchiAnalysisResult,
+    TaguchiEngine,
+    TaguchiLossFunction,
+    calculate_snr,
+)
 from hath0r_engine.orchestration.durable_agent import durable_task
 from hath0r_engine.orchestration.hibernation import (
     GateStatus,
@@ -87,6 +106,19 @@ from hath0r_engine.sandbox.e2b_provider import E2BSandboxProvider
 from hath0r_engine.sandbox.local_provider import LocalSandboxProvider
 from hath0r_engine.sandbox.manager import SandboxManager
 from hath0r_engine.telemetry.otel_tracer import OTELTracerBot, TelemetrySpan
+from hath0r_engine.testing.catalog import PlaywrightMasterCatalogManager
+from hath0r_engine.testing.models import (
+    PlaywrightActionType,
+    PlaywrightBrowserType,
+    PlaywrightCatalogMetadata,
+    PlaywrightExecutionResult,
+    PlaywrightMasterCatalog,
+    PlaywrightStep,
+    PlaywrightTestCase,
+    PlaywrightTestStatus,
+    PlaywrightTestSuite,
+)
+from hath0r_engine.testing.runner import PlaywrightTestRunner
 from hath0r_engine.ui.components import UIComponentBuilder
 from hath0r_engine.ui.crypto_signoff import generate_cryptographic_signature
 from hath0r_engine.ui.protocol import (
@@ -97,6 +129,17 @@ from hath0r_engine.ui.protocol import (
     SignOffRecord,
 )
 from hath0r_engine.ui.synchronizer import BiDirectionalStateSync
+from hath0r_engine.vision import (
+    DesignToCodeSynthesizer,
+    DocumentLayoutParser,
+    DocumentStructure,
+    GroundedTarget,
+    ImageMetadata,
+    MultimodalPerceptionManager,
+    VisionEngine,
+    VisionResult,
+    VisualGroundingEngine,
+)
 from hath0r_engine.voice.voice_config import VoiceConfig
 from hath0r_engine.voice.voice_engine import VoiceEngine
 
@@ -170,6 +213,10 @@ __all__ = [
     "SemanticCache",
     "TieredRouter",
     "AIGatewayClient",
+    "ScriptBreakdown",
+    "VocabVRAMFootprint",
+    "TaxAuditReport",
+    "TokenizerTaxAuditor",
     "OTELTracerBot",
     "TelemetrySpan",
     "EvidenceType",
@@ -190,4 +237,35 @@ __all__ = [
     "format_block_message",
     "VoiceEngine",
     "VoiceConfig",
+    "VisionEngine",
+    "MultimodalPerceptionManager",
+    "VisualGroundingEngine",
+    "DocumentLayoutParser",
+    "DesignToCodeSynthesizer",
+    "ImageMetadata",
+    "VisionResult",
+    "DocumentStructure",
+    "GroundedTarget",
+    "PlaywrightBrowserType",
+    "PlaywrightTestStatus",
+    "PlaywrightActionType",
+    "PlaywrightStep",
+    "PlaywrightTestCase",
+    "PlaywrightTestSuite",
+    "PlaywrightCatalogMetadata",
+    "PlaywrightMasterCatalog",
+    "PlaywrightExecutionResult",
+    "PlaywrightMasterCatalogManager",
+    "PlaywrightTestRunner",
+    "ArrayType",
+    "Factor",
+    "ExperimentRun",
+    "ExperimentMatrix",
+    "FactorLevelEffect",
+    "FactorAnalysis",
+    "TaguchiAnalysisResult",
+    "TaguchiLossFunction",
+    "SNRType",
+    "calculate_snr",
+    "TaguchiEngine",
 ]

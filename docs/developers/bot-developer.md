@@ -29,8 +29,9 @@ Every bot belongs to exactly one family and serves a single purpose.
 * **Orchestration:** (Platform-owned) Proctor-Bot, Process-Bot, Operator-Bot.
 * **Hierarchy:** Procedure-Bot, Strategy-Bot, Playbook-Bot, Runbook-Bot, Workflow-Bot, Checklist-Bot (these share a common Go chassis).
 * **Observation:** Observation-Bot and its children (task, benchmark, success-rate, retry, token).
+* **Validation & Testing:** Validator-Bots (`val-*`), Playwright-Runner-Bot, and Clean-Repo Catalog Sync Bot (`PlaywrightMasterCatalogManager`).
 
-*Note: You will typically be building or extending specific capability worker bots that interact with the Hierarchy or extend the CLI's domain functionality.*
+*Note: You will typically be building or extending specific capability worker bots that interact with the Hierarchy, execute Playwright UI test suites, or extend the CLI's domain functionality.*
 
 ## 2. The Seven-Block Anatomy
 

@@ -3,14 +3,13 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Any, Callable, Dict, List, Optional, TypeVar
+from typing import Any, Callable, Dict, Optional, TypeVar
 
 from hath0r_engine.orchestration.hibernation import (
-    GateStatus,
     HumanGateRequest,
     WorkflowSuspendedException,
 )
-from hath0r_engine.orchestration.journal import EventJournal, EventRecord, EventType
+from hath0r_engine.orchestration.journal import EventJournal, EventType
 
 T = TypeVar("T")
 

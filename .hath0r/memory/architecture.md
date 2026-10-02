@@ -1,0 +1,1 @@
+HATH0R-CLI Architecture Decision (ADR-006): Retain Service-Oriented Architecture (SOA) and modular substrate as the deterministic control plane for CLI operations, contracts, and zero-trust sandboxing. Consume Transformers and neural models on-demand via the Cognitive Substrate (AI Gateway, DSPy, Tri-Graph RAG, DynamicToolRouter).

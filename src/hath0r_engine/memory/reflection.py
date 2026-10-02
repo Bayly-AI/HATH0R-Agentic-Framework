@@ -9,7 +9,7 @@ from __future__ import annotations
 import math
 from collections import Counter
 from datetime import datetime, timezone
-from typing import Dict, List, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 from hath0r_engine.graph.knowledge_graph import BM25Index, KnowledgeGraph, KnowledgeNode
 from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode

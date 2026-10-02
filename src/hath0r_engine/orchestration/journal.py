@@ -74,13 +74,13 @@ class EventJournal:
             )
             self.conn.execute(
                 """
-                CREATE INDEX IF NOT EXISTS idx_workflow_seq 
+                CREATE INDEX IF NOT EXISTS idx_workflow_seq
                 ON workflow_events (workflow_id, seq_num);
                 """
             )
             self.conn.execute(
                 """
-                CREATE INDEX IF NOT EXISTS idx_workflow_idempotency 
+                CREATE INDEX IF NOT EXISTS idx_workflow_idempotency
                 ON workflow_events (workflow_id, idempotency_key);
                 """
             )

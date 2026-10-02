@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import List, Optional
 
 from hath0r_engine.guardrails.ast_validator import SyntaxGuardrail
 from hath0r_engine.guardrails.escalation import HumanEscalationAuditHook
