@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import uuid
-from typing import Any, Dict, Optional
+from typing import Optional
 
 from hath0r_engine.ui.protocol import EvidenceComponent, EvidenceType
 

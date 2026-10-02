@@ -13,6 +13,10 @@ governed_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, cr-branc
 - [`docs/governance/strategies/agent-rules-rag-cli-first-strategy.md`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/docs/governance/strategies/agent-rules-rag-cli-first-strategy.md): Unified Agent Rules, RAG Strategy & CLI-First doctrine.
 - [`docs/governance/playbooks/agent-rules-rag-cli-first-playbook.md`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/docs/governance/playbooks/agent-rules-rag-cli-first-playbook.md): Operator workflow for CLI execution and RAG retrieval.
 - [`docs/governance/rules/cr-cli-entry-001.md`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/docs/governance/rules/cr-cli-entry-001.md): Mandatory "Start with the CLI" rule.
+- [`docs/governance/rules/cr-playwright-ui-001.md`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/docs/governance/rules/cr-playwright-ui-001.md): Mandatory Playwright UI testing & master test case registration rule.
+- [`docs/governance/strategies/playwright-ui-testing-strategy.md`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/docs/governance/strategies/playwright-ui-testing-strategy.md): Playwright UI testing and test governance strategy.
+- [`docs/architect/hathor-adr-007-taguchi-techniques-robust-design-20261002.md`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/docs/architect/hathor-adr-007-taguchi-techniques-robust-design-20261002.md): Taguchi Techniques for Robust Design, OATS, and Quality Loss Optimization.
+- [`docs/architect/hathor-adr-008-pixel-native-vision-tokenizer-tax-20261002.md`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/docs/architect/hathor-adr-008-pixel-native-vision-tokenizer-tax-20261002.md): Pixel-Native Vision Ingestion and Tokenizer Tax Auditing.
 - [`docs/runbook.md`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/docs/runbook.md): Framework operational runbook.
 
 ## 2. Frontmatter Standards for KG Ingestion

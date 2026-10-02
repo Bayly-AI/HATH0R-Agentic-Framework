@@ -51,6 +51,7 @@ Corpus root: `docs/` · Document namespace: **`HATHOR-*`** (see `id-namespace-ma
 | [HATHOR-ADR-003](./hathor-adr-003-greenfield-command-surface-20260913.md) | ADR | accepted | HATHOR-ADR-003 — Greenfield Binary, Canonical Command Surface & Exit-Code Boundaries | `hathor-adr-003-greenfield-command-surface-20260913.md` |
 | [HATHOR-ADR-004](./hathor-adr-004-layout-state-residency-20260913.md) | ADR | accepted | HATHOR-ADR-004 — Layout & State Residency | `hathor-adr-004-layout-state-residency-20260913.md` |
 | [HATHOR-ADR-005](./hathor-adr-005-backup-ticketing-system-20260913.md) | ADR | accepted | HATHOR-ADR-005 — Backup Ticketing System: Build vs Adopt | `hathor-adr-005-backup-ticketing-system-20260913.md` |
+| [HATHOR-ADR-006](./hathor-adr-006-cli-soa-vs-transformer-architecture-20261001.md) | ADR | accepted | HATHOR-ADR-006 — CLI Architectural Evaluation: SOA vs. Transformer Architecture | `hathor-adr-006-cli-soa-vs-transformer-architecture-20261001.md` |
 | [HATHOR-REQ-BOT-001](./hathor-bot-taxonomy-requirements-20260911.md) | REQ | draft | HATHOR — Bot Taxonomy, Anatomy & Default Command Contract | `hathor-bot-taxonomy-requirements-20260911.md` |
 | [HATHOR-REQ-CORE-001](./hathor-req-core-001-initial-requirements-20260911.md) | REQ | draft | HATHOR — Initial Platform Requirements (Core) | `hathor-req-core-001-initial-requirements-20260911.md` |
 | [HATHOR-ARCH-001](./hathor-arch-001-architecture-mermaid-20260911.md) | ARCH | draft | HATHOR — Architecture & Mermaid Reference | `hathor-arch-001-architecture-mermaid-20260911.md` |

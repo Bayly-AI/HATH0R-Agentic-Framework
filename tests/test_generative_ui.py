@@ -1,15 +1,12 @@
 """Unit tests for Generative UI & Evidence Handshake Protocol."""
 
 import json
-import pytest
 
 from hath0r_engine.ui import (
     BiDirectionalStateSync,
-    EvidenceComponent,
     EvidenceType,
     HandshakeSession,
     HandshakeState,
-    SignOffRecord,
     UIComponentBuilder,
     generate_cryptographic_signature,
 )

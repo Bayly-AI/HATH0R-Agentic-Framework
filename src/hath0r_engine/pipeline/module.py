@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable, Dict, List, Optional, Type
+from typing import Any, Callable, Dict, List, Tuple, Type
 
 from hath0r_engine.pipeline.assertions import Assert, SchemaAssertionError
-from hath0r_engine.pipeline.signature import OutputField, Prediction, Signature
+from hath0r_engine.pipeline.signature import Prediction, Signature
 
 
 class PipelineModule:

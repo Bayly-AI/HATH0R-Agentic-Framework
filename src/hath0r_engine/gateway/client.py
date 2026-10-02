@@ -4,12 +4,11 @@ from __future__ import annotations
 
 import time
 import uuid
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 from hath0r_engine.gateway.base import (
     CompletionRequest,
     CompletionResponse,
-    ComplexityTier,
     GatewayConfig,
     ModelProvider,
 )

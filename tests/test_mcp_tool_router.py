@@ -1,11 +1,9 @@
 """Unit tests for Dynamic MCP Tool Router, Schema Pruner, Identity Context, and Telemetry."""
 
-import pytest
 
 from hath0r_engine.mcp import (
     CallerIdentity,
     DynamicToolRouter,
-    MCPRoutingTelemetry,
     PruningMode,
     SchemaPruner,
 )

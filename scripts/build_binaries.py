@@ -6,9 +6,12 @@ from __future__ import annotations
 import argparse
 import hashlib
 import platform
+import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
+from typing import List, Optional
 
 
 def compute_sha256(filepath: Path) -> str:
@@ -42,12 +45,53 @@ def generate_checksums(release_dir: Path) -> Path:
     lines = []
 
     for item in sorted(release_dir.iterdir()):
-        if item.is_file() and item.name not in ("CHECKSUMS.sha256", "README.md", ".DS_Store"):
+        if item.is_file() and item.name not in ("CHECKSUMS.sha256", "README.md", ".DS_Store", ".gitkeep"):
             digest = compute_sha256(item)
             lines.append(f"{digest}  {item.name}")
 
-    checksums_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    if lines:
+        checksums_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return checksums_file
+
+
+def rotate_previous_release(
+    release_dir: Path,
+    previous_dir: Path,
+    current_version: str,
+    dry_run: bool = False,
+) -> Optional[Path]:
+    """Rotate existing active release artifacts into previous/<version>/ archive."""
+    release_dir.mkdir(parents=True, exist_ok=True)
+    previous_dir.mkdir(parents=True, exist_ok=True)
+
+    artifacts = [
+        item for item in release_dir.iterdir()
+        if item.is_file() and item.name not in ("README.md", ".DS_Store", ".gitkeep")
+    ]
+    if not artifacts:
+        return None
+
+    version_pattern = re.compile(r"[-_](\d+\.\d+\.\d+(?:[-.][0-9A-Za-z]+)?)\.(?:tar\.gz|whl)")
+    prev_ver = None
+    for f in artifacts:
+        m = version_pattern.search(f.name)
+        if m:
+            prev_ver = m.group(1)
+            break
+    if not prev_ver or prev_ver == current_version:
+        prev_ver = f"{current_version}-prev"
+
+    archive_target = previous_dir / prev_ver
+    print(f"Rotating existing release artifacts into archive: {archive_target}")
+
+    if not dry_run:
+        archive_target.mkdir(parents=True, exist_ok=True)
+        for art in artifacts:
+            target_file = archive_target / art.name
+            shutil.move(str(art), str(target_file))
+        generate_checksums(archive_target)
+
+    return archive_target
 
 
 def build_standalone_binary(output_dir: Path, dry_run: bool = False) -> Path:
@@ -84,16 +128,29 @@ def build_standalone_binary(output_dir: Path, dry_run: bool = False) -> Path:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Hath0r standalone release builder")
     parser.add_argument("--out-dir", default="release", help="Output directory for binaries")
+    parser.add_argument("--previous-dir", default=None, help="Directory for previous version archives")
+    parser.add_argument("--rotate", action="store_true", help="Rotate existing release files to previous archive")
     parser.add_argument("--checksums-only", action="store_true", help="Regenerate CHECKSUMS.sha256 only")
     parser.add_argument("--dry-run", action="store_true", help="Simulate build without executing PyInstaller")
     args = parser.parse_args()
 
     release_dir = Path(args.out_dir).resolve()
     release_dir.mkdir(parents=True, exist_ok=True)
+    prev_dir = Path(args.previous_dir).resolve() if args.previous_dir else (release_dir / "previous")
+    prev_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.rotate:
+        ver_file = release_dir.parent / "VERSION"
+        ver = ver_file.read_text(encoding="utf-8").strip() if ver_file.is_file() else "1.0.0"
+        rotate_previous_release(release_dir, prev_dir, ver, dry_run=args.dry_run)
 
     if args.checksums_only:
         chk = generate_checksums(release_dir)
         print(f"Updated checksums at {chk}")
+        if prev_dir.exists():
+            for sub in prev_dir.iterdir():
+                if sub.is_dir():
+                    generate_checksums(sub)
         return
 
     binary = build_standalone_binary(release_dir, dry_run=args.dry_run)
