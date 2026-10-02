@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-10-02
+
+### Taguchi Robust Optimization, FinOps Tokenizer Tax Auditor & Pixel-Native Vision
+
+This major update introduces the Taguchi Robust Parameter Optimization Engine, FinOps Tokenizer Tax Auditor, Pixel-Native 2D Document Parsing, and DOM-Independent Playwright Visual Grounding.
+
+### Added & Enhanced
+
+- **Taguchi Robust Parameter Optimization Engine (`hath0r_engine.optimization.taguchi`) (#153, #154)**:
+  - Ratified [ADR-007](docs/architect/hathor-adr-007-taguchi-techniques-robust-design-20261002.md) for Robust Parameter Design in Agentic Systems.
+  - Implemented Orthogonal Array Testing Strategy (OATS) generators for $L_4, L_8, L_9, L_{12}, L_{18}$ matrices.
+  - Signal-to-Noise Ratio (SNR) calculations across Nominal-is-Best, Smaller-is-Better, and Larger-is-Better criteria.
+  - Taguchi Quadratic Quality Loss Function ($L(y) = k(y-m)^2$) for variance cost quantification.
+- **FinOps Tokenizer Tax Auditor (`hath0r_engine.gateway.tokenizer_tax`) (#157, #158)**:
+  - Ratified [ADR-008](docs/architect/hathor-adr-008-pixel-native-vision-tokenizer-tax-20261002.md) for Pixel-Native Vision Ingestion and Tokenizer Tax Auditing.
+  - Pure-Python Unicode script classifier spanning Latin, Arabic, Devanagari, CJK, Cyrillic, Hebrew, and others.
+  - Token inflation ratio ($\tau_{lang}$) and vocabulary parameter/VRAM overhead calculator ($P_{vocab} = 2 \cdot V \cdot d_{model}$).
+  - Continuous visual patch budget equivalent calculator.
+- **Pixel-Native 2D Document Parsing & Playwright Grounding (`hath0r_engine.vision`) (#159)**:
+  - `DocumentLayoutParser.parse_pixel_native` preserving 2D table cell matrices and diagram topologies without OCR licenses.
+  - `VisualGroundingEngine.ground_to_playwright_step` translating natural language element directives directly into Playwright-compliant coordinate action steps.
+  - Added `coordinates` and `bounding_box` fields to `PlaywrightStep` in `src/hath0r_engine/testing/models.py` and `contracts/hath0r-playwright-test-spec-v1.schema.json`.
+- **Comprehensive Verification**:
+  - Full test suite expanded to 178 unit and integration tests passing across all cognitive modules.
+
+---
+
 ## [1.0.1] - 2026-09-30
 
 ### Advanced Cognitive Engine, Temporal RAG & Tri-Graph Substrates
