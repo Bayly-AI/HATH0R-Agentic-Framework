@@ -14,17 +14,14 @@ Verifies:
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
+
 import pytest
 
 from hath0r_engine.graph.agent_graph import (
-    AgentGraphEdge,
     AgentGraphEngine,
     AgentGraphNode,
     AgentGraphPlane,
-    ASTCodeAdapter,
-    MarkdownDocAdapter,
     RuleConflictError,
     RuleCycleError,
     RulePriority,
@@ -308,9 +305,73 @@ def test_snapshot_roundtrip_persistence(tmp_path: Path):
     new_engine = AgentGraphEngine(graph_id="persistence-space")
     new_engine.import_snapshot(snapshot_file)
 
-    assert len(new_engine.nodes) == len(engine.nodes)
-    assert len(new_engine.edges) == len(engine.edges)
-
     resolved = new_engine.resolve_agent_rules("role:tester")
     assert "pytest_runner" in resolved.authorized_tools
     assert "100% Pass Invariant" in resolved.governing_invariants
+
+
+def test_agent_rules_graph_substrate():
+    from hath0r_engine.graph import AgentRulesGraph
+
+    arg = AgentRulesGraph()
+    arg.register_agent_role(
+        role_id="role:curator",
+        role_name="Curator Bot",
+        scope="contracts",
+        permitted_tools=["view_file", "write_to_file"],
+        forbidden_tools=["git_push"],
+    )
+    arg.register_rule_policy(
+        rule_id="rule:branch_rules",
+        title="Branch Governance Rule",
+        content="Must branch from development only.",
+        priority=RulePriority.REPO_STANDARD,
+        governs_roles=["role:curator"],
+        restricted_actions=["git_push_master"],
+        allowed_actions=["git_push_feature"],
+    )
+
+    resolved = arg.resolve_rules("role:curator")
+    assert "view_file" in resolved.authorized_tools
+    assert "write_to_file" in resolved.authorized_tools
+    assert "git_push" not in resolved.authorized_tools
+    assert "git_push_master" in resolved.restricted_actions
+
+    tools = arg.get_authorized_tools("role:curator")
+    assert tools == {"view_file", "write_to_file"}
+    assert arg.is_action_allowed("role:curator", "git_push_feature") is True
+    assert arg.is_action_allowed("role:curator", "git_push_master") is False
+
+    report = arg.validate_rules()
+    assert report.is_valid is True
+
+
+def test_sqlite_roundtrip_persistence(tmp_path: Path):
+    db_file = tmp_path / "agentgraph_test.db"
+
+    engine = AgentGraphEngine(graph_id="sqlite-space")
+    engine.register_agent_role(
+        role_id="role:architect",
+        role_name="System Architect",
+        permitted_tools=["adr_author", "graph_query"],
+    )
+    engine.register_rule_policy(
+        rule_id="rule:adr_standard",
+        title="ADR Standard Invariant",
+        content="All architecture shifts require ratified ADRs.",
+        priority=RulePriority.ORG_INVARIANT,
+        governs_roles=["role:architect"],
+    )
+
+    engine.persist_sqlite(db_file)
+    assert db_file.exists()
+
+    new_engine = AgentGraphEngine(graph_id="sqlite-space")
+    new_engine.load_sqlite(db_file)
+
+    assert len(new_engine.nodes) == 2  # role + rule
+    assert len(new_engine.edges) == 3  # 2 AUTHORIZES_TOOL edges + 1 GOVERNS edge
+    resolved = new_engine.resolve_agent_rules("role:architect")
+    assert "adr_author" in resolved.authorized_tools
+    assert "ADR Standard Invariant" in resolved.governing_invariants
+

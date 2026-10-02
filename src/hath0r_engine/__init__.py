@@ -32,6 +32,7 @@ from hath0r_engine.graph.agent_graph import (
     RuleCycleError,
     RulePriority,
 )
+from hath0r_engine.graph.agent_rules_graph import AgentRulesGraph
 from hath0r_engine.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeGraphExtractor, KnowledgeNode
 from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
 from hath0r_engine.guardrails.ast_validator import SyntaxGuardrail
@@ -157,6 +158,7 @@ from hath0r_engine.voice.voice_engine import VoiceEngine
 __all__ = [
     "__version__",
     "AgentGraphEngine",
+    "AgentRulesGraph",
     "AgentGraphNode",
     "AgentGraphEdge",
     "AgentGraphPlane",
