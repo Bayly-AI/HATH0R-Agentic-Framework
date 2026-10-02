@@ -75,3 +75,20 @@ class SyntaxGuardrail:
         if isinstance(curr, ast.Name):
             parts.append(curr.id)
         return ".".join(reversed(parts))
+
+    def validate_action_against_rules(
+        self,
+        action_or_payload: str,
+        restricted_actions: List[str],
+    ) -> List[str]:
+        """Verify whether an action or shell/code payload violates active rule policy restrictions."""
+        violations: List[str] = []
+        payload_lower = action_or_payload.lower()
+        for restricted in restricted_actions:
+            if not restricted:
+                continue
+            r_clean = restricted.strip().lower()
+            if r_clean in payload_lower:
+                violations.append(f"Action violates active rule policy restriction: '{restricted}'")
+        return violations
+
