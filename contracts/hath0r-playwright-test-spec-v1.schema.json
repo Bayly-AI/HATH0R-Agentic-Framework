@@ -104,7 +104,18 @@
                       "value": { "type": "string" },
                       "timeout_ms": { "type": "integer" },
                       "expected": { "type": "string" },
-                      "snapshot_name": { "type": "string" }
+                      "snapshot_name": { "type": "string" },
+                      "coordinates": {
+                        "type": "object",
+                        "properties": {
+                          "x": { "type": "number" },
+                          "y": { "type": "number" }
+                        }
+                      },
+                      "bounding_box": {
+                        "type": "array",
+                        "items": { "type": "number" }
+                      }
                     }
                   }
                 },

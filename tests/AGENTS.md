@@ -18,6 +18,7 @@ governed_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, CR-PLAYW
 - [`tests/e2e/master-playwright-tests.json`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/tests/e2e/master-playwright-tests.json): Master test case document in Playwright-compliant format.
 - [`tests/test_ai_gateway.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/tests/test_ai_gateway.py): Tiered routing, semantic cache, and FinOps tests.
 - [`tests/test_tokenizer_tax.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/tests/test_tokenizer_tax.py): FinOps Tokenizer Tax Auditor, multilingual inflation, and VRAM overhead tests.
+- [`tests/test_vision_pixel_native.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/tests/test_vision_pixel_native.py): Pixel-native 2D document parsing and DOM-independent Playwright grounding tests.
 - [`tests/test_durable_orchestration.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/tests/test_durable_orchestration.py): Event journaling, replay, and human hibernation tests.
 - [`tests/test_sandbox_providers.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/tests/test_sandbox_providers.py): Zero-trust sandbox execution tests.
 - [`tests/test_mcp_tool_router.py`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/tests/test_mcp_tool_router.py): Dynamic MCP tool routing and schema pruner tests.

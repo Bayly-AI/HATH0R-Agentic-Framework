@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import hashlib
 from pathlib import Path
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from hath0r_engine.vision.models import GroundedTarget, VisionResult
 from hath0r_engine.vision.perception import MultimodalPerceptionManager
@@ -65,3 +65,38 @@ class VisualGroundingEngine:
             description=f"Located '{target}' in {path.name} at center ({center_x}, {center_y}) px.",
             grounded_target=grounded,
         )
+
+    def ground_to_playwright_step(
+        self,
+        image_path: Path | str,
+        target: str,
+        action: str = "click",
+        step_number: int = 1,
+        value: Optional[str] = None,
+        expected: Optional[str] = None,
+        device: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """Ground target description to pixel coordinates and emit a Playwright-compliant DOM-independent step."""
+        res = self.ground(image_path=image_path, target=target, device=device)
+        if not res.success or not res.grounded_target:
+            raise RuntimeError(res.error or f"Failed to visually ground target '{target}'")
+
+        from hath0r_engine.testing.models import PlaywrightActionType, PlaywrightStep
+
+        valid_actions = {a.value: a for a in PlaywrightActionType}
+        action_enum = valid_actions.get(action, PlaywrightActionType.CLICK)
+
+        coords = res.grounded_target.center_coordinates
+        bbox = res.grounded_target.bounding_box
+
+        step = PlaywrightStep(
+            step_number=step_number,
+            action=action_enum,
+            selector=None,
+            value=value,
+            expected=expected,
+            coordinates=coords,
+            bounding_box=bbox,
+        )
+        return step.to_dict()
+

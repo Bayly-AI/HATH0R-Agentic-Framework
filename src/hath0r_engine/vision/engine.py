@@ -45,6 +45,27 @@ class VisionEngine:
         res = self.grounding.ground(image_path=image_path, target=target, device=device)
         return res.to_dict()
 
+    def ground_to_playwright_step(
+        self,
+        image_path: Path | str,
+        target: str,
+        action: str = "click",
+        step_number: int = 1,
+        value: Optional[str] = None,
+        expected: Optional[str] = None,
+        device: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """Ground natural language UI target description to a DOM-independent Playwright step."""
+        return self.grounding.ground_to_playwright_step(
+            image_path=image_path,
+            target=target,
+            action=action,
+            step_number=step_number,
+            value=value,
+            expected=expected,
+            device=device,
+        )
+
     def parse_document(
         self,
         image_path: Path | str,
@@ -53,6 +74,16 @@ class VisionEngine:
     ) -> Dict[str, Any]:
         """Parse technical diagrams, architecture flowcharts, and structured document layouts."""
         res = self.document_parser.parse(image_path=image_path, prompt=prompt, device=device)
+        return res.to_dict()
+
+    def parse_document_pixel_native(
+        self,
+        image_path: Path | str,
+        patch_size: int = 16,
+        device: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """Parse technical diagrams and 2D tabular documents as continuous visual patches."""
+        res = self.document_parser.parse_pixel_native(image_path=image_path, patch_size=patch_size, device=device)
         return res.to_dict()
 
     def embed(
