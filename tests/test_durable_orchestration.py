@@ -2,7 +2,6 @@
 
 import tempfile
 from pathlib import Path
-from typing import List
 
 import pytest
 
@@ -10,7 +9,6 @@ from hath0r_engine.orchestration import (
     DurableWorkflowEngine,
     EventJournal,
     EventType,
-    GateStatus,
     WorkflowStatus,
     WorkflowSuspendedException,
     durable_task,

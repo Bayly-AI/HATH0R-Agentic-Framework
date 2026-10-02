@@ -12,6 +12,7 @@ governed_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, cr-branc
 ## 1. Subsystem KnowledgeGraph Entity Nodes
 - [`contracts/hath0r-knowledgegraph-v1.schema.json`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/contracts/hath0r-knowledgegraph-v1.schema.json): Static KnowledgeGraph entity nodes & edge schema.
 - [`contracts/hath0r-contextgraph-v1.schema.json`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/contracts/hath0r-contextgraph-v1.schema.json): Runtime ContextGraph session & JEV guard schema.
+- [`contracts/hath0r-playwright-test-spec-v1.schema.json`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/contracts/hath0r-playwright-test-spec-v1.schema.json): Master Playwright test case catalog and specification schema.
 - [`contracts/hath0r-cli-response-v1.schema.json`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/contracts/hath0r-cli-response-v1.schema.json): Standardized CLI envelope contract.
 - [`contracts/exit-codes.yaml`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/contracts/exit-codes.yaml): CLI and engine process exit codes.
 

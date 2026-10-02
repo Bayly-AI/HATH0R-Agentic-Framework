@@ -1,11 +1,9 @@
 """Unit tests for Deterministic Pre-Execution Tool Guardrails and Schema Repair."""
 
-import pytest
 
 from hath0r_engine.guardrails import (
     GuardrailAction,
     GuardrailsManager,
-    HumanEscalationAuditHook,
     SchemaRepairEngine,
     SyntaxGuardrail,
     ToolCallDescriptor,

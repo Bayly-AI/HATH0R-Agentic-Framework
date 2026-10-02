@@ -9,14 +9,13 @@ import tempfile
 import time
 import uuid
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Dict, Optional
 
 from hath0r_engine.sandbox.base import (
     ExecutionResult,
     NetworkPolicy,
     SandboxConfig,
     SandboxProvider,
-    SandboxType,
 )
 
 

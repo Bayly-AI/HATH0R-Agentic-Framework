@@ -3,12 +3,9 @@
 import tempfile
 from pathlib import Path
 
-import pytest
-
 from hath0r_engine.sandbox import (
     DaytonaSandboxProvider,
     E2BSandboxProvider,
-    ExecutionResult,
     LocalSandboxProvider,
     NetworkPolicy,
     SandboxConfig,

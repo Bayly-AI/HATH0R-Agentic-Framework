@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import ast
 import re
-from typing import List, Tuple
+from typing import List
 
 
 class SyntaxGuardrail:
