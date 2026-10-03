@@ -1,0 +1,24 @@
+{
+  "name": "hath0r-cli",
+  "version": "1.2.0",
+  "description": "HATH0R CLI operator and cognitive substrate control plane: AgentGraph quad-graph querying, Taguchi parameter optimization, FinOps multilingual tokenizer-tax auditing, pixel-native 2D document parsing, and Playwright UI element grounding.",
+  "icon": ".claude-plugin/icon.png",
+  "author": {
+    "name": "Bayly AI",
+    "url": "https://github.com/Bayly-AI"
+  },
+  "homepage": "https://github.com/Bayly-AI/HATH0R-Agentic-Framework",
+  "repository": "https://github.com/Bayly-AI/HATH0R-Agentic-Framework",
+  "license": "Apache-2.0",
+  "mcpServers": {
+    "hath0r-cli": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "hath0r-agentic-cli",
+        "mcp",
+        "serve"
+      ]
+    }
+  }
+}

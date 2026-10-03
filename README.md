@@ -59,14 +59,21 @@ Enterprises scaling autonomous AI agents face three existential bottlenecks: **r
 > **No complex Python environments, virtualenv juggling, or dependency conflicts.**  
 > Everything required to operate, govern, audit, and orchestrate autonomous agents across your projects is bundled into the standalone **HATH0R CLI** (`hath0r`).
 
-📦 **Enterprise Standalone Binaries:**
-- 🍏 **macOS (Apple Silicon):** [`release/python/cli/hath0r-darwin-arm64`](release/python/cli/hath0r-darwin-arm64)
-- 🍏 **macOS (Intel):** [`release/python/cli/hath0r-darwin-x86_64`](release/python/cli/hath0r-darwin-x86_64)
-- 🐧 **Linux (x86_64):** [`release/python/cli/hath0r-linux-x86_64`](release/python/cli/hath0r-linux-x86_64)
-- 🐧 **Linux (ARM64):** [`release/python/cli/hath0r-linux-arm64`](release/python/cli/hath0r-linux-arm64)
-- 🪟 **Windows (x64):** [`release/python/cli/hath0r-windows-x64.cmd`](release/python/cli/hath0r-windows-x64.cmd)
+📦 **Canonical Multi-Language Release Packages:**
 
-*Or install globally via package manager:* `pipx install hath0r-cli` (or `pip install hath0r-engine`)
+- 🐍 **Python CLI Release Path (`./release/python/cli`):**
+  - 🍏 **macOS (Apple Silicon):** [`release/python/cli/hath0r-darwin-arm64`](release/python/cli/hath0r-darwin-arm64)
+  - 🍏 **macOS (Intel):** [`release/python/cli/hath0r-darwin-x86_64`](release/python/cli/hath0r-darwin-x86_64)
+  - 🐧 **Linux (x86_64):** [`release/python/cli/hath0r-linux-x86_64`](release/python/cli/hath0r-linux-x86_64)
+  - 🐧 **Linux (ARM64):** [`release/python/cli/hath0r-linux-arm64`](release/python/cli/hath0r-linux-arm64)
+  - 🪟 **Windows (x64):** [`release/python/cli/hath0r-windows-x64.cmd`](release/python/cli/hath0r-windows-x64.cmd)
+  - 📖 **Documentation:** [`docs/developers/python/README.md`](docs/developers/python/README.md)
+- 🟨 **Node / JavaScript Release Path (`./release/javascript/node`):**
+  - 📦 **NPM Package:** [`release/javascript/node/hath0r-node-0.3.0.tgz`](release/javascript/node/hath0r-node-0.3.0.tgz) (`@hath0r/node`)
+  - 📖 **Documentation:** [`docs/developers/javascript/README.md`](docs/developers/javascript/README.md)
+
+*Or install globally via package manager:* `pipx install hath0r-cli` | `npm install ./release/javascript/node/hath0r-node-0.3.0.tgz`
+
 
 ---
 
