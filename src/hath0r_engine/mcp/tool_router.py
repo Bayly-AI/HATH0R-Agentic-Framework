@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import time
 from dataclasses import asdict, dataclass, field
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 from hath0r_engine.graph.knowledge_graph import BM25Index, LightweightVectorIndex
 from hath0r_engine.mcp.identity import CallerIdentity
@@ -121,10 +121,19 @@ class DynamicToolRouter:
         top_k: int = 5,
         caller: Optional[CallerIdentity] = None,
         min_score: float = 0.0,
+        agent_graph: Optional[Any] = None,
+        role_id: Optional[str] = None,
     ) -> List[Tuple[ToolDefinition, float]]:
-        """Retrieve top-k tools matching query semantics and caller authorization."""
+        """Retrieve top-k tools matching query semantics, caller authorization, and AgentGraph role RBAC."""
         if not self.tools:
             return []
+
+        # Resolve authorized tools from AgentGraph / AgentRulesGraph if provided
+        authorized_tools: Optional[Set[str]] = None
+        effective_role = role_id or (caller.roles[0] if caller and caller.roles else None)
+        if agent_graph and effective_role:
+            if hasattr(agent_graph, "get_authorized_tools"):
+                authorized_tools = set(agent_graph.get_authorized_tools(effective_role))
 
         if self._bm25_index is None or self._vector_index is None:
             self._build_indices()
@@ -141,6 +150,11 @@ class DynamicToolRouter:
         candidate_scores: List[Tuple[ToolDefinition, float]] = []
 
         for qname, tool in self.tools.items():
+            # Check AgentGraph RBAC authorization
+            if authorized_tools is not None:
+                if tool.name not in authorized_tools and qname not in authorized_tools:
+                    continue
+
             # Check caller authorization scopes if caller is provided
             if caller and tool.required_scopes:
                 if not any(caller.has_scope(s) for s in tool.required_scopes):
@@ -162,6 +176,8 @@ class DynamicToolRouter:
         top_k: int = 5,
         mode: PruningMode = PruningMode.STANDARD,
         caller: Optional[CallerIdentity] = None,
+        agent_graph: Optional[Any] = None,
+        role_id: Optional[str] = None,
     ) -> List[Dict[str, Any]]:
         """Route, prune, and format tools for LLM prompt context, capturing telemetry."""
         start_time = time.time()
@@ -174,7 +190,13 @@ class DynamicToolRouter:
         unpruned_tokens = self.pruner.estimate_tokens(unpruned_fleet)
 
         # Route top-k tools
-        routed = self.route_tools(query=query, top_k=top_k, caller=caller)
+        routed = self.route_tools(
+            query=query,
+            top_k=top_k,
+            caller=caller,
+            agent_graph=agent_graph,
+            role_id=role_id,
+        )
         selected_tool_dicts = [
             {"name": tool.name, "description": tool.description, "parameters": tool.parameters}
             for tool, _ in routed
