@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import time
 import uuid
 from typing import Any, Dict, Optional
@@ -37,7 +38,9 @@ class AIGatewayClient:
             else None
         )
         self.tracer = tracer or OTELTracerBot(service_name="hath0r-ai-gateway")
-        self.token_telemetry = token_telemetry
+        self.token_telemetry = (
+            token_telemetry if token_telemetry is not None else TokenTelemetryBot()
+        )
 
         # FinOps Aggregators
         self.total_requests: int = 0
@@ -81,9 +84,23 @@ class AIGatewayClient:
             cached_resp = self.cache.lookup(full_prompt)
             if cached_resp:
                 if self.token_telemetry:
-                    user_id = str(request.metadata.get("user_id", "default_user"))
-                    agent_id = str(request.metadata.get("agent_id", "hath0r-agent"))
-                    session_id = str(request.metadata.get("session_id", ""))
+                    req_meta = request.metadata or {}
+                    user_id = str(
+                        req_meta.get("user_id")
+                        or req_meta.get("user")
+                        or os.environ.get("USER")
+                        or "default_user"
+                    )
+                    agent_id = str(
+                        req_meta.get("agent_id")
+                        or req_meta.get("agent")
+                        or "hath0r-agent"
+                    )
+                    session_id = str(
+                        req_meta.get("session_id")
+                        or req_meta.get("session")
+                        or ""
+                    )
                     self.token_telemetry.record_prompt(
                         prompt=full_prompt,
                         user_id=user_id,
@@ -96,7 +113,7 @@ class AIGatewayClient:
                         cached=True,
                         agent_id=agent_id,
                         session_id=session_id,
-                        metadata=request.metadata,
+                        metadata=req_meta,
                     )
                 return cached_resp
 
@@ -159,9 +176,23 @@ class AIGatewayClient:
 
             # 5. Record Token Telemetry Ledger
             if self.token_telemetry:
-                user_id = str(request.metadata.get("user_id", "default_user"))
-                agent_id = str(request.metadata.get("agent_id", "hath0r-agent"))
-                session_id = str(request.metadata.get("session_id", ""))
+                req_meta = request.metadata or {}
+                user_id = str(
+                    req_meta.get("user_id")
+                    or req_meta.get("user")
+                    or os.environ.get("USER")
+                    or "default_user"
+                )
+                agent_id = str(
+                    req_meta.get("agent_id")
+                    or req_meta.get("agent")
+                    or "hath0r-agent"
+                )
+                session_id = str(
+                    req_meta.get("session_id")
+                    or req_meta.get("session")
+                    or ""
+                )
                 self.token_telemetry.record_prompt(
                     prompt=full_prompt,
                     user_id=user_id,
@@ -174,7 +205,7 @@ class AIGatewayClient:
                     cached=False,
                     agent_id=agent_id,
                     session_id=session_id,
-                    metadata=request.metadata,
+                    metadata=req_meta,
                 )
 
             return response

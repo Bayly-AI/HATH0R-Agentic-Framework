@@ -231,3 +231,36 @@ class TestAIGatewayIntegration:
         assert r.prompt_length_chars == len(req.prompt)
         assert r.total_tokens == resp.total_tokens
         assert r.cost_usd > 0.0
+
+    def test_gateway_default_telemetry_instantiation(self, tmp_path: Path, monkeypatch):
+        test_ledger = tmp_path / "default_ledger.jsonl"
+        monkeypatch.setattr(
+            "hath0r_engine.telemetry.token_telemetry.TokenTelemetryLedger.__init__",
+            lambda self, path=None: setattr(self, "ledger_path", test_ledger) or None,
+        )
+
+        client = AIGatewayClient(
+            config=GatewayConfig(gateway_type=ModelProvider.MOCK, semantic_cache_enabled=False),
+        )
+        assert client.token_telemetry is not None
+
+        req = CompletionRequest(
+            prompt="Analyze system performance",
+            tier=ComplexityTier.LIGHT,
+            metadata={"user": "auto_user", "agent": "auto_agent", "session": "s123"},
+        )
+        client.complete(req)
+
+        records = client.token_telemetry.query_records(user_id="auto_user", agent_id="auto_agent")
+        assert len(records) == 1
+        assert records[0].session_id == "s123"
+
+        # Verify filtered histogram generation
+        hist = TokenHistogramBot.build_filtered_histogram(
+            ledger=client.token_telemetry.ledger,
+            user_id="auto_user",
+            metric="prompt_tokens",
+            bins_count=3,
+        )
+        assert hist["total_records"] == 1
+        assert hist["stats"]["mean"] > 0

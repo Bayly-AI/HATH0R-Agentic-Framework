@@ -105,6 +105,7 @@ class TokenTelemetryLedger:
         model: Optional[str] = None,
         session_id: Optional[str] = None,
         tier: Optional[str] = None,
+        agent_id: Optional[str] = None,
         since: Optional[str] = None,
         until: Optional[str] = None,
         limit: Optional[int] = None,
@@ -121,6 +122,8 @@ class TokenTelemetryLedger:
             if session_id and r.session_id != session_id:
                 continue
             if tier and r.tier != tier:
+                continue
+            if agent_id and r.agent_id != agent_id:
                 continue
             if since and r.timestamp < since:
                 continue
@@ -216,6 +219,7 @@ class TokenTelemetryBot:
         model: Optional[str] = None,
         session_id: Optional[str] = None,
         tier: Optional[str] = None,
+        agent_id: Optional[str] = None,
         limit: Optional[int] = None,
     ) -> List[TokenTelemetryRecord]:
         """Query ingested records with filtering options."""
@@ -224,6 +228,7 @@ class TokenTelemetryBot:
             model=model,
             session_id=session_id,
             tier=tier,
+            agent_id=agent_id,
             limit=limit,
         )
 
@@ -567,3 +572,33 @@ class TokenHistogramBot:
 </body>
 </html>"""
         return html
+
+    @classmethod
+    def build_filtered_histogram(
+        cls,
+        ledger: TokenTelemetryLedger,
+        user_id: Optional[str] = None,
+        model: Optional[str] = None,
+        session_id: Optional[str] = None,
+        tier: Optional[str] = None,
+        agent_id: Optional[str] = None,
+        metric: str = "prompt_tokens",
+        bins_count: int = 10,
+        max_bar_width: int = 30,
+        limit: Optional[int] = None,
+    ) -> Dict[str, Any]:
+        """Query ledger with multi-field filters and build histogram directly."""
+        records = ledger.query(
+            user_id=user_id,
+            model=model,
+            session_id=session_id,
+            tier=tier,
+            agent_id=agent_id,
+            limit=limit,
+        )
+        return cls.build_histogram(
+            records=records,
+            metric=metric,
+            bins_count=bins_count,
+            max_bar_width=max_bar_width,
+        )
