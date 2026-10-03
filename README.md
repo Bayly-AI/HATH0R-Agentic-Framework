@@ -60,11 +60,11 @@ Enterprises scaling autonomous AI agents face three existential bottlenecks: **r
 > Everything required to operate, govern, audit, and orchestrate autonomous agents across your projects is bundled into the standalone **HATH0R CLI** (`hath0r`).
 
 📦 **Enterprise Standalone Binaries:**
-- 🍏 **macOS (Apple Silicon):** [`release/hath0r-darwin-arm64`](release/hath0r-darwin-arm64)
-- 🍏 **macOS (Intel):** [`release/hath0r-darwin-x86_64`](release/hath0r-darwin-x86_64)
-- 🐧 **Linux (x86_64):** [`release/hath0r-linux-x86_64`](release/hath0r-linux-x86_64)
-- 🐧 **Linux (ARM64):** [`release/hath0r-linux-arm64`](release/hath0r-linux-arm64)
-- 🪟 **Windows (x64):** [`release/hath0r-windows-x64.cmd`](release/hath0r-windows-x64.cmd)
+- 🍏 **macOS (Apple Silicon):** [`release/python/cli/hath0r-darwin-arm64`](release/python/cli/hath0r-darwin-arm64)
+- 🍏 **macOS (Intel):** [`release/python/cli/hath0r-darwin-x86_64`](release/python/cli/hath0r-darwin-x86_64)
+- 🐧 **Linux (x86_64):** [`release/python/cli/hath0r-linux-x86_64`](release/python/cli/hath0r-linux-x86_64)
+- 🐧 **Linux (ARM64):** [`release/python/cli/hath0r-linux-arm64`](release/python/cli/hath0r-linux-arm64)
+- 🪟 **Windows (x64):** [`release/python/cli/hath0r-windows-x64.cmd`](release/python/cli/hath0r-windows-x64.cmd)
 
 *Or install globally via package manager:* `pipx install hath0r-cli` (or `pip install hath0r-engine`)
 
@@ -76,11 +76,11 @@ Deploy Hath0r into any repository in three commands:
 
 ```sh
 # 1. Verify health and operational readiness
-./release/hath0r-darwin-arm64 doctor
+./release/python/cli/hath0r-darwin-arm64 doctor
 
 # 2. Initialize enterprise governance in any repository
 cd /path/to/enterprise-repo
-/path/to/release/hath0r-darwin-arm64 init
+/path/to/release/python/cli/hath0r-darwin-arm64 init
 
 # 3. Execute quality gates, FinOps audit, and memory queries
 hath0r preflight

@@ -81,13 +81,13 @@ This is the first major official production release of the **HATH0R Agentic Fram
 
 ### Key Highlights & Features
 
-- **Cross-Platform Standalone CLI Binaries (`release/`)**:
+- **Cross-Platform Standalone CLI Binaries (`release/python/cli/`)**:
   - macOS Apple Silicon (`hath0r-darwin-arm64`)
   - macOS Intel (`hath0r-darwin-x86_64`)
   - Linux ARM64 (`hath0r-linux-arm64`)
   - Linux x86_64 (`hath0r-linux-x86_64`)
   - Windows x64 (`hath0r-windows-x64.cmd`)
-  - Verified SHA-256 integrity checksums in [`release/CHECKSUMS.sha256`](release/CHECKSUMS.sha256).
+  - Verified SHA-256 integrity checksums in [`release/python/cli/CHECKSUMS.sha256`](release/python/cli/CHECKSUMS.sha256).
 
 - **Tri-Graph Agentic Substrate**:
   - **KnowledgeGraph (KG)**: Structured semantic nodes, taxonomy hierarchies, and relationships indexing enterprise corpus knowledge.
