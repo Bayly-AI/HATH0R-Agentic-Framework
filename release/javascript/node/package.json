@@ -1,0 +1,29 @@
+{
+  "name": "@hath0r/node",
+  "version": "0.3.0",
+  "description": "Hath0r Agentic Framework Node.js SDK & Plugin Runtime",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.js",
+    "test:coverage": "node --test --experimental-test-coverage tests/*.test.js",
+    "pack:release": "npm pack --pack-destination ."
+  },
+  "keywords": [
+    "hath0r",
+    "agentic",
+    "ai",
+    "agentgraph",
+    "mcp",
+    "finops",
+    "guardrails"
+  ],
+  "author": "Google DeepMind Agentic Coding / Hath0r Core Team",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
