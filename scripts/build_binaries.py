@@ -127,7 +127,7 @@ def build_standalone_binary(output_dir: Path, dry_run: bool = False) -> Path:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Hath0r standalone release builder")
-    parser.add_argument("--out-dir", default="release", help="Output directory for binaries")
+    parser.add_argument("--out-dir", default="release/python/cli", help="Output directory for binaries")
     parser.add_argument("--previous-dir", default=None, help="Directory for previous version archives")
     parser.add_argument("--rotate", action="store_true", help="Rotate existing release files to previous archive")
     parser.add_argument("--checksums-only", action="store_true", help="Regenerate CHECKSUMS.sha256 only")
@@ -140,7 +140,8 @@ def main() -> None:
     prev_dir.mkdir(parents=True, exist_ok=True)
 
     if args.rotate:
-        ver_file = release_dir.parent / "VERSION"
+        repo_root = Path(__file__).resolve().parent.parent
+        ver_file = repo_root / "VERSION"
         ver = ver_file.read_text(encoding="utf-8").strip() if ver_file.is_file() else "1.0.0"
         rotate_previous_release(release_dir, prev_dir, ver, dry_run=args.dry_run)
 

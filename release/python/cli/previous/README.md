@@ -9,7 +9,7 @@ This directory stores archived, previous releases of the **Hath0r CLI** standalo
 When a new version of the Hath0r CLI is built and released:
 1. Any previous active release binaries and packages are rotated into a dedicated version subdirectory:
    ```text
-   release/previous/
+   release/python/cli/previous/
    ├── <version>/                     # e.g., 0.2.0/ or 0.3.0/
    │   ├── hath0r-darwin-arm64
    │   ├── hath0r-darwin-x86_64
@@ -23,7 +23,7 @@ When a new version of the Hath0r CLI is built and released:
    └── README.md
    ```
 2. Each archived version folder contains its own self-contained, immutable `CHECKSUMS.sha256` verification file.
-3. The latest active release is always hosted in the root `release/` directory of both `HATH0R-CLI` and `hath0r-framework`.
+3. The latest active release is always hosted in the canonical `release/python/cli/` directory of both `HATH0R-CLI` and `hath0r-framework`.
 
 ---
 
@@ -31,6 +31,7 @@ When a new version of the Hath0r CLI is built and released:
 
 To verify the integrity of any previous binary:
 ```bash
-cd release/previous/<version>
+cd release/python/cli/previous/<version>
 shasum -a 256 -c CHECKSUMS.sha256
 ```
+
