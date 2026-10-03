@@ -34,15 +34,18 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 3. **Docs before code**: Require procedure/strategy/playbook/runbook (see `docs/governance/workflow-documentation-standard.md`) before scaffolding implementation.
 4. **Detail**: `docs/governance/rules/cr-cli-entry-001.md` · `docs/governance/cli-first-rules.md` · tower canonical: https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md
 
-## CR-RAG-RETRIEVAL-001: Hybrid Tri-Graph RAG & Memory Doctrine (CRITICAL — org-wide)
+## CR-AGENTGRAPH-001 / CR-RAG-RETRIEVAL-001: Mandatory AgentGraph Querying & Zero-Prompt-Tax Doctrine (CRITICAL — org-wide)
 
-1. **No Context Stuffing**: Agents must never load whole unbounded file trees into prompt context.
-2. **Tri-Graph Hybrid Retrieval**:
-   - **KnowledgeGraph (`lib.graph` / `contracts/` / `docs/`)**: Static architecture, contracts, schemas, and rule invariants.
+1. **No Context Stuffing & No Unbounded File Reading (CRITICAL)**: Agents, subagents, and workflows must **NEVER** load whole unbounded file trees, full `AGENTS.md` files, or complete rulebooks into prompt context. Use targeted line slices or pre-compiled graph nodes.
+2. **Mandatory AgentGraph Retrieval**: Always query the **AgentGraph** substrate via CLI (`hath0r agentgraph query "<topic>"`, `hath0r agentgraph route --role <role>`, or `hath0r kb search -q "<topic>"`) to retrieve strictly contextual, scoped, and relevant data, rules, policies, and tool permissions.
+3. **Unified Quad-Graph Retrieval**:
+   - **KnowledgeGraph (`lib.graph` / `contracts/` / `docs/`)**: Static architecture, contracts, schemas, and specifications.
    - **ContextGraph (`lib.context` / `hath0r context`)**: Dynamic session state, active subagent executions, and span lineages.
    - **MemoryGraph (`hath0r_engine.memory` / `hath0r memory`)**: Long-term temporal entity nodes, Letta-compatible memory paging (`MemoryPagingManager`), and consolidation reflections (`ReflectionEngine`).
-3. **Temporal Validity Filtering**: Edges and nodes must be evaluated using `is_valid_at(as_of)` to respect entity state mutations over time.
-4. **Tool Dynamic Routing & Pruning**: Use `DynamicToolRouter` with BM25 + dense vector ranking and `SchemaPruner` to compress tool descriptions.
+   - **RulesGraph (`hath0r_engine.graph` / `hath0r agentgraph`)**: Deterministic rule inheritance DAG ($\text{Org Invariant} \succ \text{Repo Standard} \succ \text{Subsystem} \succ \text{Role}$), tool RBAC, and action permissions.
+4. **Deterministic Tool & Role RBAC**: Use `hath0r agentgraph route --role <role> [--tool <tool>]` to deterministically prune unauthorized tools before execution rather than relying on LLM self-governance.
+5. **Temporal Validity Filtering**: Edges and nodes must be evaluated using `is_valid_at(as_of)` to respect entity state mutations over time.
+6. **Detail**: `docs/governance/rules/cr-agentgraph-001.md`.
 
 ## CR-SUBSTRATE-001: Mandatory Cognitive Substrate Technology Utilization (CRITICAL — org-wide)
 

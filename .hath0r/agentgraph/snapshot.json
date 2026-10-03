@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-03T10:55:18.651362+00:00",
+  "timestamp": "2026-10-03T12:24:04.675824+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -104,6 +104,71 @@
       "plane": "rules",
       "type": "rule_policy",
       "label": "Rule rules",
+      "content": "# Archive Subsystem - Local Rules\n\n> Specific rules and constraints for the Archive Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "archive/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Contracts Subsystem - Local Rules\n\n> Specific rules and constraints for the Contracts Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "contracts/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Tests Subsystem - Local Rules\n\n> Specific rules and constraints for the Tests Subsystem module.\n\n## Constraints\n- All UI component changes and new frontend features MUST include Playwright test coverage.\n- The master Playwright test case document (`tests/e2e/master-playwright-tests.json`) MUST be kept in sync with all UI components in the codebase.\n- Clean Repo lifecycle (Step 7) MUST run `PlaywrightMasterCatalogManager.audit_and_sync_test_cases()` to prevent untested UI drift.\n- Visual regressions MUST be validated against baseline snapshots with 0% unintended visual difference.\n",
+      "properties": {
+        "path": "tests/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Docs Subsystem - Local Rules\n\n> Specific rules and constraints for the Docs Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "docs/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Cfg Subsystem - Local Rules\n\n> Specific rules and constraints for the Cfg Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "cfg/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
       "content": "# Lib Subsystem - Local Rules\n\n> Specific rules and constraints for the Lib Subsystem module.\n\n## Constraints\n- \n",
       "properties": {
         "path": "lib/rules.md",
@@ -133,6 +198,19 @@
       "content": "# CR-PLAYWRIGHT-UI-001: Mandatory Playwright UI Testing & Master Test Case Registration (CRITICAL — Org-Wide)\n\n> **Rule ID:** `CR-PLAYWRIGHT-UI-001` (also tracked as `cr-playwright-ui-001`)  \n> **Status:** RATIFIED & MANDATORY ENTRY GATE  \n> **Applies to:** All Agents, Workflows, Bots, Subagents, and Clean Repo Lifecycles across HATH0R OpenSource & Enterprise Products.  \n> **Effective Date:** 2026-10-01  \n\n---\n\n## 1. Main Entry Statement (CRITICAL ENTRY GATE)\n\n> **All UI components, Generative UI widgets, dashboard views, web applications, and interactive interfaces MUST be integrated with Playwright for headless, end-to-end, and visual regression verification.**\n>\n> In addition, every repository containing UI code **MUST maintain a canonical Master Test Case Document (`tests/e2e/master-playwright-tests.json`) in Playwright-compliant format**. During the Clean Repo / Clean Repos lifecycle, agents and bots must audit all UI components and ensure newly added or modified UI components have corresponding test cases registered in the master test case document.\n\n---\n\n## 2. Core Directives\n\n1. **Playwright as Canonical UI Testing Standard:**\n   - Playwright is the authoritative framework for cross-browser (Chromium, Firefox, WebKit), headless, component, and visual regression testing across Hath0r.\n   - Bots and test runners must execute Playwright test suites using `PlaywrightTestRunner` or `pytest -k playwright` / `npx playwright test`.\n\n2. **Playwright-Compliant Master Test Case ",
       "properties": {
         "path": "docs/governance/rules/cr-playwright-ui-001.md",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-agentgraph-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule cr-agentgraph-001",
+      "content": "# CR-AGENTGRAPH-001: Mandatory AgentGraph Querying & Zero-Prompt-Tax Context Retrieval (CRITICAL — Org-Wide)\n\n> **Rule ID:** `CR-AGENTGRAPH-001` (incorporates and supersedes legacy `CR-RAG-RETRIEVAL-001`)  \n> **Status:** RATIFIED & MANDATORY RUNTIME INVARIANT  \n> **Applies to:** All Agents, Workflows, Subagents, Bots, and Autonomous Automation Scripts across HATH0R OpenSource & Enterprise Products.  \n> **Effective Date:** 2026-10-03  \n\n---\n\n## 1. Main Entry Statement (CRITICAL INVARIANT)\n\n> **Agents, subagents, and automated workflows MUST NEVER load entire `AGENTS.md` files, full rulebooks, or unbounded knowledgebase directory trees directly into prompt context.**\n>\n> All retrieval of rules, governance policies, role constraints, tool authorizations, and contextual knowledge **MUST ROUTE THROUGH THE AGENTGRAPH SUBSTRATE** via the `hath0r agentgraph` CLI control plane.\n\nRaw text dumps, full file scans, and probabilistic context-stuffing waste token budget, dilute reasoning attention, and compromise security guardrails.\n\n---\n\n## 2. Core Directives\n\n### 2.1. No Unbounded File Ingestion (Zero-Prompt-Tax)\n- **Forbidden:** Calling `view_file` or catting entire `AGENTS.md` files, entire rule directories, or unindexed doc trees into the context window.\n- **Mandatory:** When viewing files for reference, agents must specify tight, targeted line slices (`StartLine`, `EndLine`) or retrieve pre-compiled snippets through AgentGraph.\n\n### 2.2. Deterministic Rule & Role RBAC Resolution\n- Be",
+      "properties": {
+        "path": "docs/governance/rules/cr-agentgraph-001.md",
         "priority": 4,
         "restricted_actions": []
       },
@@ -381,111 +459,6 @@
         ]
       },
       "is_current": true
-    },
-    {
-      "id": "rule:cr-bai-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "BAI Promotion Gate",
-      "content": "Canonical promotion development -> testing -> staging -> master.",
-      "policy_type": "governance",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-BAI-001"
-      }
-    },
-    {
-      "id": "rule:cr-hath0r-init-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Hath0r Repo Init Gate",
-      "content": "Follow canonical playbook and runbook before repo initialization.",
-      "policy_type": "workflow",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-HATH0R-INIT-001"
-      }
-    },
-    {
-      "id": "rule:cr-rag-retrieval-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Rule CR-RAG-RETRIEVAL-001",
-      "content": "Governance policy rule CR-RAG-RETRIEVAL-001",
-      "policy_type": "governance",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-RAG-RETRIEVAL-001"
-      }
-    },
-    {
-      "id": "rule:cr-substrate-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Rule CR-SUBSTRATE-001",
-      "content": "Governance policy rule CR-SUBSTRATE-001",
-      "policy_type": "governance",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-SUBSTRATE-001"
-      }
-    },
-    {
-      "id": "rule:cr-branch-gov-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Branch Governance",
-      "content": "Branch & Promotion Governance: work PRs target development only, canonical promotion path.",
-      "policy_type": "governance",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-BRANCH-GOV-001"
-      }
-    },
-    {
-      "id": "rule:cr-hath0r-root-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Hidden Root Rule",
-      "content": "Use only .hath0r/ as hidden project root. Never create legacy .ai/ or .infraOS/.",
-      "policy_type": "governance",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-HATH0R-ROOT-001"
-      }
-    },
-    {
-      "id": "rule:cr-kb-tower-001",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Rule CR-KB-TOWER-001",
-      "content": "Governance policy rule CR-KB-TOWER-001",
-      "policy_type": "governance",
-      "enforcement_level": "hard_stop",
-      "is_current": true,
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "properties": {
-        "rule_code": "CR-KB-TOWER-001"
-      }
     }
   ],
   "edges": [
@@ -538,64 +511,14 @@
       "is_current": true
     },
     {
-      "source": "role:developer",
-      "target": "rule:cr-bai-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-hath0r-init-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-rag-retrieval-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-substrate-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-branch-gov-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-hath0r-root-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
-      "is_current": true
-    },
-    {
-      "source": "role:developer",
-      "target": "rule:cr-kb-tower-001",
-      "relation": "RESTRICTED_BY",
-      "valid_from": "2026-10-03T10:55:18.651066+00:00",
-      "valid_to": null,
+      "source": "rule:cr-agentgraph-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
       "is_current": true
     }
   ],
   "metadata": {
     "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-framework",
-    "synced_sources": 33
+    "synced_sources": 34
   }
 }

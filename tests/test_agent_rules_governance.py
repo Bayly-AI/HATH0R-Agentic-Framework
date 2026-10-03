@@ -10,6 +10,7 @@ def test_root_agents_md_governance():
 
     content = agents_file.read_text(encoding="utf-8")
     assert "CR-CLI-ENTRY-001" in content
+    assert "CR-AGENTGRAPH-001" in content
     assert "CR-RAG-RETRIEVAL-001" in content
     assert "CR-SUBSTRATE-001" in content
     assert "hath0r" in content
