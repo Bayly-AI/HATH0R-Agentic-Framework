@@ -22,5 +22,10 @@
     "hath0r-cli-version-v1.schema.json"
   ],
   "engine_package": "hath0r-cli",
-  "binary": "hath0r"
+  "binary": "hath0r",
+  "releases": {
+    "python_cli": "release/python/cli",
+    "javascript_node": "release/javascript/node"
+  }
 }
+

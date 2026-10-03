@@ -1,0 +1,27 @@
+{
+  "name": "hath0r-agentic-cli",
+  "version": "0.3.0",
+  "type": "module",
+  "description": "Non-bypassable enterprise governance engine, AgentGraph query bridge, and zero-prompt-tax security gate for Node.js AI agents.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "node --experimental-strip-types --test test/*.test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bayly-AI/HATH0R-Agentic-Framework.git"
+  },
+  "keywords": [
+    "hath0r",
+    "agentic-cli",
+    "agentgraph",
+    "mcp",
+    "agent-governance",
+    "security-gate",
+    "langchain-js",
+    "vercel-ai"
+  ],
+  "author": "Bayly AI / Hath0r Core Team",
+  "license": "Apache-2.0"
+}

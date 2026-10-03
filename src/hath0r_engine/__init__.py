@@ -21,6 +21,18 @@ from hath0r_engine.gateway.tokenizer_tax import (
     TokenizerTaxAuditor,
     VocabVRAMFootprint,
 )
+from hath0r_engine.graph.agent_graph import (
+    AgentGraphEdge,
+    AgentGraphEngine,
+    AgentGraphNode,
+    AgentGraphPlane,
+    AgentGraphValidationReport,
+    ResolvedRuleSet,
+    RuleConflictError,
+    RuleCycleError,
+    RulePriority,
+)
+from hath0r_engine.graph.agent_rules_graph import AgentRulesGraph
 from hath0r_engine.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeGraphExtractor, KnowledgeNode
 from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
 from hath0r_engine.guardrails.ast_validator import SyntaxGuardrail
@@ -106,6 +118,13 @@ from hath0r_engine.sandbox.e2b_provider import E2BSandboxProvider
 from hath0r_engine.sandbox.local_provider import LocalSandboxProvider
 from hath0r_engine.sandbox.manager import SandboxManager
 from hath0r_engine.telemetry.otel_tracer import OTELTracerBot, TelemetrySpan
+from hath0r_engine.telemetry.token_telemetry import (
+    HistogramBin,
+    TokenHistogramBot,
+    TokenTelemetryBot,
+    TokenTelemetryLedger,
+    TokenTelemetryRecord,
+)
 from hath0r_engine.testing.catalog import PlaywrightMasterCatalogManager
 from hath0r_engine.testing.models import (
     PlaywrightActionType,
@@ -145,6 +164,16 @@ from hath0r_engine.voice.voice_engine import VoiceEngine
 
 __all__ = [
     "__version__",
+    "AgentGraphEngine",
+    "AgentRulesGraph",
+    "AgentGraphNode",
+    "AgentGraphEdge",
+    "AgentGraphPlane",
+    "RulePriority",
+    "ResolvedRuleSet",
+    "RuleCycleError",
+    "RuleConflictError",
+    "AgentGraphValidationReport",
     "KnowledgeGraph",
     "KnowledgeNode",
     "KnowledgeEdge",
@@ -219,6 +248,11 @@ __all__ = [
     "TokenizerTaxAuditor",
     "OTELTracerBot",
     "TelemetrySpan",
+    "TokenTelemetryRecord",
+    "TokenTelemetryLedger",
+    "TokenTelemetryBot",
+    "TokenHistogramBot",
+    "HistogramBin",
     "EvidenceType",
     "HandshakeState",
     "EvidenceComponent",

@@ -10,7 +10,7 @@
 This document contains deep technical specifications, Tri-Graph substrate data structures, repository layouts, binary build pipelines, and cognitive engine modules for developers building or extending `hath0r`, `hath0r-framework`, and `hath0r-engine`.
 
 > **Looking to install and use Hath0r in your own projects?**  
-> You only need the **HATH0R CLI** (`hath0r`). Download pre-compiled standalone binaries in [`release/`](release/) or see the [CLI Quick Start](#-quick-start-operators--users) below.
+> You only need the **HATH0R CLI** (`hath0r`). Download pre-compiled standalone binaries in [`release/python/cli/`](release/python/cli/) or see the [CLI Quick Start](#-quick-start-operators--users) below.
 
 ---
 
@@ -20,9 +20,9 @@ The Hath0r CLI is distributed as a zero-dependency standalone binary for macOS, 
 
 ```sh
 # Option 1: Direct Standalone Binary (Zero Setup Required)
-chmod +x release/hath0r-darwin-arm64
-./release/hath0r-darwin-arm64 doctor
-./release/hath0r-darwin-arm64 init
+chmod +x release/python/cli/hath0r-darwin-arm64
+./release/python/cli/hath0r-darwin-arm64 doctor
+./release/python/cli/hath0r-darwin-arm64 init
 
 # Option 2: Python / pipx package
 pipx install hath0r-cli
@@ -289,7 +289,7 @@ The HATHOR layout is strictly language-agnostic and organized for autonomous age
 | **`bin/`** | Executables, hooks, and member bootstrap scripts | `bin/hath0r-bootstrap.sh` |
 | **`lib/`** | Graph engines, cognitive substrate, shared libraries | `lib/AGENTS.md` |
 | **`contracts/`** | Formal JSON schemas and protocol specifications | `contracts/AGENTS.md` |
-| **`release/`** | Standalone pre-compiled CLI executables and checksums | `release/README.md` |
+| **`release/python/cli/`** | Standalone pre-compiled CLI executables and checksums | `release/python/cli/README.md` |
 | **`tests/`** | Unit, integration, and contract verification test harnesses | `tests/AGENTS.md` |
 | **`docs/`** | Canonical OpenSource documentation corpus | `docs/AGENTS.md` |
 | **`.hath0r/`** | Hidden agent state, caches, working memory, and lineage | Local `.hath0r/` |

@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.playwright.testspec/1",
   "project": "Bayly-AI/HATH0R-Agentic-Framework",
-  "last_synced_at": "2026-10-01T14:30:00Z",
+  "last_synced_at": "2026-10-03T15:59:12.315513+00:00",
   "metadata": {
     "framework": "playwright",
     "default_browser": "chromium",
@@ -18,7 +18,12 @@
       "description": "Playwright end-to-end and visual regression suite for Generative UI DiffViewer",
       "target_component": "DiffViewer",
       "target_path": "src/hath0r_engine/ui/components.py",
-      "tags": ["ui", "generative-ui", "diff-viewer", "visual-regression"],
+      "tags": [
+        "ui",
+        "generative-ui",
+        "diff-viewer",
+        "visual-regression"
+      ],
       "test_cases": [
         {
           "test_id": "TC-DIFF-001",
@@ -26,7 +31,10 @@
           "description": "Verify that DiffViewer component renders original code and modified code side-by-side with syntax highlighting",
           "status": "automated",
           "browser": "chromium",
-          "tags": ["smoke", "rendering"],
+          "tags": [
+            "smoke",
+            "rendering"
+          ],
           "steps": [
             {
               "step_number": 1,
@@ -67,7 +75,12 @@
       "description": "Playwright tests for live parameter adjustment slider and bidirectional state sync",
       "target_component": "ParameterSlider",
       "target_path": "src/hath0r_engine/ui/components.py",
-      "tags": ["ui", "tuning", "slider", "state-sync"],
+      "tags": [
+        "ui",
+        "tuning",
+        "slider",
+        "state-sync"
+      ],
       "test_cases": [
         {
           "test_id": "TC-SLIDER-001",
@@ -75,7 +88,10 @@
           "description": "Verify sliding the temperature parameter emits bidirectional state updates",
           "status": "automated",
           "browser": "chromium",
-          "tags": ["interactive", "sync"],
+          "tags": [
+            "interactive",
+            "sync"
+          ],
           "steps": [
             {
               "step_number": 1,
@@ -119,7 +135,12 @@
       "description": "Playwright tests for cryptographic sign-off interactive card and HMAC hash emission",
       "target_component": "CryptoSignoffCard",
       "target_path": "src/hath0r_engine/ui/components.py",
-      "tags": ["ui", "security", "signoff", "crypto"],
+      "tags": [
+        "ui",
+        "security",
+        "signoff",
+        "crypto"
+      ],
       "test_cases": [
         {
           "test_id": "TC-SIGNOFF-001",
@@ -127,7 +148,10 @@
           "description": "Verify reviewer clicks Sign & Approve, generating cryptographic hash verification badge",
           "status": "automated",
           "browser": "chromium",
-          "tags": ["security", "gate"],
+          "tags": [
+            "security",
+            "gate"
+          ],
           "steps": [
             {
               "step_number": 1,
@@ -167,7 +191,11 @@
       "description": "Playwright tests for test execution badge status indicators",
       "target_component": "TestBadge",
       "target_path": "src/hath0r_engine/ui/components.py",
-      "tags": ["ui", "badge", "status"],
+      "tags": [
+        "ui",
+        "badge",
+        "status"
+      ],
       "test_cases": [
         {
           "test_id": "TC-BADGE-001",
@@ -175,7 +203,10 @@
           "description": "Verify badge component displays green indicator when passed count > 0 and failed is 0",
           "status": "automated",
           "browser": "chromium",
-          "tags": ["visual", "status"],
+          "tags": [
+            "visual",
+            "status"
+          ],
           "steps": [
             {
               "step_number": 1,
