@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-02T22:20:26.210747+00:00",
+  "timestamp": "2026-10-03T10:55:18.651362+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -96,71 +96,6 @@
       "properties": {
         "path": "src/hath0r_engine/AGENTS.md",
         "subsystem": "hath0r_engine"
-      },
-      "is_current": true
-    },
-    {
-      "id": "rule:rules",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Rule rules",
-      "content": "# Archive Subsystem - Local Rules\n\n> Specific rules and constraints for the Archive Subsystem module.\n\n## Constraints\n- \n",
-      "properties": {
-        "path": "archive/rules.md",
-        "priority": 3,
-        "restricted_actions": []
-      },
-      "is_current": true
-    },
-    {
-      "id": "rule:rules",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Rule rules",
-      "content": "# Contracts Subsystem - Local Rules\n\n> Specific rules and constraints for the Contracts Subsystem module.\n\n## Constraints\n- \n",
-      "properties": {
-        "path": "contracts/rules.md",
-        "priority": 3,
-        "restricted_actions": []
-      },
-      "is_current": true
-    },
-    {
-      "id": "rule:rules",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Rule rules",
-      "content": "# Tests Subsystem - Local Rules\n\n> Specific rules and constraints for the Tests Subsystem module.\n\n## Constraints\n- All UI component changes and new frontend features MUST include Playwright test coverage.\n- The master Playwright test case document (`tests/e2e/master-playwright-tests.json`) MUST be kept in sync with all UI components in the codebase.\n- Clean Repo lifecycle (Step 7) MUST run `PlaywrightMasterCatalogManager.audit_and_sync_test_cases()` to prevent untested UI drift.\n- Visual regressions MUST be validated against baseline snapshots with 0% unintended visual difference.\n",
-      "properties": {
-        "path": "tests/rules.md",
-        "priority": 3,
-        "restricted_actions": []
-      },
-      "is_current": true
-    },
-    {
-      "id": "rule:rules",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Rule rules",
-      "content": "# Docs Subsystem - Local Rules\n\n> Specific rules and constraints for the Docs Subsystem module.\n\n## Constraints\n- \n",
-      "properties": {
-        "path": "docs/rules.md",
-        "priority": 3,
-        "restricted_actions": []
-      },
-      "is_current": true
-    },
-    {
-      "id": "rule:rules",
-      "plane": "rules",
-      "type": "rule_policy",
-      "label": "Rule rules",
-      "content": "# Cfg Subsystem - Local Rules\n\n> Specific rules and constraints for the Cfg Subsystem module.\n\n## Constraints\n- \n",
-      "properties": {
-        "path": "cfg/rules.md",
-        "priority": 3,
-        "restricted_actions": []
       },
       "is_current": true
     },
@@ -446,6 +381,111 @@
         ]
       },
       "is_current": true
+    },
+    {
+      "id": "rule:cr-bai-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "BAI Promotion Gate",
+      "content": "Canonical promotion development -> testing -> staging -> master.",
+      "policy_type": "governance",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-BAI-001"
+      }
+    },
+    {
+      "id": "rule:cr-hath0r-init-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Hath0r Repo Init Gate",
+      "content": "Follow canonical playbook and runbook before repo initialization.",
+      "policy_type": "workflow",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-HATH0R-INIT-001"
+      }
+    },
+    {
+      "id": "rule:cr-rag-retrieval-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-RAG-RETRIEVAL-001",
+      "content": "Governance policy rule CR-RAG-RETRIEVAL-001",
+      "policy_type": "governance",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-RAG-RETRIEVAL-001"
+      }
+    },
+    {
+      "id": "rule:cr-substrate-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-SUBSTRATE-001",
+      "content": "Governance policy rule CR-SUBSTRATE-001",
+      "policy_type": "governance",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-SUBSTRATE-001"
+      }
+    },
+    {
+      "id": "rule:cr-branch-gov-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Branch Governance",
+      "content": "Branch & Promotion Governance: work PRs target development only, canonical promotion path.",
+      "policy_type": "governance",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-BRANCH-GOV-001"
+      }
+    },
+    {
+      "id": "rule:cr-hath0r-root-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Hidden Root Rule",
+      "content": "Use only .hath0r/ as hidden project root. Never create legacy .ai/ or .infraOS/.",
+      "policy_type": "governance",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-HATH0R-ROOT-001"
+      }
+    },
+    {
+      "id": "rule:cr-kb-tower-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule CR-KB-TOWER-001",
+      "content": "Governance policy rule CR-KB-TOWER-001",
+      "policy_type": "governance",
+      "enforcement_level": "hard_stop",
+      "is_current": true,
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "properties": {
+        "rule_code": "CR-KB-TOWER-001"
+      }
     }
   ],
   "edges": [
@@ -495,6 +535,62 @@
       "source": "rule:cr-playwright-ui-001",
       "target": "role:developer",
       "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-bai-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-hath0r-init-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-rag-retrieval-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-substrate-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-branch-gov-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-hath0r-root-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
+      "is_current": true
+    },
+    {
+      "source": "role:developer",
+      "target": "rule:cr-kb-tower-001",
+      "relation": "RESTRICTED_BY",
+      "valid_from": "2026-10-03T10:55:18.651066+00:00",
+      "valid_to": null,
       "is_current": true
     }
   ],
