@@ -118,6 +118,13 @@ from hath0r_engine.sandbox.e2b_provider import E2BSandboxProvider
 from hath0r_engine.sandbox.local_provider import LocalSandboxProvider
 from hath0r_engine.sandbox.manager import SandboxManager
 from hath0r_engine.telemetry.otel_tracer import OTELTracerBot, TelemetrySpan
+from hath0r_engine.telemetry.token_telemetry import (
+    HistogramBin,
+    TokenHistogramBot,
+    TokenTelemetryBot,
+    TokenTelemetryLedger,
+    TokenTelemetryRecord,
+)
 from hath0r_engine.testing.catalog import PlaywrightMasterCatalogManager
 from hath0r_engine.testing.models import (
     PlaywrightActionType,
@@ -241,6 +248,11 @@ __all__ = [
     "TokenizerTaxAuditor",
     "OTELTracerBot",
     "TelemetrySpan",
+    "TokenTelemetryRecord",
+    "TokenTelemetryLedger",
+    "TokenTelemetryBot",
+    "TokenHistogramBot",
+    "HistogramBin",
     "EvidenceType",
     "HandshakeState",
     "EvidenceComponent",

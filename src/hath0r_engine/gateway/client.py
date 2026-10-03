@@ -15,6 +15,7 @@ from hath0r_engine.gateway.base import (
 from hath0r_engine.gateway.cache import SemanticCache
 from hath0r_engine.gateway.routing import TieredRouter
 from hath0r_engine.telemetry.otel_tracer import OTELTracerBot
+from hath0r_engine.telemetry.token_telemetry import TokenTelemetryBot
 
 
 class AIGatewayClient:
@@ -26,6 +27,7 @@ class AIGatewayClient:
         router: Optional[TieredRouter] = None,
         cache: Optional[SemanticCache] = None,
         tracer: Optional[OTELTracerBot] = None,
+        token_telemetry: Optional[TokenTelemetryBot] = None,
     ) -> None:
         self.config = config or GatewayConfig()
         self.router = router or TieredRouter()
@@ -35,6 +37,7 @@ class AIGatewayClient:
             else None
         )
         self.tracer = tracer or OTELTracerBot(service_name="hath0r-ai-gateway")
+        self.token_telemetry = token_telemetry
 
         # FinOps Aggregators
         self.total_requests: int = 0
@@ -77,6 +80,24 @@ class AIGatewayClient:
         if self.cache and self.config.semantic_cache_enabled:
             cached_resp = self.cache.lookup(full_prompt)
             if cached_resp:
+                if self.token_telemetry:
+                    user_id = str(request.metadata.get("user_id", "default_user"))
+                    agent_id = str(request.metadata.get("agent_id", "hath0r-agent"))
+                    session_id = str(request.metadata.get("session_id", ""))
+                    self.token_telemetry.record_prompt(
+                        prompt=full_prompt,
+                        user_id=user_id,
+                        model=cached_resp.model_used,
+                        tier=request.tier.value,
+                        completion=cached_resp.content,
+                        prompt_tokens=cached_resp.prompt_tokens,
+                        completion_tokens=cached_resp.completion_tokens,
+                        latency_ms=cached_resp.latency_ms,
+                        cached=True,
+                        agent_id=agent_id,
+                        session_id=session_id,
+                        metadata=request.metadata,
+                    )
                 return cached_resp
 
         # 2. Tiered Routing Model Selection
@@ -135,6 +156,26 @@ class AIGatewayClient:
             # 4. Store in Semantic Cache
             if self.cache and self.config.semantic_cache_enabled:
                 self.cache.store(full_prompt, response)
+
+            # 5. Record Token Telemetry Ledger
+            if self.token_telemetry:
+                user_id = str(request.metadata.get("user_id", "default_user"))
+                agent_id = str(request.metadata.get("agent_id", "hath0r-agent"))
+                session_id = str(request.metadata.get("session_id", ""))
+                self.token_telemetry.record_prompt(
+                    prompt=full_prompt,
+                    user_id=user_id,
+                    model=response.model_used,
+                    tier=request.tier.value,
+                    completion=response.content,
+                    prompt_tokens=response.prompt_tokens,
+                    completion_tokens=response.completion_tokens,
+                    latency_ms=response.latency_ms,
+                    cached=False,
+                    agent_id=agent_id,
+                    session_id=session_id,
+                    metadata=request.metadata,
+                )
 
             return response
 

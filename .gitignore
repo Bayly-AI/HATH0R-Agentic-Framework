@@ -248,3 +248,7 @@ __marimo__/
 
 .DS_Store
 **/.DS_Store
+
+# Hath0r local telemetry and FinOps ledgers
+.hath0r/finops/
+.hath0r/telemetry/
