@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.playwright.testspec/1",
   "project": "Bayly-AI/HATH0R-Agentic-Framework",
-  "last_synced_at": "2026-10-03T15:59:12.315513+00:00",
+  "last_synced_at": "2026-10-04T18:19:18.398788+00:00",
   "metadata": {
     "framework": "playwright",
     "default_browser": "chromium",
