@@ -175,6 +175,43 @@ class OTELTracerBot:
                 span.finish(status="ERROR", error=str(output_data))
             return span
 
+    def record_guardrail_check(
+        self,
+        guardrail_name: str,
+        input_content: str,
+        passed: bool,
+        repaired: bool = False,
+        error_message: Optional[str] = None,
+    ) -> TelemetrySpan:
+        """Record OpenInference guardrail evaluation span."""
+        attrs = {
+            "guardrail.name": guardrail_name,
+            "guardrail.passed": passed,
+            "guardrail.repaired": repaired,
+            "guardrail.input_length": len(input_content),
+        }
+        with self.start_span(f"guardrail:{guardrail_name}", span_kind="GUARDRAIL", attributes=attrs) as span:
+            if not passed:
+                span.finish(status="ERROR", error=error_message or "Guardrail validation failed")
+            return span
+
+    def record_retriever_query(
+        self,
+        retriever_name: str,
+        query: str,
+        result_count: int,
+        latency_ms: float,
+    ) -> TelemetrySpan:
+        """Record OpenInference retriever/KB search span."""
+        attrs = {
+            "retriever.name": retriever_name,
+            "retriever.query": query[:200],
+            "retriever.result_count": result_count,
+            "retriever.latency_ms": latency_ms,
+        }
+        with self.start_span(f"retriever:{retriever_name}", span_kind="RETRIEVER", attributes=attrs) as span:
+            return span
+
     def export_otlp_payload(self) -> Dict[str, Any]:
         """Package collected spans into an OpenTelemetry Protocol (OTLP) resource span bundle."""
         return {
@@ -204,3 +241,8 @@ class OTELTracerBot:
         with path.open("w", encoding="utf-8") as f:
             for s in self.spans:
                 f.write(json.dumps(s.to_dict()) + "\n")
+
+
+AgentObservabilityBot = OTELTracerBot
+agent_observability_bot = AgentObservabilityBot()
+
