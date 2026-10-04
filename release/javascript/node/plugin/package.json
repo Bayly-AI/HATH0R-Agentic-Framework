@@ -1,8 +1,8 @@
 {
-  "name": "hath0r-agentic-cli",
+  "name": "hath0r-cli-node-plugin",
   "version": "0.3.0",
   "type": "module",
-  "description": "Non-bypassable enterprise governance engine, AgentGraph query bridge, and zero-prompt-tax security gate for Node.js AI agents.",
+  "description": "Official Hath0r CLI Node.js Plugin & SDK: non-bypassable enterprise governance engine, AgentGraph quad-graph query bridge, and zero-prompt-tax security gate for Node.js AI agents.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -14,7 +14,8 @@
   },
   "keywords": [
     "hath0r",
-    "agentic-cli",
+    "hath0r-cli",
+    "node-plugin",
     "agentgraph",
     "mcp",
     "agent-governance",
