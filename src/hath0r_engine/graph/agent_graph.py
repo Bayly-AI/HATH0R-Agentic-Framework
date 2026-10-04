@@ -197,6 +197,24 @@ class MarkdownDocAdapter(BaseGraphAdapter):
         if h1_match:
             title = h1_match.group(1).strip()
 
+        # Parse YAML frontmatter if present
+        frontmatter: Dict[str, Any] = {}
+        fm_match = re.match(r"^---\s*\n(.*?)\n---\s*\n", content, re.DOTALL)
+        if fm_match:
+            fm_text = fm_match.group(1)
+            for line in fm_text.splitlines():
+                if ":" in line:
+                    key, val = line.split(":", 1)
+                    key = key.strip()
+                    val = val.strip().strip('"\'')
+                    if val.startswith("[") and val.endswith("]"):
+                        items = [x.strip().strip('"\'') for x in val[1:-1].split(",") if x.strip()]
+                        frontmatter[key] = items
+                    elif val.isdigit():
+                        frontmatter[key] = int(val)
+                    else:
+                        frontmatter[key] = val
+
         node_id = f"doc:{path.name}"
         node = AgentGraphNode(
             id=node_id,
@@ -207,6 +225,48 @@ class MarkdownDocAdapter(BaseGraphAdapter):
             properties={"path": str(path), "size": len(content)},
         )
         nodes.append(node)
+
+        # Extract rule_policy if this is a governance rule or subsystem rules.md
+        if frontmatter.get("type") == "rule_policy" or path.name == "rules.md" or "governance/rules" in str(path):
+            rule_id = frontmatter.get("id")
+            if not rule_id:
+                if path.name == "rules.md":
+                    parent_dir = path.parent.name
+                    rule_id = f"rule:subsystem-{parent_dir}"
+                else:
+                    rule_id = f"rule:{path.stem}"
+
+            rule_priority = frontmatter.get("priority", 3)
+            if isinstance(rule_priority, str) and rule_priority.isdigit():
+                rule_priority = int(rule_priority)
+
+            target_scope = frontmatter.get("target_scope") or (path.parent.name if path.name == "rules.md" else "root")
+
+            rule_node = AgentGraphNode(
+                id=rule_id,
+                plane=AgentGraphPlane.RULES.value,
+                type="rule_policy",
+                label=frontmatter.get("title") or title,
+                content=content,
+                properties={
+                    "path": str(path),
+                    "priority": rule_priority,
+                    "target_scope": target_scope,
+                    "restricted_actions": frontmatter.get("restricted_actions", []),
+                    "governs_roles": frontmatter.get("governs_roles", []),
+                },
+            )
+            nodes.append(rule_node)
+
+            for role_name in frontmatter.get("governs_roles", []):
+                edges.append(
+                    AgentGraphEdge(
+                        source=rule_id,
+                        target=f"role:{role_name}",
+                        relation="GOVERNS",
+                        plane=AgentGraphPlane.RULES.value,
+                    )
+                )
 
         # Detect markdown link edges
         for target in re.findall(r"\[.*?\]\((.*?\.md)\)", content):
