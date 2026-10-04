@@ -30,6 +30,57 @@ class AgentRulesGraph:
     def __init__(self, engine: Optional[AgentGraphEngine] = None, graph_id: str = "agent-rules-graph") -> None:
         self.engine = engine or AgentGraphEngine(graph_id=graph_id)
 
+    def initialize_standard_roles(self) -> List[AgentGraphNode]:
+        """Register canonical Hath0r agent role hierarchy and tool RBAC manifests."""
+        reader = self.register_agent_role(
+            role_id="role:reader",
+            role_name="Read-Only Agent",
+            scope="root",
+            permitted_tools=["view_file", "search_code", "search_web", "read_url_content"],
+            forbidden_tools=["direct_push_master"],
+        )
+        researcher = self.register_agent_role(
+            role_id="role:researcher",
+            role_name="Codebase & KB Researcher",
+            scope="root",
+            permitted_tools=["hath0r_kb_search", "hath0r_memory_search", "view_file", "search_code", "search_web"],
+            forbidden_tools=["write_to_file", "replace_file_content", "run_command"],
+            parent_role_id="role:reader",
+        )
+        developer = self.register_agent_role(
+            role_id="role:developer",
+            role_name="Developer Agent",
+            scope="root",
+            permitted_tools=["view_file", "search_code", "write_to_file", "replace_file_content", "run_command", "hath0r_branch_validate"],
+            forbidden_tools=["direct_push_master", "direct_push_staging"],
+            parent_role_id="role:reader",
+        )
+        qa = self.register_agent_role(
+            role_id="role:qa-engineer",
+            role_name="QA & UI Test Engineer",
+            scope="root",
+            permitted_tools=["run_playwright_test", "audit_master_catalog", "view_file", "run_command", "write_to_file"],
+            forbidden_tools=["direct_push_master"],
+            parent_role_id="role:developer",
+        )
+        architect = self.register_agent_role(
+            role_id="role:architect",
+            role_name="System & Contract Architect",
+            scope="root",
+            permitted_tools=["validate_contracts", "generate_image", "hath0r_agentgraph_validate", "write_to_file", "view_file", "run_command"],
+            forbidden_tools=["direct_push_master"],
+            parent_role_id="role:developer",
+        )
+        release = self.register_agent_role(
+            role_id="role:release-manager",
+            role_name="Release & Governance Manager",
+            scope="root",
+            permitted_tools=["validate_promotion_path", "update_version", "compile_changelog", "run_command", "view_file"],
+            forbidden_tools=["non_linear_promotion"],
+            parent_role_id="role:developer",
+        )
+        return [reader, researcher, developer, qa, architect, release]
+
     @property
     def nodes(self) -> Dict[str, AgentGraphNode]:
         """Return all nodes belonging to the rules plane."""
