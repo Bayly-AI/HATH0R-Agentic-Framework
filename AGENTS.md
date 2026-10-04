@@ -51,6 +51,13 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 5. **Temporal Validity Filtering**: Edges and nodes must be evaluated using `is_valid_at(as_of)` to respect entity state mutations over time.
 6. **Detail**: `docs/governance/rules/cr-agentgraph-001.md`.
 
+## CR-CICCCD-001: Continuous Integration, Calibration & Development (CICCCD) Methodology (CRITICAL — org-wide)
+
+1. **Continuous Integration (CI)**: All PRs must pass schema contract validation (`hath0r contracts validate`), AgentGraph policy checks (`hath0r agentgraph validate`), and automated unit tests.
+2. **Continuous Calibration (CC)**: Calibration state freshness limit is $\le 24.0\text{ hours}$. AgentGraph runtime substrate uses `CICCCDTelemetryHook` (`src/hath0r_engine/telemetry/cicccd_telemetry.py`) to record span metrics and track parameter drift. Trigger on-demand calibration via `hath0r cicccd calibrate`.
+3. **Continuous Development (CD)**: Maintain complete Artifact Hexad documentation for all workflows and run background auto-tune monitoring via `hath0r cicccd auto-tune`.
+4. **Detail**: `docs/governance/strategies/cicccd-strategy.md` · `hath0r cicccd validate`.
+
 ## CR-SUBSTRATE-001: Mandatory Cognitive Substrate Technology Utilization (CRITICAL — org-wide)
 
 All agents executing tasks within Hath0r must utilize our unified cognitive modules (`src/hath0r_engine/`):
