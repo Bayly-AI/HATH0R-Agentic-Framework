@@ -53,7 +53,7 @@ class SignatureMeta(type):
             if hasattr(base, "_outputs"):
                 outputs.update(base._outputs)
 
-        for key, value in list(attrs.items()):
+        for key, value in attrs.items():
             if isinstance(value, Field):
                 if value.is_input:
                     inputs[key] = value

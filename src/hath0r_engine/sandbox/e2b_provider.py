@@ -16,6 +16,9 @@ from hath0r_engine.sandbox.base import (
 )
 
 
+SANDBOX_NOT_RUNNING = "Sandbox is not running."
+
+
 class E2BSandboxProvider(SandboxProvider):
     """Ephemeral Linux Micro-VM sandbox provider backed by E2B / Firecracker isolation."""
 
@@ -118,7 +121,7 @@ class E2BSandboxProvider(SandboxProvider):
     def read_file(self, path: str) -> bytes:
         """Read a file from Micro-VM virtual filesystem."""
         if not self._running:
-            raise RuntimeError("Sandbox is not running.")
+            raise RuntimeError(SANDBOX_NOT_RUNNING)
         if path in self._virtual_fs:
             return self._virtual_fs[path]
         if os.path.exists(path):
@@ -129,13 +132,13 @@ class E2BSandboxProvider(SandboxProvider):
     def write_file(self, path: str, data: bytes) -> None:
         """Write content into Micro-VM virtual filesystem."""
         if not self._running:
-            raise RuntimeError("Sandbox is not running.")
+            raise RuntimeError(SANDBOX_NOT_RUNNING)
         self._virtual_fs[path] = data
 
     def sync_files(self, source_dir: str, target_dir: str) -> int:
         """Synchronize files into sandbox filesystem."""
         if not self._running:
-            raise RuntimeError("Sandbox is not running.")
+            raise RuntimeError(SANDBOX_NOT_RUNNING)
         synced_count = 0
         if os.path.isdir(source_dir):
             for root, _, files in os.walk(source_dir):
@@ -151,7 +154,7 @@ class E2BSandboxProvider(SandboxProvider):
     def snapshot(self, label: str) -> str:
         """Create a point-in-time snapshot of the Micro-VM state."""
         if not self._running:
-            raise RuntimeError("Sandbox is not running.")
+            raise RuntimeError(SANDBOX_NOT_RUNNING)
         snap_id = f"snap-{uuid.uuid4().hex[:8]}-{label}"
         self._snapshots[snap_id] = dict(self._virtual_fs)
         return snap_id

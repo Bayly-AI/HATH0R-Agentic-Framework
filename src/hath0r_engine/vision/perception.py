@@ -30,7 +30,7 @@ def parse_image_header(raw_bytes: bytes, filename: str = "") -> Tuple[str, int, 
                 width, height = int(w), int(h)
                 break
             idx += 1
-    elif raw_bytes.startswith(b"GIF87a") or raw_bytes.startswith(b"GIF89a"):
+    elif raw_bytes.startswith((b"GIF87a", b"GIF89a")):
         fmt = "gif"
         if len(raw_bytes) >= 10:
             w, h = struct.unpack("<HH", raw_bytes[6:10])
@@ -100,9 +100,10 @@ class MultimodalPerceptionManager:
 
         active_provider = provider or self.default_provider
         stem = path.stem.replace("_", " ").replace("-", " ").title()
+        desc_prompt = f" Prompt: {prompt}." if prompt else ""
         description = (
             f"Multimodal perception for '{stem}' ({meta.format.upper()}, {meta.width}x{meta.height}px). "
-            f"Visual layout parsed."
+            f"Visual layout parsed.{desc_prompt}"
         )
 
         detected_objects = [
@@ -130,6 +131,7 @@ class MultimodalPerceptionManager:
         device: Optional[str] = None,
     ) -> List[float]:
         """Compute normalized 512-d cross-modal embedding vector."""
+        _ = device  # Device target reserved for future accelerator execution
         path = Path(image_path).resolve()
         raw_bytes = path.read_bytes() if path.is_file() else b"dummy"
 

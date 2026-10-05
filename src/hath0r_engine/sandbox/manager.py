@@ -109,7 +109,7 @@ class SandboxManager:
     def terminate_all(self) -> int:
         """Terminate and clean up all active sandboxes."""
         count = 0
-        for prov in list(self._active_sandboxes.values()):
+        for prov in self._active_sandboxes.values():
             if prov.is_running():
                 prov.terminate()
                 count += 1
