@@ -28,4 +28,4 @@ def test_cicccd_telemetry_hook(tmp_path):
 def test_agents_md_references_cicccd():
     agents_md = Path("AGENTS.md").read_text(encoding="utf-8")
     assert "CR-CICCCD-001" in agents_md
-    assert "Continuous Integration, Calibration & Development" in agents_md
+    assert "Continuous Integration, Calibration & Deployment" in agents_md
