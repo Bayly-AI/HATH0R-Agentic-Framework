@@ -43,7 +43,10 @@ class CICCCDTelemetryHook:
         state["last_signature"] = signature_name
 
         if self.state_file is not None:
-            self.state_file.write_text(json.dumps(state, indent=2), encoding="utf-8")
+            safe_target = self.state_file.resolve()
+            if not str(safe_target).startswith(str(self.workspace_root)):
+                raise ValueError("State file path escapes workspace root")
+            safe_target.write_text(json.dumps(state, indent=2), encoding="utf-8")
         return state
 
     def get_calibration_metrics(self) -> Dict[str, Any]:
