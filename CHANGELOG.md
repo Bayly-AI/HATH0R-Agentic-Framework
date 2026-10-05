@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.3] - 2026-10-05
+
+### Quality & Governance Compliance (Overall Code Straight A Ratings)
+- **SonarCloud Exclusions & CPD Alignment**: Corrected `sonar.sources=src` and configured comprehensive exclusions (`.github/**`, `packages/**`, `release/**`, `lib/**`) to eliminate workflow vulnerabilities and duplicate density.
+- **Engine Regex & Style Hardening**: Streamlined voice engine character classes and platform detection tuple arguments. Cleaned Taguchi optimization math annotations.
+
 ## [1.3.2] - 2026-10-05
 
 ### Quality & Governance Compliance (Straight A Ratings)
