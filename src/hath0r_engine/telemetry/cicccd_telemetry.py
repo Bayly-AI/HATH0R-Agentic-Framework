@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -40,9 +41,12 @@ class CICCCDTelemetryHook:
         state["last_signature"] = signature_name
 
         if self.state_file is not None:
-            file_name = self.state_file.name
-            safe_target = (self.workspace_root / HATH0R_DIR / file_name).resolve()
-            safe_target.write_text(json.dumps(state, indent=2), encoding="utf-8")
+            base_dir = os.path.realpath(str(self.workspace_root))
+            target_path = os.path.realpath(str(self.state_file))
+            if not (target_path.startswith(base_dir + os.sep) or target_path == base_dir):
+                raise ValueError("State file path escapes workspace root")
+            with open(target_path, "w", encoding="utf-8") as f:
+                f.write(json.dumps(state, indent=2))
         return state
 
     def get_calibration_metrics(self) -> Dict[str, Any]:
