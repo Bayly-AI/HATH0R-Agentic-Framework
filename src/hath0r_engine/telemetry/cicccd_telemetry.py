@@ -21,11 +21,8 @@ class CICCCDTelemetryHook:
 
     def __post_init__(self) -> None:
         self.workspace_root = self.workspace_root.resolve()
-        raw_state = self.state_file or (self.workspace_root / HATH0R_DIR / CCCD_STATE_FILE)
-        resolved_state = raw_state.resolve()
-        if not str(resolved_state).startswith(str(self.workspace_root)):
-            raise ValueError("State file path escapes workspace root")
-        self.state_file = resolved_state
+        file_name = Path(self.state_file).name if self.state_file else CCCD_STATE_FILE
+        self.state_file = (self.workspace_root / HATH0R_DIR / file_name).resolve()
         self.state_file.parent.mkdir(parents=True, exist_ok=True)
 
     def record_calibration_telemetry(
@@ -43,9 +40,8 @@ class CICCCDTelemetryHook:
         state["last_signature"] = signature_name
 
         if self.state_file is not None:
-            safe_target = self.state_file.resolve()
-            if not str(safe_target).startswith(str(self.workspace_root)):
-                raise ValueError("State file path escapes workspace root")
+            file_name = self.state_file.name
+            safe_target = (self.workspace_root / HATH0R_DIR / file_name).resolve()
             safe_target.write_text(json.dumps(state, indent=2), encoding="utf-8")
         return state
 
