@@ -160,13 +160,18 @@ class AIGatewayClient:
             self.total_completion_tokens += response.completion_tokens
             self.total_spend_usd += response.cost_usd
 
+            req_meta = request.metadata or {}
             span.attributes.update(
                 {
                     "llm.token_count.prompt": response.prompt_tokens,
                     "llm.token_count.completion": response.completion_tokens,
                     "llm.token_count.total": response.total_tokens,
+                    "llm.cost.total": response.cost_usd,
                     "finops.cost_usd": response.cost_usd,
                     "response.model_used": response.model_used,
+                    "input.value": full_prompt[:1000],
+                    "output.value": response.content[:1000],
+                    "openinference.project.name": req_meta.get("project_name", "hath0r"),
                 }
             )
 
