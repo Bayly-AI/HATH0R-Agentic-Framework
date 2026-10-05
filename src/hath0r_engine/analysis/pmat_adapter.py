@@ -13,9 +13,52 @@ import logging
 import shutil
 import subprocess
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 logger = logging.getLogger("hath0r.analysis.pmat")
+
+
+def calculate_volatility_score(
+    churn_count: int,
+    lines_churn: int,
+    complexity_score: float,
+) -> float:
+    """Calculate normalized volatility score (0.0 to 1.0) using weighted formula.
+
+    Weighted formula: 40% churn frequency, 30% volume, 30% complexity.
+    """
+    assert churn_count >= 0, "churn_count must be non-negative"
+    assert lines_churn >= 0, "lines_churn must be non-negative"
+    assert complexity_score >= 0.0, "complexity_score must be non-negative"
+
+    norm_freq = min(1.0, churn_count / 15.0)
+    norm_vol = min(1.0, lines_churn / 600.0)
+    norm_comp = min(1.0, complexity_score / 30.0)
+    return round((norm_freq * 0.40) + (norm_vol * 0.30) + (norm_comp * 0.30), 4)
+
+
+def assign_volatility_risk_tier(volatility_score: float) -> str:
+    """Map a normalized volatility score to its corresponding risk tier."""
+    assert 0.0 <= volatility_score <= 1.0, "volatility_score must be between 0.0 and 1.0"
+    if volatility_score >= 0.75:
+        return "CRITICAL"
+    if volatility_score >= 0.50:
+        return "HIGH"
+    if volatility_score >= 0.25:
+        return "MEDIUM"
+    return "LOW"
+
+
+def determine_pr_risk_policy(max_volatility: float) -> Tuple[str, bool, str]:
+    """Map maximum volatility score to overall risk tier, safe_to_merge flag, and recommended reasoning tier."""
+    assert max_volatility >= 0.0, "max_volatility must be non-negative"
+    if max_volatility >= 0.75:
+        return "CRITICAL", False, "REASONING"
+    if max_volatility >= 0.50:
+        return "HIGH", True, "REASONING"
+    if max_volatility >= 0.25:
+        return "MEDIUM", True, "STANDARD"
+    return "LOW", True, "LIGHT"
 
 
 class PmatAdapter:
@@ -26,8 +69,8 @@ class PmatAdapter:
         pmat_bin: str = "pmat",
         mcp_router: Optional[Any] = None,
     ) -> None:
-        self.pmat_bin = pmat_bin
-        self.mcp_router = mcp_router
+        self.pmat_bin: str = pmat_bin
+        self.mcp_router: Optional[Any] = mcp_router
 
     def is_pmat_available(self) -> bool:
         """Check if native PMAT binary is installed in system PATH."""
@@ -42,28 +85,40 @@ class PmatAdapter:
 
         Falls back to high-performance git log parsing if native pmat binary is absent.
         """
+        assert days > 0, "Analysis window days must be positive"
         target_path = Path(repo_path).resolve()
         if not target_path.exists():
             raise FileNotFoundError(f"Repository path does not exist: {target_path}")
 
         # Attempt native PMAT binary execution if present
         if self.is_pmat_available():
-            try:
-                res = subprocess.run(
-                    [self.pmat_bin, "churn", "--days", str(days), "--json"],
-                    cwd=str(target_path),
-                    capture_output=True,
-                    text=True,
-                    check=False,
-                )
-                if res.returncode == 0 and res.stdout.strip():
-                    data = json.loads(res.stdout)
-                    if isinstance(data, dict) and "hotspots" in data:
-                        return data
-            except Exception as e:
-                logger.warning("Native pmat execution failed, falling back to git: %s", e)
+            pmat_result = self._try_pmat_binary_execution(target_path, days)
+            if pmat_result is not None:
+                return pmat_result
 
         return self._analyze_churn_via_git(target_path, days=days)
+
+    def _try_pmat_binary_execution(
+        self,
+        repo_path: Path,
+        days: int,
+    ) -> Optional[Dict[str, Any]]:
+        """Execute native PMAT binary if available, returning parsed dict or None on failure."""
+        try:
+            res = subprocess.run(
+                [self.pmat_bin, "churn", "--days", str(days), "--json"],
+                cwd=str(repo_path),
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if res.returncode == 0 and res.stdout.strip():
+                data = json.loads(res.stdout)
+                if isinstance(data, dict) and "hotspots" in data:
+                    return data
+        except Exception as e:
+            logger.warning("Native pmat execution failed, falling back to git: %s", e)
+        return None
 
     def _analyze_churn_via_git(
         self,
@@ -71,158 +126,23 @@ class PmatAdapter:
         days: int = 30,
     ) -> Dict[str, Any]:
         """High-speed git log parser extracting commit churn, lines changed, and co-changes."""
-        since_date = f"{days} days ago"
+        assert days > 0, "days must be positive"
+        raw_output = self._fetch_git_log(repo_path, days)
+        file_churn, file_added, file_deleted, co_changes, commits_evaluated = self._parse_git_numstat(raw_output)
+        head_sha = self._fetch_head_sha(repo_path)
+        hotspots, total_churn_lines = self._build_hotspots(
+            repo_path, file_churn, file_added, file_deleted, co_changes
+        )
 
-        # 1. Extract commit metadata and file stats
-        cmd = [
-            "git",
-            "log",
-            f"--since={since_date}",
-            "--numstat",
-            "--pretty=format:COMMIT:%H",
-            "--no-merges",
-        ]
-
-        try:
-            res = subprocess.run(
-                cmd,
-                cwd=str(repo_path),
-                capture_output=True,
-                text=True,
-                check=True,
-            )
-            raw_output = res.stdout
-        except Exception as e:
-            logger.error("Git log execution failed: %s", e)
-            raw_output = ""
-
-        # Parse output
-        file_churn: Dict[str, int] = collections.defaultdict(int)
-        file_added: Dict[str, int] = collections.defaultdict(int)
-        file_deleted: Dict[str, int] = collections.defaultdict(int)
-        co_changes: Dict[str, Set[str]] = collections.defaultdict(set)
-
-        current_commit_files: List[str] = []
-        commits_evaluated = 0
-
-        for line in raw_output.splitlines():
-            line = line.strip()
-            if not line:
-                continue
-            if line.startswith("COMMIT:"):
-                commits_evaluated += 1
-                if current_commit_files:
-                    for f1 in current_commit_files:
-                        for f2 in current_commit_files:
-                            if f1 != f2:
-                                co_changes[f1].add(f2)
-                current_commit_files = []
-                continue
-
-            parts = line.split("\t")
-            if len(parts) >= 3:
-                added_str, deleted_str, path_str = parts[0], parts[1], parts[2]
-                # Filter out binary files and common non-code files
-                if added_str == "-" or deleted_str == "-":
-                    continue
-                try:
-                    added = int(added_str)
-                    deleted = int(deleted_str)
-                except ValueError:
-                    continue
-
-                file_churn[path_str] += 1
-                file_added[path_str] += added
-                file_deleted[path_str] += deleted
-                current_commit_files.append(path_str)
-
-        if current_commit_files:
-            for f1 in current_commit_files:
-                for f2 in current_commit_files:
-                    if f1 != f2:
-                        co_changes[f1].add(f2)
-
-        # 2. Extract commit hash
-        try:
-            head_sha = (
-                subprocess.check_output(
-                    ["git", "rev-parse", "HEAD"],
-                    cwd=str(repo_path),
-                    text=True,
-                )
-                .strip()
-            )
-        except Exception:
-            head_sha = "unknown"
-
-        # 3. Calculate complexity and volatility scores
-        hotspots: List[Dict[str, Any]] = []
-        total_churn_lines = 0
-
-        for fpath, churn_count in file_churn.items():
-            added = file_added[fpath]
-            deleted = file_deleted[fpath]
-            lines_churn = added + deleted
-            total_churn_lines += lines_churn
-
-            # Estimate complexity based on file size, indentation, or AST
-            abs_file = repo_path / fpath
-            complexity_score = self._estimate_file_complexity(abs_file)
-
-            # Volatility Score Calculation: (Normalized 0.0 - 1.0)
-            # Weighted formula: 40% churn frequency, 30% volume, 30% complexity
-            norm_freq = min(1.0, churn_count / 15.0)
-            norm_vol = min(1.0, lines_churn / 600.0)
-            norm_comp = min(1.0, complexity_score / 30.0)
-            volatility_score = round((norm_freq * 0.40) + (norm_vol * 0.30) + (norm_comp * 0.30), 4)
-
-            # Assign Risk Tier
-            if volatility_score >= 0.75:
-                risk_tier = "CRITICAL"
-            elif volatility_score >= 0.50:
-                risk_tier = "HIGH"
-            elif volatility_score >= 0.25:
-                risk_tier = "MEDIUM"
-            else:
-                risk_tier = "LOW"
-
-            co_list = sorted(list(co_changes[fpath]))[:5]
-
-            hotspots.append(
-                {
-                    "file_path": fpath,
-                    "churn_count": churn_count,
-                    "lines_added": added,
-                    "lines_deleted": deleted,
-                    "complexity_score": complexity_score,
-                    "volatility_score": volatility_score,
-                    "risk_tier": risk_tier,
-                    "co_changing_files": co_list,
-                }
-            )
-
-        # Sort hotspots by volatility descending
         hotspots.sort(key=lambda x: x["volatility_score"], reverse=True)
-
         mean_vol = (
             round(sum(h["volatility_score"] for h in hotspots) / len(hotspots), 4)
             if hotspots
             else 0.0
         )
+        recommendations = self._generate_recommendations(hotspots)
 
-        recommendations: List[str] = []
-        critical_hotspots = [h for h in hotspots if h["risk_tier"] == "CRITICAL"]
-        if critical_hotspots:
-            recommendations.append(
-                f"Refactor critical hotspot '{critical_hotspots[0]['file_path']}' with high volatility score {critical_hotspots[0]['volatility_score']}."
-            )
-        high_co_change = [h for h in hotspots if len(h["co_changing_files"]) >= 3]
-        if high_co_change:
-            recommendations.append(
-                f"Module '{high_co_change[0]['file_path']}' has tight coupling with {len(high_co_change[0]['co_changing_files'])} co-changing files; consider applying Facade or Event Dispatcher pattern."
-            )
-
-        report = {
+        return {
             "schema_version": "hath0r.pmat.churn/1",
             "repository": str(repo_path.name),
             "commit_hash": head_sha,
@@ -238,7 +158,159 @@ class PmatAdapter:
             "hotspots": hotspots,
             "recommendations": recommendations,
         }
-        return report
+
+    def _fetch_git_log(self, repo_path: Path, days: int) -> str:
+        """Run git log with numstat to extract change history."""
+        since_date = f"{days} days ago"
+        cmd = [
+            "git",
+            "log",
+            f"--since={since_date}",
+            "--numstat",
+            "--pretty=format:COMMIT:%H",
+            "--no-merges",
+        ]
+        try:
+            res = subprocess.run(
+                cmd,
+                cwd=str(repo_path),
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            return res.stdout
+        except Exception as e:
+            logger.error("Git log execution failed: %s", e)
+            return ""
+
+    def _fetch_head_sha(self, repo_path: Path) -> str:
+        """Fetch current HEAD SHA from git repository."""
+        try:
+            return (
+                subprocess.check_output(
+                    ["git", "rev-parse", "HEAD"],
+                    cwd=str(repo_path),
+                    text=True,
+                )
+                .strip()
+            )
+        except Exception:
+            return "unknown"
+
+    def _process_co_changes(
+        self,
+        co_changes: Dict[str, Set[str]],
+        commit_files: List[str],
+    ) -> None:
+        """Record pairwise co-changing file relationships for a single commit."""
+        if len(commit_files) < 2:
+            return
+        for f1 in commit_files:
+            for f2 in commit_files:
+                if f1 != f2:
+                    co_changes[f1].add(f2)
+
+    def _parse_git_numstat(
+        self,
+        raw_output: str,
+    ) -> Tuple[
+        Dict[str, int],
+        Dict[str, int],
+        Dict[str, int],
+        Dict[str, Set[str]],
+        int,
+    ]:
+        """Parse git log --numstat output lines into change frequency and line counts."""
+        file_churn: Dict[str, int] = collections.defaultdict(int)
+        file_added: Dict[str, int] = collections.defaultdict(int)
+        file_deleted: Dict[str, int] = collections.defaultdict(int)
+        co_changes: Dict[str, Set[str]] = collections.defaultdict(set)
+
+        current_commit_files: List[str] = []
+        commits_evaluated = 0
+
+        for line in raw_output.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            if line.startswith("COMMIT:"):
+                commits_evaluated += 1
+                self._process_co_changes(co_changes, current_commit_files)
+                current_commit_files = []
+                continue
+
+            parts = line.split("\t")
+            if len(parts) >= 3:
+                added_str, deleted_str, path_str = parts[0], parts[1], parts[2]
+                if added_str == "-" or deleted_str == "-":
+                    continue
+                try:
+                    added = int(added_str)
+                    deleted = int(deleted_str)
+                except ValueError:
+                    continue
+
+                file_churn[path_str] += 1
+                file_added[path_str] += added
+                file_deleted[path_str] += deleted
+                current_commit_files.append(path_str)
+
+        self._process_co_changes(co_changes, current_commit_files)
+        return file_churn, file_added, file_deleted, co_changes, commits_evaluated
+
+    def _build_hotspots(
+        self,
+        repo_path: Path,
+        file_churn: Dict[str, int],
+        file_added: Dict[str, int],
+        file_deleted: Dict[str, int],
+        co_changes: Dict[str, Set[str]],
+    ) -> Tuple[List[Dict[str, Any]], int]:
+        """Compute complexity, volatility, and risk tiers for all analyzed files."""
+        hotspots: List[Dict[str, Any]] = []
+        total_churn_lines = 0
+
+        for fpath, churn_count in file_churn.items():
+            added = file_added[fpath]
+            deleted = file_deleted[fpath]
+            lines_churn = added + deleted
+            total_churn_lines += lines_churn
+
+            abs_file = repo_path / fpath
+            complexity_score = self._estimate_file_complexity(abs_file)
+            volatility_score = calculate_volatility_score(churn_count, lines_churn, complexity_score)
+            risk_tier = assign_volatility_risk_tier(volatility_score)
+            co_list = sorted(list(co_changes[fpath]))[:5]
+
+            hotspots.append(
+                {
+                    "file_path": fpath,
+                    "churn_count": churn_count,
+                    "lines_added": added,
+                    "lines_deleted": deleted,
+                    "complexity_score": complexity_score,
+                    "volatility_score": volatility_score,
+                    "risk_tier": risk_tier,
+                    "co_changing_files": co_list,
+                }
+            )
+
+        return hotspots, total_churn_lines
+
+    def _generate_recommendations(self, hotspots: List[Dict[str, Any]]) -> List[str]:
+        """Generate architectural remediation recommendations from hotspot data."""
+        recommendations: List[str] = []
+        critical_hotspots = [h for h in hotspots if h["risk_tier"] == "CRITICAL"]
+        if critical_hotspots:
+            recommendations.append(
+                f"Refactor critical hotspot '{critical_hotspots[0]['file_path']}' with high volatility score {critical_hotspots[0]['volatility_score']}."
+            )
+        high_co_change = [h for h in hotspots if len(h["co_changing_files"]) >= 3]
+        if high_co_change:
+            recommendations.append(
+                f"Module '{high_co_change[0]['file_path']}' has tight coupling with {len(high_co_change[0]['co_changing_files'])} co-changing files; consider applying Facade or Event Dispatcher pattern."
+            )
+        return recommendations
 
     def _estimate_file_complexity(self, file_path: Path) -> float:
         """Estimate file cyclomatic and syntactic complexity without heavy AST parse tax."""
@@ -254,12 +326,10 @@ class PmatAdapter:
         if not lines:
             return 1.0
 
-        # Branching keyword count heuristics (if, elif, for, while, switch, case, catch, match)
         branching_keywords = {"if ", "elif ", "for ", "while ", "case ", "catch ", "except ", "match "}
         branch_count = sum(
             1 for line in lines for kw in branching_keywords if kw in line.strip()
         )
-        # Indentation depth penalty
         deep_indent_count = sum(1 for line in lines if len(line) - len(line.lstrip(" ")) >= 12)
 
         raw_score = 1.0 + (branch_count * 0.5) + (deep_indent_count * 0.2)
@@ -272,6 +342,7 @@ class PmatAdapter:
         limit: int = 10,
     ) -> List[Dict[str, Any]]:
         """Return top N hotspot files sorted by volatility score."""
+        assert limit > 0, "limit must be positive"
         report = self.analyze_churn(repo_path, days=days)
         return report.get("hotspots", [])[:limit]
 
@@ -284,25 +355,8 @@ class PmatAdapter:
         target_path = Path(repo_path).resolve()
         report = self.analyze_churn(target_path, days=30)
         hotspot_map = {h["file_path"]: h for h in report.get("hotspots", [])}
+        changed_files = self._get_pr_changed_files(target_path, base_branch)
 
-        # Get changed files in current branch vs base
-        try:
-            diff_files_raw = subprocess.check_output(
-                ["git", "diff", "--name-only", f"origin/{base_branch}...HEAD"],
-                cwd=str(target_path),
-                text=True,
-            )
-        except Exception:
-            try:
-                diff_files_raw = subprocess.check_output(
-                    ["git", "diff", "--name-only", f"{base_branch}...HEAD"],
-                    cwd=str(target_path),
-                    text=True,
-                )
-            except Exception:
-                diff_files_raw = ""
-
-        changed_files = [f.strip() for f in diff_files_raw.splitlines() if f.strip()]
         touched_hotspots: List[Dict[str, Any]] = []
         max_volatility = 0.0
 
@@ -313,23 +367,7 @@ class PmatAdapter:
                 if h["volatility_score"] > max_volatility:
                     max_volatility = h["volatility_score"]
 
-        # Risk Decision
-        if max_volatility >= 0.75:
-            overall_risk = "CRITICAL"
-            safe_to_merge = False
-            recommended_tier = "REASONING"
-        elif max_volatility >= 0.50:
-            overall_risk = "HIGH"
-            safe_to_merge = True
-            recommended_tier = "REASONING"
-        elif max_volatility >= 0.25:
-            overall_risk = "MEDIUM"
-            safe_to_merge = True
-            recommended_tier = "STANDARD"
-        else:
-            overall_risk = "LOW"
-            safe_to_merge = True
-            recommended_tier = "LIGHT"
+        overall_risk, safe_to_merge, recommended_tier = determine_pr_risk_policy(max_volatility)
 
         return {
             "branch_evaluated": "HEAD",
@@ -342,12 +380,27 @@ class PmatAdapter:
             "recommended_reasoning_tier": recommended_tier,
         }
 
+    def _get_pr_changed_files(self, repo_path: Path, base_branch: str) -> List[str]:
+        """Get changed files in current branch vs base_branch."""
+        cmd_candidates = [
+            ["git", "diff", "--name-only", f"origin/{base_branch}...HEAD"],
+            ["git", "diff", "--name-only", f"{base_branch}...HEAD"],
+        ]
+        for cmd in cmd_candidates:
+            try:
+                out = subprocess.check_output(cmd, cwd=str(repo_path), text=True)
+                return [f.strip() for f in out.splitlines() if f.strip()]
+            except Exception:
+                continue
+        return []
+
     def ingest_into_agentgraph(
         self,
         report: Dict[str, Any],
         agent_graph: Any,
     ) -> int:
         """Inject file volatility weights and co-changing relation edges into AgentGraph."""
+        assert agent_graph is not None, "agent_graph cannot be None"
         from hath0r_engine.graph.agent_graph import AgentGraphEdge, AgentGraphNode, AgentGraphPlane
 
         updated_count = 0
@@ -377,7 +430,6 @@ class PmatAdapter:
                 except Exception as e:
                     logger.debug("Failed adding node %s to agent_graph: %s", node_id, e)
 
-            # Ingest co-changing relational edges
             for co_f in h.get("co_changing_files", []):
                 target_id = f"file:{co_f}"
                 if hasattr(agent_graph, "add_edge"):

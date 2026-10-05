@@ -30,8 +30,8 @@ class AgentMetricsBot:
     Renders comprehensive report to screen via rich TUI with graceful Markdown (MD) fallback.
     """
 
-    BOT_ID = "agent-metrics-bot"
-    TRIGGER_INTENTS = [
+    BOT_ID: str = "agent-metrics-bot"
+    TRIGGER_INTENTS: List[str] = [
         "show agent metrics",
         "get agent metrics",
         "agent metrics report",
@@ -49,11 +49,11 @@ class AgentMetricsBot:
         workspace_root: Optional[Path | str] = None,
         ledger_path: Optional[Path | str] = None,
     ) -> None:
-        self.workspace_root = Path(workspace_root).resolve() if workspace_root else Path.cwd().resolve()
-        self.obs_engine = ObservationChartsEngine(ledger_path=ledger_path)
-        self.cicccd_hook = CICCCDTelemetryHook(workspace_root=self.workspace_root)
+        self.workspace_root: Path = Path(workspace_root).resolve() if workspace_root else Path.cwd().resolve()
+        self.obs_engine: ObservationChartsEngine = ObservationChartsEngine(ledger_path=ledger_path)
+        self.cicccd_hook: CICCCDTelemetryHook = CICCCDTelemetryHook(workspace_root=self.workspace_root)
         self.pmat_engine: PmatStatsEngine = pmat_stats_engine
-        self.ledger = TokenTelemetryLedger(ledger_path=ledger_path)
+        self.ledger: TokenTelemetryLedger = TokenTelemetryLedger(ledger_path=ledger_path)
 
     def is_triggered_by(self, intent: str) -> bool:
         """Check if conversational intent triggers the Agent Metrics Bot."""
@@ -71,6 +71,8 @@ class AgentMetricsBot:
         days: int = 30,
     ) -> Dict[str, Any]:
         """Aggregate Observability items, Histogram distribution, and PMAT information into schema contract."""
+        assert bins_count > 0, "bins_count must be positive"
+        assert days > 0, "days must be positive"
         target_repo = Path(repo_path).resolve() if repo_path else self.workspace_root
 
         # 1. Observability items
@@ -109,7 +111,6 @@ class AgentMetricsBot:
         # 4. Summary & Aggregates
         hotspot_count = pmat_report.get("summary", {}).get("hotspot_count", 0)
         mean_prov = pmat_report.get("summary", {}).get("mean_provability_score", 1.0)
-
         tui_supported = self._check_tui_supported()
 
         report: Dict[str, Any] = {
@@ -163,6 +164,7 @@ class AgentMetricsBot:
         
         Falls back gracefully to Markdown if rich is not available or if rendering fails.
         """
+        assert report is not None, "report cannot be None"
         try:
             from rich.console import Console
             from rich.panel import Panel
@@ -177,110 +179,137 @@ class AgentMetricsBot:
             hist_data = report.get("histogram", {})
             pmat_data = report.get("pmat", {})
 
-            # Header Panel
-            hdr_text = Text()
-            hdr_text.append("HATH0R AGENT METRICS MONITOR", style="bold cyan")
-            hdr_text.append(f"  •  Bot: {report.get('bot_id', self.BOT_ID)}\n", style="dim white")
-            hdr_text.append(f"Timestamp: {report.get('timestamp')}  |  Intent: {report.get('intent')}", style="italic yellow")
-            console.print(Panel(hdr_text, border_style="cyan", title="[bold white]Hath0r Framework[/bold white]"))
-
-            # Summary Scorecard Table
-            score_table = Table(title="[bold yellow]Agent Operational Scorecard[/bold yellow]", expand=True)
-            score_table.add_column("Requests", justify="center", style="cyan")
-            score_table.add_column("Total Tokens", justify="center", style="green")
-            score_table.add_column("Spend (USD)", justify="center", style="magenta")
-            score_table.add_column("P90 Latency", justify="center", style="yellow")
-            score_table.add_column("Provability", justify="center", style="blue")
-            score_table.add_column("Hotspots", justify="center", style="red")
-            score_table.add_column("CCCD Calibration", justify="center", style="bold green")
-
-            cccd_status = "[bold green]FRESH[/bold green]" if sum_data.get("calibration_fresh") else "[bold red]STALE[/bold red]"
-            score_table.add_row(
-                str(sum_data.get("total_requests", 0)),
-                f"{sum_data.get('total_tokens', 0):,}",
-                f"${sum_data.get('total_cost_usd', 0.0):.4f}",
-                f"{sum_data.get('p90_latency_ms', 0.0):.1f} ms",
-                f"{sum_data.get('mean_provability_score', 0.0):.2f}",
-                str(sum_data.get("hotspot_count", 0)),
-                cccd_status,
-            )
-            console.print(score_table)
-
-            # Section 1: Observability Quantiles & Calibration
-            lat_q = obs_data.get("latency_quantiles", {})
-            obs_table = Table(title="[bold cyan]1. Observability Tracing & Latency Quantiles[/bold cyan]", expand=True)
-            obs_table.add_column("Metric Quantile", style="white")
-            obs_table.add_column("Latency Value", style="bold yellow")
-            obs_table.add_column("Description", style="dim")
-
-            obs_table.add_row("P50 (Median)", f"{lat_q.get('p50', 0.0):.2f} ms", "50th percentile response latency")
-            obs_table.add_row("P90", f"{lat_q.get('p90', 0.0):.2f} ms", "90th percentile SLA benchmark")
-            obs_table.add_row("P95", f"{lat_q.get('p95', 0.0):.2f} ms", "95th percentile outlier tail")
-            obs_table.add_row("P99", f"{lat_q.get('p99', 0.0):.2f} ms", "99th percentile maximum tail latency")
-            obs_table.add_row("Mean ± StdDev", f"{lat_q.get('mean', 0.0):.2f} ± {lat_q.get('std_dev', 0.0):.2f} ms", "Statistical expectation & variance")
-            console.print(obs_table)
-
-            # Section 2: Token Telemetry Histogram
-            metric_name = hist_data.get("metric", "prompt_tokens")
-            hist_bins = hist_data.get("bins", [])
-            hist_table = Table(title=f"[bold green]2. Token Telemetry Histogram [{metric_name}][/bold green]", expand=True)
-            hist_table.add_column("Bin Range", style="white")
-            hist_table.add_column("Count", justify="right", style="cyan")
-            hist_table.add_column("Share", justify="right", style="magenta")
-            hist_table.add_column("Distribution Graph", style="bold green")
-
-            for b in hist_bins:
-                rng = f"[{b.get('bin_start', 0):.1f} - {b.get('bin_end', 0):.1f}]"
-                cnt = str(b.get("count", 0))
-                pct = f"{b.get('percentage', 0.0):.1f}%"
-                bar = b.get("ascii_bar", "")
-                hist_table.add_row(rng, cnt, pct, bar)
-            console.print(hist_table)
-
-            # Section 3: PMAT Hotspots
-            hotspots = pmat_data.get("hotspots", [])
-            pmat_table = Table(title="[bold red]3. PMAT Code Churn, Complexity & Provability Hotspots[/bold red]", expand=True)
-            pmat_table.add_column("File Path", style="white")
-            pmat_table.add_column("Risk Tier", justify="center")
-            pmat_table.add_column("Risk Index", justify="right", style="bold yellow")
-            pmat_table.add_column("Churn", justify="right", style="cyan")
-            pmat_table.add_column("Provability", justify="right", style="blue")
-            pmat_table.add_column("Complexity", justify="right", style="magenta")
-
-            for h in hotspots[:5]:
-                tier = h.get("risk_tier", "LOW")
-                tier_fmt = f"[bold red]{tier}[/bold red]" if tier in ("HIGH", "CRITICAL") else f"[green]{tier}[/green]"
-                pmat_table.add_row(
-                    h.get("file_path", ""),
-                    tier_fmt,
-                    f"{h.get('composite_hotspot_risk_index', 0.0):.4f}",
-                    f"{h.get('churn_score', 0.0):.2f}",
-                    f"{h.get('provability_score', 0.0):.2f}",
-                    f"{h.get('complexity_score', 0.0):.1f}",
-                )
-            console.print(pmat_table)
+            console.print(self._build_tui_header_panel(report, Panel, Text))
+            console.print(self._build_tui_scorecard_table(sum_data, Table))
+            console.print(self._build_tui_observability_table(obs_data, Table))
+            console.print(self._build_tui_histogram_table(hist_data, Table))
+            console.print(self._build_tui_pmat_table(pmat_data, Table))
 
             return buf.getvalue()
 
         except Exception:
-            # Graceful Fallback to Markdown
             report["tui_metadata"]["fallback_applied"] = True
             return self.render_markdown(report)
 
+    def _build_tui_header_panel(self, report: Dict[str, Any], Panel: Any, Text: Any) -> Any:
+        """Construct Header Panel for rich TUI display."""
+        hdr_text = Text()
+        hdr_text.append("HATH0R AGENT METRICS MONITOR", style="bold cyan")
+        hdr_text.append(f"  •  Bot: {report.get('bot_id', self.BOT_ID)}\n", style="dim white")
+        hdr_text.append(f"Timestamp: {report.get('timestamp')}  |  Intent: {report.get('intent')}", style="italic yellow")
+        return Panel(hdr_text, border_style="cyan", title="[bold white]Hath0r Framework[/bold white]")
+
+    def _build_tui_scorecard_table(self, sum_data: Dict[str, Any], Table: Any) -> Any:
+        """Construct Summary Scorecard Table for rich TUI display."""
+        score_table = Table(title="[bold yellow]Agent Operational Scorecard[/bold yellow]", expand=True)
+        score_table.add_column("Requests", justify="center", style="cyan")
+        score_table.add_column("Total Tokens", justify="center", style="green")
+        score_table.add_column("Spend (USD)", justify="center", style="magenta")
+        score_table.add_column("P90 Latency", justify="center", style="yellow")
+        score_table.add_column("Provability", justify="center", style="blue")
+        score_table.add_column("Hotspots", justify="center", style="red")
+        score_table.add_column("CCCD Calibration", justify="center", style="bold green")
+
+        cccd_status = "[bold green]FRESH[/bold green]" if sum_data.get("calibration_fresh") else "[bold red]STALE[/bold red]"
+        score_table.add_row(
+            str(sum_data.get("total_requests", 0)),
+            f"{sum_data.get('total_tokens', 0):,}",
+            f"${sum_data.get('total_cost_usd', 0.0):.4f}",
+            f"{sum_data.get('p90_latency_ms', 0.0):.1f} ms",
+            f"{sum_data.get('mean_provability_score', 0.0):.2f}",
+            str(sum_data.get("hotspot_count", 0)),
+            cccd_status,
+        )
+        return score_table
+
+    def _build_tui_observability_table(self, obs_data: Dict[str, Any], Table: Any) -> Any:
+        """Construct Observability Tracing Table for rich TUI display."""
+        lat_q = obs_data.get("latency_quantiles", {})
+        obs_table = Table(title="[bold cyan]1. Observability Tracing & Latency Quantiles[/bold cyan]", expand=True)
+        obs_table.add_column("Metric Quantile", style="white")
+        obs_table.add_column("Latency Value", style="bold yellow")
+        obs_table.add_column("Description", style="dim")
+
+        obs_table.add_row("P50 (Median)", f"{lat_q.get('p50', 0.0):.2f} ms", "50th percentile response latency")
+        obs_table.add_row("P90", f"{lat_q.get('p90', 0.0):.2f} ms", "90th percentile SLA benchmark")
+        obs_table.add_row("P95", f"{lat_q.get('p95', 0.0):.2f} ms", "95th percentile outlier tail")
+        obs_table.add_row("P99", f"{lat_q.get('p99', 0.0):.2f} ms", "99th percentile maximum tail latency")
+        obs_table.add_row("Mean ± StdDev", f"{lat_q.get('mean', 0.0):.2f} ± {lat_q.get('std_dev', 0.0):.2f} ms", "Statistical expectation & variance")
+        return obs_table
+
+    def _build_tui_histogram_table(self, hist_data: Dict[str, Any], Table: Any) -> Any:
+        """Construct Token Histogram Table for rich TUI display."""
+        metric_name = hist_data.get("metric", "prompt_tokens")
+        hist_bins = hist_data.get("bins", [])
+        hist_table = Table(title=f"[bold green]2. Token Telemetry Histogram [{metric_name}][/bold green]", expand=True)
+        hist_table.add_column("Bin Range", style="white")
+        hist_table.add_column("Count", justify="right", style="cyan")
+        hist_table.add_column("Share", justify="right", style="magenta")
+        hist_table.add_column("Distribution Graph", style="bold green")
+
+        for b in hist_bins:
+            rng = f"[{b.get('bin_start', 0):.1f} - {b.get('bin_end', 0):.1f}]"
+            cnt = str(b.get("count", 0))
+            pct = f"{b.get('percentage', 0.0):.1f}%"
+            bar = b.get("ascii_bar", "")
+            hist_table.add_row(rng, cnt, pct, bar)
+        return hist_table
+
+    def _build_tui_pmat_table(self, pmat_data: Dict[str, Any], Table: Any) -> Any:
+        """Construct PMAT Hotspots Table for rich TUI display."""
+        hotspots = pmat_data.get("hotspots", [])
+        pmat_table = Table(title="[bold red]3. PMAT Code Churn, Complexity & Provability Hotspots[/bold red]", expand=True)
+        pmat_table.add_column("File Path", style="white")
+        pmat_table.add_column("Risk Tier", justify="center")
+        pmat_table.add_column("Risk Index", justify="right", style="bold yellow")
+        pmat_table.add_column("Churn", justify="right", style="cyan")
+        pmat_table.add_column("Provability", justify="right", style="blue")
+        pmat_table.add_column("Complexity", justify="right", style="magenta")
+
+        for h in hotspots[:5]:
+            tier = h.get("risk_tier", "LOW")
+            tier_fmt = f"[bold red]{tier}[/bold red]" if tier in ("HIGH", "CRITICAL") else f"[green]{tier}[/green]"
+            pmat_table.add_row(
+                h.get("file_path", ""),
+                tier_fmt,
+                f"{h.get('composite_hotspot_risk_index', 0.0):.4f}",
+                f"{h.get('churn_score', 0.0):.2f}",
+                f"{h.get('provability_score', 0.0):.2f}",
+                f"{h.get('complexity_score', 0.0):.1f}",
+            )
+        return pmat_table
+
     def render_markdown(self, report: Dict[str, Any]) -> str:
         """Render comprehensive metrics report formatted in clean GitHub-Flavored Markdown."""
+        assert report is not None, "report cannot be None"
         sum_data = report.get("summary", {})
         obs_data = report.get("observability", {})
         hist_data = report.get("histogram", {})
         pmat_data = report.get("pmat", {})
 
-        lines: List[str] = [
+        lines: List[str] = []
+        lines.extend(self._build_markdown_header(report))
+        lines.extend(self._build_markdown_summary_table(sum_data))
+        lines.extend(self._build_markdown_observability_section(obs_data))
+        lines.extend(self._build_markdown_histogram_section(hist_data))
+        lines.extend(self._build_markdown_pmat_section(pmat_data))
+
+        return "\n".join(lines)
+
+    def _build_markdown_header(self, report: Dict[str, Any]) -> List[str]:
+        """Construct Markdown header lines."""
+        return [
             f"# Agent Metrics Report — `{report.get('bot_id', self.BOT_ID)}`",
             "",
             f"> **Generated:** `{report.get('timestamp')}`  ",
             f"> **Intent:** `{report.get('intent')}`  ",
             f"> **TUI Fallback Applied:** `{report.get('tui_metadata', {}).get('fallback_applied', False)}`",
             "",
+        ]
+
+    def _build_markdown_summary_table(self, sum_data: Dict[str, Any]) -> List[str]:
+        """Construct Executive Operational Summary table lines."""
+        return [
             "## Executive Operational Summary",
             "",
             "| Total Requests | Total Tokens | Spend (USD) | P90 Latency | Provability | Hotspots | CCCD Calibration |",
@@ -292,6 +321,11 @@ class AgentMetricsBot:
                 f"{'FRESH' if sum_data.get('calibration_fresh') else 'STALE'} |"
             ),
             "",
+        ]
+
+    def _build_markdown_observability_section(self, obs_data: Dict[str, Any]) -> List[str]:
+        """Construct Observability Tracing section lines."""
+        lines = [
             "## 1. Observability Tracing & Latency Quantiles",
             "",
             "| Quantile | Value (ms) | Description |",
@@ -306,20 +340,23 @@ class AgentMetricsBot:
         lines.append(f"| Mean ± StdDev | {lat_q.get('mean', 0.0):.2f} ± {lat_q.get('std_dev', 0.0):.2f} ms | Statistical expectation & variance |")
         lines.append("")
 
-        # Calibration state
         cal = obs_data.get("calibration_state", {})
         lines.append("### Continuous Calibration (CCCD) Status")
         lines.append(f"- **Freshness Status:** `{'FRESH' if cal.get('fresh') else 'STALE (>24h)'}`")
         lines.append(f"- **Last Calibration Run:** `{cal.get('last_run_timestamp') or 'Never'}`")
         lines.append(f"- **Total Calibration Runs:** `{cal.get('total_runs', 0)}`")
         lines.append("")
+        return lines
 
-        # Section 2: Token Histogram
+    def _build_markdown_histogram_section(self, hist_data: Dict[str, Any]) -> List[str]:
+        """Construct Token Histogram section lines."""
         metric_name = hist_data.get("metric", "prompt_tokens")
-        lines.append(f"## 2. Token Telemetry Histogram Distribution [{metric_name}]")
-        lines.append("")
-        lines.append("| Bin Range | Count | Share (%) | Visual Distribution |")
-        lines.append("| :--- | :---: | :---: | :--- |")
+        lines = [
+            f"## 2. Token Telemetry Histogram Distribution [{metric_name}]",
+            "",
+            "| Bin Range | Count | Share (%) | Visual Distribution |",
+            "| :--- | :---: | :---: | :--- |",
+        ]
 
         for b in hist_data.get("bins", []):
             rng = f"[{b.get('bin_start', 0):.1f} - {b.get('bin_end', 0):.1f}]"
@@ -329,10 +366,14 @@ class AgentMetricsBot:
             lines.append(f"| {rng} | {cnt} | {pct} | {bar} |")
 
         lines.append("")
+        return lines
 
-        # Section 3: PMAT Code Churn & Hotspots
-        lines.append("## 3. PMAT Multi-Dimensional Code Churn, Complexity & Provability")
-        lines.append("")
+    def _build_markdown_pmat_section(self, pmat_data: Dict[str, Any]) -> List[str]:
+        """Construct PMAT section lines."""
+        lines = [
+            "## 3. PMAT Multi-Dimensional Code Churn, Complexity & Provability",
+            "",
+        ]
         pmat_sum = pmat_data.get("summary", {})
         lines.append(f"- **Repository Evaluated:** `{pmat_data.get('repository', 'hath0r')}` (`{pmat_data.get('commit_hash', 'unknown')}`)")
         lines.append(f"- **Files Analyzed:** `{pmat_sum.get('total_files_analyzed', 0)}` across `{pmat_sum.get('total_commits_evaluated', 0)}` commits")
@@ -361,10 +402,11 @@ class AgentMetricsBot:
                 lines.append(f"- **[{rem.get('priority', 'HIGH')}]** `{rem.get('file_path', '')}`: {rem.get('recommended_action', '')}")
             lines.append("")
 
-        return "\n".join(lines)
+        return lines
 
     def ingest_into_agentgraph(self, report: Dict[str, Any], agent_graph: Optional[AgentGraphEngine] = None) -> str:
         """Ingest Agent Metrics Bot execution node into AgentGraph context and knowledge planes."""
+        assert report is not None, "report cannot be None"
         graph = agent_graph or agent_graph_engine
         node_id = f"bot_execution:agent-metrics-bot:{int(datetime.datetime.now(datetime.timezone.utc).timestamp())}"
         
@@ -399,7 +441,6 @@ class AgentMetricsBot:
         """Main bot entry point to process agent metrics intent, build report, render UI, and ingest into AgentGraph."""
         report = self.generate_metrics_report(intent=intent, repo_path=repo_path)
         
-        # Check render preference
         if render_mode == "markdown":
             output = self.render_markdown(report)
             report["tui_metadata"]["render_mode"] = "markdown"
