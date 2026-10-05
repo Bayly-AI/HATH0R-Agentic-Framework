@@ -144,15 +144,27 @@ class OTELTracerBot:
         completion_tokens: int,
         latency_ms: float,
         temperature: float = 0.7,
+        cost_usd: float = 0.0,
+        input_value: Optional[str] = None,
+        output_value: Optional[str] = None,
+        project_name: Optional[str] = None,
     ) -> TelemetrySpan:
         """Record standard OpenInference LLM telemetry span."""
-        attrs = {
+        attrs: Dict[str, Any] = {
             "llm.model_name": model_name,
             "llm.token_count.prompt": prompt_tokens,
             "llm.token_count.completion": completion_tokens,
             "llm.token_count.total": prompt_tokens + completion_tokens,
             "llm.invocation_parameters.temperature": temperature,
+            "llm.cost.total": cost_usd,
         }
+        if input_value is not None:
+            attrs["input.value"] = str(input_value)
+        if output_value is not None:
+            attrs["output.value"] = str(output_value)
+        if project_name is not None:
+            attrs["openinference.project.name"] = str(project_name)
+
         with self.start_span(f"llm:{model_name}", span_kind="LLM", attributes=attrs) as span:
             span.add_event("token_generation_complete", {"latency_ms": latency_ms})
             return span
