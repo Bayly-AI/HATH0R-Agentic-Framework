@@ -4,6 +4,7 @@ from __future__ import annotations
 
 __version__ = "1.0.0"
 
+from hath0r_engine.analysis.pmat_adapter import PmatAdapter, pmat_adapter
 from hath0r_engine.context.context_graph import ContextEdge, ContextGraph, ContextNode
 from hath0r_engine.gateway.base import (
     CompletionRequest,
@@ -302,4 +303,7 @@ __all__ = [
     "SNRType",
     "calculate_snr",
     "TaguchiEngine",
+    "PmatAdapter",
+    "pmat_adapter",
 ]
+

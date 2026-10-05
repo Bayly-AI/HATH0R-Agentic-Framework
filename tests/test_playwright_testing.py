@@ -223,3 +223,29 @@ def test_playwright_test_runner_execution():
     assert suite_result["total_tests"] == 2
     assert suite_result["passed"] == 1
     assert suite_result["skipped"] == 1
+
+
+def test_churn_heatmap_playwright_catalog_and_runner():
+    mgr = PlaywrightMasterCatalogManager(catalog_path=Path("tests/e2e/master-playwright-tests.json"))
+    assert mgr.catalog is not None
+    suite = next((s for s in mgr.catalog.suites if s.suite_id == "suite-churn-heatmap"), None)
+    assert suite is not None
+    assert suite.target_component == "ChurnHeatmapComponent"
+    assert len(suite.test_cases) == 1
+
+    tc = suite.test_cases[0]
+    assert tc.test_id == "TC-CHURN-001"
+    assert len(tc.steps) == 5
+
+    # Export TypeScript spec
+    ts_code = mgr.export_playwright_spec("suite-churn-heatmap", language="typescript")
+    assert "PMAT Churn & Hotspot Heatmap UI Component Suite" in ts_code
+    assert "data-testid='churn-heatmap-widget'" in ts_code
+
+    # Run with PlaywrightTestRunner
+    runner = PlaywrightTestRunner()
+    result = runner.execute_test_case(tc, suite_id=suite.suite_id)
+    assert result.status == "PASS"
+    assert result.steps_passed == 5
+    assert result.error is None
+
