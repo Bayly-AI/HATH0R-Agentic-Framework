@@ -18,7 +18,6 @@ from hath0r_engine.sandbox.base import (
     SandboxProvider,
 )
 
-
 SANDBOX_NOT_RUNNING = "Sandbox is not running."
 
 
