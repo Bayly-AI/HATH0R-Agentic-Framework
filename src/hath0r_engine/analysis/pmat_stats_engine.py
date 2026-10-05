@@ -8,11 +8,10 @@ import datetime
 import math
 import subprocess
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List
 
 from hath0r_engine.graph.agent_graph import (
     AgentGraphEngine,
-    AgentGraphEdge,
     AgentGraphNode,
     AgentGraphPlane,
 )
@@ -138,8 +137,8 @@ class PmatStatsEngine:
             }
 
         # Safe indicators: type annotations, docstrings, assertions, precondition checks
-        type_annotated_lines = sum(1 for l in lines if ":" in l and "->" in l or "assert " in l or "isinstance(" in l or "Optional[" in l or "Union[" in l)
-        docstring_lines = sum(1 for l in lines if '"""' in l or "'''" in l or "#" in l)
+        type_annotated_lines = sum(1 for line in lines if ":" in line and "->" in line or "assert " in line or "isinstance(" in line or "Optional[" in line or "Union[" in line)
+        docstring_lines = sum(1 for line in lines if '"""' in line or "'''" in line or "#" in line)
 
         annot_ratio = min(1.0, type_annotated_lines / max(1, len(lines)))
         doc_ratio = min(1.0, docstring_lines / max(1, len(lines)))

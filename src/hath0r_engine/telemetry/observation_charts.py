@@ -8,12 +8,10 @@ dual-mode output: terminal ASCII histograms and interactive Generative UI HTML d
 from __future__ import annotations
 
 import datetime
-import math
-
-from typing import Any, Dict, List, Optional
 from pathlib import Path
+from typing import Any, Dict, List, Optional
 
-from .token_telemetry import TokenTelemetryLedger, TokenTelemetryRecord, TokenHistogramBot
+from .token_telemetry import TokenHistogramBot, TokenTelemetryLedger, TokenTelemetryRecord
 
 
 class ObservationChartsEngine:

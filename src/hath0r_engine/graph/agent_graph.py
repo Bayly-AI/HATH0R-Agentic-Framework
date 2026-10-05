@@ -19,7 +19,6 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-
 RULES_MD_FILENAME = "rules.md"
 
 
@@ -932,4 +931,8 @@ class AgentGraphEngine:
                 )
         finally:
             store.close()
+
+
+agent_graph_engine = AgentGraphEngine()
+
 

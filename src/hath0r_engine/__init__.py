@@ -7,7 +7,6 @@ __version__ = "1.0.0"
 from hath0r_engine.analysis.pmat_adapter import PmatAdapter, pmat_adapter
 from hath0r_engine.analysis.pmat_stats_engine import PmatStatsEngine, pmat_stats_engine
 from hath0r_engine.calibration.gain_imputation import GainImputationEngine, gain_imputation_engine
-from hath0r_engine.mesh.gain_federation_router import GainFederationRouter, gain_federation_router
 from hath0r_engine.context.context_graph import ContextEdge, ContextGraph, ContextNode
 from hath0r_engine.gateway.base import (
     CompletionRequest,
@@ -35,6 +34,7 @@ from hath0r_engine.graph.agent_graph import (
     RuleConflictError,
     RuleCycleError,
     RulePriority,
+    agent_graph_engine,
 )
 from hath0r_engine.graph.agent_rules_graph import AgentRulesGraph
 from hath0r_engine.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeGraphExtractor, KnowledgeNode
@@ -62,6 +62,7 @@ from hath0r_engine.mcp.tool_router import DynamicToolRouter, ToolDefinition
 from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 from hath0r_engine.memory.memory_tools import MemoryPagingManager
 from hath0r_engine.memory.reflection import ReflectionEngine
+from hath0r_engine.mesh.gain_federation_router import GainFederationRouter, gain_federation_router
 from hath0r_engine.optimization import (
     ArrayType,
     ExperimentMatrix,
@@ -169,6 +170,7 @@ from hath0r_engine.voice.voice_engine import VoiceEngine
 __all__ = [
     "__version__",
     "AgentGraphEngine",
+    "agent_graph_engine",
     "AgentRulesGraph",
     "AgentGraphNode",
     "AgentGraphEdge",

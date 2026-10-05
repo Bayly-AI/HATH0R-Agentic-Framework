@@ -10,11 +10,10 @@ import collections
 import datetime
 import json
 import logging
-import os
 import shutil
 import subprocess
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Set
 
 logger = logging.getLogger("hath0r.analysis.pmat")
 

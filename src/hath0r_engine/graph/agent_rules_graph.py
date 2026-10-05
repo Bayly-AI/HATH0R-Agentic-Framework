@@ -19,7 +19,6 @@ from hath0r_engine.graph.agent_graph import (
     RulePriority,
 )
 
-
 ROLE_READER = "role:reader"
 ROLE_RESEARCHER = "role:researcher"
 ROLE_DEVELOPER = "role:developer"
