@@ -230,6 +230,64 @@
           "updated_at": "2026-10-01T14:30:00Z"
         }
       ]
+    },
+    {
+      "suite_id": "suite-churn-heatmap",
+      "title": "PMAT Churn & Hotspot Heatmap UI Component Suite",
+      "description": "Playwright end-to-end and visual testing suite for Generative UI ChurnHeatmapComponent",
+      "target_component": "ChurnHeatmapComponent",
+      "target_path": "src/hath0r_engine/ui/churn_heatmap.py",
+      "tags": [
+        "ui",
+        "generative-ui",
+        "churn-heatmap",
+        "pmat"
+      ],
+      "test_cases": [
+        {
+          "test_id": "TC-CHURN-001",
+          "title": "ChurnHeatmapComponent renders volatility stats grid and hotspot ranking table",
+          "description": "Verify that ChurnHeatmapComponent renders interactive stats boxes, hotspot counts, and risk tier badges",
+          "status": "automated",
+          "browser": "chromium",
+          "tags": [
+            "smoke",
+            "rendering",
+            "pmat"
+          ],
+          "steps": [
+            {
+              "step_number": 1,
+              "action": "goto",
+              "value": "http://localhost:3000/components/churn-heatmap"
+            },
+            {
+              "step_number": 2,
+              "action": "waitForSelector",
+              "selector": "[data-testid='churn-heatmap-widget']",
+              "timeout_ms": 5000
+            },
+            {
+              "step_number": 3,
+              "action": "expectVisible",
+              "selector": "[data-testid='hotspot-count-badge']"
+            },
+            {
+              "step_number": 4,
+              "action": "expectVisible",
+              "selector": "[data-testid='hotspot-table']"
+            },
+            {
+              "step_number": 5,
+              "action": "expectVisualMatch",
+              "snapshot_name": "churn-heatmap-widget.png"
+            }
+          ],
+          "expected_outcome": "Churn heatmap displays summary metrics and color-coded risk table matching visual baseline",
+          "created_at": "2026-10-05T12:00:00Z",
+          "updated_at": "2026-10-05T12:00:00Z"
+        }
+      ]
     }
   ]
 }

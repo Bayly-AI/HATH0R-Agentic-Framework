@@ -1,5 +1,6 @@
 """Generative UI & Evidence Handshake Protocol package for Hath0r."""
 
+from hath0r_engine.ui.churn_heatmap import ChurnHeatmapComponent
 from hath0r_engine.ui.components import UIComponentBuilder
 from hath0r_engine.ui.crypto_signoff import generate_cryptographic_signature
 from hath0r_engine.ui.protocol import (
@@ -20,4 +21,6 @@ __all__ = [
     "UIComponentBuilder",
     "BiDirectionalStateSync",
     "generate_cryptographic_signature",
+    "ChurnHeatmapComponent",
 ]
+
