@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-04T20:35:43.269202+00:00",
+  "timestamp": "2026-10-05T17:10:49.320575+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -344,6 +344,18 @@
       "is_current": true
     },
     {
+      "id": "contract:hath0r-gain-envelope-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0r GAIN Federated Agent-to-Agent (A2A) Mesh Envelope Schema",
+      "content": "Defines cryptographic envelope contract for federated peer-to-peer message routing, task delegation, and AgentGraph cross-workspace queries.",
+      "properties": {
+        "schema_id": "https://hath0r.bayly.ai/contracts/hath0r-gain-envelope-v1.schema.json",
+        "path": "contracts/hath0r-gain-envelope-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
       "id": "contract:hath0r-voice-action-v1.schema.json",
       "plane": "knowledge",
       "type": "contract",
@@ -460,6 +472,30 @@
       "properties": {
         "schema_id": "https://schema.bayly.ai/hath0r/contracts/hath0r-mcp-servers-v1.schema.json",
         "path": "contracts/hath0r-mcp-servers-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-pmat-churn-report-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0rPmatChurnReport",
+      "content": "Canonical schema contract for PMAT code churn, file volatility, and architectural hotspot analysis.",
+      "properties": {
+        "schema_id": "https://raw.githubusercontent.com/Bayly-AI/HATH0R-Agentic-Framework/development/contracts/hath0r-pmat-churn-report-v1.schema.json",
+        "path": "contracts/hath0r-pmat-churn-report-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-pmat-stats-report-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0r PMAT Multi-Dimensional Stats & Provability Report Schema",
+      "content": "Defines multi-dimensional reporting schema for Code Churn, Formal Provability, AST Complexity, and Composite Hotspot Risk Index.",
+      "properties": {
+        "schema_id": "https://hath0r.bayly.ai/contracts/hath0r-pmat-stats-report-v1.schema.json",
+        "path": "contracts/hath0r-pmat-stats-report-v1.schema.json"
       },
       "is_current": true
     },
@@ -1860,6 +1896,45 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__procedures__code-churn-analysis-procedure_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Code Churn Analysis Procedure",
+      "content": "# Procedure: Code Churn & Hotspot Analysis\n\n> Canonical Standard Operating Procedure · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Scope & Objective\n\nThis procedure details the step-by-step operational instructions for auditing code churn, generating architectural hotspot reports, evaluating PR risk, and injecting volatility data into AgentGraph.\n\n---\n\n## 2. CLI Execution & Automated Analysis\n\n### Step 1: Pre-Audit Environment Validation\nVerify that the repository working tree is accessible and clean:\n```bash\nhath0r churn doctor\n```\n\n### Step 2: Run Churn Analysis\nExecute 30-day commit volatility analysis across the active repository:\n```bash\nhath0r churn analyze --days 30 --json\n```\n\n### Step 3: Inspect Hotspot Rankings\nRetrieve the top 10 highest-volatility files in the workspace:\n```bash\nhath0r churn hotspots --limit 10\n```\n\n### Step 4: Evaluate PR Review Risk Gate\nBefore merging a feature branch, run PR risk evaluation against the target base:\n```bash\nhath0r churn pr-risk --base development\n```\n\n### Step 5: Render Generative UI Heatmap\nLaunch or view the interactive Generative UI dashboard:\n```bash\nhath0r churn ui\n```\n\n---\n\n## 3. Contract Schema Compliance\n\nAll gene",
+      "properties": {
+        "path": "docs/governance/procedures/code-churn-analysis-procedure.md",
+        "category": "procedures",
+        "size_bytes": 1296
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__procedures__phoenix-deployment-procedure_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Phoenix Deployment Procedure",
+      "content": "# Arize Phoenix Multi-Group Deployment Procedure\n\n> Artifact: **Procedure** · Member of **Artifact Hexad** (`CR-CLI-FEATURE-STANDARD-001`)  \n> Suite: `hath0r-opensource` / `bayly-ai` / `1-nation`  \n> Date: 2026-10-05\n\n## 1. Purpose & Scope\n\nThis procedure outlines the exact steps to provision, configure, and verify the Arize Phoenix observability container across all Docker group meshes (`hath0r`, `1-nation`, and `bai`).\n\n---\n\n## 2. Prerequisites & Port Allocation\n\n| Group | Edge Container | Edge Host Port | Phoenix Container | Phoenix Direct Port | gRPC Port | HTTP Port |\n| :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n| **Hath0r** | `HATH0R-NGINX` | `38000` | `HATH0R-Phoenix` | `36006` | `34317` | `34318` |\n| **1-Nation** | `1NEDGE` | `58000` / `80` | `1NPHOENIX` | `6006` | `4317` | `4318` |\n| **BaylyAI** | `BAI-NGINX` | `48000` | `BAI-Phoenix` | `46006` | `44317` | `44318` |\n\n---\n\n## 3. Deployment Procedure\n\n### Step 1: Update Group Docker Compose\nAdd the `phoenix` service block to the target group's `docker-compose.yml`:\n```yaml\n  phoenix:\n    image: arizephoenix/phoenix:latest\n    container_name: HATH0R-Phoenix\n    restart: unless-stopped\n    ports:\n      - \"${HATH0R_PHOENI",
+      "properties": {
+        "path": "docs/governance/procedures/phoenix-deployment-procedure.md",
+        "category": "procedures",
+        "size_bytes": 2763
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__procedures__pmat-stats-reporting-procedure_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pmat Stats Reporting Procedure",
+      "content": "# Procedure: PMAT Multi-Dimensional Stats Reporting\n\n> Canonical Standard Operating Procedure · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Scope & Objective\n\nDefines operational steps to query PMAT multi-dimensional stats, generate provability/complexity reports, and validate against `contracts/hath0r-pmat-stats-report-v1.schema.json`.\n\n---\n\n## 2. Step-by-Step Instructions\n\n### Step 1: Health Diagnostic\n```bash\nhath0r pmat doctor\n```\n\n### Step 2: Generate Full Stats Report\n```bash\nhath0r pmat stats --target . --window 30 --format table\n```\n\n### Step 3: Provability & Complexity Breakdown\n```bash\nhath0r pmat stats --provability --complexity --format json\n```\n\n### Step 4: Schema Validation\n```bash\nhath0r contracts validate --file contracts/hath0r-pmat-stats-report-v1.schema.json\n```\n",
+      "properties": {
+        "path": "docs/governance/procedures/pmat-stats-reporting-procedure.md",
+        "category": "procedures",
+        "size_bytes": 805
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__procedures__voice-subsystem-procedure_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -1895,6 +1970,19 @@
         "path": "docs/governance/procedures/playwright-ui-testing-procedure.md",
         "category": "procedures",
         "size_bytes": 1075
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__procedures__gain-mesh-procedure_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Gain Mesh Procedure",
+      "content": "# Procedure: GAIN Mesh Operations & Peer Federation\n\n> Canonical Standard Operating Procedure · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Operational Command Steps\n\n### Step 1: Mesh Health Check\n```bash\nhath0r mesh status\n```\n\n### Step 2: Peer Discovery\n```bash\nhath0r mesh peers\n```\n\n### Step 3: Peer Connectivity Verification\n```bash\nhath0r mesh ping --peer-id agent-02\n```\n\n### Step 4: Route Remote AgentGraph Query\n```bash\nhath0r mesh route --peer-id agent-02 --query \"governance\"\n```\n",
+      "properties": {
+        "path": "docs/governance/procedures/gain-mesh-procedure.md",
+        "category": "procedures",
+        "size_bytes": 504
       },
       "is_current": true
     },
@@ -1947,6 +2035,19 @@
         "path": "docs/governance/strategies/dynamic-mcp-tool-router-strategy.md",
         "category": "strategies",
         "size_bytes": 2998
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__strategies__gain-mesh-strategy_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Gain Mesh Strategy",
+      "content": "# Strategy: GAIN Federated Agent-to-Agent (A2A) Mesh & Generative Imputation\n\n> Canonical Strategy Specification · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Core Principles\n\nThe **GAIN Federated A2A Mesh** substrate governs peer-to-peer agent discovery, task delegation, cross-workspace AgentGraph query resolution, and generative telemetry imputation:\n1. **Cryptographic Identity & Security**: Every message envelope is signed with HMAC-SHA256 and assigned strict temporal TTL bounds.\n2. **Deterministic RBAC**: Allowed tools are explicitly specified and verified by recipient agents prior to task execution.\n3. **Generative Imputation (GAIN)**: Sparse telemetry spans with missing rates up to 40% are reconstructed using statistical GAN imputation.\n4. **Continuous Calibration (CR-CICCCD-001)**: Calibration freshness is enforced to stay $\\le 24.0\\text{ hours}$.\n",
+      "properties": {
+        "path": "docs/governance/strategies/gain-mesh-strategy.md",
+        "category": "strategies",
+        "size_bytes": 880
       },
       "is_current": true
     },
@@ -2081,6 +2182,32 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__strategies__code-churn-analysis-strategy_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Code Churn Analysis Strategy",
+      "content": "# Strategy: Code Churn & Architectural Hotspot Analysis\n\n> Canonical Strategy Specification · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Executive Summary & Vision\n\nSoftware systems suffer from localized erosion where frequently modified files with high cyclomatic complexity become primary drivers of regressions, security vulnerabilities, and deployment failures. The **PMAT Code Churn & Architectural Hotspot Analysis** strategy defines a proactive, automated cognitive methodology for identifying, measuring, and mitigating code volatility across the BaylyAI open-source ecosystem without incurring prompt tax.\n\n---\n\n## 2. Mathematical Volatility Model\n\nHath0r calculates file volatility score $V(f) \\in [0.0, 1.0]$ using a multi-dimensional weighted normalization:\n\n$$V(f) = \\min\\left(1.0, 0.40 \\cdot \\frac{C_f}{C_{\\max}} + 0.30 \\cdot \\frac{L_f}{L_{\\max}} + 0.30 \\cdot \\frac{K_f}{K_{\\max}}\\right)$$\n\nWhere:\n- $C_f$: Commit count modifying file $f$ within the evaluation time window (default 30 days, $C_{\\max} = 15$).\n- $L_f$: Total churn volume in lines (lines added + lines deleted, $L_{\\max} = 600$).\n- $K_f$: Cyclomatic / syntactic branching complexity score ($K_{\\max} = 30$).\n",
+      "properties": {
+        "path": "docs/governance/strategies/code-churn-analysis-strategy.md",
+        "category": "strategies",
+        "size_bytes": 2323
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__strategies__cicccd-strategy_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Cicccd Strategy",
+      "content": "# Continuous Integration, Continuous Calibration & Continuous Deployment (CICCCD) Strategy\n\n> **Status:** Ratified Strategy Specification  \n> **Parent Standard:** `CR-CICCCD-001`  \n> **Governing ADRs:** `HATHOR-ADR-009` (AgentGraph Engine), `HATHOR-ADR-004` (Cognitive Substrate)  \n> **Governing Standards:** `CR-CLI-ENTRY-001`, `CR-SUBSTRATE-001`, `CR-BAI-001`, `cr-branch-gov-001`\n\n---\n\n## 1. Executive Summary\n\nTraditional software delivery relies on **Continuous Integration and Continuous Deployment (CI/CD)**. CI/CD assumes a deterministic execution model where verified source code and passing unit tests guarantee stable production runtime behavior:\n\n$$\\text{Code State } S_0 \\xrightarrow{\\text{CI/CD}} \\text{Production Runtime } R_0 \\quad (\\text{Deterministic } R_0 \\equiv S_0)$$\n\nIn enterprise agentic architectures and non-deterministic cognitive substrates (LLMs, dynamic retrieval graphs, autonomous subagent chains), this assumption breaks down. Even when zero code changes occur, production runtime behavior drifts due to model updates, retrieval index shifts, context bloat, and prompt decay.\n\nThe **CICCCD (Continuous Integration, Continuous Calibration, Continuous Deployment)** met",
+      "properties": {
+        "path": "docs/governance/strategies/cicccd-strategy.md",
+        "category": "strategies",
+        "size_bytes": 7144
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__strategies__durable-execution-checkpointing-strategy_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2120,6 +2247,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__strategies__pmat-stats-reporting-strategy_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pmat Stats Reporting Strategy",
+      "content": "# Strategy: PMAT Multi-Dimensional Stats & Provability Reporting\n\n> Canonical Strategy Specification · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Executive Summary & Core Objectives\n\nSoftware maintenance and quality governance require holistic insight beyond simple line counts. The **PMAT Multi-Dimensional Stats & Provability Reporting** strategy establishes a formal mathematical and cognitive framework for quantifying:\n1. **Code Churn Volatility**: Temporal decay and commit frequency.\n2. **Formal Provability Score**: Type invariant safety, assertion density, and defect probability ($P_{\\text{defect}} = 1 - S_{\\text{provability}}$).\n3. **AST Complexity Score**: Cyclomatic complexity, Cognitive complexity, AST nesting depth, and Halstead volume.\n4. **Hotspot Risk Index**: Composite evaluation combining churn volatility, AST complexity, and inverse provability ($R = \\text{Churn} \\times \\text{Complexity} \\times (1 - \\text{Provability})$).\n\n---\n\n## 2. Mathematical Formulation\n\n$$\\text{Composite Hotspot Risk Index } R(f) = C(f) \\cdot \\left(\\frac{K(f)}{10}\\right) \\cdot (1 - P(f) + 0.1)$$\n\nWhere:\n- $C(f) \\in [0.0, 1.0]$: Time-windowed commit churn score.\n- $K(f) \\ge 1.0$: Cyc",
+      "properties": {
+        "path": "docs/governance/strategies/pmat-stats-reporting-strategy.md",
+        "category": "strategies",
+        "size_bytes": 1681
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__strategies__finops-token-telemetry-histogram-strategy_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2155,6 +2295,19 @@
         "path": "docs/governance/strategies/declarative-dspy-pipeline-strategy.md",
         "category": "strategies",
         "size_bytes": 1716
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__strategies__phoenix-telemetry-strategy_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Phoenix Telemetry Strategy",
+      "content": "# Arize Phoenix Distributed Telemetry Strategy\n\n> Artifact: **Strategy** · Suite: `hath0r-opensource` / `bayly-ai` / `1-nation`  \n> Canonical Standard: `CR-SUBSTRATE-001`, `CR-CICCCD-001`, `CR-CLI-FEATURE-STANDARD-001`  \n> Date: 2026-10-05\n\n## 1. Executive Summary\n\nThis strategy establishes Arize Phoenix as the unified open-source AI observability, agent tracing, FinOps token-cost accounting, and LLM evaluation platform across all three suites:\n1. **Hath0r OpenSource** (`hath0r-framework`, `hathor-cli`, `hath0r-atc`, `hath0r-mcp`)\n2. **BaylyAI (BAI)** (`BAI/ATC`, `BAI/MCP`, `BAI/UXP`)\n3. **1-Nation** (`1-Nation/ATC`, `1-Nation/MCP`, `1-Nation/C-MCP`, `1-Nation/UXP`, `1-Nation/ADMIN`)\n\nAll telemetry adheres strictly to **OpenInference** and **OpenTelemetry (OTel)** semantic conventions over HTTP Protobuf (`v1/traces`).\n\n---\n\n## 2. Architecture & Ingress Topology\n\n```mermaid\nflowchart TD\n    subgraph Clients[\"Clients & Applications\"]\n        CLI[\"HATH0R CLI (Observer/Manager Bots)\"]\n        H0_ENG[\"Hath0r Cognitive Engine (Gateway/Guardrails)\"]\n        MCP_MEM[\"MCP Servers (Knowledgebase/Tools)\"]\n        UXP_MEM[\"Frontend Portals (UXP/Admin)\"]\n    end\n\n    subgraph Edge[\"Shared Edge ",
+      "properties": {
+        "path": "docs/governance/strategies/phoenix-telemetry-strategy.md",
+        "category": "strategies",
+        "size_bytes": 3250
       },
       "is_current": true
     },
@@ -2246,6 +2399,19 @@
         "path": "docs/governance/checklists/docker-framework-stack.md",
         "category": "checklists",
         "size_bytes": 414
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__checklists__code-churn-audit-checklist_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Code Churn Audit Checklist",
+      "content": "# Checklist: Code Churn & Hotspot Audit\n\n> Canonical Verification Checklist · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n- [ ] Working tree is clean and git metadata is accessible (`hath0r churn doctor`).\n- [ ] 30-day commit churn analysis executed (`hath0r churn analyze`).\n- [ ] Schema contract `hath0r-pmat-churn-report-v1.schema.json` validated.\n- [ ] Hotspot rankings inspected for `CRITICAL` or `HIGH` volatility files.\n- [ ] PR risk diff evaluated against `development` branch (`hath0r churn pr-risk`).\n- [ ] `AgentGraph` updated with `file_hotspot` nodes and `CO_CHANGES_WITH` edges.\n- [ ] Generative UI Churn Heatmap verified with Playwright test coverage.\n",
+      "properties": {
+        "path": "docs/governance/checklists/code-churn-audit-checklist.md",
+        "category": "checklists",
+        "size_bytes": 674
       },
       "is_current": true
     },
@@ -2354,6 +2520,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__runbooks__gain-mesh-runbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Gain Mesh Runbook",
+      "content": "# Runbook: MeshManagerBot Operational Runbook\n\n> Canonical Operational Runbook · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Diagnostics & Peer Health\n\n```bash\nhath0r bot run mesh-manager-bot --intent \"check mesh status\"\n```\n",
+      "properties": {
+        "path": "docs/governance/runbooks/gain-mesh-runbook.md",
+        "category": "runbooks",
+        "size_bytes": 238
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__runbooks__streaming-voice-pipeline-runbook_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2363,6 +2542,32 @@
         "path": "docs/governance/runbooks/streaming-voice-pipeline-runbook.md",
         "category": "runbooks",
         "size_bytes": 633
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__runbooks__phoenix-lifecycle-runbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Phoenix Lifecycle Runbook",
+      "content": "# Arize Phoenix Lifecycle & Incident Response Runbook\n\n> Artifact: **Runbook** · Member of **Artifact Hexad** (`CR-CLI-FEATURE-STANDARD-001`)  \n> Suite: `hath0r-opensource` / `bayly-ai` / `1-nation`  \n> Date: 2026-10-05\n\n## 1. System Overview\n\nArize Phoenix runs as a lightweight, persistent container with an embedded SQLite database (`/data/phoenix.db`) on dedicated volumes:\n- `hath0r_phoenix_data` (Hath0r)\n- `1n_phoenix_data` (1-Nation)\n- `bai_phoenix_data` (BaylyAI)\n\n---\n\n## 2. Emergency Operations\n\n### Scenario A: Phoenix Container Crashed / Unhealthy\n1. **Check Container Logs**:\n   ```bash\n   docker logs --tail 100 HATH0R-Phoenix\n   ```\n2. **Restart via CLI**:\n   ```bash\n   hath0r phoenix down --group hath0r\n   hath0r phoenix up --group hath0r\n   ```\n3. **Verify Edge Reverse Proxy**:\n   ```bash\n   curl -I http://localhost:38000/phoenix/\n   ```\n\n---\n\n## 3. Maintenance & Persistence\n\n### SQLite Database Backup\n```bash\ndocker exec HATH0R-Phoenix sqlite3 /data/phoenix.db \".backup '/data/phoenix_backup_$(date +%Y%m%d).db'\"\n```\n\n### Database Pruning (Older than 30 Days)\n```bash\ndocker exec HATH0R-Phoenix /usr/bin/python3.13 -c \"\nimport sqlite3\ncon = sqlite3.connect('/data/phoenix.db'",
+      "properties": {
+        "path": "docs/governance/runbooks/phoenix-lifecycle-runbook.md",
+        "category": "runbooks",
+        "size_bytes": 1574
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__runbooks__pmat-stats-bot-runbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pmat Stats Bot Runbook",
+      "content": "# Runbook: PMAT Bot Operational Runbook\n\n> Canonical Operational Runbook · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. System Overview\n\n`PmatBot` queries the PMAT substrate and MCP server to evaluate Code Churn, Provability, and AST Complexity metrics across polyglot repositories.\n\n## 2. Diagnostics\n```bash\nhath0r bot run pmat-bot --intent \"get PMAT stats\"\n```\n",
+      "properties": {
+        "path": "docs/governance/runbooks/pmat-stats-bot-runbook.md",
+        "category": "runbooks",
+        "size_bytes": 376
       },
       "is_current": true
     },
@@ -2406,6 +2611,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__runbooks__pmat-engine-runbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pmat Engine Runbook",
+      "content": "# Runbook: PMAT Analysis Engine Operations\n\n> Canonical Operational Runbook · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. System Overview\n\nThe PMAT (Pragmatic Multi-language Agent Toolkit) subsystem powers zero-prompt-tax code analysis, git churn calculation, and hotspot detection across all repositories.\n\n## 2. Health Check & Diagnostics\n\nCheck adapter and CLI status:\n```bash\nhath0r churn doctor\n```\n\nExpected Output:\n- PMAT CLI Adapter: Native / Git Fallback OK\n- Git Repository Context: Valid HEAD\n- Schema Contract: `contracts/hath0r-pmat-churn-report-v1.schema.json` verified\n\n## 3. Troubleshooting & Failure Modes\n\n| Issue | Cause | Resolution |\n| :--- | :--- | :--- |\n| `FileNotFoundError` | Target path is not a git workspace | Navigate to a valid git repository or specify `--repo <path>` |\n| Stale Volatility Metrics | Commits older than analysis window | Increase analysis window: `--days 90` |\n| Native PMAT binary missing | `pmat` not in system PATH | Subsystem automatically falls back to native git log parsing |\n",
+      "properties": {
+        "path": "docs/governance/runbooks/pmat-engine-runbook.md",
+        "category": "runbooks",
+        "size_bytes": 1044
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__runbooks__docker-framework-stack-runbook_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2428,6 +2646,110 @@
         "path": "docs/governance/runbooks/voice-subsystem-runbook.md",
         "category": "runbooks",
         "size_bytes": 824
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__workflows__code-churn-audit-workflow_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Code Churn Audit Workflow",
+      "content": "# Workflow: Automated Code Churn Audit\n\n> Canonical Workflow Definition · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n```mermaid\nflowchart TD\n    A[\"Trigger: Scheduled Cron / PR Opening\"] --> B[\"Execute hath0r churn analyze\"]\n    B --> C[\"Extract Hotspots & Volatility Scores\"]\n    C --> D{\"Max Volatility >= 0.75?\"}\n    D -- Yes --> E[\"Mark PR Risk as CRITICAL\"]\n    E --> F[\"Escalate TieredRouter to REASONING (o3-mini)\"]\n    F --> G[\"Propose Modular Refactoring Plan via HotspotRefactorBot\"]\n    D -- No --> H[\"Ingest Volatility Nodes into AgentGraph\"]\n    H --> I[\"Generate Generative UI Churn Heatmap\"]\n    I --> J[\"Pass Clean Repo Gate (Step 7)\"]\n```\n\n## Step Details\n1. **Trigger**: Scheduled heartbeat or PR pre-flight evaluation.\n2. **Analysis**: Fast extraction via `PmatAdapter`.\n3. **Graph Ingestion**: Write `file_hotspot` nodes and `CO_CHANGES_WITH` edges to `AgentGraph`.\n4. **Evidence Emission**: Emit `ChurnHeatmapComponent` for operator inspection.\n",
+      "properties": {
+        "path": "docs/governance/workflows/code-churn-audit-workflow.md",
+        "category": "workflows",
+        "size_bytes": 974
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__workflows__gain-mesh-delegation-workflow_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Gain Mesh Delegation Workflow",
+      "content": "# Workflow: GAIN A2A Task Delegation Workflow\n\n> Canonical Workflow Definition · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n```mermaid\nflowchart TD\n    A[\"Sender Agent: Delegate Task\"] --> B[\"Construct Payload & Allowed Tools\"]\n    B --> C[\"Sign Envelope via HMAC-SHA256 & Set TTL\"]\n    C --> D[\"Transmit over GAIN A2A Mesh\"]\n    D --> E[\"Recipient Agent: Verify HMAC & TTL\"]\n    E --> F[\"Enforce Tool RBAC\"]\n    F --> G[\"Execute Task & Return Signed Response\"]\n```\n",
+      "properties": {
+        "path": "docs/governance/workflows/gain-mesh-delegation-workflow.md",
+        "category": "workflows",
+        "size_bytes": 474
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__workflows__phoenix-telemetry-workflow_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Phoenix Telemetry Workflow",
+      "content": "# Arize Phoenix Telemetry Workflow Specification\n\n> Artifact: **Workflow** · Member of **Artifact Hexad** (`CR-CLI-FEATURE-STANDARD-001`)  \n> Suite: `hath0r-opensource` / `bayly-ai` / `1-nation`  \n> Date: 2026-10-05\n\n## 1. Workflow Summary\n\nThe Phoenix Telemetry Workflow coordinates continuous calibration (`CR-CICCCD-001`), live agent tracing, and evaluation feedback loops.\n\n```mermaid\nsequenceDiagram\n    autonumber\n    actor Developer as Developer / CI\n    participant CLI as HATH0R CLI\n    participant Engine as Hath0r Cognitive Engine\n    participant Proxy as Nginx Edge Proxy\n    participant Phoenix as Arize Phoenix\n\n    Developer->>CLI: hath0r cicccd calibrate\n    CLI->>Engine: Run evaluation test suite\n    Engine->>Proxy: POST /v1/traces (Eval metrics & benchmarks)\n    Proxy->>Phoenix: Ingest OTLP Spans\n    Phoenix-->>Proxy: 200 OK (Indexed in SQLite)\n    CLI->>Phoenix: Query eval thresholds & drift\n    Phoenix-->>CLI: Return calibration report\n    CLI-->>Developer: Output pass/fail Quality Gate\n```\n\n---\n\n## 2. Pipeline Integration Points\n\n1. **Pre-Commit / Local Testing**:\n   - `pytest tests/unit/test_phoenix_observability.py`\n   - Validates that tracer provider successfully ge",
+      "properties": {
+        "path": "docs/governance/workflows/phoenix-telemetry-workflow.md",
+        "category": "workflows",
+        "size_bytes": 1642
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__workflows__pmat-stats-query-workflow_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pmat Stats Query Workflow",
+      "content": "# Workflow: PMAT Multi-Dimensional Stats Query\n\n> Canonical Workflow Definition · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n```mermaid\nflowchart TD\n    A[\"Trigger: User/Bot Request 'get PMAT stats'\"] --> B[\"Execute PmatStatsEngine\"]\n    B --> C[\"Extract Churn, Provability & Complexity\"]\n    C --> D[\"Calculate Composite Hotspot Risk Index R\"]\n    D --> E[\"Validate Output against hath0r-pmat-stats-report-v1.schema.json\"]\n    E --> F[\"Ingest Nodes into AgentGraph KnowledgePlane\"]\n    F --> G[\"Return Multi-Dimensional Report to Operator\"]\n```\n",
+      "properties": {
+        "path": "docs/governance/workflows/pmat-stats-query-workflow.md",
+        "category": "workflows",
+        "size_bytes": 554
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__bot-specs__phoenix-manager-bot-spec_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Phoenix Manager Bot Spec",
+      "content": "# Bot Specification: PhoenixManagerBot\n\n> Artifact: **Bot Specification** · Member of **Artifact Hexad** (`CR-CLI-FEATURE-STANDARD-001`)  \n> Identity: `phoenix_manager_bot`  \n> Suite: `HATH0R-CLI` Control Tower  \n> Date: 2026-10-05\n\n## 1. Role & Identity\n\n`PhoenixManagerBot` is an autonomous control-tower bot responsible for orchestrating, diagnosing, and reporting telemetry analytics across Arize Phoenix instances for all suite Docker meshes (`hath0r`, `1-nation`, `bai`).\n\n---\n\n## 2. Capabilities & Interface\n\n### Core Methods\n- `start_phoenix(group: str = \"hath0r\", detach: bool = True) -> Dict[str, Any]`\n  - Launches container and verifies port availability.\n- `stop_phoenix(group: str = \"hath0r\") -> Dict[str, Any]`\n  - Stops container cleanly.\n- `check_status(group: str = \"hath0r\", custom_endpoint: Optional[str] = None) -> Dict[str, Any]`\n  - Probes edge and direct health endpoints (`http://localhost:38000/phoenix/`, `http://localhost:58000/phoenix/`, etc.).\n- `get_projects(group: str = \"1-nation\") -> List[Dict[str, Any]]`\n  - Queries active OpenInference projects and span distributions directly from SQLite `/data/phoenix.db`.\n- `get_cost_summary(group: str = \"1-nation\") -> Dict[s",
+      "properties": {
+        "path": "docs/governance/bot-specs/phoenix-manager-bot-spec.md",
+        "category": "bot-specs",
+        "size_bytes": 1772
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__bot-specs__pmat-stats-bot-spec_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pmat Stats Bot Spec",
+      "content": "# Bot Specification: PmatBot\n\n> Canonical Bot Specification · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Role & Identity\n\n- **Bot Name**: `PmatBot`\n- **Class Name**: `PmatBot`\n- **Subsystem**: `src/hath0r_cli/bots/pmat_bot.py`\n- **Primary Function**: Autonomous micro-bot servicing operator requests for PMAT code churn, provability scores, AST complexity, and hotspot risk reporting.\n\n## 2. Supported Conversational Intents\n\n1. `\"get PMAT stats\"`\n2. `\"analyze code churn\"`\n3. `\"check provability score\"`\n4. `\"calculate complexity score\"`\n",
+      "properties": {
+        "path": "docs/governance/bot-specs/pmat-stats-bot-spec.md",
+        "category": "bot-specs",
+        "size_bytes": 553
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__bot-specs__mesh-manager-bot-spec_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Mesh Manager Bot Spec",
+      "content": "# Bot Specification: MeshManagerBot\n\n> Canonical Bot Specification · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Role & Identity\n\n- **Bot Name**: `MeshManagerBot`\n- **Class Name**: `MeshManagerBot`\n- **Subsystem**: `src/hath0r_cli/bots/mesh_manager_bot.py`\n- **Primary Function**: Autonomous management bot monitoring GAIN federated peer nodes, network partitions, envelope signature health, and cross-workspace routing.\n",
+      "properties": {
+        "path": "docs/governance/bot-specs/mesh-manager-bot-spec.md",
+        "category": "bot-specs",
+        "size_bytes": 434
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__bot-specs__churn-manager-bot-spec_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Churn Manager Bot Spec",
+      "content": "# Bot Spec: ChurnManagerBot & HotspotRefactorBot\n\n> Canonical Autonomous Bot Specification · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. ChurnManagerBot Specification\n\n### Purpose\nMonitors repository git histories, calculates time-windowed code churn metrics, injects volatility scores into `AgentGraph`, and enforces PR review gating.\n\n### RBAC Tool Authorizations\n- `churn:analyze`: Execute commit volatility extraction.\n- `churn:hotspots`: Query ranked architectural hotspots.\n- `churn:pr-risk`: Inspect diff risk between work branch and base.\n- `agentgraph:update`: Write hotspot nodes and co-changing relation edges.\n\n---\n\n## 2. HotspotRefactorBot Specification\n\n### Purpose\nProactively inspects files flagged with `CRITICAL` or `HIGH` risk tiers, using DSPy declarative reasoning pipelines to propose clean decoupled abstractions.\n\n### Core Signature\n```python\nclass HotspotRefactoringSignature(dspy.Signature):\n    \"\"\"Proposes decoupling refactorings for high-churn complex modules.\"\"\"\n    file_path: str = dspy.InputField()\n    complexity_score: float = dspy.InputField()\n    co_changing_files: List[str] = dspy.InputField()\n    refactoring_plan: str = dspy.OutputField()\n    deco",
+      "properties": {
+        "path": "docs/governance/bot-specs/churn-manager-bot-spec.md",
+        "category": "bot-specs",
+        "size_bytes": 1252
       },
       "is_current": true
     },
@@ -2519,6 +2841,19 @@
         "path": "docs/governance/playbooks/agent-rules-rag-cli-first-playbook.md",
         "category": "playbooks",
         "size_bytes": 1906
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__playbooks__code-churn-remediation-playbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Code Churn Remediation Playbook",
+      "content": "# Playbook: Code Churn & Hotspot Remediation\n\n> Canonical Remediation Playbook · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Scenario: Critical Hotspot Remediation\n\nWhen a file enters the `CRITICAL` risk tier (volatility score $\\ge 0.75$), follow these remediation steps:\n\n```\n[Hotspot Detected] -> [Co-Change Dependency Graphing] -> [Modular Decoupling] -> [Playwright / Unit Verification]\n```\n\n### Remediation Protocol\n1. **Analyze Co-Change Clustered Files**: Run `hath0r churn hotspots --file <path>` to identify companion files that are frequently committed alongside the target.\n2. **Apply Structural Decoupling**:\n   - Extract sprawling conditional branches into distinct strategy classes or dispatch tables.\n   - Introduce Facade or Event Bus patterns for modules with $>3$ co-changing dependents.\n3. **Execute Unit & Visual Testing**:\n   - Run `pytest` to verify zero regression.\n   - Run `pytest tests/test_playwright_testing.py` for UI modules.\n4. **Re-evaluate Volatility**:\n   - Confirm file cyclomatic complexity is reduced below 15.\n",
+      "properties": {
+        "path": "docs/governance/playbooks/code-churn-remediation-playbook.md",
+        "category": "playbooks",
+        "size_bytes": 1061
       },
       "is_current": true
     },
@@ -2627,6 +2962,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__playbooks__gain-imputation-calibration-playbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Gain Imputation Calibration Playbook",
+      "content": "# Playbook: GAIN Telemetry Imputation & Taguchi Calibration\n\n> Canonical Remediation Playbook · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Trigger Conditions\n\n1. Telemetry missing rate exceeds 15.0%.\n2. Last calibration timestamp exceeds 24.0 hours ($\\Delta t > 24.0\\text{h}$).\n\n## 2. Action Protocol\n\n```\n[Sparse Telemetry > 15%] -> [Run GainImputationEngine] -> [Reconstruct Spans] -> [Trigger Taguchi OATS Calibration]\n```\n\n1. Execute `GainImputationEngine.impute_span_telemetry(spans)`.\n2. Run `hath0r cicccd calibrate`.\n",
+      "properties": {
+        "path": "docs/governance/playbooks/gain-imputation-calibration-playbook.md",
+        "category": "playbooks",
+        "size_bytes": 539
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__playbooks__jev-tool-guard-playbook_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2636,6 +2984,19 @@
         "path": "docs/governance/playbooks/jev-tool-guard-playbook.md",
         "category": "playbooks",
         "size_bytes": 1009
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__playbooks__phoenix-telemetry-playbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Phoenix Telemetry Playbook",
+      "content": "# Arize Phoenix Telemetry Operational Playbook\n\n> Artifact: **Playbook** · Member of **Artifact Hexad** (`CR-CLI-FEATURE-STANDARD-001`)  \n> Suite: `hath0r-opensource` / `bayly-ai` / `1-nation`  \n> Date: 2026-10-05\n\n## 1. Overview & Triggers\n\nThis operational playbook provides step-by-step guidance for diagnosing and resolving common observability issues:\n- **Play 1**: Spans not appearing in Arize Phoenix UI\n- **Play 2**: HTTP 415 Unsupported Media Type during trace ingestion\n- **Play 3**: FinOps Token or Cost Spikes\n- **Play 4**: Missing Project Names / Spans Routed to \"default\"\n\n---\n\n## 2. Plays\n\n### Play 1: Spans Not Appearing in UI\n1. **Check Phoenix Server Health**:\n   ```bash\n   hath0r phoenix status --group <target-group>\n   ```\n2. **Verify Client Tracer Initialization**:\n   Ensure `init_phoenix_provider()` or `OTLPSpanExporter` was executed during application startup.\n3. **Verify Host Port Fallback**:\n   If executing outside Docker, confirm endpoint resolves to `http://localhost:58000/phoenix/v1/traces` or `http://localhost:38000/phoenix/v1/traces` rather than container DNS names (`1NPHOENIX`).\n4. **Inspect SQLite Database**:\n   ```bash\n   docker exec HATH0R-Phoenix /usr/bin",
+      "properties": {
+        "path": "docs/governance/playbooks/phoenix-telemetry-playbook.md",
+        "category": "playbooks",
+        "size_bytes": 2582
       },
       "is_current": true
     },
@@ -2701,6 +3062,19 @@
         "path": "docs/governance/playbooks/temporal-knowledge-graph-playbook.md",
         "category": "playbooks",
         "size_bytes": 1681
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__playbooks__pmat-stats-remediation-playbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pmat Stats Remediation Playbook",
+      "content": "# Playbook: PMAT Stats & High-Risk Remediation\n\n> Canonical Remediation Playbook · Hath0r Agentic Framework  \n> Updated: 2026-10-05\n\n## 1. Remediation Trigger Protocol\n\nWhen a file scores a Composite Hotspot Risk Index $R(f) \\ge 0.75$:\n\n```\n[High Composite Risk Index] -> [Add Type Assertions] -> [Decouple AST Branches] -> [Re-evaluate Index]\n```\n\n1. **Add Type Invariant Assertions**: Increase formal provability $P(f)$ above $0.80$.\n2. **Decouple AST Branching**: Reduce Cyclomatic complexity $K(f)$ below 15.\n3. **Verify Defect Index**: Ensure $P_{\\text{defect}} \\le 0.15$.\n",
+      "properties": {
+        "path": "docs/governance/playbooks/pmat-stats-remediation-playbook.md",
+        "category": "playbooks",
+        "size_bytes": 579
       },
       "is_current": true
     },
@@ -3043,6 +3417,19 @@
       "is_current": true
     },
     {
+      "id": "doc:_hath0r__knowledgebase__lessons-learned__share-20261005T111745Z_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Share 20261005T111745Z",
+      "content": "# Knowledge share share-20261005T111745Z\n\n- **Generated:** 2026-10-05T11:17:45.988864+00:00\n- **Repo:** local\n- **PR:** n/a\n\n## Summary\nArize Phoenix Telemetry & Edge Routing Suite Standardization:\n1. Arize Phoenix & 1NEDGE Ingress: Resolved subpath asset 404s and configured direct OTLP reverse proxy routes (/v1/traces, /v1/metrics, /otlp/, /phoenix/) on 1NEDGE (ports 80 & 58000). Arize Phoenix requires Content-Type application/x-protobuf (http/protobuf); JSON payloads return 415.\n2. 1-Nation Suite Telemetry Wiring:\n   - 1-Nation/MCP: Upgraded PhoenixTracer with init_phoenix_provider() and connected timed_operation() in core/observability.py to automatically trace API calls, embeddings, and hybrid searches into Arize Phoenix.\n   - 1-Nation/C-MCP: Upgraded CustomerMcpTracer with init_customer_mcp_provider() and wrapped all JSON-RPC / REST tool executions in trace_tool().\n   - 1-Nation/ADMIN & UXP: Added declarative cfg/observability/otel.json configurations.\n   - 1-Nation/ATC: Injected OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_EXPORTER_OTLP_TRACES_ENDPOINT, and PHOENIX_COLLECTOR_ENDPOINT into 1n-data, 1n-experience, and 1n-admin services.\n3. Suite-Wide Alignment: Standardized otel.json endp",
+      "properties": {
+        "path": ".hath0r/knowledgebase/lessons-learned/share-20261005T111745Z.md",
+        "category": "lessons-learned",
+        "size_bytes": 1454
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:_hath0r__knowledgebase__lessons-learned__pr-175_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -3052,6 +3439,19 @@
         "path": ".hath0r/knowledgebase/lessons-learned/pr-175.md",
         "category": "lessons-learned",
         "size_bytes": 479
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:_hath0r__knowledgebase__lessons-learned__share-20261005T155921Z_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Share 20261005T155921Z",
+      "content": "# Knowledge share share-20261005T155921Z\n\n- **Generated:** 2026-10-05T15:59:21.541571+00:00\n- **Repo:** local\n- **PR:** n/a\n\n## Summary\nGAIN (Generative AI Network) architecture, federation strategy, and tracking issues established across Hath0r (Bayly-AI/HATH0R-Agentic-Framework#228, #229), HATH0R-CLI (Bayly-AI/HATH0R-CLI#346), and 1-Nation (Bayly-AI/1-Nation#188).\n",
+      "properties": {
+        "path": ".hath0r/knowledgebase/lessons-learned/share-20261005T155921Z.md",
+        "category": "lessons-learned",
+        "size_bytes": 369
       },
       "is_current": true
     },
@@ -3078,6 +3478,32 @@
         "path": ".hath0r/knowledgebase/lessons-learned/pr-143.md",
         "category": "lessons-learned",
         "size_bytes": 253
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:_hath0r__knowledgebase__lessons-learned__share-20261005T100537Z_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Share 20261005T100537Z",
+      "content": "# Knowledge share share-20261005T100537Z\n\n- **Generated:** 2026-10-05T10:05:37.019713+00:00\n- **Repo:** local\n- **PR:** n/a\n\n## Summary\nUpdated CICCCD methodology to Continuous Integration, Continuous Calibration & Continuous Deployment across framework documentation, telemetry substrates, and strategy specifications.\n",
+      "properties": {
+        "path": ".hath0r/knowledgebase/lessons-learned/share-20261005T100537Z.md",
+        "category": "lessons-learned",
+        "size_bytes": 320
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:_hath0r__knowledgebase__lessons-learned__share-20261005T113945Z_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Share 20261005T113945Z",
+      "content": "# Knowledge share share-20261005T113945Z\n\n- **Generated:** 2026-10-05T11:39:45.420686+00:00\n- **Repo:** Bayly-AI/HATH0R-Agentic-Framework\n- **PR:** n/a\n\n## Summary\nPMAT (Pragmatic Multi-language Agent Toolkit) Code Churn & Hotspot Analysis Suite Architecture:\n1. Architectural Integration:\n   - Quad-Graph Enrichment: Ingests PMAT git churn, defect probability, and AST complexity metrics into AgentGraph (KnowledgeGraph/ContextGraph) without prompt tax (CR-AGENTGRAPH-001).\n   - FinOps Tiered Routing: Automatically escalates high-churn / high-complexity hotspot files to ModelTier.REASONING in TieredRouter, preserving token budgets for low-volatility components (CR-SUBSTRATE-001).\n   - Dynamic MCP & CLI: Registers PMAT MCP server and hath0r churn CLI commands (doctor, analyze, hotspots, pr-risk, ui) in HATH0R-CLI (CR-CLI-ENTRY-001).\n2. Issue Registry:\n   - Bayly-AI/HATH0R-Agentic-Framework#219: feat(churn): PMAT Churn Engine Substrate, Schema Contracts & Artifact Hexad\n   - Bayly-AI/HATH0R-Agentic-Framework#220: feat(ui): Generative UI Churn Heatmap Widget & Playwright Master Test Spec\n   - Bayly-AI/HATH0R-CLI#335: feat(churn): PMAT Churn Operator CLI Commands & Dynamic MCP Registration",
+      "properties": {
+        "path": ".hath0r/knowledgebase/lessons-learned/share-20261005T113945Z.md",
+        "category": "lessons-learned",
+        "size_bytes": 1812
       },
       "is_current": true
     },
@@ -3331,6 +3757,6 @@
   ],
   "metadata": {
     "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-framework",
-    "synced_sources": 244
+    "synced_sources": 277
   }
 }

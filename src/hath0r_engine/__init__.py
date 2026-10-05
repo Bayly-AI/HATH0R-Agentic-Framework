@@ -6,6 +6,7 @@ __version__ = "1.0.0"
 
 from hath0r_engine.analysis.pmat_adapter import PmatAdapter, pmat_adapter
 from hath0r_engine.analysis.pmat_stats_engine import PmatStatsEngine, pmat_stats_engine
+from hath0r_engine.bots.agent_metrics_bot import AgentMetricsBot, agent_metrics_bot
 from hath0r_engine.calibration.gain_imputation import GainImputationEngine, gain_imputation_engine
 from hath0r_engine.context.context_graph import ContextEdge, ContextGraph, ContextNode
 from hath0r_engine.gateway.base import (
@@ -316,5 +317,7 @@ __all__ = [
     "gain_federation_router",
     "GainImputationEngine",
     "gain_imputation_engine",
+    "AgentMetricsBot",
+    "agent_metrics_bot",
 ]
 
