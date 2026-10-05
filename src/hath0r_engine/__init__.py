@@ -6,6 +6,8 @@ __version__ = "1.0.0"
 
 from hath0r_engine.analysis.pmat_adapter import PmatAdapter, pmat_adapter
 from hath0r_engine.analysis.pmat_stats_engine import PmatStatsEngine, pmat_stats_engine
+from hath0r_engine.calibration.gain_imputation import GainImputationEngine, gain_imputation_engine
+from hath0r_engine.mesh.gain_federation_router import GainFederationRouter, gain_federation_router
 from hath0r_engine.context.context_graph import ContextEdge, ContextGraph, ContextNode
 from hath0r_engine.gateway.base import (
     CompletionRequest,
@@ -308,5 +310,9 @@ __all__ = [
     "pmat_adapter",
     "PmatStatsEngine",
     "pmat_stats_engine",
+    "GainFederationRouter",
+    "gain_federation_router",
+    "GainImputationEngine",
+    "gain_imputation_engine",
 ]
 
