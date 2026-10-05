@@ -5,6 +5,7 @@ from __future__ import annotations
 __version__ = "1.0.0"
 
 from hath0r_engine.analysis.pmat_adapter import PmatAdapter, pmat_adapter
+from hath0r_engine.analysis.pmat_stats_engine import PmatStatsEngine, pmat_stats_engine
 from hath0r_engine.context.context_graph import ContextEdge, ContextGraph, ContextNode
 from hath0r_engine.gateway.base import (
     CompletionRequest,
@@ -305,5 +306,7 @@ __all__ = [
     "TaguchiEngine",
     "PmatAdapter",
     "pmat_adapter",
+    "PmatStatsEngine",
+    "pmat_stats_engine",
 ]
 
