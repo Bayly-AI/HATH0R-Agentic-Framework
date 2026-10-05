@@ -6,7 +6,10 @@ import json
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
+
+HATH0R_DIR = ".hath0r"
+CCCD_STATE_FILE = "cccd_state.json"
 
 
 @dataclass
@@ -14,16 +17,15 @@ class CICCCDTelemetryHook:
     """AgentGraph continuous calibration telemetry recorder and parameter drift monitor."""
 
     workspace_root: Path = field(default_factory=Path.cwd)
-    state_file: Path = field(default_factory=lambda: Path.cwd() / ".hath0r" / "cccd_state.json")
+    state_file: Optional[Path] = None
 
     def __post_init__(self) -> None:
         self.workspace_root = self.workspace_root.resolve()
-        resolved_state = self.state_file.resolve()
-        try:
-            resolved_state.relative_to(self.workspace_root)
-            self.state_file = resolved_state
-        except ValueError:
-            self.state_file = self.workspace_root / ".hath0r" / "cccd_state.json"
+        raw_state = self.state_file or (self.workspace_root / HATH0R_DIR / CCCD_STATE_FILE)
+        resolved_state = raw_state.resolve()
+        if not str(resolved_state).startswith(str(self.workspace_root)):
+            raise ValueError("State file path escapes workspace root")
+        self.state_file = resolved_state
         self.state_file.parent.mkdir(parents=True, exist_ok=True)
 
     def record_calibration_telemetry(
@@ -40,12 +42,13 @@ class CICCCDTelemetryHook:
         state["drift_metrics"] = drift_metrics
         state["last_signature"] = signature_name
 
-        self.state_file.write_text(json.dumps(state, indent=2), encoding="utf-8")
+        if self.state_file is not None:
+            self.state_file.write_text(json.dumps(state, indent=2), encoding="utf-8")
         return state
 
     def get_calibration_metrics(self) -> Dict[str, Any]:
         """Read active CICCCD calibration metrics and freshness state."""
-        if not self.state_file.is_file():
+        if not self.state_file or not self.state_file.is_file():
             return {
                 "active_calibration": True,
                 "last_run_timestamp": None,

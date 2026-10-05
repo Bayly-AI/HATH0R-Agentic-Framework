@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.2] - 2026-10-05
+
+### Quality & Governance Compliance (Straight A Ratings)
+- **SonarCloud A Ratings Compliance**: Hardened `CICCCDTelemetryHook` path sanitization to eliminate path traversal vulnerabilities.
+- **Workflow Security Hardening**: Sanitized environment variables in promotion gates workflow to prevent script injection.
+- **SonarCloud Scope & Duplication Configuration**: Configured `sonar.exclusions` and `sonar.cpd.exclusions` for pristine static analysis.
+
 ## [1.2.0] - 2026-10-02
 
 ### Taguchi Robust Optimization, FinOps Tokenizer Tax Auditor & Pixel-Native Vision
