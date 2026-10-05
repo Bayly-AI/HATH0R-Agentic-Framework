@@ -1,4 +1,4 @@
-"""Continuous Integration, Calibration & Development (CICCCD) Telemetry Substrate for Hath0r Framework."""
+"""Continuous Integration, Continuous Calibration & Continuous Deployment (CICCCD) Telemetry Substrate for Hath0r Framework."""
 
 from __future__ import annotations
 
@@ -17,6 +17,13 @@ class CICCCDTelemetryHook:
     state_file: Path = field(default_factory=lambda: Path.cwd() / ".hath0r" / "cccd_state.json")
 
     def __post_init__(self) -> None:
+        self.workspace_root = self.workspace_root.resolve()
+        resolved_state = self.state_file.resolve()
+        try:
+            resolved_state.relative_to(self.workspace_root)
+            self.state_file = resolved_state
+        except ValueError:
+            self.state_file = self.workspace_root / ".hath0r" / "cccd_state.json"
         self.state_file.parent.mkdir(parents=True, exist_ok=True)
 
     def record_calibration_telemetry(
