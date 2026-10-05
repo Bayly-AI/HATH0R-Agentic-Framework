@@ -18,12 +18,10 @@ class CICCCDTelemetryHook:
 
     def __post_init__(self) -> None:
         self.workspace_root = self.workspace_root.resolve()
-        resolved_state = self.state_file.resolve()
-        try:
-            resolved_state.relative_to(self.workspace_root)
-            self.state_file = resolved_state
-        except ValueError:
-            self.state_file = self.workspace_root / ".hath0r" / "cccd_state.json"
+        resolved_state = (self.workspace_root / ".hath0r" / "cccd_state.json").resolve()
+        if not str(resolved_state).startswith(str(self.workspace_root)):
+            raise ValueError("State file path escapes workspace root")
+        self.state_file = resolved_state
         self.state_file.parent.mkdir(parents=True, exist_ok=True)
 
     def record_calibration_telemetry(
@@ -40,7 +38,10 @@ class CICCCDTelemetryHook:
         state["drift_metrics"] = drift_metrics
         state["last_signature"] = signature_name
 
-        self.state_file.write_text(json.dumps(state, indent=2), encoding="utf-8")
+        canonical_path = (self.workspace_root / ".hath0r" / "cccd_state.json").resolve()
+        if not str(canonical_path).startswith(str(self.workspace_root)):
+            raise ValueError("State file path escapes workspace root")
+        canonical_path.write_text(json.dumps(state, indent=2), encoding="utf-8")
         return state
 
     def get_calibration_metrics(self) -> Dict[str, Any]:
