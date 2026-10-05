@@ -60,7 +60,6 @@ class ObservationChartsEngine:
         total_requests = len(records)
         total_tokens = sum(r.total_tokens for r in records)
         total_cost_usd = round(sum(r.cost_usd for r in records), 6)
-        avg_latency = round(stats["mean"], 2)
 
         return {
             "metric": metric,
@@ -80,19 +79,20 @@ class ObservationChartsEngine:
         tokens = metrics.get("total_tokens", 0)
         histogram = metrics.get("histogram", {})
 
-        lines: List[str] = []
-        lines.append("=" * 80)
-        lines.append("               HATH0R AGENT PERFORMANCE OBSERVATION CHARTS             ")
-        lines.append("=" * 80)
-        lines.append(f"  • Total Interactions : {tot:<12} | Total Tokens : {tokens:<12}")
-        lines.append(f"  • Total Cost (USD)   : ${cost:<11.6f} | Mean Latency : {st.get('mean', 0):.2f} ms")
-        lines.append("-" * 80)
-        lines.append(
-            f"  • Latency Quantiles : P50: {st.get('median', 0):.1f}ms | "
-            f"P90: {st.get('p90', 0):.1f}ms | P95: {st.get('p95', 0):.1f}ms | P99: {st.get('p99', 0):.1f}ms"
-        )
-        lines.append("=" * 80)
-        lines.append("")
+        lines: List[str] = [
+            "=" * 80,
+            "               HATH0R AGENT PERFORMANCE OBSERVATION CHARTS             ",
+            "=" * 80,
+            f"  • Total Interactions : {tot:<12} | Total Tokens : {tokens:<12}",
+            f"  • Total Cost (USD)   : ${cost:<11.6f} | Mean Latency : {st.get('mean', 0):.2f} ms",
+            "-" * 80,
+            (
+                f"  • Latency Quantiles : P50: {st.get('median', 0):.1f}ms | "
+                f"P90: {st.get('p90', 0):.1f}ms | P95: {st.get('p95', 0):.1f}ms | P99: {st.get('p99', 0):.1f}ms"
+            ),
+            "=" * 80,
+            "",
+        ]
         lines.append(TokenHistogramBot.render_ascii(histogram))
         return "\n".join(lines)
 

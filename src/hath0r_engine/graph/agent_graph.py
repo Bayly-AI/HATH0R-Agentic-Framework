@@ -20,6 +20,9 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 
+RULES_MD_FILENAME = "rules.md"
+
+
 class AgentGraphPlane(str, Enum):
     """The four canonical planes of the AgentGraph substrate, plus extensible planes."""
 
@@ -227,10 +230,10 @@ class MarkdownDocAdapter(BaseGraphAdapter):
         nodes.append(node)
 
         # Extract rule_policy if this is a governance rule or subsystem rules.md
-        if frontmatter.get("type") == "rule_policy" or path.name == "rules.md" or "governance/rules" in str(path):
+        if frontmatter.get("type") == "rule_policy" or path.name == RULES_MD_FILENAME or "governance/rules" in str(path):
             rule_id = frontmatter.get("id")
             if not rule_id:
-                if path.name == "rules.md":
+                if path.name == RULES_MD_FILENAME:
                     parent_dir = path.parent.name
                     rule_id = f"rule:subsystem-{parent_dir}"
                 else:
@@ -240,7 +243,7 @@ class MarkdownDocAdapter(BaseGraphAdapter):
             if isinstance(rule_priority, str) and rule_priority.isdigit():
                 rule_priority = int(rule_priority)
 
-            target_scope = frontmatter.get("target_scope") or (path.parent.name if path.name == "rules.md" else "root")
+            target_scope = frontmatter.get("target_scope") or (path.parent.name if path.name == RULES_MD_FILENAME else "root")
 
             rule_node = AgentGraphNode(
                 id=rule_id,
