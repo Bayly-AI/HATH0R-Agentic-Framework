@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.4] - 2026-10-05
+
+### Quality & Governance Compliance (Automatic Analysis .sonarcloud.properties & Path Sanitization)
+- **Automatic Analysis Configuration**: Added root `.sonarcloud.properties` declaring explicit exclusions for Automatic Analysis runtime.
+- **Telemetry Path Guard**: Hardened `CICCCDTelemetryHook.record_calibration_telemetry` to validate resolved path against workspace root before writing.
+
 ## [1.3.3] - 2026-10-05
 
 ### Quality & Governance Compliance (Overall Code Straight A Ratings)

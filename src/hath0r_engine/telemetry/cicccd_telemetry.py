@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -21,11 +22,8 @@ class CICCCDTelemetryHook:
 
     def __post_init__(self) -> None:
         self.workspace_root = self.workspace_root.resolve()
-        raw_state = self.state_file or (self.workspace_root / HATH0R_DIR / CCCD_STATE_FILE)
-        resolved_state = raw_state.resolve()
-        if not str(resolved_state).startswith(str(self.workspace_root)):
-            raise ValueError("State file path escapes workspace root")
-        self.state_file = resolved_state
+        file_name = Path(self.state_file).name if self.state_file else CCCD_STATE_FILE
+        self.state_file = (self.workspace_root / HATH0R_DIR / file_name).resolve()
         self.state_file.parent.mkdir(parents=True, exist_ok=True)
 
     def record_calibration_telemetry(
@@ -43,7 +41,12 @@ class CICCCDTelemetryHook:
         state["last_signature"] = signature_name
 
         if self.state_file is not None:
-            self.state_file.write_text(json.dumps(state, indent=2), encoding="utf-8")
+            base_dir = os.path.realpath(str(self.workspace_root))
+            target_path = os.path.realpath(str(self.state_file))
+            if not (target_path.startswith(base_dir + os.sep) or target_path == base_dir):
+                raise ValueError("State file path escapes workspace root")
+            with open(target_path, "w", encoding="utf-8") as f:
+                f.write(json.dumps(state, indent=2))
         return state
 
     def get_calibration_metrics(self) -> Dict[str, Any]:
