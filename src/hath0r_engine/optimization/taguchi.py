@@ -268,13 +268,11 @@ def calculate_snr(values: Sequence[float], snr_type: SNRType | str) -> float:
     eps = 1e-12
 
     if mode == SNRType.SMALLER_THE_BETTER:
-        # eta = -10 * log10((1/n) * sum(y_i^2))
         mean_sq = sum(float(y) ** 2 for y in values) / n
         safe_mean_sq = max(mean_sq, eps)
         return -10.0 * math.log10(safe_mean_sq)
 
     elif mode == SNRType.LARGER_THE_BETTER:
-        # eta = -10 * log10((1/n) * sum(1 / (y_i^2)))
         inv_sq_sum = 0.0
         for y in values:
             val = float(y)
@@ -284,7 +282,6 @@ def calculate_snr(values: Sequence[float], snr_type: SNRType | str) -> float:
         return -10.0 * math.log10(max(mean_inv_sq, eps))
 
     elif mode == SNRType.NOMINAL_THE_BEST:
-        # eta = 10 * log10(mean^2 / variance)
         mean_val = sum(values) / n
         if n <= 1:
             return 10.0 * math.log10(max(mean_val**2, eps) / eps)

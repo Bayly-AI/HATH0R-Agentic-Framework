@@ -128,12 +128,13 @@ class ReflectionEngine:
         )
 
         # Prune very low importance ephemeral nodes
-        pruned_ids = []
-        for nid, node in list(memory_graph.nodes.items()):
-            if node.type in ("episode", "topic") and node.importance < prune_below_importance:
-                del memory_graph.nodes[nid]
-                memory_graph.edges = [e for e in memory_graph.edges if e.source != nid and e.target != nid]
-                pruned_ids.append(nid)
+        pruned_ids = [
+            nid for nid, node in memory_graph.nodes.items()
+            if node.type in ("episode", "topic") and node.importance < prune_below_importance
+        ]
+        for nid in pruned_ids:
+            del memory_graph.nodes[nid]
+            memory_graph.edges = [e for e in memory_graph.edges if e.source != nid and e.target != nid]
 
         return {
             "insights_generated": len(new_insights),

@@ -18,6 +18,8 @@ from hath0r_engine.sandbox.base import (
     SandboxProvider,
 )
 
+SANDBOX_NOT_RUNNING = "Sandbox is not running."
+
 
 class LocalSandboxProvider(SandboxProvider):
     """Local isolated directory sandbox provider for lightweight/offline execution."""
@@ -46,7 +48,7 @@ class LocalSandboxProvider(SandboxProvider):
     ) -> ExecutionResult:
         """Execute command within isolated temp directory."""
         if not self._running or self._root_path is None:
-            raise RuntimeError("Sandbox is not running.")
+            raise RuntimeError(SANDBOX_NOT_RUNNING)
 
         start_time = time.time()
         timeout_val = timeout or (self.config.timeout_seconds if self.config else 60.0)
@@ -118,7 +120,7 @@ class LocalSandboxProvider(SandboxProvider):
     def read_file(self, path: str) -> bytes:
         """Read file from isolated directory."""
         if not self._running or self._root_path is None:
-            raise RuntimeError("Sandbox is not running.")
+            raise RuntimeError(SANDBOX_NOT_RUNNING)
         target = self._resolve_path(path)
         if not target.exists():
             raise FileNotFoundError(f"File not found in local sandbox: {path}")
@@ -127,7 +129,7 @@ class LocalSandboxProvider(SandboxProvider):
     def write_file(self, path: str, data: bytes) -> None:
         """Write file into isolated directory."""
         if not self._running or self._root_path is None:
-            raise RuntimeError("Sandbox is not running.")
+            raise RuntimeError(SANDBOX_NOT_RUNNING)
         target = self._resolve_path(path)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
@@ -140,7 +142,7 @@ class LocalSandboxProvider(SandboxProvider):
     def sync_files(self, source_dir: str, target_dir: str) -> int:
         """Sync directory into sandbox."""
         if not self._running or self._root_path is None:
-            raise RuntimeError("Sandbox is not running.")
+            raise RuntimeError(SANDBOX_NOT_RUNNING)
         synced = 0
         src = Path(source_dir)
         if src.is_dir():
@@ -156,7 +158,7 @@ class LocalSandboxProvider(SandboxProvider):
     def snapshot(self, label: str) -> str:
         """Snapshot current directory state."""
         if not self._running or self._root_path is None:
-            raise RuntimeError("Sandbox is not running.")
+            raise RuntimeError(SANDBOX_NOT_RUNNING)
         snap_id = f"local-snap-{uuid.uuid4().hex[:8]}-{label}"
         data_map: Dict[str, bytes] = {}
         for f in self._root_path.rglob("*"):

@@ -19,6 +19,8 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
+RULES_MD_FILENAME = "rules.md"
+
 
 class AgentGraphPlane(str, Enum):
     """The four canonical planes of the AgentGraph substrate, plus extensible planes."""
@@ -180,9 +182,11 @@ class MarkdownDocAdapter(BaseGraphAdapter):
     """Extracts document nodes and internal links from Markdown files."""
 
     def can_handle(self, path: Path) -> bool:
+        assert path is not None, "path cannot be None"
         return path.suffix.lower() in {".md", ".markdown"}
 
     def extract(self, path: Path) -> Tuple[List[AgentGraphNode], List[AgentGraphEdge]]:
+        assert path is not None, "path cannot be None"
         nodes: List[AgentGraphNode] = []
         edges: List[AgentGraphEdge] = []
 
@@ -190,12 +194,8 @@ class MarkdownDocAdapter(BaseGraphAdapter):
             return nodes, edges
 
         content = path.read_text(encoding="utf-8", errors="replace")
-        title = path.stem.replace("-", " ").replace("_", " ").title()
-
-        # Extract title from first H1 if present
-        h1_match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
-        if h1_match:
-            title = h1_match.group(1).strip()
+        title = self._extract_title(path, content)
+        frontmatter = self._parse_frontmatter(content)
 
         node_id = f"doc:{path.name}"
         node = AgentGraphNode(
@@ -208,28 +208,132 @@ class MarkdownDocAdapter(BaseGraphAdapter):
         )
         nodes.append(node)
 
+        # Process rule policy if this is a governance file
+        if self._is_rule_policy_file(path, frontmatter):
+            rule_nodes, rule_edges = self._build_rule_policy_entry(path, frontmatter, title, content)
+            nodes.extend(rule_nodes)
+            edges.extend(rule_edges)
+
         # Detect markdown link edges
+        edges.extend(self._extract_markdown_links(node_id, content))
+        return nodes, edges
+
+    def _extract_title(self, path: Path, content: str) -> str:
+        """Extract title from first H1 header or default from path stem."""
+        h1_match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
+        if h1_match:
+            return h1_match.group(1).strip()
+        return path.stem.replace("-", " ").replace("_", " ").title()
+
+    def _parse_frontmatter(self, content: str) -> Dict[str, Any]:
+        """Parse YAML frontmatter key-value pairs if present."""
+        frontmatter: Dict[str, Any] = {}
+        fm_match = re.match(r"^---\s*\n(.*?)\n---\s*\n", content, re.DOTALL)
+        if not fm_match:
+            return frontmatter
+
+        for line in fm_match.group(1).splitlines():
+            if ":" not in line:
+                continue
+            key, val = line.split(":", 1)
+            key = key.strip()
+            val = val.strip().strip('"\'')
+            if val.startswith("[") and val.endswith("]"):
+                items = [x.strip().strip('"\'') for x in val[1:-1].split(",") if x.strip()]
+                frontmatter[key] = items
+            elif val.isdigit():
+                frontmatter[key] = int(val)
+            else:
+                frontmatter[key] = val
+        return frontmatter
+
+    def _is_rule_policy_file(self, path: Path, frontmatter: Dict[str, Any]) -> bool:
+        """Check if file represents a rule policy."""
+        return (
+            frontmatter.get("type") == "rule_policy"
+            or path.name == RULES_MD_FILENAME
+            or "governance/rules" in str(path)
+        )
+
+    def _build_rule_policy_entry(
+        self,
+        path: Path,
+        frontmatter: Dict[str, Any],
+        title: str,
+        content: str,
+    ) -> Tuple[List[AgentGraphNode], List[AgentGraphEdge]]:
+        """Construct rule policy nodes and role governance edges."""
+        nodes: List[AgentGraphNode] = []
+        edges: List[AgentGraphEdge] = []
+
+        rule_id = frontmatter.get("id")
+        if not rule_id:
+            if path.name == RULES_MD_FILENAME:
+                parent_dir = path.parent.name
+                rule_id = f"rule:subsystem-{parent_dir}"
+            else:
+                rule_id = f"rule:{path.stem}"
+
+        rule_priority = frontmatter.get("priority", 3)
+        if isinstance(rule_priority, str) and rule_priority.isdigit():
+            rule_priority = int(rule_priority)
+
+        target_scope = frontmatter.get("target_scope") or (
+            path.parent.name if path.name == RULES_MD_FILENAME else "root"
+        )
+
+        rule_node = AgentGraphNode(
+            id=rule_id,
+            plane=AgentGraphPlane.RULES.value,
+            type="rule_policy",
+            label=frontmatter.get("title") or title,
+            content=content,
+            properties={
+                "path": str(path),
+                "priority": rule_priority,
+                "target_scope": target_scope,
+                "restricted_actions": frontmatter.get("restricted_actions", []),
+                "governs_roles": frontmatter.get("governs_roles", []),
+            },
+        )
+        nodes.append(rule_node)
+
+        for role_name in frontmatter.get("governs_roles", []):
+            edges.append(
+                AgentGraphEdge(
+                    source=rule_id,
+                    target=f"role:{role_name}",
+                    relation="GOVERNS",
+                    plane=AgentGraphPlane.RULES.value,
+                )
+            )
+        return nodes, edges
+
+    def _extract_markdown_links(self, source_node_id: str, content: str) -> List[AgentGraphEdge]:
+        """Extract markdown link target edges."""
+        edges: List[AgentGraphEdge] = []
         for target in re.findall(r"\[.*?\]\((.*?\.md)\)", content):
             target_name = Path(target).name
             edges.append(
                 AgentGraphEdge(
-                    source=node_id,
+                    source=source_node_id,
                     target=f"doc:{target_name}",
                     relation="references",
                     plane=AgentGraphPlane.KNOWLEDGE.value,
                 )
             )
-
-        return nodes, edges
+        return edges
 
 
 class ASTCodeAdapter(BaseGraphAdapter):
     """Extracts classes, functions, and import dependencies from Python files."""
 
     def can_handle(self, path: Path) -> bool:
+        assert path is not None, "path cannot be None"
         return path.suffix.lower() == ".py"
 
     def extract(self, path: Path) -> Tuple[List[AgentGraphNode], List[AgentGraphEdge]]:
+        assert path is not None, "path cannot be None"
         nodes: List[AgentGraphNode] = []
         edges: List[AgentGraphEdge] = []
 
@@ -256,47 +360,67 @@ class ASTCodeAdapter(BaseGraphAdapter):
 
         for stmt in tree.body:
             if isinstance(stmt, ast.ClassDef):
-                class_id = f"class:{path.stem}.{stmt.name}"
-                nodes.append(
-                    AgentGraphNode(
-                        id=class_id,
-                        plane=AgentGraphPlane.EXTENSIBLE.value,
-                        type="code_class",
-                        label=stmt.name,
-                        content=ast.get_docstring(stmt) or "",
-                        properties={"module": path.stem},
-                    )
-                )
-                edges.append(
-                    AgentGraphEdge(
-                        source=module_id,
-                        target=class_id,
-                        relation="contains",
-                        plane=AgentGraphPlane.EXTENSIBLE.value,
-                    )
-                )
+                self._extract_class_def(path, module_id, stmt, nodes, edges)
             elif isinstance(stmt, ast.FunctionDef):
-                func_id = f"func:{path.stem}.{stmt.name}"
-                nodes.append(
-                    AgentGraphNode(
-                        id=func_id,
-                        plane=AgentGraphPlane.EXTENSIBLE.value,
-                        type="code_function",
-                        label=stmt.name,
-                        content=ast.get_docstring(stmt) or "",
-                        properties={"module": path.stem},
-                    )
-                )
-                edges.append(
-                    AgentGraphEdge(
-                        source=module_id,
-                        target=func_id,
-                        relation="contains",
-                        plane=AgentGraphPlane.EXTENSIBLE.value,
-                    )
-                )
+                self._extract_function_def(path, module_id, stmt, nodes, edges)
 
         return nodes, edges
+
+    def _extract_class_def(
+        self,
+        path: Path,
+        module_id: str,
+        stmt: ast.ClassDef,
+        nodes: List[AgentGraphNode],
+        edges: List[AgentGraphEdge],
+    ) -> None:
+        class_id = f"class:{path.stem}.{stmt.name}"
+        nodes.append(
+            AgentGraphNode(
+                id=class_id,
+                plane=AgentGraphPlane.EXTENSIBLE.value,
+                type="code_class",
+                label=stmt.name,
+                content=ast.get_docstring(stmt) or "",
+                properties={"module": path.stem},
+            )
+        )
+        edges.append(
+            AgentGraphEdge(
+                source=module_id,
+                target=class_id,
+                relation="contains",
+                plane=AgentGraphPlane.EXTENSIBLE.value,
+            )
+        )
+
+    def _extract_function_def(
+        self,
+        path: Path,
+        module_id: str,
+        stmt: ast.FunctionDef,
+        nodes: List[AgentGraphNode],
+        edges: List[AgentGraphEdge],
+    ) -> None:
+        func_id = f"func:{path.stem}.{stmt.name}"
+        nodes.append(
+            AgentGraphNode(
+                id=func_id,
+                plane=AgentGraphPlane.EXTENSIBLE.value,
+                type="code_function",
+                label=stmt.name,
+                content=ast.get_docstring(stmt) or "",
+                properties={"module": path.stem},
+            )
+        )
+        edges.append(
+            AgentGraphEdge(
+                source=module_id,
+                target=func_id,
+                relation="contains",
+                plane=AgentGraphPlane.EXTENSIBLE.value,
+            )
+        )
 
 
 # -------------------------------------------------------------------------
@@ -314,8 +438,8 @@ class AgentGraphEngine:
     """
 
     def __init__(self, graph_id: str = "canonical-agentgraph") -> None:
-        self.graph_id = graph_id
-        self.schema_version = "hath0r.agentgraph/1"
+        self.graph_id: str = graph_id
+        self.schema_version: str = "hath0r.agentgraph/1"
         self.nodes: Dict[str, AgentGraphNode] = {}
         self.edges: List[AgentGraphEdge] = []
         self.adapters: List[BaseGraphAdapter] = [MarkdownDocAdapter(), ASTCodeAdapter()]
@@ -333,26 +457,31 @@ class AgentGraphEngine:
 
     def register_adapter(self, adapter: BaseGraphAdapter) -> None:
         """Register a pluggable modality adapter."""
+        assert adapter is not None, "adapter cannot be None"
         self.adapters.insert(0, adapter)
 
     def add_node(self, node: AgentGraphNode) -> None:
         """Add or update an AgentGraph node."""
+        assert node is not None and node.id, "node and node.id must be valid"
         node.updated_at = datetime.datetime.now(datetime.timezone.utc).isoformat()
         self.nodes[node.id] = node
         self._index_node_bm25(node)
 
     def get_node(self, node_id: str) -> Optional[AgentGraphNode]:
         """Retrieve node by unique ID."""
+        assert node_id, "node_id must be a non-empty string"
         return self.nodes.get(node_id)
 
     def add_edge(self, edge: AgentGraphEdge) -> None:
         """Add a relational edge between entities."""
+        assert edge is not None, "edge cannot be None"
         self.edges.append(edge)
         self._outgoing[edge.source].append(edge)
         self._incoming[edge.target].append(edge)
 
     def get_outgoing_edges(self, source_id: str, relation: Optional[str] = None) -> List[AgentGraphEdge]:
         """Return all outgoing edges from source, optionally filtered by relation."""
+        assert source_id, "source_id must be non-empty"
         edges = self._outgoing.get(source_id, [])
         if relation:
             return [e for e in edges if e.relation == relation]
@@ -360,6 +489,7 @@ class AgentGraphEngine:
 
     def get_incoming_edges(self, target_id: str, relation: Optional[str] = None) -> List[AgentGraphEdge]:
         """Return all incoming edges to target, optionally filtered by relation."""
+        assert target_id, "target_id must be non-empty"
         edges = self._incoming.get(target_id, [])
         if relation:
             return [e for e in edges if e.relation == relation]
@@ -379,6 +509,9 @@ class AgentGraphEngine:
         parent_role_id: Optional[str] = None,
     ) -> AgentGraphNode:
         """Register an agent role with tool capabilities."""
+        assert role_id, "role_id must be non-empty"
+        assert role_name, "role_name must be non-empty"
+
         node = AgentGraphNode(
             id=role_id,
             plane=AgentGraphPlane.RULES.value,
@@ -431,6 +564,9 @@ class AgentGraphEngine:
         supersedes_rule_id: Optional[str] = None,
     ) -> AgentGraphNode:
         """Register a governance rule or invariant."""
+        assert rule_id, "rule_id must be non-empty"
+        assert title, "title must be non-empty"
+
         node = AgentGraphNode(
             id=rule_id,
             plane=AgentGraphPlane.RULES.value,
@@ -448,11 +584,11 @@ class AgentGraphEngine:
         self.add_node(node)
 
         # Link roles governed by this rule
-        for role_id in governs_roles or []:
+        for r_id in governs_roles or []:
             self.add_edge(
                 AgentGraphEdge(
                     source=rule_id,
-                    target=role_id,
+                    target=r_id,
                     relation="GOVERNS",
                     plane=AgentGraphPlane.RULES.value,
                 )
@@ -468,7 +604,6 @@ class AgentGraphEngine:
                     plane=AgentGraphPlane.RULES.value,
                 )
             )
-            # Mark superseded rule as non-current
             old_node = self.get_node(supersedes_rule_id)
             if old_node:
                 old_node.is_current = False
@@ -483,16 +618,42 @@ class AgentGraphEngine:
         as_of: Optional[str] = None,
         only_current: bool = True,
     ) -> ResolvedRuleSet:
-        """Deterministically resolve active rules, tool authorizations, and constraints for an agent role.
-
-        Traverses role inheritance DAG, collects applicable scoped rules, detects cycles,
-        and applies precedence conflict resolution.
-        """
+        """Deterministically resolve active rules, tool authorizations, and constraints for an agent role."""
         role_node = self.get_node(role_id)
         if not role_node:
             raise ValueError(f"Agent role '{role_id}' not found in AgentGraph.")
 
-        # 1. Traverse role inheritance DAG (detecting cycles)
+        role_lineage = self._traverse_role_lineage(role_id, as_of=as_of, only_current=only_current)
+        authorized_tools, forbidden_tools = self._collect_authorized_tools(role_lineage, as_of=as_of, only_current=only_current)
+        effective_scope = scope or role_node.properties.get("scope", "root")
+        applicable_rules = self._collect_applicable_rules(role_lineage, effective_scope, as_of=as_of, only_current=only_current)
+
+        active_rules_list = sorted(
+            applicable_rules.values(),
+            key=lambda r: r.properties.get("priority", 1),
+            reverse=True,
+        )
+
+        restricted_actions, allowed_actions, governing_invariants = self._resolve_action_precedence(active_rules_list)
+
+        return ResolvedRuleSet(
+            role_id=role_id,
+            active_rules=active_rules_list,
+            authorized_tools=authorized_tools,
+            forbidden_tools=forbidden_tools,
+            restricted_actions=restricted_actions,
+            allowed_actions=allowed_actions,
+            lineage_path=role_lineage,
+            governing_invariants=governing_invariants,
+        )
+
+    def _traverse_role_lineage(
+        self,
+        role_id: str,
+        as_of: Optional[str] = None,
+        only_current: bool = True,
+    ) -> List[str]:
+        """Traverse role inheritance DAG and detect cycle errors."""
         role_lineage: List[str] = []
         visited_roles: Set[str] = set()
         curr_role: Optional[str] = role_id
@@ -508,8 +669,15 @@ class AgentGraphEngine:
                 if e.is_valid_at(as_of=as_of, only_current=only_current)
             ]
             curr_role = parent_edges[0].target if parent_edges else None
+        return role_lineage
 
-        # 2. Collect authorized tools across role inheritance
+    def _collect_authorized_tools(
+        self,
+        role_lineage: List[str],
+        as_of: Optional[str] = None,
+        only_current: bool = True,
+    ) -> Tuple[Set[str], Set[str]]:
+        """Collect authorized and forbidden tool names across role lineage."""
         authorized_tools: Set[str] = set()
         forbidden_tools: Set[str] = set()
 
@@ -524,10 +692,17 @@ class AgentGraphEngine:
                     tool_name = e.target.removeprefix("tool:")
                     authorized_tools.add(tool_name)
 
-        # Prune forbidden tools
         authorized_tools.difference_update(forbidden_tools)
+        return authorized_tools, forbidden_tools
 
-        # 3. Collect active rules governing these roles or active scope
+    def _collect_applicable_rules(
+        self,
+        role_lineage: List[str],
+        effective_scope: str,
+        as_of: Optional[str] = None,
+        only_current: bool = True,
+    ) -> Dict[str, AgentGraphNode]:
+        """Collect rules governing role lineage or matching scope."""
         applicable_rules: Dict[str, AgentGraphNode] = {}
         for r_id in role_lineage:
             for inc in self.get_incoming_edges(r_id, relation="GOVERNS"):
@@ -536,27 +711,24 @@ class AgentGraphEngine:
                     if rule_node and rule_node.is_valid_at(as_of=as_of, only_current=only_current):
                         applicable_rules[rule_node.id] = rule_node
 
-        # Also collect scope-matching rules
-        effective_scope = scope or role_node.properties.get("scope", "root")
         for node in self.nodes.values():
             if node.plane == AgentGraphPlane.RULES.value and node.type == "rule_policy":
                 if node.is_valid_at(as_of=as_of, only_current=only_current):
                     rule_scope = node.properties.get("target_scope", "root")
                     if rule_scope in ("root", effective_scope):
                         applicable_rules[node.id] = node
+        return applicable_rules
 
-        # 4. Resolve action restrictions and allowances by priority tier
-        active_rules_list = sorted(
-            applicable_rules.values(),
-            key=lambda r: r.properties.get("priority", 1),
-            reverse=True,
-        )
-
+    def _resolve_action_precedence(
+        self,
+        active_rules_list: List[AgentGraphNode],
+    ) -> Tuple[Set[str], Set[str], List[str]]:
+        """Resolve action restrictions, allowances, and invariants with priority checks."""
         restricted_actions: Set[str] = set()
         allowed_actions: Set[str] = set()
         governing_invariants: List[str] = []
 
-        action_precedence: Dict[str, Tuple[int, bool]] = {}  # action -> (priority, is_allowed)
+        action_precedence: Dict[str, Tuple[int, bool]] = {}
 
         for rule in active_rules_list:
             priority = rule.properties.get("priority", 1)
@@ -564,30 +736,10 @@ class AgentGraphEngine:
                 governing_invariants.append(rule.label)
 
             for act in rule.properties.get("restricted_actions", []):
-                if act in action_precedence:
-                    prev_prio, prev_allowed = action_precedence[act]
-                    if priority > prev_prio:
-                        action_precedence[act] = (priority, False)
-                    elif priority == prev_prio and prev_allowed:
-                        raise RuleConflictError(
-                            f"Rule conflict detected: action '{act}' simultaneously restricted by {rule.id} "
-                            f"and allowed at priority tier {priority}."
-                        )
-                else:
-                    action_precedence[act] = (priority, False)
+                self._apply_action_rule(act, priority, False, rule.id, action_precedence)
 
             for act in rule.properties.get("allowed_actions", []):
-                if act in action_precedence:
-                    prev_prio, prev_allowed = action_precedence[act]
-                    if priority > prev_prio:
-                        action_precedence[act] = (priority, True)
-                    elif priority == prev_prio and not prev_allowed:
-                        raise RuleConflictError(
-                            f"Rule conflict detected: action '{act}' simultaneously allowed by {rule.id} "
-                            f"and restricted at priority tier {priority}."
-                        )
-                else:
-                    action_precedence[act] = (priority, True)
+                self._apply_action_rule(act, priority, True, rule.id, action_precedence)
 
         for act, (_, is_allowed) in action_precedence.items():
             if is_allowed:
@@ -595,16 +747,30 @@ class AgentGraphEngine:
             else:
                 restricted_actions.add(act)
 
-        return ResolvedRuleSet(
-            role_id=role_id,
-            active_rules=active_rules_list,
-            authorized_tools=authorized_tools,
-            forbidden_tools=forbidden_tools,
-            restricted_actions=restricted_actions,
-            allowed_actions=allowed_actions,
-            lineage_path=role_lineage,
-            governing_invariants=governing_invariants,
-        )
+        return restricted_actions, allowed_actions, governing_invariants
+
+    def _apply_action_rule(
+        self,
+        action: str,
+        priority: int,
+        is_allowed: bool,
+        rule_id: str,
+        action_precedence: Dict[str, Tuple[int, bool]],
+    ) -> None:
+        """Apply an individual action rule directive to action_precedence state."""
+        if action in action_precedence:
+            prev_prio, prev_allowed = action_precedence[action]
+            if priority > prev_prio:
+                action_precedence[action] = (priority, is_allowed)
+            elif priority == prev_prio and prev_allowed != is_allowed:
+                directive_str = "allowed" if is_allowed else "restricted"
+                opp_str = "restricted" if is_allowed else "allowed"
+                raise RuleConflictError(
+                    f"Rule conflict detected: action '{action}' simultaneously {directive_str} by {rule_id} "
+                    f"and {opp_str} at priority tier {priority}."
+                )
+        else:
+            action_precedence[action] = (priority, is_allowed)
 
     # ---------------------------------------------------------------------
     # Ingestion & Modality Adapters
@@ -612,6 +778,7 @@ class AgentGraphEngine:
 
     def ingest_path(self, path: Path) -> int:
         """Ingest a file or directory using registered modality adapters."""
+        assert path is not None, "path cannot be None"
         if not path.exists():
             return 0
 
@@ -720,6 +887,23 @@ class AgentGraphEngine:
     def validate_integrity(self) -> AgentGraphValidationReport:
         """Run comprehensive consistency, dangling-edge, and cycle detection audits."""
         plane_counts = Counter(n.plane for n in self.nodes.values())
+        dangling, temporal_anomalies = self._check_dangling_and_temporal_anomalies()
+        detected_cycles = self._detect_inherits_cycles()
+
+        is_valid = len(dangling) == 0 and len(detected_cycles) == 0 and len(temporal_anomalies) == 0
+
+        return AgentGraphValidationReport(
+            is_valid=is_valid,
+            total_nodes=len(self.nodes),
+            total_edges=len(self.edges),
+            plane_counts=dict(plane_counts),
+            dangling_edges=dangling,
+            detected_cycles=detected_cycles,
+            temporal_anomalies=temporal_anomalies,
+        )
+
+    def _check_dangling_and_temporal_anomalies(self) -> Tuple[List[Tuple[str, str]], List[str]]:
+        """Audit graph for dangling target edges and inverted bitemporal intervals."""
         dangling: List[Tuple[str, str]] = []
         temporal_anomalies: List[str] = []
 
@@ -733,7 +917,10 @@ class AgentGraphEngine:
             if n.valid_from and n.valid_to and n.valid_from > n.valid_to:
                 temporal_anomalies.append(f"Node {n.id} valid_from ({n.valid_from}) > valid_to ({n.valid_to})")
 
-        # Cycle detection in INHERITS_FROM DAG
+        return dangling, temporal_anomalies
+
+    def _detect_inherits_cycles(self) -> List[List[str]]:
+        """Detect cycles in rule inheritance DAG using Depth-First Search."""
         detected_cycles: List[List[str]] = []
         visited: Set[str] = set()
         rec_stack: Set[str] = set()
@@ -758,17 +945,7 @@ class AgentGraphEngine:
             if node.plane == AgentGraphPlane.RULES.value and n_id not in visited:
                 dfs(n_id, [])
 
-        is_valid = len(dangling) == 0 and len(detected_cycles) == 0 and len(temporal_anomalies) == 0
-
-        return AgentGraphValidationReport(
-            is_valid=is_valid,
-            total_nodes=len(self.nodes),
-            total_edges=len(self.edges),
-            plane_counts=dict(plane_counts),
-            dangling_edges=dangling,
-            detected_cycles=detected_cycles,
-            temporal_anomalies=temporal_anomalies,
-        )
+        return detected_cycles
 
     # ---------------------------------------------------------------------
     # Serialization & Snapshots
@@ -781,6 +958,7 @@ class AgentGraphEngine:
 
     def export_snapshot(self, path: Path) -> None:
         """Export full graph state to JSON."""
+        assert path is not None, "path cannot be None"
         data = {
             "schema_version": self.schema_version,
             "graph_id": self.graph_id,
@@ -793,6 +971,7 @@ class AgentGraphEngine:
 
     def import_snapshot(self, path: Path) -> None:
         """Import graph state from JSON snapshot."""
+        assert path is not None, "path cannot be None"
         if not path.exists():
             raise FileNotFoundError(f"Snapshot not found at {path}")
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -803,6 +982,7 @@ class AgentGraphEngine:
 
     def persist_sqlite(self, db_path: str | Path) -> None:
         """Persist all nodes and edges into SQLiteGraphStore."""
+        assert db_path is not None, "db_path cannot be None"
         from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
         store = SQLiteGraphStore(db_path=db_path)
         try:
@@ -834,6 +1014,7 @@ class AgentGraphEngine:
 
     def load_sqlite(self, db_path: str | Path) -> None:
         """Load nodes and edges from SQLiteGraphStore."""
+        assert db_path is not None, "db_path cannot be None"
         from hath0r_engine.graph.sqlite_graph import SQLiteGraphStore
         store = SQLiteGraphStore(db_path=db_path)
         try:
@@ -870,3 +1051,5 @@ class AgentGraphEngine:
         finally:
             store.close()
 
+
+agent_graph_engine = AgentGraphEngine()

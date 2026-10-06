@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import warnings
 from typing import Any, Dict
 
 
@@ -18,17 +19,22 @@ class SchemaSuggestionWarning(UserWarning):
     pass
 
 
-def Assert(condition: bool, msg: str = "Assertion failed.") -> None:
+def assert_contract(condition: bool, msg: str = "Assertion failed.") -> None:
     """Enforce a mandatory contract invariant on prediction output."""
     if not condition:
         raise SchemaAssertionError(msg)
 
 
-def Suggest(condition: bool, msg: str = "Suggestion violated.") -> bool:
+def suggest_constraint(condition: bool, msg: str = "Suggestion violated.") -> bool:
     """Evaluate an advisory constraint, returning False if not met."""
     if not condition:
+        warnings.warn(msg, SchemaSuggestionWarning, stacklevel=2)
         return False
     return True
+
+
+Assert = assert_contract
+Suggest = suggest_constraint
 
 
 def validate_json_contract(data_str: str, schema: Dict[str, Any]) -> bool:

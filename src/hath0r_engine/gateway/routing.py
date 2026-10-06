@@ -63,3 +63,13 @@ class TieredRouter:
         in_cost = (prompt_tokens / 1_000_000.0) * in_rate
         out_cost = (completion_tokens / 1_000_000.0) * out_rate
         return round(in_cost + out_cost, 6)
+
+    def escalate_tier_from_volatility(self, volatility_score: float) -> ComplexityTier:
+        """Escalate LLM reasoning tier based on code churn volatility score."""
+        if volatility_score >= 0.70:
+            return ComplexityTier.REASONING
+        if volatility_score >= 0.30:
+            return ComplexityTier.STANDARD
+        return ComplexityTier.LIGHT
+
+

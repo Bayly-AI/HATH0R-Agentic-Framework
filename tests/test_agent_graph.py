@@ -375,3 +375,35 @@ def test_sqlite_roundtrip_persistence(tmp_path: Path):
     assert "adr_author" in resolved.authorized_tools
     assert "ADR Standard Invariant" in resolved.governing_invariants
 
+
+def test_standard_roles_and_frontmatter_rule_policies():
+    from hath0r_engine.graph.agent_rules_graph import AgentRulesGraph
+
+    arg = AgentRulesGraph()
+    roles = arg.initialize_standard_roles()
+    assert len(roles) == 6
+
+    # Verify developer inherits from reader
+    dev_tools = arg.get_authorized_tools("role:developer")
+    assert "view_file" in dev_tools
+    assert "write_to_file" in dev_tools
+    assert "direct_push_master" not in dev_tools
+
+    # Test ingesting frontmatter governance rules
+    engine = arg.engine
+    engine.ingest_path(Path("docs/governance/rules"))
+    engine.ingest_path(Path("contracts/rules.md"))
+    engine.ingest_path(Path("archive/rules.md"))
+
+    rule_nodes = [n for n in engine.nodes.values() if n.plane == "rules" and n.type == "rule_policy"]
+    rule_ids = {r.id for r in rule_nodes}
+
+    assert "rule:cr-substrate-001" in rule_ids
+    assert "rule:cr-branch-gov-001" in rule_ids
+    assert "rule:cr-hath0r-root-001" in rule_ids
+    assert "rule:cr-hath0r-init-001" in rule_ids
+    assert "rule:cr-kb-tower-001" in rule_ids
+    assert "rule:subsystem-contracts" in rule_ids
+    assert "rule:subsystem-archive" in rule_ids
+
+

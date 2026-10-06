@@ -23,5 +23,12 @@
     "vercel-ai"
   ],
   "author": "Bayly AI / Hath0r Core Team",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "API_REFERENCE.md",
+    "LICENSE"
+  ]
 }

@@ -32,7 +32,11 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts or direct unverified actions.
 2. **Missing Capability Offer**: If the required connection, MCP, workflow, bot, or factory does not exist in `hath0r`, do **not** silently improvise. Offer to create/register the missing capability and use the original request as the immediate acceptance test.
 3. **Docs before code**: Require procedure/strategy/playbook/runbook (see `docs/governance/workflow-documentation-standard.md`) before scaffolding implementation.
-4. **Detail**: `docs/governance/rules/cr-cli-entry-001.md` · `docs/governance/cli-first-rules.md` · tower canonical: https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md
+4. **CR-CLI-FEATURE-STANDARD-001 (Shared Code in CLI & Artifact Hexad — CRITICAL · CANONICAL)**:
+   - Anything usable across multiple repos MUST live in `HATH0R-CLI`.
+   - Feature packages must include CLI commands, managing bots, workflows, and the documentation hexad (Strategy, Procedure, Playbook, Runbook, Workflow, Bot Spec).
+   - This repo contains declarative configuration files (`cfg/`, `otel.json`, factory YAMLs) that bind to CLI tools.
+5. **Detail**: `docs/governance/rules/cr-cli-entry-001.md` · `docs/governance/cli-first-rules.md` · tower canonical: https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md
 
 ## CR-AGENTGRAPH-001 / CR-RAG-RETRIEVAL-001: Mandatory AgentGraph Querying & Zero-Prompt-Tax Doctrine (CRITICAL — org-wide)
 
@@ -46,6 +50,13 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 4. **Deterministic Tool & Role RBAC**: Use `hath0r agentgraph route --role <role> [--tool <tool>]` to deterministically prune unauthorized tools before execution rather than relying on LLM self-governance.
 5. **Temporal Validity Filtering**: Edges and nodes must be evaluated using `is_valid_at(as_of)` to respect entity state mutations over time.
 6. **Detail**: `docs/governance/rules/cr-agentgraph-001.md`.
+
+## CR-CICCCD-001: Continuous Integration, Calibration & Deployment (CICCCD) Methodology (CRITICAL — org-wide)
+
+1. **Continuous Integration (CI)**: All PRs must pass schema contract validation (`hath0r contracts validate`), AgentGraph policy checks (`hath0r agentgraph validate`), and automated unit tests.
+2. **Continuous Calibration (CC)**: Calibration state freshness limit is $\le 24.0\text{ hours}$. AgentGraph runtime substrate uses `CICCCDTelemetryHook` (`src/hath0r_engine/telemetry/cicccd_telemetry.py`) to record span metrics and track parameter drift. Trigger on-demand calibration via `hath0r cicccd calibrate`.
+3. **Continuous Deployment (CD)**: Maintain automated promotion validation through canonical environments (`development` -> `testing` -> `staging` -> `master`), complete Artifact Hexad documentation, and background auto-tune monitoring via `hath0r cicccd auto-tune`.
+4. **Detail**: `docs/governance/strategies/cicccd-strategy.md` · `hath0r cicccd validate`.
 
 ## CR-SUBSTRATE-001: Mandatory Cognitive Substrate Technology Utilization (CRITICAL — org-wide)
 
