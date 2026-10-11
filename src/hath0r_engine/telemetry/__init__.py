@@ -1,5 +1,9 @@
-"""OpenTelemetry & OpenInference telemetry package for Hath0r."""
-
+from .autoencoder import (
+    AnomalyDetectionReport,
+    AnomalyRecord,
+    TelemetryAutoencoder,
+    telemetry_autoencoder,
+)
 from .cicccd_telemetry import CICCCDTelemetryHook
 from .otel_tracer import OTELTracerBot, TelemetrySpan
 from .token_telemetry import (
@@ -19,4 +23,8 @@ __all__ = [
     "TokenTelemetryBot",
     "TokenHistogramBot",
     "HistogramBin",
+    "TelemetryAutoencoder",
+    "AnomalyRecord",
+    "AnomalyDetectionReport",
+    "telemetry_autoencoder",
 ]

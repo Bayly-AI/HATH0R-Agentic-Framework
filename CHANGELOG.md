@@ -5,7 +5,18 @@ All notable changes to the **HATH0R Agentic Framework** will be documented in th
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
----
+## [1.4.0] - 2026-10-11
+
+### Added
+- **Hybrid Cognitive Substrate Neural Network Algorithms** (#451):
+  - **Dense Bi-Encoder Embeddings & Semantic Prompt Cache** (#452): 384-dimensional dense semantic embedding projections with cosine similarity cache hits and token tax savings.
+  - **GAIN Telemetry Reconstruction Substrate** (#454): Full Generative Adversarial Imputation Network (Yoon et al., 2018) generator and discriminator MLPs for sparse OpenInference telemetry.
+  - **AST Graph Neural Network for Predictive Test Selection** (#455): 2-layer Graph Convolutional Network (GCN) over codebase call graphs and test mappings for predictive CI test acceleration and defect hotspots.
+  - **Deep Telemetry Autoencoder** (#456): Unsupervised bottleneck autoencoder for multivariate anomaly detection and prompt-tax explosion diagnosis.
+- **Apache Airflow Batch Staging Adapter** (#268): Added `stage_records_batch` and `stage_batch_archive` SQLite transaction batching and deduplication, plus continuous training trigger manifest generation.
+- **Playwright Master Test Catalog Synchronization** (#270): Audited Generative UI and component test specs with automated sync (`tests/e2e/master-playwright-tests.json`).
+- **Infrastructure as Code (IaC) & AWS EKS Fargate Standards** (#262): Multi-stage Dockerfile hardening, non-root security contexts, and container salting.
+- **Voice Subsystem & Hands-Free Action Dispatch** (#260): Voice listening, speech synthesis, and real-time audio interaction.
 
 ## [1.3.4] - 2026-10-05
 

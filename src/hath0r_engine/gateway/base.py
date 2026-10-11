@@ -25,6 +25,7 @@ class ModelProvider(str, Enum):
     BEDROCK = "bedrock"
     VERTEX = "vertex"
     OLLAMA = "ollama"
+    VLLM = "vllm"
     MOCK = "mock"
 
 
@@ -42,12 +43,68 @@ class GatewayConfig:
     cache_threshold: float = 0.90
     virtual_key: Optional[str] = None
     timeout_seconds: float = 60.0
+    vllm_api_base: Optional[str] = None
+    enable_prefix_caching: bool = True
+    guided_decoding_backend: str = "outlines"
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         data = asdict(self)
         data["gateway_type"] = self.gateway_type.value
         return data
+
+    @classmethod
+    def from_yaml(cls, config_path: Optional[str] = None) -> "GatewayConfig":
+        """Load gateway configuration from YAML file."""
+        from pathlib import Path
+
+        import yaml
+
+        target_path: Optional[Path] = None
+        if config_path:
+            target_path = Path(config_path)
+        else:
+            candidates = [
+                Path.cwd() / "cfg" / "gateway.yaml",
+                Path(__file__).resolve().parents[3] / "cfg" / "gateway.yaml",
+            ]
+            for cand in candidates:
+                if cand.is_file():
+                    target_path = cand
+                    break
+
+        if not target_path or not target_path.is_file():
+            return cls()
+
+        with open(target_path, "r", encoding="utf-8") as f:
+            cfg = yaml.safe_load(f) or {}
+
+        prov_str = str(cfg.get("default_provider", "mock")).lower()
+        try:
+            gw_type = ModelProvider(prov_str)
+        except ValueError:
+            gw_type = ModelProvider.MOCK
+
+        vllm_cfg = cfg.get("vllm", {})
+        cache_cfg = cfg.get("cache", {})
+        fallbacks = cfg.get("fallback_chain", ["claude-3-5-sonnet", "gpt-4o", "mistral-large"])
+
+        endpoint = vllm_cfg.get("endpoint_url") if gw_type == ModelProvider.VLLM else None
+        api_key = vllm_cfg.get("api_key") if gw_type == ModelProvider.VLLM else None
+
+        return cls(
+            gateway_type=gw_type,
+            endpoint_url=endpoint,
+            api_key=api_key,
+            fallback_chain=fallbacks,
+            semantic_cache_enabled=bool(cache_cfg.get("enabled", True)),
+            cache_threshold=float(cache_cfg.get("similarity_threshold", 0.90)),
+            timeout_seconds=float(vllm_cfg.get("timeout_seconds", 60.0)),
+            vllm_api_base=vllm_cfg.get("endpoint_url"),
+            enable_prefix_caching=bool(vllm_cfg.get("enable_prefix_caching", True)),
+            guided_decoding_backend=str(vllm_cfg.get("guided_decoding_backend", "outlines")),
+            metadata={"raw_config": cfg},
+        )
 
 
 @dataclass
@@ -61,7 +118,14 @@ class CompletionRequest:
     temperature: float = 0.7
     max_tokens: int = 2048
     virtual_key: Optional[str] = None
+    guided_json: Optional[Dict[str, Any] | str] = None
+    guided_regex: Optional[str] = None
+    guided_choice: Optional[List[str]] = None
+    contract_id: Optional[str] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
 
     def get_full_prompt(self) -> str:
         """Combine prompt string and message list into single text representation."""

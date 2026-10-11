@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import datetime
 import io
-import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -23,7 +22,7 @@ from hath0r_engine.telemetry.token_telemetry import TokenHistogramBot, TokenTele
 
 class AgentMetricsBot:
     """Autonomous micro-bot triggered by agent metrics requests.
-    
+
     Pulls Observability items (latencies, token counts, cost, CCCD calibration metrics),
     Histogram distributions (token & latency quantiles, percentiles, bins), and
     PMAT multi-dimensional stats (git churn, AST complexity, provability scores, hotspot risk indices).
@@ -161,7 +160,7 @@ class AgentMetricsBot:
 
     def render_tui(self, report: Dict[str, Any]) -> str:
         """Render comprehensive metrics report to terminal screen using rich TUI.
-        
+
         Falls back gracefully to Markdown if rich is not available or if rendering fails.
         """
         assert report is not None, "report cannot be None"
@@ -409,7 +408,7 @@ class AgentMetricsBot:
         assert report is not None, "report cannot be None"
         graph = agent_graph or agent_graph_engine
         node_id = f"bot_execution:agent-metrics-bot:{int(datetime.datetime.now(datetime.timezone.utc).timestamp())}"
-        
+
         sum_data = report.get("summary", {})
         node = AgentGraphNode(
             id=node_id,
@@ -440,7 +439,7 @@ class AgentMetricsBot:
     ) -> Dict[str, Any]:
         """Main bot entry point to process agent metrics intent, build report, render UI, and ingest into AgentGraph."""
         report = self.generate_metrics_report(intent=intent, repo_path=repo_path)
-        
+
         if render_mode == "markdown":
             output = self.render_markdown(report)
             report["tui_metadata"]["render_mode"] = "markdown"
