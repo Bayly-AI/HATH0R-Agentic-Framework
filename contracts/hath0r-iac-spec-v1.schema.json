@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hath0r.bayly.ai/contracts/hath0r-iac-spec-v1.schema.json",
+  "title": "Hath0r Infrastructure as Code (IaC) Specification Schema",
+  "description": "Defines the canonical declarative specification for containerization, cryptographic salting, and AWS EKS Fargate deployment across HATH0R repositories.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "service_name",
+    "container",
+    "salting",
+    "deployment"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": ["hath0r.iac.spec/1"],
+      "default": "hath0r.iac.spec/1"
+    },
+    "service_name": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-_]{2,62}$",
+      "description": "Identifier of the service or repository being deployed."
+    },
+    "container": {
+      "type": "object",
+      "required": [
+        "tech_stack",
+        "multi_stage",
+        "non_root_user"
+      ],
+      "properties": {
+        "tech_stack": {
+          "type": "string",
+          "enum": ["python", "node", "go", "static", "rust"]
+        },
+        "base_image": {
+          "type": "string",
+          "description": "Base image for runtime container (e.g. python:3.11-slim, node:20-alpine, gcr.io/distroless/static)."
+        },
+        "multi_stage": {
+          "type": "boolean",
+          "const": true,
+          "description": "Enforces separation of build-time dependencies from minimal production runtime."
+        },
+        "non_root_user": {
+          "type": "object",
+          "required": ["uid", "gid", "username"],
+          "properties": {
+            "uid": {
+              "type": "integer",
+              "minimum": 1000
+            },
+            "gid": {
+              "type": "integer",
+              "minimum": 1000
+            },
+            "username": {
+              "type": "string",
+              "default": "hath0r"
+            }
+          }
+        },
+        "healthcheck": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "test": {
+              "oneOf": [
+                { "type": "string" },
+                { "type": "array", "items": { "type": "string" } }
+              ]
+            },
+            "interval_seconds": { "type": "integer", "default": 30 },
+            "timeout_seconds": { "type": "integer", "default": 5 },
+            "retries": { "type": "integer", "default": 3 }
+          }
+        },
+        "read_only_root_filesystem": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "salting": {
+      "type": "object",
+      "required": [
+        "digest_pinning",
+        "signature_provider"
+      ],
+      "properties": {
+        "digest_pinning": {
+          "type": "boolean",
+          "const": true,
+          "description": "Mandatory cryptographic digest pinning (image@sha256:...) preventing mutable tag replacement attacks."
+        },
+        "sha256_digest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "Cryptographic SHA-256 digest of the container image."
+        },
+        "signature_provider": {
+          "type": "string",
+          "enum": ["cosign", "sigstore", "notation", "hath0r_attest"],
+          "default": "cosign"
+        },
+        "attestation_format": {
+          "type": "string",
+          "enum": ["slsa-provenance-v1", "in-toto", "cyclonedx-sbom"],
+          "default": "slsa-provenance-v1"
+        },
+        "secret_salting_provider": {
+          "type": "string",
+          "enum": [
+            "aws_secrets_manager",
+            "aws_ssm_parameter_store",
+            "hashicorp_vault",
+            "sealed_secrets"
+          ],
+          "default": "aws_secrets_manager"
+        }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "required": [
+        "target_platform",
+        "namespace",
+        "fargate_profile",
+        "resources"
+      ],
+      "properties": {
+        "target_platform": {
+          "type": "string",
+          "enum": ["aws_eks_fargate", "local_docker"],
+          "default": "aws_eks_fargate"
+        },
+        "cluster_name": {
+          "type": "string",
+          "description": "Name of the target AWS EKS cluster."
+        },
+        "namespace": {
+          "type": "string",
+          "description": "Kubernetes namespace mapped to an EKS Fargate profile selector."
+        },
+        "fargate_profile": {
+          "type": "string",
+          "description": "AWS EKS Fargate profile name governing the pod execution."
+        },
+        "replicas": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 2
+        },
+        "resources": {
+          "type": "object",
+          "required": ["cpu_request", "cpu_limit", "memory_request", "memory_limit"],
+          "properties": {
+            "cpu_request": { "type": "string", "pattern": "^[0-9]+(m)?$" },
+            "cpu_limit": { "type": "string", "pattern": "^[0-9]+(m)?$" },
+            "memory_request": { "type": "string", "pattern": "^[0-9]+(Mi|Gi)$" },
+            "memory_limit": { "type": "string", "pattern": "^[0-9]+(Mi|Gi)$" }
+          }
+        },
+        "ingress": {
+          "type": "object",
+          "properties": {
+            "alb_scheme": {
+              "type": "string",
+              "enum": ["internet-facing", "internal"],
+              "default": "internet-facing"
+            },
+            "target_type": {
+              "type": "string",
+              "const": "ip",
+              "description": "AWS EKS Fargate pods must use 'ip' target type for ALB Ingress."
+            },
+            "certificate_arn": {
+              "type": "string"
+            },
+            "host": {
+              "type": "string"
+            }
+          }
+        },
+        "irsa_iam_role_arn": {
+          "type": "string",
+          "pattern": "^arn:aws:iam::[0-9]{12}:role/[a-zA-Z0-9+=,.@_-]+$",
+          "description": "IAM Role for Service Accounts (IRSA) giving pod execution permissions."
+        }
+      }
+    }
+  }
+}
