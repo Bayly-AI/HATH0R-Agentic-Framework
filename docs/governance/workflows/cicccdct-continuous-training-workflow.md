@@ -1,9 +1,9 @@
-# Workflow: CICCCDCT Continuous Training Lifecycle
+# Workflow: CIC³DCT Continuous Training Lifecycle (CIC{qubed}DCT)
 
 > **Document Type:** Workflow  
 > **Status:** Ratified  
 > **Governing Standards:** `CR-CICCCDCT-001`, `CR-BAI-001`  
-> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255
+> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258
 
 ---
 

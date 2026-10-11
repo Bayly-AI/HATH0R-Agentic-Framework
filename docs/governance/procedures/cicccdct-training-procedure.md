@@ -1,9 +1,9 @@
-# Procedure: Continuous Training Execution & Dataset Curation (CICCCDCT)
+# Procedure: Continuous Training Execution & Dataset Curation (CIC³DCT / CIC{qubed}DCT)
 
 > **Document Type:** Procedure  
 > **Status:** Ratified  
 > **Governing Standards:** `CR-CICCCDCT-001`, `CR-CLI-ENTRY-001`  
-> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255
+> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258
 
 ---
 
