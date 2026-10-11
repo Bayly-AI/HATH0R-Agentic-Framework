@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Dict, List, Optional, Tuple
 
-from hath0r_engine.gateway.base import ComplexityTier
+from hath0r_engine.gateway.base import ComplexityTier, ModelProvider
 
 
 class TieredRouter:
@@ -14,6 +14,12 @@ class TieredRouter:
         ComplexityTier.LIGHT: "claude-3-5-haiku",
         ComplexityTier.STANDARD: "claude-3-5-sonnet",
         ComplexityTier.REASONING: "o3-mini",
+    }
+
+    DEFAULT_VLLM_TIER_MODELS: Dict[ComplexityTier, str] = {
+        ComplexityTier.LIGHT: "Qwen/Qwen2.5-Coder-7B-Instruct",
+        ComplexityTier.STANDARD: "meta-llama/Llama-3.3-70B-Instruct",
+        ComplexityTier.REASONING: "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
     }
 
     # Rates per 1M tokens (input_cost_per_1m, output_cost_per_1m)
@@ -30,17 +36,37 @@ class TieredRouter:
         "o3-mini": (1.10, 4.40),
         "deepseek-r1": (0.55, 2.19),
         "claude-3-opus": (15.00, 75.00),
+        # Self-Hosted Open Weights / vLLM (Zero API Cost)
+        "qwen/qwen2.5-coder-7b-instruct": (0.00, 0.00),
+        "meta-llama/llama-3.3-70b-instruct": (0.00, 0.00),
+        "deepseek-ai/deepseek-r1-distill-qwen-32b": (0.00, 0.00),
+        "deepseek-ai/deepseek-r1": (0.00, 0.00),
+        "mistralai/mistral-7b-instruct-v0.3": (0.00, 0.00),
     }
 
-    def __init__(self, custom_tier_models: Optional[Dict[ComplexityTier, str]] = None) -> None:
+    def __init__(
+        self,
+        custom_tier_models: Optional[Dict[ComplexityTier, str]] = None,
+        custom_vllm_tier_models: Optional[Dict[ComplexityTier, str]] = None,
+    ) -> None:
         self.tier_models = dict(self.DEFAULT_TIER_MODELS)
+        self.vllm_tier_models = dict(self.DEFAULT_VLLM_TIER_MODELS)
         if custom_tier_models:
             self.tier_models.update(custom_tier_models)
+        if custom_vllm_tier_models:
+            self.vllm_tier_models.update(custom_vllm_tier_models)
 
-    def select_model(self, tier: ComplexityTier, override_model: Optional[str] = None) -> str:
+    def select_model(
+        self,
+        tier: ComplexityTier,
+        override_model: Optional[str] = None,
+        provider: Optional[ModelProvider] = None,
+    ) -> str:
         """Select cost-appropriate model based on tier or explicit override."""
         if override_model:
             return override_model
+        if provider == ModelProvider.VLLM:
+            return self.vllm_tier_models.get(tier, self.DEFAULT_VLLM_TIER_MODELS[ComplexityTier.STANDARD])
         return self.tier_models.get(tier, self.DEFAULT_TIER_MODELS[ComplexityTier.STANDARD])
 
     def get_fallback_chain(self, primary_model: str, configured_fallbacks: Optional[List[str]] = None) -> List[str]:
