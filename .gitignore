@@ -252,3 +252,6 @@ __marimo__/
 # Hath0r local telemetry and FinOps ledgers
 .hath0r/finops/
 .hath0r/telemetry/
+.hath0r/cccd/
+.hath0r/*.json
+.hath0r/*.jsonl

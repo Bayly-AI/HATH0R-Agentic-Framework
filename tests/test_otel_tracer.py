@@ -50,9 +50,17 @@ def test_openinference_helpers_and_otlp_export():
         prompt_tokens=150,
         completion_tokens=45,
         latency_ms=320.5,
+        cost_usd=0.0025,
+        input_value="Explain quantum teleportation in 2 sentences",
+        output_value="Quantum teleportation transfers quantum information using entanglement.",
+        project_name="hath0r-telemetry-eval",
     )
     assert llm_span.attributes["llm.model_name"] == "claude-3-7-sonnet"
     assert llm_span.attributes["llm.token_count.total"] == 195
+    assert llm_span.attributes["llm.cost.total"] == 0.0025
+    assert llm_span.attributes["input.value"] == "Explain quantum teleportation in 2 sentences"
+    assert "entanglement" in llm_span.attributes["output.value"]
+    assert llm_span.attributes["openinference.project.name"] == "hath0r-telemetry-eval"
 
     # Tool Call
     tool_span = tracer.record_tool_call(

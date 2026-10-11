@@ -19,6 +19,8 @@ class EvidenceType(str, Enum):
     PARAMETER_SLIDER = "parameter_slider"
     CRYPTO_SIGNOFF_CARD = "crypto_signoff_card"
     PROMOTION_GATE = "promotion_gate"
+    CHURN_HEATMAP = "churn_heatmap"
+
 
 
 class HandshakeState(str, Enum):

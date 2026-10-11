@@ -146,3 +146,57 @@ def test_ai_gateway_client_end_to_end_and_finops():
     assert finops["total_tokens"] > 0
     assert finops["cache"]["total_hits"] == 1
     assert finops["cache"]["total_misses"] == 2
+
+
+def test_dense_bi_encoder_embeddings_and_paraphrasing():
+    from hath0r_engine.gateway.cache import CacheEmbeddingMode, DenseBiEncoder
+
+    encoder = DenseBiEncoder()
+    assert encoder.dimensions == 384
+
+    # Identical text produces exact 1.0 similarity
+    v1 = encoder.encode("validate git branch naming")
+    v2 = encoder.encode("validate git branch naming")
+    assert len(v1) == 384
+    sim_identical = encoder.cosine_similarity(v1, v2)
+    assert abs(sim_identical - 1.0) < 1e-5
+
+    # Paraphrased prompt in semantic space yields high similarity
+    v_paraphrase = encoder.encode("verify git branch against governance rules")
+    sim_paraphrase = encoder.cosine_similarity(v1, v_paraphrase)
+    assert sim_paraphrase >= 0.80
+
+    # Completely different domain yields lower similarity
+    v_diff = encoder.encode("bake sourdough bread in commercial oven")
+    sim_diff = encoder.cosine_similarity(v1, v_diff)
+    assert sim_diff < sim_paraphrase
+
+
+def test_dense_semantic_cache_paraphrase_hit():
+    from hath0r_engine.gateway.cache import CacheEmbeddingMode
+
+    cache = SemanticCache(similarity_threshold=0.80, mode=CacheEmbeddingMode.DENSE)
+    resp = CompletionResponse(
+        content='{"status": "valid"}',
+        model_used="claude-3-5-haiku",
+        provider_used="portkey",
+        prompt_tokens=30,
+        completion_tokens=10,
+        total_tokens=40,
+        cost_usd=0.0001,
+        latency_ms=15.0,
+    )
+    cache.store("check git branch naming conventions", resp)
+
+    # Paraphrased prompt hits dense cache
+    hit = cache.lookup("verify git branch name against rules")
+    assert hit is not None
+    assert hit.cached is True
+    assert hit.metadata["embedding_mode"] == "dense"
+    assert hit.metadata["semantic_similarity"] >= 0.80
+
+    stats = cache.stats()
+    assert stats["embedding_dimensions"] == 384
+    assert stats["mode"] == "dense"
+    assert stats["total_hits"] == 1
+

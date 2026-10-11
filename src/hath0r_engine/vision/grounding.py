@@ -37,7 +37,7 @@ class VisualGroundingEngine:
         w, h = meta.width, meta.height
 
         # Deterministic spatial projection
-        h_val = int(hashlib.md5(target.lower().encode("utf-8")).hexdigest(), 16)
+        h_val = int(hashlib.sha256(target.lower().encode("utf-8")).hexdigest(), 16)
         ymin = round((h_val % 40) / 100.0 + 0.1, 3)
         xmin = round(((h_val >> 8) % 40) / 100.0 + 0.1, 3)
         ymax = round(ymin + 0.08, 3)

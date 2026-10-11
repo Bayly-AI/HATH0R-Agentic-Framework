@@ -7,7 +7,7 @@ from hath0r_engine.gateway.base import (
     GatewayConfig,
     ModelProvider,
 )
-from hath0r_engine.gateway.cache import CacheEntry, SemanticCache
+from hath0r_engine.gateway.cache import CacheEmbeddingMode, CacheEntry, DenseBiEncoder, SemanticCache
 from hath0r_engine.gateway.client import AIGatewayClient
 from hath0r_engine.gateway.routing import TieredRouter
 from hath0r_engine.gateway.tokenizer_tax import (
@@ -23,7 +23,9 @@ __all__ = [
     "GatewayConfig",
     "CompletionRequest",
     "CompletionResponse",
+    "CacheEmbeddingMode",
     "CacheEntry",
+    "DenseBiEncoder",
     "SemanticCache",
     "TieredRouter",
     "AIGatewayClient",

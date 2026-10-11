@@ -14,6 +14,8 @@ from hath0r_engine.sandbox.base import (
     SandboxProvider,
 )
 
+DAYTONA_NOT_RUNNING = "Daytona workspace is not running."
+
 
 class DaytonaSandboxProvider(SandboxProvider):
     """Daytona Dev Container sandbox provider for long-lived development workspaces."""
@@ -44,7 +46,7 @@ class DaytonaSandboxProvider(SandboxProvider):
     ) -> ExecutionResult:
         """Execute command in Daytona workspace environment."""
         if not self._running:
-            raise RuntimeError("Daytona workspace is not running.")
+            raise RuntimeError(DAYTONA_NOT_RUNNING)
 
         start_time = time.time()
         timeout_val = timeout or (self.config.timeout_seconds if self.config else 300.0)
@@ -96,7 +98,7 @@ class DaytonaSandboxProvider(SandboxProvider):
     def read_file(self, path: str) -> bytes:
         """Read a file from Daytona workspace."""
         if not self._running:
-            raise RuntimeError("Daytona workspace is not running.")
+            raise RuntimeError(DAYTONA_NOT_RUNNING)
         if path in self._workspace_fs:
             return self._workspace_fs[path]
         if os.path.exists(path):
@@ -107,13 +109,13 @@ class DaytonaSandboxProvider(SandboxProvider):
     def write_file(self, path: str, data: bytes) -> None:
         """Write a file into Daytona workspace."""
         if not self._running:
-            raise RuntimeError("Daytona workspace is not running.")
+            raise RuntimeError(DAYTONA_NOT_RUNNING)
         self._workspace_fs[path] = data
 
     def sync_files(self, source_dir: str, target_dir: str) -> int:
         """Sync directory into workspace filesystem."""
         if not self._running:
-            raise RuntimeError("Daytona workspace is not running.")
+            raise RuntimeError(DAYTONA_NOT_RUNNING)
         synced = 0
         if os.path.isdir(source_dir):
             for root, _, files in os.walk(source_dir):
@@ -129,7 +131,7 @@ class DaytonaSandboxProvider(SandboxProvider):
     def snapshot(self, label: str) -> str:
         """Create Daytona workspace snapshot."""
         if not self._running:
-            raise RuntimeError("Daytona workspace is not running.")
+            raise RuntimeError(DAYTONA_NOT_RUNNING)
         snap_id = f"daytona-snap-{uuid.uuid4().hex[:8]}-{label}"
         self._snapshots[snap_id] = dict(self._workspace_fs)
         return snap_id
