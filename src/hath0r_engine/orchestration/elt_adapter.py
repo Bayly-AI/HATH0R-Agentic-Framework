@@ -227,3 +227,116 @@ class ELTEngineAdapter:
                     "payload": data,
                 })
             return events
+
+    def stage_records_batch(
+        self,
+        records: List[Dict[str, Any]],
+        source_type: str = "batch_airflow",
+        default_uri_prefix: str = "airflow/batch",
+    ) -> Dict[str, Any]:
+        """Stage a collection of raw records in a single database transaction.
+
+        Returns summary of ingested, duplicates, and total records.
+        """
+        now = time.time()
+        staged_count = 0
+        duplicate_count = 0
+        staged_ids: List[int] = []
+
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            for idx, item in enumerate(records):
+                if isinstance(item, dict):
+                    payload_val = item.get("payload", item)
+                    payload_str = json.dumps(payload_val) if isinstance(payload_val, (dict, list)) else str(payload_val)
+                    uri = item.get("source_uri", f"{default_uri_prefix}/{int(now * 1000)}_{idx}")
+                    meta = item.get("metadata", {})
+                    s_type = item.get("source_type", source_type)
+                else:
+                    payload_str = str(item)
+                    uri = f"{default_uri_prefix}/{int(now * 1000)}_{idx}"
+                    meta = {}
+                    s_type = source_type
+
+                sha = self._compute_sha256(payload_str)
+                cursor.execute("SELECT id FROM raw_records WHERE content_sha256 = ?", (sha,))
+                row = cursor.fetchone()
+                if row:
+                    duplicate_count += 1
+                else:
+                    cursor.execute(
+                        """
+                        INSERT INTO raw_records (
+                            source_uri, source_type, content_sha256, raw_payload,
+                            content_length, metadata_json, ingested_at, status
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, 'staged')
+                        """,
+                        (uri, s_type, sha, payload_str, len(payload_str), json.dumps(meta), now),
+                    )
+                    staged_count += 1
+                    if cursor.lastrowid is not None:
+                        staged_ids.append(cursor.lastrowid)
+
+            conn.commit()
+
+        return {
+            "total_processed": len(records),
+            "staged_count": staged_count,
+            "duplicate_count": duplicate_count,
+            "staged_ids": staged_ids,
+        }
+
+    def stage_batch_archive(
+        self,
+        archive_path: Path | str,
+        source_type: str = "batch_airflow",
+        metadata: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        """Ingest an external batch archive file (JSON lines, JSON array, or plain text).
+
+        Commonly emitted by enterprise Airflow ELT extraction tasks.
+        """
+        path = Path(archive_path)
+        if not path.exists():
+            raise FileNotFoundError(f"Batch archive not found at: {path}")
+
+        records: List[Dict[str, Any]] = []
+        raw_text = path.read_text(encoding="utf-8")
+
+        # Try parsing as JSON array
+        try:
+            parsed = json.loads(raw_text)
+            if isinstance(parsed, list):
+                for idx, entry in enumerate(parsed):
+                    records.append({
+                        "source_uri": f"{path.name}#{idx}",
+                        "source_type": source_type,
+                        "payload": entry,
+                        "metadata": metadata or {"archive_path": str(path)},
+                    })
+            elif isinstance(parsed, dict):
+                records.append({
+                    "source_uri": f"{path.name}#0",
+                    "source_type": source_type,
+                    "payload": parsed,
+                    "metadata": metadata or {"archive_path": str(path)},
+                })
+        except json.JSONDecodeError:
+            # Fallback to JSONL line-by-line
+            for idx, line in enumerate(raw_text.splitlines()):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    line_data = json.loads(line)
+                except Exception:
+                    line_data = line
+                records.append({
+                    "source_uri": f"{path.name}#line_{idx + 1}",
+                    "source_type": source_type,
+                    "payload": line_data,
+                    "metadata": metadata or {"archive_path": str(path), "line_num": idx + 1},
+                })
+
+        return self.stage_records_batch(records, source_type=source_type)
+
