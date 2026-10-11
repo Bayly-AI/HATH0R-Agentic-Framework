@@ -1,0 +1,31 @@
+version: "1.0"
+default_provider: "vllm" # vllm | litellm | portkey | openai | anthropic | ollama | mock
+
+vllm:
+  endpoint_url: "http://localhost:8000/v1"
+  api_key: ""
+  timeout_seconds: 60.0
+  enable_prefix_caching: true
+  guided_decoding_backend: "outlines"
+  models:
+    light: "Qwen/Qwen2.5-Coder-7B-Instruct"
+    standard: "meta-llama/Llama-3.3-70B-Instruct"
+    reasoning: "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
+  cost_per_1m:
+    input: 0.00
+    output: 0.00
+
+cloud_gateway:
+  provider: "litellm"
+  endpoint_url: "http://localhost:4000/v1"
+  api_key: ""
+
+fallback_chain:
+  - "meta-llama/Llama-3.3-70B-Instruct"
+  - "claude-3-5-sonnet"
+  - "gpt-4o"
+  - "mock-model"
+
+cache:
+  enabled: true
+  similarity_threshold: 0.90
