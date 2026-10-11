@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-11T12:12:27.525253+00:00",
+  "timestamp": "2026-10-11T18:29:52.197855+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -428,6 +428,30 @@
       "is_current": true
     },
     {
+      "id": "contract:hath0r-fargate-profile-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0r AWS EKS Fargate Profile Specification Schema",
+      "content": "Defines the AWS EKS Fargate Profile parameters, subnet routing, pod execution IAM roles, and namespace/label selectors.",
+      "properties": {
+        "schema_id": "https://hath0r.bayly.ai/contracts/hath0r-fargate-profile-v1.schema.json",
+        "path": "contracts/hath0r-fargate-profile-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-cicccdct-state-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0r Continuous Integration, Calibration, Deployment & Training (CIC³DCT / CIC{qubed}DCT) State Schema",
+      "content": "Defines the 4-pillar closed-loop runtime state across Continuous Integration, Calibration, Deployment, and Continuous Training.",
+      "properties": {
+        "schema_id": "https://hath0r.bayly.ai/contracts/hath0r-cicccdct-state-v1.schema.json",
+        "path": "contracts/hath0r-cicccdct-state-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
       "id": "contract:hath0r-cli-diagnostic-v1.schema.json",
       "plane": "knowledge",
       "type": "contract",
@@ -460,6 +484,30 @@
       "properties": {
         "schema_id": "https://schemas.hath0r.dev/hath0r-cli-doctor-v1.schema.json",
         "path": "contracts/hath0r-cli-doctor-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-iac-spec-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0r Infrastructure as Code (IaC) Specification Schema",
+      "content": "Defines the canonical declarative specification for containerization, cryptographic salting, and AWS EKS Fargate deployment across HATH0R repositories.",
+      "properties": {
+        "schema_id": "https://hath0r.bayly.ai/contracts/hath0r-iac-spec-v1.schema.json",
+        "path": "contracts/hath0r-iac-spec-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
+      "id": "contract:hath0r-training-job-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0r Continuous Training Job Specification and Execution Schema",
+      "content": "Defines specifications, hyperparameters, execution status, and evaluation metrics for agent and model continuous training jobs.",
+      "properties": {
+        "schema_id": "https://hath0r.bayly.ai/contracts/hath0r-training-job-v1.schema.json",
+        "path": "contracts/hath0r-training-job-v1.schema.json"
       },
       "is_current": true
     },
@@ -1921,6 +1969,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__procedures__cicccdct-training-procedure_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Cicccdct Training Procedure",
+      "content": "# Procedure: Continuous Training Execution & Dataset Curation (CIC³DCT / CIC{qubed}DCT)\n\n> **Document Type:** Procedure  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-CICCCDCT-001`, `CR-CLI-ENTRY-001`  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258\n\n---\n\n## 1. Purpose & Scope\n\nThis procedure defines the end-to-end execution steps for curating training datasets from agent execution traces, executing continuous fine-tuning (LoRA/QLoRA on local SLMs or DSPy MIPROv2 compilation), and evaluating candidate models.\n\n---\n\n## 2. Step-by-Step Procedure\n\n### Step 1: Ingest & Curate Production Traces\n1. Extract OTel span journals and `EventJournal` logs where assertions succeeded:\n   ```bash\n   hath0r cicccdct dataset curate --min-reward 0.70 --max-samples 1000 --output-file .hath0r/training_datasets/latest_curated.jsonl\n   ```\n2. Verify token statistics and class balance:\n   ```bash\n   hath0r cicccdct dataset stats --dataset .hath0r/training_datasets/latest_curated.jsonl\n   ```\n\n### Step 2: Trigger Continuous Training Job\n1. Execute training with specified target architecture and epochs:\n   ```bash\n   hath0r cicccdct train run --target reasoning_slm --method lo",
+      "properties": {
+        "path": "docs/governance/procedures/cicccdct-training-procedure.md",
+        "category": "procedures",
+        "size_bytes": 2104
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__procedures__phoenix-deployment-procedure_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -1995,6 +2056,19 @@
         "path": "docs/governance/procedures/playwright-ui-testing-procedure.md",
         "category": "procedures",
         "size_bytes": 1075
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__procedures__iac-container-salting-procedure_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Iac Container Salting Procedure",
+      "content": "# Procedure: Container Hardening, Salting & Cryptographic Attestation\n\n> **Document Type:** Standard Operating Procedure (SOP)  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-IAC-001`, `CR-CLI-ENTRY-001`  \n> **Target Subsystems:** Build & Packaging Subsystems, CI Workflows  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#260, Bayly-AI/HATH0R-CLI#442\n\n---\n\n## 1. Purpose & Scope\n\nThis procedure defines the step-by-step instructions for packaging applications into hardened container images, calculating immutable cryptographic digests, attaching digital supply-chain signatures (Cosign), and applying secret salting before deployment to AWS EKS Fargate.\n\n---\n\n## 2. Prerequisites\n\n- HATH0R Operator CLI installed and aliased (`hath0r`).\n- Docker build engine or BuildKit daemon active.\n- AWS CLI configured with valid credentials in `~/.credentials/aws/`.\n- Cosign installed (`cosign version >= 2.0.0`).\n\n---\n\n## 3. Execution Steps\n\n### Step 1: Scaffold Standard Hardened Dockerfile\nRun the operator CLI to generate the multi-stage Dockerfile tailored to the target technology stack:\n\n```bash\nhath0r iac init . --tech-stack <python|node|go|static> --app-name <service-name>\n```\n",
+      "properties": {
+        "path": "docs/governance/procedures/iac-container-salting-procedure.md",
+        "category": "procedures",
+        "size_bytes": 2446
       },
       "is_current": true
     },
@@ -2220,6 +2294,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__strategies__iac-eks-fargate-strategy_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Iac Eks Fargate Strategy",
+      "content": "# Strategy: Infrastructure as Code (IaC), Container Salting & AWS EKS Fargate Deployment\n\n> **Document Type:** Strategy  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-IAC-001`, `CR-CLI-ENTRY-001`, `CR-CLI-FEATURE-STANDARD-001`  \n> **Target Subsystems:** Control Tower (`HATH0R-CLI`), Cognitive Engine, Suite Repositories (`~/Development`)  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#260, Bayly-AI/HATH0R-CLI#441\n\n---\n\n## 1. Executive Summary & Vision\n\nThe HATH0R Infrastructure as Code (IaC) doctrine mandates that all software deliverables across `~/Development`—spanning agentic MCP servers, cognitive runtime backends, UXP web applications, and autonomous CLI bots—are strictly declared, built, cryptographically salted, and deployed via code. Imperative, unversioned server mutations and raw VM configurations are completely prohibited.\n\nOur strategy rests on three unified, immutable pillars:\n1. **Hardened Multi-Stage Containerization**: Every service packages its runtime inside a minimal, non-root container image with zero unnecessary compilers or attack surfaces.\n2. **Cryptographic Container Salting & Supply-Chain Attestation**: Container images are bound to imm",
+      "properties": {
+        "path": "docs/governance/strategies/iac-eks-fargate-strategy.md",
+        "category": "strategies",
+        "size_bytes": 5217
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__strategies__code-churn-analysis-strategy_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2229,6 +2316,19 @@
         "path": "docs/governance/strategies/code-churn-analysis-strategy.md",
         "category": "strategies",
         "size_bytes": 2323
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__strategies__cicccdct-strategy_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Cicccdct Strategy",
+      "content": "# Strategy: Continuous Integration, Calibration, Deployment & Continuous Training ($CIC^3DCT$ / CIC{qubed}DCT)\n\n> **Document Type:** Strategy  \n> **Status:** Ratified Canonical Specification  \n> **Governing Rules:** `CR-CICCCDCT-001`, `CR-CLI-ENTRY-001`, `CR-AGENTGRAPH-001`, `CR-BAI-001`  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #256, #258\n\n---\n\n## 1. Executive Summary & Paradigm Shift\n\nIn generative agent ecosystems, traditional deterministic CI/CD and runtime calibration (CC) address software reliability and hyperparameter stability, but cannot remediate structural cognitive drift when foundational reasoning capabilities degrade or new tools and schemas emerge.\n\n**CIC³DCT** ($CIC^3DCT$, stylized **CIC{qubed}DCT**) establishes a closed-loop 4-pillar methodology:\n1. **Continuous Integration (CI):** Validates deterministic contracts, JSON schemas, AST syntax guardrails, and AgentGraph policy DAGs.\n2. **Continuous Calibration (CC):** Samples span telemetry via `CICCCDCTTelemetryHook` and optimizes hyperparameters (temperature, token budgets, guardrails) using Taguchi Orthogonal Arrays and DSPy few-shot compilation within a 24.0h freshness SLA.\n3. **Continuous De",
+      "properties": {
+        "path": "docs/governance/strategies/cicccdct-strategy.md",
+        "category": "strategies",
+        "size_bytes": 4005
       },
       "is_current": true
     },
@@ -2584,6 +2684,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__runbooks__iac-eks-fargate-deployment-runbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Iac Eks Fargate Deployment Runbook",
+      "content": "# Runbook: AWS EKS Fargate Deployment & Cluster Synchronization\n\n> **Document Type:** Runbook  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-IAC-001`, `CR-BAI-001`, `CR-CICCCDCT-001`  \n> **Target Subsystems:** AWS EKS Clusters, Kubernetes Deployments  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#260, Bayly-AI/HATH0R-CLI#441\n\n---\n\n## 1. Scope & Objective\n\nOperational runbook for provisioning AWS EKS Fargate profiles, validating IAM execution roles, and deploying cryptographically salted container workloads across canonical environments (`development`, `testing`, `staging`, `master`).\n\n---\n\n## 2. Infrastructure Pre-requisites\n\n- **EKS Cluster**: Running Kubernetes >= 1.28.\n- **VPC Subnets**: Minimum 2 private subnets tagged with `kubernetes.io/role/internal-elb: 1`.\n- **Pod Execution Role**: IAM Role with AWS managed policy `AmazonEKSFargatePodExecutionRolePolicy`.\n- **AWS Load Balancer Controller**: Deployed in `kube-system` to provision ALBs for IP target type ingresses.\n\n---\n\n## 3. Deployment Procedure\n\n### Step 1: Render Environment Manifests\nRender the manifests for the target promotion stage:\n\n```bash\nhath0r iac render . --env <development|testing|stagin",
+      "properties": {
+        "path": "docs/governance/runbooks/iac-eks-fargate-deployment-runbook.md",
+        "category": "runbooks",
+        "size_bytes": 3194
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__runbooks__streaming-voice-pipeline-runbook_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2701,6 +2814,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__runbooks__cicccdct-model-promotion-runbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Cicccdct Model Promotion Runbook",
+      "content": "# Runbook: MLflow Model Registry Promotion & Rollback (CIC³DCT / CIC{qubed}DCT)\n\n> **Document Type:** Runbook  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-CICCCDCT-001`, `CR-BAI-001`  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258\n\n---\n\n## 1. Overview\n\nThis runbook guides operators through managing model versions in the MLflow Model Registry across promotion stages (`None`, `Staging`, `Production`) and rolling back to known good checkpoints during regressions.\n\n---\n\n## 2. Model Registry Stages\n\n- `None`: Newly trained candidate model, awaiting benchmark evaluation.\n- `Staging`: Candidate model passed benchmark improvement ($R_{\\text{cand}} \\ge R_{\\text{prod}} + 0.02$) and undergoing integration testing in the `testing`/`staging` branches.\n- `Production`: Actively serving inference queries via the AI Gateway (`AIGatewayClient`).\n\n---\n\n## 3. Operator Commands\n\n### Inspect Registered Models:\n```bash\nhath0r cicccdct model list\n```\n\n### Promote Model to Staging:\n```bash\nhath0r cicccdct model promote --model-name reasoning_slm --version <version_id> --stage Staging\n```\n\n### Promote Model to Production:\n```bash\nhath0r cicccdct model promote --model-name r",
+      "properties": {
+        "path": "docs/governance/runbooks/cicccdct-model-promotion-runbook.md",
+        "category": "runbooks",
+        "size_bytes": 1697
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__workflows__agent-metrics-query-workflow_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2740,6 +2866,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__workflows__cicccdct-continuous-training-workflow_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Cicccdct Continuous Training Workflow",
+      "content": "# Workflow: CIC³DCT Continuous Training Lifecycle (CIC{qubed}DCT)\n\n> **Document Type:** Workflow  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-CICCCDCT-001`, `CR-BAI-001`  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258\n\n---\n\n## 1. Trigger & Prerequisites\n\n- **Schedule Trigger:** Weekly automated cron (`0 2 * * 0`) or drift event alert.\n- **Prerequisites:** MLflow container running, OTel span logs available, golden benchmark suite present.\n\n---\n\n## 2. GitHub Actions / Local Workflow Sequence\n\n```yaml\nname: CICCCDCT Continuous Training & Evaluation\n\non:\n  schedule:\n    - cron: '0 2 * * 0' # Every Sunday at 02:00 UTC\n  workflow_dispatch:\n\njobs:\n  cicccdct-pipeline:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout Code\n        uses: actions/checkout@v4\n\n      - name: Set up Python\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n\n      - name: Validate Contracts & Schema (CI)\n        run: hath0r contracts validate\n\n      - name: Verify Calibration Freshness (CC)\n        run: hath0r cicccdct calibrate\n\n      - name: Curate Execution Traces (CT)\n        run: hath0r cicccdct dataset curate --min-reward 0.75\n\n",
+      "properties": {
+        "path": "docs/governance/workflows/cicccdct-continuous-training-workflow.md",
+        "category": "workflows",
+        "size_bytes": 1440
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__workflows__phoenix-telemetry-workflow_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2749,6 +2888,19 @@
         "path": "docs/governance/workflows/phoenix-telemetry-workflow.md",
         "category": "workflows",
         "size_bytes": 1642
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__workflows__iac-continuous-delivery-workflow_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Iac Continuous Delivery Workflow",
+      "content": "# Workflow: Continuous Delivery of Infrastructure as Code & Salted Containers\n\n> **Document Type:** Workflow  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-IAC-001`, `CR-CICCCDCT-001`, `CR-BAI-001`  \n> **Target Subsystems:** GitHub Actions, AWS EKS Deployment Pipelines  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#260, Bayly-AI/HATH0R-CLI#441\n\n---\n\n## 1. Lifecycle Overview\n\nThis workflow automates the validation, container build, cryptographic salting, and staged continuous delivery of workloads across environments:\n\n```mermaid\nflowchart LR\n    A[Git Push / PR] --> B[IaC Lint & Contract Check]\n    B --> C[Multi-Stage Build]\n    C --> D[Cryptographic Salting]\n    D --> E[Deploy Development]\n    E --> F{Stage Gate}\n    F -->|Promotion| G[Testing]\n    G --> H[Staging]\n    H --> I[Master Production]\n```\n\n---\n\n## 2. Pipeline Stages\n\n### Stage 1: Continuous Integration & IaC Validation\n- Trigger: Pull requests targeting `development`.\n- Actions:\n  - Run `hath0r contracts validate`\n  - Run `hath0r iac validate .`\n  - Run Dockerfile SAST scan (`hadolint` / `trivy`)\n\n### Stage 2: Container Build & Salting\n- Trigger: Merge into `development`.\n- Actions:\n  - Execute mu",
+      "properties": {
+        "path": "docs/governance/workflows/iac-continuous-delivery-workflow.md",
+        "category": "workflows",
+        "size_bytes": 1794
       },
       "is_current": true
     },
@@ -2788,6 +2940,32 @@
         "path": "docs/governance/bot-specs/phoenix-manager-bot-spec.md",
         "category": "bot-specs",
         "size_bytes": 1772
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__bot-specs__cicccdct-managing-bot-spec_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Cicccdct Managing Bot Spec",
+      "content": "# Bot Specification: CIC³DCT Managing Bot (CIC{qubed}DCT)\n\n> **Document Type:** Bot Specification  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-CICCCDCT-001`, `CR-CLI-FEATURE-STANDARD-001`  \n> **Target Module:** `src/hath0r_cli/bots/cicccd_bot.py`  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258, Bayly-AI/HATH0R-CLI#433, #439\n\n---\n\n## 1. Identity & Role\n\n- **Bot Name:** `CICCCDCTManagingBot` (aliased as `CICCCDManagingBot`)\n- **Subsystem:** Control Tower CCCD & Cognitive Training Engine\n- **Primary Mission:** Supervise the 4-pillar closed loop: validate schema contracts and SAST (CI), enforce parameter freshness and Taguchi calibration (CC), manage promotion integrity (CD), and coordinate model dataset curation, fine-tuning, and MLflow Model Registry transitions (CT).\n\n---\n\n## 2. Capability Matrix\n\n| Method | Role | Pillar | Output Contract |\n| :--- | :--- | :--- | :--- |\n| `validate_cicccd()` | Multi-stage gate evaluation | CI, CC, CD, CT | `Dict[str, Any]` with 4-pillar pass/fail |\n| `train_model()` | Dispatches model fine-tuning or prompt compilation | CT | `hath0r-training-job-v1.schema.json` |\n| `curate_dataset()` | Ingests OTel traces and filte",
+      "properties": {
+        "path": "docs/governance/bot-specs/cicccdct-managing-bot-spec.md",
+        "category": "bot-specs",
+        "size_bytes": 1640
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__bot-specs__iac-managing-bot-spec_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Iac Managing Bot Spec",
+      "content": "# Bot Specification: Infrastructure as Code Managing Bot\n\n> **Document Type:** Bot Specification  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-IAC-001`, `CR-CLI-FEATURE-STANDARD-001`  \n> **Target Module:** `src/hath0r_cli/bots/iac_bot.py`  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#260, Bayly-AI/HATH0R-CLI#443\n\n---\n\n## 1. Identity & Role\n\n- **Bot Name:** `IaCManagingBot`\n- **Subsystem:** Control Tower Infrastructure as Code & Container Salting\n- **Primary Mission:** Govern repository infrastructure compliance across `~/Development`: detect missing containerization, scaffold hardened multi-stage Dockerfiles, enforce cryptographic container salting, generate AWS EKS Fargate profiles and Kubernetes manifests, and prevent infrastructure drift.\n\n---\n\n## 2. Capabilities & Operational Methods\n\n### `audit_workspace(path: Path, sweep: bool = False) -> Dict[str, Any]`\n- Evaluates one or all repositories in `path`.\n- Checks:\n  - `has_dockerfile`: Validates existence and checks non-root user and multi-stage syntax.\n  - `has_salting`: Checks presence of digest pins or signing receipts.\n  - `has_fargate`: Checks `fargate-profile.yaml` and `k8s/` directory with valid AL",
+      "properties": {
+        "path": "docs/governance/bot-specs/iac-managing-bot-spec.md",
+        "category": "bot-specs",
+        "size_bytes": 2898
       },
       "is_current": true
     },
@@ -2853,6 +3031,19 @@
         "path": "docs/governance/playbooks/sonarcloud-quality-gate-playbook.md",
         "category": "playbooks",
         "size_bytes": 1276
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__playbooks__cicccdct-training-playbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Cicccdct Training Playbook",
+      "content": "# Playbook: Continuous Training Trigger Conditions & Drift Remediation (CIC³DCT / CIC{qubed}DCT)\n\n> **Document Type:** Playbook  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-CICCCDCT-001`  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258\n\n---\n\n## 1. Trigger Conditions\n\nContinuous Training is triggered automatically or by operator intervention under any of the following conditions:\n\n1. **Model Freshness Exceeded:** $\\Delta t_{\\text{model}} > 168.0\\text{ hours}$ (7 days since last verified model training run).\n2. **Accuracy Drift:** Accuracy on live agent validation checks drops by $\\Delta_{\\text{acc}} > 0.05$.\n3. **Tokenizer FinOps Tax Spike:** Token consumption exceeds baseline budget by $\\Delta_{\\text{tok}} > 0.15$.\n4. **New Tool or Schema Release:** Major or minor version bump in contracts (`contracts/schemas/`).\n\n---\n\n## 2. Remediation Protocol\n\n```mermaid\nflowchart TD\n    Trigger{\"Drift Triggered\\n(Age > 168h OR Drift > 0.05)\"}\n    Trigger -->|Yes| Curate[\"Curate Datasets from EventJournal & OTel Spans\"]\n    Curate --> Train[\"Execute Continuous Training Pipeline (LoRA/MIPROv2)\"]\n    Train --> Eval{\"Evaluate on Golden Benchmark\\n(R_cand >= R_prod +",
+      "properties": {
+        "path": "docs/governance/playbooks/cicccdct-training-playbook.md",
+        "category": "playbooks",
+        "size_bytes": 1894
       },
       "is_current": true
     },
@@ -3126,6 +3317,19 @@
         "path": "docs/governance/playbooks/declarative-dspy-pipeline-playbook.md",
         "category": "playbooks",
         "size_bytes": 1710
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__playbooks__iac-repo-modernization-playbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Iac Repo Modernization Playbook",
+      "content": "# Playbook: Repository Modernization to Infrastructure as Code & EKS Fargate\n\n> **Document Type:** Playbook  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-IAC-001`, `CR-CLI-ENTRY-001`  \n> **Target Subsystems:** Suite Repositories (`~/Development`)  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#260, Bayly-AI/HATH0R-CLI#441\n\n---\n\n## 1. Objective\n\nProvide operational guidance for operators and autonomous bots to modernize existing legacy repositories in `~/Development` that lack containerization, cryptographic salting, or AWS EKS Fargate manifests.\n\n---\n\n## 2. Onboarding Workflow Matrix\n\n```\n┌─────────────────┐     ┌──────────────────┐     ┌──────────────────┐     ┌─────────────────┐\n│ 1. Audit Repo   │ ──> │ 2. Scaffold IaC  │ ──> │ 3. Validate Spec│ ──> │ 4. Open PR &    │\n│ hath0r iac audit│     │ hath0r iac init  │     │hath0r iac validate    │ Deploy Fargate  │\n└─────────────────┘     └──────────────────┘     └──────────────────┘     └─────────────────┘\n```\n\n---\n\n## 3. Execution Phases\n\n### Phase 1: Repository Audit & Technology Detection\nRun the global audit command from `HATH0R-CLI`:\n\n```bash\nhath0r iac audit --sweep /Users/raybayly/Development\n```\n\nFor a",
+      "properties": {
+        "path": "docs/governance/playbooks/iac-repo-modernization-playbook.md",
+        "category": "playbooks",
+        "size_bytes": 3280
       },
       "is_current": true
     },
@@ -3873,6 +4077,6 @@
   ],
   "metadata": {
     "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-framework",
-    "synced_sources": 286
+    "synced_sources": 302
   }
 }
