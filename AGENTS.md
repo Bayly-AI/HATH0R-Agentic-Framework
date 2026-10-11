@@ -32,7 +32,11 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 1. **Start with the CLI (CRITICAL ENTRY GATE)**: When receiving ANY request or starting any task, agents **MUST ALWAYS START WITH THE OPERATOR CLI (`hath0r`)** rather than inventing ad-hoc scripts or direct unverified actions.
 2. **Missing Capability Offer**: If the required connection, MCP, workflow, bot, or factory does not exist in `hath0r`, do **not** silently improvise. Offer to create/register the missing capability and use the original request as the immediate acceptance test.
 3. **Docs before code**: Require procedure/strategy/playbook/runbook (see `docs/governance/workflow-documentation-standard.md`) before scaffolding implementation.
-4. **Detail**: `docs/governance/rules/cr-cli-entry-001.md` · `docs/governance/cli-first-rules.md` · tower canonical: https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md
+4. **CR-CLI-FEATURE-STANDARD-001 (Shared Code in CLI & Artifact Hexad — CRITICAL · CANONICAL)**:
+   - Anything usable across multiple repos MUST live in `HATH0R-CLI`.
+   - Feature packages must include CLI commands, managing bots, workflows, and the documentation hexad (Strategy, Procedure, Playbook, Runbook, Workflow, Bot Spec).
+   - This repo contains declarative configuration files (`cfg/`, `otel.json`, factory YAMLs) that bind to CLI tools.
+5. **Detail**: `docs/governance/rules/cr-cli-entry-001.md` · `docs/governance/cli-first-rules.md` · tower canonical: https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md
 
 ## CR-AGENTGRAPH-001 / CR-RAG-RETRIEVAL-001: Mandatory AgentGraph Querying & Zero-Prompt-Tax Doctrine (CRITICAL — org-wide)
 
@@ -46,6 +50,14 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 4. **Deterministic Tool & Role RBAC**: Use `hath0r agentgraph route --role <role> [--tool <tool>]` to deterministically prune unauthorized tools before execution rather than relying on LLM self-governance.
 5. **Temporal Validity Filtering**: Edges and nodes must be evaluated using `is_valid_at(as_of)` to respect entity state mutations over time.
 6. **Detail**: `docs/governance/rules/cr-agentgraph-001.md`.
+
+## CR-CICCCDCT-001 / CR-CICCCD-001: Continuous Integration, Calibration, Deployment & Continuous Training (CIC³DCT / CIC{qubed}DCT) Methodology (CRITICAL — org-wide)
+
+1. **Continuous Integration (CI)**: All PRs must pass schema contract validation (`hath0r contracts validate`), AgentGraph policy checks (`hath0r agentgraph validate`), AST syntax guardrails, and automated unit tests.
+2. **Continuous Calibration (CC)**: Calibration state freshness limit is $\le 24.0\text{ hours}$. AgentGraph runtime substrate uses `CICCCDCTTelemetryHook` (`src/hath0r_engine/telemetry/cicccd_telemetry.py`) to record span metrics and track parameter drift. Trigger on-demand calibration via `hath0r cicccdct calibrate` or `hath0r cicccd calibrate`.
+3. **Continuous Deployment (CD)**: Maintain automated promotion validation through canonical environments (`development` -> `testing` -> `staging` -> `master`), complete Artifact Hexad documentation, and background auto-tune monitoring via `hath0r cicccdct auto-tune`.
+4. **Continuous Training (CT)**: Model training freshness SLA is $\le 168.0\text{ hours}$ (7 days). Retraining is automatically triggered when accuracy drift $\Delta_{\text{acc}} > 0.05$ or token tax drift $\Delta_{\text{tok}} > 0.15$. Candidate models must beat production baseline on the golden benchmark suite ($R_{\text{candidate}} \ge R_{\text{production}} + 0.02$) and be registered in MLflow Model Registry before promotion to production. Trigger on-demand training via `hath0r cicccdct train run`.
+5. **Detail**: Mathematical $CIC^3DCT$ ($CIC^{\text{qubed}}DCT$) doctrine: `docs/governance/strategies/cicccdct-strategy.md` · `hath0r cicccdct validate` / `hath0r cic3dct validate`.
 
 ## CR-SUBSTRATE-001: Mandatory Cognitive Substrate Technology Utilization (CRITICAL — org-wide)
 
@@ -65,6 +77,28 @@ All agents executing tasks within Hath0r must utilize our unified cognitive modu
 2. **Master Test Case Specification**: Maintain the single source of truth at `tests/e2e/master-playwright-tests.json` conforming to `contracts/hath0r-playwright-test-spec-v1.schema.json`.
 3. **Clean Repo Synchronization**: During Step 7 of the Clean Repo lifecycle (`.agents/skills/clean-repos/`), agents and bots MUST execute test catalog synchronization (`PlaywrightMasterCatalogManager.audit_and_sync_test_cases()`), ensuring all new or modified UI components are cataloged before committing and opening PRs.
 4. **Visual Regression Baselines**: Maintain verified snapshot baselines for visual regression testing (`expectVisualMatch`).
+
+## CR-IAC-001: Mandatory Infrastructure as Code, Container Salting & EKS Fargate Standards (CRITICAL — org-wide)
+
+1. **Mandatory Infrastructure as Code (IaC)**: All services, backends, frontends, bots, and MCP nodes in `~/Development` MUST declare production-ready IaC adhering to `contracts/hath0r-iac-spec-v1.schema.json`. Ad-hoc, imperative host deployments are strictly forbidden.
+2. **Container Hardening Standards**: Every containerized repository MUST provide a multi-stage Dockerfile:
+   - Build stage: Installs dependencies and compiles assets.
+   - Runtime stage: Uses minimal slim/distroless/alpine base images without dev compilers.
+   - User security: Must execute as non-root user (`UID 10001:GID 10001` or equivalent).
+   - Container health: Must define an explicit `HEALTHCHECK` directive.
+   - Filesystem: Runtime root filesystem must be mounted read-only (`readOnlyRootFilesystem: true`) where supported.
+3. **Container Salting & Cryptographic Attestation**:
+   - Container images MUST NOT be deployed using mutable tags (e.g. `:latest`). Deployments must pin immutable cryptographic SHA-256 digests (`image@sha256:...`).
+   - Images must have cryptographic signatures and SLSA provenance attestations verified via Cosign / Sigstore.
+   - Secrets must never be baked into container layers or Git repos. Secret salting and runtime injection must leverage AWS Secrets Manager, Parameter Store, or External Secrets Operator.
+4. **AWS EKS / Fargate Serverless Deployment**:
+   - Deployments must target AWS EKS Fargate using declarative manifests under `k8s/` or `iac/`.
+   - All Fargate pods must adhere to serverless constraints: no `privileged: true`, no `hostPath`, no `hostNetwork`.
+   - Pod resources (`requests` and `limits`) must align strictly with AWS Fargate vCPU and memory allocation brackets (e.g., 0.25 vCPU / 512Mi–2Gi, 0.5 vCPU / 1Gi–4Gi, 1 vCPU / 2Gi–8Gi).
+   - Ingress controllers must declare AWS Application Load Balancer (ALB) with IP target routing (`alb.ingress.kubernetes.io/target-type: ip`).
+   - IAM access must use IAM Roles for Service Accounts (IRSA) with fine-grained least-privilege policies.
+5. **Operator CLI Entry Gate**: All audits, scaffolding, validation, and manifest generation must be executed through `hath0r iac` (`hath0r iac audit`, `hath0r iac init`, `hath0r iac validate`, `hath0r iac salt`, `hath0r iac render`).
+6. **Detail**: `docs/governance/strategies/iac-eks-fargate-strategy.md` · `docs/governance/rules/cr-iac-001.md`.
 
 ## Suite standards (member pointers)
 

@@ -35,7 +35,12 @@ ignore = ["E501"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "lib"]
+
+[tool.setuptools.packages.find]
+where = ["src", "."]
+include = ["hath0r_engine*", "lib*"]
+
 
 [tool.mypy]
 python_version = "3.10"
@@ -48,9 +53,6 @@ Homepage = "https://github.com/Bayly-AI/HATH0R-Agentic-Framework"
 Documentation = "https://github.com/Bayly-AI/HATH0R-Agentic-Framework/tree/development/docs"
 Repository = "https://github.com/Bayly-AI/HATH0R-Agentic-Framework"
 Issues = "https://github.com/Bayly-AI/HATH0R-Agentic-Framework/issues"
-
-[tool.setuptools.packages.find]
-where = ["src"]
 
 [tool.setuptools.package-data]
 hath0r_engine = ["py.typed", "jev/jev.json", "schemas/*.json"]

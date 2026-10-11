@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hath0r.bayly.ai/contracts/hath0r-cicccdct-state-v1.schema.json",
+  "title": "Hath0r Continuous Integration, Calibration, Deployment & Training (CIC³DCT / CIC{qubed}DCT) State Schema",
+  "description": "Defines the 4-pillar closed-loop runtime state across Continuous Integration, Calibration, Deployment, and Continuous Training.",
+  "type": "object",
+  "required": [
+    "active_calibration",
+    "current_parameters",
+    "drift_metrics"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "default": "hath0r.cicccdct.state/1"
+    },
+    "active_calibration": {
+      "type": "boolean",
+      "description": "Indicates whether runtime continuous calibration and drift monitoring is enabled."
+    },
+    "last_run_timestamp": {
+      "type": ["string", "null"],
+      "description": "ISO 8601 UTC timestamp of the most recent calibration run."
+    },
+    "total_calibration_runs": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Cumulative count of executed Taguchi and few-shot calibration runs."
+    },
+    "last_signature": {
+      "type": "string",
+      "description": "Name of the most recently compiled DSPy signature."
+    },
+    "current_parameters": {
+      "type": "object",
+      "description": "Active calibrated runtime parameters applied to agent inference calls.",
+      "properties": {
+        "temperature": { "type": "number", "minimum": 0.0, "maximum": 2.0 },
+        "max_tokens": { "type": "integer", "minimum": 64 },
+        "top_p": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "retry_count": { "type": "integer", "minimum": 0 },
+        "guardrail_threshold": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+      },
+      "additionalProperties": true
+    },
+    "drift_metrics": {
+      "type": "object",
+      "description": "Measured parameter and behavioral drift relative to baseline benchmarks.",
+      "properties": {
+        "accuracy_drift": { "type": "number" },
+        "latency_drift_ms": { "type": "number" },
+        "token_tax_drift": { "type": "number" }
+      },
+      "additionalProperties": true
+    },
+    "training": {
+      "type": "object",
+      "description": "Continuous Training (CT) state tracking active models, dataset volume, and evaluation scores.",
+      "properties": {
+        "active_training": { "type": "boolean", "default": false },
+        "total_training_runs": { "type": "integer", "minimum": 0, "default": 0 },
+        "last_trained_timestamp": { "type": ["string", "null"] },
+        "active_model_name": { "type": "string" },
+        "active_model_version": { "type": ["string", "integer"] },
+        "active_model_stage": {
+          "type": "string",
+          "enum": ["None", "Staging", "Production"]
+        },
+        "mlflow_run_id": { "type": ["string", "null"] },
+        "train_loss": { "type": "number" },
+        "eval_benchmark_reward": { "type": "number" },
+        "candidate_model_improvement": { "type": "number" },
+        "dataset_samples_count": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "history": {
+      "type": "array",
+      "description": "Chronological log of calibration and training executions.",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -144,15 +144,27 @@ class OTELTracerBot:
         completion_tokens: int,
         latency_ms: float,
         temperature: float = 0.7,
+        cost_usd: float = 0.0,
+        input_value: Optional[str] = None,
+        output_value: Optional[str] = None,
+        project_name: Optional[str] = None,
     ) -> TelemetrySpan:
         """Record standard OpenInference LLM telemetry span."""
-        attrs = {
+        attrs: Dict[str, Any] = {
             "llm.model_name": model_name,
             "llm.token_count.prompt": prompt_tokens,
             "llm.token_count.completion": completion_tokens,
             "llm.token_count.total": prompt_tokens + completion_tokens,
             "llm.invocation_parameters.temperature": temperature,
+            "llm.cost.total": cost_usd,
         }
+        if input_value is not None:
+            attrs["input.value"] = str(input_value)
+        if output_value is not None:
+            attrs["output.value"] = str(output_value)
+        if project_name is not None:
+            attrs["openinference.project.name"] = str(project_name)
+
         with self.start_span(f"llm:{model_name}", span_kind="LLM", attributes=attrs) as span:
             span.add_event("token_generation_complete", {"latency_ms": latency_ms})
             return span
@@ -173,6 +185,43 @@ class OTELTracerBot:
         with self.start_span(f"tool:{tool_name}", span_kind="TOOL", attributes=attrs) as span:
             if not success:
                 span.finish(status="ERROR", error=str(output_data))
+            return span
+
+    def record_guardrail_check(
+        self,
+        guardrail_name: str,
+        input_content: str,
+        passed: bool,
+        repaired: bool = False,
+        error_message: Optional[str] = None,
+    ) -> TelemetrySpan:
+        """Record OpenInference guardrail evaluation span."""
+        attrs = {
+            "guardrail.name": guardrail_name,
+            "guardrail.passed": passed,
+            "guardrail.repaired": repaired,
+            "guardrail.input_length": len(input_content),
+        }
+        with self.start_span(f"guardrail:{guardrail_name}", span_kind="GUARDRAIL", attributes=attrs) as span:
+            if not passed:
+                span.finish(status="ERROR", error=error_message or "Guardrail validation failed")
+            return span
+
+    def record_retriever_query(
+        self,
+        retriever_name: str,
+        query: str,
+        result_count: int,
+        latency_ms: float,
+    ) -> TelemetrySpan:
+        """Record OpenInference retriever/KB search span."""
+        attrs = {
+            "retriever.name": retriever_name,
+            "retriever.query": query[:200],
+            "retriever.result_count": result_count,
+            "retriever.latency_ms": latency_ms,
+        }
+        with self.start_span(f"retriever:{retriever_name}", span_kind="RETRIEVER", attributes=attrs) as span:
             return span
 
     def export_otlp_payload(self) -> Dict[str, Any]:
@@ -204,3 +253,8 @@ class OTELTracerBot:
         with path.open("w", encoding="utf-8") as f:
             for s in self.spans:
                 f.write(json.dumps(s.to_dict()) + "\n")
+
+
+AgentObservabilityBot = OTELTracerBot
+agent_observability_bot = AgentObservabilityBot()
+

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hath0r.bayly.ai/contracts/hath0r-gain-envelope-v1.schema.json",
+  "title": "Hath0r GAIN Federated Agent-to-Agent (A2A) Mesh Envelope Schema",
+  "description": "Defines cryptographic envelope contract for federated peer-to-peer message routing, task delegation, and AgentGraph cross-workspace queries.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "envelope_id",
+    "sender_agent_id",
+    "recipient_agent_id",
+    "timestamp",
+    "valid_until",
+    "payload_type",
+    "payload",
+    "signature_hmac"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "hath0r.gain.envelope/1"
+    },
+    "envelope_id": {
+      "type": "string"
+    },
+    "sender_agent_id": {
+      "type": "string"
+    },
+    "recipient_agent_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_until": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "payload_type": {
+      "type": "string",
+      "enum": [
+        "TASK_DELEGATION",
+        "AGENTGRAPH_QUERY",
+        "TELEMETRY_SPAN",
+        "CALIBRATION_SYNC"
+      ]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "signature_hmac": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "allowed_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

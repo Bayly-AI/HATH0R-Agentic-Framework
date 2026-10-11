@@ -28,6 +28,9 @@ def _deserialize_vector(blob: bytes) -> List[float]:
     return list(struct.unpack(f"{num_floats}f", blob))
 
 
+MEMORY_DB = ":memory:"
+
+
 def _cosine_similarity(vec_a: Sequence[float], vec_b: Sequence[float]) -> float:
     """Compute cosine similarity between two float vectors."""
     if len(vec_a) != len(vec_b) or not vec_a:
@@ -35,7 +38,7 @@ def _cosine_similarity(vec_a: Sequence[float], vec_b: Sequence[float]) -> float:
     dot = sum(a * b for a, b in zip(vec_a, vec_b))
     norm_a = math.sqrt(sum(a * a for a in vec_a))
     norm_b = math.sqrt(sum(b * b for b in vec_b))
-    if norm_a == 0.0 or norm_b == 0.0:
+    if norm_a < 1e-9 or norm_b < 1e-9:
         return 0.0
     return float(dot / (norm_a * norm_b))
 
@@ -43,9 +46,9 @@ def _cosine_similarity(vec_a: Sequence[float], vec_b: Sequence[float]) -> float:
 class SQLiteGraphStore:
     """Embedded SQLite storage backend for KnowledgeGraph and MemoryGraph."""
 
-    def __init__(self, db_path: str | Path = ":memory:") -> None:
+    def __init__(self, db_path: str | Path = MEMORY_DB) -> None:
         self.db_path = str(db_path)
-        if self.db_path != ":memory:":
+        if self.db_path != MEMORY_DB:
             Path(self.db_path).parent.mkdir(parents=True, exist_ok=True)
 
         self._conn = sqlite3.connect(self.db_path, check_same_thread=False)
@@ -56,7 +59,7 @@ class SQLiteGraphStore:
         """Initialize database schema, indexes, and FTS5 virtual tables."""
         with self._conn:
             # Enable WAL mode for file-based DBs
-            if self.db_path != ":memory:":
+            if self.db_path != MEMORY_DB:
                 self._conn.execute("PRAGMA journal_mode=WAL;")
                 self._conn.execute("PRAGMA synchronous=NORMAL;")
 

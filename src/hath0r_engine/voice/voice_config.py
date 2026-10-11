@@ -16,7 +16,7 @@ def detect_platform() -> str:
         return "darwin"
     elif sys.platform.startswith("linux"):
         return "linux"
-    elif sys.platform.startswith("win32") or sys.platform.startswith("cygwin"):
+    elif sys.platform.startswith(("win32", "cygwin")):
         return "win32"
     return "agnostic"
 

@@ -4,6 +4,22 @@ from __future__ import annotations
 
 __version__ = "1.0.0"
 
+from hath0r_engine.analysis.ast_gnn import (
+    ASTGNNEdge,
+    ASTGNNNode,
+    ASTGraphNeuralNetwork,
+    PredictiveTestSelectionReport,
+    ast_gnn_engine,
+)
+from hath0r_engine.analysis.pmat_adapter import PmatAdapter, pmat_adapter
+from hath0r_engine.analysis.pmat_stats_engine import PmatStatsEngine, pmat_stats_engine
+from hath0r_engine.bots.agent_metrics_bot import AgentMetricsBot, agent_metrics_bot
+from hath0r_engine.calibration.gain_imputation import (
+    GAINDiscriminator,
+    GAINGenerator,
+    GainImputationEngine,
+    gain_imputation_engine,
+)
 from hath0r_engine.context.context_graph import ContextEdge, ContextGraph, ContextNode
 from hath0r_engine.gateway.base import (
     CompletionRequest,
@@ -12,7 +28,7 @@ from hath0r_engine.gateway.base import (
     GatewayConfig,
     ModelProvider,
 )
-from hath0r_engine.gateway.cache import SemanticCache
+from hath0r_engine.gateway.cache import CacheEmbeddingMode, CacheEntry, DenseBiEncoder, SemanticCache
 from hath0r_engine.gateway.client import AIGatewayClient
 from hath0r_engine.gateway.routing import TieredRouter
 from hath0r_engine.gateway.tokenizer_tax import (
@@ -31,6 +47,7 @@ from hath0r_engine.graph.agent_graph import (
     RuleConflictError,
     RuleCycleError,
     RulePriority,
+    agent_graph_engine,
 )
 from hath0r_engine.graph.agent_rules_graph import AgentRulesGraph
 from hath0r_engine.graph.knowledge_graph import KnowledgeEdge, KnowledgeGraph, KnowledgeGraphExtractor, KnowledgeNode
@@ -58,6 +75,7 @@ from hath0r_engine.mcp.tool_router import DynamicToolRouter, ToolDefinition
 from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 from hath0r_engine.memory.memory_tools import MemoryPagingManager
 from hath0r_engine.memory.reflection import ReflectionEngine
+from hath0r_engine.mesh.gain_federation_router import GainFederationRouter, gain_federation_router
 from hath0r_engine.optimization import (
     ArrayType,
     ExperimentMatrix,
@@ -117,6 +135,12 @@ from hath0r_engine.sandbox.daytona_provider import DaytonaSandboxProvider
 from hath0r_engine.sandbox.e2b_provider import E2BSandboxProvider
 from hath0r_engine.sandbox.local_provider import LocalSandboxProvider
 from hath0r_engine.sandbox.manager import SandboxManager
+from hath0r_engine.telemetry.autoencoder import (
+    AnomalyDetectionReport,
+    AnomalyRecord,
+    TelemetryAutoencoder,
+    telemetry_autoencoder,
+)
 from hath0r_engine.telemetry.otel_tracer import OTELTracerBot, TelemetrySpan
 from hath0r_engine.telemetry.token_telemetry import (
     HistogramBin,
@@ -159,12 +183,18 @@ from hath0r_engine.vision import (
     VisionResult,
     VisualGroundingEngine,
 )
+from hath0r_engine.training import (
+    CandidateModelEvaluator,
+    ContinuousTrainingPipeline,
+    DatasetCurator,
+)
 from hath0r_engine.voice.voice_config import VoiceConfig
 from hath0r_engine.voice.voice_engine import VoiceEngine
 
 __all__ = [
     "__version__",
     "AgentGraphEngine",
+    "agent_graph_engine",
     "AgentRulesGraph",
     "AgentGraphNode",
     "AgentGraphEdge",
@@ -302,4 +332,31 @@ __all__ = [
     "SNRType",
     "calculate_snr",
     "TaguchiEngine",
+    "PmatAdapter",
+    "pmat_adapter",
+    "PmatStatsEngine",
+    "pmat_stats_engine",
+    "ASTGraphNeuralNetwork",
+    "ASTGNNNode",
+    "ASTGNNEdge",
+    "PredictiveTestSelectionReport",
+    "ast_gnn_engine",
+    "GainFederationRouter",
+    "gain_federation_router",
+    "GainImputationEngine",
+    "gain_imputation_engine",
+    "GAINGenerator",
+    "GAINDiscriminator",
+    "CacheEmbeddingMode",
+    "DenseBiEncoder",
+    "TelemetryAutoencoder",
+    "AnomalyRecord",
+    "AnomalyDetectionReport",
+    "telemetry_autoencoder",
+    "AgentMetricsBot",
+    "agent_metrics_bot",
+    "DatasetCurator",
+    "CandidateModelEvaluator",
+    "ContinuousTrainingPipeline",
 ]
+
