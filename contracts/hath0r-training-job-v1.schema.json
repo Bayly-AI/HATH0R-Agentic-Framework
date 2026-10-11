@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hath0r.bayly.ai/contracts/hath0r-training-job-v1.schema.json",
+  "title": "Hath0r Continuous Training Job Specification and Execution Schema",
+  "description": "Defines specifications, hyperparameters, execution status, and evaluation metrics for agent and model continuous training jobs.",
+  "type": "object",
+  "required": [
+    "job_id",
+    "target",
+    "method",
+    "status",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "default": "hath0r.training.job/1"
+    },
+    "job_id": {
+      "type": "string",
+      "description": "Unique identifier for the training execution job."
+    },
+    "target": {
+      "type": "string",
+      "enum": [
+        "reasoning_slm",
+        "light_slm",
+        "prompt_signature",
+        "colpali_adapter",
+        "custom"
+      ],
+      "description": "Target component or model tier for continuous training."
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "lora",
+        "qlora",
+        "dpo",
+        "miprov2",
+        "bootstrap",
+        "full_finetune"
+      ],
+      "description": "Training or prompt compilation methodology."
+    },
+    "dataset_path": {
+      "type": "string",
+      "description": "Path to curated JSONL training dataset."
+    },
+    "dataset_samples": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Number of training demonstration or preference pairs."
+    },
+    "epochs": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 3,
+      "description": "Number of training epochs or optimization cycles."
+    },
+    "learning_rate": {
+      "type": "number",
+      "minimum": 0.0,
+      "default": 0.0002
+    },
+    "batch_size": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 4
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "running",
+        "evaluating",
+        "completed",
+        "failed"
+      ],
+      "description": "Current lifecycle state of the training job."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "ISO 8601 creation timestamp."
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "description": "ISO 8601 completion timestamp."
+    },
+    "mlflow_run_id": {
+      "type": ["string", "null"],
+      "description": "Linked MLflow experiment tracking run identifier."
+    },
+    "model_artifact_uri": {
+      "type": "string",
+      "description": "Storage URI or path for the trained model weights or compiled adapter."
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Training convergence and post-training benchmark evaluation metrics.",
+      "properties": {
+        "train_loss": { "type": "number" },
+        "val_loss": { "type": "number" },
+        "eval_reward": { "type": "number" },
+        "accuracy_improvement": { "type": "number" },
+        "latency_ms": { "type": "number" }
+      },
+      "additionalProperties": true
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Method-specific parameters (e.g. LoRA rank, alpha, temperature).",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -165,6 +165,11 @@ from hath0r_engine.vision import (
     VisionResult,
     VisualGroundingEngine,
 )
+from hath0r_engine.training import (
+    CandidateModelEvaluator,
+    ContinuousTrainingPipeline,
+    DatasetCurator,
+)
 from hath0r_engine.voice.voice_config import VoiceConfig
 from hath0r_engine.voice.voice_engine import VoiceEngine
 
@@ -319,5 +324,8 @@ __all__ = [
     "gain_imputation_engine",
     "AgentMetricsBot",
     "agent_metrics_bot",
+    "DatasetCurator",
+    "CandidateModelEvaluator",
+    "ContinuousTrainingPipeline",
 ]
 
