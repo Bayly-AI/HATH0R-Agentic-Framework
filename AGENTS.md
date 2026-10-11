@@ -78,6 +78,28 @@ All agents executing tasks within Hath0r must utilize our unified cognitive modu
 3. **Clean Repo Synchronization**: During Step 7 of the Clean Repo lifecycle (`.agents/skills/clean-repos/`), agents and bots MUST execute test catalog synchronization (`PlaywrightMasterCatalogManager.audit_and_sync_test_cases()`), ensuring all new or modified UI components are cataloged before committing and opening PRs.
 4. **Visual Regression Baselines**: Maintain verified snapshot baselines for visual regression testing (`expectVisualMatch`).
 
+## CR-IAC-001: Mandatory Infrastructure as Code, Container Salting & EKS Fargate Standards (CRITICAL — org-wide)
+
+1. **Mandatory Infrastructure as Code (IaC)**: All services, backends, frontends, bots, and MCP nodes in `~/Development` MUST declare production-ready IaC adhering to `contracts/hath0r-iac-spec-v1.schema.json`. Ad-hoc, imperative host deployments are strictly forbidden.
+2. **Container Hardening Standards**: Every containerized repository MUST provide a multi-stage Dockerfile:
+   - Build stage: Installs dependencies and compiles assets.
+   - Runtime stage: Uses minimal slim/distroless/alpine base images without dev compilers.
+   - User security: Must execute as non-root user (`UID 10001:GID 10001` or equivalent).
+   - Container health: Must define an explicit `HEALTHCHECK` directive.
+   - Filesystem: Runtime root filesystem must be mounted read-only (`readOnlyRootFilesystem: true`) where supported.
+3. **Container Salting & Cryptographic Attestation**:
+   - Container images MUST NOT be deployed using mutable tags (e.g. `:latest`). Deployments must pin immutable cryptographic SHA-256 digests (`image@sha256:...`).
+   - Images must have cryptographic signatures and SLSA provenance attestations verified via Cosign / Sigstore.
+   - Secrets must never be baked into container layers or Git repos. Secret salting and runtime injection must leverage AWS Secrets Manager, Parameter Store, or External Secrets Operator.
+4. **AWS EKS / Fargate Serverless Deployment**:
+   - Deployments must target AWS EKS Fargate using declarative manifests under `k8s/` or `iac/`.
+   - All Fargate pods must adhere to serverless constraints: no `privileged: true`, no `hostPath`, no `hostNetwork`.
+   - Pod resources (`requests` and `limits`) must align strictly with AWS Fargate vCPU and memory allocation brackets (e.g., 0.25 vCPU / 512Mi–2Gi, 0.5 vCPU / 1Gi–4Gi, 1 vCPU / 2Gi–8Gi).
+   - Ingress controllers must declare AWS Application Load Balancer (ALB) with IP target routing (`alb.ingress.kubernetes.io/target-type: ip`).
+   - IAM access must use IAM Roles for Service Accounts (IRSA) with fine-grained least-privilege policies.
+5. **Operator CLI Entry Gate**: All audits, scaffolding, validation, and manifest generation must be executed through `hath0r iac` (`hath0r iac audit`, `hath0r iac init`, `hath0r iac validate`, `hath0r iac salt`, `hath0r iac render`).
+6. **Detail**: `docs/governance/strategies/iac-eks-fargate-strategy.md` · `docs/governance/rules/cr-iac-001.md`.
+
 ## Suite standards (member pointers)
 
 Index: `docs/governance/SUITE_STANDARDS.md`  
