@@ -4,10 +4,22 @@ from __future__ import annotations
 
 __version__ = "1.0.0"
 
+from hath0r_engine.analysis.ast_gnn import (
+    ASTGNNEdge,
+    ASTGNNNode,
+    ASTGraphNeuralNetwork,
+    PredictiveTestSelectionReport,
+    ast_gnn_engine,
+)
 from hath0r_engine.analysis.pmat_adapter import PmatAdapter, pmat_adapter
 from hath0r_engine.analysis.pmat_stats_engine import PmatStatsEngine, pmat_stats_engine
 from hath0r_engine.bots.agent_metrics_bot import AgentMetricsBot, agent_metrics_bot
-from hath0r_engine.calibration.gain_imputation import GainImputationEngine, gain_imputation_engine
+from hath0r_engine.calibration.gain_imputation import (
+    GAINDiscriminator,
+    GAINGenerator,
+    GainImputationEngine,
+    gain_imputation_engine,
+)
 from hath0r_engine.context.context_graph import ContextEdge, ContextGraph, ContextNode
 from hath0r_engine.gateway.base import (
     CompletionRequest,
@@ -16,7 +28,7 @@ from hath0r_engine.gateway.base import (
     GatewayConfig,
     ModelProvider,
 )
-from hath0r_engine.gateway.cache import SemanticCache
+from hath0r_engine.gateway.cache import CacheEmbeddingMode, CacheEntry, DenseBiEncoder, SemanticCache
 from hath0r_engine.gateway.client import AIGatewayClient
 from hath0r_engine.gateway.routing import TieredRouter
 from hath0r_engine.gateway.tokenizer_tax import (
@@ -123,6 +135,12 @@ from hath0r_engine.sandbox.daytona_provider import DaytonaSandboxProvider
 from hath0r_engine.sandbox.e2b_provider import E2BSandboxProvider
 from hath0r_engine.sandbox.local_provider import LocalSandboxProvider
 from hath0r_engine.sandbox.manager import SandboxManager
+from hath0r_engine.telemetry.autoencoder import (
+    AnomalyDetectionReport,
+    AnomalyRecord,
+    TelemetryAutoencoder,
+    telemetry_autoencoder,
+)
 from hath0r_engine.telemetry.otel_tracer import OTELTracerBot, TelemetrySpan
 from hath0r_engine.telemetry.token_telemetry import (
     HistogramBin,
@@ -318,10 +336,23 @@ __all__ = [
     "pmat_adapter",
     "PmatStatsEngine",
     "pmat_stats_engine",
+    "ASTGraphNeuralNetwork",
+    "ASTGNNNode",
+    "ASTGNNEdge",
+    "PredictiveTestSelectionReport",
+    "ast_gnn_engine",
     "GainFederationRouter",
     "gain_federation_router",
     "GainImputationEngine",
     "gain_imputation_engine",
+    "GAINGenerator",
+    "GAINDiscriminator",
+    "CacheEmbeddingMode",
+    "DenseBiEncoder",
+    "TelemetryAutoencoder",
+    "AnomalyRecord",
+    "AnomalyDetectionReport",
+    "telemetry_autoencoder",
     "AgentMetricsBot",
     "agent_metrics_bot",
     "DatasetCurator",
