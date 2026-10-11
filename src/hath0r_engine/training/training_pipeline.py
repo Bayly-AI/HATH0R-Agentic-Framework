@@ -109,3 +109,32 @@ class ContinuousTrainingPipeline:
         }
 
         return job_result
+
+    def generate_airflow_training_manifest(
+        self,
+        target: str = "reasoning_slm",
+        method: str = "lora",
+        dataset_path: Optional[str] = None,
+        trigger_reason: str = "drift_sla_breach",
+        drift_metrics: Optional[Dict[str, float]] = None,
+    ) -> Dict[str, Any]:
+        """Generate structured Airflow DAG trigger manifest for distributed CT retraining."""
+        manifest_id = f"ct-manifest-{uuid.uuid4().hex[:8]}"
+        return {
+            "schema_version": "hath0r.airflow.training_trigger/1",
+            "manifest_id": manifest_id,
+            "target": target,
+            "method": method,
+            "dataset_path": dataset_path or str(self.curator.output_dir / "default.jsonl"),
+            "trigger_reason": trigger_reason,
+            "drift_metrics": drift_metrics or {"accuracy_drift": 0.06, "freshness_hours": 172.0},
+            "sla_thresholds": {
+                "max_drift": 0.05,
+                "max_freshness_hours": 168.0,
+            },
+            "recommended_gpu_cluster": "k8s-gpu-spot",
+            "recommended_epochs": 5,
+            "callback_webhook": "http://atc.hath0r.internal:8000/api/v1/webhooks/airflow",
+            "created_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        }
+
