@@ -51,13 +51,13 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 5. **Temporal Validity Filtering**: Edges and nodes must be evaluated using `is_valid_at(as_of)` to respect entity state mutations over time.
 6. **Detail**: `docs/governance/rules/cr-agentgraph-001.md`.
 
-## CR-CICCCDCT-001 / CR-CICCCD-001: Continuous Integration, Calibration, Deployment & Continuous Training (CICCCDCT) Methodology (CRITICAL — org-wide)
+## CR-CICCCDCT-001 / CR-CICCCD-001: Continuous Integration, Calibration, Deployment & Continuous Training (CIC³DCT / CIC{qubed}DCT) Methodology (CRITICAL — org-wide)
 
 1. **Continuous Integration (CI)**: All PRs must pass schema contract validation (`hath0r contracts validate`), AgentGraph policy checks (`hath0r agentgraph validate`), AST syntax guardrails, and automated unit tests.
 2. **Continuous Calibration (CC)**: Calibration state freshness limit is $\le 24.0\text{ hours}$. AgentGraph runtime substrate uses `CICCCDCTTelemetryHook` (`src/hath0r_engine/telemetry/cicccd_telemetry.py`) to record span metrics and track parameter drift. Trigger on-demand calibration via `hath0r cicccdct calibrate` or `hath0r cicccd calibrate`.
 3. **Continuous Deployment (CD)**: Maintain automated promotion validation through canonical environments (`development` -> `testing` -> `staging` -> `master`), complete Artifact Hexad documentation, and background auto-tune monitoring via `hath0r cicccdct auto-tune`.
 4. **Continuous Training (CT)**: Model training freshness SLA is $\le 168.0\text{ hours}$ (7 days). Retraining is automatically triggered when accuracy drift $\Delta_{\text{acc}} > 0.05$ or token tax drift $\Delta_{\text{tok}} > 0.15$. Candidate models must beat production baseline on the golden benchmark suite ($R_{\text{candidate}} \ge R_{\text{production}} + 0.02$) and be registered in MLflow Model Registry before promotion to production. Trigger on-demand training via `hath0r cicccdct train run`.
-5. **Detail**: `docs/governance/strategies/cicccdct-strategy.md` · `hath0r cicccdct validate`.
+5. **Detail**: Mathematical $CIC^3DCT$ ($CIC^{\text{qubed}}DCT$) doctrine: `docs/governance/strategies/cicccdct-strategy.md` · `hath0r cicccdct validate` / `hath0r cic3dct validate`.
 
 ## CR-SUBSTRATE-001: Mandatory Cognitive Substrate Technology Utilization (CRITICAL — org-wide)
 

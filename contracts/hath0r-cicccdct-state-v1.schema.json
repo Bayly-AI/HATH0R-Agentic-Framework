@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://hath0r.bayly.ai/contracts/hath0r-cicccdct-state-v1.schema.json",
-  "title": "Hath0r Continuous Integration, Calibration, Deployment & Training (CICCCDCT) State Schema",
+  "title": "Hath0r Continuous Integration, Calibration, Deployment & Training (CIC³DCT / CIC{qubed}DCT) State Schema",
   "description": "Defines the 4-pillar closed-loop runtime state across Continuous Integration, Calibration, Deployment, and Continuous Training.",
   "type": "object",
   "required": [

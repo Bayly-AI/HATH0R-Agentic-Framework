@@ -1,9 +1,9 @@
-# Strategy: Continuous Integration, Calibration, Deployment & Continuous Training (CICCCDCT)
+# Strategy: Continuous Integration, Calibration, Deployment & Continuous Training ($CIC^3DCT$ / CIC{qubed}DCT)
 
 > **Document Type:** Strategy  
 > **Status:** Ratified Canonical Specification  
 > **Governing Rules:** `CR-CICCCDCT-001`, `CR-CLI-ENTRY-001`, `CR-AGENTGRAPH-001`, `CR-BAI-001`  
-> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #256
+> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #256, #258
 
 ---
 
@@ -11,7 +11,7 @@
 
 In generative agent ecosystems, traditional deterministic CI/CD and runtime calibration (CC) address software reliability and hyperparameter stability, but cannot remediate structural cognitive drift when foundational reasoning capabilities degrade or new tools and schemas emerge.
 
-**CICCCDCT** establishes a closed-loop 4-pillar methodology:
+**CIC³DCT** ($CIC^3DCT$, stylized **CIC{qubed}DCT**) establishes a closed-loop 4-pillar methodology:
 1. **Continuous Integration (CI):** Validates deterministic contracts, JSON schemas, AST syntax guardrails, and AgentGraph policy DAGs.
 2. **Continuous Calibration (CC):** Samples span telemetry via `CICCCDCTTelemetryHook` and optimizes hyperparameters (temperature, token budgets, guardrails) using Taguchi Orthogonal Arrays and DSPy few-shot compilation within a 24.0h freshness SLA.
 3. **Continuous Deployment (CD):** Manages strict environment promotions (`dev` -> `test` -> `staging` -> `master`), FinOps auto-tuning, and living documentation hexad synchronization.

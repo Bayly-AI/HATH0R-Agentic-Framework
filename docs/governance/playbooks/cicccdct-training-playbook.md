@@ -1,9 +1,9 @@
-# Playbook: Continuous Training Trigger Conditions & Drift Remediation
+# Playbook: Continuous Training Trigger Conditions & Drift Remediation (CIC³DCT / CIC{qubed}DCT)
 
 > **Document Type:** Playbook  
 > **Status:** Ratified  
 > **Governing Standards:** `CR-CICCCDCT-001`  
-> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255
+> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258
 
 ---
 

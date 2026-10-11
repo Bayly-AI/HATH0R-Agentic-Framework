@@ -1,10 +1,10 @@
-# Bot Specification: CICCCDCT Managing Bot
+# Bot Specification: CIC³DCT Managing Bot (CIC{qubed}DCT)
 
 > **Document Type:** Bot Specification  
 > **Status:** Ratified  
 > **Governing Standards:** `CR-CICCCDCT-001`, `CR-CLI-FEATURE-STANDARD-001`  
 > **Target Module:** `src/hath0r_cli/bots/cicccd_bot.py`  
-> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, Bayly-AI/HATH0R-CLI#433
+> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258, Bayly-AI/HATH0R-CLI#433, #439
 
 ---
 
