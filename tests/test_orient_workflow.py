@@ -7,7 +7,7 @@ from pathlib import Path
 import jsonschema
 import pytest
 
-from hath0r_cli.bots.orient_bot import OrientBot
+from hath0r_engine.bots.orient_bot import OrientBot
 
 
 @pytest.fixture
