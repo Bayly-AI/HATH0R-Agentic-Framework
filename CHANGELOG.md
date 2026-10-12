@@ -5,6 +5,19 @@ All notable changes to the **HATH0R Agentic Framework** will be documented in th
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-10-12
+
+### Added
+- **Orient Workflow & Cognitive Repository Orientation Protocol** (#275):
+  - Added comprehensive Orient Workflow orchestrating 6-stage repository orientation: AgentGraph governance & rules, README architecture mission, application code AST scanning, agent performance metrics & PMAT hotspots, and Continuous Calibration (CCCD) hyperparameter tuning.
+  - Implemented single source of truth report schema contract `contracts/hath0r-orient-report-v1.schema.json`.
+  - Added full Artifact Hexad governance suite (`docs/governance/`): Strategy, Procedure, Playbook, Runbook, Workflow, Bot Spec, and Checklist.
+  - Added agent skill `.agents/skills/orient/SKILL.md` and test suite `tests/test_orient_workflow.py`.
+- **Canonical Residency for OrientBot** (#277):
+  - Implemented `OrientBot` natively in Hath0r Framework cognitive engine at `src/hath0r_engine/bots/orient_bot.py`.
+  - Exported `OrientBot` and `orient_bot` from `hath0r_engine.bots` package.
+  - Supports dynamic arbitrary repository path analysis (`--repo <path>`), AgentGraph rule loading, polyglot AST scanning, PMAT hotspot evaluation, and CCCD calibration execution.
+
 ## [1.4.0] - 2026-10-11
 
 ### Added
