@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-11T18:30:19.676303+00:00",
+  "timestamp": "2026-10-12T10:11:06.239679+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -644,6 +644,18 @@
       "is_current": true
     },
     {
+      "id": "contract:hath0r-orient-report-v1.schema.json",
+      "plane": "knowledge",
+      "type": "contract",
+      "label": "Hath0r Repository Orientation Report Schema",
+      "content": "Defines schema contract for unified repository orientation aggregating AgentGraph governance, README overview, Code scan, Agent Metrics, and CCCD Calibration.",
+      "properties": {
+        "schema_id": "https://hath0r.bayly.ai/contracts/hath0r-orient-report-v1.schema.json",
+        "path": "contracts/hath0r-orient-report-v1.schema.json"
+      },
+      "is_current": true
+    },
+    {
       "id": "contract:hath0r-cli-version-v1.schema.json",
       "plane": "knowledge",
       "type": "contract",
@@ -1068,6 +1080,19 @@
         "path": "docs/architecture/ADR-008-agentgraph-substrate.md",
         "category": "architecture",
         "size_bytes": 9269
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__architecture__ADR-009-hybrid-cognitive-neural-substrate_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Adr 009 Hybrid Cognitive Neural Substrate",
+      "content": "---\nid: ADR-009-hybrid-cognitive-neural-substrate\ntitle: \"ADR-009: Hybrid Cognitive Substrate Neural Network Algorithms Specification\"\nstatus: ratified\ndate: 2026-10-11\nauthor: somesayray\nrepository: Bayly-AI/HATH0R-Agentic-Framework\nissue: 451\ntags: [architecture, adr, neural-network, bi-encoder, gain, gnn, autoencoder, intent-classifier, finops]\n---\n\n# ADR-009: Hybrid Cognitive Substrate Neural Network Algorithms Specification\n\n## 1. Context and Problem Statement\n\nThe Hath0r Agentic Framework and Operator CLI (`hath0r`) execute intensive autonomous agent loops, code refactoring, preflight verification, and distributed telemetry collection. Prior implementations relied heavily on either remote LLM calls (incurring high token taxes, network latency, and FinOps costs) or rigid lexical heuristics (exact string matches, BM25 keyword matching) that failed to handle semantic paraphrasing, complex AST dependency risk propagation, and non-linear telemetry degradation.\n\nTo resolve these challenges, **Epic #451** introduces five zero-dependency, sub-millisecond to sub-second neural network algorithms integrated directly into the Hath0r Cognitive Substrate.\n\n---\n\n## 2. Decision & Neural Algo",
+      "properties": {
+        "path": "docs/architecture/ADR-009-hybrid-cognitive-neural-substrate.md",
+        "category": "architecture",
+        "size_bytes": 5400
       },
       "is_current": true
     },
@@ -2021,6 +2046,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__procedures__orient-procedure_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Orient Procedure",
+      "content": "# Procedure: Repository Orientation Operational Execution\n\n> Canonical Operational Procedure · Hath0r Agentic Framework  \n> Updated: 2026-10-12 · Issue: #275 / CLI #463\n\n## 1. Scope & Prerequisites\n\nThis procedure outlines the deterministic 6-step operational procedure executed whenever an operator or agent triggers `\"orient\"`.\n\n### Prerequisites\n- Operator CLI installed (`hath0r`)\n- Repository root containing `.hath0r/` metadata or `README.md`\n- Active AgentGraph snapshot or capability to build one on demand\n\n---\n\n## 2. Step-by-Step Procedure\n\n### Stage 1: Read Agents & Rules from AgentGraph\n1. Locate `.hath0r/agentgraph/snapshot.json`. If missing, invoke `AgentGraphBot.sync()` to compile on the fly.\n2. Filter nodes on `plane == \"rules\"` and `type == \"agent_role\"`:\n   - Extract role name, ID, permitted tools, forbidden tools, and inherited roles.\n3. Filter nodes on `plane == \"rules\"` and `type == \"rule_policy\"`:\n   - Extract rule ID, label, priority, and restricted actions.\n4. Tally active quad-graph topology statistics (Knowledge, Memory, Rules, Context).\n\n### Stage 2: Read Project README\n1. Locate `README.md` (fallback to `TECH_README.md`).\n2. Extract project title, high-level d",
+      "properties": {
+        "path": "docs/governance/procedures/orient-procedure.md",
+        "category": "procedures",
+        "size_bytes": 2752
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__procedures__voice-subsystem-procedure_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2320,6 +2358,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__strategies__orient-strategy_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Orient Strategy",
+      "content": "# Strategy: Unified Repository Orientation & Cognitive Calibration Strategy\n\n> Canonical Strategy Specification · Hath0r Agentic Framework  \n> Updated: 2026-10-12 · Issue: #275 / CLI #463\n\n## 1. Executive Summary & Strategic Objectives\n\nAutonomous agents and human operators frequently transition across polyglot repositories within the Hath0r suite (`HATH0R-CLI`, `hath0r-framework`, `hath0r-poc`). To prevent cold-start latency, context hallucinations, unauthorized tool invocation, and stale calibration drift, the **Unified Repository Orientation Strategy** establishes a standardized, 6-stage operational protocol triggered by the command `\"orient\"`.\n\nThe strategy fulfills three core pillars:\n1. **Zero-Prompt-Tax Governance Discovery**: Instead of dumping entire rulebooks into LLM context, `orient` extracts scoped agent roles and governing rules directly from the local AgentGraph quad-graph substrate (`KnowledgePlane` + `RulesPlane`).\n2. **Structural Code & Architectural Grounding**: Rapidly outlines the application topology, core classes, entry points, and subsystems via AST symbol parsing and README extraction without exhausting prompt token budgets.\n3. **Continuous Metric & Calibra",
+      "properties": {
+        "path": "docs/governance/strategies/orient-strategy.md",
+        "category": "strategies",
+        "size_bytes": 2447
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__strategies__cicccdct-strategy_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2511,6 +2562,19 @@
         "path": "docs/governance/checklists/pr-release-to-master.md",
         "category": "checklists",
         "size_bytes": 367
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__checklists__orient-checklist_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Orient Checklist",
+      "content": "# Checklist: Repository Orientation Verification Checklist\n\n> Canonical Verification Checklist · Hath0r Agentic Framework  \n> Updated: 2026-10-12 · Issue: #275 / CLI #463\n\nThis checklist must be satisfied before completing any repository orientation task.\n\n- [ ] **Stage 1: AgentGraph Reading**\n  - [ ] AgentGraph snapshot loaded or synchronized from `.hath0r/agentgraph/snapshot.json`.\n  - [ ] Agent roles extracted with permitted and forbidden tool sets.\n  - [ ] Governing rules extracted with priority and restricted actions.\n- [ ] **Stage 2: Project README Reading**\n  - [ ] Root `README.md` or `TECH_README.md` discovered and parsed.\n  - [ ] Project title, mission statement, and core components summarized.\n- [ ] **Stage 3: Application Code Scan**\n  - [ ] Codebase files scanned across source folders (`src/`, `lib/`, `contracts/`).\n  - [ ] Primary programming languages identified with file distribution.\n  - [ ] Key AST symbols and entry points outlined.\n- [ ] **Stage 4: Agent Metrics**\n  - [ ] Observability latency quantiles (P50, P90, P99) extracted.\n  - [ ] Token telemetry histogram distribution generated.\n  - [ ] PMAT code churn, provability, complexity, and hotspot count evaluated.\n",
+      "properties": {
+        "path": "docs/governance/checklists/orient-checklist.md",
+        "category": "checklists",
+        "size_bytes": 1595
       },
       "is_current": true
     },
@@ -2775,6 +2839,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__runbooks__orient-runbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Orient Runbook",
+      "content": "# Runbook: Orient Bot & CLI Operational Runbook\n\n> Canonical Operational Runbook · Hath0r Agentic Framework  \n> Updated: 2026-10-12 · Issue: #275 / CLI #463\n\n## 1. System Overview\n\n`OrientBot` (`hath0r orient`) services operator and autonomous agent requests for complete repository orientation. It executes a 6-stage cognitive walkthrough, extracting AgentGraph rules, README architecture, AST code symbols, performance observability, and CCCD calibration before returning a dual-mode TUI/Markdown report.\n\n---\n\n## 2. Operator Execution Commands\n\n### Run via Operator CLI\n```bash\n# Standard repository orientation\nhath0r orient\n\n# Orient a specific target repository path\nhath0r orient --repo /path/to/repo\n\n# Output in Markdown format (ideal for CI, logging, and piping)\nhath0r orient --markdown\n\n# Output as raw JSON payload matching schema contract\nhath0r orient --json\n```\n\n### Run via Conversational Agent Trigger\nWhen prompted in agent dialogue with `\"orient\"`, `\"run orient\"`, or `\"orient repo\"`, the agent executes the orient procedure and presents the structured report.\n\n---\n\n## 3. Failure Modes & Troubleshooting\n\n| Symptom | Root Cause | Operator Action |\n| :--- | :--- | :--- |\n| `Agent",
+      "properties": {
+        "path": "docs/governance/runbooks/orient-runbook.md",
+        "category": "runbooks",
+        "size_bytes": 1583
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__runbooks__pmat-engine-runbook_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2892,6 +2969,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__workflows__orient-workflow_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Orient Workflow",
+      "content": "# Workflow: Repository Orientation Workflow\n\n> Canonical Workflow Definition · Hath0r Agentic Framework  \n> Updated: 2026-10-12 · Issue: #275 / CLI #463\n\n```mermaid\nflowchart TD\n    A[\"Operator / Agent Trigger: 'orient' (or 'hath0r orient')\"] --> B[\"Step 1: Read Agents & Rules from AgentGraph\"]\n    B --> C[\"Step 2: Read Project README & Architecture Summary\"]\n    C --> D[\"Step 3: Scan Codebase AST & Application Structure\"]\n    D --> E[\"Step 4: Run Agent Metrics (Observability, Telemetry & PMAT)\"]\n    E --> F[\"Step 5: Run Agent Calibration (CCCD Parameter Loop)\"]\n    F --> G[\"Aggregate into hath0r-orient-report-v1 Schema Contract\"]\n    G --> H{\"Terminal UI (TUI) Supported?\"}\n    H -- Yes --> I[\"Render Rich TUI Scorecards, Topology & Panels\"]\n    H -- No / Fallback --> J[\"Render Comprehensive GitHub-Flavored Markdown Report\"]\n    I & J --> K[\"Ingest Orientation Execution Node into AgentGraph ContextPlane\"]\n    K --> L[\"Return Orientation Report & Verdict to Operator\"]\n```\n\n## Supported Intent Triggers\n1. `\"orient\"`\n2. `\"hath0r orient\"`\n3. `\"run orient\"`\n4. `\"orient repository\"`\n5. `\"orientation report\"`\n6. `\"system orientation\"`\n\n## Six Core Execution Stages\n1. **AgentGraph Retrieval",
+      "properties": {
+        "path": "docs/governance/workflows/orient-workflow.md",
+        "category": "workflows",
+        "size_bytes": 2294
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__workflows__iac-continuous-delivery-workflow_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2966,6 +3056,19 @@
         "path": "docs/governance/bot-specs/iac-managing-bot-spec.md",
         "category": "bot-specs",
         "size_bytes": 2898
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__bot-specs__orient-bot-spec_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Orient Bot Spec",
+      "content": "# Bot Specification: OrientBot\n\n> Canonical Bot Specification · Hath0r Agentic Framework  \n> Updated: 2026-10-12 · Issue: #275 / CLI #463\n\n## 1. Role & Identity\n\n- **Bot Name**: `orient-bot`\n- **Class Name**: `OrientBot`\n- **Subsystem**: `HATH0R-CLI` (`src/hath0r_cli/bots/orient_bot.py`)\n- **CLI Command**: `hath0r orient`\n- **Primary Function**: Autonomous micro-bot servicing operator and agent requests for repository orientation, multi-plane AgentGraph reading, README summarization, AST code scanning, agent metrics retrieval, and continuous calibration.\n\n---\n\n## 2. Supported Conversational Intents\n\n1. `\"orient\"`\n2. `\"hath0r orient\"`\n3. `\"run orient\"`\n4. `\"orient repository\"`\n5. `\"orientation report\"`\n6. `\"system orientation\"`\n7. `\"repo orient\"`\n\n---\n\n## 3. Subsystem Integrations & RBAC\n\n- `AgentGraphBot`: Reads Agent Roles, Rules & Invariants, and Topology from `.hath0r/agentgraph/snapshot.json`.\n- `CodeParser`: Scans codebase files and parses AST symbols (classes, methods, functions).\n- `AgentMetricsBot`: Pulls observability metrics, token histogram, and PMAT multi-dimensional stats.\n- `CICCCDBot`: Evaluates and executes Continuous Calibration (CCCD) loop.\n- `AgentGraphEngine`: I",
+      "properties": {
+        "path": "docs/governance/bot-specs/orient-bot-spec.md",
+        "category": "bot-specs",
+        "size_bytes": 1274
       },
       "is_current": true
     },
@@ -3278,6 +3381,19 @@
         "path": "docs/governance/playbooks/gain-imputation-calibration-playbook.md",
         "category": "playbooks",
         "size_bytes": 539
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__playbooks__orient-playbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Orient Playbook",
+      "content": "# Playbook: Repository Orientation Anomaly Diagnostic & Remediation\n\n> Canonical Remediation Playbook · Hath0r Agentic Framework  \n> Updated: 2026-10-12 · Issue: #275 / CLI #463\n\n## 1. Trigger Conditions\n\nThis playbook is activated when `OrientBot` encounters anomalies during orientation:\n- **AgentGraph Desync**: AgentGraph snapshot missing, corrupt, or containing 0 rules.\n- **Uncalibrated Runtime State**: Continuous Calibration (CCCD) status is stale ($> 24\\text{h}$) or parameters failed convergence.\n- **High Architectural Risk**: PMAT reports Composite Hotspot Risk Index $R(f) \\ge 0.75$ or provability score $< 0.85$.\n- **Missing Project Identity**: Root repository missing `README.md` or missing ecosystem member definition.\n\n---\n\n## 2. Diagnostic & Remediation Protocol\n\n```mermaid\nflowchart TD\n    A[\"Anomaly Detected during 'orient'\"] --> B{\"Anomaly Class\"}\n    B -- AgentGraph Desync --> C[\"Execute 'hath0r agentgraph sync'\"]\n    B -- Stale Calibration --> D[\"Execute 'hath0r cicccd calibrate'\"]\n    B -- High PMAT Risk --> E[\"Review PMAT Remediation Protocol Items\"]\n    B -- Missing README --> F[\"Scaffold Canonical README from Template\"]\n    C & D & E & F --> G[\"Re-run 'hath0r orien",
+      "properties": {
+        "path": "docs/governance/playbooks/orient-playbook.md",
+        "category": "playbooks",
+        "size_bytes": 1821
       },
       "is_current": true
     },
@@ -3737,6 +3853,19 @@
       "is_current": true
     },
     {
+      "id": "doc:_hath0r__knowledgebase__lessons-learned__pr-457_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pr 457",
+      "content": "# Knowledge share pr-457\n\n- **Generated:** 2026-10-11T21:11:04.667365+00:00\n- **Repo:** Bayly-AI/HATH0R-CLI\n- **PR:** 457\n\n## Summary\nCLI Neural Intent Classifier, Predictive Preflight AST GNN, and Telemetry Autoencoder Observability\n",
+      "properties": {
+        "path": ".hath0r/knowledgebase/lessons-learned/pr-457.md",
+        "category": "lessons-learned",
+        "size_bytes": 234
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:_hath0r__knowledgebase__lessons-learned__share-20261005T111745Z_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -3811,6 +3940,19 @@
         "path": ".hath0r/knowledgebase/lessons-learned/share-20261005T100537Z.md",
         "category": "lessons-learned",
         "size_bytes": 320
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:_hath0r__knowledgebase__lessons-learned__pr-264_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pr 264",
+      "content": "# Knowledge share pr-264\n\n- **Generated:** 2026-10-11T21:11:01.424512+00:00\n- **Repo:** Bayly-AI/HATH0R-Agentic-Framework\n- **PR:** 264\n\n## Summary\nHybrid Cognitive Substrate Neural Network Algorithms (DenseBiEncoder, GAIN, AST GNN, Telemetry Autoencoder)\n",
+      "properties": {
+        "path": ".hath0r/knowledgebase/lessons-learned/pr-264.md",
+        "category": "lessons-learned",
+        "size_bytes": 256
       },
       "is_current": true
     },
@@ -4077,6 +4219,6 @@
   ],
   "metadata": {
     "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-framework",
-    "synced_sources": 302
+    "synced_sources": 313
   }
 }
