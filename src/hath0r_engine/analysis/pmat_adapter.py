@@ -12,8 +12,11 @@ import json
 import logging
 import shutil
 import subprocess
+import ast
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
+
+from hath0r_engine.analysis.pmat_stats_engine import is_analyzable_code_file
 
 logger = logging.getLogger("hath0r.analysis.pmat")
 
@@ -271,6 +274,8 @@ class PmatAdapter:
         total_churn_lines = 0
 
         for fpath, churn_count in file_churn.items():
+            if not is_analyzable_code_file(fpath):
+                continue
             added = file_added[fpath]
             deleted = file_deleted[fpath]
             lines_churn = added + deleted
@@ -317,6 +322,9 @@ class PmatAdapter:
         if not file_path.exists() or not file_path.is_file():
             return 1.0
 
+        if not is_analyzable_code_file(str(file_path)):
+            return 1.0
+
         try:
             content = file_path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
@@ -326,13 +334,32 @@ class PmatAdapter:
         if not lines:
             return 1.0
 
-        branching_keywords = {"if ", "elif ", "for ", "while ", "case ", "catch ", "except ", "match "}
-        branch_count = sum(
-            1 for line in lines for kw in branching_keywords if kw in line.strip()
-        )
-        deep_indent_count = sum(1 for line in lines if len(line) - len(line.lstrip(" ")) >= 12)
+        if file_path.suffix.lower() == ".py":
+            try:
+                tree = ast.parse(content)
+                cyclomatic = 1.0
+                for node in ast.walk(tree):
+                    if isinstance(node, (ast.If, ast.IfExp, ast.For, ast.AsyncFor, ast.While, ast.Try, ast.ExceptHandler, ast.With, ast.AsyncWith, ast.Assert)):
+                        cyclomatic += 1.0
+                    elif isinstance(node, ast.BoolOp):
+                        cyclomatic += max(1, len(node.values) - 1)
+                    elif isinstance(node, (ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp)):
+                        cyclomatic += len(node.generators)
+                    elif hasattr(ast, "Match") and isinstance(node, (ast.Match, getattr(ast, "match_case", (ast.AST,)))):
+                        cyclomatic += 1.0
+                return round(min(50.0, cyclomatic), 2)
+            except SyntaxError:
+                pass
 
-        raw_score = 1.0 + (branch_count * 0.5) + (deep_indent_count * 0.2)
+        branching_keywords = {"if ", "elif ", "for ", "while ", "case ", "catch ", "except ", "match "}
+        branch_count = 0
+        for line in lines:
+            stripped = line.strip()
+            if not stripped or stripped.startswith(("#", "//", "/*", "*")):
+                continue
+            branch_count += sum(1 for kw in branching_keywords if kw in stripped)
+
+        raw_score = 1.0 + (branch_count * 0.5)
         return round(min(50.0, raw_score), 2)
 
     def get_hotspots(

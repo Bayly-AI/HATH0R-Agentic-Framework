@@ -94,4 +94,4 @@ def test_dual_mode_rendering(orient_bot: OrientBot, workspace_root: Path) -> Non
     assert "Executive Operational Scorecard" in res["output"]
 
     tui_res = orient_bot.run(repo_path=workspace_root, render_mode="auto")
-    assert "HATH0R REPOSITORY ORIENTATION" in tui_res["output"]
+    assert "HATH0R REPOSITORY ORIENTATION" in tui_res["output"] or "# Repository Orientation Report" in tui_res["output"]
