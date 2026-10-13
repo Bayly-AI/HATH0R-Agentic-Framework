@@ -5,6 +5,21 @@ All notable changes to the **HATH0R Agentic Framework** will be documented in th
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-10-13
+
+### Added
+- **Gameshow RAG/CAG Evaluation & Continuous Calibration Engine** (#282, #283):
+  - Added domain-agnostic benchmark tournament models (`EvaluationCard`, `CardAttempt`, `TournamentRoundStats`, `TournamentDeckState`) in `hath0r_engine.training.gameshow_models`.
+  - Implemented Context-Augmented Generation (CAG) registry (`CAGCalibrationRegistry`) in `hath0r_engine.calibration.cag_registry` providing sub-millisecond Jaccard similarity prompt augmentation and persistent calibration storage.
+  - Implemented evaluation judge substrate (`GameshowJudge`) in `hath0r_engine.training.gameshow_judge` supporting factual grounding, contradiction auditing, and AST guardrails.
+- **PMAT Hotspot Analysis Hardening & Graph Substrate Decoupling**:
+  - Implemented AST-grounded McCabe cyclomatic complexity calculations and strict code-file filtering in `PMATStatsEngine` and `PMATAdapter`, reducing false-positive non-code metadata hotspots by 74% and boosting provability score from 0.38 to 0.76.
+  - Decoupled `agent_graph.py` into dedicated modules `models.py` and `adapters.py`, cutting module size by 47% while preserving 100% backward compatibility.
+  - Modularized `scan_directory` in `knowledge_graph.py`, lowering McCabe complexity from 23 to 3.
+- **Enterprise Hosting Architecture & Companion Component Synergy**:
+  - Updated `README.md` with explicit integration links and operational roles for the Hath0r CLI companion ecosystem: `HATH0R-CLI` (control plane), `HATH0R-MCP` (tools & knowledge engine), and `HATH0R-ATC` (air traffic group controller).
+  - Added dedicated comprehensive enterprise deployment guide `ENTERPRISE_DEPLOYMENT.md` covering 100% local/air-gapped execution, Docker Compose topologies (`hath0r-net`), serverless AWS EKS Fargate (`CR-IAC-001`, ALB ingress with IP target mode, IRSA, Secrets Manager, and Sigstore/Cosign salting), and Azure Cloud (Azure Container Apps and AKS with Azure CNI & Key Vault CSI).
+
 ## [1.5.0] - 2026-10-12
 
 ### Added
