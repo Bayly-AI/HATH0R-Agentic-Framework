@@ -74,6 +74,45 @@ Enterprises scaling autonomous AI agents face three existential bottlenecks: **r
 
 *Or install globally via package manager:* `pipx install hath0r-cli` | `npm install ./release/javascript/node/hath0r-node-0.3.0.tgz`
 
+---
+
+## 🌐 Enterprise Ecosystem: Required Companion Components for HATH0R CLI
+
+Operating the HATH0R autonomous engineering ecosystem relies on four interoperable pillars. To execute tool calls, coordinate multi-agent topologies, and ingest knowledgebases, link your environment with the following companion systems:
+
+| Ecosystem Component | Repository & Package | Operational Role & Capabilities |
+| :--- | :--- | :--- |
+| **HATH0R Operator CLI** | [**Bayly-AI/HATH0R-CLI**](https://github.com/Bayly-AI/HATH0R-CLI) | **Central Operator Control Plane & Gateway**: The single user/bot binary entry gate. Enforces AgentGraph policies, runs preflight audits, controls Docker topologies, and manages FinOps budgets. |
+| **HATH0R MCP Server** | [**Bayly-AI/HATH0R-MCP**](https://github.com/Bayly-AI/HATH0R-MCP) | **Model Context Protocol (MCP) Tools & Knowledge Engine**: Provides JSON-RPC tools (`kb_search`, `kb_get_document`, `suite_info`) over streamable HTTP transport (`/mcp`) for IDEs (VS Code, Cursor, Antigravity) and autonomous agents. |
+| **HATH0R ATC Controller** | [**Bayly-AI/HATH0R-ATC**](https://github.com/Bayly-AI/HATH0R-ATC) | **Air Traffic Control & Runtime Orchestrator**: Central group controller, observation tower, and Docker-group cluster coordinator managing inter-agent communication, telemetry lineages, and shared edge gateways. |
+| **HATH0R Agentic Framework** | [**Bayly-AI/HATH0R-Agentic-Framework**](https://github.com/Bayly-AI/HATH0R-Agentic-Framework) | **Cognitive Substrate & Safety Core**: (This repository) Houses the Tri-Graph RAG/CAG substrate, deterministic AST guardrails, Gameshow calibration engine, and FinOps Tokenizer Tax auditor. |
+
+---
+
+## 🏢 Enterprise System Architecture & Flexible Hosting Models
+
+HATH0R is an **Enterprise Cognitive Operating System** engineered for zero-trust compliance, mathematical parameter robustness, and autonomous engineering at enterprise scale. It is architected for flexible deployment across local workstations, private data centers, and enterprise hyperscale clouds:
+
+```text
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                          SUPPORTED ENTERPRISE HOSTING MODES                            │
+├─────────────────────────┬────────────────────────────┬─────────────────────────────────┤
+│ 1. 100% LOCAL / ON-PREM │ 2. AWS CLOUD (SERVERLESS)  │ 3. AZURE CLOUD (CONTAINER APPS) │
+├─────────────────────────┼────────────────────────────┼─────────────────────────────────┤
+│ • Zero cloud egress     │ • AWS EKS Fargate pods     │ • Azure Container Apps (ACA)    │
+│ • Air-gapped workstation│ • Amazon ECS Fargate       │ • Azure Kubernetes Service (AKS)│
+│ • Standalone CLI binary │ • ALB IP target-type routing│ • Azure Key Vault integration  │
+│ • Docker Compose stack  │ • AWS Secrets Manager & IRSA│ • Azure CNI & App Insights     │
+│ • Local Redis & NGINX   │ • Cosign salted digests    │ • OpenTelemetry traces          │
+└─────────────────────────┴────────────────────────────┴─────────────────────────────────┘
+```
+
+- 💻 **100% Local / Air-Gapped Workstations:** Run natively via the standalone CLI binary with zero internet connectivity, or host containerized developer stacks using Docker Compose on network `hath0r-net` with local Redis and NGINX edge routing.
+- ☁️ **AWS Cloud Deployment:** Deploy hardened, non-root containers (`UID 10001:GID 10001`) onto serverless **AWS EKS Fargate** or **Amazon ECS Fargate** conforming to `CR-IAC-001`. Leverage Application Load Balancers with IP target mode (`target-type: ip`), IAM Roles for Service Accounts (IRSA), AWS Secrets Manager, and Sigstore/Cosign immutable digest salting.
+- 🔷 **Azure Cloud Deployment:** Deploy onto **Azure Container Apps (ACA)** for serverless microservices or **Azure Kubernetes Service (AKS)** using Azure CNI, Azure Key Vault Secrets Store CSI Driver, and Application Insights distributed telemetry.
+
+👉 **Comprehensive Step-by-Step Guide:** See [**ENTERPRISE_DEPLOYMENT.md**](ENTERPRISE_DEPLOYMENT.md) for production Kubernetes manifests, Docker Compose stacks, Azure CLI commands, container salting procedures, and operational runbooks.
+
 
 ---
 
@@ -152,8 +191,9 @@ hath0r memory search "governance policies"
 
 For developers, architects, and machine learning engineers implementing or extending cognitive subsystems:
 - 📖 **Deep Technical Architecture & Code Examples:** [TECH_README.md](TECH_README.md)
+- 🚀 **Enterprise Hosting & Deployment Guide (Docker, AWS, Azure):** [ENTERPRISE_DEPLOYMENT.md](ENTERPRISE_DEPLOYMENT.md)
 - 📐 **Contract Schemas:** Located in [`contracts/`](contracts/)
-- 🧪 **Test Suite:** **178 passing unit & integration tests** across all cognitive modules (`pytest -q`)
+- 🧪 **Test Suite:** **282 passing unit & integration tests** across all cognitive modules (`pytest -q`)
 - 🏛️ **Control Tower:** [Bayly-AI/HATH0R-CLI](https://github.com/Bayly-AI/HATH0R-CLI)
 
 ---
