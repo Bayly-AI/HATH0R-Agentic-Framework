@@ -517,78 +517,81 @@ class KnowledgeGraphExtractor:
         return data
 
     @classmethod
+    def _is_ignored_path(cls, file_path: Path, root: Path) -> bool:
+        """Check if path is inside an ignored directory."""
+        parts = file_path.relative_to(root).parts
+        return any(p.startswith(".") and p != ".hath0r" for p in parts[:-1])
+
+    @classmethod
+    def _extract_string_or_list(cls, val: Any) -> List[str]:
+        """Normalize frontmatter field to list of string identifiers."""
+        if not val:
+            return []
+        if isinstance(val, list):
+            return [str(item) for item in val if item]
+        return [str(val)]
+
+    @classmethod
+    def _extract_node(cls, file_path: Path, root: Path) -> Optional[Tuple[KnowledgeNode, List[KnowledgeEdge]]]:
+        """Extract a single KnowledgeNode and associated edges from a Markdown file."""
+        try:
+            content = file_path.read_text(encoding="utf-8")
+        except Exception:
+            return None
+
+        rel_str = str(file_path.relative_to(root))
+        parts = file_path.relative_to(root).parts
+        fm = cls.parse_frontmatter(content)
+
+        node_id = fm.get("id") or rel_str
+        node_type = fm.get("type") or ("procedure" if "procedure" in rel_str else "document")
+
+        title = fm.get("title")
+        if not title:
+            match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
+            title = match.group(1).strip() if match else file_path.stem
+
+        subsystem = parts[0] if len(parts) > 1 else "root"
+
+        node = KnowledgeNode(
+            id=node_id,
+            type=node_type,
+            title=title,
+            path=rel_str,
+            subsystem=subsystem,
+            content=content,
+            properties=fm,
+        )
+
+        edges: List[KnowledgeEdge] = []
+        for dep in cls._extract_string_or_list(fm.get("depends_on")):
+            edges.append(KnowledgeEdge(source=node_id, target=dep, relation="depends_on"))
+        for imp in cls._extract_string_or_list(fm.get("implements")):
+            edges.append(KnowledgeEdge(source=node_id, target=imp, relation="implements"))
+        for gov in cls._extract_string_or_list(fm.get("governed_by")):
+            edges.append(KnowledgeEdge(source=node_id, target=gov, relation="governed_by"))
+
+        for m in re.finditer(r"\[([^\]]+)\]\(([^)]+\.md)\)", content):
+            target_link = m.group(2).strip()
+            if not target_link.startswith("http"):
+                edges.append(KnowledgeEdge(source=node_id, target=target_link, relation="references"))
+
+        return node, edges
+
+    @classmethod
     def scan_directory(cls, root_path: Path | str) -> KnowledgeGraph:
         """Scan directory tree for Markdown and contract files to build the graph."""
         root = Path(root_path)
         kg = KnowledgeGraph()
 
         for file_path in root.rglob("*.md"):
-            # Skip hidden folders except .hath0r
-            parts = file_path.relative_to(root).parts
-            if any(p.startswith(".") and p != ".hath0r" for p in parts[:-1]):
+            if cls._is_ignored_path(file_path, root):
                 continue
-
-            try:
-                content = file_path.read_text(encoding="utf-8")
-            except Exception:
-                continue
-
-            rel_str = str(file_path.relative_to(root))
-            fm = cls.parse_frontmatter(content)
-
-            # Determine node type and title
-            node_id = fm.get("id") or rel_str
-            node_type = fm.get("type") or ("procedure" if "procedure" in rel_str else "document")
-
-            # Extract first heading if title missing
-            title = fm.get("title")
-            if not title:
-                match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
-                title = match.group(1).strip() if match else file_path.stem
-
-            subsystem = parts[0] if len(parts) > 1 else "root"
-
-            node = KnowledgeNode(
-                id=node_id,
-                type=node_type,
-                title=title,
-                path=rel_str,
-                subsystem=subsystem,
-                content=content,
-                properties=fm,
-            )
-            kg.add_node(node)
-
-            # Extract frontmatter edges
-            for dep in (
-                fm.get("depends_on", [])
-                if isinstance(fm.get("depends_on"), list)
-                else [fm.get("depends_on")]
-                if fm.get("depends_on")
-                else []
-            ):
-                kg.add_edge(KnowledgeEdge(source=node_id, target=dep, relation="depends_on"))
-            for imp in (
-                fm.get("implements", [])
-                if isinstance(fm.get("implements"), list)
-                else [fm.get("implements")]
-                if fm.get("implements")
-                else []
-            ):
-                kg.add_edge(KnowledgeEdge(source=node_id, target=imp, relation="implements"))
-            for gov in (
-                fm.get("governed_by", [])
-                if isinstance(fm.get("governed_by"), list)
-                else [fm.get("governed_by")]
-                if fm.get("governed_by")
-                else []
-            ):
-                kg.add_edge(KnowledgeEdge(source=node_id, target=gov, relation="governed_by"))
-
-            # Extract markdown link references: [text](path.md)
-            for m in re.finditer(r"\[([^\]]+)\]\(([^)]+\.md)\)", content):
-                target_link = m.group(2).strip()
-                if not target_link.startswith("http"):
-                    kg.add_edge(KnowledgeEdge(source=node_id, target=target_link, relation="references"))
+            extracted = cls._extract_node(file_path, root)
+            if extracted:
+                node, edges = extracted
+                kg.add_node(node)
+                for edge in edges:
+                    kg.add_edge(edge)
 
         return kg

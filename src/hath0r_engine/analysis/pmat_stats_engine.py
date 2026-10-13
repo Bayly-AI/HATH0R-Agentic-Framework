@@ -43,6 +43,35 @@ def assign_composite_risk_tier(composite_risk: float) -> str:
     return "LOW"
 
 
+
+CODE_EXTENSIONS: Set[str] = {
+    ".py", ".ts", ".tsx", ".js", ".jsx", ".rs", ".go", ".sh", ".bash", ".zsh",
+    ".c", ".cpp", ".cc", ".h", ".hpp", ".java", ".kt", ".rb", ".php", ".swift", ".m"
+}
+
+IGNORED_PATH_PREFIXES: Tuple[str, ...] = (
+    ".hath0r/",
+    ".git/",
+    ".github/",
+    ".venv/",
+    "venv/",
+    "node_modules/",
+    ".pytest_cache/",
+    "dist/",
+    "build/",
+    "__pycache__/",
+)
+
+
+def is_analyzable_code_file(path_str: str) -> bool:
+    """Determine whether a file path corresponds to an analyzable source code file."""
+    normalized = path_str.replace("\\", "/")
+    if any(normalized.startswith(p) or f"/{p}" in normalized for p in IGNORED_PATH_PREFIXES):
+        return False
+    suffix = Path(path_str).suffix.lower()
+    return suffix in CODE_EXTENSIONS
+
+
 class PmatStatsEngine:
     """Core substrate engine for multi-dimensional Code Churn, Provability, and Complexity analysis."""
 
@@ -66,12 +95,52 @@ class PmatStatsEngine:
         if not file_path.exists() or not file_path.is_file():
             return default_metrics
 
+        if not is_analyzable_code_file(str(file_path)):
+            return default_metrics
+
         try:
             content = file_path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
             return default_metrics
 
         lines = content.splitlines()
+
+        if file_path.suffix.lower() == ".py":
+            try:
+                tree = ast.parse(content)
+                cyclomatic = 1.0
+                cognitive = 1.0
+                max_depth = 1
+                for node in ast.walk(tree):
+                    depth = getattr(node, "depth", 1)
+                    if isinstance(node, (ast.If, ast.IfExp, ast.For, ast.AsyncFor, ast.While, ast.Try, ast.ExceptHandler, ast.With, ast.AsyncWith, ast.Assert)):
+                        cyclomatic += 1.0
+                        cognitive += 1.0
+                    elif isinstance(node, ast.BoolOp):
+                        cyclomatic += max(1, len(node.values) - 1)
+                        cognitive += 0.5
+                    elif isinstance(node, (ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp)):
+                        cyclomatic += len(node.generators)
+                        cognitive += 0.5
+                    elif hasattr(ast, "Match") and isinstance(node, (ast.Match, getattr(ast, "match_case", (ast.AST,)))):
+                        cyclomatic += 1.0
+                        cognitive += 1.0
+                    if isinstance(node, (ast.If, ast.For, ast.While, ast.Try, ast.FunctionDef, ast.ClassDef)):
+                        for child in ast.iter_child_nodes(node):
+                            setattr(child, "depth", depth + 1)
+                            if depth + 1 > max_depth:
+                                max_depth = depth + 1
+
+                halstead_volume = self._calculate_halstead_volume(lines)
+                return {
+                    "cyclomatic_complexity": round(cyclomatic, 2),
+                    "cognitive_complexity": round(cognitive, 2),
+                    "max_ast_depth": max_depth,
+                    "halstead_volume": halstead_volume,
+                }
+            except SyntaxError:
+                pass
+
         cyclomatic = self._calculate_cyclomatic_complexity(lines)
         max_depth, cognitive = self._calculate_ast_depth_and_cognitive(content, cyclomatic)
         halstead_volume = self._calculate_halstead_volume(lines)
@@ -87,7 +156,10 @@ class PmatStatsEngine:
         """Estimate Cyclomatic complexity by counting branching keywords across lines."""
         cyclomatic = 1.0
         for line in lines:
-            tokens = line.strip().split()
+            stripped = line.strip()
+            if not stripped or stripped.startswith(("#", "//", "/*", "*")):
+                continue
+            tokens = stripped.split()
             for token in tokens:
                 if token in self.BRANCHING_KEYWORDS:
                     cyclomatic += 1.0
@@ -156,6 +228,14 @@ class PmatStatsEngine:
         if not file_path.exists() or not file_path.is_file():
             return default_provability
 
+        if not is_analyzable_code_file(str(file_path)):
+            return {
+                "formal_verification_coverage": 1.0,
+                "invariant_safety_score": 1.0,
+                "defect_probability_index": 0.0,
+                "provability_score": 1.0,
+            }
+
         try:
             content = file_path.read_text(encoding="utf-8", errors="ignore")
         except Exception:
@@ -169,6 +249,43 @@ class PmatStatsEngine:
                 "defect_probability_index": 0.0,
                 "provability_score": 1.0,
             }
+
+        if file_path.suffix.lower() == ".py":
+            try:
+                tree = ast.parse(content)
+                funcs = [n for n in ast.walk(tree) if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))]
+                total_funcs = len(funcs)
+                if total_funcs == 0:
+                    has_typed_vars = any(isinstance(n, ast.AnnAssign) for n in ast.walk(tree))
+                    base_score = 0.95 if has_typed_vars else 0.85
+                    return {
+                        "formal_verification_coverage": base_score,
+                        "invariant_safety_score": base_score,
+                        "defect_probability_index": round(1.0 - base_score, 4),
+                        "provability_score": base_score,
+                    }
+
+                typed_returns = sum(1 for f in funcs if f.returns is not None)
+                total_args = sum(len(f.args.args) for f in funcs)
+                typed_args = sum(sum(1 for a in f.args.args if a.annotation is not None) for f in funcs)
+                doc_funcs = sum(1 for f in funcs if ast.get_docstring(f) is not None)
+                asserts = sum(1 for n in ast.walk(tree) if isinstance(n, ast.Assert))
+
+                type_ratio = (typed_returns / total_funcs + (typed_args / max(1, total_args))) / 2.0
+                doc_ratio = doc_funcs / total_funcs
+                assert_bonus = min(0.2, asserts * 0.02)
+                cov = min(1.0, round(0.40 + (type_ratio * 0.35) + (doc_ratio * 0.20) + assert_bonus, 4))
+                inv = min(1.0, round(cov * 0.85 + 0.15, 4))
+                defect = max(0.0, round(1.0 - (cov * 0.80 + inv * 0.20), 4))
+                prov = round(1.0 - defect, 4)
+                return {
+                    "formal_verification_coverage": cov,
+                    "invariant_safety_score": inv,
+                    "defect_probability_index": defect,
+                    "provability_score": prov,
+                }
+            except SyntaxError:
+                pass
 
         type_annotated_lines = sum(
             1 for line in lines
@@ -211,6 +328,8 @@ class PmatStatsEngine:
         total_deleted = sum(file_deleted.values())
 
         for fpath, commits in file_commits.items():
+            if not is_analyzable_code_file(fpath):
+                continue
             abs_file = repo_path / fpath
             comp_metrics = self.calculate_ast_complexity(abs_file)
             prov_metrics = self.calculate_provability_score(abs_file)
