@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 
@@ -11,7 +11,7 @@ class CardAttempt(BaseModel):
     """Record of a single attempt on an evaluation card during a tournament round."""
 
     round_num: int = Field(description="Tournament round number (1, 2, ...)")
-    timestamp: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+    timestamp: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     question: str = Field(description="Prompt or question submitted to the agent")
     agent_response: str = Field(description="Raw text or HTML response returned by the agent")
     model_used: str = Field(default="embedded_agent", description="Model identifier or engine that generated the response")
@@ -77,7 +77,7 @@ class TournamentDeckState(BaseModel):
     """Persistent state of a tournament benchmark epoch."""
 
     epoch: int = 1
-    created_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     total_cards: int = 1000
     current_round: int = 0
     is_completed: bool = False
