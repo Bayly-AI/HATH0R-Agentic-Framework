@@ -1,0 +1,51 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261016-140212-0e5df6",
+  "prior_session_id": "sess-20261016-123301-4eeed3",
+  "parent_session_id": "sess-20261016-123301-4eeed3",
+  "task_id": null,
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "active",
+  "started_at": "2026-10-16T14:02:12.529754+00:00",
+  "updated_at": "2026-10-16T14:22:52.822870+00:00",
+  "ended_at": null,
+  "read_count": 2,
+  "write_count": 2,
+  "last_read_at": "2026-10-16T14:22:52.822870+00:00",
+  "last_write_at": "2026-10-16T14:22:52.430688+00:00",
+  "active_focus": "Repository orientation verified for hath0r-framework",
+  "prior_summary": "89); Completed Issue #289 Micro Memory Session engine & OrientBot integration.; Started session focus: feat(memory): enf",
+  "recalled_nodes": [
+    {
+      "id": "fact:repo-hath0r-framework-orientation",
+      "type": "fact",
+      "label": "hath0r-framework Repository Memory Orientation",
+      "snippet": "hath0r-framework: <p align=\"center\"> <img src=\"lib/assets/images/hathor-logo-1.png\" alt=\"H"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-16T14:22:52.430688+00:00",
+      "kind": "compound",
+      "summary": "Compounded fact:repo-hath0r-framework-orientation: hath0r-framework Repository Memory Orientation",
+      "tags": [
+        "orientation",
+        "repository",
+        "hath0r-framework",
+        "cr-memory-compound-001",
+        "fact",
+        "compounded"
+      ],
+      "node_id": "fact:repo-hath0r-framework-orientation"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "fact:repo-hath0r-framework-orientation"
+  ],
+  "capsule_bytes": 1870,
+  "revision": 2,
+  "base_graph_hash": "sha256:f2e3cdb1f954ccbec9bfab276811f95d7c69bc29aaef127afb2f7d3c7e795127",
+  "content_hash": "sha256:45659e2a48de150368d6cdaaf985723aac6adf3b5ff80e2ed64128b7d7c9863c"
+}

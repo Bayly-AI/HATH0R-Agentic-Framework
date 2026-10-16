@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-16T12:33:06.077952+00:00",
+  "timestamp": "2026-10-16T14:24:37.664547+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -271,7 +271,7 @@
       "plane": "rules",
       "type": "rule_policy",
       "label": "Rule cr-memory-compound-001",
-      "content": "# CR-MEMORY-COMPOUND-001: Mandatory `.hath0r/memory` Repository Presence, Micro Memory Sessions & Pre-Announcement MemoryGraph Compounding (CRITICAL — org-wide)\n\n> **Status**: Active · **Tier**: Org Invariant (`RulePriority.ORG_INVARIANT`)  \n> **Scope**: All repositories across `/Users/raybayly/Development` (`OpenSource`, `1-Nation`, `BAI`, `Ray`, `Websites`)  \n> **Enforced by**: `hath0r memory`, `MemoryManagerBot`, `OrientBot`, `TaskAnnouncerBot`, `EndOfTaskBot`, `CleanReposWorkflowBot`, `AgentGraphBot`\n\n---\n\n## 1. Universal `.hath0r/memory` & `.hath0r/memory/sessions` Repository Invariant\n\n1. Every active project repository in `/Users/raybayly/Development` **MUST** maintain an initialized `.hath0r/memory/` directory containing:\n   - `.hath0r/memory/graph.json`: The canonical serialized `MemoryGraph` (`schema_version: \"1.0.0\"`), storing typed semantic, episodic, and session nodes (`rule`, `concept`, `decision`, `fact`, `episode`, `topic`, `insight`, `session`) and relational edges (`ENFORCES`, `REQUIRES`, `DERIVES_FROM`, `SUPERSEDES`, `RELATES_TO`, `RESOLVES`, `PRECEDES`).\n   - `.hath0r/memory/sessions/`: The dedicated **Micro Memory Session** store containing:\n     - `current.json`: Active compact (<2KB) micro-session state (`session_id`, `prior_session_id`, `read_count`, `write_count`, `active_focus`, `recalled_nodes`, `micro_entries`, `next_steps`).\n     - `latest.json`: Most recent completed or active micro-session snapshot for zero-latency cross-session continuity.\n    ",
+      "content": "# CR-MEMORY-COMPOUND-001: Mandatory `.hath0r/memory` Repository Presence, Micro Memory Sessions & Pre-Announcement MemoryGraph Compounding (CRITICAL — org-wide)\n\n> **Status**: Active · **Tier**: Org Invariant (`RulePriority.ORG_INVARIANT`)  \n> **Scope**: All repositories across `/Users/raybayly/Development` (`OpenSource`, `1-Nation`, `BAI`, `Ray`, `Websites`)  \n> **Enforced by**: `hath0r memory`, `MemoryManagerBot`, `OrientBot`, `TaskAnnouncerBot`, `EndOfTaskBot`, `CleanReposWorkflowBot`, `AgentGraphBot`\n\n---\n\n## 1. Universal `.hath0r/memory`, `.hath0r/memory/sessions` & `.hath0r/memory/hashes.json` Repository Invariant\n\n1. Every active project repository in `/Users/raybayly/Development` **MUST** maintain an initialized `.hath0r/memory/` directory containing:\n   - `.hath0r/memory/graph.json`: The canonical serialized `MemoryGraph` (`schema_version: \"1.0.0\"`), storing typed semantic, episodic, and session nodes (`rule`, `concept`, `decision`, `fact`, `episode`, `topic`, `insight`, `session`), relational edges (`ENFORCES`, `REQUIRES`, `DERIVES_FROM`, `SUPERSEDES`, `RELATES_TO`, `RESOLVES`, `PRECEDES`), monotonic `revision` counter, and canonical `content_hash` (`sha256:<64-hex>`).\n   - `.hath0r/memory/sessions/`: The dedicated **Micro Memory Session** store containing:\n     - `current.json`: Active compact (<2KB) micro-session state (`session_id`, `prior_session_id`, `read_count`, `write_count`, `revision`, `content_hash`, `base_graph_hash`, `active_focus`, `recalled_nodes`, `m",
       "properties": {
         "path": "docs/governance/rules/cr-memory-compound-001.md",
         "priority": 4,
@@ -2223,7 +2223,7 @@
       "properties": {
         "path": "docs/governance/procedures/memorygraph-compounding-procedure.md",
         "category": "procedures",
-        "size_bytes": 2874
+        "size_bytes": 3281
       },
       "is_current": true
     },
@@ -2275,7 +2275,7 @@
       "properties": {
         "path": "docs/governance/strategies/memorygraph-compounding-strategy.md",
         "category": "strategies",
-        "size_bytes": 3713
+        "size_bytes": 4482
       },
       "is_current": true
     },
@@ -2886,7 +2886,7 @@
       "properties": {
         "path": "docs/governance/runbooks/memorygraph-compounding-runbook.md",
         "category": "runbooks",
-        "size_bytes": 2415
+        "size_bytes": 3125
       },
       "is_current": true
     },
@@ -3116,11 +3116,11 @@
       "plane": "knowledge",
       "type": "knowledge_doc",
       "label": "Memorygraph Compounding Workflow",
-      "content": "# MemoryGraph Compounding & Micro Memory Session Workflow Specification\n\n> **Factory Binding**: `end-of-task-factory.yaml` · `repo-onboarding-factory.yaml` · `start-of-task-factory.yaml`  \n> **Rule Binding**: `CR-MEMORY-COMPOUND-001`\n\n## 1. Workflow Diagram\n\n```mermaid\nflowchart TD\n    A[\"Session / Task Start (hath0r orient / hath0r task start)\"] --> B[\"hath0r memory session start / read\"]\n    B --> C[\"Read latest.json + Top graph.json Nodes -> current.json (read_count >= 1)\"]\n    C --> D[\"Task Execution & In-Session Micro-Writes (hath0r memory session write, write_count >= 1)\"]\n    D --> E[\"hath0r memory compound (Durable Episode / Decision / Insight)\"]\n    E --> F[\"hath0r memory session end (Flush to <session-id>.json, latest.json & graph.json PRECEDES)\"]\n    F --> G[\"ReflectionEngine.consolidate_sleep_cycle() + AgentGraphBot.sync()\"]\n    G --> H{\"TaskAnnouncerBot.announce_complete()\\nMemoryManagerBot.verify_compounded()\"}\n    H -- \"Compounded & Session Read/Write == True\" --> I[\"Announce Task Complete\"]\n    H -- \"Gate Failed\" --> J[\"BLOCK Announcement (Require Session Read/Write + Memory Compounding)\"]\n```\n\n## 2. Declarative Lifecycle Steps\n\n### Start of Session / Task (`hath0r ",
+      "content": "# MemoryGraph Compounding & Micro Memory Session Workflow Specification\n\n> **Factory Binding**: `end-of-task-factory.yaml` · `repo-onboarding-factory.yaml` · `start-of-task-factory.yaml`  \n> **Rule Binding**: `CR-MEMORY-COMPOUND-001`\n\n## 1. Workflow Diagram\n\n```mermaid\nflowchart TD\n    A[\"Session / Task Start (hath0r orient / hath0r task start)\"] --> B[\"hath0r memory session start / read\"]\n    B --> C[\"Read latest.json + Top graph.json Nodes -> current.json (read_count >= 1)\"]\n    C --> D[\"Task Execution & In-Session Micro-Writes (hath0r memory session write, write_count >= 1)\"]\n    D --> E[\"hath0r memory compound (CAS Check + Auto-Merge + Durable Node)\"]\n    E --> F[\"hath0r memory session end & hath0r memory hash --sync (hashes.json)\"]\n    F --> G[\"ReflectionEngine.consolidate_sleep_cycle() + AgentGraphBot.sync()\"]\n    G --> H{\"TaskAnnouncerBot.announce_complete()\\nMemoryManagerBot.verify_compounded()\"}\n    H -- \"Compounded, Session R/W & Hashes Up-to-Date == True\" --> I[\"Announce Task Complete\"]\n    H -- \"Gate Failed / Hash Conflict\" --> J[\"BLOCK Announcement (Require Session R/W + Compounding + Hash Sync)\"]\n```\n\n## 2. Declarative Lifecycle Steps\n\n### Start of Session / Task (`ha",
       "properties": {
         "path": "docs/governance/workflows/memorygraph-compounding-workflow.md",
         "category": "workflows",
-        "size_bytes": 2418
+        "size_bytes": 2663
       },
       "is_current": true
     },
@@ -3185,7 +3185,7 @@
       "properties": {
         "path": "docs/governance/bot-specs/memory-manager-bot-spec.md",
         "category": "bot-specs",
-        "size_bytes": 3979
+        "size_bytes": 4560
       },
       "is_current": true
     },
@@ -3406,7 +3406,7 @@
       "properties": {
         "path": "docs/governance/playbooks/memorygraph-compounding-playbook.md",
         "category": "playbooks",
-        "size_bytes": 3882
+        "size_bytes": 4294
       },
       "is_current": true
     },
@@ -3753,11 +3753,11 @@
       "plane": "knowledge",
       "type": "knowledge_doc",
       "label": "Cr Memory Compound 001",
-      "content": "# CR-MEMORY-COMPOUND-001: Mandatory `.hath0r/memory` Repository Presence, Micro Memory Sessions & Pre-Announcement MemoryGraph Compounding (CRITICAL — org-wide)\n\n> **Status**: Active · **Tier**: Org Invariant (`RulePriority.ORG_INVARIANT`)  \n> **Scope**: All repositories across `/Users/raybayly/Development` (`OpenSource`, `1-Nation`, `BAI`, `Ray`, `Websites`)  \n> **Enforced by**: `hath0r memory`, `MemoryManagerBot`, `OrientBot`, `TaskAnnouncerBot`, `EndOfTaskBot`, `CleanReposWorkflowBot`, `AgentGraphBot`\n\n---\n\n## 1. Universal `.hath0r/memory` & `.hath0r/memory/sessions` Repository Invariant\n\n1. Every active project repository in `/Users/raybayly/Development` **MUST** maintain an initialized `.hath0r/memory/` directory containing:\n   - `.hath0r/memory/graph.json`: The canonical serialized `MemoryGraph` (`schema_version: \"1.0.0\"`), storing typed semantic, episodic, and session nodes (`rule`, `concept`, `decision`, `fact`, `episode`, `topic`, `insight`, `session`) and relational edges (`ENFORCES`, `REQUIRES`, `DERIVES_FROM`, `SUPERSEDES`, `RELATES_TO`, `RESOLVES`, `PRECEDES`).\n   - `.hath0r/memory/sessions/`: The dedicated **Micro Memory Session** store containing:\n     - `current.jso",
+      "content": "# CR-MEMORY-COMPOUND-001: Mandatory `.hath0r/memory` Repository Presence, Micro Memory Sessions & Pre-Announcement MemoryGraph Compounding (CRITICAL — org-wide)\n\n> **Status**: Active · **Tier**: Org Invariant (`RulePriority.ORG_INVARIANT`)  \n> **Scope**: All repositories across `/Users/raybayly/Development` (`OpenSource`, `1-Nation`, `BAI`, `Ray`, `Websites`)  \n> **Enforced by**: `hath0r memory`, `MemoryManagerBot`, `OrientBot`, `TaskAnnouncerBot`, `EndOfTaskBot`, `CleanReposWorkflowBot`, `AgentGraphBot`\n\n---\n\n## 1. Universal `.hath0r/memory`, `.hath0r/memory/sessions` & `.hath0r/memory/hashes.json` Repository Invariant\n\n1. Every active project repository in `/Users/raybayly/Development` **MUST** maintain an initialized `.hath0r/memory/` directory containing:\n   - `.hath0r/memory/graph.json`: The canonical serialized `MemoryGraph` (`schema_version: \"1.0.0\"`), storing typed semantic, episodic, and session nodes (`rule`, `concept`, `decision`, `fact`, `episode`, `topic`, `insight`, `session`), relational edges (`ENFORCES`, `REQUIRES`, `DERIVES_FROM`, `SUPERSEDES`, `RELATES_TO`, `RESOLVES`, `PRECEDES`), monotonic `revision` counter, and canonical `content_hash` (`sha256:<64-hex>`).\n  ",
       "properties": {
         "path": "docs/governance/rules/cr-memory-compound-001.md",
         "category": "rules",
-        "size_bytes": 5728
+        "size_bytes": 7923
       },
       "is_current": true
     },
@@ -4434,15 +4434,88 @@
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261016-123301-4eeed3",
-      "content": "Micro Session sess-20261016-123301-4eeed3 [completed] | Focus: Issue #289: True Micro Memory Session Read/Write Lifecycle | Reads: 2, Writes: 4 | Entries: Compounded decision:issue-289-micro-memory-session: True Micro Memory Session Read/Write Lifecycle (Issue #289); Completed Issue #289 Micro Memory Session engine & OrientBot integration.",
+      "content": "Micro Session sess-20261016-123301-4eeed3 [completed] | Focus: Cryptographic SHA-256 file hashing, staleness detection, and optimistic concurrency conflict prevention | Reads: 3, Writes: 4 | Entries: Compounded decision:issue-289-micro-memory-session: True Micro Memory Session Read/Write Lifecycle (Issue #289); Completed Issue #289 Micro Memory Session engine & OrientBot integration.",
       "properties": {
         "session_id": "sess-20261016-123301-4eeed3",
         "prior_session_id": "sess-20261016-123220-0c5ded",
         "parent_session_id": "sess-20261016-123220-0c5ded",
+        "read_count": 3,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1984,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "completed"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261016-140212-0e5df6",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261016-140212-0e5df6",
+      "content": "Micro Session sess-20261016-140212-0e5df6 [active] | Focus: Repository orientation verified for hath0r-framework | Reads: 2, Writes: 2 | Entries: Compounded fact:repo-hath0r-framework-orientation: hath0r-framework Repository Memory Orientation",
+      "properties": {
+        "session_id": "sess-20261016-140212-0e5df6",
+        "prior_session_id": "sess-20261016-123301-4eeed3",
+        "parent_session_id": "sess-20261016-123301-4eeed3",
+        "read_count": 2,
+        "write_count": 2,
+        "status": "active",
+        "byte_size": 1870,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "active"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:episode:issue-291-memory-file-hashing",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Issue #291: MemoryGraph SHA-256 File Hashing & CAS Conflict Prevention",
+      "content": "Implemented cryptographic SHA-256 file hashing (.hath0r/memory/hashes.json), source_files staleness tracking, atomic os.replace writes, and optimistic Compare-And-Swap (CAS) with deterministic set-union auto-merge and HASH_CONFLICT rejection.",
+      "properties": {
+        "source_files": {
+          "src/hath0r_engine/memory/memory_graph.py": "sha256:dccf13d9d071bca12f259df10acd99eeadb171b9dc5ddf1e27c2142931e0c9b8",
+          "docs/governance/rules/cr-memory-compound-001.md": "sha256:cbb4a86cc050d061df8cc72b178914c7b3968433a4d186ce6407be2696b2bbd5"
+        },
+        "source": "local_memory",
+        "tags": [
+          "memorygraph",
+          "hashing",
+          "cas",
+          "cr-memory-compound-001",
+          "issue-291",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.8
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261016-142431-e261a7",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261016-142431-e261a7",
+      "content": "Micro Session sess-20261016-142431-e261a7 [completed] | Focus: Issue #291: Cryptographic SHA-256 file hashing, hashes.json manifest, source_files staleness detection, and CAS conflict prevention | Reads: 2, Writes: 4 | Entries: Completed Issue #291 implementation, tests, and SHA-256 hash verification in hath0r-framework",
+      "properties": {
+        "session_id": "sess-20261016-142431-e261a7",
+        "prior_session_id": "sess-20261016-140212-0e5df6",
+        "parent_session_id": "sess-20261016-140212-0e5df6",
         "read_count": 2,
         "write_count": 4,
         "status": "completed",
-        "byte_size": 1985,
+        "byte_size": 1794,
         "source": "local_memory",
         "tags": [
           "session",
@@ -4600,6 +4673,54 @@
     {
       "source": "memory:insight:governance",
       "target": "memory:decision:issue-289-micro-memory-session",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-123301-4eeed3",
+      "target": "memory:session:sess-20261016-140212-0e5df6",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-140212-0e5df6",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:repo-hath0r-framework-orientation",
+      "target": "memory:session:sess-20261016-140212-0e5df6",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-140212-0e5df6",
+      "target": "memory:session:sess-20261016-142431-e261a7",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-142431-e261a7",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-291-memory-file-hashing",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "RESOLVES",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-291-memory-file-hashing",
+      "target": "concept:tri-graph",
+      "relation": "RESOLVES",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-291-memory-file-hashing",
+      "target": "memory:session:sess-20261016-142431-e261a7",
       "relation": "DERIVES_FROM",
       "is_current": true
     },
@@ -4809,6 +4930,24 @@
     },
     {
       "source": "memory:session:sess-20261016-123301-4eeed3",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-140212-0e5df6",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-291-memory-file-hashing",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-142431-e261a7",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
