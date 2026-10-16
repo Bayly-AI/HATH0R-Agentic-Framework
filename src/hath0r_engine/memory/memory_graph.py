@@ -295,6 +295,238 @@ class MemoryGraph:
 
         return ingested_count
 
+    CANONICAL_SEED_NODE_IDS: Set[str] = {
+        "rule:cr-cli-entry-001",
+        "rule:cr-bai-001",
+        "rule:cr-memory-compound-001",
+        "concept:tri-graph",
+    }
+
+    def compound_knowledge(
+        self,
+        label: str,
+        content: str,
+        node_type: str = "episode",
+        node_id: Optional[str] = None,
+        importance: float = 0.8,
+        tags: Optional[List[str]] = None,
+        relates_to: Optional[List[str]] = None,
+        relation: str = "DERIVES_FROM",
+        supersedes: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
+        run_reflection: bool = True,
+    ) -> Dict[str, Any]:
+        """Compound a structured knowledge node and relational edges into MemoryGraph."""
+        import re
+
+        now = datetime.now(timezone.utc).isoformat()
+        slug = re.sub(r"[^a-z0-9]+", "-", label.lower()).strip("-")[:48] or "task"
+        resolved_id = node_id or f"{node_type}:{slug}"
+        resolved_tags = list(dict.fromkeys((tags or []) + [node_type, "compounded"]))
+
+        node = MemoryNode(
+            id=resolved_id,
+            type=node_type,
+            label=label,
+            content=content,
+            importance=max(0.0, min(1.0, float(importance))),
+            tags=resolved_tags,
+            valid_from=now,
+            is_current=True,
+            created_at=now,
+            updated_at=now,
+            metadata=metadata or {},
+        )
+        self.add_node(node)
+
+        edges_added: List[Dict[str, Any]] = []
+        if supersedes and supersedes in self.nodes and supersedes != resolved_id:
+            old_node = self.nodes[supersedes]
+            old_node.is_current = False
+            old_node.valid_to = now
+            sup_edge = MemoryEdge(
+                source=resolved_id,
+                target=supersedes,
+                relation="SUPERSEDES",
+                weight=1.0,
+                valid_from=now,
+                is_current=True,
+            )
+            self.add_edge(sup_edge)
+            edges_added.append(sup_edge.to_dict())
+
+        targets = list(relates_to or [])
+        if not targets and "concept:tri-graph" in self.nodes and resolved_id != "concept:tri-graph":
+            targets.append("concept:tri-graph")
+
+        for tgt in targets:
+            if tgt in self.nodes and tgt != resolved_id:
+                rel_edge = MemoryEdge(
+                    source=resolved_id,
+                    target=tgt,
+                    relation=relation,
+                    weight=1.0,
+                    valid_from=now,
+                    is_current=True,
+                )
+                self.add_edge(rel_edge)
+                edges_added.append(rel_edge.to_dict())
+
+        reflection_res: Dict[str, Any] = {"insights_generated": 0, "insights": []}
+        if run_reflection:
+            from hath0r_engine.memory.reflection import ReflectionEngine
+
+            reflection_res = ReflectionEngine().consolidate_sleep_cycle(self)
+
+        return {
+            "node": node.to_dict(),
+            "edges_added": edges_added,
+            "reflection": reflection_res,
+        }
+
+    def verify_compounded(
+        self,
+        seed_ids: Optional[Set[str]] = None,
+        since: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """Verify that MemoryGraph contains compounded task knowledge beyond static seed nodes."""
+        ignored_seeds = seed_ids if seed_ids is not None else self.CANONICAL_SEED_NODE_IDS
+        compounded_nodes: List[MemoryNode] = []
+        for nid, node in self.nodes.items():
+            if nid in ignored_seeds:
+                continue
+            if since and node.updated_at < since:
+                continue
+            compounded_nodes.append(node)
+
+        compounded_nodes.sort(key=lambda n: n.updated_at, reverse=True)
+        latest = compounded_nodes[0].to_dict() if compounded_nodes else None
+        return {
+            "compounded": len(compounded_nodes) > 0,
+            "total_nodes": len(self.nodes),
+            "total_edges": len(self.edges),
+            "compounded_nodes_count": len(compounded_nodes),
+            "latest_node": latest,
+        }
+
+    @classmethod
+    def ensure_repo_memory(cls, repo_root: Path | str) -> MemoryGraph:
+        """Ensure .hath0r/memory/graph.json exists for a repository and seed initial repo memory."""
+        root = Path(repo_root).resolve()
+        mem_dir = root / ".hath0r" / "memory"
+        mem_dir.mkdir(parents=True, exist_ok=True)
+        graph_file = mem_dir / "graph.json"
+        core_file = mem_dir / "core_rules.md"
+        arch_file = mem_dir / "architecture.md"
+
+        if not core_file.is_file():
+            core_file.write_text(
+                "# Core Hath0r Rules\n"
+                "1. CLI-First (CR-CLI-ENTRY-001): Always start with the CLI capabilities before improvising.\n"
+                "2. Memory Compounding (CR-MEMORY-COMPOUND-001): Every task must compound knowledge into .hath0r/memory/graph.json prior to announcing complete.\n"
+                "3. Hyper-Context (CR-AGENTGRAPH-001): Query AgentGraph and MemoryGraph rather than loading unbounded files.\n"
+                "4. Promotion Path (CR-BAI-001): local -> development -> testing -> staging -> master.\n",
+                encoding="utf-8",
+            )
+        if not arch_file.is_file():
+            arch_file.write_text(
+                f"# Canonical Architecture — {root.name}\n"
+                "Agents orienting to this repository MUST read and compound into `.hath0r/memory/graph.json` "
+                "prior to completing any task.\n",
+                encoding="utf-8",
+            )
+
+        if graph_file.is_file():
+            try:
+                graph = cls.load_from_file(graph_file)
+            except Exception:
+                graph = cls(graph_id=f"memory-{root.name}")
+        else:
+            graph = cls(graph_id=f"memory-{root.name}")
+
+        # Ensure canonical seed rules & concepts exist
+        if "rule:cr-cli-entry-001" not in graph.nodes:
+            graph.add_node(
+                MemoryNode(
+                    id="rule:cr-cli-entry-001",
+                    type="rule",
+                    label="Start with CLI Rule",
+                    content="Always start with hath0r operator CLI before inventing ad-hoc actions.",
+                    importance=1.0,
+                    tags=["rule", "governance", "cli"],
+                )
+            )
+        if "rule:cr-bai-001" not in graph.nodes:
+            graph.add_node(
+                MemoryNode(
+                    id="rule:cr-bai-001",
+                    type="rule",
+                    label="Promotion Path Policy",
+                    content="Promotion order: local -> development -> testing -> staging -> master.",
+                    importance=1.0,
+                    tags=["rule", "governance", "ci"],
+                )
+            )
+        if "rule:cr-memory-compound-001" not in graph.nodes:
+            graph.add_node(
+                MemoryNode(
+                    id="rule:cr-memory-compound-001",
+                    type="rule",
+                    label="Mandatory MemoryGraph Compounding Rule",
+                    content="Every project repo must have .hath0r/memory/graph.json and every task must compound knowledge prior to announcing complete.",
+                    importance=1.0,
+                    tags=["rule", "governance", "memorygraph", "cr-memory-compound-001"],
+                )
+            )
+        if "concept:tri-graph" not in graph.nodes:
+            graph.add_node(
+                MemoryNode(
+                    id="concept:tri-graph",
+                    type="concept",
+                    label="Quad-Graph Cognitive Substrate",
+                    content="Unified cognitive graph architecture: KnowledgeGraph, ContextGraph, MemoryGraph, RulesGraph.",
+                    importance=0.95,
+                    tags=["architecture", "substrate", "tri-graph", "agentgraph"],
+                )
+            )
+
+        graph.add_edge(MemoryEdge(source="rule:cr-cli-entry-001", target="concept:tri-graph", relation="ENFORCES"))
+        graph.add_edge(
+            MemoryEdge(source="rule:cr-memory-compound-001", target="concept:tri-graph", relation="ENFORCES")
+        )
+
+        # Ensure repository-specific orientation memory node exists
+        repo_node_id = f"fact:repo-{root.name.lower().replace(' ', '-')}-orientation"
+        if repo_node_id not in graph.nodes:
+            summary = f"Repository '{root.name}' at {root.name} initialized with canonical .hath0r/memory/graph.json."
+            for doc_candidate in (root / "README.md", root / "AGENTS.md"):
+                if doc_candidate.is_file():
+                    try:
+                        lines = [
+                            ln.strip()
+                            for ln in doc_candidate.read_text(encoding="utf-8", errors="ignore").splitlines()
+                            if ln.strip() and not ln.strip().startswith("#")
+                        ]
+                        if lines:
+                            summary = f"{root.name}: {' '.join(lines[:3])[:400]}"
+                            break
+                    except Exception:
+                        pass
+            graph.compound_knowledge(
+                node_id=repo_node_id,
+                node_type="fact",
+                label=f"{root.name} Repository Orientation Memory",
+                content=summary,
+                importance=0.85,
+                tags=["orientation", "repository", root.name.lower().replace(" ", "-")],
+                relates_to=["concept:tri-graph", "rule:cr-memory-compound-001"],
+                relation="RELATES_TO",
+                run_reflection=False,
+            )
+
+        graph.save_to_file(graph_file)
+        return graph
+
     def _touch(self) -> None:
         self.updated_at = datetime.now(timezone.utc).isoformat()
 

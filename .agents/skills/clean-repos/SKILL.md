@@ -43,8 +43,10 @@ Whenever the user requests **"clean repo"** or **"clean repos"**, execute the fo
 - Verify if any open PRs are pending review, approval, or merge.
 - Address blockers or merge ready PRs.
 
-### Step 6: Share Knowledge
-- Update shared knowledge bases, indexing systems, and memory stores:
+### Step 6: Share Knowledge & Compound MemoryGraph (`CR-MEMORY-COMPOUND-001`)
+- Ensure `.hath0r/memory/graph.json`, `core_rules.md`, and `architecture.md` exist in every repository (`hath0r memory init` / `hath0r memory ensure-all`).
+- Compound task/cleanup knowledge into `.hath0r/memory/graph.json` (`hath0r memory compound --label "..." --content "..." --type episode --tags "..."`) so institutional memory compounds across tasks and syncs into `.hath0r/agentgraph/snapshot.json`.
+- Update shared knowledge bases and indexing systems:
   - Ray-MCP knowledge roots (OneDrive knowledge roots: Author, Career, Documents, Books, Businesses, Cars, Projects).
   - Sync indexed data to `.hath0r/knowledgebase` single source of truth when applicable.
 
@@ -98,5 +100,6 @@ Whenever the user requests **"clean repo"** or **"clean repos"**, execute the fo
   ```
 - Verify `git status` reports working tree is clean and up to date.
 
-### Step 13: Announce Complete
-- Provide a structured status report confirming the clean status of all repositories, merged PRs, updated docs, and branch state.
+### Step 13: Verify MemoryGraph Gate & Announce Complete (`CR-MEMORY-COMPOUND-001`)
+- Run `hath0r memory verify` to confirm that `.hath0r/memory/graph.json` is initialized and task knowledge has been compounded prior to announcing completion.
+- Provide a structured status report confirming the clean status of all repositories, merged PRs, compounded MemoryGraph nodes, updated docs, and branch state.

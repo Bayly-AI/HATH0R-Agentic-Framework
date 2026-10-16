@@ -1,8 +1,8 @@
-"""Tests for Hath0r MemoryGraph engine and schema conformance."""
+"""Tests for Hath0r MemoryGraph engine, compounding, verification gate, and schema conformance."""
 
 from pathlib import Path
 
-from lib.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
+from hath0r_engine.memory.memory_graph import MemoryEdge, MemoryGraph, MemoryNode
 
 
 def test_memory_graph_lifecycle(tmp_path: Path) -> None:
@@ -63,3 +63,63 @@ def test_memory_graph_lifecycle(tmp_path: Path) -> None:
     assert len(loaded_graph.nodes) == 2
     assert len(loaded_graph.edges) == 1
     assert loaded_graph.get_node("concept:tri-graph-substrate") is not None
+
+
+def test_memory_graph_compounding_and_verification_gate(tmp_path: Path) -> None:
+    graph = MemoryGraph(graph_id="test-compounding")
+    graph.add_node(
+        MemoryNode(
+            id="concept:tri-graph",
+            type="concept",
+            label="Quad-Graph Substrate",
+            content="Unified quad-graph architecture.",
+            importance=0.9,
+            tags=["architecture"],
+        )
+    )
+
+    # Only seed node exists -> verify_compounded is False
+    gate_before = graph.verify_compounded()
+    assert gate_before["compounded"] is False
+    assert gate_before["compounded_nodes_count"] == 0
+
+    # Compound first task episode
+    res1 = graph.compound_knowledge(
+        label="Implement MemoryGraph Pre-Announcement Gate",
+        content="Enforced CR-MEMORY-COMPOUND-001 in TaskAnnouncerBot and EndOfTaskBot.",
+        node_type="episode",
+        importance=0.85,
+        tags=["memorygraph", "governance"],
+        relates_to=["concept:tri-graph"],
+        relation="DERIVES_FROM",
+    )
+    assert res1["node"]["type"] == "episode"
+    assert len(res1["edges_added"]) == 1
+
+    # Gate now passes
+    gate_after = graph.verify_compounded()
+    assert gate_after["compounded"] is True
+    assert gate_after["compounded_nodes_count"] >= 1
+    assert gate_after["latest_node"] is not None
+
+    # Compound second decision with shared tag -> triggers ReflectionEngine insight synthesis
+    res2 = graph.compound_knowledge(
+        label="Suite-Wide .hath0r/memory Provisioning Decision",
+        content="All active repositories in Development must maintain .hath0r/memory/graph.json.",
+        node_type="decision",
+        importance=0.9,
+        tags=["memorygraph", "governance"],
+        supersedes=res1["node"]["id"],
+    )
+    assert res2["reflection"]["insights_generated"] >= 1
+    assert graph.get_node(res1["node"]["id"]).is_current is False
+
+
+def test_ensure_repo_memory(tmp_path: Path) -> None:
+    (tmp_path / "README.md").write_text("# Sample Project\nA test repository for MemoryGraph.", encoding="utf-8")
+    graph = MemoryGraph.ensure_repo_memory(tmp_path)
+    assert (tmp_path / ".hath0r" / "memory" / "graph.json").is_file()
+    assert (tmp_path / ".hath0r" / "memory" / "core_rules.md").is_file()
+    assert (tmp_path / ".hath0r" / "memory" / "architecture.md").is_file()
+    assert "rule:cr-memory-compound-001" in graph.nodes
+    assert graph.verify_compounded()["compounded"] is True
