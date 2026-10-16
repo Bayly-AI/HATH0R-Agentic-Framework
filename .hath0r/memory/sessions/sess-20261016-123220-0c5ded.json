@@ -1,0 +1,63 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261016-123220-0c5ded",
+  "prior_session_id": null,
+  "parent_session_id": null,
+  "task_id": null,
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "active",
+  "started_at": "2026-10-16T12:32:20.622479+00:00",
+  "updated_at": "2026-10-16T12:32:20.927651+00:00",
+  "ended_at": null,
+  "read_count": 2,
+  "write_count": 2,
+  "last_read_at": "2026-10-16T12:32:20.927651+00:00",
+  "last_write_at": "2026-10-16T12:32:20.629755+00:00",
+  "active_focus": "Repository orientation verified for hath0r-framework",
+  "prior_summary": "",
+  "recalled_nodes": [
+    {
+      "id": "fact:repo-hath0r-framework-orientation",
+      "type": "fact",
+      "label": "hath0r-framework Repository Memory Orientation",
+      "snippet": "hath0r-framework: <p align=\"center\"> <img src=\"lib/assets/images/hathor-logo-1.png\" alt=\"H"
+    },
+    {
+      "id": "insight:cr-memory-compound-001",
+      "type": "insight",
+      "label": "Synthesized Insight on cr-memory-compound-001",
+      "snippet": "Consolidated from 2 memory nodes tagged 'cr-memory-compound-001'. Recurring themes: memory"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-16T12:32:20.622479+00:00",
+      "kind": "observation",
+      "summary": "Started session focus: Initialized local memory space for hath0r-framework",
+      "tags": [
+        "session-start"
+      ],
+      "node_id": null
+    },
+    {
+      "timestamp": "2026-10-16T12:32:20.629755+00:00",
+      "kind": "compound",
+      "summary": "Compounded fact:repo-hath0r-framework-orientation: hath0r-framework Repository Memory Orientation",
+      "tags": [
+        "orientation",
+        "repository",
+        "hath0r-framework",
+        "cr-memory-compound-001",
+        "fact",
+        "compounded"
+      ],
+      "node_id": "fact:repo-hath0r-framework-orientation"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "fact:repo-hath0r-framework-orientation"
+  ],
+  "capsule_bytes": 2012
+}

@@ -68,11 +68,11 @@
         "fact",
         "compounded"
       ],
-      "valid_from": "2026-10-16T11:47:29.238473+00:00",
+      "valid_from": "2026-10-16T12:32:20.620242+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-16T11:47:29.238473+00:00",
-      "updated_at": "2026-10-16T11:47:29.238473+00:00",
+      "updated_at": "2026-10-16T12:32:20.620242+00:00",
       "metadata": {}
     },
     {
@@ -115,6 +115,121 @@
       "metadata": {
         "constituent_count": 2,
         "source_tag": "cr-memory-compound-001"
+      }
+    },
+    {
+      "id": "session:sess-20261016-123220-0c5ded",
+      "type": "session",
+      "label": "Micro Session sess-20261016-123220-0c5ded",
+      "content": "Micro Session sess-20261016-123220-0c5ded [active] | Focus: Repository orientation verified for hath0r-framework | Reads: 2, Writes: 2 | Entries: Started session focus: Initialized local memory space for hath0r-framework; Compounded fact:repo-hath0r-framework-orientation: hath0r-framework Repository Memory Orientation",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "active"
+      ],
+      "valid_from": "2026-10-16T12:32:20.622479+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-16T12:32:20.622479+00:00",
+      "updated_at": "2026-10-16T12:32:20.927651+00:00",
+      "metadata": {
+        "session_id": "sess-20261016-123220-0c5ded",
+        "prior_session_id": null,
+        "parent_session_id": null,
+        "read_count": 2,
+        "write_count": 2,
+        "status": "active",
+        "byte_size": 2015
+      }
+    },
+    {
+      "id": "decision:issue-289-micro-memory-session",
+      "type": "decision",
+      "label": "True Micro Memory Session Read/Write Lifecycle (Issue #289)",
+      "content": "Added MicroMemoryEntry and MicroMemorySession (<2048B budget) in hath0r_engine.memory, linked via PRECEDES/DERIVES_FROM edges, and integrated auto-read/write hooks into OrientBot and verify_compounded.",
+      "importance": 0.95,
+      "tags": [
+        "memorygraph",
+        "micro-session",
+        "governance",
+        "issue-289",
+        "decision",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T12:33:04.703394+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-16T12:33:04.703394+00:00",
+      "updated_at": "2026-10-16T12:33:04.703394+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "insight:memorygraph",
+      "type": "insight",
+      "label": "Synthesized Insight on memorygraph",
+      "content": "Consolidated from 2 memory nodes tagged 'memorygraph'. Recurring themes: memory, added, read, write. Latest context: Added MicroMemoryEntry and MicroMemorySession (<2048B budget) in hath0r_engine.memory, linked via PRECEDES/DERIVES_FROM edges, and integrated auto-read/write ho",
+      "importance": 1.0,
+      "tags": [
+        "memorygraph",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T12:33:04.711067+00:00",
+      "is_current": true,
+      "created_at": "2026-10-16T12:33:04.711067+00:00",
+      "updated_at": "2026-10-16T12:33:04.711067+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "memorygraph"
+      }
+    },
+    {
+      "id": "insight:governance",
+      "type": "insight",
+      "label": "Synthesized Insight on governance",
+      "content": "Consolidated from 2 memory nodes tagged 'governance'. Recurring themes: memory, added, read, write. Latest context: Added MicroMemoryEntry and MicroMemorySession (<2048B budget) in hath0r_engine.memory, linked via PRECEDES/DERIVES_FROM edges, and integrated auto-read/write ho",
+      "importance": 1.0,
+      "tags": [
+        "governance",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T12:33:04.711067+00:00",
+      "is_current": true,
+      "created_at": "2026-10-16T12:33:04.711067+00:00",
+      "updated_at": "2026-10-16T12:33:04.711067+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "governance"
+      }
+    },
+    {
+      "id": "session:sess-20261016-123301-4eeed3",
+      "type": "session",
+      "label": "Micro Session sess-20261016-123301-4eeed3",
+      "content": "Micro Session sess-20261016-123301-4eeed3 [completed] | Focus: Issue #289: True Micro Memory Session Read/Write Lifecycle | Reads: 2, Writes: 4 | Entries: Compounded decision:issue-289-micro-memory-session: True Micro Memory Session Read/Write Lifecycle (Issue #289); Completed Issue #289 Micro Memory Session engine & OrientBot integration.",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "completed"
+      ],
+      "valid_from": "2026-10-16T12:33:01.603973+00:00",
+      "valid_to": "2026-10-16T12:33:05.923913+00:00",
+      "is_current": true,
+      "created_at": "2026-10-16T12:33:01.603973+00:00",
+      "updated_at": "2026-10-16T12:33:05.923913+00:00",
+      "metadata": {
+        "session_id": "sess-20261016-123301-4eeed3",
+        "prior_session_id": "sess-20261016-123220-0c5ded",
+        "parent_session_id": "sess-20261016-123220-0c5ded",
+        "read_count": 2,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1985
       }
     }
   ],
@@ -179,7 +294,87 @@
       "weight": 1.0,
       "valid_from": "2026-10-16T11:48:08.816508+00:00",
       "is_current": true
+    },
+    {
+      "source": "session:sess-20261016-123220-0c5ded",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-16T12:32:20.625044+00:00",
+      "is_current": true
+    },
+    {
+      "source": "fact:repo-hath0r-framework-orientation",
+      "target": "session:sess-20261016-123220-0c5ded",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T12:32:20.632030+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261016-123220-0c5ded",
+      "target": "session:sess-20261016-123301-4eeed3",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T12:33:01.608363+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261016-123301-4eeed3",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-16T12:33:01.608363+00:00",
+      "is_current": true
+    },
+    {
+      "source": "decision:issue-289-micro-memory-session",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T12:33:04.703394+00:00",
+      "is_current": true
+    },
+    {
+      "source": "decision:issue-289-micro-memory-session",
+      "target": "session:sess-20261016-123301-4eeed3",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T12:33:04.708908+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:memorygraph",
+      "target": "episode:issue-287-memorygraph-compounding",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T12:33:04.711067+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:memorygraph",
+      "target": "decision:issue-289-micro-memory-session",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T12:33:04.711067+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:governance",
+      "target": "episode:issue-287-memorygraph-compounding",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T12:33:04.711067+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:governance",
+      "target": "decision:issue-289-micro-memory-session",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T12:33:04.711067+00:00",
+      "is_current": true
     }
   ],
-  "updated_at": "2026-10-16T11:48:08.816765+00:00"
+  "updated_at": "2026-10-16T12:33:05.925839+00:00"
 }
