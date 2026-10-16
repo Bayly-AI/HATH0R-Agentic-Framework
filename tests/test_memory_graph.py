@@ -244,3 +244,28 @@ def test_file_hashing_and_cas_conflict_resolution(tmp_path: Path) -> None:
         merged.save_to_file(graph_file, expected_hash="sha256:0000000000000000000000000000000000000000000000000000000000000000")
 
 
+def test_gitignore_unignores_graph_folders(tmp_path: Path) -> None:
+    import subprocess
+
+    subprocess.run(["git", "init", str(tmp_path)], check=True, capture_output=True)
+    gitignore = tmp_path / ".gitignore"
+    gitignore.write_text(
+        "# Bad rules that ignore graph folders\n"
+        ".hath0r/state/\n"
+        ".hath0r/memory/\n"
+        ".hath0r/*.json\n",
+        encoding="utf-8",
+    )
+
+    bad_check = MemoryGraph.verify_graphs_not_gitignored(tmp_path)
+    assert bad_check["graphs_not_ignored"] is False
+    assert len(bad_check["ignored_paths"]) > 0
+
+    sanitize_res = MemoryGraph.ensure_gitignore_unignores_graphs(tmp_path)
+    assert sanitize_res["updated"] is True
+    assert ".hath0r/state/ -> .hath0r/state/*" in sanitize_res["rewritten_rules"]
+    assert ".hath0r/memory/" in sanitize_res["removed_rules"]
+
+    good_check = MemoryGraph.verify_graphs_not_gitignored(tmp_path)
+    assert good_check["graphs_not_ignored"] is True
+    assert good_check["ignored_paths"] == []
