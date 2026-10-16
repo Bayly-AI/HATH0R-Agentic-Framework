@@ -1,47 +1,46 @@
 {
   "schema_version": "hath0r.micro_session/1",
-  "session_id": "sess-20261016-150732-e076f6",
-  "prior_session_id": "sess-20261016-142431-e261a7",
-  "parent_session_id": "sess-20261016-142431-e261a7",
-  "revision": 8,
-  "content_hash": "sha256:ecdb7f2b7e88cfb58d763a0156224b4e25dd9cebe09e513baf449dd56f0d7044",
-  "base_graph_hash": "sha256:280ce2d00c3a5b3565861f0af200a09d5f1014ffd16c2861af86d240858dc8ad",
-  "task_id": null,
-  "role": null,
+  "session_id": "sess-20261016-154415-ac4723",
+  "prior_session_id": "sess-20261016-150732-e076f6",
+  "parent_session_id": "sess-20261016-150732-e076f6",
+  "revision": 2,
+  "content_hash": "sha256:8a279724434271764185e6400a351d2d284f4fa481d7f7f1bba1c3a112872725",
+  "base_graph_hash": "sha256:7dd1e56c6c309c5c07f740b663d80d51646da567f266321e43d56c22571e4ac4",
+  "task_id": "Clean repos across /Users/raybayly/Development",
+  "role": "operator",
   "repo_name": "hath0r-framework",
-  "status": "completed",
-  "started_at": "2026-10-16T15:07:32.980550+00:00",
-  "updated_at": "2026-10-16T15:29:26.719323+00:00",
-  "ended_at": "2026-10-16T15:29:26.719323+00:00",
-  "read_count": 3,
-  "write_count": 6,
-  "last_read_at": "2026-10-16T15:24:55.012391+00:00",
-  "last_write_at": "2026-10-16T15:29:26.719323+00:00",
-  "active_focus": "Repository orientation verified for hath0r-framework",
-  "prior_summary": "ounded episode:issue-295-default-hat; Provisioned .hath0r/mcp.json and updated; Compounded episode:issue-295-default-hat",
+  "status": "active",
+  "started_at": "2026-10-16T15:44:15.704873+00:00",
+  "updated_at": "2026-10-16T15:44:16.997421+00:00",
+  "ended_at": null,
+  "read_count": 2,
+  "write_count": 0,
+  "last_read_at": "2026-10-16T15:44:16.997421+00:00",
+  "last_write_at": null,
+  "active_focus": "Active working session in hath0r-framework",
+  "prior_summary": "Completed #295: canonical .hath0r/mcp.json with group Hath0r MCP defaults across all 31 repos.",
   "recalled_nodes": [
     {
-      "id": "fact:repo-hath0r-framework-orientation",
-      "type": "fact",
-      "label": "hath0r-framework Repository Memory Orientation",
-      "snippet": "hath0r-framework: <p align=\"center\"> <img src=\"lib/assets/images/hathor-logo-1.png\" alt=\"H"
-    }
-  ],
-  "micro_entries": [
+      "id": "insight:cr-memory-compound-001",
+      "type": "insight",
+      "label": "Synthesized Insight on cr-memory-compound-001",
+      "snippet": "Consolidated from 2 memory nodes tagged 'cr-memory-compound-001'. Recurring themes: memory"
+    },
     {
-      "timestamp": "2026-10-16T15:29:26.719323+00:00",
-      "kind": "milestone",
-      "summary": "Completed #295: canonical .hath0r/mcp.json with group Hath0r MCP defaults across all 31 repos.",
-      "tags": [
-        "session-end"
-      ],
-      "node_id": null
+      "id": "episode:issue-287-memorygraph-compounding",
+      "type": "episode",
+      "label": "Enforce CR-MEMORY-COMPOUND-001 & Suite-Wide .hath0r/memory",
+      "snippet": "Provisioned .hath0r/memory/graph.json across all 31 active repositories in ~/Development, "
+    },
+    {
+      "id": "decision:issue-289-micro-memory-session",
+      "type": "decision",
+      "label": "True Micro Memory Session Read/Write Lifecycle (Issue #289)",
+      "snippet": "Added MicroMemoryEntry and MicroMemorySession (<2048B budget) in hath0r_engine.memory, lin"
     }
   ],
+  "micro_entries": [],
   "next_steps": [],
-  "compounded_node_ids": [
-    "fact:repo-hath0r-framework-orientation",
-    "episode:issue-295-default-hath0r-mcp-json"
-  ],
-  "capsule_bytes": 1792
+  "compounded_node_ids": [],
+  "capsule_bytes": 1918
 }
