@@ -595,6 +595,7 @@ class MemoryGraph:
     }
 
     CANONICAL_GRAPH_PATHS: tuple[str, ...] = (
+        ".hath0r/mcp.json",
         ".hath0r/memory/graph.json",
         ".hath0r/memory/hashes.json",
         ".hath0r/memory/sessions/current.json",
@@ -606,6 +607,7 @@ class MemoryGraph:
 
     CANONICAL_GITIGNORE_NEGATIONS: tuple[str, ...] = (
         "!.hath0r/",
+        "!.hath0r/mcp.json",
         "!.hath0r/memory/",
         "!.hath0r/memory/**",
         "!.hath0r/memory/sessions/",

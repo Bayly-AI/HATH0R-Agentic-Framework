@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-16T14:55:50.103361+00:00",
+  "timestamp": "2026-10-16T15:29:27.125067+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -619,7 +619,7 @@
       "plane": "knowledge",
       "type": "contract",
       "label": "Hath0r MCP Servers Configuration",
-      "content": "Configuration specification for Model Context Protocol (MCP) servers with priority ordering and scope rules.",
+      "content": "Configuration specification for Model Context Protocol (MCP) servers (.hath0r/mcp.json and cfg/mcp.servers.json) with priority ordering and group Hath0r MCP defaults.",
       "properties": {
         "schema_id": "https://schema.bayly.ai/hath0r/contracts/hath0r-mcp-servers-v1.schema.json",
         "path": "contracts/hath0r-mcp-servers-v1.schema.json"
@@ -2037,11 +2037,11 @@
       "plane": "knowledge",
       "type": "knowledge_doc",
       "label": "Mcp Configuration",
-      "content": "# Model Context Protocol (MCP) Configuration Specification\n\n> Product: **HATH0R Agentic Framework & Ecosystem**  \n> Rule: **cr-mcp-priority-001**  \n> Status: **Canonical Specification**  \n> Updated: 2026-09-24\n\n---\n\n## 1. Overview & Core Rules\n\nHath0r orchestrates multiple Model Context Protocol (MCP) servers providing tool calls, knowledgebase lookups, and specialized actions. All MCP connections are declaratively managed through a repository-local configuration file (`cfg/mcp.servers.json`).\n\n### Priority Ordering Rule (CRITICAL)\n- **Project MCP is ALWAYS Priority #1**:\n  - The local repository's project-specific MCP server (e.g., `hath0r-mcp`) must always precede group and org servers.\n  - Priority resolution strictly follows:\n    1. Scope `project` (Priority 1)\n    2. Scope `group`\n    3. Scope `org` / `user`\n    4. Numeric `priority` ascending within matching scope.\n- **Config-Driven Dynamism**: Adding, removing, or disabling MCP servers requires no code changes—only updating `cfg/mcp.servers.json`.\n- **Zero Secrets**: Secrets, API keys, and credentials must NEVER be placed in `cfg/mcp.servers.json`. Use `env_ref` pointing to `/Users/raybayly/Development/.credentials/<service>",
+      "content": "# Model Context Protocol (MCP) Configuration Specification\n\n> Product: **HATH0R Agentic Framework & Ecosystem**  \n> Rule: **cr-mcp-priority-001**  \n> Status: **Canonical Specification**  \n> Updated: 2026-10-16\n\n---\n\n## 1. Overview & Core Rules\n\nHath0r orchestrates multiple Model Context Protocol (MCP) servers providing tool calls, knowledgebase lookups, and specialized actions. Every repository in the Hath0r ecosystem is required to maintain a canonical `.hath0r/mcp.json` configuration file (alongside optional `cfg/mcp.servers.json`) that uses the **Hath0r MCP** engine (`\"engine\": \"hath0r-mcp\"`, `\"default_provider\": \"hath0r-mcp\"`) by default.\n\n### Canonical Group Hath0r MCP Endpoints (CRITICAL)\n\nEvery repository defaults to its group's canonical Hath0r MCP server as Priority #1 (`\"scope\": \"project\"`, `\"priority\": 1`):\n\n| Group | Server ID | Default Base URL | Target Repositories |\n|-------|-----------|------------------|---------------------|\n| `hath0r-opensource` | `hath0r-mcp` | `https://mcp.hath0r-cli.com` | `/Users/raybayly/Development/OpenSource/*` |\n| `bai` | `bai-mcp` | `https://mcp.baylyai.com` | `/Users/raybayly/Development/BAI/*`, `Bayly-AI` websites |\n| `ray` | `ray-mcp`",
       "properties": {
         "path": "docs/governance/mcp-configuration.md",
         "category": "governance",
-        "size_bytes": 2126
+        "size_bytes": 3957
       },
       "is_current": true
     },
@@ -4485,7 +4485,7 @@
       "content": "Implemented cryptographic SHA-256 file hashing (.hath0r/memory/hashes.json), source_files staleness tracking, atomic os.replace writes, and optimistic Compare-And-Swap (CAS) with deterministic set-union auto-merge and HASH_CONFLICT rejection.",
       "properties": {
         "source_files": {
-          "src/hath0r_engine/memory/memory_graph.py": "sha256:28f65cca2280a4b25bcc1c33481a8eb3e4cbdad1cc0af72f7acb1c6428fc0e1e",
+          "src/hath0r_engine/memory/memory_graph.py": "sha256:f80819ae8d08e7bbed5fa3d47d3e29d8f48a2f5479775e10ad85b882dbd610ca",
           "docs/governance/rules/cr-memory-compound-001.md": "sha256:daebfa120009ea99a336eca94cf92870c9941478d305c9c96cd58ade5c4f9aa4"
         },
         "source": "local_memory",
@@ -4510,8 +4510,8 @@
       "content": "Added ensure_gitignore_unignores_graphs and verify_graphs_not_gitignored to MemoryGraph and MemoryManagerBot, sanitizing .hath0r/state/ and adding canonical ! negation rules across all 31 repositories under CR-MEMORY-COMPOUND-001.",
       "properties": {
         "source_files": {
-          "src/hath0r_engine/memory/memory_graph.py": "sha256:28f65cca2280a4b25bcc1c33481a8eb3e4cbdad1cc0af72f7acb1c6428fc0e1e",
-          ".gitignore": "sha256:0c453028125a6e519cb262406c8a19a8e188a02fe7a5c262f13843ef51ed78ac"
+          "src/hath0r_engine/memory/memory_graph.py": "sha256:f80819ae8d08e7bbed5fa3d47d3e29d8f48a2f5479775e10ad85b882dbd610ca",
+          ".gitignore": "sha256:0f6fbbb8ab649f30fdd65a78d648f7d6eb230865f8c539bd69eb213cd1e813cd"
         },
         "source": "local_memory",
         "tags": [
@@ -4524,30 +4524,6 @@
           "compounded"
         ],
         "importance": 0.9
-      },
-      "is_current": true
-    },
-    {
-      "id": "memory:session:sess-20261016-142431-e261a7",
-      "plane": "memory",
-      "type": "session",
-      "label": "Micro Session sess-20261016-142431-e261a7",
-      "content": "Micro Session sess-20261016-142431-e261a7 [completed] | Focus: Repository orientation verified for hath0r-framework | Reads: 5, Writes: 6 | Entries: Compounded episode:issue-293-unignore-graph-folders: Enforced Un-Ignored Graph Folders Across All Repositories",
-      "properties": {
-        "session_id": "sess-20261016-142431-e261a7",
-        "prior_session_id": "sess-20261016-140212-0e5df6",
-        "parent_session_id": "sess-20261016-140212-0e5df6",
-        "read_count": 5,
-        "write_count": 6,
-        "status": "completed",
-        "byte_size": 2025,
-        "source": "local_memory",
-        "tags": [
-          "session",
-          "micro-session",
-          "completed"
-        ],
-        "importance": 0.75
       },
       "is_current": true
     },
@@ -4568,6 +4544,82 @@
           "compounded"
         ],
         "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261016-142431-e261a7",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261016-142431-e261a7",
+      "content": "Micro Session sess-20261016-142431-e261a7 [completed] | Focus: Repository orientation verified for hath0r-framework | Reads: 5, Writes: 7 | Entries: Merged PR #294 (#293) and PR #479 (#478) enforcing un-ignored graph folders across all 31 repos",
+      "properties": {
+        "session_id": "sess-20261016-142431-e261a7",
+        "prior_session_id": "sess-20261016-140212-0e5df6",
+        "parent_session_id": "sess-20261016-140212-0e5df6",
+        "read_count": 5,
+        "write_count": 7,
+        "status": "completed",
+        "byte_size": 1834,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "completed"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:episode:issue-295-default-hath0r-mcp-json",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Canonical .hath0r/mcp.json with Group Hath0r MCP Defaults (#295)",
+      "content": "Configured canonical .hath0r/mcp.json (engine: hath0r-mcp) across all 31 repositories with group-specific Priority 1 Hath0r MCP endpoints: hath0r-mcp (https://mcp.hath0r-cli.com), bai-mcp (https://mcp.baylyai.com), ray-mcp (https://mcp.raymondbayly.com), and 1-nation-mcp (https://mcp.1-nation.com), un-ignored via !.hath0r/mcp.json.",
+      "properties": {
+        "source_files": {
+          ".hath0r/mcp.json": "sha256:b4a41a28f16020500053d215c329da0a8e78bd49579ed28516381cd4283b6d3b",
+          "cfg/mcp.servers.json": "sha256:25037f27b199280ac54da9fa81be741435f7ded8e50a1e0b5b6c3692b1c42621",
+          "contracts/hath0r-mcp-servers-v1.schema.json": "sha256:6ce5de551c0b6c954338260808b9fe56f9dcb3623879fabd664273c44dd22cb0",
+          "docs/governance/mcp-configuration.md": "sha256:5405d043e6a63a40bc6ab32584eb23884ec6953a3731963432719bed06fab80b",
+          "src/hath0r_engine/memory/memory_graph.py": "sha256:f80819ae8d08e7bbed5fa3d47d3e29d8f48a2f5479775e10ad85b882dbd610ca"
+        },
+        "source": "local_memory",
+        "tags": [
+          "mcp",
+          "hath0r-mcp",
+          "governance",
+          "cr-mcp-priority-001",
+          "cr-memory-compound-001",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.8
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261016-150732-e076f6",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261016-150732-e076f6",
+      "content": "Micro Session sess-20261016-150732-e076f6 [completed] | Focus: Repository orientation verified for hath0r-framework | Reads: 3, Writes: 6 | Entries: Completed #295: canonical .hath0r/mcp.json with group Hath0r MCP defaults across all 31 repos.",
+      "properties": {
+        "session_id": "sess-20261016-150732-e076f6",
+        "prior_session_id": "sess-20261016-142431-e261a7",
+        "parent_session_id": "sess-20261016-142431-e261a7",
+        "read_count": 3,
+        "write_count": 6,
+        "status": "completed",
+        "byte_size": 1792,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "completed"
+        ],
+        "importance": 0.75
       },
       "is_current": true
     },
@@ -4806,6 +4858,42 @@
       "is_current": true
     },
     {
+      "source": "memory:session:sess-20261016-142431-e261a7",
+      "target": "memory:session:sess-20261016-150732-e076f6",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-150732-e076f6",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:repo-hath0r-framework-orientation",
+      "target": "memory:session:sess-20261016-150732-e076f6",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-295-default-hath0r-mcp-json",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-295-default-hath0r-mcp-json",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-295-default-hath0r-mcp-json",
+      "target": "memory:session:sess-20261016-150732-e076f6",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -5034,13 +5122,25 @@
       "is_current": true
     },
     {
+      "source": "memory:insight:agentgraph",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
       "source": "memory:session:sess-20261016-142431-e261a7",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
     },
     {
-      "source": "memory:insight:agentgraph",
+      "source": "memory:episode:issue-295-default-hath0r-mcp-json",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-150732-e076f6",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
