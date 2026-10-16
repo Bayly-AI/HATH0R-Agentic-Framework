@@ -3,22 +3,22 @@
   "session_id": "sess-20261016-142431-e261a7",
   "prior_session_id": "sess-20261016-140212-0e5df6",
   "parent_session_id": "sess-20261016-140212-0e5df6",
-  "revision": 10,
-  "content_hash": "sha256:f5e37cfe3fb2095d837acc1b57df7a14443e794579cb66a752438078673315bf",
+  "revision": 11,
+  "content_hash": "sha256:7a532a1cf5ccf141bc97457917bf29caffb87e3d97da976c90a1acfecbe40256",
   "base_graph_hash": "sha256:1eec5c4d6a538479d567a571e503c98f81bf606d7ddc9ea6b57d200dc6df7972",
   "task_id": "issue-291",
   "role": null,
   "repo_name": "hath0r-framework",
   "status": "completed",
   "started_at": "2026-10-16T14:24:31.724300+00:00",
-  "updated_at": "2026-10-16T14:55:49.749738+00:00",
-  "ended_at": "2026-10-16T14:24:37.476850+00:00",
+  "updated_at": "2026-10-16T15:00:24.683474+00:00",
+  "ended_at": "2026-10-16T15:00:24.683474+00:00",
   "read_count": 5,
-  "write_count": 6,
+  "write_count": 7,
   "last_read_at": "2026-10-16T14:55:48.052749+00:00",
-  "last_write_at": "2026-10-16T14:55:49.749738+00:00",
+  "last_write_at": "2026-10-16T15:00:24.683474+00:00",
   "active_focus": "Repository orientation verified for hath0r-framework",
-  "prior_summary": "ounded episode:issue-291-memory-file; Completed Issue #291 implementation, tes; Compounded fact:repo-hath0r-framework-or",
+  "prior_summary": "leted Issue #291 implementation, tes; Compounded fact:repo-hath0r-framework-or; Compounded episode:issue-293-unignore-gr",
   "recalled_nodes": [
     {
       "id": "insight:cr-memory-compound-001",
@@ -29,19 +29,13 @@
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-16T14:55:49.749738+00:00",
-      "kind": "compound",
-      "summary": "Compounded episode:issue-293-unignore-graph-folders: Enforced Un-Ignored Graph Folders Across All Repositories",
+      "timestamp": "2026-10-16T15:00:24.683474+00:00",
+      "kind": "milestone",
+      "summary": "Merged PR #294 (#293) and PR #479 (#478) enforcing un-ignored graph folders across all 31 repos",
       "tags": [
-        "memorygraph",
-        "gitignore",
-        "agentgraph",
-        "cr-memory-compound-001",
-        "issue-293",
-        "episode",
-        "compounded"
+        "session-end"
       ],
-      "node_id": "episode:issue-293-unignore-graph-folders"
+      "node_id": null
     }
   ],
   "next_steps": [],
@@ -50,5 +44,5 @@
     "fact:repo-hath0r-framework-orientation",
     "episode:issue-293-unignore-graph-folders"
   ],
-  "capsule_bytes": 2025
+  "capsule_bytes": 1834
 }
