@@ -416,29 +416,70 @@
       }
     },
     {
+      "id": "episode:clean-repo-hath0r-framework",
+      "type": "episode",
+      "label": "Clean Repo Lifecycle (hath0r-framework)",
+      "content": "Executed 13-step clean-repo hygiene and knowledge sync for hath0r-framework.",
+      "importance": 0.75,
+      "tags": [
+        "clean-repo",
+        "hygiene",
+        "hath0r-framework",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T15:48:19.256379+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-16T15:48:19.256379+00:00",
+      "updated_at": "2026-10-16T15:48:19.256379+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "insight:hath0r-framework",
+      "type": "insight",
+      "label": "Synthesized Insight on hath0r-framework",
+      "content": "Consolidated from 2 memory nodes tagged 'hath0r-framework'. Recurring themes: framework, hathor, logo, clean. Latest context: Executed 13-step clean-repo hygiene and knowledge sync for hath0r-framework.",
+      "importance": 0.95,
+      "tags": [
+        "hath0r-framework",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T15:48:19.302107+00:00",
+      "is_current": true,
+      "created_at": "2026-10-16T15:48:19.302107+00:00",
+      "updated_at": "2026-10-16T15:48:19.302107+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "hath0r-framework"
+      }
+    },
+    {
       "id": "session:sess-20261016-154415-ac4723",
       "type": "session",
       "label": "Micro Session sess-20261016-154415-ac4723",
-      "content": "Micro Session sess-20261016-154415-ac4723 [active] | Focus: Active working session in hath0r-framework | Reads: 2, Writes: 0 | Entries: Completed #295: canonical .hath0r/mcp.json with group Hath0r MCP defaults across all 31 repos.",
+      "content": "Micro Session sess-20261016-154415-ac4723 [completed] | Focus: Active working session in hath0r-framework | Reads: 3, Writes: 2 | Entries: Clean Repo Lifecycle completed for hath0r-framework.",
       "importance": 0.75,
       "tags": [
         "session",
         "micro-session",
-        "active"
+        "completed"
       ],
       "valid_from": "2026-10-16T15:44:15.704873+00:00",
-      "valid_to": null,
+      "valid_to": "2026-10-16T15:48:19.321480+00:00",
       "is_current": true,
       "created_at": "2026-10-16T15:44:15.704873+00:00",
-      "updated_at": "2026-10-16T15:44:16.997421+00:00",
+      "updated_at": "2026-10-16T15:48:19.321480+00:00",
       "metadata": {
         "session_id": "sess-20261016-154415-ac4723",
         "prior_session_id": "sess-20261016-150732-e076f6",
         "parent_session_id": "sess-20261016-150732-e076f6",
-        "read_count": 2,
-        "write_count": 0,
-        "status": "active",
-        "byte_size": 1918
+        "read_count": 3,
+        "write_count": 2,
+        "status": "completed",
+        "byte_size": 1727
       }
     }
   ],
@@ -759,9 +800,49 @@
       "weight": 0.8,
       "valid_from": "2026-10-16T15:44:15.711919+00:00",
       "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-framework",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:19.256379+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-framework",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:19.256379+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-framework",
+      "target": "session:sess-20261016-154415-ac4723",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:19.286718+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:hath0r-framework",
+      "target": "fact:repo-hath0r-framework-orientation",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:19.302107+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:hath0r-framework",
+      "target": "episode:clean-repo-hath0r-framework",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T15:48:19.302107+00:00",
+      "is_current": true
     }
   ],
-  "updated_at": "2026-10-16T15:44:17.007008+00:00",
-  "revision": 41,
-  "content_hash": "sha256:a86f643a740e394fa5f6da5092451ce20bf1257e1ca5e34c537c63eeb1da5001"
+  "updated_at": "2026-10-16T15:48:19.326415+00:00",
+  "revision": 47,
+  "content_hash": "sha256:a76bbf38ef91661d25446847a217d092b9e8243f0914e2c5730a8b66ef743014"
 }

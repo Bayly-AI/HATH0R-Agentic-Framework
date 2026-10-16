@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-16T15:29:27.125067+00:00",
+  "timestamp": "2026-10-16T15:48:19.510400+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -4624,6 +4624,69 @@
       "is_current": true
     },
     {
+      "id": "memory:episode:clean-repo-hath0r-framework",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Clean Repo Lifecycle (hath0r-framework)",
+      "content": "Executed 13-step clean-repo hygiene and knowledge sync for hath0r-framework.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "clean-repo",
+          "hygiene",
+          "hath0r-framework",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:hath0r-framework",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on hath0r-framework",
+      "content": "Consolidated from 2 memory nodes tagged 'hath0r-framework'. Recurring themes: framework, hathor, logo, clean. Latest context: Executed 13-step clean-repo hygiene and knowledge sync for hath0r-framework.",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "hath0r-framework",
+        "source": "local_memory",
+        "tags": [
+          "hath0r-framework",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 0.95
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261016-154415-ac4723",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261016-154415-ac4723",
+      "content": "Micro Session sess-20261016-154415-ac4723 [completed] | Focus: Active working session in hath0r-framework | Reads: 3, Writes: 2 | Entries: Clean Repo Lifecycle completed for hath0r-framework.",
+      "properties": {
+        "session_id": "sess-20261016-154415-ac4723",
+        "prior_session_id": "sess-20261016-150732-e076f6",
+        "parent_session_id": "sess-20261016-150732-e076f6",
+        "read_count": 3,
+        "write_count": 2,
+        "status": "completed",
+        "byte_size": 1727,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "completed"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
       "id": "role:developer",
       "plane": "rules",
       "type": "agent_role",
@@ -4894,6 +4957,48 @@
       "is_current": true
     },
     {
+      "source": "memory:session:sess-20261016-150732-e076f6",
+      "target": "memory:session:sess-20261016-154415-ac4723",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-154415-ac4723",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-framework",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-framework",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-framework",
+      "target": "memory:session:sess-20261016-154415-ac4723",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:hath0r-framework",
+      "target": "memory:fact:repo-hath0r-framework-orientation",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:hath0r-framework",
+      "target": "memory:episode:clean-repo-hath0r-framework",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -5141,6 +5246,24 @@
     },
     {
       "source": "memory:session:sess-20261016-150732-e076f6",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-framework",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:hath0r-framework",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261016-154415-ac4723",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
