@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 from hath0r_engine.memory.memory_graph import (
-     MemoryEdge,
+    MemoryEdge,
     MemoryGraph,
     MemoryNode,
+    MicroMemoryEntry,
+    MicroMemorySession,
 )
 
-__all__ = ["MemoryNode", "MemoryEdge", "MemoryGraph"]
+__all__ = ["MemoryNode", "MemoryEdge", "MemoryGraph", "MicroMemoryEntry", "MicroMemorySession"]

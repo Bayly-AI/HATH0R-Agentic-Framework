@@ -18,7 +18,7 @@ Whenever an operator or prompt triggers **"orient"**, execute the following 6 st
 - Extract:
   - **Agent Roles**: Identify all declared roles (e.g. `role:developer`, `role:reader`), their permitted tools, forbidden tools, and inheritance hierarchy.
   - **Rules & Governance Policies**: Identify all active rule policies (`CR-CLI-ENTRY-001`, `CR-AGENTGRAPH-001`, `CR-MEMORY-COMPOUND-001`, `CR-CICCCDCT-001`, `CR-IAC-001`, `CR-BRANCH-GOV-001`, etc.), their priorities, and restricted actions.
-  - **MemoryGraph & Graph Topology**: Tally node distributions across Knowledge, Memory, Rules, and Context planes, and verify compounded memory nodes in `.hath0r/memory/graph.json`.
+  - **MemoryGraph, Micro Memory Session & Graph Topology**: Ensure `.hath0r/memory/graph.json` and `.hath0r/memory/sessions/current.json` are initialized, read the active Micro Memory Session (`hath0r memory session read`), write orientation observations (`hath0r memory session write`), tally node distributions across Knowledge, Memory, Rules, and Context planes, and verify compounded memory nodes.
 
 ### Step 2: Read the Project Readme
 - Read the repository root `README.md` (and `TECH_README.md` if present).

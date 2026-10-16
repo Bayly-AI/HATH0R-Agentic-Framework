@@ -121,5 +121,51 @@ def test_ensure_repo_memory(tmp_path: Path) -> None:
     assert (tmp_path / ".hath0r" / "memory" / "graph.json").is_file()
     assert (tmp_path / ".hath0r" / "memory" / "core_rules.md").is_file()
     assert (tmp_path / ".hath0r" / "memory" / "architecture.md").is_file()
+    assert (tmp_path / ".hath0r" / "memory" / "sessions" / "current.json").is_file()
+    assert (tmp_path / ".hath0r" / "memory" / "sessions" / "latest.json").is_file()
     assert "rule:cr-memory-compound-001" in graph.nodes
-    assert graph.verify_compounded()["compounded"] is True
+    gate = graph.verify_compounded(repo_root=tmp_path, require_session=True)
+    assert gate["compounded"] is True
+    assert gate["session"]["read_verified"] is True
+    assert gate["session"]["write_verified"] is True
+
+
+def test_micro_memory_session_lifecycle_and_budget(tmp_path: Path) -> None:
+    MemoryGraph.ensure_repo_memory(tmp_path)
+
+    # Start session 1
+    s1 = MemoryGraph.start_micro_session(tmp_path, session_id="sess-test-001", focus="Initial session")
+    assert s1.read_count >= 1
+    assert s1.write_count >= 1
+    assert s1.byte_size() <= 2048
+
+    # Read session 1
+    s1_read = MemoryGraph.read_micro_session(tmp_path)
+    assert s1_read.read_count >= 2
+
+    # Write multiple entries to verify <2KB budget enforcement
+    for idx in range(12):
+        s1_write = MemoryGraph.write_micro_session(
+            tmp_path,
+            summary=f"Observation {idx}: verifying micro memory session capsule stays compact and bounded",
+            kind="observation",
+            tags=["test", "budget"],
+        )
+    assert s1_write.byte_size() <= 2048
+    assert len(s1_write.micro_entries) <= 8
+
+    # End session 1
+    s1_end = MemoryGraph.end_micro_session(tmp_path, summary="Finished session 1", next_steps=["Start session 2"])
+    assert s1_end.status == "flushed"
+
+    # Start session 2 -> links via PRECEDES to sess-test-001
+    s2 = MemoryGraph.start_micro_session(tmp_path, session_id="sess-test-002", focus="Follow-up session")
+    assert s2.prior_session_id == "sess-test-001"
+    graph = MemoryGraph.load_from_file(tmp_path / ".hath0r" / "memory" / "graph.json")
+    assert "session:sess-test-001" in graph.nodes
+    assert "session:sess-test-002" in graph.nodes
+    assert any(
+        e.source == "session:sess-test-001" and e.target == "session:sess-test-002" and e.relation == "PRECEDES"
+        for e in graph.edges
+    )
+

@@ -43,8 +43,9 @@ Whenever the user requests **"clean repo"** or **"clean repos"**, execute the fo
 - Verify if any open PRs are pending review, approval, or merge.
 - Address blockers or merge ready PRs.
 
-### Step 6: Share Knowledge & Compound MemoryGraph (`CR-MEMORY-COMPOUND-001`)
-- Ensure `.hath0r/memory/graph.json`, `core_rules.md`, and `architecture.md` exist in every repository (`hath0r memory init` / `hath0r memory ensure-all`).
+### Step 6: Share Knowledge, Read/Write Micro Memory Session & Compound MemoryGraph (`CR-MEMORY-COMPOUND-001`)
+- Ensure `.hath0r/memory/graph.json`, `.hath0r/memory/sessions/current.json`, `.hath0r/memory/sessions/latest.json`, `core_rules.md`, and `architecture.md` exist in every repository (`hath0r memory init` / `hath0r memory ensure-all`).
+- Read and write the repository's Micro Memory Session (`hath0r memory session read` + `hath0r memory session write "..." --kind milestone`) so every session records both `read_count >= 1` and `write_count >= 1`.
 - Compound task/cleanup knowledge into `.hath0r/memory/graph.json` (`hath0r memory compound --label "..." --content "..." --type episode --tags "..."`) so institutional memory compounds across tasks and syncs into `.hath0r/agentgraph/snapshot.json`.
 - Update shared knowledge bases and indexing systems:
   - Ray-MCP knowledge roots (OneDrive knowledge roots: Author, Career, Documents, Books, Businesses, Cars, Projects).

@@ -51,12 +51,13 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 5. **Temporal Validity Filtering**: Edges and nodes must be evaluated using `is_valid_at(as_of)` to respect entity state mutations over time.
 6. **Detail**: `docs/governance/rules/cr-agentgraph-001.md`.
 
-## CR-MEMORY-COMPOUND-001: Mandatory `.hath0r/memory` Repository Presence & Pre-Announcement MemoryGraph Compounding (CRITICAL — org-wide)
+## CR-MEMORY-COMPOUND-001: Mandatory `.hath0r/memory` Repository Presence, Micro Memory Sessions & Pre-Announcement MemoryGraph Compounding (CRITICAL — org-wide)
 
-1. **Universal `.hath0r/memory` Folder**: Every project repository in `/Users/raybayly/Development` MUST maintain an initialized `.hath0r/memory/` directory containing `.hath0r/memory/graph.json`, `core_rules.md`, and `architecture.md` (`hath0r memory init` / `hath0r memory ensure-all`).
-2. **Mandatory Pre-Announcement Compounding**: Every task, bugfix, feature, refactor, or clean-repo cycle MUST compound structured knowledge (`episode`, `decision`, `fact`, `insight`, `concept`, or `rule`) and relational edges (`DERIVES_FROM`, `RESOLVES`, `RELATES_TO`, `SUPERSEDES`, `ENFORCES`) into `.hath0r/memory/graph.json` **prior to announcing task completion** (`hath0r memory compound` + `hath0r memory verify`).
-3. **Hard Gate & Immediate AgentGraph Sync**: `TaskAnnouncerBot.announce_complete`, `EndOfTaskBot`, and `CleanReposWorkflowBot` enforce `MemoryManagerBot.verify_compounded()` before announcing complete, and automatically sync `.hath0r/agentgraph/snapshot.json` on every memory mutation.
-4. **Detail**: `docs/governance/rules/cr-memory-compound-001.md` · `docs/governance/strategies/memorygraph-compounding-strategy.md`.
+1. **Universal `.hath0r/memory` & `.hath0r/memory/sessions` Folder**: Every project repository in `/Users/raybayly/Development` MUST maintain an initialized `.hath0r/memory/` directory containing `.hath0r/memory/graph.json`, `.hath0r/memory/sessions/current.json`, `.hath0r/memory/sessions/latest.json`, `core_rules.md`, and `architecture.md` (`hath0r memory init` / `hath0r memory ensure-all`).
+2. **True Micro Memory Session Read & Write on Every Session**: Every session MUST read and write a compact (<2KB) micro memory session (`hath0r memory session start|read` at session/task start, `hath0r memory session write` during execution, and `hath0r memory session end` at completion), linking sessions via `PRECEDES` edges in `.hath0r/memory/graph.json`.
+3. **Mandatory Pre-Announcement Compounding**: Every task, bugfix, feature, refactor, or clean-repo cycle MUST compound structured knowledge (`episode`, `decision`, `fact`, `insight`, `concept`, or `rule`) and relational edges (`DERIVES_FROM`, `RESOLVES`, `RELATES_TO`, `SUPERSEDES`, `ENFORCES`, `PRECEDES`) into `.hath0r/memory/graph.json` **prior to announcing task completion** (`hath0r memory compound` + `hath0r memory verify`).
+4. **Hard Gate & Immediate AgentGraph Sync**: `TaskAnnouncerBot.announce_complete`, `EndOfTaskBot`, and `CleanReposWorkflowBot` enforce `MemoryManagerBot.verify_compounded()` (requiring `read_count >= 1`, `write_count >= 1`, and `compounded_nodes_count >= 1`) before announcing complete, and automatically sync `.hath0r/agentgraph/snapshot.json` on every memory mutation.
+5. **Detail**: `docs/governance/rules/cr-memory-compound-001.md` · `docs/governance/strategies/memorygraph-compounding-strategy.md`.
 
 ## CR-CICCCDCT-001 / CR-CICCCD-001: Continuous Integration, Calibration, Deployment & Continuous Training (CIC³DCT / CIC{qubed}DCT) Methodology (CRITICAL — org-wide)
 
