@@ -37,6 +37,85 @@
         "substrate",
         "tri-graph"
       ]
+    },
+    {
+      "id": "rule:cr-memory-compound-001",
+      "type": "rule",
+      "label": "Mandatory MemoryGraph Compounding Rule",
+      "content": "Every project repo must maintain .hath0r/memory/graph.json and every task must compound knowledge prior to announcing complete.",
+      "importance": 1.0,
+      "tags": [
+        "rule",
+        "governance",
+        "memorygraph",
+        "cr-memory-compound-001"
+      ],
+      "is_current": true,
+      "created_at": "2026-10-16T11:47:29.238524+00:00",
+      "updated_at": "2026-10-16T11:47:29.238524+00:00"
+    },
+    {
+      "id": "fact:repo-hath0r-framework-orientation",
+      "type": "fact",
+      "label": "hath0r-framework Repository Memory Orientation",
+      "content": "hath0r-framework: <p align=\"center\"> <img src=\"lib/assets/images/hathor-logo-1.png\" alt=\"HATHOR logo\" width=\"280\" /> </p>",
+      "importance": 0.85,
+      "tags": [
+        "orientation",
+        "repository",
+        "hath0r-framework",
+        "cr-memory-compound-001",
+        "fact",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T11:47:29.238473+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-16T11:47:29.238473+00:00",
+      "updated_at": "2026-10-16T11:47:29.238473+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "episode:issue-287-memorygraph-compounding",
+      "type": "episode",
+      "label": "Enforce CR-MEMORY-COMPOUND-001 & Suite-Wide .hath0r/memory",
+      "content": "Provisioned .hath0r/memory/graph.json across all 31 active repositories in ~/Development, added compound_knowledge/verify_compounded/ensure_repo_memory to MemoryGraph, and enforced pre-announcement memory compounding prior to task completion.",
+      "importance": 0.95,
+      "tags": [
+        "memorygraph",
+        "cr-memory-compound-001",
+        "governance",
+        "agentgraph",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T11:48:08.814439+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-16T11:48:08.814439+00:00",
+      "updated_at": "2026-10-16T11:48:08.814439+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "insight:cr-memory-compound-001",
+      "type": "insight",
+      "label": "Synthesized Insight on cr-memory-compound-001",
+      "content": "Consolidated from 2 memory nodes tagged 'cr-memory-compound-001'. Recurring themes: memory, framework, hathor, logo. Latest context: Provisioned .hath0r/memory/graph.json across all 31 active repositories in ~/Development, added compound_knowledge/verify_compounded/ensure_repo_memory to Memor",
+      "importance": 1.0,
+      "tags": [
+        "cr-memory-compound-001",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-16T11:48:08.816508+00:00",
+      "is_current": true,
+      "created_at": "2026-10-16T11:48:08.816508+00:00",
+      "updated_at": "2026-10-16T11:48:08.816508+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "cr-memory-compound-001"
+      }
     }
   ],
   "edges": [
@@ -45,6 +124,62 @@
       "target": "concept:tri-graph",
       "relation": "ENFORCES",
       "weight": 1.0
+    },
+    {
+      "source": "rule:cr-memory-compound-001",
+      "target": "concept:tri-graph",
+      "relation": "ENFORCES",
+      "weight": 1.0,
+      "is_current": true
+    },
+    {
+      "source": "fact:repo-hath0r-framework-orientation",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T11:47:29.238473+00:00",
+      "is_current": true
+    },
+    {
+      "source": "fact:repo-hath0r-framework-orientation",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "RELATES_TO",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T11:47:29.238473+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:issue-287-memorygraph-compounding",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T11:48:08.814439+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:issue-287-memorygraph-compounding",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T11:48:08.814439+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:cr-memory-compound-001",
+      "target": "fact:repo-hath0r-framework-orientation",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T11:48:08.816508+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:cr-memory-compound-001",
+      "target": "episode:issue-287-memorygraph-compounding",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-16T11:48:08.816508+00:00",
+      "is_current": true
     }
-  ]
+  ],
+  "updated_at": "2026-10-16T11:48:08.816765+00:00"
 }

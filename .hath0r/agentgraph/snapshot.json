@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-12T10:17:53.721269+00:00",
+  "timestamp": "2026-10-16T11:48:09.120261+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -261,6 +261,19 @@
       "content": "---\nid: rule:cr-hath0r-init-001\ntype: rule_policy\ntitle: \"CR-HATH0R-INIT-001: Repository Initialization Entry Gate\"\npriority: 4\npriority_name: ORG_INVARIANT\ntarget_scope: root\nrestricted_actions: []\ngoverns_roles: [developer, architect]\n---\n# CR-HATH0R-INIT-001: Repository Initialization Entry Gate (CRITICAL — Org-Wide)\n\n> **Rule ID:** `CR-HATH0R-INIT-001`  \n> **Status:** RATIFIED & MANDATORY ENTRY GATE  \n> **Applies to:** All Repositories being initialized or re-initialized with HATH0R.  \n> **Effective Date:** 2026-09-19  \n\n---\n\n## 1. Main Entry Statement (CRITICAL ENTRY GATE)\n\n> **Before initializing (or re-initializing) ANY repository with Hath0r, agents MUST locate and satisfy both the canonical Hath0r setup playbook AND a same-technology runbook.**\n>\n> Layout scaffolding or applying file structures without an established setup playbook and technology-matched runbook is **STRICTLY FORBIDDEN**.\n\n---\n\n## 2. Core Directives\n\n1. **Setup Playbook Gate:**\n   - Locate and follow the canonical setup playbook:  \n     `docs/developers/hathor-playbook-001-repo-init-setup-20260919.md`\n   - If missing or incomplete, create or update the playbook first before proceeding.\n2. **Same-Technology Runbook Gate:**\n   - Locate a runbook for an individual repo with the same technology stack (e.g. React+Vite UXP, Python CLI, FastMCP server).\n   - Prefer sibling product `docs/runbook.md` in that tech family. If none exists, create a tech-appropriate runbook in the target repository.\n3. **Executio",
       "properties": {
         "path": "docs/governance/rules/cr-hath0r-init-001.md",
+        "priority": 4,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:cr-memory-compound-001",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule cr-memory-compound-001",
+      "content": "# CR-MEMORY-COMPOUND-001: Mandatory `.hath0r/memory` Repository Presence & Pre-Announcement MemoryGraph Compounding (CRITICAL — org-wide)\n\n> **Status**: Active · **Tier**: Org Invariant (`RulePriority.ORG_INVARIANT`)  \n> **Scope**: All repositories across `/Users/raybayly/Development` (`OpenSource`, `1-Nation`, `BAI`, `Ray`, `Websites`)  \n> **Enforced by**: `hath0r memory`, `MemoryManagerBot`, `TaskAnnouncerBot`, `EndOfTaskBot`, `CleanReposWorkflowBot`, `AgentGraphBot`\n\n---\n\n## 1. Universal `.hath0r/memory` Repository Invariant\n\n1. Every active project repository in `/Users/raybayly/Development` **MUST** maintain an initialized `.hath0r/memory/` directory containing:\n   - `.hath0r/memory/graph.json`: The canonical serialized `MemoryGraph` (`schema_version: \"1.0.0\"`), storing typed semantic and episodic nodes (`rule`, `concept`, `decision`, `fact`, `episode`, `topic`, `insight`) and relational edges (`ENFORCES`, `REQUIRES`, `DERIVES_FROM`, `SUPERSEDES`, `RELATES_TO`, `RESOLVES`, `PRECEDES`).\n   - `.hath0r/memory/core_rules.md`: Canonical local rule summary.\n   - `.hath0r/memory/architecture.md`: Repository architectural orientation summary.\n2. During repository onboarding (`hath0r init`), orientation (`hath0r orient`), or repository hygiene (`hath0r repo clean` / `clean-repos`), `MemoryManagerBot.ensure_memory_space()` **MUST** verify and initialize `.hath0r/memory/graph.json` if missing.\n3. Suite-wide compliance is audited and enforced via `hath0r memory ensure-all`.\n\n---\n\n##",
+      "properties": {
+        "path": "docs/governance/rules/cr-memory-compound-001.md",
         "priority": 4,
         "restricted_actions": []
       },
@@ -2124,6 +2137,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__procedures__memorygraph-compounding-procedure_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Memorygraph Compounding Procedure",
+      "content": "# MemoryGraph Compounding Standard Operating Procedure\n\n> **Rule Binding**: `CR-MEMORY-COMPOUND-001`  \n> **CLI Entrypoint**: `hath0r memory`\n\n## 1. Purpose\n\nDefines the mandatory step-by-step procedure for initializing `.hath0r/memory/`, compounding task knowledge into `.hath0r/memory/graph.json`, synchronizing `.hath0r/agentgraph/snapshot.json`, and verifying the pre-announcement gate before declaring any task complete.\n\n## 2. Procedure Steps\n\n### Step 1: Verify or Initialize Repository Memory Space\nAt the start of orientation or repository hygiene, ensure `.hath0r/memory/graph.json` exists:\n```bash\nhath0r memory init\n# Or across all repositories in a workspace/suite:\nhath0r memory ensure-all --root /Users/raybayly/Development\n```\n\n### Step 2: Query Existing Memory Prior to Implementation\nRetrieve relevant episodic learnings, architectural decisions, and insights:\n```bash\nhath0r memory search \"<topic>\"\nhath0r agentgraph query \"<topic>\" --plane memory\n```\n\n### Step 3: Compound Knowledge Prior to Announcing Complete\nBefore calling `hath0r task finish` or announcing task completion to the operator, record the task's architectural decisions, root-cause fixes, or episodic outcomes:\n```",
+      "properties": {
+        "path": "docs/governance/procedures/memorygraph-compounding-procedure.md",
+        "category": "procedures",
+        "size_bytes": 2054
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__procedures__finops-token-telemetry-histogram-procedure_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2159,6 +2185,19 @@
         "path": "docs/governance/procedures/docker-framework-stack-procedure.md",
         "category": "procedures",
         "size_bytes": 494
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__strategies__memorygraph-compounding-strategy_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Memorygraph Compounding Strategy",
+      "content": "# MemoryGraph Compounding & Pre-Announcement Gate Strategy\n\n> **Rule Binding**: `CR-MEMORY-COMPOUND-001` · `CR-AGENTGRAPH-001`  \n> **Subsystem**: `hath0r_engine.memory` · `hath0r_cli.bots.memory_manager` · `hath0r_cli.bots.agentgraph_bot`\n\n## 1. Strategic Objective\n\nAutonomous agents lose institutional context across sessions when task learnings remain trapped in ephemeral chat transcripts or unindexed markdown notes. The **MemoryGraph Compounding Strategy** transforms every repository's `.hath0r/memory/graph.json` into a living, bitemporal semantic network where every completed task compounds institutional knowledge prior to completion announcement.\n\n## 2. Architectural Pillars\n\n1. **Universal Repository Memory Space (`.hath0r/memory/`)**:\n   - Every repository in `/Users/raybayly/Development` maintains `.hath0r/memory/graph.json`, `.hath0r/memory/core_rules.md`, and `.hath0r/memory/architecture.md`.\n   - Repository initialization (`hath0r init`), orientation (`hath0r orient`), cleanup (`hath0r repo clean`), and suite-wide audits (`hath0r memory ensure-all`) guarantee zero uninitialized repositories.\n\n2. **Dual-Path Knowledge Compounding (Explicit + Automated)**:\n   - **Explicit A",
+      "properties": {
+        "path": "docs/governance/strategies/memorygraph-compounding-strategy.md",
+        "category": "strategies",
+        "size_bytes": 2466
       },
       "is_current": true
     },
@@ -2761,6 +2800,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__runbooks__memorygraph-compounding-runbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Memorygraph Compounding Runbook",
+      "content": "# MemoryGraph Compounding & Pre-Announcement Gate Runbook\n\n> **Rule Binding**: `CR-MEMORY-COMPOUND-001`  \n> **Service / Component**: `hath0r memory` · `MemoryManagerBot` · `TaskAnnouncerBot`\n\n## 1. Health & Gate Verification\n\nCheck the current repository's `MemoryGraph` health and pre-announcement gate status:\n```bash\nhath0r memory verify\nhath0r memory search\nhath0r agentgraph status\n```\n\nAudit all repositories in `/Users/raybayly/Development`:\n```bash\nhath0r memory ensure-all --root /Users/raybayly/Development\n```\n\n## 2. Troubleshooting & Remediation\n\n### Issue 1: `TaskAnnouncerBot` Blocks Announcement (`MEMORY_NOT_COMPOUNDED`)\n- **Symptom**: `announce-complete` returns `success: False` with error indicating no task knowledge has been compounded into `.hath0r/memory/graph.json`.\n- **Remediation**:\n  1. Run `hath0r memory compound --label \"<Task Title>\" --content \"<Summary of learnings/changes>\" --type episode --tags \"<tags>\"`\n  2. Verify with `hath0r memory verify`.\n  3. Re-run `hath0r task finish` or completion announcement.\n\n### Issue 2: Repository Missing `.hath0r/memory/graph.json`\n- **Symptom**: Repository has no `.hath0r/memory` directory or only markdown files without `grap",
+      "properties": {
+        "path": "docs/governance/runbooks/memorygraph-compounding-runbook.md",
+        "category": "runbooks",
+        "size_bytes": 1738
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__runbooks__streaming-voice-pipeline-runbook_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -2982,6 +3034,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__workflows__memorygraph-compounding-workflow_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Memorygraph Compounding Workflow",
+      "content": "# MemoryGraph Compounding Workflow Specification\n\n> **Factory Binding**: `end-of-task-factory.yaml` · `repo-onboarding-factory.yaml`  \n> **Rule Binding**: `CR-MEMORY-COMPOUND-001`\n\n## 1. Workflow Diagram\n\n```mermaid\nflowchart TD\n    A[\"Task Execution / Clean Repo\"] --> B[\"hath0r memory compound (Explicit Agent Call)\"]\n    B --> C[\"MemoryManagerBot.compound_memory()\"]\n    C --> D[\"Update .hath0r/memory/graph.json (Node + Relational Edges)\"]\n    D --> E[\"ReflectionEngine.consolidate_sleep_cycle() (Synthesize Insights)\"]\n    E --> F[\"AgentGraphBot.sync() (Update .hath0r/agentgraph/snapshot.json)\"]\n    F --> G[\"EndOfTaskBot / CleanReposWorkflowBot Auto-Compound\"]\n    G --> H{\"TaskAnnouncerBot.announce_complete()\\nMemoryManagerBot.verify_compounded()\"}\n    H -- \"Compounded == True\" --> I[\"Announce Task Complete\"]\n    H -- \"Compounded == False\" --> J[\"BLOCK Announcement (Require Memory Compounding)\"]\n```\n\n## 2. Declarative Factory Steps (`end-of-task-factory.yaml`)\n\n1. `deploy-test-bot: pre-deploy`\n2. `pr-bot: create-pr`\n3. `documentation-bot: generate-summary`\n4. `pr-bot: monitor-checks`\n5. `pr-bot: merge-pr`\n6. `git-janitor-bot: prune-branch`\n7. `git-janitor-bot: pull-development`\n8. `",
+      "properties": {
+        "path": "docs/governance/workflows/memorygraph-compounding-workflow.md",
+        "category": "workflows",
+        "size_bytes": 1628
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__workflows__iac-continuous-delivery-workflow_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -3030,6 +3095,19 @@
         "path": "docs/governance/bot-specs/phoenix-manager-bot-spec.md",
         "category": "bot-specs",
         "size_bytes": 1772
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__bot-specs__memory-manager-bot-spec_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Memory Manager Bot Spec",
+      "content": "# Bot Specification: `MemoryManagerBot` (`memory-manager-bot`)\n\n> **Bot ID**: `memory-manager-bot`  \n> **Class**: `hath0r_cli.bots.memory_manager.MemoryManagerBot`  \n> **Engine Backing**: `hath0r_engine.memory.MemoryGraph`, `hath0r_engine.memory.ReflectionEngine`  \n> **Rule Binding**: `CR-MEMORY-COMPOUND-001`, `CR-AGENTGRAPH-001`\n\n## 1. Role & Responsibilities\n\n`MemoryManagerBot` manages the canonical Local Memory Space (`.hath0r/memory/`) and semantic/episodic `MemoryGraph` (`.hath0r/memory/graph.json`) across all Hath0r repositories. It enforces universal repository presence of `.hath0r/memory/graph.json`, compounds task learnings into connected graph nodes and edges, executes autonomous reflection synthesis, synchronizes the `memory` plane of `AgentGraph`, and enforces the pre-announcement completion gate.\n\n## 2. Capabilities & Actions\n\n| Action | Method | Description |\n|--------|--------|-------------|\n| `init` / `initialize-memory` | `initialize_memory(dry_run=False)` | Provisions `.hath0r/memory/core_rules.md`, `architecture.md`, and `graph.json` with canonical seed nodes and edges, plus repository orientation node. |\n| `read` / `read-memory` | `read_memory(topic)` | Reads a ",
+      "properties": {
+        "path": "docs/governance/bot-specs/memory-manager-bot-spec.md",
+        "category": "bot-specs",
+        "size_bytes": 2503
       },
       "is_current": true
     },
@@ -3238,6 +3316,19 @@
         "path": "docs/governance/playbooks/dynamic-mcp-tool-router-playbook.md",
         "category": "playbooks",
         "size_bytes": 1662
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:docs__governance__playbooks__memorygraph-compounding-playbook_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Memorygraph Compounding Playbook",
+      "content": "# MemoryGraph Compounding Playbook\n\n> **Rule Binding**: `CR-MEMORY-COMPOUND-001`  \n> **Target Audience**: Autonomous Agents, Subagents, and Operators\n\n## 1. When to Use This Playbook\n\nExecute this playbook on **every task** prior to announcing completion, during `clean-repos` (Step 6 & Step 13), and whenever onboarding or auditing repositories across `/Users/raybayly/Development`.\n\n## 2. Node Type Selection Guide\n\n| Node Type | When to Use | Default Importance | Example ID Prefix |\n|-----------|-------------|--------------------|-------------------|\n| `episode` | Completed feature, bugfix, or clean-repo task outcome | `0.75` | `episode:` |\n| `decision` | Architectural Decision Record (ADR) or design tradeoff | `0.90` | `decision:` |\n| `fact` | Verified system invariant, endpoint, or configuration truth | `0.80` | `fact:` |\n| `insight` | Synthesized pattern across $\\ge 2$ episodes/decisions | `0.85` | `insight:` |\n| `concept` | Core domain or substrate abstraction | `0.90` | `concept:` |\n| `rule` | Governance policy or operational constraint | `1.00` | `rule:` |\n\n## 3. Relational Edge Selection Guide\n\n- `ENFORCES`: A `rule` node enforces a `concept` or `decision`.\n- `DERIVES_FROM`: ",
+      "properties": {
+        "path": "docs/governance/playbooks/memorygraph-compounding-playbook.md",
+        "category": "playbooks",
+        "size_bytes": 2350
       },
       "is_current": true
     },
@@ -3580,6 +3671,19 @@
       "is_current": true
     },
     {
+      "id": "doc:docs__governance__rules__cr-memory-compound-001_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Cr Memory Compound 001",
+      "content": "# CR-MEMORY-COMPOUND-001: Mandatory `.hath0r/memory` Repository Presence & Pre-Announcement MemoryGraph Compounding (CRITICAL — org-wide)\n\n> **Status**: Active · **Tier**: Org Invariant (`RulePriority.ORG_INVARIANT`)  \n> **Scope**: All repositories across `/Users/raybayly/Development` (`OpenSource`, `1-Nation`, `BAI`, `Ray`, `Websites`)  \n> **Enforced by**: `hath0r memory`, `MemoryManagerBot`, `TaskAnnouncerBot`, `EndOfTaskBot`, `CleanReposWorkflowBot`, `AgentGraphBot`\n\n---\n\n## 1. Universal `.hath0r/memory` Repository Invariant\n\n1. Every active project repository in `/Users/raybayly/Development` **MUST** maintain an initialized `.hath0r/memory/` directory containing:\n   - `.hath0r/memory/graph.json`: The canonical serialized `MemoryGraph` (`schema_version: \"1.0.0\"`), storing typed semantic and episodic nodes (`rule`, `concept`, `decision`, `fact`, `episode`, `topic`, `insight`) and relational edges (`ENFORCES`, `REQUIRES`, `DERIVES_FROM`, `SUPERSEDES`, `RELATES_TO`, `RESOLVES`, `PRECEDES`).\n   - `.hath0r/memory/core_rules.md`: Canonical local rule summary.\n   - `.hath0r/memory/architecture.md`: Repository architectural orientation summary.\n2. During repository onboarding (`hath0r i",
+      "properties": {
+        "path": "docs/governance/rules/cr-memory-compound-001.md",
+        "category": "rules",
+        "size_bytes": 3518
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:docs__governance__rules__cr-substrate-001_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -3879,6 +3983,19 @@
       "is_current": true
     },
     {
+      "id": "doc:_hath0r__knowledgebase__lessons-learned__pr-281_md",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "Pr 281",
+      "content": "# Knowledge share pr-281\n\n- **Generated:** 2026-10-12T11:09:33.033197+00:00\n- **Repo:** Bayly-AI/HATH0R-Agentic-Framework\n- **PR:** 281\n\n## Summary\nHath0r Framework v1.5.0 Release with OrientBot and Orient Workflow\n",
+      "properties": {
+        "path": ".hath0r/knowledgebase/lessons-learned/pr-281.md",
+        "category": "lessons-learned",
+        "size_bytes": 215
+      },
+      "is_current": true
+    },
+    {
       "id": "doc:_hath0r__knowledgebase__lessons-learned__pr-175_md",
       "plane": "knowledge",
       "type": "knowledge_doc",
@@ -4004,7 +4121,7 @@
       "properties": {
         "path": "README.md",
         "category": "root",
-        "size_bytes": 14773
+        "size_bytes": 19877
       },
       "is_current": true
     },
@@ -4028,7 +4145,13 @@
       "label": "Start with CLI Rule",
       "content": "Always start with hath0r operator CLI before inventing ad-hoc actions.",
       "properties": {
-        "source": "local_memory"
+        "source": "local_memory",
+        "tags": [
+          "rule",
+          "governance",
+          "cli"
+        ],
+        "importance": 1.0
       },
       "is_current": true
     },
@@ -4039,7 +4162,13 @@
       "label": "Promotion Path Policy",
       "content": "Promotion order: local -> development -> testing -> staging -> master.",
       "properties": {
-        "source": "local_memory"
+        "source": "local_memory",
+        "tags": [
+          "rule",
+          "governance",
+          "ci"
+        ],
+        "importance": 1.0
       },
       "is_current": true
     },
@@ -4050,7 +4179,91 @@
       "label": "Tri-Graph Substrate",
       "content": "Three-layer cognitive graph architecture: KnowledgeGraph, ContextGraph, MemoryGraph.",
       "properties": {
-        "source": "local_memory"
+        "source": "local_memory",
+        "tags": [
+          "architecture",
+          "substrate",
+          "tri-graph"
+        ],
+        "importance": 0.9
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:rule:cr-memory-compound-001",
+      "plane": "memory",
+      "type": "rule",
+      "label": "Mandatory MemoryGraph Compounding Rule",
+      "content": "Every project repo must maintain .hath0r/memory/graph.json and every task must compound knowledge prior to announcing complete.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "rule",
+          "governance",
+          "memorygraph",
+          "cr-memory-compound-001"
+        ],
+        "importance": 1.0
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:fact:repo-hath0r-framework-orientation",
+      "plane": "memory",
+      "type": "fact",
+      "label": "hath0r-framework Repository Memory Orientation",
+      "content": "hath0r-framework: <p align=\"center\"> <img src=\"lib/assets/images/hathor-logo-1.png\" alt=\"HATHOR logo\" width=\"280\" /> </p>",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "orientation",
+          "repository",
+          "hath0r-framework",
+          "cr-memory-compound-001",
+          "fact",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:episode:issue-287-memorygraph-compounding",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Enforce CR-MEMORY-COMPOUND-001 & Suite-Wide .hath0r/memory",
+      "content": "Provisioned .hath0r/memory/graph.json across all 31 active repositories in ~/Development, added compound_knowledge/verify_compounded/ensure_repo_memory to MemoryGraph, and enforced pre-announcement memory compounding prior to task completion.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "memorygraph",
+          "cr-memory-compound-001",
+          "governance",
+          "agentgraph",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.95
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:cr-memory-compound-001",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on cr-memory-compound-001",
+      "content": "Consolidated from 2 memory nodes tagged 'cr-memory-compound-001'. Recurring themes: memory, framework, hathor, logo. Latest context: Provisioned .hath0r/memory/graph.json across all 31 active repositories in ~/Development, added compound_knowledge/verify_compounded/ensure_repo_memory to Memor",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "cr-memory-compound-001",
+        "source": "local_memory",
+        "tags": [
+          "cr-memory-compound-001",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 1.0
       },
       "is_current": true
     },
@@ -4097,9 +4310,51 @@
   ],
   "edges": [
     {
-      "source": "rule:cr-cli-entry-001",
+      "source": "memory:rule:cr-cli-entry-001",
       "target": "concept:tri-graph",
       "relation": "ENFORCES",
+      "is_current": true
+    },
+    {
+      "source": "memory:rule:cr-memory-compound-001",
+      "target": "concept:tri-graph",
+      "relation": "ENFORCES",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:repo-hath0r-framework-orientation",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:repo-hath0r-framework-orientation",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-287-memorygraph-compounding",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-287-memorygraph-compounding",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:cr-memory-compound-001",
+      "target": "memory:fact:repo-hath0r-framework-orientation",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:cr-memory-compound-001",
+      "target": "memory:episode:issue-287-memorygraph-compounding",
+      "relation": "DERIVES_FROM",
       "is_current": true
     },
     {
@@ -4169,6 +4424,12 @@
       "is_current": true
     },
     {
+      "source": "rule:cr-memory-compound-001",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
       "source": "rule:cr-substrate-001",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -4215,10 +4476,34 @@
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
+    },
+    {
+      "source": "memory:rule:cr-memory-compound-001",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:fact:repo-hath0r-framework-orientation",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:issue-287-memorygraph-compounding",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:cr-memory-compound-001",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
     }
   ],
   "metadata": {
     "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-framework",
-    "synced_sources": 313
+    "synced_sources": 322
   }
 }

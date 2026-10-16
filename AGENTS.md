@@ -51,6 +51,13 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 5. **Temporal Validity Filtering**: Edges and nodes must be evaluated using `is_valid_at(as_of)` to respect entity state mutations over time.
 6. **Detail**: `docs/governance/rules/cr-agentgraph-001.md`.
 
+## CR-MEMORY-COMPOUND-001: Mandatory `.hath0r/memory` Repository Presence & Pre-Announcement MemoryGraph Compounding (CRITICAL — org-wide)
+
+1. **Universal `.hath0r/memory` Folder**: Every project repository in `/Users/raybayly/Development` MUST maintain an initialized `.hath0r/memory/` directory containing `.hath0r/memory/graph.json`, `core_rules.md`, and `architecture.md` (`hath0r memory init` / `hath0r memory ensure-all`).
+2. **Mandatory Pre-Announcement Compounding**: Every task, bugfix, feature, refactor, or clean-repo cycle MUST compound structured knowledge (`episode`, `decision`, `fact`, `insight`, `concept`, or `rule`) and relational edges (`DERIVES_FROM`, `RESOLVES`, `RELATES_TO`, `SUPERSEDES`, `ENFORCES`) into `.hath0r/memory/graph.json` **prior to announcing task completion** (`hath0r memory compound` + `hath0r memory verify`).
+3. **Hard Gate & Immediate AgentGraph Sync**: `TaskAnnouncerBot.announce_complete`, `EndOfTaskBot`, and `CleanReposWorkflowBot` enforce `MemoryManagerBot.verify_compounded()` before announcing complete, and automatically sync `.hath0r/agentgraph/snapshot.json` on every memory mutation.
+4. **Detail**: `docs/governance/rules/cr-memory-compound-001.md` · `docs/governance/strategies/memorygraph-compounding-strategy.md`.
+
 ## CR-CICCCDCT-001 / CR-CICCCD-001: Continuous Integration, Calibration, Deployment & Continuous Training (CIC³DCT / CIC{qubed}DCT) Methodology (CRITICAL — org-wide)
 
 1. **Continuous Integration (CI)**: All PRs must pass schema contract validation (`hath0r contracts validate`), AgentGraph policy checks (`hath0r agentgraph validate`), AST syntax guardrails, and automated unit tests.

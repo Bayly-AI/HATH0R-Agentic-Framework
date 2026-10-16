@@ -13,12 +13,12 @@ Whenever an operator or prompt triggers **"orient"**, execute the following 6 st
 
 ## 6-Step Orientation Procedure
 
-### Step 1: Read the Agents and Rules from AgentGraph
-- Query or inspect the AgentGraph snapshot at `.hath0r/agentgraph/snapshot.json` (or via `hath0r agentgraph status` and `hath0r agentgraph query "rules"`).
+### Step 1: Read the Agents, Rules, and MemoryGraph from AgentGraph
+- Ensure `.hath0r/memory/graph.json` is initialized (`hath0r memory init`) and query the AgentGraph snapshot at `.hath0r/agentgraph/snapshot.json` (or via `hath0r agentgraph status`, `hath0r agentgraph query "rules"`, and `hath0r memory search`).
 - Extract:
   - **Agent Roles**: Identify all declared roles (e.g. `role:developer`, `role:reader`), their permitted tools, forbidden tools, and inheritance hierarchy.
-  - **Rules & Governance Policies**: Identify all active rule policies (`CR-CLI-ENTRY-001`, `CR-AGENTGRAPH-001`, `CR-CICCCDCT-001`, `CR-IAC-001`, `CR-BRANCH-GOV-001`, etc.), their priorities, and restricted actions.
-  - **Graph Topology**: Tally node distributions across Knowledge, Memory, Rules, and Context planes.
+  - **Rules & Governance Policies**: Identify all active rule policies (`CR-CLI-ENTRY-001`, `CR-AGENTGRAPH-001`, `CR-MEMORY-COMPOUND-001`, `CR-CICCCDCT-001`, `CR-IAC-001`, `CR-BRANCH-GOV-001`, etc.), their priorities, and restricted actions.
+  - **MemoryGraph & Graph Topology**: Tally node distributions across Knowledge, Memory, Rules, and Context planes, and verify compounded memory nodes in `.hath0r/memory/graph.json`.
 
 ### Step 2: Read the Project Readme
 - Read the repository root `README.md` (and `TECH_README.md` if present).
