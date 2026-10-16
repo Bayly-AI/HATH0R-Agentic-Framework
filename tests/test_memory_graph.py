@@ -169,3 +169,78 @@ def test_micro_memory_session_lifecycle_and_budget(tmp_path: Path) -> None:
         for e in graph.edges
     )
 
+
+def test_file_hashing_and_cas_conflict_resolution(tmp_path: Path) -> None:
+    import pytest
+
+    from hath0r_engine.memory.memory_graph import MemoryHashConflictError
+
+    src_file = tmp_path / "src" / "module.py"
+    src_file.parent.mkdir(parents=True, exist_ok=True)
+    src_file.write_text("def hello() -> str:\n    return 'v1'\n", encoding="utf-8")
+
+    graph = MemoryGraph.ensure_repo_memory(tmp_path)
+    graph_file = tmp_path / ".hath0r" / "memory" / "graph.json"
+    hashes_file = tmp_path / ".hath0r" / "memory" / "hashes.json"
+    assert hashes_file.is_file()
+
+    # Compound node with tracked source_files
+    graph.compound_knowledge(
+        node_id="fact:module-v1",
+        node_type="fact",
+        label="Module V1 Implementation",
+        content="Tracks src/module.py SHA-256 digest.",
+        source_files=["src/module.py"],
+        repo_root=tmp_path,
+        run_reflection=False,
+    )
+    graph.save_to_file(graph_file)
+
+    ver_ok = MemoryGraph.verify_repo_hashes(tmp_path)
+    assert ver_ok["verified"] is True
+    assert "src/module.py" in (graph.get_node("fact:module-v1").metadata or {}).get("source_files", {})
+
+    # Modify tracked source file on disk -> verify_repo_hashes detects staleness
+    src_file.write_text("def hello() -> str:\n    return 'v2'\n", encoding="utf-8")
+    ver_stale = MemoryGraph.verify_repo_hashes(tmp_path)
+    assert ver_stale["verified"] is False
+    assert "src/module.py" in ver_stale["stale_source_files"]
+
+    # Sync hashes refreshes the manifest and node source_files digest
+    MemoryGraph.sync_repo_hashes(tmp_path)
+    ver_synced = MemoryGraph.verify_repo_hashes(tmp_path)
+    assert ver_synced["verified"] is True
+
+    # Test deterministic CAS auto-merge across two concurrent writers adding distinct nodes
+    writer_a = MemoryGraph.load_from_file(graph_file)
+    writer_b = MemoryGraph.load_from_file(graph_file)
+
+    writer_a.add_node(
+        MemoryNode(
+            id="episode:agent-a",
+            type="episode",
+            label="Agent A Work",
+            content="Concurrent node A",
+        )
+    )
+    writer_a.save_to_file(graph_file)
+
+    writer_b.add_node(
+        MemoryNode(
+            id="episode:agent-b",
+            type="episode",
+            label="Agent B Work",
+            content="Concurrent node B",
+        )
+    )
+    writer_b.save_to_file(graph_file)
+
+    merged = MemoryGraph.load_from_file(graph_file)
+    assert "episode:agent-a" in merged.nodes
+    assert "episode:agent-b" in merged.nodes
+
+    # Test explicit expected_hash mismatch raises MemoryHashConflictError
+    with pytest.raises(MemoryHashConflictError):
+        merged.save_to_file(graph_file, expected_hash="sha256:0000000000000000000000000000000000000000000000000000000000000000")
+
+

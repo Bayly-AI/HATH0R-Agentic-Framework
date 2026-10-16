@@ -1,48 +1,37 @@
 {
   "schema_version": "hath0r.micro_session/1",
-  "session_id": "sess-20261016-123301-4eeed3",
-  "prior_session_id": "sess-20261016-123220-0c5ded",
-  "parent_session_id": "sess-20261016-123220-0c5ded",
-  "task_id": "issue-289",
+  "session_id": "sess-20261016-142431-e261a7",
+  "prior_session_id": "sess-20261016-140212-0e5df6",
+  "parent_session_id": "sess-20261016-140212-0e5df6",
+  "revision": 5,
+  "content_hash": "sha256:3542858ac32536587cd804e6f032315977eb85b01657f9456c3799102b7ebb67",
+  "base_graph_hash": "sha256:f5103c4cca2a7c57fd1e15edb6066074caec04c71158b44cb4f4bf63ea71533f",
+  "task_id": "issue-291",
   "role": null,
   "repo_name": "hath0r-framework",
   "status": "completed",
-  "started_at": "2026-10-16T12:33:01.603973+00:00",
-  "updated_at": "2026-10-16T12:33:05.923913+00:00",
-  "ended_at": "2026-10-16T12:33:05.923913+00:00",
+  "started_at": "2026-10-16T14:24:31.724300+00:00",
+  "updated_at": "2026-10-16T14:24:37.476850+00:00",
+  "ended_at": "2026-10-16T14:24:37.476850+00:00",
   "read_count": 2,
   "write_count": 4,
-  "last_read_at": "2026-10-16T12:33:02.641609+00:00",
-  "last_write_at": "2026-10-16T12:33:05.923913+00:00",
-  "active_focus": "Issue #289: True Micro Memory Session Read/Write Lifecycle",
-  "prior_summary": "amework Repository Memory Orientation; Started session focus: Issue #289: True; Implemented MicroMemorySession (<2KB cap",
+  "last_read_at": "2026-10-16T14:24:33.056191+00:00",
+  "last_write_at": "2026-10-16T14:24:37.476850+00:00",
+  "active_focus": "Issue #291: Cryptographic SHA-256 file hashing, hashes.json manifest, source_files staleness detection, and CAS conflict prevention",
+  "prior_summary": "ted session focus: Issue #291: Crypt; Added compute_sha256_bytes, compute_file; Compounded episode:issue-291-memory-file",
   "recalled_nodes": [
     {
-      "id": "episode:issue-287-memorygraph-compounding",
-      "type": "episode",
-      "label": "Enforce CR-MEMORY-COMPOUND-001 & Suite-Wide .hath0r/memory",
-      "snippet": "Provisioned .hath0r/memory/graph.json across all 31 active repositories in ~/Development, "
+      "id": "insight:memorygraph",
+      "type": "insight",
+      "label": "Synthesized Insight on memorygraph",
+      "snippet": "Consolidated from 2 memory nodes tagged 'memorygraph'. Recurring themes: memory, added, re"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-16T12:33:04.706313+00:00",
-      "kind": "compound",
-      "summary": "Compounded decision:issue-289-micro-memory-session: True Micro Memory Session Read/Write Lifecycle (Issue #289)",
-      "tags": [
-        "memorygraph",
-        "micro-session",
-        "governance",
-        "issue-289",
-        "decision",
-        "compounded"
-      ],
-      "node_id": "decision:issue-289-micro-memory-session"
-    },
-    {
-      "timestamp": "2026-10-16T12:33:05.923913+00:00",
+      "timestamp": "2026-10-16T14:24:37.476850+00:00",
       "kind": "milestone",
-      "summary": "Completed Issue #289 Micro Memory Session engine & OrientBot integration.",
+      "summary": "Completed Issue #291 implementation, tests, and SHA-256 hash verification in hath0r-framework",
       "tags": [
         "session-end"
       ],
@@ -51,7 +40,7 @@
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "decision:issue-289-micro-memory-session"
+    "episode:issue-291-memory-file-hashing"
   ],
-  "capsule_bytes": 1982
+  "capsule_bytes": 1794
 }
