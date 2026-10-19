@@ -1,0 +1,47 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261017-143629-12806b",
+  "prior_session_id": "sess-20261016-154415-ac4723",
+  "parent_session_id": "sess-20261016-154415-ac4723",
+  "revision": 7,
+  "content_hash": "sha256:ca99f48b4b9e2fd8fc21acfb3bb85739ac6170ff6a99fcec0c5465555e925fa2",
+  "base_graph_hash": "sha256:a76bbf38ef91661d25446847a217d092b9e8243f0914e2c5730a8b66ef743014",
+  "task_id": "Check PagedAttention KV-cache chunk-boundary eviction policy",
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "completed",
+  "started_at": "2026-10-17T14:36:29.262934+00:00",
+  "updated_at": "2026-10-17T14:51:23.780895+00:00",
+  "ended_at": "2026-10-17T14:51:23.780895+00:00",
+  "read_count": 1,
+  "write_count": 6,
+  "last_read_at": "2026-10-17T14:36:29.262934+00:00",
+  "last_write_at": "2026-10-17T14:51:23.780895+00:00",
+  "active_focus": "Active working session in hath0r-framework",
+  "prior_summary": "emented ChunkAlignedKVEvictionPolicy; Compounded decision:pagedattention-chunk; Compounded decision:pagedattention-chunk",
+  "recalled_nodes": [
+    {
+      "id": "insight:agentgraph",
+      "type": "insight",
+      "label": "Synthesized Insight on agentgraph",
+      "snippet": "Consolidated from 2 memory nodes tagged 'agentgraph'. Recurring themes: memory, across, re"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-17T14:51:23.780895+00:00",
+      "kind": "milestone",
+      "summary": "Completed PagedAttention chunk-boundary KV-cache alignment and eviction implementation",
+      "tags": [
+        "session-end"
+      ],
+      "node_id": null
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "insight:pagedattention-chunk-boundary-kv-eviction-audit",
+    "decision:pagedattention-chunk-boundary-kv-eviction-implem"
+  ],
+  "capsule_bytes": 1830
+}

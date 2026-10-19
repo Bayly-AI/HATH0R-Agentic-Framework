@@ -292,3 +292,182 @@ class SemanticCache:
             "mode": self.mode.value,
             "embedding_dimensions": self.encoder.dimensions,
         }
+
+
+class KVBlockTier(int, Enum):
+    """Stability tiering for PagedAttention prefix ordering (lower value = earlier in prompt)."""
+
+    STATIC = 0        # Pinned system prompt, RulesGraph invariants, tool schemas
+    SEMI_STATIC = 1   # CAG workspace files, KnowledgeGraph contracts
+    DYNAMIC_TAIL = 2  # Rolling turn history, scratchpad, ephemeral micro-entries
+
+
+@dataclass
+class KVBlockChunk:
+    """Discrete prompt segment aligned to physical PagedAttention KV block boundaries."""
+
+    chunk_id: str
+    content: str
+    tier: KVBlockTier = KVBlockTier.DYNAMIC_TAIL
+    pinned: bool = False
+    priority: float = 0.5
+
+
+class ChunkAlignedKVEvictionPolicy:
+    """PagedAttention chunk-boundary KV-cache alignment and eviction policy.
+
+    Ensures all prompt chunks and context evictions occur strictly on physical
+    KV block boundaries (`block_size`, default 16 tokens) and preserves prefix
+    tier ordering (`STATIC` -> `SEMI_STATIC` -> `DYNAMIC_TAIL`) so downstream
+    rolling block hashes are never invalidated by misaligned evictions.
+    """
+
+    PAD_TOKEN: str = "<|kv_pad|>"
+
+    def __init__(self, block_size: int = 16) -> None:
+        if block_size <= 0:
+            raise ValueError("block_size must be a positive integer (e.g. 16 or 32)")
+        self.block_size = block_size
+        self._cached_block_hashes: List[str] = []
+        self.total_evicted_blocks: int = 0
+        self.total_evicted_tokens: int = 0
+
+    def tokenize(self, text: str) -> List[str]:
+        """Tokenize text into whitespace-delimited words/tokens."""
+        if not text or not text.strip():
+            return []
+        return text.strip().split()
+
+    def pad_tokens_to_block_boundary(self, tokens: List[str]) -> List[str]:
+        """Pad token list to an exact multiple of `self.block_size`."""
+        if not tokens:
+            return []
+        remainder = len(tokens) % self.block_size
+        if remainder == 0:
+            return list(tokens)
+        pad_needed = self.block_size - remainder
+        return list(tokens) + [self.PAD_TOKEN] * pad_needed
+
+    def compute_rolling_block_hashes(self, aligned_tokens: List[str]) -> List[str]:
+        """Compute sequential PagedAttention rolling block hashes H_i = SHA256(H_{i-1} || block_i)."""
+        padded = self.pad_tokens_to_block_boundary(aligned_tokens)
+        hashes: List[str] = []
+        prev_hash = "0" * 16
+        for i in range(0, len(padded), self.block_size):
+            block_slice = " ".join(padded[i : i + self.block_size])
+            raw = f"{prev_hash}::{block_slice}".encode("utf-8")
+            blk_hash = hashlib.sha256(raw).hexdigest()[:16]
+            hashes.append(blk_hash)
+            prev_hash = blk_hash
+        return hashes
+
+    def pack_and_evict(
+        self,
+        chunks: List[KVBlockChunk],
+        max_tokens: int = 2048,
+    ) -> Dict[str, Any]:
+        """Pack chunks in stability-tier order, align to block_size, and evict whole blocks on overflow."""
+        # Quantize max_tokens down to nearest block boundary (minimum 1 block)
+        effective_max_tokens = max(self.block_size, (max_tokens // self.block_size) * self.block_size)
+
+        # Sort deterministically by tier (STATIC -> SEMI_STATIC -> DYNAMIC_TAIL), keeping relative order
+        ordered_chunks = sorted(
+            enumerate(chunks),
+            key=lambda item: (int(item[1].tier), item[0]),
+        )
+
+        # Convert each chunk into block-aligned token pages
+        chunk_pages: List[Dict[str, Any]] = []
+        total_aligned_tokens = 0
+        for orig_idx, ch in ordered_chunks:
+            raw_tokens = self.tokenize(ch.content)
+            if not raw_tokens:
+                continue
+            aligned_tokens = self.pad_tokens_to_block_boundary(raw_tokens)
+            num_blocks = len(aligned_tokens) // self.block_size
+            is_pinned = ch.pinned or (ch.tier == KVBlockTier.STATIC)
+            for b_idx in range(num_blocks):
+                page_tokens = aligned_tokens[b_idx * self.block_size : (b_idx + 1) * self.block_size]
+                chunk_pages.append(
+                    {
+                        "chunk_id": ch.chunk_id,
+                        "tier": ch.tier,
+                        "pinned": is_pinned,
+                        "priority": ch.priority,
+                        "page_index": b_idx,
+                        "tokens": page_tokens,
+                    }
+                )
+            total_aligned_tokens += len(aligned_tokens)
+
+        evicted_blocks = 0
+        evicted_chunk_ids: List[str] = []
+
+        # Evict whole B-token pages if over budget: oldest DYNAMIC_TAIL first, then lowest-priority SEMI_STATIC
+        if total_aligned_tokens > effective_max_tokens:
+            candidate_indices = [
+                idx
+                for idx, p in enumerate(chunk_pages)
+                if not p["pinned"]
+            ]
+            # Sort eviction candidates: highest tier number first (DYNAMIC_TAIL=2 before SEMI_STATIC=1),
+            # lowest priority first, earliest in tail first
+            candidate_indices.sort(
+                key=lambda idx: (-int(chunk_pages[idx]["tier"]), chunk_pages[idx]["priority"], idx)
+            )
+            evict_set = set()
+            for idx in candidate_indices:
+                if total_aligned_tokens <= effective_max_tokens:
+                    break
+                evict_set.add(idx)
+                total_aligned_tokens -= self.block_size
+                evicted_blocks += 1
+                cid = chunk_pages[idx]["chunk_id"]
+                if cid not in evicted_chunk_ids:
+                    evicted_chunk_ids.append(cid)
+
+            chunk_pages = [p for idx, p in enumerate(chunk_pages) if idx not in evict_set]
+
+        evicted_tokens = evicted_blocks * self.block_size
+        self.total_evicted_blocks += evicted_blocks
+        self.total_evicted_tokens += evicted_tokens
+
+        surviving_tokens: List[str] = []
+        for p in chunk_pages:
+            surviving_tokens.extend(p["tokens"])
+
+        new_block_hashes = self.compute_rolling_block_hashes(surviving_tokens)
+
+        # Measure contiguous prefix block cache hits against previous turn's block table
+        matched_prefix_blocks = 0
+        for old_h, new_h in zip(self._cached_block_hashes, new_block_hashes):
+            if old_h == new_h:
+                matched_prefix_blocks += 1
+            else:
+                break
+
+        prefix_hit_rate = (
+            round(matched_prefix_blocks / len(new_block_hashes), 4)
+            if new_block_hashes
+            else 0.0
+        )
+        self._cached_block_hashes = list(new_block_hashes)
+
+        # Render clean prompt without internal pad markers for downstream display while preserving block hashes
+        clean_tokens = [t for t in surviving_tokens if t != self.PAD_TOKEN]
+
+        return {
+            "packed_prompt": " ".join(clean_tokens),
+            "aligned_token_count": len(surviving_tokens),
+            "block_size": self.block_size,
+            "total_blocks": len(new_block_hashes),
+            "block_hashes": new_block_hashes,
+            "evicted_blocks": evicted_blocks,
+            "evicted_tokens": evicted_tokens,
+            "evicted_chunk_ids": evicted_chunk_ids,
+            "boundary_aligned": (evicted_tokens % self.block_size == 0)
+            and (len(surviving_tokens) % self.block_size == 0),
+            "matched_prefix_blocks": matched_prefix_blocks,
+            "prefix_block_hit_rate": prefix_hit_rate,
+        }
+

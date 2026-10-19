@@ -45,6 +45,9 @@ class GatewayConfig:
     timeout_seconds: float = 60.0
     vllm_api_base: Optional[str] = None
     enable_prefix_caching: bool = True
+    kv_block_size: int = 16
+    enable_chunked_prefill: bool = True
+    chunk_aligned_eviction: bool = True
     guided_decoding_backend: str = "outlines"
     metadata: Dict[str, Any] = field(default_factory=dict)
 
@@ -102,6 +105,9 @@ class GatewayConfig:
             timeout_seconds=float(vllm_cfg.get("timeout_seconds", 60.0)),
             vllm_api_base=vllm_cfg.get("endpoint_url"),
             enable_prefix_caching=bool(vllm_cfg.get("enable_prefix_caching", True)),
+            kv_block_size=int(vllm_cfg.get("kv_block_size", 16)),
+            enable_chunked_prefill=bool(vllm_cfg.get("enable_chunked_prefill", True)),
+            chunk_aligned_eviction=bool(vllm_cfg.get("chunk_aligned_eviction", True)),
             guided_decoding_backend=str(vllm_cfg.get("guided_decoding_backend", "outlines")),
             metadata={"raw_config": cfg},
         )
