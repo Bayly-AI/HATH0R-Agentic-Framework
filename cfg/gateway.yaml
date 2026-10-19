@@ -6,6 +6,9 @@ vllm:
   api_key: ""
   timeout_seconds: 60.0
   enable_prefix_caching: true
+  kv_block_size: 16
+  enable_chunked_prefill: true
+  chunk_aligned_eviction: true
   guided_decoding_backend: "outlines"
   models:
     light: "Qwen/Qwen2.5-Coder-7B-Instruct"

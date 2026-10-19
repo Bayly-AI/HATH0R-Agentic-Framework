@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://schema.bayly.ai/hath0r/contracts/hath0r-mcp-servers-v1.schema.json",
   "title": "Hath0r MCP Servers Configuration",
-  "description": "Configuration specification for Model Context Protocol (MCP) servers with priority ordering and scope rules.",
+  "description": "Configuration specification for Model Context Protocol (MCP) servers (.hath0r/mcp.json and cfg/mcp.servers.json) with priority ordering and group Hath0r MCP defaults.",
   "type": "object",
   "required": ["version", "servers"],
   "additionalProperties": false,
@@ -11,14 +11,32 @@
       "type": "string",
       "enum": ["1.0", "v1"]
     },
+    "engine": {
+      "type": "string"
+    },
+    "default_provider": {
+      "type": "string"
+    },
+    "group": {
+      "type": "string"
+    },
+    "default_server": {
+      "type": "string"
+    },
     "description": {
       "type": "string"
+    },
+    "mcpServers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
     },
     "servers": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "name", "scope", "priority", "enabled", "transport", "base_url"],
+        "required": ["id", "name", "scope", "priority", "enabled", "transport"],
         "additionalProperties": false,
         "properties": {
           "id": {
@@ -28,9 +46,15 @@
           "name": {
             "type": "string"
           },
+          "engine": {
+            "type": "string"
+          },
+          "product_id": {
+            "type": "string"
+          },
           "scope": {
             "type": "string",
-            "enum": ["project", "group", "org", "user"]
+            "enum": ["project", "group", "org", "tools", "design", "user"]
           },
           "group": {
             "type": "string"
@@ -50,6 +74,13 @@
             "type": "string",
             "format": "uri"
           },
+          "default_base_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "base_url_env": {
+            "type": "string"
+          },
           "mcp_endpoint": {
             "type": "string"
           },
@@ -58,6 +89,15 @@
           },
           "ready_endpoint": {
             "type": "string"
+          },
+          "command": {
+            "type": "string"
+          },
+          "command_args": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "description": {
             "type": "string"
@@ -70,9 +110,16 @@
           },
           "github": {
             "type": "string"
+          },
+          "docs_url": {
+            "type": "string"
+          },
+          "internal_uri": {
+            "type": "string"
           }
         }
       }
     }
   }
 }
+
