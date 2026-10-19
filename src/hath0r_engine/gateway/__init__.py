@@ -7,7 +7,15 @@ from hath0r_engine.gateway.base import (
     GatewayConfig,
     ModelProvider,
 )
-from hath0r_engine.gateway.cache import CacheEmbeddingMode, CacheEntry, DenseBiEncoder, SemanticCache
+from hath0r_engine.gateway.cache import (
+    CacheEmbeddingMode,
+    CacheEntry,
+    ChunkAlignedKVEvictionPolicy,
+    DenseBiEncoder,
+    KVBlockChunk,
+    KVBlockTier,
+    SemanticCache,
+)
 from hath0r_engine.gateway.client import AIGatewayClient
 from hath0r_engine.gateway.routing import TieredRouter
 from hath0r_engine.gateway.tokenizer_tax import (
@@ -27,6 +35,9 @@ __all__ = [
     "CacheEntry",
     "DenseBiEncoder",
     "SemanticCache",
+    "KVBlockTier",
+    "KVBlockChunk",
+    "ChunkAlignedKVEvictionPolicy",
     "TieredRouter",
     "AIGatewayClient",
     "ScriptBreakdown",

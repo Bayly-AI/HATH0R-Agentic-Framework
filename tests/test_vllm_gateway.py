@@ -252,3 +252,50 @@ def test_vllm_semantic_cache_deduplication(mock_urlopen):
     resp2 = client.complete(req2)
     assert resp2.cached is True
     assert mock_urlopen.call_count == 1
+
+
+def test_pagedattention_chunk_aligned_kv_eviction_policy():
+    """Verify PagedAttention KV eviction respects chunk boundaries and preserves prefix block hashes."""
+    from hath0r_engine.gateway.cache import ChunkAlignedKVEvictionPolicy, KVBlockChunk, KVBlockTier
+    from hath0r_engine.memory.memory_tools import MemoryPagingManager
+
+    config = GatewayConfig.from_yaml()
+    assert config.kv_block_size == 16
+    assert config.enable_chunked_prefill is True
+    assert config.chunk_aligned_eviction is True
+
+    policy = ChunkAlignedKVEvictionPolicy(block_size=16)
+    chunks_turn1 = [
+        KVBlockChunk(chunk_id="sys:rules", content=" ".join(f"sys_{i}" for i in range(18)), tier=KVBlockTier.STATIC, pinned=True),
+        KVBlockChunk(chunk_id="cag:contract", content=" ".join(f"cag_{i}" for i in range(12)), tier=KVBlockTier.SEMI_STATIC),
+        KVBlockChunk(chunk_id="turn:1", content=" ".join(f"t1_{i}" for i in range(20)), tier=KVBlockTier.DYNAMIC_TAIL, priority=0.1),
+    ]
+    res1 = policy.pack_and_evict(chunks_turn1, max_tokens=128)
+    assert res1["boundary_aligned"] is True
+    assert res1["aligned_token_count"] % 16 == 0
+    assert res1["evicted_tokens"] == 0
+    prefix_hashes_turn1 = res1["block_hashes"][:3]  # 2 blocks of sys + 1 block of cag
+
+    # Turn 2: add more dynamic tail turns that exceed max_tokens=64 (4 blocks), forcing tail eviction
+    chunks_turn2 = chunks_turn1 + [
+        KVBlockChunk(chunk_id="turn:2", content=" ".join(f"t2_{i}" for i in range(20)), tier=KVBlockTier.DYNAMIC_TAIL, priority=0.9),
+    ]
+    res2 = policy.pack_and_evict(chunks_turn2, max_tokens=64)
+    assert res2["boundary_aligned"] is True
+    assert res2["evicted_tokens"] % 16 == 0
+    assert res2["evicted_blocks"] > 0
+    assert "turn:1" in res2["evicted_chunk_ids"]
+    # Static + semi-static prefix hashes must be 100% preserved without page reload jitter
+    assert res2["block_hashes"][:3] == prefix_hashes_turn1
+    assert res2["matched_prefix_blocks"] >= 3
+
+    # Verify MemoryPagingManager integration
+    mp = MemoryPagingManager()
+    mp_res = mp.pack_block_aligned_context(
+        dynamic_turns=[" ".join(f"msgA_{i}" for i in range(20)), " ".join(f"msgB_{i}" for i in range(20))],
+        max_tokens=64,
+        block_size=16,
+    )
+    assert mp_res["boundary_aligned"] is True
+    assert mp_res["evicted_tokens"] % 16 == 0
+

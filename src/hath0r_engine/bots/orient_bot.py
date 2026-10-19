@@ -184,9 +184,31 @@ class OrientBot:
                 except Exception:
                     pass
 
+        micro_session_info: Dict[str, Any] = {}
+        try:
+            from hath0r_engine.memory.memory_graph import MemoryGraph
+
+            MemoryGraph.ensure_repo_memory(target)
+            MemoryGraph.read_micro_session(target, focus=f"Orienting repository {target.name}")
+            ms = MemoryGraph.write_micro_session(
+                target,
+                summary=f"Completed AgentGraph orientation for {target.name} ({len(agents)} roles, {len(rules)} rules)",
+                kind="observation",
+                tags=["orient", "agentgraph"],
+            )
+            micro_session_info = {
+                "session_id": ms.session_id,
+                "read_count": ms.read_count,
+                "write_count": ms.write_count,
+                "byte_size": ms.byte_size(),
+            }
+        except Exception:
+            pass
+
         return {
             "agents": agents,
             "rules": rules,
+            "micro_session": micro_session_info,
             "topology": {
                 "total_nodes": max(len(nodes), len(agents) + len(rules)),
                 "active_nodes": max(active_nodes, len(agents) + len(rules)),
