@@ -42,7 +42,10 @@ python3 -m vllm.entrypoints.openai.api_server \
   --tensor-parallel-size 4 \
   --gpu-memory-utilization 0.92 \
   --max-model-len 32768 \
+  --block-size 16 \
   --enable-prefix-caching \
+  --enable-chunked-prefill \
+  --max-num-batched-tokens 8192 \
   --guided-decoding-backend outlines \
   --host 0.0.0.0 \
   --port 8000
@@ -50,6 +53,8 @@ python3 -m vllm.entrypoints.openai.api_server \
 
 ### Critical Flag Rationale:
 - `--enable-prefix-caching`: **Mandatory for Hath0r.** Enables PagedAttention Automatic Prefix Caching (APC), allowing consecutive agent turns sharing common repository context and system prompts to bypass prefill latency.
+- `--block-size 16`: **Mandatory for Chunk-Boundary Alignment.** Fixes the physical PagedAttention KV page granularity to 16 tokens, matching Hath0r's `ChunkAlignedKVEvictionPolicy` (`kv_block_size: 16`) so context updates and evictions never split a KV block or trigger cascading page reloads.
+- `--enable-chunked-prefill` & `--max-num-batched-tokens 8192`: Bounds prefill batch sizes along block boundaries to eliminate inter-token latency (ITL) jitter during concurrent decode steps.
 - `--guided-decoding-backend outlines`: Enables native regex and JSON Schema constrained generation, directly integrated with Hath0r contract schemas.
 - `--max-model-len 32768`: Accommodates deep repository AST graphs and multi-turn durability journals.
 
@@ -79,7 +84,10 @@ services:
       --tensor-parallel-size 4
       --gpu-memory-utilization 0.92
       --max-model-len 32768
+      --block-size 16
       --enable-prefix-caching
+      --enable-chunked-prefill
+      --max-num-batched-tokens 8192
       --guided-decoding-backend outlines
       --host 0.0.0.0
       --port 8000
@@ -110,6 +118,9 @@ vllm:
   api_key: "" # Optional bearer token if behind enterprise API gateway
   timeout_seconds: 60.0
   enable_prefix_caching: true
+  kv_block_size: 16
+  enable_chunked_prefill: true
+  chunk_aligned_eviction: true
   guided_decoding_backend: "outlines"
   models:
     light: "Qwen/Qwen2.5-Coder-7B-Instruct"
@@ -197,3 +208,4 @@ pytest tests/test_vllm_gateway.py tests/test_ai_gateway.py
 | `CUDA out of memory (OOM)` | KV cache allocation exceeded VRAM | Lower `--gpu-memory-utilization` to `0.85` or reduce `--max-model-len`. |
 | `Guided decoding backend error` | Missing `outlines` in vLLM environment | Ensure vLLM Docker image contains `outlines>=0.0.40`. |
 | High TTFT on repeated prompts | Prefix caching disabled | Add `--enable-prefix-caching` to vLLM server arguments. |
+| TTFT jitter / frequent KV page reloads despite APC | Context eviction or prompt mutation split across KV block boundaries | Enable `chunk_aligned_eviction: true` and match `kv_block_size: 16` with vLLM `--block-size 16`. |
