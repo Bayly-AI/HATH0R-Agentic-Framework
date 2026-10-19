@@ -199,3 +199,58 @@ class MemoryPagingManager:
         ]
 
         return len(to_prune)
+
+    def pack_block_aligned_context(
+        self,
+        dynamic_turns: Optional[List[str]] = None,
+        max_tokens: int = 2048,
+        block_size: int = 16,
+    ) -> Dict[str, Any]:
+        """Pack core memory and dynamic turns on PagedAttention chunk boundaries.
+
+        Ensures `persona` and `human` sections remain pinned in `STATIC` prefix blocks,
+        `task_context` resides in `SEMI_STATIC` blocks, and `dynamic_turns` are evicted
+        in exact `block_size` multiples from `DYNAMIC_TAIL` without shifting prefix hashes.
+        """
+        from hath0r_engine.gateway.cache import ChunkAlignedKVEvictionPolicy, KVBlockChunk, KVBlockTier
+
+        if not hasattr(self, "_kv_eviction_policy") or self._kv_eviction_policy.block_size != block_size:
+            self._kv_eviction_policy = ChunkAlignedKVEvictionPolicy(block_size=block_size)
+
+        chunks: List[KVBlockChunk] = [
+            KVBlockChunk(
+                chunk_id="core:persona",
+                content=self.core_sections.get("persona", ""),
+                tier=KVBlockTier.STATIC,
+                pinned=True,
+                priority=1.0,
+            ),
+            KVBlockChunk(
+                chunk_id="core:human",
+                content=self.core_sections.get("human", ""),
+                tier=KVBlockTier.STATIC,
+                pinned=True,
+                priority=1.0,
+            ),
+            KVBlockChunk(
+                chunk_id="core:task_context",
+                content=self.core_sections.get("task_context", ""),
+                tier=KVBlockTier.SEMI_STATIC,
+                pinned=False,
+                priority=0.8,
+            ),
+        ]
+
+        for idx, turn_text in enumerate(dynamic_turns or []):
+            chunks.append(
+                KVBlockChunk(
+                    chunk_id=f"turn:{idx}",
+                    content=turn_text,
+                    tier=KVBlockTier.DYNAMIC_TAIL,
+                    pinned=False,
+                    priority=0.2 + (0.01 * idx),
+                )
+            )
+
+        return self._kv_eviction_policy.pack_and_evict(chunks=chunks, max_tokens=max_tokens)
+

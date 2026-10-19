@@ -1,0 +1,55 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261019-133028-ced485",
+  "prior_session_id": "sess-20261017-143629-12806b",
+  "parent_session_id": "sess-20261017-143629-12806b",
+  "revision": 3,
+  "content_hash": "sha256:1e18a958bc6cd4671cc297783d72779f2bb5232e138d0fcb133420ac18747302",
+  "base_graph_hash": "sha256:9768776a453232b40207a4fd7484a73f1dd12996a634ba0ee9ac9069dff87ec6",
+  "task_id": "create-release-install-script-and-prompts",
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "active",
+  "started_at": "2026-10-19T13:30:28.116667+00:00",
+  "updated_at": "2026-10-19T13:34:50.664478+00:00",
+  "ended_at": null,
+  "read_count": 1,
+  "write_count": 2,
+  "last_read_at": "2026-10-19T13:30:28.116667+00:00",
+  "last_write_at": "2026-10-19T13:34:50.664478+00:00",
+  "active_focus": "Active working session in hath0r-framework",
+  "prior_summary": "d PagedAttention chunk-boundary KV-cache alignment and eviction implementation; Created release installation script rele",
+  "recalled_nodes": [
+    {
+      "id": "insight:agentgraph",
+      "type": "insight",
+      "label": "Synthesized Insight on agentgraph",
+      "snippet": "Consolidated from 2 memory nodes tagged 'agentgraph'. Recurring themes: memory, across, re"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-19T13:34:50.664478+00:00",
+      "kind": "compound",
+      "summary": "Compounded episode:release-installer-and-prompts-scaffold: Hath0r Infrastructure Release Installer & Prompts Ticket Pipeline",
+      "tags": [
+        "release",
+        "installer",
+        "prompts",
+        "cli",
+        "mcp",
+        "atc",
+        "infrastructure",
+        "topology",
+        "episode",
+        "compounded"
+      ],
+      "node_id": "episode:release-installer-and-prompts-scaffold"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:release-installer-and-prompts-scaffold"
+  ],
+  "capsule_bytes": 1953
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261019-135254-efd803",
+  "prior_session_id": "sess-20261019-134349-422c73",
+  "parent_session_id": "sess-20261019-134349-422c73",
+  "revision": 9,
+  "content_hash": "sha256:149c9a699c8e17dddd405820470a80f437ecb32b9cae23ff196887d80f7fe39c",
+  "base_graph_hash": "sha256:b0457ff8bd1f058db9115c057358028d68ef9bd7107ff9007d694b23a6b2eec0",
+  "task_id": "release-agents-md-and-prompt-walkthrough-script",
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "active",
+  "started_at": "2026-10-19T13:52:54.872953+00:00",
+  "updated_at": "2026-10-19T14:00:30.612521+00:00",
+  "ended_at": null,
+  "read_count": 1,
+  "write_count": 8,
+  "last_read_at": "2026-10-19T13:52:54.872953+00:00",
+  "last_write_at": "2026-10-19T14:00:30.612521+00:00",
+  "active_focus": "Active working session in hath0r-framework",
+  "prior_summary": "ounded decision:release-directory-cu; Compounded episode:release-installer-and; Compounded rule:dependency-operator-appr",
+  "recalled_nodes": [
+    {
+      "id": "insight:agentgraph",
+      "type": "insight",
+      "label": "Synthesized Insight on agentgraph",
+      "snippet": "Consolidated from 2 memory nodes tagged 'agentgraph'. Recurring themes: memory, across, re"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-19T14:00:30.612521+00:00",
+      "kind": "observation",
+      "summary": "Confirmed npm plugin (packages/node-plugin and packages/node-cli) remains completely unaffected, independent, and 100% passing all tests",
+      "tags": [],
+      "node_id": null
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "rule:dependency-operator-approval-gate",
+    "decision:release-directory-curated-triad",
+    "episode:release-installer-and-prompts-scaffold"
+  ],
+  "capsule_bytes": 1827
+}

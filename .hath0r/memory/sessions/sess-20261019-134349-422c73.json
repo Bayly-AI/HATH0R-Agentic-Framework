@@ -1,0 +1,55 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261019-134349-422c73",
+  "prior_session_id": "sess-20261019-133028-ced485",
+  "parent_session_id": "sess-20261019-133028-ced485",
+  "revision": 3,
+  "content_hash": "sha256:435b95199bbfff367b4e8a831d88d90cee9549e992c1ef3581e6df21e9215be3",
+  "base_graph_hash": "sha256:b37737a9777220847df67bb3eb46c5b5e241fd4478e068dc0f27844907d36e46",
+  "task_id": "self-contained-release-prompts-and-knowledge",
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "active",
+  "started_at": "2026-10-19T13:43:49.205324+00:00",
+  "updated_at": "2026-10-19T13:46:42.247662+00:00",
+  "ended_at": null,
+  "read_count": 1,
+  "write_count": 2,
+  "last_read_at": "2026-10-19T13:43:49.205324+00:00",
+  "last_write_at": "2026-10-19T13:46:42.247662+00:00",
+  "active_focus": "Active working session in hath0r-framework",
+  "prior_summary": "ts-scaffold: Hath0r Infrastructure Release Installer & Prompts Ticket Pipeline; Enhanced release/prompts into a fully se",
+  "recalled_nodes": [
+    {
+      "id": "insight:agentgraph",
+      "type": "insight",
+      "label": "Synthesized Insight on agentgraph",
+      "snippet": "Consolidated from 2 memory nodes tagged 'agentgraph'. Recurring themes: memory, across, re"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-19T13:46:42.247662+00:00",
+      "kind": "compound",
+      "summary": "Compounded concept:self-contained-release-prompts-and-knowledge: Self-Contained Hath0r Release Prompts & Knowledge Pack",
+      "tags": [
+        "release",
+        "prompts",
+        "knowledge-pack",
+        "tools-catalog",
+        "self-contained",
+        "mcp",
+        "atc",
+        "cli",
+        "concept",
+        "compounded"
+      ],
+      "node_id": "concept:self-contained-release-prompts-and-knowledge"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "concept:self-contained-release-prompts-and-knowledge"
+  ],
+  "capsule_bytes": 1973
+}
