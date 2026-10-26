@@ -27,6 +27,7 @@ This repository **adopts** suite governance from the control tower. Canonical pr
 | Zero-Trust Sandbox Isolation | `docs/governance/strategies/isolated-compute-sandbox-strategy.md` |
 | Dynamic MCP Tool Router & Pruning | `docs/governance/strategies/dynamic-mcp-tool-router-strategy.md` |
 | Temporal Knowledge Graphs | `docs/governance/strategies/temporal-knowledge-graph-strategy.md` |
+| Harness, Resilience & Dreaming Architecture | `docs/governance/strategies/harness-resilience-dreaming-architecture-strategy.md` |
 
 ## Local product stubs
 

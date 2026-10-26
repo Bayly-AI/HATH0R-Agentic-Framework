@@ -334,7 +334,7 @@ echo -e "and verify runtime contracts (hath0r --version, hath0r doctor)."
 
 if [[ "${DRY_RUN}" != "true" ]]; then
   CLI_TARGET_BIN="${BIN_DIR}/hath0r"
-  STANDALONE_BIN="$(find "${SCRIPT_DIR}/prompts/artifacts/python/cli" -name "hath0r-darwin-arm64" -o -name "hath0r-linux-x86_64" 2>/dev/null | head -n 1 || true)"
+  STANDALONE_BIN="$(find "${SCRIPT_DIR}" "${SCRIPT_DIR}/prompts/artifacts/python/cli" \( -name "hath0r-darwin-x86_64" -o -name "hath0r-darwin-arm64" -o -name "hath0r-linux-x86_64" \) 2>/dev/null | grep -v "/previous/" | head -n 1 || true)"
   
   if [[ -n "${STANDALONE_BIN}" && -x "${STANDALONE_BIN}" ]]; then
     log_info "Installing verified standalone binary from ${STANDALONE_BIN}"

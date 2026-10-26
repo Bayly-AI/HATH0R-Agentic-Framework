@@ -1,0 +1,46 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261025-110550-f2f7c3",
+  "prior_session_id": "sess-20261025-103209-75ce1a",
+  "parent_session_id": "sess-20261025-103209-75ce1a",
+  "revision": 4,
+  "content_hash": "sha256:1f7405f34e146fd87208dc20332078ff4bf48dd9d8f89794bea26dbe435288aa",
+  "base_graph_hash": "sha256:77136c974e3af704f1d8f32fd675fb74d4afa544d8a162de1425958095e4349c",
+  "task_id": null,
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "completed",
+  "started_at": "2026-10-25T11:05:50.217167+00:00",
+  "updated_at": "2026-10-25T11:31:56.802508+00:00",
+  "ended_at": "2026-10-25T11:31:56.802508+00:00",
+  "read_count": 1,
+  "write_count": 4,
+  "last_read_at": "2026-10-25T11:05:50.217167+00:00",
+  "last_write_at": "2026-10-25T11:31:56.802508+00:00",
+  "active_focus": "Release a new version of Hath0r",
+  "prior_summary": "ted session focus: Release a new ver; Executed release of HATH0R-CLI v1.7.0 th; Compounded episode:hath0r-cli-v1-7-0-rel",
+  "recalled_nodes": [
+    {
+      "id": "rule:dependency-operator-approval-gate",
+      "type": "rule",
+      "label": "Dependency Inspection & Mandatory Operator Approval Gate",
+      "snippet": "Release installation script release/install.sh and TICKET-01 enforce a mandatory Operator "
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-25T11:31:56.802508+00:00",
+      "kind": "milestone",
+      "summary": "Completed release of HATH0R-CLI v1.7.0 with all canonical gates passed.",
+      "tags": [
+        "session-end"
+      ],
+      "node_id": null
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:hath0r-cli-v1-7-0-release-promotion"
+  ],
+  "capsule_bytes": 1709
+}

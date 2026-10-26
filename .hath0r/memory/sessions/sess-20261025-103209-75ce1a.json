@@ -1,0 +1,46 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261025-103209-75ce1a",
+  "prior_session_id": "sess-20261019-153438-5462a2",
+  "parent_session_id": "sess-20261019-153438-5462a2",
+  "revision": 4,
+  "content_hash": "sha256:d909c990b92fe81924ab5c3c8123b1b8ca37d2c824fa5147e5b4df3f2ea344d7",
+  "base_graph_hash": "sha256:aaff86f5731c25c2b272f77eba436b7e6080c20047172a29407e2299b2064e21",
+  "task_id": null,
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "completed",
+  "started_at": "2026-10-25T10:32:09.176488+00:00",
+  "updated_at": "2026-10-25T10:36:24.920282+00:00",
+  "ended_at": "2026-10-25T10:36:24.920282+00:00",
+  "read_count": 1,
+  "write_count": 4,
+  "last_read_at": "2026-10-25T10:32:09.176488+00:00",
+  "last_write_at": "2026-10-25T10:36:24.920282+00:00",
+  "active_focus": "Analyze architecture alignment: harness/loops/sandboxing, brain-hands split, server-side log replay resume, and dreaming memory consolidation",
+  "prior_summary": "rted session focus: Analyze architect; Analyzed CLI and Infrastructure against; Compounded insight:canonical-agentic-arc",
+  "recalled_nodes": [
+    {
+      "id": "insight:agentgraph",
+      "type": "insight",
+      "label": "Synthesized Insight on agentgraph",
+      "snippet": "Consolidated from 2 memory nodes tagged 'agentgraph'. Recurring themes: memory, across, re"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-25T10:36:24.920282+00:00",
+      "kind": "milestone",
+      "summary": "Completed analysis and canonical coverage verification: Harness owns loops/context/sandboxing, Brain-Hands split with HAHP, server-side EventJournal log replay crash resume, and autonomous dreaming memory consolidation.",
+      "tags": [
+        "session-end"
+      ],
+      "node_id": null
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "insight:canonical-agentic-architecture-harness-resilienc"
+  ],
+  "capsule_bytes": 1940
+}

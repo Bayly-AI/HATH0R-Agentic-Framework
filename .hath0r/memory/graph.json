@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 106,
-  "content_hash": "sha256:aaff86f5731c25c2b272f77eba436b7e6080c20047172a29407e2299b2064e21",
-  "updated_at": "2026-10-19T15:37:00.977771+00:00",
+  "revision": 141,
+  "content_hash": "sha256:7cf4c83aa5a574f807276f9e1c3c92235dadb5b0fd60ab002111b40c9cd52d08",
+  "updated_at": "2026-10-25T12:57:13.610670+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -616,7 +616,7 @@
       "updated_at": "2026-10-19T13:59:26.038138+00:00",
       "metadata": {
         "source_files": {
-          "release/install.sh": "sha256:e899e3c1936c5adf91d971ad89c3e77af1f16c49a8243cd081af9e558f2f7bd7"
+          "release/install.sh": "sha256:391e1b6821c54b8eff7901e44929a90fd2428aac13e21e7dc3b059d24f7b1767"
         }
       }
     },
@@ -746,7 +746,7 @@
       "updated_at": "2026-10-19T13:59:27.000528+00:00",
       "metadata": {
         "source_files": {
-          "release/install.sh": "sha256:e899e3c1936c5adf91d971ad89c3e77af1f16c49a8243cd081af9e558f2f7bd7"
+          "release/install.sh": "sha256:391e1b6821c54b8eff7901e44929a90fd2428aac13e21e7dc3b059d24f7b1767"
         }
       }
     },
@@ -872,6 +872,302 @@
         "write_count": 5,
         "status": "completed",
         "byte_size": 1900
+      }
+    },
+    {
+      "id": "insight:canonical-agentic-architecture-harness-resilienc",
+      "type": "insight",
+      "label": "Canonical Agentic Architecture: Harness, Resilience, and Dreaming",
+      "content": "Harness owns execution loops, context retrieval, and microVM sandboxing. Brain (planner) and Hands (worker) split via HAHP minimizes TTFT. Server-side EventJournal log replay guarantees crash resilience without restarting. Logs compound into memory via autonomous dreaming reflection so the system wakes up smarter.",
+      "importance": 0.95,
+      "tags": [
+        "architecture",
+        "resilience",
+        "dreaming",
+        "insight",
+        "compounded"
+      ],
+      "valid_from": "2026-10-25T10:36:08.333593+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-25T10:36:08.333593+00:00",
+      "updated_at": "2026-10-25T10:36:08.333593+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "session:sess-20261025-103209-75ce1a",
+      "type": "session",
+      "label": "Micro Session sess-20261025-103209-75ce1a",
+      "content": "Micro Session sess-20261025-103209-75ce1a [completed] | Focus: Analyze architecture alignment: harness/loops/sandboxing, brain-hands split, server-side log replay resume, and dreaming memory consolidation | Reads: 1, Writes: 4 | Entries: Completed analysis and canonical coverage verification: Harness owns loops/context/sandboxing, Brain-Hands split with HAHP, server-side EventJournal log replay crash resume, and autonomous dreaming memory consolidation.",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "completed"
+      ],
+      "valid_from": "2026-10-25T10:32:09.176488+00:00",
+      "valid_to": "2026-10-25T10:36:24.920282+00:00",
+      "is_current": true,
+      "created_at": "2026-10-25T10:32:09.176488+00:00",
+      "updated_at": "2026-10-25T10:36:24.920282+00:00",
+      "metadata": {
+        "session_id": "sess-20261025-103209-75ce1a",
+        "prior_session_id": "sess-20261019-153438-5462a2",
+        "parent_session_id": "sess-20261019-153438-5462a2",
+        "read_count": 1,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1940
+      }
+    },
+    {
+      "id": "episode:hath0r-cli-v1-7-0-release-promotion",
+      "type": "episode",
+      "label": "HATH0R-CLI v1.7.0 Release Promotion",
+      "content": "Released HATH0R-CLI v1.7.0 following CR-BAI-001 canonical environment promotion path (PR #483 -> testing, PR #484 -> staging, PR #485 -> master). Tagged v1.7.0, generated standalone binaries and filesets, published GitHub Release, and back-merged master into development.",
+      "importance": 0.9,
+      "tags": [
+        "release",
+        "hath0r-cli",
+        "v1.7.0",
+        "promotion",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-25T11:31:45.743549+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-25T11:31:45.743549+00:00",
+      "updated_at": "2026-10-25T11:31:45.743549+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "session:sess-20261025-110550-f2f7c3",
+      "type": "session",
+      "label": "Micro Session sess-20261025-110550-f2f7c3",
+      "content": "Micro Session sess-20261025-110550-f2f7c3 [completed] | Focus: Release a new version of Hath0r | Reads: 1, Writes: 4 | Entries: Completed release of HATH0R-CLI v1.7.0 with all canonical gates passed.",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "completed"
+      ],
+      "valid_from": "2026-10-25T11:05:50.217167+00:00",
+      "valid_to": "2026-10-25T11:31:56.802508+00:00",
+      "is_current": true,
+      "created_at": "2026-10-25T11:05:50.217167+00:00",
+      "updated_at": "2026-10-25T11:31:56.802508+00:00",
+      "metadata": {
+        "session_id": "sess-20261025-110550-f2f7c3",
+        "prior_session_id": "sess-20261025-103209-75ce1a",
+        "parent_session_id": "sess-20261025-103209-75ce1a",
+        "read_count": 1,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1709
+      }
+    },
+    {
+      "id": "episode:hath0r-infrastructure-v1-7-0-release-deployment",
+      "type": "episode",
+      "label": "Hath0r Infrastructure v1.7.0 Release Deployment",
+      "content": "Executed release deployment walkthrough via release/install.sh. Successfully deployed Hath0r CLI v1.7.0 to /usr/local/bin/hath0r, staged MCP and ATC configurations under /Users/raybayly/.hath0r, verified canonical knowledge transfer, generated RELEASE_RECEIPT.json, and verified 100% hath0r doctor health.",
+      "importance": 0.95,
+      "tags": [
+        "deployment",
+        "release",
+        "v1.7.0",
+        "hath0r-cli",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-25T12:42:54.272657+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-25T12:42:54.272657+00:00",
+      "updated_at": "2026-10-25T12:42:54.272657+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "insight:hath0r-cli",
+      "type": "insight",
+      "label": "Synthesized Insight on hath0r-cli",
+      "content": "Consolidated from 2 memory nodes tagged 'hath0r-cli'. Recurring themes: release, promotion, canonical, master. Latest context: Executed release deployment walkthrough via release/install.sh. Successfully deployed Hath0r CLI v1.7.0 to /usr/local/bin/hath0r, staged MCP and ATC configurati",
+      "importance": 1.0,
+      "tags": [
+        "hath0r-cli",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-25T12:42:54.348373+00:00",
+      "is_current": true,
+      "created_at": "2026-10-25T12:42:54.348373+00:00",
+      "updated_at": "2026-10-25T12:42:54.348373+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "hath0r-cli"
+      }
+    },
+    {
+      "id": "insight:v1.7.0",
+      "type": "insight",
+      "label": "Synthesized Insight on v1.7.0",
+      "content": "Consolidated from 2 memory nodes tagged 'v1.7.0'. Recurring themes: release, promotion, canonical, master. Latest context: Executed release deployment walkthrough via release/install.sh. Successfully deployed Hath0r CLI v1.7.0 to /usr/local/bin/hath0r, staged MCP and ATC configurati",
+      "importance": 1.0,
+      "tags": [
+        "v1.7.0",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-25T12:42:54.348373+00:00",
+      "is_current": true,
+      "created_at": "2026-10-25T12:42:54.348373+00:00",
+      "updated_at": "2026-10-25T12:42:54.348373+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "v1.7.0"
+      }
+    },
+    {
+      "id": "session:sess-20261025-123630-516ab2",
+      "type": "session",
+      "label": "Micro Session sess-20261025-123630-516ab2",
+      "content": "Micro Session sess-20261025-123630-516ab2 [completed] | Focus: Deploy release v1.7.0 | Reads: 1, Writes: 4 | Entries: Completed release deployment: Hath0r CLI v1.7.0 deployed to /usr/local/bin/hath0r, verified with hath0r doctor and hath0r deploy post. All tests passed, release receipt generated, and memory compounded.",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "completed"
+      ],
+      "valid_from": "2026-10-25T12:36:30.123942+00:00",
+      "valid_to": "2026-10-25T12:43:16.869620+00:00",
+      "is_current": true,
+      "created_at": "2026-10-25T12:36:30.123942+00:00",
+      "updated_at": "2026-10-25T12:43:16.869620+00:00",
+      "metadata": {
+        "session_id": "sess-20261025-123630-516ab2",
+        "prior_session_id": "sess-20261025-110550-f2f7c3",
+        "parent_session_id": "sess-20261025-110550-f2f7c3",
+        "read_count": 1,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1829
+      }
+    },
+    {
+      "id": "episode:hath0r-ecosystem-latest-version-installation",
+      "type": "episode",
+      "label": "Hath0r Ecosystem Latest Version Installation",
+      "content": "Installed latest Hath0r ecosystem packages: hath0r-cli v1.7.0 (CLI operator control plane) and hath0r-engine v1.9.0 (cognitive substrate). Verified global installation at /usr/local/bin/hath0r, validated 100% hath0r doctor health across all 28 checks, and verified architecture and dreaming reflection commands.",
+      "importance": 0.9,
+      "tags": [
+        "installation",
+        "release",
+        "hath0r-cli",
+        "hath0r-engine",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-25T12:50:03.441609+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-25T12:50:03.441609+00:00",
+      "updated_at": "2026-10-25T12:50:03.441609+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "session:sess-20261025-124900-9c69d0",
+      "type": "session",
+      "label": "Micro Session sess-20261025-124900-9c69d0",
+      "content": "Micro Session sess-20261025-124900-9c69d0 [completed] | Focus: Install latest version of Hath0r | Reads: 1, Writes: 4 | Entries: Installed latest versions of Hath0r (CLI v1.7.0, Engine v1.9.0). Verified doctor and memory gates.",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "completed"
+      ],
+      "valid_from": "2026-10-25T12:49:00.072815+00:00",
+      "valid_to": "2026-10-25T12:50:13.899002+00:00",
+      "is_current": true,
+      "created_at": "2026-10-25T12:49:00.072815+00:00",
+      "updated_at": "2026-10-25T12:50:13.899002+00:00",
+      "metadata": {
+        "session_id": "sess-20261025-124900-9c69d0",
+        "prior_session_id": "sess-20261025-123630-516ab2",
+        "parent_session_id": "sess-20261025-123630-516ab2",
+        "read_count": 1,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1706
+      }
+    },
+    {
+      "id": "episode:share-20261025T125312Z",
+      "type": "episode",
+      "label": "Knowledge Share (share-20261025T125312Z)",
+      "content": "Promoted and released Hath0r CLI v1.7.0 and Hath0r Engine v1.9.0 across canonical environments. Verified architecture, resilience, and dreaming memory consolidation.",
+      "importance": 0.8,
+      "tags": [
+        "knowledge-share",
+        "share-20261025t125312z",
+        "hath0r-framework",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-25T12:53:12.531609+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-25T12:53:12.531609+00:00",
+      "updated_at": "2026-10-25T12:53:12.531609+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "episode:cross-group-mcp-and-knowledgebase-sync",
+      "type": "episode",
+      "label": "Cross-Group MCP and Knowledgebase Sync",
+      "content": "Executed full documentation and knowledge sharing: published 592 docs to OpenSource canonical KB (/Users/raybayly/Development/OpenSource/.hath0r/knowledgebase), 114 to BAI MCP, 149 to 1-Nation MCP, and synced 1,535 author books/notes via Author-MCP sync_knowledge_to_hathor. SQLite FTS5 index active with 1,348 indexed documents.",
+      "importance": 0.9,
+      "tags": [
+        "knowledge",
+        "mcp",
+        "docs-share",
+        "sync",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-25T12:57:00.866833+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-25T12:57:00.866833+00:00",
+      "updated_at": "2026-10-25T12:57:00.866833+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "session:sess-20261025-125225-a5a8cc",
+      "type": "session",
+      "label": "Micro Session sess-20261025-125225-a5a8cc",
+      "content": "Micro Session sess-20261025-125225-a5a8cc [completed] | Focus: Share knowledge across MCP and Knowledgebase | Reads: 1, Writes: 5 | Entries: Completed cross-group knowledge sharing: synced OpenSource KB (592 docs), BAI MCP (114 docs), 1-Nation MCP (149 docs), and Author MCP (1,535 docs). Verified FTS5 index (1,348 docs).",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "completed"
+      ],
+      "valid_from": "2026-10-25T12:52:25.027029+00:00",
+      "valid_to": "2026-10-25T12:57:13.599517+00:00",
+      "is_current": true,
+      "created_at": "2026-10-25T12:52:25.027029+00:00",
+      "updated_at": "2026-10-25T12:57:13.599517+00:00",
+      "metadata": {
+        "session_id": "sess-20261025-125225-a5a8cc",
+        "prior_session_id": "sess-20261025-124900-9c69d0",
+        "parent_session_id": "sess-20261025-124900-9c69d0",
+        "read_count": 1,
+        "write_count": 5,
+        "status": "completed",
+        "byte_size": 1884
       }
     }
   ],
@@ -1615,6 +1911,222 @@
       "valid_to": null,
       "is_current": true,
       "metadata": {}
+    },
+    {
+      "source": "session:sess-20261019-153438-5462a2",
+      "target": "session:sess-20261025-103209-75ce1a",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T10:32:09.188585+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261025-103209-75ce1a",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-25T10:32:09.188585+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:canonical-agentic-architecture-harness-resilienc",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T10:36:08.333593+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:canonical-agentic-architecture-harness-resilienc",
+      "target": "session:sess-20261025-103209-75ce1a",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T10:36:08.502907+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261025-103209-75ce1a",
+      "target": "session:sess-20261025-110550-f2f7c3",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T11:05:50.227555+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261025-110550-f2f7c3",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-25T11:05:50.227555+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:hath0r-cli-v1-7-0-release-promotion",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T11:31:45.743549+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:hath0r-cli-v1-7-0-release-promotion",
+      "target": "session:sess-20261025-110550-f2f7c3",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T11:31:45.786314+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261025-110550-f2f7c3",
+      "target": "session:sess-20261025-123630-516ab2",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:36:30.132865+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261025-123630-516ab2",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-25T12:36:30.132865+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:hath0r-infrastructure-v1-7-0-release-deployment",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:42:54.272657+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:hath0r-infrastructure-v1-7-0-release-deployment",
+      "target": "session:sess-20261025-123630-516ab2",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:42:54.323321+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:hath0r-cli",
+      "target": "episode:hath0r-cli-v1-7-0-release-promotion",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:42:54.348373+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:hath0r-cli",
+      "target": "episode:hath0r-infrastructure-v1-7-0-release-deployment",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:42:54.348373+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:v1.7.0",
+      "target": "episode:hath0r-cli-v1-7-0-release-promotion",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:42:54.348373+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:v1.7.0",
+      "target": "episode:hath0r-infrastructure-v1-7-0-release-deployment",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:42:54.348373+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261025-123630-516ab2",
+      "target": "session:sess-20261025-124900-9c69d0",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:49:00.081348+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261025-124900-9c69d0",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-25T12:49:00.081348+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:hath0r-ecosystem-latest-version-installation",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:50:03.441609+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:hath0r-ecosystem-latest-version-installation",
+      "target": "session:sess-20261025-124900-9c69d0",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:50:03.495836+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261025-124900-9c69d0",
+      "target": "session:sess-20261025-125225-a5a8cc",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:52:25.035651+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261025-125225-a5a8cc",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-25T12:52:25.035651+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:share-20261025T125312Z",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:53:12.531609+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:share-20261025T125312Z",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:53:12.531609+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:share-20261025T125312Z",
+      "target": "session:sess-20261025-125225-a5a8cc",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:53:12.588686+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:cross-group-mcp-and-knowledgebase-sync",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:57:00.866833+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:cross-group-mcp-and-knowledgebase-sync",
+      "target": "session:sess-20261025-125225-a5a8cc",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-25T12:57:00.954490+00:00",
+      "is_current": true
     }
   ]
 }

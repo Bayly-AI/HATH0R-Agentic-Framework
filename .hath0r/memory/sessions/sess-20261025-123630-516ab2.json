@@ -1,0 +1,46 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261025-123630-516ab2",
+  "prior_session_id": "sess-20261025-110550-f2f7c3",
+  "parent_session_id": "sess-20261025-110550-f2f7c3",
+  "revision": 4,
+  "content_hash": "sha256:67f8e198fb516e48960caf616f9b52c5f98cca3e29917d55dd02bfa3922f9b73",
+  "base_graph_hash": "sha256:08e05da186b2369a6b6321169134724b39c758ff7decbe6b98e3633fbb103fa6",
+  "task_id": null,
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "completed",
+  "started_at": "2026-10-25T12:36:30.123942+00:00",
+  "updated_at": "2026-10-25T12:43:16.869620+00:00",
+  "ended_at": "2026-10-25T12:43:16.869620+00:00",
+  "read_count": 1,
+  "write_count": 4,
+  "last_read_at": "2026-10-25T12:36:30.123942+00:00",
+  "last_write_at": "2026-10-25T12:43:16.869620+00:00",
+  "active_focus": "Deploy release v1.7.0",
+  "prior_summary": "ted session focus: Deploy release v1; Executed full release deployment of Hath; Compounded episode:hath0r-infrastructure",
+  "recalled_nodes": [
+    {
+      "id": "episode:hath0r-cli-v1-7-0-release-promotion",
+      "type": "episode",
+      "label": "HATH0R-CLI v1.7.0 Release Promotion",
+      "snippet": "Released HATH0R-CLI v1.7.0 following CR-BAI-001 canonical environment promotion path (PR #"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-25T12:43:16.869620+00:00",
+      "kind": "milestone",
+      "summary": "Completed release deployment: Hath0r CLI v1.7.0 deployed to /usr/local/bin/hath0r, verified with hath0r doctor and hath0r deploy post. All tests passed, release receipt generated, and memory compounded.",
+      "tags": [
+        "session-end"
+      ],
+      "node_id": null
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:hath0r-infrastructure-v1-7-0-release-deployment"
+  ],
+  "capsule_bytes": 1829
+}
