@@ -44,12 +44,12 @@
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "episode:pr-308",
     "eval:pr-308-merged",
     "rule:cr-task-eval-001",
     "eval:eval-baseline-hath0r-framework",
-    "episode:clean-repo-hath0r-framework",
-    "eval:clean-repo-hath0r-framework"
+    "eval:eval-baseline-hath0r-archive",
+    "episode:clean-repo-hath0r-archive",
+    "eval:clean-repo-hath0r-archive"
   ],
   "capsule_bytes": 1971
 }

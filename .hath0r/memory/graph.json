@@ -774,7 +774,7 @@
       "updated_at": "2026-10-19T13:58:56.341961+00:00",
       "metadata": {
         "source_files": {
-          "release/AGENTS.md": "sha256:adfb5c33b30a83a11842036a7c900b0aa59f8509e84ab2360f7dd00556054b20"
+          "release/AGENTS.md": "sha256:d334e0fb73dfd22376129cd971d28b87bbaceb7847287f5ca3b6a7c2321a0ee8"
         }
       }
     },
@@ -1393,23 +1393,23 @@
       }
     },
     {
-      "id": "eval:clean-repo-hath0r-framework",
+      "id": "eval:eval-baseline-hath0r-archive",
       "type": "eval",
-      "label": "Task Evaluation clean-repo-hath0r-framework (R=1.00, PASS)",
-      "content": "4-Tier Task Evaluation for clean-repo-hath0r-framework on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "label": "Task Evaluation eval-baseline-hath0r-archive (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for eval-baseline-hath0r-archive on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "importance": 0.85,
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "clean-repo-hath0r-framework",
+        "eval-baseline-hath0r-archive",
         "passed",
         "compounded"
       ],
-      "valid_from": "2026-10-28T15:19:36.489528+00:00",
+      "valid_from": "2026-10-28T17:45:19.958282+00:00",
       "valid_to": null,
       "is_current": true,
-      "created_at": "2026-10-28T15:19:36.489528+00:00",
-      "updated_at": "2026-10-28T15:19:36.489528+00:00",
+      "created_at": "2026-10-28T14:23:21.502319+00:00",
+      "updated_at": "2026-10-28T17:45:19.958282+00:00",
       "metadata": {
         "source_files": {
           ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
@@ -1428,7 +1428,7 @@
         "completed"
       ],
       "valid_from": "2026-10-28T13:33:24.262765+00:00",
-      "valid_to": "2026-10-28T15:19:29.323635+00:00",
+      "valid_to": "2026-10-28T15:22:06.719677+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:24.262765+00:00",
       "updated_at": "2026-10-28T17:45:25.520677+00:00",
@@ -2711,43 +2711,123 @@
       "is_current": true
     },
     {
-      "source": "episode:clean-repo-hath0r-framework",
-      "target": "session:sess-20261028-133324-403b2a",
-      "relation": "DERIVES_FROM",
-      "weight": 1.0,
-      "valid_from": "2026-10-28T15:19:29.250725+00:00",
-      "is_current": true
-    },
-    {
-      "source": "eval:clean-repo-hath0r-framework",
+      "source": "eval:eval-baseline-hath0r-archive",
       "target": "concept:tri-graph",
       "relation": "EVALUATES",
       "weight": 1.0,
-      "valid_from": "2026-10-28T15:19:36.489528+00:00",
+      "valid_from": "2026-10-28T14:23:21.502319+00:00",
       "is_current": true
     },
     {
-      "source": "eval:clean-repo-hath0r-framework",
+      "source": "eval:eval-baseline-hath0r-archive",
       "target": "rule:cr-memory-compound-001",
       "relation": "EVALUATES",
       "weight": 1.0,
-      "valid_from": "2026-10-28T15:19:36.489528+00:00",
+      "valid_from": "2026-10-28T14:23:21.502319+00:00",
       "is_current": true
     },
     {
-      "source": "eval:clean-repo-hath0r-framework",
+      "source": "eval:eval-baseline-hath0r-archive",
       "target": "session:sess-20261028-133324-403b2a",
       "relation": "EVALUATES",
       "weight": 1.0,
-      "valid_from": "2026-10-28T15:19:36.489528+00:00",
+      "valid_from": "2026-10-28T14:23:21.502319+00:00",
       "is_current": true
     },
     {
-      "source": "eval:clean-repo-hath0r-framework",
+      "source": "eval:eval-baseline-hath0r-archive",
       "target": "session:sess-20261028-133324-403b2a",
       "relation": "DERIVES_FROM",
       "weight": 1.0,
-      "valid_from": "2026-10-28T15:19:36.558071+00:00",
+      "valid_from": "2026-10-28T14:23:21.549602+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-archive",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:06.645525+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-archive",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:06.645525+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-archive",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:06.681311+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:clean-repo",
+      "target": "episode:clean-repo-hath0r-framework",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:06.699100+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:clean-repo",
+      "target": "episode:clean-repo-hath0r-archive",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:06.699100+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:hygiene",
+      "target": "episode:clean-repo-hath0r-framework",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:06.699100+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:hygiene",
+      "target": "episode:clean-repo-hath0r-archive",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:06.699100+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-archive",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:09.636347+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-archive",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:09.636347+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-archive",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:09.636347+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-archive",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T15:22:09.678939+00:00",
       "is_current": true
     }
   ]

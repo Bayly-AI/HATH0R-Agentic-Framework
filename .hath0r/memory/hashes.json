@@ -176,7 +176,8 @@
       "byte_size": 2656,
       "exists": true,
       "referenced_by": [
-        "eval:clean-repo-hath0r-framework",
+        "eval:clean-repo-hath0r-archive",
+        "eval:eval-baseline-hath0r-archive",
         "eval:eval-baseline-hath0r-framework",
         "eval:issue-307",
         "eval:pr-308",
@@ -265,9 +266,9 @@
       "updated_at": "2026-10-28T17:45:25.696884+00:00"
     },
     "release/AGENTS.md": {
-      "sha256": "sha256:adfb5c33b30a83a11842036a7c900b0aa59f8509e84ab2360f7dd00556054b20",
-      "revision": 1,
-      "byte_size": 4795,
+      "sha256": "sha256:d334e0fb73dfd22376129cd971d28b87bbaceb7847287f5ca3b6a7c2321a0ee8",
+      "revision": 2,
+      "byte_size": 5780,
       "exists": true,
       "referenced_by": [
         "decision:release-directory-curated-triad"
