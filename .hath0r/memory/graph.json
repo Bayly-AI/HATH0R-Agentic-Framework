@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 221,
-  "content_hash": "sha256:6b08a4fd49918ad45d6fadf91f8c8f1549468f3b7449843c0d5bdf1a25f37c7d",
-  "updated_at": "2026-10-28T17:36:28.921583+00:00",
+  "revision": 230,
+  "content_hash": "sha256:7d783ac5f705999d169880ffe3f548363ce907cfd8dc9eb8b7d211b785726eb9",
+  "updated_at": "2026-10-28T17:45:25.677858+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -1213,7 +1213,7 @@
       "updated_at": "2026-10-28T13:35:38.020196+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e545ddf808951311be76dd43a255ee85b56835c4de2fc98ab9b23f7f563df93e"
+          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
         }
       }
     },
@@ -1237,7 +1237,7 @@
       "updated_at": "2026-10-28T13:53:23.673169+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e545ddf808951311be76dd43a255ee85b56835c4de2fc98ab9b23f7f563df93e"
+          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
         }
       }
     },
@@ -1343,7 +1343,7 @@
       "updated_at": "2026-10-28T13:53:30.607564+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e545ddf808951311be76dd43a255ee85b56835c4de2fc98ab9b23f7f563df93e"
+          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
         }
       }
     },
@@ -1361,11 +1361,11 @@
         "scorecard",
         "compounded"
       ],
-      "valid_from": "2026-10-28T17:36:28.873677+00:00",
+      "valid_from": "2026-10-28T17:45:24.879039+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T14:21:12.347805+00:00",
-      "updated_at": "2026-10-28T17:36:28.873677+00:00",
+      "updated_at": "2026-10-28T17:45:24.879039+00:00",
       "metadata": {}
     },
     {
@@ -1381,14 +1381,14 @@
         "passed",
         "compounded"
       ],
-      "valid_from": "2026-10-28T14:21:12.899316+00:00",
+      "valid_from": "2026-10-28T17:45:25.415011+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T14:21:12.899316+00:00",
-      "updated_at": "2026-10-28T14:21:12.899316+00:00",
+      "updated_at": "2026-10-28T17:45:25.415011+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e545ddf808951311be76dd43a255ee85b56835c4de2fc98ab9b23f7f563df93e"
+          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
         }
       }
     },
@@ -1412,7 +1412,7 @@
       "updated_at": "2026-10-28T15:19:36.489528+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e545ddf808951311be76dd43a255ee85b56835c4de2fc98ab9b23f7f563df93e"
+          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
         }
       }
     },
@@ -1420,7 +1420,7 @@
       "id": "session:sess-20261028-133324-403b2a",
       "type": "session",
       "label": "Micro Session sess-20261028-133324-403b2a",
-      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 6, Writes: 16 | Entries: Compounded rule:cr-task-eval-001: Automatic Task Evaluation & Scorecard Summary Gate (CR-TASK-EVAL-001)",
+      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 7, Writes: 18 | Entries: Compounded eval:eval-baseline-hath0r-framework: Task Evaluation eval-baseline-hath0r-framework (R=1.00, PASS)",
       "importance": 0.75,
       "tags": [
         "session",
@@ -1431,15 +1431,15 @@
       "valid_to": "2026-10-28T15:19:29.323635+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:24.262765+00:00",
-      "updated_at": "2026-10-28T17:36:28.915779+00:00",
+      "updated_at": "2026-10-28T17:45:25.520677+00:00",
       "metadata": {
         "session_id": "sess-20261028-133324-403b2a",
         "prior_session_id": "sess-20261025-125225-a5a8cc",
         "parent_session_id": "sess-20261025-125225-a5a8cc",
-        "read_count": 6,
-        "write_count": 16,
+        "read_count": 7,
+        "write_count": 18,
         "status": "completed",
-        "byte_size": 2031
+        "byte_size": 1971
       }
     }
   ],
