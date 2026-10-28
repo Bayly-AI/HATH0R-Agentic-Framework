@@ -1,13 +1,13 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261028-142112-7b67aa",
-  "task_id": "eval-baseline-hath0r-framework",
+  "eval_id": "eval-20261028-151935-aac63e",
+  "task_id": "clean-repo-hath0r-framework",
   "issue_number": null,
   "repo_name": "hath0r-framework",
   "branch": "development",
-  "evaluated_at": "2026-10-28T14:21:12.679046+00:00",
-  "duration_ms": 254.6,
+  "evaluated_at": "2026-10-28T15:19:35.986401+00:00",
+  "duration_ms": 618.17,
   "passed_gate": true,
   "r_task": 1.0,
   "min_reward_threshold": 0.8,
@@ -42,7 +42,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 38,
+          "compounded_nodes_count": 39,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -64,13 +64,13 @@
       "estimated_usd": 0.0,
       "max_usd": 0.25,
       "session_id": "sess-20261028-133324-403b2a",
-      "session_reads": 4,
-      "session_writes": 11,
-      "session_bytes": 1942,
+      "session_reads": 5,
+      "session_writes": 14,
+      "session_bytes": 1814,
       "within_capsule_budget": true,
-      "latency_ms": 103.64,
-      "taguchi_quality_loss": 0.0001,
-      "snr_db": 25.71
+      "latency_ms": 298.65,
+      "taguchi_quality_loss": 0.0011,
+      "snr_db": 16.52
     },
     "adversarial": {
       "score": 1.0,
@@ -85,10 +85,10 @@
     "goal_alignment": {
       "score": 1.0,
       "passed": true,
-      "task_id": "eval-baseline-hath0r-framework",
+      "task_id": "clean-repo-hath0r-framework",
       "issue_number": null,
       "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
-      "compounded_nodes_count": 38,
+      "compounded_nodes_count": 39,
       "consensus_score": 1.0
     }
   },
@@ -96,5 +96,5 @@
   "observability_sync": {
     "mode": "pending"
   },
-  "content_hash": "sha256:af8e564e87c7e550321207743e9ac100f6f83b45136bce7bc720faa22a7b06fd"
+  "content_hash": "sha256:934da3704bd859a3c38d526a0b3bf36a62fdbfe41443d99e7d6ec0bb60bab200"
 }
