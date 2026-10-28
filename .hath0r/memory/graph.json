@@ -448,7 +448,7 @@
       "id": "episode:clean-repo-hath0r-framework",
       "type": "episode",
       "label": "Clean Repo Lifecycle (hath0r-framework)",
-      "content": "Executed 13-step clean-repo hygiene and knowledge sync for hath0r-framework.",
+      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-framework.",
       "importance": 0.75,
       "tags": [
         "clean-repo",
@@ -457,11 +457,11 @@
         "episode",
         "compounded"
       ],
-      "valid_from": "2026-10-16T15:48:19.256379+00:00",
+      "valid_from": "2026-10-28T15:19:29.173263+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-16T15:48:19.256379+00:00",
-      "updated_at": "2026-10-16T15:48:19.256379+00:00",
+      "updated_at": "2026-10-28T15:19:29.173263+00:00",
       "metadata": {}
     },
     {
@@ -1427,7 +1427,7 @@
         "completed"
       ],
       "valid_from": "2026-10-28T13:33:24.262765+00:00",
-      "valid_to": "2026-10-28T13:53:20.847869+00:00",
+      "valid_to": "2026-10-28T15:19:29.323635+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:24.262765+00:00",
       "updated_at": "2026-10-28T14:23:21.547402+00:00",

@@ -4681,7 +4681,7 @@
       "plane": "memory",
       "type": "episode",
       "label": "Clean Repo Lifecycle (hath0r-framework)",
-      "content": "Executed 13-step clean-repo hygiene and knowledge sync for hath0r-framework.",
+      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-framework.",
       "properties": {
         "source": "local_memory",
         "tags": [
