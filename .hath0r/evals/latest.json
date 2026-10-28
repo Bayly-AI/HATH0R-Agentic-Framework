@@ -1,13 +1,13 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261028-152209-8db22b",
-  "task_id": "clean-repo-hath0r-archive",
+  "eval_id": "eval-20261028-174519-20660b",
+  "task_id": "eval-baseline-hath0r-archive",
   "issue_number": null,
   "repo_name": "hath0r-archive",
   "branch": "development",
-  "evaluated_at": "2026-10-28T15:22:09.394793+00:00",
-  "duration_ms": 276.13,
+  "evaluated_at": "2026-10-28T17:45:19.696375+00:00",
+  "duration_ms": 293.01,
   "passed_gate": true,
   "r_task": 1.0,
   "min_reward_threshold": 0.8,
@@ -42,7 +42,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 43,
+          "compounded_nodes_count": 44,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -64,13 +64,13 @@
       "estimated_usd": 0.0,
       "max_usd": 0.25,
       "session_id": "sess-20261028-133324-403b2a",
-      "session_reads": 6,
-      "session_writes": 16,
-      "session_bytes": 1856,
+      "session_reads": 8,
+      "session_writes": 19,
+      "session_bytes": 2040,
       "within_capsule_budget": true,
-      "latency_ms": 95.81,
+      "latency_ms": 94.79,
       "taguchi_quality_loss": 0.0001,
-      "snr_db": 26.39
+      "snr_db": 26.49
     },
     "adversarial": {
       "score": 1.0,
@@ -85,10 +85,10 @@
     "goal_alignment": {
       "score": 1.0,
       "passed": true,
-      "task_id": "clean-repo-hath0r-archive",
+      "task_id": "eval-baseline-hath0r-archive",
       "issue_number": null,
       "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-archive",
-      "compounded_nodes_count": 43,
+      "compounded_nodes_count": 44,
       "consensus_score": 1.0
     }
   },
@@ -96,5 +96,5 @@
   "observability_sync": {
     "mode": "pending"
   },
-  "content_hash": "sha256:94053e500515c044c9f582043dc0ec52070baacb67503d4724be25289ba18915"
+  "content_hash": "sha256:1a8928cb2b2cb1efd5bc0fd1cc9da07bd4bc4bb1459079a4785118600027600a"
 }
