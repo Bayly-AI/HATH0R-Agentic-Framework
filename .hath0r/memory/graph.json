@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 141,
-  "content_hash": "sha256:7cf4c83aa5a574f807276f9e1c3c92235dadb5b0fd60ab002111b40c9cd52d08",
-  "updated_at": "2026-10-25T12:57:13.610670+00:00",
+  "revision": 165,
+  "content_hash": "sha256:7b3a40db4035b8f63c9c25d7e6b9bad7146a4ce1797d81fc2db94f696bf27587",
+  "updated_at": "2026-10-28T09:32:26.031904+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -1001,6 +1001,7 @@
         "compounded"
       ],
       "valid_from": "2026-10-25T12:42:54.348373+00:00",
+      "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-25T12:42:54.348373+00:00",
       "updated_at": "2026-10-25T12:42:54.348373+00:00",
@@ -1022,6 +1023,7 @@
         "compounded"
       ],
       "valid_from": "2026-10-25T12:42:54.348373+00:00",
+      "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-25T12:42:54.348373+00:00",
       "updated_at": "2026-10-25T12:42:54.348373+00:00",
@@ -1148,7 +1150,7 @@
       "id": "session:sess-20261025-125225-a5a8cc",
       "type": "session",
       "label": "Micro Session sess-20261025-125225-a5a8cc",
-      "content": "Micro Session sess-20261025-125225-a5a8cc [completed] | Focus: Share knowledge across MCP and Knowledgebase | Reads: 1, Writes: 5 | Entries: Completed cross-group knowledge sharing: synced OpenSource KB (592 docs), BAI MCP (114 docs), 1-Nation MCP (149 docs), and Author MCP (1,535 docs). Verified FTS5 index (1,348 docs).",
+      "content": "Micro Session sess-20261025-125225-a5a8cc [completed] | Focus: Orienting repository hath0r-framework | Reads: 9, Writes: 13 | Entries: Completed AgentGraph orientation for hath0r-framework (2 roles, 23 rules); Completed AgentGraph orientation for hath0r-framework (2 roles, 23 rules)",
       "importance": 0.75,
       "tags": [
         "session",
@@ -1159,15 +1161,16 @@
       "valid_to": "2026-10-25T12:57:13.599517+00:00",
       "is_current": true,
       "created_at": "2026-10-25T12:52:25.027029+00:00",
-      "updated_at": "2026-10-25T12:57:13.599517+00:00",
+      "updated_at": "2026-10-28T09:32:26.031863+00:00",
       "metadata": {
         "session_id": "sess-20261025-125225-a5a8cc",
         "prior_session_id": "sess-20261025-124900-9c69d0",
-        "parent_session_id": "sess-20261025-124900-9c69d0",
-        "read_count": 1,
-        "write_count": 5,
+        "read_count": 9,
+        "write_count": 13,
+        "revision": 21,
+        "content_hash": "sha256:9934759b13259a0a62c60f878eb9c9c6bc92e05f57709c3fc857dc1bd8993762",
         "status": "completed",
-        "byte_size": 1884
+        "byte_size": 1937
       }
     }
   ],
@@ -1918,7 +1921,9 @@
       "relation": "PRECEDES",
       "weight": 1.0,
       "valid_from": "2026-10-25T10:32:09.188585+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "session:sess-20261025-103209-75ce1a",
@@ -1926,7 +1931,9 @@
       "relation": "RELATES_TO",
       "weight": 0.8,
       "valid_from": "2026-10-25T10:32:09.188585+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:canonical-agentic-architecture-harness-resilienc",
@@ -1934,7 +1941,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T10:36:08.333593+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:canonical-agentic-architecture-harness-resilienc",
@@ -1942,7 +1951,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T10:36:08.502907+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "session:sess-20261025-103209-75ce1a",
@@ -1950,7 +1961,9 @@
       "relation": "PRECEDES",
       "weight": 1.0,
       "valid_from": "2026-10-25T11:05:50.227555+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "session:sess-20261025-110550-f2f7c3",
@@ -1958,7 +1971,9 @@
       "relation": "RELATES_TO",
       "weight": 0.8,
       "valid_from": "2026-10-25T11:05:50.227555+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:hath0r-cli-v1-7-0-release-promotion",
@@ -1966,7 +1981,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T11:31:45.743549+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:hath0r-cli-v1-7-0-release-promotion",
@@ -1974,7 +1991,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T11:31:45.786314+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "session:sess-20261025-110550-f2f7c3",
@@ -1982,7 +2001,9 @@
       "relation": "PRECEDES",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:36:30.132865+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "session:sess-20261025-123630-516ab2",
@@ -1990,7 +2011,9 @@
       "relation": "RELATES_TO",
       "weight": 0.8,
       "valid_from": "2026-10-25T12:36:30.132865+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:hath0r-infrastructure-v1-7-0-release-deployment",
@@ -1998,7 +2021,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:42:54.272657+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:hath0r-infrastructure-v1-7-0-release-deployment",
@@ -2006,7 +2031,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:42:54.323321+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:hath0r-cli",
@@ -2014,7 +2041,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:42:54.348373+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:hath0r-cli",
@@ -2022,7 +2051,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:42:54.348373+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:v1.7.0",
@@ -2030,7 +2061,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:42:54.348373+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:v1.7.0",
@@ -2038,7 +2071,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:42:54.348373+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "session:sess-20261025-123630-516ab2",
@@ -2046,7 +2081,9 @@
       "relation": "PRECEDES",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:49:00.081348+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "session:sess-20261025-124900-9c69d0",
@@ -2054,7 +2091,9 @@
       "relation": "RELATES_TO",
       "weight": 0.8,
       "valid_from": "2026-10-25T12:49:00.081348+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:hath0r-ecosystem-latest-version-installation",
@@ -2062,7 +2101,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:50:03.441609+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:hath0r-ecosystem-latest-version-installation",
@@ -2070,7 +2111,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:50:03.495836+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "session:sess-20261025-124900-9c69d0",
@@ -2078,7 +2121,9 @@
       "relation": "PRECEDES",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:52:25.035651+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "session:sess-20261025-125225-a5a8cc",
@@ -2086,7 +2131,9 @@
       "relation": "RELATES_TO",
       "weight": 0.8,
       "valid_from": "2026-10-25T12:52:25.035651+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:share-20261025T125312Z",
@@ -2094,7 +2141,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:53:12.531609+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:share-20261025T125312Z",
@@ -2102,7 +2151,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:53:12.531609+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:share-20261025T125312Z",
@@ -2110,7 +2161,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:53:12.588686+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:cross-group-mcp-and-knowledgebase-sync",
@@ -2118,7 +2171,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:57:00.866833+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:cross-group-mcp-and-knowledgebase-sync",
@@ -2126,7 +2181,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-25T12:57:00.954490+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     }
   ]
 }
