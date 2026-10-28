@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 207,
-  "content_hash": "sha256:9e137571959e8a96568d47d59e630d33b6f25732c45444731880a9ef407c5d76",
-  "updated_at": "2026-10-28T14:21:13.067872+00:00",
+  "revision": 217,
+  "content_hash": "sha256:5ada6be368775f2ad41cdee2aac71806687fc4bb64a7d08c1f4517a8f15d02cb",
+  "updated_at": "2026-10-28T14:23:21.694823+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -774,7 +774,7 @@
       "updated_at": "2026-10-19T13:58:56.341961+00:00",
       "metadata": {
         "source_files": {
-          "release/AGENTS.md": "sha256:adfb5c33b30a83a11842036a7c900b0aa59f8509e84ab2360f7dd00556054b20"
+          "release/AGENTS.md": "sha256:d334e0fb73dfd22376129cd971d28b87bbaceb7847287f5ca3b6a7c2321a0ee8"
         }
       }
     },
@@ -1213,7 +1213,7 @@
       "updated_at": "2026-10-28T13:35:38.020196+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0a2fedadbbd940ce785f9f4ecd116992a4f5f4cd9c9f72f038916268687da0dc"
+          ".hath0r/evals/latest.json": "sha256:261dbf3c5d72d7570a9ac90559e52dcd7c59ac9a22ac529e2138a6d065045f56"
         }
       }
     },
@@ -1237,7 +1237,7 @@
       "updated_at": "2026-10-28T13:53:23.673169+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0a2fedadbbd940ce785f9f4ecd116992a4f5f4cd9c9f72f038916268687da0dc"
+          ".hath0r/evals/latest.json": "sha256:261dbf3c5d72d7570a9ac90559e52dcd7c59ac9a22ac529e2138a6d065045f56"
         }
       }
     },
@@ -1343,7 +1343,7 @@
       "updated_at": "2026-10-28T13:53:30.607564+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0a2fedadbbd940ce785f9f4ecd116992a4f5f4cd9c9f72f038916268687da0dc"
+          ".hath0r/evals/latest.json": "sha256:261dbf3c5d72d7570a9ac90559e52dcd7c59ac9a22ac529e2138a6d065045f56"
         }
       }
     },
@@ -1360,11 +1360,11 @@
         "cr-task-eval-001",
         "compounded"
       ],
-      "valid_from": "2026-10-28T14:21:12.347805+00:00",
+      "valid_from": "2026-10-28T14:23:21.022455+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T14:21:12.347805+00:00",
-      "updated_at": "2026-10-28T14:21:12.347805+00:00",
+      "updated_at": "2026-10-28T14:23:21.022455+00:00",
       "metadata": {}
     },
     {
@@ -1387,7 +1387,31 @@
       "updated_at": "2026-10-28T14:21:12.899316+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0a2fedadbbd940ce785f9f4ecd116992a4f5f4cd9c9f72f038916268687da0dc"
+          ".hath0r/evals/latest.json": "sha256:261dbf3c5d72d7570a9ac90559e52dcd7c59ac9a22ac529e2138a6d065045f56"
+        }
+      }
+    },
+    {
+      "id": "eval:eval-baseline-hath0r-archive",
+      "type": "eval",
+      "label": "Task Evaluation eval-baseline-hath0r-archive (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for eval-baseline-hath0r-archive on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "eval-baseline-hath0r-archive",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T14:23:21.502319+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T14:23:21.502319+00:00",
+      "updated_at": "2026-10-28T14:23:21.502319+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:261dbf3c5d72d7570a9ac90559e52dcd7c59ac9a22ac529e2138a6d065045f56"
         }
       }
     },
@@ -1395,7 +1419,7 @@
       "id": "session:sess-20261028-133324-403b2a",
       "type": "session",
       "label": "Micro Session sess-20261028-133324-403b2a",
-      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 4, Writes: 12 | Entries: Compounded eval:eval-baseline-hath0r-framework: Task Evaluation eval-baseline-hath0r-framework (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-archive | Reads: 5, Writes: 14 | Entries: Compounded eval:eval-baseline-hath0r-archive: Task Evaluation eval-baseline-hath0r-archive (R=1.00, PASS)",
       "importance": 0.75,
       "tags": [
         "session",
@@ -1406,15 +1430,15 @@
       "valid_to": "2026-10-28T13:53:20.847869+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:24.262765+00:00",
-      "updated_at": "2026-10-28T14:21:12.937634+00:00",
+      "updated_at": "2026-10-28T14:23:21.547402+00:00",
       "metadata": {
         "session_id": "sess-20261028-133324-403b2a",
         "prior_session_id": "sess-20261025-125225-a5a8cc",
         "parent_session_id": "sess-20261025-125225-a5a8cc",
-        "read_count": 4,
-        "write_count": 12,
+        "read_count": 5,
+        "write_count": 14,
         "status": "completed",
-        "byte_size": 2010
+        "byte_size": 2023
       }
     }
   ],
@@ -2683,6 +2707,38 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:21:12.939600+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:eval-baseline-hath0r-archive",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:23:21.502319+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:eval-baseline-hath0r-archive",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:23:21.502319+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:eval-baseline-hath0r-archive",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:23:21.502319+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:eval-baseline-hath0r-archive",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T14:23:21.549602+00:00",
       "is_current": true
     }
   ]
