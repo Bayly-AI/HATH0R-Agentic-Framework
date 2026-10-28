@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 178,
-  "content_hash": "sha256:291bcb853846277e01f772a50b958b4224b3f4357429fc8d47ea92a9930822ae",
-  "updated_at": "2026-10-28T13:49:24.629532+00:00",
+  "revision": 198,
+  "content_hash": "sha256:cdc8006093e26bc33d4ee33475a39f0b0cfc48f912a0f32bb75adc7430661b0c",
+  "updated_at": "2026-10-28T13:53:33.202984+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -1213,7 +1213,7 @@
       "updated_at": "2026-10-28T13:35:38.020196+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2c0030e5301e916d8321d5ffcba3a6190e18ceb242304bf1a072ca40fb51d93e"
+          ".hath0r/evals/latest.json": "sha256:8417a8d1e526f713d319dd5c6aeaeaacc36d197ff76bfe84bd3369506a165021"
         }
       }
     },
@@ -1221,7 +1221,7 @@
       "id": "eval:pr-308",
       "type": "eval",
       "label": "Task Evaluation pr-308 (R=1.00, PASS)",
-      "content": "4-Tier Task Evaluation for pr-308 on branch feature/307-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "content": "4-Tier Task Evaluation for pr-308 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "importance": 0.85,
       "tags": [
         "eval",
@@ -1230,14 +1230,120 @@
         "passed",
         "compounded"
       ],
-      "valid_from": "2026-10-28T13:49:19.588578+00:00",
+      "valid_from": "2026-10-28T13:53:23.673169+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T13:49:19.588578+00:00",
-      "updated_at": "2026-10-28T13:49:19.588578+00:00",
+      "updated_at": "2026-10-28T13:53:23.673169+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:2c0030e5301e916d8321d5ffcba3a6190e18ceb242304bf1a072ca40fb51d93e"
+          ".hath0r/evals/latest.json": "sha256:8417a8d1e526f713d319dd5c6aeaeaacc36d197ff76bfe84bd3369506a165021"
+        }
+      }
+    },
+    {
+      "id": "episode:pr-308",
+      "type": "episode",
+      "label": "PR #308 Merged: CR-TASK-EVAL-001 Automatic Task Evals",
+      "content": "Configured cfg/evals/task-eval.json, bumped VERSION to 1.9.3, verified R_task=1.0000, and merged PR #308 into development.",
+      "importance": 0.8,
+      "tags": [
+        "evals",
+        "cr-task-eval-001",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T13:53:26.842774+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T13:53:19.163240+00:00",
+      "updated_at": "2026-10-28T13:53:26.842774+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "insight:knowledge-share",
+      "type": "insight",
+      "label": "Synthesized Insight on knowledge-share",
+      "content": "Consolidated from 2 memory nodes tagged 'knowledge-share'. Recurring themes: share, knowledge, promoted, released. Latest context: Autonomous bot completed PR #308 (feature)",
+      "importance": 0.95,
+      "tags": [
+        "knowledge-share",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T13:53:19.430327+00:00",
+      "is_current": true,
+      "created_at": "2026-10-28T13:53:19.430327+00:00",
+      "updated_at": "2026-10-28T13:53:19.430327+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "knowledge-share"
+      }
+    },
+    {
+      "id": "insight:evals",
+      "type": "insight",
+      "label": "Synthesized Insight on evals",
+      "content": "Consolidated from 2 memory nodes tagged 'evals'. Recurring themes: task, eval, evals, configured. Latest context: Configured cfg/evals/task-eval.json, bumped VERSION to 1.9.3, verified R_task=1.0000, and merged PR #308 into development.",
+      "importance": 0.95,
+      "tags": [
+        "evals",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T13:53:27.004147+00:00",
+      "is_current": true,
+      "created_at": "2026-10-28T13:53:27.004147+00:00",
+      "updated_at": "2026-10-28T13:53:27.004147+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "evals"
+      }
+    },
+    {
+      "id": "insight:cr-task-eval-001",
+      "type": "insight",
+      "label": "Synthesized Insight on cr-task-eval-001",
+      "content": "Consolidated from 2 memory nodes tagged 'cr-task-eval-001'. Recurring themes: task, eval, evals, configured. Latest context: Configured cfg/evals/task-eval.json, bumped VERSION to 1.9.3, verified R_task=1.0000, and merged PR #308 into development.",
+      "importance": 0.95,
+      "tags": [
+        "cr-task-eval-001",
+        "insight",
+        "reflection",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T13:53:27.004147+00:00",
+      "is_current": true,
+      "created_at": "2026-10-28T13:53:27.004147+00:00",
+      "updated_at": "2026-10-28T13:53:27.004147+00:00",
+      "metadata": {
+        "constituent_count": 2,
+        "source_tag": "cr-task-eval-001"
+      }
+    },
+    {
+      "id": "eval:pr-308-merged",
+      "type": "eval",
+      "label": "Task Evaluation pr-308-merged (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for pr-308-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "pr-308-merged",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T13:53:30.607564+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T13:53:30.607564+00:00",
+      "updated_at": "2026-10-28T13:53:30.607564+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:8417a8d1e526f713d319dd5c6aeaeaacc36d197ff76bfe84bd3369506a165021"
         }
       }
     },
@@ -1245,26 +1351,26 @@
       "id": "session:sess-20261028-133324-403b2a",
       "type": "session",
       "label": "Micro Session sess-20261028-133324-403b2a",
-      "content": "Micro Session sess-20261028-133324-403b2a [active] | Focus: feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001) | Reads: 2, Writes: 4 | Entries: Compounded eval:pr-308: Task Evaluation pr-308 (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001) | Reads: 3, Writes: 10 | Entries: Compounded eval:pr-308-merged: Task Evaluation pr-308-merged (R=1.00, PASS)",
       "importance": 0.75,
       "tags": [
         "session",
         "micro-session",
-        "active"
+        "completed"
       ],
       "valid_from": "2026-10-28T13:33:24.262765+00:00",
-      "valid_to": null,
+      "valid_to": "2026-10-28T13:53:20.847869+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:24.262765+00:00",
-      "updated_at": "2026-10-28T13:49:19.786490+00:00",
+      "updated_at": "2026-10-28T13:53:30.716806+00:00",
       "metadata": {
         "session_id": "sess-20261028-133324-403b2a",
         "prior_session_id": "sess-20261025-125225-a5a8cc",
         "parent_session_id": "sess-20261025-125225-a5a8cc",
-        "read_count": 2,
-        "write_count": 4,
-        "status": "active",
-        "byte_size": 1824
+        "read_count": 3,
+        "write_count": 10,
+        "status": "completed",
+        "byte_size": 1897
       }
     }
   ],
@@ -2373,6 +2479,110 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:49:19.795247+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:pr-308",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:19.163240+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:pr-308",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:19.163240+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:pr-308",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:19.341350+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:knowledge-share",
+      "target": "episode:share-20261025T125312Z",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:19.430327+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:knowledge-share",
+      "target": "episode:pr-308",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:19.430327+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:evals",
+      "target": "episode:issue-307-task-evals",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:27.004147+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:evals",
+      "target": "episode:pr-308",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:27.004147+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:cr-task-eval-001",
+      "target": "episode:issue-307-task-evals",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:27.004147+00:00",
+      "is_current": true
+    },
+    {
+      "source": "insight:cr-task-eval-001",
+      "target": "episode:pr-308",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:27.004147+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-308-merged",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:30.607564+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-308-merged",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:30.607564+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-308-merged",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:30.607564+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:pr-308-merged",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:53:30.721964+00:00",
       "is_current": true
     }
   ]
