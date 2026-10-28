@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-archive",
-  "timestamp": "2026-10-28T14:23:21.680184+00:00",
+  "timestamp": "2026-10-28T15:22:09.801238+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -5380,7 +5380,7 @@
       "content": "4-Tier Task Evaluation for issue-307 on branch feature/307-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0a2fedadbbd940ce785f9f4ecd116992a4f5f4cd9c9f72f038916268687da0dc"
+          ".hath0r/evals/latest.json": "sha256:261dbf3c5d72d7570a9ac90559e52dcd7c59ac9a22ac529e2138a6d065045f56"
         },
         "source": "local_memory",
         "tags": [
@@ -5402,7 +5402,7 @@
       "content": "4-Tier Task Evaluation for pr-308 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0a2fedadbbd940ce785f9f4ecd116992a4f5f4cd9c9f72f038916268687da0dc"
+          ".hath0r/evals/latest.json": "sha256:261dbf3c5d72d7570a9ac90559e52dcd7c59ac9a22ac529e2138a6d065045f56"
         },
         "source": "local_memory",
         "tags": [
@@ -5502,7 +5502,7 @@
       "content": "4-Tier Task Evaluation for pr-308-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0a2fedadbbd940ce785f9f4ecd116992a4f5f4cd9c9f72f038916268687da0dc"
+          ".hath0r/evals/latest.json": "sha256:261dbf3c5d72d7570a9ac90559e52dcd7c59ac9a22ac529e2138a6d065045f56"
         },
         "source": "local_memory",
         "tags": [
@@ -5543,7 +5543,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-framework on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0a2fedadbbd940ce785f9f4ecd116992a4f5f4cd9c9f72f038916268687da0dc"
+          ".hath0r/evals/latest.json": "sha256:261dbf3c5d72d7570a9ac90559e52dcd7c59ac9a22ac529e2138a6d065045f56"
         },
         "source": "local_memory",
         "tags": [
@@ -5580,19 +5580,100 @@
       "is_current": true
     },
     {
+      "id": "memory:episode:clean-repo-hath0r-archive",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Clean Repo Lifecycle (hath0r-archive)",
+      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-archive.",
+      "properties": {
+        "source": "local_memory",
+        "tags": [
+          "clean-repo",
+          "hygiene",
+          "hath0r-archive",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:clean-repo",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on clean-repo",
+      "content": "Consolidated from 2 memory nodes tagged 'clean-repo'. Recurring themes: clean, repo, lifecycle, framework. Latest context: Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-archive.",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "clean-repo",
+        "source": "local_memory",
+        "tags": [
+          "clean-repo",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 0.9
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:insight:hygiene",
+      "plane": "memory",
+      "type": "insight",
+      "label": "Synthesized Insight on hygiene",
+      "content": "Consolidated from 2 memory nodes tagged 'hygiene'. Recurring themes: clean, repo, lifecycle, framework. Latest context: Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-archive.",
+      "properties": {
+        "constituent_count": 2,
+        "source_tag": "hygiene",
+        "source": "local_memory",
+        "tags": [
+          "hygiene",
+          "insight",
+          "reflection",
+          "compounded"
+        ],
+        "importance": 0.9
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:clean-repo-hath0r-archive",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation clean-repo-hath0r-archive (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for clean-repo-hath0r-archive on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:47a60fc40a315377d489bbd7b1d43e979063bb66f22f2988df69386bdb764d12"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "clean-repo-hath0r-archive",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
       "id": "memory:session:sess-20261028-133324-403b2a",
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261028-133324-403b2a",
-      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-archive | Reads: 5, Writes: 14 | Entries: Compounded eval:eval-baseline-hath0r-archive: Task Evaluation eval-baseline-hath0r-archive (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-archive | Reads: 6, Writes: 17 | Entries: Compounded eval:clean-repo-hath0r-archive: Task Evaluation clean-repo-hath0r-archive (R=1.00, PASS)",
       "properties": {
         "session_id": "sess-20261028-133324-403b2a",
         "prior_session_id": "sess-20261025-125225-a5a8cc",
         "parent_session_id": "sess-20261025-125225-a5a8cc",
-        "read_count": 5,
-        "write_count": 14,
+        "read_count": 6,
+        "write_count": 17,
         "status": "completed",
-        "byte_size": 2023,
+        "byte_size": 2046,
         "source": "local_memory",
         "tags": [
           "session",
@@ -6468,6 +6549,72 @@
       "is_current": true
     },
     {
+      "source": "memory:episode:clean-repo-hath0r-archive",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-archive",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-archive",
+      "target": "memory:session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:clean-repo",
+      "target": "memory:episode:clean-repo-hath0r-framework",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:clean-repo",
+      "target": "memory:episode:clean-repo-hath0r-archive",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:hygiene",
+      "target": "memory:episode:clean-repo-hath0r-framework",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:hygiene",
+      "target": "memory:episode:clean-repo-hath0r-archive",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-archive",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-archive",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-archive",
+      "target": "memory:session:sess-20261028-133324-403b2a",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-archive",
+      "target": "memory:session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -6967,6 +7114,30 @@
     },
     {
       "source": "memory:eval:eval-baseline-hath0r-archive",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-archive",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:clean-repo",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:insight:hygiene",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-archive",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
