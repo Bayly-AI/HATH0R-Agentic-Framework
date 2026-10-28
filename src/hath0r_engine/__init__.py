@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-__version__ = "1.9.1"
+__version__ = "1.9.2"
 
 from hath0r_engine.analysis.ast_gnn import (
     ASTGNNEdge,
