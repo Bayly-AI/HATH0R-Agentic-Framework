@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-28T13:35:38.607583+00:00",
+  "timestamp": "2026-10-28T13:49:20.850717+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -5419,19 +5419,41 @@
       "is_current": true
     },
     {
+      "id": "memory:eval:pr-308",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation pr-308 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for pr-308 on branch feature/307-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:2c0030e5301e916d8321d5ffcba3a6190e18ceb242304bf1a072ca40fb51d93e"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "pr-308",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
       "id": "memory:session:sess-20261028-133324-403b2a",
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261028-133324-403b2a",
-      "content": "Micro Session sess-20261028-133324-403b2a [active] | Focus: feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001) | Reads: 2, Writes: 3 | Entries: Compounded eval:issue-307: Task Evaluation issue-307 (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133324-403b2a [active] | Focus: feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001) | Reads: 2, Writes: 4 | Entries: Compounded eval:pr-308: Task Evaluation pr-308 (R=1.00, PASS)",
       "properties": {
         "session_id": "sess-20261028-133324-403b2a",
         "prior_session_id": "sess-20261025-125225-a5a8cc",
         "parent_session_id": "sess-20261025-125225-a5a8cc",
         "read_count": 2,
-        "write_count": 3,
+        "write_count": 4,
         "status": "active",
-        "byte_size": 1817,
+        "byte_size": 1824,
         "source": "local_memory",
         "tags": [
           "session",
@@ -6139,6 +6161,30 @@
       "is_current": true
     },
     {
+      "source": "memory:eval:pr-308",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-308",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-308",
+      "target": "memory:session:sess-20261028-133324-403b2a",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-308",
+      "target": "memory:session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -6590,6 +6636,12 @@
     },
     {
       "source": "memory:eval:issue-307",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:pr-308",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
