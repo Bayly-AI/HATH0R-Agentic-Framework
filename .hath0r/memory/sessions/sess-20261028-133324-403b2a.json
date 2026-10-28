@@ -1,0 +1,51 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261028-133324-403b2a",
+  "prior_session_id": "sess-20261025-125225-a5a8cc",
+  "parent_session_id": "sess-20261025-125225-a5a8cc",
+  "revision": 4,
+  "content_hash": "sha256:d24478fe998ad94ecb4529282233539584cedf7552f926491898180c1c59980a",
+  "base_graph_hash": "sha256:00f1a58a4a124f02dc90fda43ffcb58e63ae4a7abea849a9f2211e68f8a58303",
+  "task_id": null,
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "active",
+  "started_at": "2026-10-28T13:33:24.262765+00:00",
+  "updated_at": "2026-10-28T13:35:38.118870+00:00",
+  "ended_at": null,
+  "read_count": 2,
+  "write_count": 3,
+  "last_read_at": "2026-10-28T13:35:29.152557+00:00",
+  "last_write_at": "2026-10-28T13:35:38.118870+00:00",
+  "active_focus": "feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001)",
+  "prior_summary": "hath0r-framework (2 roles, 23 rules); Started session focus: feat(evals): conf; Compounded episode:issue-307-task-evals:",
+  "recalled_nodes": [
+    {
+      "id": "episode:issue-287-memorygraph-compounding",
+      "type": "episode",
+      "label": "Enforce CR-MEMORY-COMPOUND-001 & Suite-Wide .hath0r/memory",
+      "snippet": "Provisioned .hath0r/memory/graph.json across all 31 active repositories in ~/Development, "
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-28T13:35:38.118870+00:00",
+      "kind": "compound",
+      "summary": "Compounded eval:issue-307: Task Evaluation issue-307 (R=1.00, PASS)",
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "issue-307",
+        "passed",
+        "compounded"
+      ],
+      "node_id": "eval:issue-307"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:issue-307-task-evals",
+    "eval:issue-307"
+  ],
+  "capsule_bytes": 1817
+}

@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 165,
-  "content_hash": "sha256:7b3a40db4035b8f63c9c25d7e6b9bad7146a4ce1797d81fc2db94f696bf27587",
-  "updated_at": "2026-10-28T09:32:26.031904+00:00",
+  "revision": 174,
+  "content_hash": "sha256:977c144737d21b6f9a47f01e6010a71f0d7d14d8b2b387bbfba5ad4b5ba57686",
+  "updated_at": "2026-10-28T13:35:38.135124+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -336,7 +336,7 @@
       "metadata": {
         "source_files": {
           "src/hath0r_engine/memory/memory_graph.py": "sha256:f80819ae8d08e7bbed5fa3d47d3e29d8f48a2f5479775e10ad85b882dbd610ca",
-          ".gitignore": "sha256:0f6fbbb8ab649f30fdd65a78d648f7d6eb230865f8c539bd69eb213cd1e813cd"
+          ".gitignore": "sha256:d570739eceb6777e8f4c90cacef67a04afcc8fd8056bdbbc28fe4932a67004e0"
         }
       }
     },
@@ -1171,6 +1171,76 @@
         "content_hash": "sha256:9934759b13259a0a62c60f878eb9c9c6bc92e05f57709c3fc857dc1bd8993762",
         "status": "completed",
         "byte_size": 1937
+      }
+    },
+    {
+      "id": "episode:issue-307-task-evals",
+      "type": "episode",
+      "label": "Configured Automatic Task Evaluations (CR-TASK-EVAL-001) in hath0r-framework",
+      "content": "Added declarative cfg/evals/task-eval.json binding hath0r-framework to TaskEvaluatorBot, .hath0r/evals/ gitignore negation rules, and bumped VERSION.",
+      "importance": 0.8,
+      "tags": [
+        "evals",
+        "cr-task-eval-001",
+        "issue-307",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T13:35:30.977598+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T13:35:30.977598+00:00",
+      "updated_at": "2026-10-28T13:35:30.977598+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "eval:issue-307",
+      "type": "eval",
+      "label": "Task Evaluation issue-307 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for issue-307 on branch feature/307-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "issue-307",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T13:35:38.020196+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T13:35:38.020196+00:00",
+      "updated_at": "2026-10-28T13:35:38.020196+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:9b7b1aebfc2e8785b459b6cac91c6e5cdb13880c552df9b810136c5ed58e7f71"
+        }
+      }
+    },
+    {
+      "id": "session:sess-20261028-133324-403b2a",
+      "type": "session",
+      "label": "Micro Session sess-20261028-133324-403b2a",
+      "content": "Micro Session sess-20261028-133324-403b2a [active] | Focus: feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001) | Reads: 2, Writes: 3 | Entries: Compounded eval:issue-307: Task Evaluation issue-307 (R=1.00, PASS)",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "active"
+      ],
+      "valid_from": "2026-10-28T13:33:24.262765+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T13:33:24.262765+00:00",
+      "updated_at": "2026-10-28T13:35:38.118870+00:00",
+      "metadata": {
+        "session_id": "sess-20261028-133324-403b2a",
+        "prior_session_id": "sess-20261025-125225-a5a8cc",
+        "parent_session_id": "sess-20261025-125225-a5a8cc",
+        "read_count": 2,
+        "write_count": 3,
+        "status": "active",
+        "byte_size": 1817
       }
     }
   ],
@@ -2184,6 +2254,70 @@
       "valid_to": null,
       "is_current": true,
       "metadata": {}
+    },
+    {
+      "source": "session:sess-20261025-125225-a5a8cc",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:33:24.300899+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261028-133324-403b2a",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-28T13:33:24.300899+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:issue-307-task-evals",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:35:30.977598+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:issue-307-task-evals",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:35:31.071400+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:issue-307",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:35:38.020196+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:issue-307",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:35:38.020196+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:issue-307",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:35:38.020196+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:issue-307",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T13:35:38.122942+00:00",
+      "is_current": true
     }
   ]
 }
