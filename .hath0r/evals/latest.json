@@ -1,15 +1,15 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261028-174525-daea6e",
-  "task_id": "eval-baseline-hath0r-framework",
+  "eval_id": "eval-20261028-181324-582515",
+  "task_id": "clean-repo-hath0r-framework",
   "issue_number": null,
-  "repo_name": "hath0r-archive",
+  "repo_name": "hath0r-framework",
   "branch": "development",
-  "evaluated_at": "2026-10-28T17:45:25.163236+00:00",
-  "duration_ms": 284.63,
-  "passed_gate": true,
-  "r_task": 1.0,
+  "evaluated_at": "2026-10-28T18:13:24.573093+00:00",
+  "duration_ms": 625.79,
+  "passed_gate": false,
+  "r_task": 0.9,
   "min_reward_threshold": 0.8,
   "weights": {
     "deterministic": 0.4,
@@ -18,16 +18,16 @@
     "goal_alignment": 0.15
   },
   "tier_scores": {
-    "deterministic": 1.0,
+    "deterministic": 0.75,
     "trajectory": 1.0,
     "adversarial": 1.0,
     "goal_alignment": 1.0
   },
   "tiers": {
     "deterministic": {
-      "score": 1.0,
-      "passed": true,
-      "passed_checks": 4,
+      "score": 0.75,
+      "passed": false,
+      "passed_checks": 3,
       "total_checks": 4,
       "checks": {
         "version_valid": {
@@ -41,13 +41,13 @@
           "contradictions": 0
         },
         "memory_compounded": {
-          "passed": true,
+          "passed": false,
           "compounded_nodes_count": 40,
           "session_read_verified": true,
           "session_write_verified": true,
-          "hashes_verified": true,
+          "hashes_verified": false,
           "graphs_not_ignored": true,
-          "error": null
+          "error": "CR-MEMORY-COMPOUND-001: Memory file hash verification failed (mismatched=0, missing=0, stale_source_files=1). Run 'hath0r memory hash --sync' or re-compound stale knowledge nodes."
         },
         "test_suite": {
           "passed": true,
@@ -64,13 +64,13 @@
       "estimated_usd": 0.0,
       "max_usd": 0.25,
       "session_id": "sess-20261028-133324-403b2a",
-      "session_reads": 7,
-      "session_writes": 17,
-      "session_bytes": 2031,
+      "session_reads": 8,
+      "session_writes": 19,
+      "session_bytes": 1994,
       "within_capsule_budget": true,
-      "latency_ms": 94.77,
-      "taguchi_quality_loss": 0.0001,
-      "snr_db": 26.49
+      "latency_ms": 234.02,
+      "taguchi_quality_loss": 0.0007,
+      "snr_db": 18.64
     },
     "adversarial": {
       "score": 1.0,
@@ -85,16 +85,18 @@
     "goal_alignment": {
       "score": 1.0,
       "passed": true,
-      "task_id": "eval-baseline-hath0r-framework",
+      "task_id": "clean-repo-hath0r-framework",
       "issue_number": null,
       "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
       "compounded_nodes_count": 40,
       "consensus_score": 1.0
     }
   },
-  "blocking_reasons": [],
+  "blocking_reasons": [
+    "Tier 1 deterministic gate failed: memory_compounded"
+  ],
   "observability_sync": {
     "mode": "pending"
   },
-  "content_hash": "sha256:b255cdd862a1fec8738c40486af35e85f7d8e81713bc80db052a1426ac5ac540"
+  "content_hash": "sha256:c8921eafaf3061263c306c6cc494f20b68550633b7355f3bec95e801d9127950"
 }

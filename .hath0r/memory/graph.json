@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 230,
-  "content_hash": "sha256:7d783ac5f705999d169880ffe3f548363ce907cfd8dc9eb8b7d211b785726eb9",
-  "updated_at": "2026-10-28T17:45:25.677858+00:00",
+  "revision": 238,
+  "content_hash": "sha256:923c2e9b24f05513fd4c14986a30a4b8671e4d2bc712eb928124403065bac26a",
+  "updated_at": "2026-10-28T18:13:25.530427+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -447,21 +447,21 @@
     {
       "id": "episode:clean-repo-hath0r-framework",
       "type": "episode",
-      "label": "Clean Repo Lifecycle (hath0r-framework)",
-      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-framework.",
-      "importance": 0.75,
+      "label": "Clean Repo Development Sync (hath0r-framework)",
+      "content": "Verified all changes merged into development and synced for hath0r-framework.",
+      "importance": 0.8,
       "tags": [
         "clean-repo",
-        "hygiene",
+        "development",
         "hath0r-framework",
         "episode",
         "compounded"
       ],
-      "valid_from": "2026-10-28T15:19:29.173263+00:00",
+      "valid_from": "2026-10-28T18:13:24.115030+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-16T15:48:19.256379+00:00",
-      "updated_at": "2026-10-28T15:19:29.173263+00:00",
+      "updated_at": "2026-10-28T18:13:24.115030+00:00",
       "metadata": {}
     },
     {
@@ -1213,7 +1213,7 @@
       "updated_at": "2026-10-28T13:35:38.020196+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
+          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
         }
       }
     },
@@ -1237,7 +1237,7 @@
       "updated_at": "2026-10-28T13:53:23.673169+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
+          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
         }
       }
     },
@@ -1343,7 +1343,7 @@
       "updated_at": "2026-10-28T13:53:30.607564+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
+          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
         }
       }
     },
@@ -1388,7 +1388,7 @@
       "updated_at": "2026-10-28T17:45:25.415011+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
+          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
         }
       }
     },
@@ -1412,7 +1412,31 @@
       "updated_at": "2026-10-28T17:45:19.958282+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
+          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
+        }
+      }
+    },
+    {
+      "id": "eval:clean-repo-hath0r-framework",
+      "type": "eval",
+      "label": "Task Evaluation clean-repo-hath0r-framework (R=0.90, FAIL)",
+      "content": "4-Tier Task Evaluation for clean-repo-hath0r-framework on branch development: R_task=0.9000 (det=0.75, traj=1.00, adv=1.00, goal=1.00). Gate=FAILED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "clean-repo-hath0r-framework",
+        "failed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-28T18:13:25.112709+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-28T18:13:25.112709+00:00",
+      "updated_at": "2026-10-28T18:13:25.112709+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
         }
       }
     },
@@ -1420,7 +1444,7 @@
       "id": "session:sess-20261028-133324-403b2a",
       "type": "session",
       "label": "Micro Session sess-20261028-133324-403b2a",
-      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 7, Writes: 18 | Entries: Compounded eval:eval-baseline-hath0r-framework: Task Evaluation eval-baseline-hath0r-framework (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 8, Writes: 20 | Entries: Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=0.90, FAIL)",
       "importance": 0.75,
       "tags": [
         "session",
@@ -1428,18 +1452,18 @@
         "completed"
       ],
       "valid_from": "2026-10-28T13:33:24.262765+00:00",
-      "valid_to": "2026-10-28T15:22:06.719677+00:00",
+      "valid_to": "2026-10-28T15:19:29.323635+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:24.262765+00:00",
-      "updated_at": "2026-10-28T17:45:25.520677+00:00",
+      "updated_at": "2026-10-28T18:13:25.191407+00:00",
       "metadata": {
         "session_id": "sess-20261028-133324-403b2a",
         "prior_session_id": "sess-20261025-125225-a5a8cc",
         "parent_session_id": "sess-20261025-125225-a5a8cc",
-        "read_count": 7,
-        "write_count": 18,
+        "read_count": 8,
+        "write_count": 20,
         "status": "completed",
-        "byte_size": 1971
+        "byte_size": 1978
       }
     }
   ],
@@ -2828,6 +2852,46 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:09.678939+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-framework",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T18:13:24.186135+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-framework",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T18:13:25.112709+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-framework",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T18:13:25.112709+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-framework",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T18:13:25.112709+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-framework",
+      "target": "session:sess-20261028-133324-403b2a",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-28T18:13:25.195063+00:00",
       "is_current": true
     }
   ]

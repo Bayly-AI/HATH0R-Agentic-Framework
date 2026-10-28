@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-28T17:45:25.664360+00:00",
+  "timestamp": "2026-10-28T18:13:25.486330+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -60,6 +60,30 @@
       "properties": {
         "path": "release/AGENTS.md",
         "subsystem": "release"
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:agents-docs",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "AGENTS.md (docs)",
+      "content": "# AGENTS.md — HATH0R Agentic Framework\n\n> Role: **OpenSource HATHOR framework + docs corpus** · member of **OpenSource Project** (`hath0r-opensource`)  \n> Updated: 2026-09-30\n\n## Group membership (CRITICAL)\n\n| Field | Value |\n|-------|-------|\n| Group | `hath0r-opensource` |\n| Project | **OpenSource Project** |\n| Group root | `/Users/raybayly/Development/OpenSource` |\n| **Control tower** | `/Users/raybayly/Development/OpenSource/HATH0R-CLI` (`Bayly-AI/HATH0R-CLI`) |\n| This product | `HATH0R-Agentic-Framework` |\n| GitHub | `Bayly-AI/HATH0R-Agentic-Framework` |\n| Local path | `/Users/raybayly/Development/OpenSource/hath0r` |\n| Canonical KB | `/Users/raybayly/Development/OpenSource/.hath0r/knowledgebase` |\n| Operator CLI | `hath0r` |\n| Docs | `docs/` (canonical OpenSource documentation corpus) |\n\n### Canonical siblings (all under OpenSource are project members)\n\n- **Control tower / CLI**: `/Users/raybayly/Development/OpenSource/HATH0R-CLI` → `Bayly-AI/HATH0R-CLI`\n- Framework: `/Users/rayb",
+      "properties": {
+        "path": "release/prompts/artifacts/javascript/node/plugin/docs/AGENTS.md",
+        "subsystem": "docs"
+      },
+      "is_current": true
+    },
+    {
+      "id": "doc:agents-docs",
+      "plane": "knowledge",
+      "type": "knowledge_doc",
+      "label": "AGENTS.md (docs)",
+      "content": "# AGENTS.md — HATH0R Agentic Framework\n\n> Role: **OpenSource HATHOR framework + docs corpus** · member of **OpenSource Project** (`hath0r-opensource`)  \n> Updated: 2026-09-30\n\n## Group membership (CRITICAL)\n\n| Field | Value |\n|-------|-------|\n| Group | `hath0r-opensource` |\n| Project | **OpenSource Project** |\n| Group root | `/Users/raybayly/Development/OpenSource` |\n| **Control tower** | `/Users/raybayly/Development/OpenSource/HATH0R-CLI` (`Bayly-AI/HATH0R-CLI`) |\n| This product | `HATH0R-Agentic-Framework` |\n| GitHub | `Bayly-AI/HATH0R-Agentic-Framework` |\n| Local path | `/Users/raybayly/Development/OpenSource/hath0r` |\n| Canonical KB | `/Users/raybayly/Development/OpenSource/.hath0r/knowledgebase` |\n| Operator CLI | `hath0r` |\n| Docs | `docs/` (canonical OpenSource documentation corpus) |\n\n### Canonical siblings (all under OpenSource are project members)\n\n- **Control tower / CLI**: `/Users/raybayly/Development/OpenSource/HATH0R-CLI` → `Bayly-AI/HATH0R-CLI`\n- Framework: `/Users/rayb",
+      "properties": {
+        "path": "release/prompts/artifacts/javascript/node/cli/docs/AGENTS.md",
+        "subsystem": "docs"
       },
       "is_current": true
     },
@@ -145,6 +169,32 @@
       "content": "---\nid: rule:subsystem-tests\ntype: rule_policy\ntitle: \"Testing Subsystem - Local Rules\"\npriority: 2\npriority_name: SUBSYSTEM_RULE\ntarget_scope: tests\nrestricted_actions: [skip_playwright_catalog_sync]\ngoverns_roles: [developer, qa-engineer]\n---\n# Testing Subsystem — Local Rules\n\n> **Rule ID:** `rule:subsystem-tests`  \n> **Subsystem Scope:** `tests/`  \n> **Precedence Priority:** `2` (`SUBSYSTEM_RULE`)  \n\n---\n\n## Operational Constraints\n\n1. **Mandatory Playwright Coverage:**\n   - All UI component changes and frontend features MUST include Playwright test coverage.\n2. **Master Test Catalog Sync:**\n   - The master Playwright test case document (`tests/e2e/master-playwright-tests.json`) MUST be kept in sync with all UI components.\n3. **Clean Repo Audit Gate:**\n   - Clean Repo lifecycle (Step 7) MUST run `PlaywrightMasterCatalogManager.audit_and_sync_test_cases()` to prevent untested UI drift.\n4. **Visual Regression Baselines:**\n   - Visual regressions MUST be validated against baseline snapshots with 0% unintended visual difference.\n",
       "properties": {
         "path": "tests/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Docs Subsystem - Local Rules\n\n> Specific rules and constraints for the Docs Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "release/prompts/artifacts/javascript/node/plugin/docs/rules.md",
+        "priority": 3,
+        "restricted_actions": []
+      },
+      "is_current": true
+    },
+    {
+      "id": "rule:rules",
+      "plane": "rules",
+      "type": "rule_policy",
+      "label": "Rule rules",
+      "content": "# Docs Subsystem - Local Rules\n\n> Specific rules and constraints for the Docs Subsystem module.\n\n## Constraints\n- \n",
+      "properties": {
+        "path": "release/prompts/artifacts/javascript/node/cli/docs/rules.md",
         "priority": 3,
         "restricted_actions": []
       },
@@ -4680,18 +4730,18 @@
       "id": "memory:episode:clean-repo-hath0r-framework",
       "plane": "memory",
       "type": "episode",
-      "label": "Clean Repo Lifecycle (hath0r-framework)",
-      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-framework.",
+      "label": "Clean Repo Development Sync (hath0r-framework)",
+      "content": "Verified all changes merged into development and synced for hath0r-framework.",
       "properties": {
         "source": "local_memory",
         "tags": [
           "clean-repo",
-          "hygiene",
+          "development",
           "hath0r-framework",
           "episode",
           "compounded"
         ],
-        "importance": 0.75
+        "importance": 0.8
       },
       "is_current": true
     },
@@ -5380,7 +5430,7 @@
       "content": "4-Tier Task Evaluation for issue-307 on branch feature/307-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e545ddf808951311be76dd43a255ee85b56835c4de2fc98ab9b23f7f563df93e"
+          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
         },
         "source": "local_memory",
         "tags": [
@@ -5402,7 +5452,7 @@
       "content": "4-Tier Task Evaluation for pr-308 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e545ddf808951311be76dd43a255ee85b56835c4de2fc98ab9b23f7f563df93e"
+          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
         },
         "source": "local_memory",
         "tags": [
@@ -5502,7 +5552,7 @@
       "content": "4-Tier Task Evaluation for pr-308-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:e545ddf808951311be76dd43a255ee85b56835c4de2fc98ab9b23f7f563df93e"
+          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
         },
         "source": "local_memory",
         "tags": [
@@ -5566,7 +5616,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-archive on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:5d42a449612888ea0c9a10ddafba445603ea66b6a224dc3c3f24334a4c71eaf3"
+          ".hath0r/evals/latest.json": "sha256:6547fa9a5424264fee2dad8267bbfb5d830fec05d794ebe1acf5b874eb37bbef"
         },
         "source": "local_memory",
         "tags": [
@@ -5581,80 +5631,21 @@
       "is_current": true
     },
     {
-      "id": "memory:episode:clean-repo-hath0r-archive",
-      "plane": "memory",
-      "type": "episode",
-      "label": "Clean Repo Development Sync (hath0r-archive)",
-      "content": "Verified all changes merged into development and synced for hath0r-archive.",
-      "properties": {
-        "source": "local_memory",
-        "tags": [
-          "clean-repo",
-          "development",
-          "hath0r-archive",
-          "episode",
-          "compounded"
-        ],
-        "importance": 0.8
-      },
-      "is_current": true
-    },
-    {
-      "id": "memory:insight:clean-repo",
-      "plane": "memory",
-      "type": "insight",
-      "label": "Synthesized Insight on clean-repo",
-      "content": "Consolidated from 2 memory nodes tagged 'clean-repo'. Recurring themes: clean, repo, lifecycle, framework. Latest context: Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-archive.",
-      "properties": {
-        "constituent_count": 2,
-        "source_tag": "clean-repo",
-        "source": "local_memory",
-        "tags": [
-          "clean-repo",
-          "insight",
-          "reflection",
-          "compounded"
-        ],
-        "importance": 0.9
-      },
-      "is_current": true
-    },
-    {
-      "id": "memory:insight:hygiene",
-      "plane": "memory",
-      "type": "insight",
-      "label": "Synthesized Insight on hygiene",
-      "content": "Consolidated from 2 memory nodes tagged 'hygiene'. Recurring themes: clean, repo, lifecycle, framework. Latest context: Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-archive.",
-      "properties": {
-        "constituent_count": 2,
-        "source_tag": "hygiene",
-        "source": "local_memory",
-        "tags": [
-          "hygiene",
-          "insight",
-          "reflection",
-          "compounded"
-        ],
-        "importance": 0.9
-      },
-      "is_current": true
-    },
-    {
-      "id": "memory:eval:clean-repo-hath0r-archive",
+      "id": "memory:eval:clean-repo-hath0r-framework",
       "plane": "memory",
       "type": "eval",
-      "label": "Task Evaluation clean-repo-hath0r-archive (R=1.00, PASS)",
-      "content": "4-Tier Task Evaluation for clean-repo-hath0r-archive on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "label": "Task Evaluation clean-repo-hath0r-framework (R=0.90, FAIL)",
+      "content": "4-Tier Task Evaluation for clean-repo-hath0r-framework on branch development: R_task=0.9000 (det=0.75, traj=1.00, adv=1.00, goal=1.00). Gate=FAILED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:99c3e05865c0f8086225eab75f622e7630fbcef02dd6b891a9d504e8e091903b"
+          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
         },
         "source": "local_memory",
         "tags": [
           "eval",
           "cr-task-eval-001",
-          "clean-repo-hath0r-archive",
-          "passed",
+          "clean-repo-hath0r-framework",
+          "failed",
           "compounded"
         ],
         "importance": 0.85
@@ -5666,15 +5657,15 @@
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261028-133324-403b2a",
-      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 7, Writes: 18 | Entries: Compounded eval:eval-baseline-hath0r-framework: Task Evaluation eval-baseline-hath0r-framework (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 8, Writes: 20 | Entries: Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=0.90, FAIL)",
       "properties": {
         "session_id": "sess-20261028-133324-403b2a",
         "prior_session_id": "sess-20261025-125225-a5a8cc",
         "parent_session_id": "sess-20261025-125225-a5a8cc",
-        "read_count": 7,
-        "write_count": 18,
+        "read_count": 8,
+        "write_count": 20,
         "status": "completed",
-        "byte_size": 1971,
+        "byte_size": 1978,
         "source": "local_memory",
         "tags": [
           "session",
@@ -6550,69 +6541,45 @@
       "is_current": true
     },
     {
-      "source": "memory:episode:clean-repo-hath0r-archive",
-      "target": "concept:tri-graph",
-      "relation": "DERIVES_FROM",
-      "is_current": true
-    },
-    {
-      "source": "memory:episode:clean-repo-hath0r-archive",
-      "target": "memory:rule:cr-memory-compound-001",
-      "relation": "DERIVES_FROM",
-      "is_current": true
-    },
-    {
-      "source": "memory:episode:clean-repo-hath0r-archive",
+      "source": "memory:episode:clean-repo-hath0r-framework",
       "target": "memory:session:sess-20261028-133324-403b2a",
       "relation": "DERIVES_FROM",
       "is_current": true
     },
     {
-      "source": "memory:insight:clean-repo",
-      "target": "memory:episode:clean-repo-hath0r-framework",
-      "relation": "DERIVES_FROM",
-      "is_current": true
-    },
-    {
-      "source": "memory:insight:clean-repo",
-      "target": "memory:episode:clean-repo-hath0r-archive",
-      "relation": "DERIVES_FROM",
-      "is_current": true
-    },
-    {
-      "source": "memory:insight:hygiene",
-      "target": "memory:episode:clean-repo-hath0r-framework",
-      "relation": "DERIVES_FROM",
-      "is_current": true
-    },
-    {
-      "source": "memory:insight:hygiene",
-      "target": "memory:episode:clean-repo-hath0r-archive",
-      "relation": "DERIVES_FROM",
-      "is_current": true
-    },
-    {
-      "source": "memory:eval:clean-repo-hath0r-archive",
+      "source": "memory:eval:clean-repo-hath0r-framework",
       "target": "concept:tri-graph",
       "relation": "EVALUATES",
       "is_current": true
     },
     {
-      "source": "memory:eval:clean-repo-hath0r-archive",
+      "source": "memory:eval:clean-repo-hath0r-framework",
       "target": "memory:rule:cr-memory-compound-001",
       "relation": "EVALUATES",
       "is_current": true
     },
     {
-      "source": "memory:eval:clean-repo-hath0r-archive",
+      "source": "memory:eval:clean-repo-hath0r-framework",
       "target": "memory:session:sess-20261028-133324-403b2a",
       "relation": "EVALUATES",
       "is_current": true
     },
     {
-      "source": "memory:eval:clean-repo-hath0r-archive",
+      "source": "memory:eval:clean-repo-hath0r-framework",
       "target": "memory:session:sess-20261028-133324-403b2a",
       "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "rule:rules",
+      "target": "role:developer",
+      "relation": "GOVERNS",
+      "is_current": true
+    },
+    {
+      "source": "rule:rules",
+      "target": "role:developer",
+      "relation": "GOVERNS",
       "is_current": true
     },
     {
@@ -7120,25 +7087,7 @@
       "is_current": true
     },
     {
-      "source": "memory:episode:clean-repo-hath0r-archive",
-      "target": "role:developer",
-      "relation": "INFORMS",
-      "is_current": true
-    },
-    {
-      "source": "memory:insight:clean-repo",
-      "target": "role:developer",
-      "relation": "INFORMS",
-      "is_current": true
-    },
-    {
-      "source": "memory:insight:hygiene",
-      "target": "role:developer",
-      "relation": "INFORMS",
-      "is_current": true
-    },
-    {
-      "source": "memory:eval:clean-repo-hath0r-archive",
+      "source": "memory:eval:clean-repo-hath0r-framework",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true
@@ -7151,7 +7100,7 @@
     }
   ],
   "metadata": {
-    "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-archive",
-    "synced_sources": 323
+    "repo_root": "/Users/raybayly/Development/OpenSource/hath0r-framework",
+    "synced_sources": 327
   }
 }
