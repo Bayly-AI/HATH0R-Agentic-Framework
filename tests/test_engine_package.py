@@ -2,14 +2,14 @@
 
 from pathlib import Path
 
-VERSION_FILE = Path(__file__).resolve().parents[1] / "VERSION"
+REPO_VERSION = (Path(__file__).resolve().parents[1] / "VERSION").read_text(encoding="utf-8").strip()
 
 
 def test_hath0r_engine_top_level_exports():
     """Verify top-level package exposes all cognitive substrate and safety classes."""
     import hath0r_engine
 
-    assert hath0r_engine.__version__ == VERSION_FILE.read_text(encoding="utf-8").strip()
+    assert hath0r_engine.__version__ == REPO_VERSION
     assert hasattr(hath0r_engine, "KnowledgeGraph")
     assert hasattr(hath0r_engine, "KnowledgeNode")
     assert hasattr(hath0r_engine, "KnowledgeEdge")
