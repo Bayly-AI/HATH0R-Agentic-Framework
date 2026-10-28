@@ -5,6 +5,11 @@ All notable changes to the **HATH0R Agentic Framework** will be documented in th
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.1] - 2026-10-28
+
+### Changed
+- Added `CR-SONAR-PREANNOUNCE-001` to the agent instructions: confirm SonarCloud Quality Gate thresholds before announcing work Complete.
+
 ## [1.6.0] - 2026-10-13
 
 ### Added
