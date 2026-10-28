@@ -1,11 +1,15 @@
 """Unit and contract tests for hath0r_engine package distribution and exports."""
 
+from pathlib import Path
+
+VERSION_FILE = Path(__file__).resolve().parents[1] / "VERSION"
+
 
 def test_hath0r_engine_top_level_exports():
     """Verify top-level package exposes all cognitive substrate and safety classes."""
     import hath0r_engine
 
-    assert hath0r_engine.__version__ == "1.0.0"
+    assert hath0r_engine.__version__ == VERSION_FILE.read_text(encoding="utf-8").strip()
     assert hasattr(hath0r_engine, "KnowledgeGraph")
     assert hasattr(hath0r_engine, "KnowledgeNode")
     assert hasattr(hath0r_engine, "KnowledgeEdge")
