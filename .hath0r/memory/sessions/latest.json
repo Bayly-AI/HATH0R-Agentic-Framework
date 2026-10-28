@@ -3,43 +3,43 @@
   "session_id": "sess-20261028-133324-403b2a",
   "prior_session_id": "sess-20261025-125225-a5a8cc",
   "parent_session_id": "sess-20261025-125225-a5a8cc",
-  "revision": 27,
-  "content_hash": "sha256:813c7e222c7d43cee02f72b2fee9f359a790325d582402b0586e13189aa1d71d",
-  "base_graph_hash": "sha256:dd436bca4c85aeee82ebfeb3960cfe57d885ce8725998fc7c46ffbbc62657df3",
+  "revision": 30,
+  "content_hash": "sha256:5d1b32625c64e1fa2620f2ebd9febc32da5037d3180f3f6c8cfdd12ef10ca740",
+  "base_graph_hash": "sha256:9219c388828c1e515491dc3e2e1f2d9c0db17ea6ab85a0f11a9c9cbd46421e0e",
   "task_id": null,
   "role": null,
   "repo_name": "hath0r-framework",
   "status": "completed",
   "started_at": "2026-10-28T13:33:24.262765+00:00",
-  "updated_at": "2026-10-28T17:45:20.002988+00:00",
+  "updated_at": "2026-10-28T18:13:08.633524+00:00",
   "ended_at": "2026-10-28T15:22:06.719677+00:00",
-  "read_count": 8,
-  "write_count": 20,
-  "last_read_at": "2026-10-28T17:45:19.386892+00:00",
-  "last_write_at": "2026-10-28T17:45:20.002988+00:00",
+  "read_count": 9,
+  "write_count": 22,
+  "last_read_at": "2026-10-28T18:13:07.757079+00:00",
+  "last_write_at": "2026-10-28T18:13:08.633524+00:00",
   "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-archive",
-  "prior_summary": "Compounded rule:cr-task-eval-001: Automa",
+  "prior_summary": "ounded rule:cr-task-eval-001: Automa; Compounded eval:eval-baseline-hath0r-arc; Compounded episode:clean-repo-hath0r-arc",
   "recalled_nodes": [
     {
-      "id": "eval:clean-repo-hath0r-archive",
-      "type": "eval",
-      "label": "Task Evaluation clean-repo-hath0r-archive (R=1.00, PASS)",
-      "snippet": "4-Tier Task Evaluation for clean-repo-hath0r-archive on branch development: R_task=1.0000 "
+      "id": "insight:clean-repo",
+      "type": "insight",
+      "label": "Synthesized Insight on clean-repo",
+      "snippet": "Consolidated from 2 memory nodes tagged 'clean-repo'. Recurring themes: clean, repo, lifec"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-28T17:45:20.002988+00:00",
+      "timestamp": "2026-10-28T18:13:08.633524+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:eval-baseline-hath0r-archive: Task Evaluation eval-baseline-hath0r-archive (R=1.00, PASS)",
+      "summary": "Compounded eval:clean-repo-hath0r-archive: Task Evaluation clean-repo-hath0r-archive (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "eval-baseline-hath0r-archive",
+        "clean-repo-hath0r-archive",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:eval-baseline-hath0r-archive"
+      "node_id": "eval:clean-repo-hath0r-archive"
     }
   ],
   "next_steps": [],
@@ -51,5 +51,5 @@
     "episode:clean-repo-hath0r-archive",
     "eval:clean-repo-hath0r-archive"
   ],
-  "capsule_bytes": 1972
+  "capsule_bytes": 2008
 }

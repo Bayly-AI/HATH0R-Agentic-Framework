@@ -1,13 +1,13 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261028-152209-8db22b",
+  "eval_id": "eval-20261028-181308-e7e122",
   "task_id": "clean-repo-hath0r-archive",
   "issue_number": null,
   "repo_name": "hath0r-archive",
   "branch": "development",
-  "evaluated_at": "2026-10-28T15:22:09.394793+00:00",
-  "duration_ms": 276.13,
+  "evaluated_at": "2026-10-28T18:13:08.198299+00:00",
+  "duration_ms": 427.48,
   "passed_gate": true,
   "r_task": 1.0,
   "min_reward_threshold": 0.8,
@@ -42,7 +42,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 43,
+          "compounded_nodes_count": 44,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -64,13 +64,13 @@
       "estimated_usd": 0.0,
       "max_usd": 0.25,
       "session_id": "sess-20261028-133324-403b2a",
-      "session_reads": 6,
-      "session_writes": 16,
-      "session_bytes": 1856,
+      "session_reads": 9,
+      "session_writes": 21,
+      "session_bytes": 1955,
       "within_capsule_budget": true,
-      "latency_ms": 95.81,
-      "taguchi_quality_loss": 0.0001,
-      "snr_db": 26.39
+      "latency_ms": 156.28,
+      "taguchi_quality_loss": 0.0003,
+      "snr_db": 22.14
     },
     "adversarial": {
       "score": 1.0,
@@ -88,7 +88,7 @@
       "task_id": "clean-repo-hath0r-archive",
       "issue_number": null,
       "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-archive",
-      "compounded_nodes_count": 43,
+      "compounded_nodes_count": 44,
       "consensus_score": 1.0
     }
   },
@@ -96,5 +96,5 @@
   "observability_sync": {
     "mode": "pending"
   },
-  "content_hash": "sha256:94053e500515c044c9f582043dc0ec52070baacb67503d4724be25289ba18915"
+  "content_hash": "sha256:9bbe08baf64cf9d0ec5f7190b15dd17db4a5db79bbc469b180b91664f0a81670"
 }
