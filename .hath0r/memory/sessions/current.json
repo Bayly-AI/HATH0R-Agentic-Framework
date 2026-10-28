@@ -3,22 +3,22 @@
   "session_id": "sess-20261028-133324-403b2a",
   "prior_session_id": "sess-20261025-125225-a5a8cc",
   "parent_session_id": "sess-20261025-125225-a5a8cc",
-  "revision": 27,
-  "content_hash": "sha256:ff2d9c210d580f583eb0b59496982f2e839f5568437fca0733cf44be6bef7273",
-  "base_graph_hash": "sha256:175fb75bfc24b2f812d68ae61711cc9c9e162a0cbb93e477e038ec59f42a9855",
+  "revision": 29,
+  "content_hash": "sha256:9941a66a9883053ed3d69a2f2ae4087e08136fa6fce4a8c14543902c59726665",
+  "base_graph_hash": "sha256:923c2e9b24f05513fd4c14986a30a4b8671e4d2bc712eb928124403065bac26a",
   "task_id": null,
   "role": null,
   "repo_name": "hath0r-framework",
   "status": "completed",
   "started_at": "2026-10-28T13:33:24.262765+00:00",
-  "updated_at": "2026-10-28T18:13:25.191407+00:00",
+  "updated_at": "2026-10-28T18:19:56.923049+00:00",
   "ended_at": "2026-10-28T15:19:29.323635+00:00",
-  "read_count": 8,
-  "write_count": 20,
-  "last_read_at": "2026-10-28T18:13:24.065715+00:00",
-  "last_write_at": "2026-10-28T18:13:25.191407+00:00",
+  "read_count": 9,
+  "write_count": 21,
+  "last_read_at": "2026-10-28T18:19:54.766053+00:00",
+  "last_write_at": "2026-10-28T18:19:56.923049+00:00",
   "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
-  "prior_summary": "Compounded episode:clean-repo-hath0r-fra",
+  "prior_summary": "Compounded episode:clean-repo-hath0r-fra; Compounded eval:clean-repo-hath0r-framew",
   "recalled_nodes": [
     {
       "id": "insight:hath0r-framework",
@@ -29,14 +29,14 @@
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-28T18:13:25.191407+00:00",
+      "timestamp": "2026-10-28T18:19:56.923049+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=0.90, FAIL)",
+      "summary": "Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
         "clean-repo-hath0r-framework",
-        "failed",
+        "passed",
         "compounded"
       ],
       "node_id": "eval:clean-repo-hath0r-framework"
@@ -51,5 +51,5 @@
     "episode:clean-repo-hath0r-framework",
     "eval:clean-repo-hath0r-framework"
   ],
-  "capsule_bytes": 1978
+  "capsule_bytes": 2020
 }
