@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 227,
-  "content_hash": "sha256:39eb1b079053cfb2fea7adead9ebc47d652ee4c1a60a1a7cab7756d8fc5a5fc6",
-  "updated_at": "2026-10-28T15:22:09.816414+00:00",
+  "revision": 232,
+  "content_hash": "sha256:dd436bca4c85aeee82ebfeb3960cfe57d885ce8725998fc7c46ffbbc62657df3",
+  "updated_at": "2026-10-28T17:36:28.436868+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -1350,21 +1350,22 @@
     {
       "id": "rule:cr-task-eval-001",
       "type": "rule",
-      "label": "Automatic Task Evaluation Gate (CR-TASK-EVAL-001)",
-      "content": "Every task must execute and pass the 4-tier hybrid evaluation pipeline (R_task >= 0.80) and persist .hath0r/evals/latest.json prior to announcing complete.",
+      "label": "Automatic Task Evaluation & Scorecard Summary Gate (CR-TASK-EVAL-001)",
+      "content": "Every task must execute and pass the 4-tier hybrid evaluation pipeline (R_task >= 0.80), persist .hath0r/evals/latest.json, and always return a structured summary of the Eval Scorecard in the completion response to the user.",
       "importance": 1.0,
       "tags": [
         "rule",
         "governance",
         "evals",
         "cr-task-eval-001",
+        "scorecard",
         "compounded"
       ],
-      "valid_from": "2026-10-28T14:23:21.022455+00:00",
+      "valid_from": "2026-10-28T17:36:28.398573+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T14:21:12.347805+00:00",
-      "updated_at": "2026-10-28T14:23:21.022455+00:00",
+      "updated_at": "2026-10-28T17:36:28.398573+00:00",
       "metadata": {}
     },
     {
@@ -1505,7 +1506,7 @@
       "id": "session:sess-20261028-133324-403b2a",
       "type": "session",
       "label": "Micro Session sess-20261028-133324-403b2a",
-      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-archive | Reads: 6, Writes: 17 | Entries: Compounded eval:clean-repo-hath0r-archive: Task Evaluation clean-repo-hath0r-archive (R=1.00, PASS)",
+      "content": "Micro Session sess-20261028-133324-403b2a [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-archive | Reads: 7, Writes: 18 | Entries: Compounded rule:cr-task-eval-001: Automatic Task Evaluation & Scorecard Summary Gate (CR-TASK-EVAL-001)",
       "importance": 0.75,
       "tags": [
         "session",
@@ -1516,15 +1517,15 @@
       "valid_to": "2026-10-28T15:22:06.719677+00:00",
       "is_current": true,
       "created_at": "2026-10-28T13:33:24.262765+00:00",
-      "updated_at": "2026-10-28T15:22:09.676995+00:00",
+      "updated_at": "2026-10-28T17:36:28.432016+00:00",
       "metadata": {
         "session_id": "sess-20261028-133324-403b2a",
         "prior_session_id": "sess-20261025-125225-a5a8cc",
         "parent_session_id": "sess-20261025-125225-a5a8cc",
-        "read_count": 6,
-        "write_count": 17,
+        "read_count": 7,
+        "write_count": 18,
         "status": "completed",
-        "byte_size": 2046
+        "byte_size": 2040
       }
     }
   ],
