@@ -3,52 +3,53 @@
   "session_id": "sess-20261028-133324-403b2a",
   "prior_session_id": "sess-20261025-125225-a5a8cc",
   "parent_session_id": "sess-20261025-125225-a5a8cc",
-  "revision": 12,
-  "content_hash": "sha256:6eee62c3cabbe1245b24e77173b5c5cf59e3cfb38cc535b79048fa2f12687809",
-  "base_graph_hash": "sha256:e2c964d790b392517359cc998f5a69c13d08e247bd6abe3403769369443ec954",
+  "revision": 15,
+  "content_hash": "sha256:2737a70f236db0ccc955ba8afb4fcf289b5268fe7981f1684480e3b9114b241e",
+  "base_graph_hash": "sha256:cdc8006093e26bc33d4ee33475a39f0b0cfc48f912a0f32bb75adc7430661b0c",
   "task_id": null,
   "role": null,
   "repo_name": "hath0r-framework",
   "status": "completed",
   "started_at": "2026-10-28T13:33:24.262765+00:00",
-  "updated_at": "2026-10-28T13:53:30.716806+00:00",
+  "updated_at": "2026-10-28T14:21:12.937634+00:00",
   "ended_at": "2026-10-28T13:53:20.847869+00:00",
-  "read_count": 3,
-  "write_count": 10,
-  "last_read_at": "2026-10-28T13:53:20.089575+00:00",
-  "last_write_at": "2026-10-28T13:53:30.716806+00:00",
-  "active_focus": "feat(evals): configure automatic task evaluations (CR-TASK-EVAL-001)",
-  "prior_summary": "pleted PR #308 (feature) via EndOfTas; Compounded eval:pr-308: Task Evaluation; Compounded episode:pr-308: PR #308 Merge",
+  "read_count": 4,
+  "write_count": 12,
+  "last_read_at": "2026-10-28T14:21:12.320721+00:00",
+  "last_write_at": "2026-10-28T14:21:12.937634+00:00",
+  "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
+  "prior_summary": "ounded episode:pr-308: PR #308 Merge; Compounded eval:pr-308-merged: Task Eval; Compounded rule:cr-task-eval-001: Automa",
   "recalled_nodes": [
     {
-      "id": "insight:knowledge-share",
-      "type": "insight",
-      "label": "Synthesized Insight on knowledge-share",
-      "snippet": "Consolidated from 2 memory nodes tagged 'knowledge-share'. Recurring themes: share, knowle"
+      "id": "episode:issue-307-task-evals",
+      "type": "episode",
+      "label": "Configured Automatic Task Evaluations (CR-TASK-EVAL-001) in ",
+      "snippet": "Added declarative cfg/evals/task-eval.json binding hath0r-framework to TaskEvaluatorBot, ."
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-28T13:53:30.716806+00:00",
+      "timestamp": "2026-10-28T14:21:12.937634+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:pr-308-merged: Task Evaluation pr-308-merged (R=1.00, PASS)",
+      "summary": "Compounded eval:eval-baseline-hath0r-framework: Task Evaluation eval-baseline-hath0r-framework (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "pr-308-merged",
+        "eval-baseline-hath0r-framework",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:pr-308-merged"
+      "node_id": "eval:eval-baseline-hath0r-framework"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "episode:issue-307-task-evals",
     "eval:issue-307",
     "eval:pr-308",
     "episode:pr-308",
-    "eval:pr-308-merged"
+    "eval:pr-308-merged",
+    "rule:cr-task-eval-001",
+    "eval:eval-baseline-hath0r-framework"
   ],
-  "capsule_bytes": 1897
+  "capsule_bytes": 2010
 }
