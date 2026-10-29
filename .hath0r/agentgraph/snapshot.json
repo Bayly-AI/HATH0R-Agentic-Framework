@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-29T13:58:52.740261+00:00",
+  "timestamp": "2026-10-29T14:17:17.049084+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -4756,18 +4756,18 @@
       "id": "memory:episode:clean-repo-hath0r-framework",
       "plane": "memory",
       "type": "episode",
-      "label": "Clean Repo Development Sync (hath0r-framework)",
-      "content": "Verified all changes merged into development and synced for hath0r-framework.",
+      "label": "Clean Repo Lifecycle (hath0r-framework)",
+      "content": "Executed 13-step clean-repo hygiene, branch merges, and knowledge sync for hath0r-framework.",
       "properties": {
         "source": "local_memory",
         "tags": [
           "clean-repo",
-          "development",
+          "hygiene",
           "hath0r-framework",
           "episode",
           "compounded"
         ],
-        "importance": 0.8
+        "importance": 0.75
       },
       "is_current": true
     },
@@ -5664,7 +5664,7 @@
       "content": "4-Tier Task Evaluation for clean-repo-hath0r-framework on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:87f5248a1ef1889acee013bbe74fad7fab612e472d805f6c7ca8b9fdfc07a85f"
+          ".hath0r/evals/latest.json": "sha256:65952575e8dddc816ba1b740d4c81b9f364f93214041d10466d574abdefb8b37"
         },
         "source": "local_memory",
         "tags": [
@@ -5891,20 +5891,20 @@
       "plane": "memory",
       "type": "session",
       "label": "Micro Session sess-20261029-132709-9b90f1",
-      "content": "Micro Session sess-20261029-132709-9b90f1 [active] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 3, Writes: 6 | Entries: Compounded eval:eval-baseline-hath0r-framework: Task Evaluation eval-baseline-hath0r-framework (R=1.00, PASS)",
+      "content": "Micro Session sess-20261029-132709-9b90f1 [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 4, Writes: 9 | Entries: Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=1.00, PASS)",
       "properties": {
         "session_id": "sess-20261029-132709-9b90f1",
         "prior_session_id": "sess-20261029-124639-9ab484",
         "parent_session_id": "sess-20261029-124639-9ab484",
-        "read_count": 3,
-        "write_count": 6,
-        "status": "active",
-        "byte_size": 1952,
+        "read_count": 4,
+        "write_count": 9,
+        "status": "completed",
+        "byte_size": 2028,
         "source": "local_memory",
         "tags": [
           "session",
           "micro-session",
-          "active"
+          "completed"
         ],
         "importance": 0.75
       },
@@ -6974,6 +6974,24 @@
     },
     {
       "source": "memory:eval:eval-baseline-hath0r-framework",
+      "target": "memory:session:sess-20261029-132709-9b90f1",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:clean-repo-hath0r-framework",
+      "target": "memory:session:sess-20261029-132709-9b90f1",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-framework",
+      "target": "memory:session:sess-20261029-132709-9b90f1",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:clean-repo-hath0r-framework",
       "target": "memory:session:sess-20261029-132709-9b90f1",
       "relation": "DERIVES_FROM",
       "is_current": true

@@ -3,50 +3,52 @@
   "session_id": "sess-20261029-132709-9b90f1",
   "prior_session_id": "sess-20261029-124639-9ab484",
   "parent_session_id": "sess-20261029-124639-9ab484",
-  "revision": 9,
-  "content_hash": "sha256:b548bcd66dd5b2b212d02e2d847ad511a4abfca19b301e37445adf6d8fcf8aa4",
-  "base_graph_hash": "sha256:3392f00b81d9ec0c98edf0dc9eb09cb0a64a98d8200197a0d659a2eb9caa1624",
+  "revision": 13,
+  "content_hash": "sha256:2f294515443fe6e6a239b5e8cbbbce171a011d650069ccf5ba1e8a62d1f4a79c",
+  "base_graph_hash": "sha256:0ae1e30fd92222a5b0750a02e560985b114fc14b66e286f7c7dc48e4ae913d8e",
   "task_id": "rule-sync-and-workflow-upgrade",
   "role": null,
   "repo_name": "hath0r-framework",
-  "status": "active",
+  "status": "completed",
   "started_at": "2026-10-29T13:27:09.564483+00:00",
-  "updated_at": "2026-10-29T13:58:52.477575+00:00",
-  "ended_at": null,
-  "read_count": 3,
-  "write_count": 6,
-  "last_read_at": "2026-10-29T13:58:51.863018+00:00",
-  "last_write_at": "2026-10-29T13:58:52.477575+00:00",
+  "updated_at": "2026-10-29T14:17:16.866208+00:00",
+  "ended_at": "2026-10-29T14:17:11.630428+00:00",
+  "read_count": 4,
+  "write_count": 9,
+  "last_read_at": "2026-10-29T14:17:11.448382+00:00",
+  "last_write_at": "2026-10-29T14:17:16.866208+00:00",
   "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
-  "prior_summary": "ounded rule:cr-task-eval-001: Automa; Compounded eval:eval-baseline-hath0r-fra; Compounded rule:cr-task-eval-001: Automa",
+  "prior_summary": "ounded eval:eval-baseline-hath0r-fra; Compounded episode:clean-repo-hath0r-fra; Clean Repo Lifecycle completed for hath0",
   "recalled_nodes": [
     {
-      "id": "eval:eval-baseline-hath0r-framework",
-      "type": "eval",
-      "label": "Task Evaluation eval-baseline-hath0r-framework (R=1.00, PASS",
-      "snippet": "4-Tier Task Evaluation for eval-baseline-hath0r-framework on branch development: R_task=1."
+      "id": "insight:hath0r-framework",
+      "type": "insight",
+      "label": "Synthesized Insight on hath0r-framework",
+      "snippet": "Consolidated from 2 memory nodes tagged 'hath0r-framework'. Recurring themes: framework, h"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-29T13:58:52.477575+00:00",
+      "timestamp": "2026-10-29T14:17:16.866208+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:eval-baseline-hath0r-framework: Task Evaluation eval-baseline-hath0r-framework (R=1.00, PASS)",
+      "summary": "Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "eval-baseline-hath0r-framework",
+        "clean-repo-hath0r-framework",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:eval-baseline-hath0r-framework"
+      "node_id": "eval:clean-repo-hath0r-framework"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
     "eval:task-hath0r-framework",
     "rule:cr-task-eval-001",
-    "eval:eval-baseline-hath0r-framework"
+    "eval:eval-baseline-hath0r-framework",
+    "episode:clean-repo-hath0r-framework",
+    "eval:clean-repo-hath0r-framework"
   ],
-  "capsule_bytes": 1952
+  "capsule_bytes": 2028
 }
