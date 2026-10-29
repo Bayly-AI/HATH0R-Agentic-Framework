@@ -3,48 +3,50 @@
   "session_id": "sess-20261029-132709-9b90f1",
   "prior_session_id": "sess-20261029-124639-9ab484",
   "parent_session_id": "sess-20261029-124639-9ab484",
-  "revision": 3,
-  "content_hash": "sha256:ed378769fbff2907290c3254b92d5ba0d4e4000e5e97188cc387e40e79acc2af",
-  "base_graph_hash": "sha256:782bcbf18b87b415ed8a500ca9369f172c44bbdb786b5a150b457bce6015e20d",
+  "revision": 9,
+  "content_hash": "sha256:b548bcd66dd5b2b212d02e2d847ad511a4abfca19b301e37445adf6d8fcf8aa4",
+  "base_graph_hash": "sha256:3392f00b81d9ec0c98edf0dc9eb09cb0a64a98d8200197a0d659a2eb9caa1624",
   "task_id": "rule-sync-and-workflow-upgrade",
   "role": null,
   "repo_name": "hath0r-framework",
   "status": "active",
   "started_at": "2026-10-29T13:27:09.564483+00:00",
-  "updated_at": "2026-10-29T13:27:13.102283+00:00",
+  "updated_at": "2026-10-29T13:58:52.477575+00:00",
   "ended_at": null,
-  "read_count": 1,
-  "write_count": 2,
-  "last_read_at": "2026-10-29T13:27:09.564483+00:00",
-  "last_write_at": "2026-10-29T13:27:13.102283+00:00",
-  "active_focus": "Active working session in hath0r-framework",
-  "prior_summary": "al:task-hath0r-framework: Task Evaluation task-hath0r-framework (R=1.00, PASS); Eliminated conflicting rules in AGENTS.m",
+  "read_count": 3,
+  "write_count": 6,
+  "last_read_at": "2026-10-29T13:58:51.863018+00:00",
+  "last_write_at": "2026-10-29T13:58:52.477575+00:00",
+  "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
+  "prior_summary": "ounded rule:cr-task-eval-001: Automa; Compounded eval:eval-baseline-hath0r-fra; Compounded rule:cr-task-eval-001: Automa",
   "recalled_nodes": [
     {
-      "id": "rule:cr-task-eval-001",
-      "type": "rule",
-      "label": "Automatic Task Evaluation & Scorecard Summary Gate (CR-TASK-",
-      "snippet": "Every task must execute and pass the 4-tier hybrid evaluation pipeline (R_task >= 0.80), p"
+      "id": "eval:eval-baseline-hath0r-framework",
+      "type": "eval",
+      "label": "Task Evaluation eval-baseline-hath0r-framework (R=1.00, PASS",
+      "snippet": "4-Tier Task Evaluation for eval-baseline-hath0r-framework on branch development: R_task=1."
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-29T13:27:13.102283+00:00",
+      "timestamp": "2026-10-29T13:58:52.477575+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:task-hath0r-framework: Task Evaluation task-hath0r-framework (R=1.00, PASS)",
+      "summary": "Compounded eval:eval-baseline-hath0r-framework: Task Evaluation eval-baseline-hath0r-framework (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "task-hath0r-framework",
+        "eval-baseline-hath0r-framework",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:task-hath0r-framework"
+      "node_id": "eval:eval-baseline-hath0r-framework"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "eval:task-hath0r-framework"
+    "eval:task-hath0r-framework",
+    "rule:cr-task-eval-001",
+    "eval:eval-baseline-hath0r-framework"
   ],
-  "capsule_bytes": 1822
+  "capsule_bytes": 1952
 }

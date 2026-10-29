@@ -1,13 +1,13 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261029-132712-228107",
-  "task_id": "task-hath0r-framework",
+  "eval_id": "eval-20261029-135852-f654c1",
+  "task_id": "eval-baseline-hath0r-framework",
   "issue_number": null,
   "repo_name": "hath0r-framework",
   "branch": "development",
-  "evaluated_at": "2026-10-29T13:27:12.393500+00:00",
-  "duration_ms": 242.45,
+  "evaluated_at": "2026-10-29T13:58:52.153789+00:00",
+  "duration_ms": 242.32,
   "passed_gate": true,
   "r_task": 1.0,
   "min_reward_threshold": 0.8,
@@ -64,13 +64,13 @@
       "estimated_usd": 0.0,
       "max_usd": 0.25,
       "session_id": "sess-20261029-132709-9b90f1",
-      "session_reads": 1,
-      "session_writes": 1,
-      "session_bytes": 1942,
+      "session_reads": 3,
+      "session_writes": 5,
+      "session_bytes": 1932,
       "within_capsule_budget": true,
-      "latency_ms": 91.79,
+      "latency_ms": 88.84,
       "taguchi_quality_loss": 0.0001,
-      "snr_db": 26.76
+      "snr_db": 27.05
     },
     "adversarial": {
       "score": 1.0,
@@ -85,9 +85,9 @@
     "goal_alignment": {
       "score": 1.0,
       "passed": true,
-      "task_id": "task-hath0r-framework",
+      "task_id": "eval-baseline-hath0r-framework",
       "issue_number": null,
-      "active_focus": "Active working session in hath0r-framework",
+      "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
       "compounded_nodes_count": 47,
       "consensus_score": 1.0
     }
@@ -99,38 +99,28 @@
         ".hath0r/evals/latest.json"
       ],
       "STATIC_AST_ANALYSIS": [
-        "src/hath0r_engine/__init__.py",
-        ".agents/skills/clean-repos/SKILL.md",
-        ".agents/skills/orient/SKILL.md",
+        ".hath0r/evals/post-task-hook.sh",
         ".hath0r/agentgraph/snapshot.json",
+        ".hath0r/evals/history/eval-eval-baseline-hath0r-framework.json",
+        ".hath0r/evals/latest.json",
         ".hath0r/memory/graph.json",
         ".hath0r/memory/hashes.json",
         ".hath0r/memory/sessions/current.json",
         ".hath0r/memory/sessions/latest.json",
-        "AGENTS.md",
-        "CHANGELOG.md",
-        "pyproject.toml",
         ".hath0r/memory/sessions/sess-20261029-132709-9b90f1.json",
-        "CLAUDE.md",
-        "THREATMODEL.md"
+        "cfg/evals/task-eval.json"
       ],
-      "UNVERIFIED_FILE_PRESENCE": [
-        ".hath0r/agentgraph/snapshot.ttl",
-        "VERSION",
-        ".hath0r/security/"
-      ]
+      "UNVERIFIED_FILE_PRESENCE": []
     },
     "counts": {
       "VERIFIED_EXECUTION": 1,
-      "STATIC_AST_ANALYSIS": 14,
-      "UNVERIFIED_FILE_PRESENCE": 3
+      "STATIC_AST_ANALYSIS": 10,
+      "UNVERIFIED_FILE_PRESENCE": 0
     }
   },
   "blocking_reasons": [],
   "observability_sync": {
-    "mode": "live_synced",
-    "phoenix_logged": true,
-    "mlflow_run_id": "d12fb5b236c740729db413ed188a9cd2"
+    "mode": "pending"
   },
-  "content_hash": "sha256:ca27fb9c976605dfaa1700f496d2d0d49314b1789c8e0aa12fe6460d08d2c8eb"
+  "content_hash": "sha256:9699995dcc830623c5c86289534ae8eebb3089d4aabdec9e12009ac42b69bb8a"
 }
