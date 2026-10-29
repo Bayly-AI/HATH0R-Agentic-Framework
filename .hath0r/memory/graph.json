@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 332,
-  "content_hash": "sha256:5c6cb3ee318122fd158d90714ab6d23c9936b877ede3bbf7951c28f1c8804cb8",
-  "updated_at": "2026-10-29T14:17:17.063550+00:00",
+  "revision": 335,
+  "content_hash": "sha256:75120a11da3d215f80f8af4490fa2268861b9795273fb9b5dcab137c67a4eef5",
+  "updated_at": "2026-10-29T14:32:03.313047+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -1670,10 +1670,34 @@
       }
     },
     {
+      "id": "eval:release-v1-11-1",
+      "type": "eval",
+      "label": "Task Evaluation release-v1.11.1 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for release-v1.11.1 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "release-v1-11-1",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-29T14:32:03.258880+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-29T14:32:03.258880+00:00",
+      "updated_at": "2026-10-29T14:32:03.258880+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:e21413c7d5b5b3023c7d9109df5893123616e0e6b4cc1349bc9cb1ce0c7af0a4"
+        }
+      }
+    },
+    {
       "id": "session:sess-20261029-132709-9b90f1",
       "type": "session",
       "label": "Micro Session sess-20261029-132709-9b90f1",
-      "content": "Micro Session sess-20261029-132709-9b90f1 [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 4, Writes: 9 | Entries: Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=1.00, PASS)",
+      "content": "Micro Session sess-20261029-132709-9b90f1 [completed] | Focus: Provisioning CR-TASK-EVAL-001 for hath0r-framework | Reads: 4, Writes: 10 | Entries: Compounded eval:release-v1-11-1: Task Evaluation release-v1.11.1 (R=1.00, PASS)",
       "importance": 0.75,
       "tags": [
         "session",
@@ -1684,15 +1708,15 @@
       "valid_to": "2026-10-29T14:17:11.630428+00:00",
       "is_current": true,
       "created_at": "2026-10-29T13:27:09.564483+00:00",
-      "updated_at": "2026-10-29T14:17:16.866208+00:00",
+      "updated_at": "2026-10-29T14:32:03.306826+00:00",
       "metadata": {
         "session_id": "sess-20261029-132709-9b90f1",
         "prior_session_id": "sess-20261029-124639-9ab484",
         "parent_session_id": "sess-20261029-124639-9ab484",
         "read_count": 4,
-        "write_count": 9,
+        "write_count": 10,
         "status": "completed",
-        "byte_size": 2028
+        "byte_size": 2009
       }
     }
   ],
@@ -3497,6 +3521,38 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-29T14:17:16.868605+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-11-1",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T14:32:03.258880+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-11-1",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T14:32:03.258880+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-11-1",
+      "target": "session:sess-20261029-132709-9b90f1",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T14:32:03.258880+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-11-1",
+      "target": "session:sess-20261029-132709-9b90f1",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T14:32:03.309313+00:00",
       "is_current": true
     }
   ]

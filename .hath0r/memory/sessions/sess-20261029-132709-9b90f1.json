@@ -3,22 +3,22 @@
   "session_id": "sess-20261029-132709-9b90f1",
   "prior_session_id": "sess-20261029-124639-9ab484",
   "parent_session_id": "sess-20261029-124639-9ab484",
-  "revision": 13,
-  "content_hash": "sha256:2f294515443fe6e6a239b5e8cbbbce171a011d650069ccf5ba1e8a62d1f4a79c",
+  "revision": 14,
+  "content_hash": "sha256:07bef0e930a568db52e34161269af0f91e50231c037d47ed7f088acf61bafae8",
   "base_graph_hash": "sha256:0ae1e30fd92222a5b0750a02e560985b114fc14b66e286f7c7dc48e4ae913d8e",
   "task_id": "rule-sync-and-workflow-upgrade",
   "role": null,
   "repo_name": "hath0r-framework",
   "status": "completed",
   "started_at": "2026-10-29T13:27:09.564483+00:00",
-  "updated_at": "2026-10-29T14:17:16.866208+00:00",
+  "updated_at": "2026-10-29T14:32:03.306826+00:00",
   "ended_at": "2026-10-29T14:17:11.630428+00:00",
   "read_count": 4,
-  "write_count": 9,
+  "write_count": 10,
   "last_read_at": "2026-10-29T14:17:11.448382+00:00",
-  "last_write_at": "2026-10-29T14:17:16.866208+00:00",
+  "last_write_at": "2026-10-29T14:32:03.306826+00:00",
   "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
-  "prior_summary": "ounded eval:eval-baseline-hath0r-fra; Compounded episode:clean-repo-hath0r-fra; Clean Repo Lifecycle completed for hath0",
+  "prior_summary": "ounded episode:clean-repo-hath0r-fra; Clean Repo Lifecycle completed for hath0; Compounded eval:clean-repo-hath0r-framew",
   "recalled_nodes": [
     {
       "id": "insight:hath0r-framework",
@@ -29,17 +29,17 @@
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-29T14:17:16.866208+00:00",
+      "timestamp": "2026-10-29T14:32:03.306826+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=1.00, PASS)",
+      "summary": "Compounded eval:release-v1-11-1: Task Evaluation release-v1.11.1 (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "clean-repo-hath0r-framework",
+        "release-v1-11-1",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:clean-repo-hath0r-framework"
+      "node_id": "eval:release-v1-11-1"
     }
   ],
   "next_steps": [],
@@ -48,7 +48,8 @@
     "rule:cr-task-eval-001",
     "eval:eval-baseline-hath0r-framework",
     "episode:clean-repo-hath0r-framework",
-    "eval:clean-repo-hath0r-framework"
+    "eval:clean-repo-hath0r-framework",
+    "eval:release-v1-11-1"
   ],
-  "capsule_bytes": 2028
+  "capsule_bytes": 2009
 }
