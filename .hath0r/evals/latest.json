@@ -1,13 +1,13 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261028-181955-a7b9d3",
-  "task_id": "clean-repo-hath0r-framework",
+  "eval_id": "eval-20261029-115634-0c3c9a",
+  "task_id": "release-v1-10-0",
   "issue_number": null,
   "repo_name": "hath0r-framework",
   "branch": "development",
-  "evaluated_at": "2026-10-28T18:19:55.255854+00:00",
-  "duration_ms": 1538.59,
+  "evaluated_at": "2026-10-29T11:56:34.064284+00:00",
+  "duration_ms": 262.43,
   "passed_gate": true,
   "r_task": 1.0,
   "min_reward_threshold": 0.8,
@@ -32,7 +32,7 @@
       "checks": {
         "version_valid": {
           "passed": true,
-          "version": "1.9.3",
+          "version": "1.10.0",
           "error": null
         },
         "agentgraph_valid": {
@@ -42,7 +42,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 41,
+          "compounded_nodes_count": 45,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -63,14 +63,14 @@
       "max_tokens": 50000,
       "estimated_usd": 0.0,
       "max_usd": 0.25,
-      "session_id": "sess-20261028-133324-403b2a",
+      "session_id": "sess-20261029-113359-dc0a52",
       "session_reads": 9,
-      "session_writes": 20,
-      "session_bytes": 1978,
+      "session_writes": 13,
+      "session_bytes": 1825,
       "within_capsule_budget": true,
-      "latency_ms": 506.31,
-      "taguchi_quality_loss": 0.0032,
-      "snr_db": 11.93
+      "latency_ms": 103.55,
+      "taguchi_quality_loss": 0.0001,
+      "snr_db": 25.72
     },
     "adversarial": {
       "score": 1.0,
@@ -85,16 +85,18 @@
     "goal_alignment": {
       "score": 1.0,
       "passed": true,
-      "task_id": "clean-repo-hath0r-framework",
+      "task_id": "release-v1-10-0",
       "issue_number": null,
-      "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
-      "compounded_nodes_count": 41,
+      "active_focus": "Orienting repository hath0r-framework",
+      "compounded_nodes_count": 45,
       "consensus_score": 1.0
     }
   },
   "blocking_reasons": [],
   "observability_sync": {
-    "mode": "pending"
+    "mode": "live_synced",
+    "phoenix_logged": true,
+    "mlflow_run_id": "fdbb242912f1472890bcee1afa16ae13"
   },
-  "content_hash": "sha256:81912b8b155e18e565777808c94827a51777a11e14de3ea3f3ddc31f7226ce43"
+  "content_hash": "sha256:0e6e6cca8efa7870251e9c22c2aba8bc25ecb362c6bd82f669dd7fd26c4322a1"
 }

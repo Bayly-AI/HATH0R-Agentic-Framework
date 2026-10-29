@@ -15,7 +15,7 @@ In generative agent ecosystems, traditional deterministic CI/CD and runtime cali
 1. **Continuous Integration (CI):** Validates deterministic contracts, JSON schemas, AST syntax guardrails, and AgentGraph policy DAGs.
 2. **Continuous Calibration (CC):** Samples span telemetry via `CICCCDCTTelemetryHook` and optimizes hyperparameters (temperature, token budgets, guardrails) using Taguchi Orthogonal Arrays and DSPy few-shot compilation within a 24.0h freshness SLA.
 3. **Continuous Deployment (CD):** Manages strict environment promotions (`dev` -> `test` -> `staging` -> `master`), FinOps auto-tuning, and living documentation hexad synchronization.
-4. **Continuous Training (CT):** Synthesizes curated training datasets from production traces and `EventJournal` executions, conducts fine-tuning (LoRA/QLoRA on SLMs, DSPy MIPROv2 teleprompter compilation), evaluates candidate models against golden benchmarks using multi-objective RL reward functions, and logs models into the MLflow Model Registry.
+4. **Continuous Training (CT):** Synthesizes curated training datasets from production traces and `EventJournal` executions, conducts Supervised Fine-Tuning (SFT) and Parameter-Efficient Fine-Tuning (PEFT: LoRA $W' = W_0 + (\alpha/r) B A$, rsLoRA, and 4-bit NormalFloat NF4 QLoRA on SLMs, plus DSPy MIPROv2 teleprompter compilation), evaluates candidate models against golden benchmarks and `GameshowJudge` cards using multi-objective RL reward functions, and logs models into the MLflow Model Registry.
 
 ```mermaid
 flowchart TD

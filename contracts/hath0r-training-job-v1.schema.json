@@ -36,10 +36,14 @@
       "enum": [
         "lora",
         "qlora",
+        "sft",
+        "peft",
         "dpo",
         "miprov2",
         "bootstrap",
-        "full_finetune"
+        "full_finetune",
+        "dspy_mipro",
+        "dspy_fewshot"
       ],
       "description": "Training or prompt compilation methodology."
     },

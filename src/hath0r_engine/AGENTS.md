@@ -20,7 +20,8 @@ governed_by: [CR-CLI-ENTRY-001, CR-RAG-RETRIEVAL-001, CR-SUBSTRATE-001, CR-PLAYW
 - [`src/hath0r_engine/testing/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/testing/): `PlaywrightMasterCatalogManager`, `PlaywrightTestRunner`, `PlaywrightTestCase`, `PlaywrightTestSuite`.
 - [`src/hath0r_engine/optimization/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/optimization/): `TaguchiEngine`, `OrthogonalArray`, `Factor`, `ExperimentMatrix`, `calculate_snr`, `TaguchiLossFunction` (OATS & Robust Parameter Design).
 - [`src/hath0r_engine/sandbox/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/sandbox/): `SandboxManager`, `E2BSandboxProvider`, `DaytonaSandboxProvider`, `LocalSandboxProvider`.
-- [`src/hath0r_engine/telemetry/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/telemetry/): `OTELTracerBot`, `TelemetrySpan`.
+- [`src/hath0r_engine/telemetry/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/telemetry/): `OTELTracerBot`, `TelemetrySpan`, `CICCCDCTTelemetryHook`.
+- [`src/hath0r_engine/training/`](file:///Users/raybayly/Development/OpenSource/hath0r-framework/src/hath0r_engine/training/): `ContinuousTrainingPipeline`, `SFTLoRATrainer`, `LoRAConfig`, `PEFTConfig`, `LoRALinearAdapter`, `NF4Quantizer`, `SFTDatasetFormatter`, `CandidateModelEvaluator`, `DatasetCurator`, `GameshowJudge`.
 
 ## 2. Operating Constraints & Invariants
 - All agent operations MUST perform pre-execution security checks via `GuardrailsManager`.

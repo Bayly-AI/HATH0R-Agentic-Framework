@@ -25,16 +25,16 @@ This procedure defines the end-to-end execution steps for curating training data
    hath0r cicccdct dataset stats --dataset .hath0r/training_datasets/latest_curated.jsonl
    ```
 
-### Step 2: Trigger Continuous Training Job
-1. Execute training with specified target architecture and epochs:
+### Step 2: Trigger Continuous Training Job (SFT / LoRA / QLoRA / PEFT)
+1. Execute training with specified target architecture, method (`lora`, `qlora`, `sft`, `peft`), and epochs:
    ```bash
    hath0r cicccdct train run --target reasoning_slm --method lora --dataset .hath0r/training_datasets/latest_curated.jsonl --epochs 3 --lr 0.0002
    ```
-2. The orchestrator:
-   - Sets up training splits.
-   - Computes Taguchi loss optimization parameters.
-   - Saves model weights/adapters to `.hath0r/training_artifacts/`.
-   - Logs experiment parameters and run metrics to the MLflow container.
+2. The `ContinuousTrainingPipeline` and `SFTLoRATrainer` orchestrator:
+   - Formats records into ChatML instruction-response pairs with prompt token masking (`-100`).
+   - Optimizes low-rank adapter matrices ($W' = W_0 + \frac{\alpha}{r} B A$, or 4-bit NF4 double-quantized $W_0$ for `qlora`).
+   - Saves HuggingFace PEFT-compatible `adapter_config.json`, `adapter_model.json`, and `.bin` checkpoints to `.hath0r/training_artifacts/`.
+   - Runs post-training benchmark evaluations (`CandidateModelEvaluator` + `GameshowJudge`) and logs run metrics to MLflow and `.hath0r/cccd_state.json`.
 
 ### Step 3: Candidate Benchmark Evaluation
 1. Run golden benchmark evaluation against baseline:

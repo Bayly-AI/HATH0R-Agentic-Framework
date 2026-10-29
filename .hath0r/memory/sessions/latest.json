@@ -1,55 +1,51 @@
 {
   "schema_version": "hath0r.micro_session/1",
-  "session_id": "sess-20261028-133324-403b2a",
-  "prior_session_id": "sess-20261025-125225-a5a8cc",
-  "parent_session_id": "sess-20261025-125225-a5a8cc",
-  "revision": 29,
-  "content_hash": "sha256:9941a66a9883053ed3d69a2f2ae4087e08136fa6fce4a8c14543902c59726665",
-  "base_graph_hash": "sha256:923c2e9b24f05513fd4c14986a30a4b8671e4d2bc712eb928124403065bac26a",
-  "task_id": null,
-  "role": null,
+  "session_id": "sess-20261029-113359-dc0a52",
+  "prior_session_id": "sess-20261028-133324-403b2a",
   "repo_name": "hath0r-framework",
-  "status": "completed",
-  "started_at": "2026-10-28T13:33:24.262765+00:00",
-  "updated_at": "2026-10-28T18:19:56.923049+00:00",
-  "ended_at": "2026-10-28T15:19:29.323635+00:00",
+  "status": "active",
+  "started_at": "2026-10-29T11:33:59.716049+00:00",
+  "updated_at": "2026-10-29T11:56:34.707915+00:00",
+  "ended_at": null,
   "read_count": 9,
-  "write_count": 21,
-  "last_read_at": "2026-10-28T18:19:54.766053+00:00",
-  "last_write_at": "2026-10-28T18:19:56.923049+00:00",
-  "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
-  "prior_summary": "Compounded episode:clean-repo-hath0r-fra; Compounded eval:clean-repo-hath0r-framew",
+  "write_count": 14,
+  "revision": 23,
+  "content_hash": "sha256:eec7114a63467c2c446beaefbf8befbe386ce04c785751795dc2657ff4f4554d",
+  "base_graph_hash": "sha256:880e8a1d0215ac13b569dd814d2713c8b7c0698c490973d76fdb68e8f68f2958",
+  "last_read_at": "2026-10-29T11:55:18.318068+00:00",
+  "last_write_at": "2026-10-29T11:56:34.707915+00:00",
+  "active_focus": "Orienting repository hath0r-framework",
+  "prior_summary": "leted AgentGraph orientation for hat; Compounded release-v1.10.0: Release HATH; Compounded eval:release-v1-10-0: Task Ev",
   "recalled_nodes": [
     {
-      "id": "insight:hath0r-framework",
-      "type": "insight",
-      "label": "Synthesized Insight on hath0r-framework",
-      "snippet": "Consolidated from 2 memory nodes tagged 'hath0r-framework'. Recurring themes: framework, h"
+      "id": "episode:sft-lora-peft-evals",
+      "type": "episode",
+      "label": "Completed SFT, LoRA, QLoRA, and PEFT Training Engine & Bench",
+      "snippet": "Implemented SFTLoRATrainer, LoRAConfig, PEFTConfig, LoRALinearAdapter (W_0 + alpha/r B A),"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-28T18:19:56.923049+00:00",
+      "timestamp": "2026-10-29T11:56:34.707915+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=1.00, PASS)",
+      "summary": "Compounded eval:release-v1-10-0: Task Evaluation release-v1-10-0 (R=1.00, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "clean-repo-hath0r-framework",
+        "release-v1-10-0",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:clean-repo-hath0r-framework"
+      "node_id": "eval:release-v1-10-0"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "eval:eval-baseline-hath0r-framework",
-    "eval:eval-baseline-hath0r-archive",
-    "episode:clean-repo-hath0r-archive",
-    "eval:clean-repo-hath0r-archive",
-    "episode:clean-repo-hath0r-framework",
-    "eval:clean-repo-hath0r-framework"
+    "episode:sft-lora-peft-evals",
+    "eval:sft-lora-peft-evals",
+    "release-v1.10.0",
+    "eval:release-v1-10-0"
   ],
-  "capsule_bytes": 2020
+  "parent_session_id": "sess-20261028-133324-403b2a",
+  "capsule_bytes": 1825
 }

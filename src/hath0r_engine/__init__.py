@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-__version__ = "1.9.3"
+__version__ = "1.10.0"
 
 from hath0r_engine.analysis.ast_gnn import (
     ASTGNNEdge,
@@ -195,6 +195,14 @@ from hath0r_engine.training import (
     CandidateModelEvaluator,
     ContinuousTrainingPipeline,
     DatasetCurator,
+    LoRAConfig,
+    LoRALinearAdapter,
+    NF4Quantizer,
+    PEFTConfig,
+    PEFTMethod,
+    SFTDatasetFormatter,
+    SFTLoRATrainer,
+    SFTTrainingResult,
 )
 from hath0r_engine.voice.voice_config import VoiceConfig
 from hath0r_engine.voice.voice_engine import VoiceEngine
@@ -369,5 +377,13 @@ __all__ = [
     "DatasetCurator",
     "CandidateModelEvaluator",
     "ContinuousTrainingPipeline",
+    "PEFTMethod",
+    "LoRAConfig",
+    "PEFTConfig",
+    "NF4Quantizer",
+    "LoRALinearAdapter",
+    "SFTDatasetFormatter",
+    "SFTTrainingResult",
+    "SFTLoRATrainer",
 ]
 

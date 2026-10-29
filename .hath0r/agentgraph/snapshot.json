@@ -1,7 +1,7 @@
 {
   "schema_version": "hath0r.agentgraph/1",
   "graph_id": "agentgraph-hath0r-framework",
-  "timestamp": "2026-10-28T18:19:57.834696+00:00",
+  "timestamp": "2026-10-29T11:56:34.850890+00:00",
   "nodes": [
     {
       "id": "doc:agents-root",
@@ -2140,11 +2140,11 @@
       "plane": "knowledge",
       "type": "knowledge_doc",
       "label": "Cicccdct Training Procedure",
-      "content": "# Procedure: Continuous Training Execution & Dataset Curation (CIC³DCT / CIC{qubed}DCT)\n\n> **Document Type:** Procedure  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-CICCCDCT-001`, `CR-CLI-ENTRY-001`  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258\n\n---\n\n## 1. Purpose & Scope\n\nThis procedure defines the end-to-end execution steps for curating training datasets from agent execution traces, executing continuous fine-tuning (LoRA/QLoRA on local SLMs or DSPy MIPROv2 compilation), and evaluating candidate models.\n\n---\n\n## 2. Step-by-Step Procedure\n\n### Step 1: Ingest & Curate Production Traces\n1. Extract OTel span journals and `EventJournal` logs where assertions succeeded:\n   ```bash\n   hath0r cicccdct dataset curate --min-reward 0.70 --max-samples 1000 --output-file .hath0r/training_datasets/latest_curated.jsonl\n   ```\n2. Verify token statistics and class balance:\n   ```bash\n   hath0r cicccdct dataset stats --dataset .hath0r/training_datasets/latest_curated.jsonl\n   ```\n\n### Step 2: Trigger Continuous Training Job\n1. Execute training with specified target architecture and epochs:\n   ```bash\n   hath0r cicccdct train run --target reasoning_slm --method lo",
+      "content": "# Procedure: Continuous Training Execution & Dataset Curation (CIC³DCT / CIC{qubed}DCT)\n\n> **Document Type:** Procedure  \n> **Status:** Ratified  \n> **Governing Standards:** `CR-CICCCDCT-001`, `CR-CLI-ENTRY-001`  \n> **Tracking Issues:** Bayly-AI/HATH0R-Agentic-Framework#255, #258\n\n---\n\n## 1. Purpose & Scope\n\nThis procedure defines the end-to-end execution steps for curating training datasets from agent execution traces, executing continuous fine-tuning (LoRA/QLoRA on local SLMs or DSPy MIPROv2 compilation), and evaluating candidate models.\n\n---\n\n## 2. Step-by-Step Procedure\n\n### Step 1: Ingest & Curate Production Traces\n1. Extract OTel span journals and `EventJournal` logs where assertions succeeded:\n   ```bash\n   hath0r cicccdct dataset curate --min-reward 0.70 --max-samples 1000 --output-file .hath0r/training_datasets/latest_curated.jsonl\n   ```\n2. Verify token statistics and class balance:\n   ```bash\n   hath0r cicccdct dataset stats --dataset .hath0r/training_datasets/latest_curated.jsonl\n   ```\n\n### Step 2: Trigger Continuous Training Job (SFT / LoRA / QLoRA / PEFT)\n1. Execute training with specified target architecture, method (`lora`, `qlora`, `sft`, `peft`), and epochs:\n   `",
       "properties": {
         "path": "docs/governance/procedures/cicccdct-training-procedure.md",
         "category": "procedures",
-        "size_bytes": 2104
+        "size_bytes": 2519
       },
       "is_current": true
     },
@@ -2573,7 +2573,7 @@
       "properties": {
         "path": "docs/governance/strategies/cicccdct-strategy.md",
         "category": "strategies",
-        "size_bytes": 4005
+        "size_bytes": 4158
       },
       "is_current": true
     },
@@ -4614,7 +4614,7 @@
       "properties": {
         "source_files": {
           "src/hath0r_engine/memory/memory_graph.py": "sha256:f80819ae8d08e7bbed5fa3d47d3e29d8f48a2f5479775e10ad85b882dbd610ca",
-          ".gitignore": "sha256:d570739eceb6777e8f4c90cacef67a04afcc8fd8056bdbbc28fe4932a67004e0"
+          ".gitignore": "sha256:4a9ab63ed02531a98188071625f4be0158c7248157ee59c8899017711a522217"
         },
         "source": "local_memory",
         "tags": [
@@ -5430,7 +5430,7 @@
       "content": "4-Tier Task Evaluation for issue-307 on branch feature/307-automatic-task-evals: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
+          ".hath0r/evals/latest.json": "sha256:e9c3b399473b4facc4a5f63baa89c86443039ca72f35cb38fc2e571a450cd8c1"
         },
         "source": "local_memory",
         "tags": [
@@ -5452,7 +5452,7 @@
       "content": "4-Tier Task Evaluation for pr-308 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
+          ".hath0r/evals/latest.json": "sha256:e9c3b399473b4facc4a5f63baa89c86443039ca72f35cb38fc2e571a450cd8c1"
         },
         "source": "local_memory",
         "tags": [
@@ -5552,7 +5552,7 @@
       "content": "4-Tier Task Evaluation for pr-308-merged on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
+          ".hath0r/evals/latest.json": "sha256:e9c3b399473b4facc4a5f63baa89c86443039ca72f35cb38fc2e571a450cd8c1"
         },
         "source": "local_memory",
         "tags": [
@@ -5594,7 +5594,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-framework on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
+          ".hath0r/evals/latest.json": "sha256:e9c3b399473b4facc4a5f63baa89c86443039ca72f35cb38fc2e571a450cd8c1"
         },
         "source": "local_memory",
         "tags": [
@@ -5616,7 +5616,7 @@
       "content": "4-Tier Task Evaluation for eval-baseline-hath0r-archive on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:0bd5832dc256a3151a06d0eb9521709dbce7d9fa6065e4849f1f3ed5ee48f177"
+          ".hath0r/evals/latest.json": "sha256:e9c3b399473b4facc4a5f63baa89c86443039ca72f35cb38fc2e571a450cd8c1"
         },
         "source": "local_memory",
         "tags": [
@@ -5638,7 +5638,7 @@
       "content": "4-Tier Task Evaluation for clean-repo-hath0r-framework on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
       "properties": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:b9c8398be8ccb79855cbd528550742880a181be9e657e98505bd27c25a6625d8"
+          ".hath0r/evals/latest.json": "sha256:e9c3b399473b4facc4a5f63baa89c86443039ca72f35cb38fc2e571a450cd8c1"
         },
         "source": "local_memory",
         "tags": [
@@ -5671,6 +5671,124 @@
           "session",
           "micro-session",
           "completed"
+        ],
+        "importance": 0.75
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:episode:sft-lora-peft-evals",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Completed SFT, LoRA, QLoRA, and PEFT Training Engine & Benchmark Evals",
+      "content": "Implemented SFTLoRATrainer, LoRAConfig, PEFTConfig, LoRALinearAdapter (W_0 + alpha/r B A), NF4Quantizer (4-bit QLoRA with double quantization), SFTDatasetFormatter (ChatML prompt masking), and CandidateModelEvaluator.evaluate_trained_adapter with GameshowJudge integration.",
+      "properties": {
+        "source_files": {
+          "src/hath0r_engine/training/peft_lora_sft.py": "sha256:7a1a2fa385745cb01b974cdc60864b5325554fee6c4fee1d046181ecb6706b56",
+          "src/hath0r_engine/training/training_pipeline.py": "sha256:68c5e67f317af9ab04dd4d6b7bc3a18be7ad8c1f98c2170cff41e534b2c96bbc",
+          "src/hath0r_engine/training/model_evaluator.py": "sha256:085a23eda42de9261486514258a396ef954173966a6a55f27569849740cf6e54",
+          "tests/test_cicccdct_engine.py": "sha256:586c0fb48710f85753a23a58d502e5a71992469a89bd4dc9b210ad119db71931"
+        },
+        "source": "local_memory",
+        "tags": [
+          "sft",
+          "lora",
+          "qlora",
+          "peft",
+          "evals",
+          "cicccdct",
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.8
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:sft-lora-peft-evals",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation sft-lora-peft-evals (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for sft-lora-peft-evals on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:e9c3b399473b4facc4a5f63baa89c86443039ca72f35cb38fc2e571a450cd8c1"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "sft-lora-peft-evals",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:release-v1.10.0",
+      "plane": "memory",
+      "type": "episode",
+      "label": "Release HATH0R-Agentic-Framework v1.10.0 with SFT, LoRA, QLoRA, PEFT & Evals",
+      "content": "Released v1.10.0 of HATH0R-Agentic-Framework adding SFTLoRATrainer, NF4Quantizer, LoRALinearAdapter, SFTDatasetFormatter, and CandidateModelEvaluator.evaluate_trained_adapter.",
+      "properties": {
+        "source_files": {
+          "VERSION": "sha256:4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549",
+          "pyproject.toml": "sha256:dc48e1f837c8b1614d69de1b50c713a6e2ccbb96491fc6775212d306b45592c5",
+          "CHANGELOG.md": "sha256:f0fad65684852738837373279bcafff79844c92d29cd989b472e4aa4693181fd",
+          "src/hath0r_engine/__init__.py": "sha256:f41fe40195bf87223be7af2d3deebc9031d4b5dd4b58b95fbd52b3e80044894c"
+        },
+        "source": "local_memory",
+        "tags": [
+          "episode",
+          "compounded"
+        ],
+        "importance": 0.8
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:eval:release-v1-10-0",
+      "plane": "memory",
+      "type": "eval",
+      "label": "Task Evaluation release-v1-10-0 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for release-v1-10-0 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "properties": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:befc24d67cb38b41a703418a45d45bf049db3f4c0f636ce12c73accab338b8f9"
+        },
+        "source": "local_memory",
+        "tags": [
+          "eval",
+          "cr-task-eval-001",
+          "release-v1-10-0",
+          "passed",
+          "compounded"
+        ],
+        "importance": 0.85
+      },
+      "is_current": true
+    },
+    {
+      "id": "memory:session:sess-20261029-113359-dc0a52",
+      "plane": "memory",
+      "type": "session",
+      "label": "Micro Session sess-20261029-113359-dc0a52",
+      "content": "Micro Session sess-20261029-113359-dc0a52 [active] | Focus: Orienting repository hath0r-framework | Reads: 9, Writes: 14 | Entries: Compounded eval:release-v1-10-0: Task Evaluation release-v1-10-0 (R=1.00, PASS)",
+      "properties": {
+        "session_id": "sess-20261029-113359-dc0a52",
+        "prior_session_id": "sess-20261028-133324-403b2a",
+        "parent_session_id": "sess-20261028-133324-403b2a",
+        "read_count": 9,
+        "write_count": 14,
+        "status": "active",
+        "byte_size": 1825,
+        "source": "local_memory",
+        "tags": [
+          "session",
+          "micro-session",
+          "active"
         ],
         "importance": 0.75
       },
@@ -6571,6 +6689,90 @@
       "is_current": true
     },
     {
+      "source": "memory:session:sess-20261028-133324-403b2a",
+      "target": "memory:session:sess-20261029-113359-dc0a52",
+      "relation": "PRECEDES",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-113359-dc0a52",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:sft-lora-peft-evals",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:sft-lora-peft-evals",
+      "target": "memory:session:sess-20261029-113359-dc0a52",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:sft-lora-peft-evals",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:sft-lora-peft-evals",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:sft-lora-peft-evals",
+      "target": "memory:session:sess-20261029-113359-dc0a52",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:sft-lora-peft-evals",
+      "target": "memory:session:sess-20261029-113359-dc0a52",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:release-v1.10.0",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:release-v1.10.0",
+      "target": "memory:session:sess-20261029-113359-dc0a52",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-10-0",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-10-0",
+      "target": "memory:rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-10-0",
+      "target": "memory:session:sess-20261029-113359-dc0a52",
+      "relation": "EVALUATES",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-10-0",
+      "target": "memory:session:sess-20261029-113359-dc0a52",
+      "relation": "DERIVES_FROM",
+      "is_current": true
+    },
+    {
       "source": "rule:rules",
       "target": "role:developer",
       "relation": "GOVERNS",
@@ -7094,6 +7296,36 @@
     },
     {
       "source": "memory:session:sess-20261028-133324-403b2a",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:episode:sft-lora-peft-evals",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:sft-lora-peft-evals",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:release-v1.10.0",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:eval:release-v1-10-0",
+      "target": "role:developer",
+      "relation": "INFORMS",
+      "is_current": true
+    },
+    {
+      "source": "memory:session:sess-20261029-113359-dc0a52",
       "target": "role:developer",
       "relation": "INFORMS",
       "is_current": true

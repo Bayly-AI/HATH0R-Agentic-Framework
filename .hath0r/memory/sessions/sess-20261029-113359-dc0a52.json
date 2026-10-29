@@ -1,0 +1,51 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261029-113359-dc0a52",
+  "prior_session_id": "sess-20261028-133324-403b2a",
+  "repo_name": "hath0r-framework",
+  "status": "active",
+  "started_at": "2026-10-29T11:33:59.716049+00:00",
+  "updated_at": "2026-10-29T11:56:34.707915+00:00",
+  "ended_at": null,
+  "read_count": 9,
+  "write_count": 14,
+  "revision": 23,
+  "content_hash": "sha256:eec7114a63467c2c446beaefbf8befbe386ce04c785751795dc2657ff4f4554d",
+  "base_graph_hash": "sha256:880e8a1d0215ac13b569dd814d2713c8b7c0698c490973d76fdb68e8f68f2958",
+  "last_read_at": "2026-10-29T11:55:18.318068+00:00",
+  "last_write_at": "2026-10-29T11:56:34.707915+00:00",
+  "active_focus": "Orienting repository hath0r-framework",
+  "prior_summary": "leted AgentGraph orientation for hat; Compounded release-v1.10.0: Release HATH; Compounded eval:release-v1-10-0: Task Ev",
+  "recalled_nodes": [
+    {
+      "id": "episode:sft-lora-peft-evals",
+      "type": "episode",
+      "label": "Completed SFT, LoRA, QLoRA, and PEFT Training Engine & Bench",
+      "snippet": "Implemented SFTLoRATrainer, LoRAConfig, PEFTConfig, LoRALinearAdapter (W_0 + alpha/r B A),"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-29T11:56:34.707915+00:00",
+      "kind": "compound",
+      "summary": "Compounded eval:release-v1-10-0: Task Evaluation release-v1-10-0 (R=1.00, PASS)",
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "release-v1-10-0",
+        "passed",
+        "compounded"
+      ],
+      "node_id": "eval:release-v1-10-0"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:sft-lora-peft-evals",
+    "eval:sft-lora-peft-evals",
+    "release-v1.10.0",
+    "eval:release-v1-10-0"
+  ],
+  "parent_session_id": "sess-20261028-133324-403b2a",
+  "capsule_bytes": 1825
+}

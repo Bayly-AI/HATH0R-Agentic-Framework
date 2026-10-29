@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 243,
-  "content_hash": "sha256:87308c4c452786038fc6865ce78d0a4d59467911cfd378cc6cc7c1caeee5f110",
-  "updated_at": "2026-10-28T18:19:57.918888+00:00",
+  "revision": 287,
+  "content_hash": "sha256:d7f91b9e0587b34feef7c1d9a81b8153ee5c6d8702ebfb4675ee9e7d2c6f2256",
+  "updated_at": "2026-10-29T11:56:35.565225+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -336,7 +336,7 @@
       "metadata": {
         "source_files": {
           "src/hath0r_engine/memory/memory_graph.py": "sha256:f80819ae8d08e7bbed5fa3d47d3e29d8f48a2f5479775e10ad85b882dbd610ca",
-          ".gitignore": "sha256:d570739eceb6777e8f4c90cacef67a04afcc8fd8056bdbbc28fe4932a67004e0"
+          ".gitignore": "sha256:4a9ab63ed02531a98188071625f4be0158c7248157ee59c8899017711a522217"
         }
       }
     },
@@ -1213,7 +1213,7 @@
       "updated_at": "2026-10-28T13:35:38.020196+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:b9c8398be8ccb79855cbd528550742880a181be9e657e98505bd27c25a6625d8"
+          ".hath0r/evals/latest.json": "sha256:befc24d67cb38b41a703418a45d45bf049db3f4c0f636ce12c73accab338b8f9"
         }
       }
     },
@@ -1237,7 +1237,7 @@
       "updated_at": "2026-10-28T13:53:23.673169+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:b9c8398be8ccb79855cbd528550742880a181be9e657e98505bd27c25a6625d8"
+          ".hath0r/evals/latest.json": "sha256:befc24d67cb38b41a703418a45d45bf049db3f4c0f636ce12c73accab338b8f9"
         }
       }
     },
@@ -1273,6 +1273,7 @@
         "compounded"
       ],
       "valid_from": "2026-10-28T13:53:19.430327+00:00",
+      "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T13:53:19.430327+00:00",
       "updated_at": "2026-10-28T13:53:19.430327+00:00",
@@ -1294,6 +1295,7 @@
         "compounded"
       ],
       "valid_from": "2026-10-28T13:53:27.004147+00:00",
+      "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T13:53:27.004147+00:00",
       "updated_at": "2026-10-28T13:53:27.004147+00:00",
@@ -1315,6 +1317,7 @@
         "compounded"
       ],
       "valid_from": "2026-10-28T13:53:27.004147+00:00",
+      "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T13:53:27.004147+00:00",
       "updated_at": "2026-10-28T13:53:27.004147+00:00",
@@ -1343,7 +1346,7 @@
       "updated_at": "2026-10-28T13:53:30.607564+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:b9c8398be8ccb79855cbd528550742880a181be9e657e98505bd27c25a6625d8"
+          ".hath0r/evals/latest.json": "sha256:befc24d67cb38b41a703418a45d45bf049db3f4c0f636ce12c73accab338b8f9"
         }
       }
     },
@@ -1388,7 +1391,7 @@
       "updated_at": "2026-10-28T17:45:25.415011+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:b9c8398be8ccb79855cbd528550742880a181be9e657e98505bd27c25a6625d8"
+          ".hath0r/evals/latest.json": "sha256:befc24d67cb38b41a703418a45d45bf049db3f4c0f636ce12c73accab338b8f9"
         }
       }
     },
@@ -1412,7 +1415,7 @@
       "updated_at": "2026-10-28T17:45:19.958282+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:b9c8398be8ccb79855cbd528550742880a181be9e657e98505bd27c25a6625d8"
+          ".hath0r/evals/latest.json": "sha256:befc24d67cb38b41a703418a45d45bf049db3f4c0f636ce12c73accab338b8f9"
         }
       }
     },
@@ -1436,7 +1439,7 @@
       "updated_at": "2026-10-28T18:19:56.618918+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:b9c8398be8ccb79855cbd528550742880a181be9e657e98505bd27c25a6625d8"
+          ".hath0r/evals/latest.json": "sha256:befc24d67cb38b41a703418a45d45bf049db3f4c0f636ce12c73accab338b8f9"
         }
       }
     },
@@ -1464,6 +1467,134 @@
         "write_count": 21,
         "status": "completed",
         "byte_size": 2020
+      }
+    },
+    {
+      "id": "episode:sft-lora-peft-evals",
+      "type": "episode",
+      "label": "Completed SFT, LoRA, QLoRA, and PEFT Training Engine & Benchmark Evals",
+      "content": "Implemented SFTLoRATrainer, LoRAConfig, PEFTConfig, LoRALinearAdapter (W_0 + alpha/r B A), NF4Quantizer (4-bit QLoRA with double quantization), SFTDatasetFormatter (ChatML prompt masking), and CandidateModelEvaluator.evaluate_trained_adapter with GameshowJudge integration.",
+      "importance": 0.8,
+      "tags": [
+        "sft",
+        "lora",
+        "qlora",
+        "peft",
+        "evals",
+        "cicccdct",
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-29T11:48:21.153739+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-29T11:48:21.153739+00:00",
+      "updated_at": "2026-10-29T11:48:21.153739+00:00",
+      "metadata": {
+        "source_files": {
+          "src/hath0r_engine/training/peft_lora_sft.py": "sha256:7a1a2fa385745cb01b974cdc60864b5325554fee6c4fee1d046181ecb6706b56",
+          "src/hath0r_engine/training/training_pipeline.py": "sha256:68c5e67f317af9ab04dd4d6b7bc3a18be7ad8c1f98c2170cff41e534b2c96bbc",
+          "src/hath0r_engine/training/model_evaluator.py": "sha256:085a23eda42de9261486514258a396ef954173966a6a55f27569849740cf6e54",
+          "tests/test_cicccdct_engine.py": "sha256:586c0fb48710f85753a23a58d502e5a71992469a89bd4dc9b210ad119db71931"
+        }
+      }
+    },
+    {
+      "id": "eval:sft-lora-peft-evals",
+      "type": "eval",
+      "label": "Task Evaluation sft-lora-peft-evals (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for sft-lora-peft-evals on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "sft-lora-peft-evals",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-29T11:48:57.187163+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-29T11:48:57.187163+00:00",
+      "updated_at": "2026-10-29T11:48:57.187163+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:befc24d67cb38b41a703418a45d45bf049db3f4c0f636ce12c73accab338b8f9"
+        }
+      }
+    },
+    {
+      "id": "release-v1.10.0",
+      "type": "episode",
+      "label": "Release HATH0R-Agentic-Framework v1.10.0 with SFT, LoRA, QLoRA, PEFT & Evals",
+      "content": "Released v1.10.0 of HATH0R-Agentic-Framework adding SFTLoRATrainer, NF4Quantizer, LoRALinearAdapter, SFTDatasetFormatter, and CandidateModelEvaluator.evaluate_trained_adapter.",
+      "importance": 0.8,
+      "tags": [
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-10-29T11:56:21.973456+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-29T11:56:21.973456+00:00",
+      "updated_at": "2026-10-29T11:56:21.973456+00:00",
+      "metadata": {
+        "source_files": {
+          "VERSION": "sha256:4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549",
+          "pyproject.toml": "sha256:dc48e1f837c8b1614d69de1b50c713a6e2ccbb96491fc6775212d306b45592c5",
+          "CHANGELOG.md": "sha256:f0fad65684852738837373279bcafff79844c92d29cd989b472e4aa4693181fd",
+          "src/hath0r_engine/__init__.py": "sha256:f41fe40195bf87223be7af2d3deebc9031d4b5dd4b58b95fbd52b3e80044894c"
+        }
+      }
+    },
+    {
+      "id": "eval:release-v1-10-0",
+      "type": "eval",
+      "label": "Task Evaluation release-v1-10-0 (R=1.00, PASS)",
+      "content": "4-Tier Task Evaluation for release-v1-10-0 on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "release-v1-10-0",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-10-29T11:56:34.661577+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-29T11:56:24.571780+00:00",
+      "updated_at": "2026-10-29T11:56:34.661577+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:befc24d67cb38b41a703418a45d45bf049db3f4c0f636ce12c73accab338b8f9"
+        }
+      }
+    },
+    {
+      "id": "session:sess-20261029-113359-dc0a52",
+      "type": "session",
+      "label": "Micro Session sess-20261029-113359-dc0a52",
+      "content": "Micro Session sess-20261029-113359-dc0a52 [active] | Focus: Orienting repository hath0r-framework | Reads: 9, Writes: 14 | Entries: Compounded eval:release-v1-10-0: Task Evaluation release-v1-10-0 (R=1.00, PASS)",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "active"
+      ],
+      "valid_from": "2026-10-29T11:33:59.716049+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-10-29T11:33:59.716049+00:00",
+      "updated_at": "2026-10-29T11:56:34.707915+00:00",
+      "metadata": {
+        "session_id": "sess-20261029-113359-dc0a52",
+        "prior_session_id": "sess-20261028-133324-403b2a",
+        "parent_session_id": "sess-20261028-133324-403b2a",
+        "read_count": 9,
+        "write_count": 14,
+        "status": "active",
+        "byte_size": 1825
       }
     }
   ],
@@ -2484,7 +2615,9 @@
       "relation": "PRECEDES",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:33:24.300899+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "session:sess-20261028-133324-403b2a",
@@ -2492,7 +2625,9 @@
       "relation": "RELATES_TO",
       "weight": 0.8,
       "valid_from": "2026-10-28T13:33:24.300899+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:issue-307-task-evals",
@@ -2500,7 +2635,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:35:30.977598+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:issue-307-task-evals",
@@ -2508,7 +2645,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:35:31.071400+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:issue-307",
@@ -2516,7 +2655,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:35:38.020196+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:issue-307",
@@ -2524,7 +2665,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:35:38.020196+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:issue-307",
@@ -2532,7 +2675,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:35:38.020196+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:issue-307",
@@ -2540,7 +2685,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:35:38.122942+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:pr-308",
@@ -2548,7 +2695,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:49:19.588578+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:pr-308",
@@ -2556,7 +2705,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:49:19.588578+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:pr-308",
@@ -2564,7 +2715,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:49:19.588578+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:pr-308",
@@ -2572,7 +2725,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:49:19.795247+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:pr-308",
@@ -2580,7 +2735,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:19.163240+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:pr-308",
@@ -2588,7 +2745,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:19.163240+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:pr-308",
@@ -2596,7 +2755,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:19.341350+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:knowledge-share",
@@ -2604,7 +2765,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:19.430327+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:knowledge-share",
@@ -2612,7 +2775,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:19.430327+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:evals",
@@ -2620,7 +2785,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:27.004147+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:evals",
@@ -2628,7 +2795,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:27.004147+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:cr-task-eval-001",
@@ -2636,7 +2805,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:27.004147+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:cr-task-eval-001",
@@ -2644,7 +2815,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:27.004147+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:pr-308-merged",
@@ -2652,7 +2825,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:30.607564+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:pr-308-merged",
@@ -2660,7 +2835,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:30.607564+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:pr-308-merged",
@@ -2668,7 +2845,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:30.607564+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:pr-308-merged",
@@ -2676,7 +2855,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T13:53:30.721964+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "rule:cr-task-eval-001",
@@ -2684,7 +2865,9 @@
       "relation": "INFORMS",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:21:12.347805+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "rule:cr-task-eval-001",
@@ -2692,7 +2875,9 @@
       "relation": "INFORMS",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:21:12.347805+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "rule:cr-task-eval-001",
@@ -2700,7 +2885,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:21:12.390513+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:eval-baseline-hath0r-framework",
@@ -2708,7 +2895,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:21:12.899316+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:eval-baseline-hath0r-framework",
@@ -2716,7 +2905,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:21:12.899316+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:eval-baseline-hath0r-framework",
@@ -2724,7 +2915,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:21:12.899316+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:eval-baseline-hath0r-framework",
@@ -2732,7 +2925,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:21:12.939600+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:eval-baseline-hath0r-archive",
@@ -2740,7 +2935,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:23:21.502319+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:eval-baseline-hath0r-archive",
@@ -2748,7 +2945,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:23:21.502319+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:eval-baseline-hath0r-archive",
@@ -2756,7 +2955,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:23:21.502319+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:eval-baseline-hath0r-archive",
@@ -2764,7 +2965,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T14:23:21.549602+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:clean-repo-hath0r-archive",
@@ -2772,7 +2975,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:06.645525+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:clean-repo-hath0r-archive",
@@ -2780,7 +2985,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:06.645525+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:clean-repo-hath0r-archive",
@@ -2788,7 +2995,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:06.681311+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:clean-repo",
@@ -2796,7 +3005,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:06.699100+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:clean-repo",
@@ -2804,7 +3015,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:06.699100+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:hygiene",
@@ -2812,7 +3025,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:06.699100+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "insight:hygiene",
@@ -2820,7 +3035,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:06.699100+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:clean-repo-hath0r-archive",
@@ -2828,7 +3045,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:09.636347+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:clean-repo-hath0r-archive",
@@ -2836,7 +3055,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:09.636347+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:clean-repo-hath0r-archive",
@@ -2844,7 +3065,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:09.636347+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:clean-repo-hath0r-archive",
@@ -2852,7 +3075,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T15:22:09.678939+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "episode:clean-repo-hath0r-framework",
@@ -2860,7 +3085,9 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T18:13:24.186135+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:clean-repo-hath0r-framework",
@@ -2868,7 +3095,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T18:13:25.112709+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:clean-repo-hath0r-framework",
@@ -2876,7 +3105,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T18:13:25.112709+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:clean-repo-hath0r-framework",
@@ -2884,7 +3115,9 @@
       "relation": "EVALUATES",
       "weight": 1.0,
       "valid_from": "2026-10-28T18:13:25.112709+00:00",
-      "is_current": true
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
     },
     {
       "source": "eval:clean-repo-hath0r-framework",
@@ -2892,6 +3125,136 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-28T18:13:25.195063+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
+    },
+    {
+      "source": "session:sess-20261028-133324-403b2a",
+      "target": "session:sess-20261029-113359-dc0a52",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:33:59.724534+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
+    },
+    {
+      "source": "session:sess-20261029-113359-dc0a52",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-29T11:33:59.724534+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
+    },
+    {
+      "source": "episode:sft-lora-peft-evals",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:48:21.153739+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
+    },
+    {
+      "source": "episode:sft-lora-peft-evals",
+      "target": "session:sess-20261029-113359-dc0a52",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:48:21.216911+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
+    },
+    {
+      "source": "eval:sft-lora-peft-evals",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:48:57.187163+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
+    },
+    {
+      "source": "eval:sft-lora-peft-evals",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:48:57.187163+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
+    },
+    {
+      "source": "eval:sft-lora-peft-evals",
+      "target": "session:sess-20261029-113359-dc0a52",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:48:57.187163+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
+    },
+    {
+      "source": "eval:sft-lora-peft-evals",
+      "target": "session:sess-20261029-113359-dc0a52",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:48:57.263593+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "metadata": {}
+    },
+    {
+      "source": "release-v1.10.0",
+      "target": "concept:tri-graph",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:56:21.973456+00:00",
+      "is_current": true
+    },
+    {
+      "source": "release-v1.10.0",
+      "target": "session:sess-20261029-113359-dc0a52",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:56:22.029436+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-10-0",
+      "target": "concept:tri-graph",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:56:24.571780+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-10-0",
+      "target": "rule:cr-memory-compound-001",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:56:24.571780+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-10-0",
+      "target": "session:sess-20261029-113359-dc0a52",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:56:24.571780+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:release-v1-10-0",
+      "target": "session:sess-20261029-113359-dc0a52",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-29T11:56:24.620886+00:00",
       "is_current": true
     }
   ]

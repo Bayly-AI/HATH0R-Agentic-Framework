@@ -6,19 +6,30 @@ import time
 import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Sequence
 
+from hath0r_engine.telemetry.cicccd_telemetry import CICCCDCTTelemetryHook
 from hath0r_engine.training.dataset_curator import DatasetCurator
+from hath0r_engine.training.gameshow_models import EvaluationCard
 from hath0r_engine.training.model_evaluator import CandidateModelEvaluator
+from hath0r_engine.training.peft_lora_sft import (
+    DEFAULT_TARGET_MODULES,
+    LoRAConfig,
+    PEFTMethod,
+    SFTLoRATrainer,
+)
+
+SUPPORTED_TRAINING_METHODS = {m.value for m in PEFTMethod}
 
 
 @dataclass
 class ContinuousTrainingPipeline:
-    """Orchestrates continuous fine-tuning, adapter updates, and prompt program training."""
+    """Orchestrates SFT, LoRA, QLoRA, PEFT adapter fine-tuning, and post-training benchmark evaluations."""
 
     curator: DatasetCurator = field(default_factory=DatasetCurator)
     evaluator: CandidateModelEvaluator = field(default_factory=CandidateModelEvaluator)
     artifacts_dir: Path = field(default_factory=lambda: Path.cwd() / ".hath0r" / "training_artifacts")
+    workspace_root: Optional[Path] = None
 
     def __post_init__(self) -> None:
         self.artifacts_dir.mkdir(parents=True, exist_ok=True)
@@ -33,19 +44,27 @@ class ContinuousTrainingPipeline:
         learning_rate: float = 0.0002,
         batch_size: int = 4,
         parameters: Optional[Dict[str, Any]] = None,
+        eval_cards: Optional[Sequence[EvaluationCard]] = None,
+        record_telemetry: bool = True,
     ) -> Dict[str, Any]:
-        """Execute a continuous training job, evaluate against benchmark, and persist artifact metadata."""
+        """Execute an SFT/LoRA/QLoRA/PEFT continuous training job, evaluate against benchmark, and persist adapter artifacts."""
+        if method not in SUPPORTED_TRAINING_METHODS:
+            raise ValueError(
+                f"Unsupported training method '{method}'. Must be one of {sorted(SUPPORTED_TRAINING_METHODS)}"
+            )
+
         job_id = f"job-{uuid.uuid4().hex[:12]}"
         created_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
         # 1. Load or curate dataset
         train_data: List[Dict[str, Any]] = []
         if dataset:
-            train_data = dataset
+            train_data = list(dataset)
         elif dataset_path:
             train_data = self.curator.load_dataset(dataset_path)
-        else:
-            # Fallback default synthetic exemplar dataset
+
+        if not train_data:
+            # Default golden cognitive substrate exemplar dataset
             train_data = [
                 {"input": "Identify security flaw in SQL query", "target": "AST parameterization required", "reward": 0.95},
                 {"input": "Validate AgentGraph tool authorization", "target": "RBAC role verified against contract", "reward": 0.92},
@@ -56,30 +75,97 @@ class ContinuousTrainingPipeline:
         dataset_size = len(train_data)
         dataset_stats = self.curator.compute_statistics(train_data)
 
-        # 2. Simulate training convergence
-        # Loss decreases as epochs increase
-        initial_loss = 2.45
-        final_loss = max(0.12, initial_loss * (0.6 ** epochs))
+        # 2. Configure PEFT / LoRA / QLoRA / SFT parameters
+        user_params = dict(parameters or {})
+        lora_r = int(user_params.get("lora_rank", user_params.get("r", 16)))
+        lora_alpha = float(user_params.get("lora_alpha", 32.0))
+        lora_dropout = float(user_params.get("lora_dropout", 0.05))
+        use_rslora = bool(user_params.get("use_rslora", False))
+        target_mods = tuple(user_params.get("target_modules", DEFAULT_TARGET_MODULES))
+        quant_bits = 4 if method == "qlora" else user_params.get("quantization_bits")
 
-        # 3. Post-training candidate evaluation
-        candidate_eval_samples = [
-            {"accuracy": min(0.96, 0.82 + 0.03 * epochs), "tokens_used": 750, "latency_ms": 65.0},
-            {"accuracy": min(0.95, 0.84 + 0.02 * epochs), "tokens_used": 800, "latency_ms": 70.0},
-            {"accuracy": min(0.97, 0.85 + 0.03 * epochs), "tokens_used": 710, "latency_ms": 60.0},
-        ]
-        baseline_samples = [
-            {"accuracy": 0.76, "tokens_used": 1250, "latency_ms": 115.0},
-            {"accuracy": 0.74, "tokens_used": 1300, "latency_ms": 120.0},
-            {"accuracy": 0.78, "tokens_used": 1180, "latency_ms": 110.0},
-        ]
+        peft_cfg = LoRAConfig(
+            r=lora_r,
+            lora_alpha=lora_alpha,
+            lora_dropout=lora_dropout,
+            use_rslora=use_rslora,
+            target_modules=target_mods,
+            base_model_name_or_path=target,
+            quantization_bits=quant_bits,
+            peft_type="QLORA" if method == "qlora" else ("SFT" if method == "sft" else "LORA"),
+        )
 
-        eval_res = self.evaluator.evaluate_benchmark(
-            candidate_results=candidate_eval_samples,
-            baseline_results=baseline_samples,
+        # 3. Execute SFT + LoRA/PEFT low-rank optimization & write adapter checkpoint
+        trainer = SFTLoRATrainer(config=peft_cfg, artifacts_dir=self.artifacts_dir)
+        sft_res = trainer.train(
+            dataset=train_data,
+            job_id=job_id,
+            target=target,
+            method=method,
+            epochs=epochs,
+            learning_rate=learning_rate,
+            batch_size=batch_size,
+        )
+
+        # 4. Run post-training candidate evaluation against frozen base model and golden benchmark
+        eval_res = self.evaluator.evaluate_trained_adapter(
+            trainer=trainer,
+            eval_dataset=train_data,
+            eval_cards=eval_cards,
         )
 
         completed_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-        model_artifact_uri = str(self.artifacts_dir / f"{target}_{method}_{job_id}.bin")
+        mlflow_run_id = f"mlflow-{job_id}"
+
+        resolved_params = {
+            "lora_rank": lora_r,
+            "lora_alpha": lora_alpha,
+            "lora_dropout": lora_dropout,
+            "use_rslora": use_rslora,
+            "scaling": round(peft_cfg.scaling, 4),
+            "target_modules": list(target_mods),
+            "quantization_bits": quant_bits,
+            "trainable_parameters": sft_res.trainable_parameters,
+            "total_parameters": sft_res.total_parameters,
+            "trainable_percentage": sft_res.trainable_percentage,
+            "memory_savings_ratio": sft_res.memory_savings_ratio,
+            **user_params,
+        }
+
+        metrics_payload: Dict[str, Any] = {
+            "initial_loss": sft_res.initial_loss,
+            "train_loss": sft_res.final_loss,
+            "val_loss": sft_res.val_loss,
+            "perplexity": sft_res.perplexity,
+            "loss_history": sft_res.loss_history,
+            "grad_norm": sft_res.grad_norm,
+            "adapter_frobenius_norm": sft_res.adapter_frobenius_norm,
+            "eval_reward": eval_res["candidate_mean_reward"],
+            "baseline_reward": eval_res.get("baseline_mean_reward", 0.0),
+            "accuracy_improvement": eval_res.get("improvement", 0.0),
+            "alignment_accuracy": eval_res.get("alignment_accuracy", 0.0),
+            "snr_db": eval_res["snr_db"],
+            "quality_loss": eval_res["quality_loss"],
+            "promotable": eval_res["promotable"],
+            "eval_ran": True,
+            "samples_evaluated": eval_res["samples_evaluated"],
+        }
+        if "gameshow_accuracy" in eval_res:
+            metrics_payload["gameshow_accuracy"] = eval_res["gameshow_accuracy"]
+            metrics_payload["gameshow_pass_rate"] = eval_res["gameshow_pass_rate"]
+
+        if record_telemetry and self.workspace_root is not None:
+            hook = CICCCDCTTelemetryHook(workspace_root=self.workspace_root)
+            hook.record_training_telemetry(
+                model_name=target,
+                model_version=1,
+                train_loss=sft_res.final_loss,
+                eval_reward=eval_res["candidate_mean_reward"],
+                mlflow_run_id=mlflow_run_id,
+                candidate_improvement=eval_res.get("improvement", 0.0),
+                dataset_samples=dataset_size,
+                stage="Staging" if eval_res["promotable"] else "None",
+            )
 
         job_result = {
             "schema_version": "hath0r.training.job/1",
@@ -94,17 +180,14 @@ class ContinuousTrainingPipeline:
             "status": "completed",
             "created_at": created_at,
             "completed_at": completed_at,
-            "mlflow_run_id": f"mlflow-{job_id}",
-            "model_artifact_uri": model_artifact_uri,
-            "metrics": {
-                "train_loss": round(final_loss, 4),
-                "eval_reward": eval_res["candidate_mean_reward"],
-                "accuracy_improvement": eval_res.get("improvement", 0.0),
-                "snr_db": eval_res["snr_db"],
-                "quality_loss": eval_res["quality_loss"],
-                "promotable": eval_res["promotable"],
-            },
-            "parameters": parameters or {"lora_rank": 16, "lora_alpha": 32},
+            "mlflow_run_id": mlflow_run_id,
+            "model_artifact_uri": sft_res.adapter_weights_path,
+            "adapter_dir": sft_res.adapter_dir,
+            "adapter_config_path": sft_res.adapter_config_path,
+            "artifact_sha256": sft_res.artifact_sha256,
+            "metrics": metrics_payload,
+            "parameters": resolved_params,
+            "peft_config": sft_res.peft_config,
             "dataset_statistics": dataset_stats,
         }
 
@@ -137,4 +220,3 @@ class ContinuousTrainingPipeline:
             "callback_webhook": "http://atc.hath0r.internal:8000/api/v1/webhooks/airflow",
             "created_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         }
-
