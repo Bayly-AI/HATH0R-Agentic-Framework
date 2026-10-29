@@ -1,7 +1,7 @@
 # AGENTS.md — HATH0R Agentic Framework
 
 > Role: **OpenSource HATHOR framework + docs corpus** · member of **OpenSource Project** (`hath0r-opensource`)  
-> Updated: 2026-09-30
+> Updated: 2026-10-29
 
 ## Group membership (CRITICAL)
 
@@ -10,19 +10,21 @@
 | Group | `hath0r-opensource` |
 | Project | **OpenSource Project** |
 | Group root | `/Users/raybayly/Development/OpenSource` |
-| **Control tower** | `/Users/raybayly/Development/OpenSource/HATH0R-CLI` (`Bayly-AI/HATH0R-CLI`) |
+| **Control tower** | `/Users/raybayly/Development/OpenSource/hathor-cli` (`Bayly-AI/HATH0R-CLI`) |
 | This product | `HATH0R-Agentic-Framework` |
 | GitHub | `Bayly-AI/HATH0R-Agentic-Framework` |
-| Local path | `/Users/raybayly/Development/OpenSource/hath0r` |
+| Local path | `/Users/raybayly/Development/OpenSource/hath0r-framework` |
 | Canonical KB | `/Users/raybayly/Development/OpenSource/.hath0r/knowledgebase` |
 | Operator CLI | `hath0r` |
 | Docs | `docs/` (canonical OpenSource documentation corpus) |
 
 ### Canonical siblings (all under OpenSource are project members)
 
-- **Control tower / CLI**: `/Users/raybayly/Development/OpenSource/HATH0R-CLI` → `Bayly-AI/HATH0R-CLI`
-- Framework: `/Users/raybayly/Development/OpenSource/hath0r` → `Bayly-AI/HATH0R-Agentic-Framework`
-- POC: `/Users/raybayly/Development/OpenSource/hath0r-poc` → `Bayly-AI/HATH0R-Agentic-POC`
+- **Control tower / CLI**: `/Users/raybayly/Development/OpenSource/hathor-cli` → `Bayly-AI/HATH0R-CLI`
+- **Infra Control Tower / ATC**: `/Users/raybayly/Development/OpenSource/hath0r-atc` → `Bayly-AI/HATH0R-ATC`
+- **Framework**: `/Users/raybayly/Development/OpenSource/hath0r-framework` → `Bayly-AI/HATH0R-Agentic-Framework`
+- **MCP**: `/Users/raybayly/Development/OpenSource/hath0r-mcp` → `Bayly-AI/HATH0R-MCP`
+- **POC**: `/Users/raybayly/Development/OpenSource/hath0r-poc` → `Bayly-AI/HATH0R-Agentic-POC`
 
 Group rules: `/Users/raybayly/Development/OpenSource/AGENTS.md`  
 Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
@@ -37,6 +39,20 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
    - Feature packages must include CLI commands, managing bots, workflows, and the documentation hexad (Strategy, Procedure, Playbook, Runbook, Workflow, Bot Spec).
    - This repo contains declarative configuration files (`cfg/`, `otel.json`, factory YAMLs) that bind to CLI tools.
 5. **Detail**: `docs/governance/rules/cr-cli-entry-001.md` · `docs/governance/cli-first-rules.md` · tower canonical: https://github.com/Bayly-AI/HATH0R-CLI/blob/development/docs/governance/cli-first-rules.md
+
+## CR-CLAUDE-SYNC-001: Mandatory `CLAUDE.md` ↔ `AGENTS.md` 1:1 Synchronization (CRITICAL — org-wide)
+
+1. **Exact 1:1 Mirror**: `CLAUDE.md` at the repository root MUST remain an exact byte-for-byte mirror of `AGENTS.md` so all agentic runtimes enforce identical non-conflicting rules.
+2. **Automated Sync & Verification**: Run `hath0r agentgraph sync` and `hath0r memory hash --sync` whenever `AGENTS.md` is updated, and verify with `hath0r agentgraph validate` and `hath0r skills audit`.
+
+## CR-AGENTIC-SEC-001: Agentic Security, Supply-Chain & Governance Controls (CRITICAL — org-wide)
+
+1. **BITE Supply-Chain & Skill Integrity (`hath0r skills audit` / `hath0r mcp audit`)**: Audit all `.agents/skills/**/SKILL.md`, `CLAUDE.md`, `AGENTS.md`, `WARP.md`, and MCP tool schemas for prompt injection, hidden Unicode tag characters, reverse shells, and credential exfiltration, and pin SHA-256 digests in `.hath0r/security/mcp-schema-pins.json`.
+2. **L2 Output Sanitizer & Canary Honeytokens (`src/hath0r_engine/security/l2_output_sanitizer.py`)**: Enforce output-side taint and canary honeytoken verification (`L2OutputSanitizer`) on RAG/MCP tool results before LLM context injection.
+3. **Cryptographic Hash-Chained Token & Tool Ledger (`hath0r finops tokens verify-ledger`)**: Every tool/completion event is recorded in `.hath0r/state/finops/token_ledger.jsonl` with a tamper-evident SHA-256 hash chain (`prev_hash` → `entry_hash`).
+4. **Dynamic Purpose-Based Access Control (PBAC) & Confused-Deputy Prevention (`src/hath0r_engine/security/pbac_engine.py`)**: Enforce clearance, sensitivity classification, and stated mission purpose (`PBACPolicyEngine`) across knowledge retrieval and MCP tools.
+5. **Two-Stage AST + Adversarial Reachability (`hath0r security openant`) & Red-Team Probing (`hath0r kb redteam`)**: Verify exploitability of findings via `OpenAntReachabilityVerifier` (`src/hath0r_engine/security/openant_verifier.py`) and run automated multi-persona RBAC boundary probing.
+6. **Fail-Closed `THREATMODEL.md` Gate (`hath0r threatmodel validate`) & Slopsquatting Guard**: Maintain a valid `THREATMODEL.md` in every repository and verify dependency/rule drift (`DependencyGuardBot`) during preflight.
 
 ## CR-AGENTGRAPH-001 / CR-RAG-RETRIEVAL-001: Mandatory AgentGraph Querying & Zero-Prompt-Tax Doctrine (CRITICAL — org-wide)
 
@@ -57,21 +73,21 @@ Group policy: `/Users/raybayly/Development/OpenSource/WARP.md`
 2. **True Micro Memory Session Read & Write on Every Session**: Every session MUST read and write a compact (<2KB) micro memory session (`hath0r memory session start|read` at session/task start, `hath0r memory session write` during execution, and `hath0r memory session end` at completion), linking sessions via `PRECEDES` edges in `.hath0r/memory/graph.json`.
 3. **Cryptographic SHA-256 File Hashing & CAS Conflict Prevention (`hath0r memory hash`)**: Every file in `.hath0r/memory/` and every repository `source_files` path referenced on a `MemoryNode` MUST be tracked with canonical `SHA-256` digests and monotonic `revision` counters in `.hath0r/memory/hashes.json`. Concurrent writes use optimistic Compare-And-Swap (`expected_hash` / `base_hash`) with deterministic set-union auto-merging for non-conflicting additions and atomic file replacement (`os.replace`), rejecting true same-ID/explicit hash conflicts (`HASH_CONFLICT`).
 4. **Mandatory Pre-Announcement Compounding**: Every task, bugfix, feature, refactor, or clean-repo cycle MUST compound structured knowledge (`episode`, `decision`, `fact`, `insight`, `concept`, or `rule`) and relational edges (`DERIVES_FROM`, `RESOLVES`, `RELATES_TO`, `SUPERSEDES`, `ENFORCES`, `PRECEDES`) into `.hath0r/memory/graph.json` **prior to announcing task completion** (`hath0r memory compound` + `hath0r memory verify`).
-5. **Hard Gate & Immediate AgentGraph Sync**: `TaskAnnouncerBot.announce_complete`, `EndOfTaskBot`, and `CleanReposWorkflowBot` enforce `MemoryManagerBot.verify_compounded()` (requiring `read_count >= 1`, `write_count >= 1`, `compounded_nodes_count >= 1`, `hashes_verified: True`, and `graphs_not_ignored: True`) before announcing complete, and automatically sync `.hath0r/agentgraph/snapshot.json` on every memory mutation.
+5. **Hard Gate & Immediate AgentGraph Sync**: `TaskAnnouncerBot.announce_complete`, `EndOfTaskBot`, and `CleanReposWorkflowBot` enforce `MemoryManagerBot.verify_compounded()` (requiring `read_count >= 1`, `write_count >= 1`, `compounded_nodes_count >= 1`, `hashes_verified: True`, and `graphs_not_ignored: True`) before announcing complete, and automatically sync `.hath0r/agentgraph/snapshot.json` and `CLAUDE.md` on every memory mutation.
 6. **Detail**: `docs/governance/rules/cr-memory-compound-001.md` · `docs/governance/strategies/memorygraph-compounding-strategy.md`.
 
 ## CR-CICCCDCT-001 / CR-CICCCD-001: Continuous Integration, Calibration, Deployment & Continuous Training (CIC³DCT / CIC{qubed}DCT) Methodology (CRITICAL — org-wide)
 
 1. **Continuous Integration (CI)**: All PRs must pass schema contract validation (`hath0r contracts validate`), AgentGraph policy checks (`hath0r agentgraph validate`), AST syntax guardrails, and automated unit tests.
-2. **Continuous Calibration (CC)**: Calibration state freshness limit is $\le 24.0\text{ hours}$. AgentGraph runtime substrate uses `CICCCDCTTelemetryHook` (`src/hath0r_engine/telemetry/cicccd_telemetry.py`) to record span metrics and track parameter drift. Trigger on-demand calibration via `hath0r cicccdct calibrate` or `hath0r cicccd calibrate`.
+2. **Continuous Calibration (CC)**: Calibration state freshness limit is $\le 24.0\text{ hours}$. AgentGraph runtime substrate uses `CICCCDCTTelemetryHook` (`src/hath0r_engine/telemetry/cicccd_telemetry.py`) to record span metrics and track parameter drift. Trigger on-demand calibration via `hath0r cicccdct calibrate` or `hath0r cccd calibrate`.
 3. **Continuous Deployment (CD)**: Maintain automated promotion validation through canonical environments (`development` -> `testing` -> `staging` -> `master`), complete Artifact Hexad documentation, and background auto-tune monitoring via `hath0r cicccdct auto-tune`.
-4. **Continuous Training (CT)**: Model training freshness SLA is $\le 168.0\text{ hours}$ (7 days). Retraining is automatically triggered when accuracy drift $\Delta_{\text{acc}} > 0.05$ or token tax drift $\Delta_{\text{tok}} > 0.15$. Candidate models must beat production baseline on the golden benchmark suite ($R_{\text{candidate}} \ge R_{\text{production}} + 0.02$) and be registered in MLflow Model Registry before promotion to production. Trigger on-demand training via `hath0r cicccdct train run`.
+4. **Continuous Training (CT — SFT / LoRA / PEFT)**: Model training freshness SLA is $\le 168.0\text{ hours}$ (7 days). Retraining is automatically triggered when accuracy drift $\Delta_{\text{acc}} > 0.05$ or token tax drift $\Delta_{\text{tok}} > 0.15$. Candidate models must beat production baseline on the golden benchmark suite ($R_{\text{candidate}} \ge R_{\text{production}} + 0.02$) and be registered in MLflow Model Registry before promotion to production. Trigger on-demand SFT/LoRA/PEFT training via `hath0r cccd train` (`SFTLoRATrainer`).
 5. **Detail**: Mathematical $CIC^3DCT$ ($CIC^{\text{qubed}}DCT$) doctrine: `docs/governance/strategies/cicccdct-strategy.md` · `hath0r cicccdct validate` / `hath0r cic3dct validate`.
 
 ## CR-SUBSTRATE-001: Mandatory Cognitive Substrate Technology Utilization (CRITICAL — org-wide)
 
 All agents executing tasks within Hath0r must utilize our unified cognitive modules (`src/hath0r_engine/`):
-- **Pre-Execution Safety**: Apply `GuardrailsManager` and `SyntaxGuardrail` (AST/SQL validation) with in-flight `SchemaRepairEngine` parameter coercion.
+- **Pre-Execution & Output Safety**: Apply `GuardrailsManager`, `SyntaxGuardrail` (AST/SQL validation), `L2OutputSanitizer`, `PBACPolicyEngine`, and `OpenAntReachabilityVerifier` with in-flight `SchemaRepairEngine` parameter coercion.
 - **AI Gateway & FinOps**: Route completion requests through `AIGatewayClient` and `TieredRouter` (`LIGHT`, `STANDARD`, `REASONING`) with `SemanticCache` memoization.
 - **Durable Orchestration**: Execute multi-step flows via `DurableWorkflowEngine` and `EventJournal` to support replayability and `HumanHibernationGate` suspension.
 - **Declarative DSPy Pipelines**: Build structured reasoning with `Signature`, `ChainOfThought`, programmatic `Assert`, and `BootstrapFewShotCompiler`.
@@ -132,25 +148,25 @@ Do **not** use `.ai/`, `.customerSystem/`, or `.infraOS/`.
 
 ## Open issues tracking (group-wide)
 
-Use the verified multi-repo search (all three OpenSource products):
+Use the verified multi-repo search (all OpenSource products):
 
 ```text
-is:issue state:open repo:Bayly-AI/HATH0R-Agentic-Framework repo:Bayly-AI/HATH0R-Agentic-POC repo:Bayly-AI/HATH0R-CLI
+is:issue state:open repo:Bayly-AI/HATH0R-Agentic-Framework repo:Bayly-AI/HATH0R-Agentic-POC repo:Bayly-AI/HATH0R-CLI repo:Bayly-AI/HATH0R-MCP repo:Bayly-AI/HATH0R-ATC
 ```
 
 Canonical definition: group `AGENTS.md` (*Open issues tracking*). Also listed in `docs/README.md`.
 
 ## Branch & PR targets (CRITICAL — cr-branch-gov-001)
 
-1. **Issue first**: create a GitHub issue before any work branch. No issue → no branch.
+1. **Issue first**: create a GitHub issue before any work branch (`hath0r branch start <type> <issue> <slug>`). No issue → no branch.
 2. Branch from `development` only, using:
    `feature|bugfix|enhancement|research|fix|chore/<issue-number>-short-slug`
    Example: `chore/4-control-tower-cli`
 3. Validate branch: `hath0r branch validate <branch-name>`.
-4. Open the PR with **base = `development`** (feature work never targets testing/staging/master).
-5. **Owner (`@somesayray`) may merge any PR at any time** (admin bypass enabled; approvals not required).
-6. Merge into **`development` only** for feature work.
-7. Promote via `development → testing → staging → master` — do not skip stages.
+4. Open the PR with **base = `development`** (`hath0r pr create --semver <patch|minor|major>` — feature work never targets testing/staging/master).
+5. Work PRs → `development` (agent/bot review + CODEOWNERS; owner `@somesayray` has admin merge authority).
+6. Merge into **`development` only** for feature work (`hath0r pr merge <n>`).
+7. Promote via `development → testing → staging → master` (`hath0r promote to <stage> --gate`) — do not skip stages; **human gate** required before `staging` and `master`.
 8. **PR CI failures notify `@somesayray`** via `.github/workflows/notify-pr-failure.yml`.
 
 ### Canonical branches (locked)
@@ -160,7 +176,7 @@ Canonical definition: group `AGENTS.md` (*Open issues tracking*). Also listed in
 - Must not be deleted
 - Must not be used as feature/work branches
 - Must not be merged into each other except along the promotion path above
-- Branch protection: PR required (0 approvals), no code-owner gate, admin bypass on, no force-push, no deletions, `validate-promotion-path` required (non-strict; admin can bypass)
+- Branch protection: PR required, CODEOWNERS & `validate-promotion-path` required, no force-push, no deletions (owner `@somesayray` admin bypass enabled; human gate enforced on `staging`/`master`)
 
 Forbidden: feature PRs targeting `master`, `testing`, or `staging`; PRs without an issue number in the branch name; merging canonical branches sideways.
 
@@ -190,7 +206,7 @@ CI enforcement: `.github/workflows/enforce-promotion-path.yml`
 **Main entry statement:** Before initializing (or re-initializing) any repository with Hath0r, agents MUST:
 
 1. **Setup playbook** — Locate and follow the canonical Hath0r setup playbook:
-   - `/Users/raybayly/Development/OpenSource/hath0r/docs/developers/hathor-playbook-001-repo-init-setup-20260919.md`
+   - `/Users/raybayly/Development/OpenSource/hath0r-framework/docs/developers/hathor-playbook-001-repo-init-setup-20260919.md`
    - If the playbook is missing or incomplete, **create or update it first**, then proceed.
 2. **Same-technology runbook** — Locate a runbook for an **individual repo with the same technology stack** (e.g. React+Vite UXP, Python CLI):
    - Prefer a sibling/product `docs/runbook.md` (or `docs/*runbook*`) in that tech family.
@@ -227,12 +243,6 @@ Docs are published to the **proper group MCP** via control-tower:
 `hath0r docs share --pr <pr-number>` or `python3 scripts/publish-docs-to-mcp.py` (`cfg/mcp-doc-publish.json`).
 See HATH0R-CLI `docs/governance/mcp-doc-publish.md`.
 
-## Semantic Versioning (SemVer)
-
-- Canonical source of truth: `VERSION` in repo root.
-- PRs must declare version impact (`major`, `minor`, `patch`, or `none`).
-- See `docs/governance/semantic-versioning.md` and `docs/governance/playbooks/release-runbook.md`.
-
 ## Hyper Context Subsystem Pointers
 - **Engine Core Subsystem**: `src/hath0r_engine/AGENTS.md`
 - **Docs Subsystem**: `docs/AGENTS.md`
@@ -248,6 +258,7 @@ This repository is governed by the Hath0r AgentGraph substrate. Dynamic rule ret
 - Query status: `hath0r agentgraph status`
 - Query rules: `hath0r agentgraph query "<topic>"`
 - Route role: `hath0r agentgraph route --role <role>`
+- Sync rules & `CLAUDE.md`: `hath0r agentgraph sync`
 - Validate rules: `hath0r agentgraph validate`
 
 ---

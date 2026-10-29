@@ -1359,8 +1359,23 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:eval:release-v1-10-0> a hath0r:Plane ;
+    rdfs:label "Task Evaluation release-v1-10-0 (R=1.00, PASS)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#memory:eval:sft-lora-peft-evals> a hath0r:Plane ;
     rdfs:label "Task Evaluation sft-lora-peft-evals (R=1.00, PASS)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:eval:task-hath0r-framework> a hath0r:Plane ;
+    rdfs:label "Task Evaluation task-hath0r-framework (R=1.00, PASS)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:fact:openant-reachability-309> a hath0r:Plane ;
+    rdfs:label "OpenAnt Static Call-Graph Reachability & Constrained Attacker Persona (#309)" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
@@ -1561,12 +1576,22 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:session:sess-20261029-124639-9ab484> a hath0r:Plane ;
+    rdfs:label "Micro Session sess-20261029-124639-9ab484" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#role:reader> a hath0r:AgentRole ;
     rdfs:label "Read-Only Agent" ;
     hath0r:inPlane "rules" .
 
 <https://hath0r.dev/ontology/v1#rule:cr-agentgraph-001> a hath0r:Plane ;
     rdfs:label "Rule cr-agentgraph-001" ;
+    hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
+    hath0r:inPlane "rules" .
+
+<https://hath0r.dev/ontology/v1#rule:cr-agentic-sec-001> a hath0r:Plane ;
+    rdfs:label "Rule CR-AGENTIC-SEC-001" ;
     hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
     hath0r:inPlane "rules" .
 
@@ -1587,6 +1612,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#rule:cr-cicccdct-001> a hath0r:Plane ;
     rdfs:label "Rule CR-CICCCDCT-001" ;
+    hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
+    hath0r:inPlane "rules" .
+
+<https://hath0r.dev/ontology/v1#rule:cr-claude-sync-001> a hath0r:Plane ;
+    rdfs:label "Rule CR-CLAUDE-SYNC-001" ;
     hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
     hath0r:inPlane "rules" .
 
