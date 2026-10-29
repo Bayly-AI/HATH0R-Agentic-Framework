@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
-__version__ = "1.10.0"
+__version__ = "1.11.0"
 
 from hath0r_engine.analysis.ast_gnn import (
     ASTGNNEdge,
     ASTGNNNode,
     ASTGraphNeuralNetwork,
+    ConstrainedAttackerVerdict,
+    ConstrainedExploitTrace,
     PredictiveTestSelectionReport,
+    ReachabilityPruneReport,
     ast_gnn_engine,
 )
 from hath0r_engine.analysis.pmat_adapter import PmatAdapter, pmat_adapter
@@ -359,6 +362,9 @@ __all__ = [
     "ASTGNNNode",
     "ASTGNNEdge",
     "PredictiveTestSelectionReport",
+    "ReachabilityPruneReport",
+    "ConstrainedExploitTrace",
+    "ConstrainedAttackerVerdict",
     "ast_gnn_engine",
     "GainFederationRouter",
     "gain_federation_router",

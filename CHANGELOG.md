@@ -5,6 +5,14 @@ All notable changes to **HATH0R-Agentic-Framework** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] - 2026-10-29
+
+### Added
+- **OpenAnt Static Call-Graph Reachability Pruning & Constrained Attacker Persona (`hath0r_engine.analysis.ast_gnn`)** (#309):
+  - Added decorator and entrypoint inspection (`cli_command`, `mcp_tool`, `http_route`, `public_entrypoint`) to `ASTGNNNode` and `ASTGraphNeuralNetwork._extract_ast_nodes_from_file`.
+  - Added `ReachabilityPruneReport` and `ASTGraphNeuralNetwork.compute_external_reachability()` to prune non-reachable internal helper functions via forward BFS over `CALLS` edges (`arXiv:2606.19149`).
+  - Added `ConstrainedExploitTrace`, `ConstrainedAttackerVerdict`, and `ASTGraphNeuralNetwork.verify_constrained_exploit_trace()` enforcing non-sycophantic 4-tuple exploit traces `(external_input, entrypoint_symbol, data_flow_hop_chain, sink_operation)` and rejecting `local_cli_only` or sanitized paths.
+
 ## [1.10.0] - 2026-10-29
 
 ### Added

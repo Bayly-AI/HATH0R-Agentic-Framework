@@ -9,11 +9,10 @@ from __future__ import annotations
 
 import ast
 import math
-import os
 import random
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 
 def _sigmoid(x: float) -> float:
@@ -42,6 +41,8 @@ class ASTGNNNode:
     churn_score: float = 0.1
     is_modified: bool = False
     is_test: bool = False
+    is_entrypoint: bool = False
+    entrypoint_kind: Optional[str] = None
     in_degree: int = 0
     out_degree: int = 0
     risk_score: float = 0.0
@@ -55,6 +56,45 @@ class ASTGNNEdge:
     target: str
     edge_type: str  # CALLS | TESTS | IMPORTS | CONTAINS
     weight: float = 1.0
+
+
+@dataclass
+class ReachabilityPruneReport:
+    """OpenAnt-style static call-graph reachability pruning report (arXiv:2606.19149)."""
+
+    total_units: int
+    reachable_units_count: int
+    pruned_units_count: int
+    reduction_percentage: float
+    entrypoint_ids: List[str]
+    reachable_unit_ids: List[str]
+    pruned_unit_ids: List[str]
+    hop_distances: Dict[str, int]
+
+
+@dataclass
+class ConstrainedExploitTrace:
+    """Candidate 4-tuple exploit trace submitted for OpenAnt Stage 2 verification."""
+
+    finding_id: str
+    external_input: str
+    entrypoint_symbol: str
+    data_flow_hop_chain: List[str]
+    sink_operation: str
+    assumes_admin_or_local_shell: bool = False
+    has_unbypassable_sanitizer: bool = False
+
+
+@dataclass
+class ConstrainedAttackerVerdict:
+    """Non-sycophantic constrained attacker persona verification result."""
+
+    finding_id: str
+    status: str  # CONFIRMED_EXPLOITABLE | NOT_EXPLOITABLE_LOCAL_ONLY | REJECTED_UNREACHABLE | REJECTED_SANITIZED | REJECTED_INCOMPLETE_TRACE
+    exploitable: bool
+    reason: str
+    verified_entrypoint_id: Optional[str] = None
+    hop_count: int = 0
 
 
 @dataclass
@@ -142,6 +182,26 @@ class ASTGraphNeuralNetwork:
                 is_test_fn = is_test_file and stmt.name.startswith("test_")
                 # Estimate complexity from branches
                 branches = sum(1 for sub in ast.walk(stmt) if isinstance(sub, (ast.If, ast.For, ast.While, ast.ExceptHandler)))
+                # Detect external entrypoints (Click CLI, FastMCP tools, FastAPI routes, main)
+                entrypoint_kind: Optional[str] = None
+                for dec in stmt.decorator_list:
+                    dec_target = dec.func if isinstance(dec, ast.Call) else dec
+                    dec_name = ""
+                    if isinstance(dec_target, ast.Attribute):
+                        base = dec_target.value.id if isinstance(dec_target.value, ast.Name) else ""
+                        dec_name = f"{base}.{dec_target.attr}".strip(".")
+                    elif isinstance(dec_target, ast.Name):
+                        dec_name = dec_target.id
+                    lower_dec = dec_name.lower()
+                    if any(k in lower_dec for k in ("tool", "resource", "prompt")) and "mcp" in lower_dec:
+                        entrypoint_kind = "mcp_tool"
+                    elif any(lower_dec.endswith(k) for k in (".get", ".post", ".put", ".delete", ".patch", ".route", ".websocket")):
+                        entrypoint_kind = "http_route"
+                    elif any(k in lower_dec for k in ("command", "group")):
+                        entrypoint_kind = "cli_command"
+                if entrypoint_kind is None and stmt.name in ("main", "cli", "app_main", "handle_request", "dispatch_tool"):
+                    entrypoint_kind = "public_entrypoint"
+
                 fn_node = ASTGNNNode(
                     id=fn_id,
                     name=stmt.name,
@@ -149,15 +209,21 @@ class ASTGraphNeuralNetwork:
                     node_type="test" if is_test_fn else "function",
                     complexity=float(1 + branches),
                     is_test=is_test_fn,
+                    is_entrypoint=entrypoint_kind is not None,
+                    entrypoint_kind=entrypoint_kind,
                 )
                 nodes.append(fn_node)
                 edges.append(ASTGNNEdge(source=file_node_id, target=fn_id, edge_type="CONTAINS", weight=0.5))
 
                 # Extract calls inside function
                 for sub in ast.walk(stmt):
-                    if isinstance(sub, ast.Call) and isinstance(sub.func, ast.Name):
-                        called_target = sub.func.id
-                        edges.append(ASTGNNEdge(source=fn_id, target=called_target, edge_type="CALLS", weight=1.0))
+                    if isinstance(sub, ast.Call):
+                        if isinstance(sub.func, ast.Name):
+                            called_target = sub.func.id
+                            edges.append(ASTGNNEdge(source=fn_id, target=called_target, edge_type="CALLS", weight=1.0))
+                        elif isinstance(sub.func, ast.Attribute):
+                            called_target = sub.func.attr
+                            edges.append(ASTGNNEdge(source=fn_id, target=called_target, edge_type="CALLS", weight=1.0))
 
             elif isinstance(stmt, ast.ClassDef):
                 cls_id = f"{rel_path}::{stmt.name}"
@@ -194,14 +260,29 @@ class ASTGraphNeuralNetwork:
                 all_nodes[n.id] = n
             all_edges.extend(file_edges)
 
-        # Resolve edge degrees
+        # Map symbol names to node IDs so bare CALLS edges resolve across files
+        name_to_ids: Dict[str, List[str]] = {}
+        for nid, node in all_nodes.items():
+            name_to_ids.setdefault(node.name, []).append(nid)
+
+        resolved_edges: List[ASTGNNEdge] = []
         for e in all_edges:
+            if e.edge_type == "CALLS" and e.target not in all_nodes and e.target in name_to_ids:
+                for target_id in name_to_ids[e.target]:
+                    resolved_edges.append(
+                        ASTGNNEdge(source=e.source, target=target_id, edge_type=e.edge_type, weight=e.weight)
+                    )
+            else:
+                resolved_edges.append(e)
+
+        # Resolve edge degrees
+        for e in resolved_edges:
             if e.source in all_nodes:
                 all_nodes[e.source].out_degree += 1
             if e.target in all_nodes:
                 all_nodes[e.target].in_degree += 1
 
-        return all_nodes, all_edges
+        return all_nodes, resolved_edges
 
     def _node_to_feature_vector(self, node: ASTGNNNode) -> List[float]:
         """Convert AST node into 8-dimensional initial feature vector."""
@@ -307,7 +388,7 @@ class ASTGraphNeuralNetwork:
         import time
 
         t0 = time.time()
-        risk_scores = self.forward(nodes, edges)
+        self.forward(nodes, edges)
         latency_ms = round((time.time() - t0) * 1000.0, 2)
 
         test_nodes = [n for n in nodes.values() if n.is_test]
@@ -367,6 +448,149 @@ class ASTGraphNeuralNetwork:
             low_risk_tests=low_risk,
             hotspot_symbols=hotspots,
             gnn_inference_latency_ms=latency_ms,
+        )
+
+    def compute_external_reachability(
+        self,
+        nodes: Dict[str, ASTGNNNode],
+        edges: List[ASTGNNEdge],
+        entrypoints: Optional[List[str]] = None,
+    ) -> ReachabilityPruneReport:
+        """OpenAnt Stage 0: Prune non-reachable internal units via forward BFS from external entrypoints."""
+        from collections import deque
+
+        candidate_units = {
+            nid: n for nid, n in nodes.items() if not n.is_test and n.node_type in ("function", "class")
+        }
+        if entrypoints is not None:
+            seed_ids = [
+                nid
+                for nid, n in candidate_units.items()
+                if nid in entrypoints or n.name in entrypoints
+            ]
+        else:
+            seed_ids = [nid for nid, n in candidate_units.items() if n.is_entrypoint]
+
+        # Build forward call adjacency map
+        forward_adj: Dict[str, List[str]] = {nid: [] for nid in nodes}
+        name_to_ids: Dict[str, List[str]] = {}
+        for nid, node in nodes.items():
+            name_to_ids.setdefault(node.name, []).append(nid)
+
+        for e in edges:
+            if e.edge_type == "CALLS" and e.source in forward_adj:
+                if e.target in nodes:
+                    forward_adj[e.source].append(e.target)
+                elif e.target in name_to_ids:
+                    forward_adj[e.source].extend(name_to_ids[e.target])
+
+        hop_distances: Dict[str, int] = {}
+        queue: deque[Tuple[str, int]] = deque()
+        for sid in seed_ids:
+            hop_distances[sid] = 0
+            queue.append((sid, 0))
+
+        while queue:
+            curr_id, dist = queue.popleft()
+            for nxt_id in forward_adj.get(curr_id, []):
+                if nxt_id in candidate_units and nxt_id not in hop_distances:
+                    hop_distances[nxt_id] = dist + 1
+                    queue.append((nxt_id, dist + 1))
+
+        reachable_ids = sorted(hop_distances.keys())
+        pruned_ids = sorted(nid for nid in candidate_units if nid not in hop_distances)
+        total_units = len(candidate_units)
+        reachable_count = len(reachable_ids)
+        pruned_count = len(pruned_ids)
+        reduction_pct = (
+            round((pruned_count / total_units) * 100.0, 2) if total_units > 0 else 0.0
+        )
+
+        return ReachabilityPruneReport(
+            total_units=total_units,
+            reachable_units_count=reachable_count,
+            pruned_units_count=pruned_count,
+            reduction_percentage=reduction_pct,
+            entrypoint_ids=sorted(seed_ids),
+            reachable_unit_ids=reachable_ids,
+            pruned_unit_ids=pruned_ids,
+            hop_distances=hop_distances,
+        )
+
+    def verify_constrained_exploit_trace(
+        self,
+        trace: ConstrainedExploitTrace,
+        nodes: Dict[str, ASTGNNNode],
+        edges: List[ASTGNNEdge],
+        entrypoints: Optional[List[str]] = None,
+    ) -> ConstrainedAttackerVerdict:
+        """OpenAnt Stage 2: Constrained attacker persona verification rejecting sycophantic/local-only findings."""
+        if trace.assumes_admin_or_local_shell:
+            return ConstrainedAttackerVerdict(
+                finding_id=trace.finding_id,
+                status="NOT_EXPLOITABLE_LOCAL_ONLY",
+                exploitable=False,
+                reason="Candidate vulnerability requires pre-existing admin/local shell access outside external threat model.",
+            )
+
+        if trace.has_unbypassable_sanitizer:
+            return ConstrainedAttackerVerdict(
+                finding_id=trace.finding_id,
+                status="REJECTED_SANITIZED",
+                exploitable=False,
+                reason="Data-flow hop chain traverses an unbypassable type/regex sanitizer prior to sink operation.",
+            )
+
+        if (
+            not trace.external_input.strip()
+            or not trace.entrypoint_symbol.strip()
+            or not trace.data_flow_hop_chain
+            or not trace.sink_operation.strip()
+        ):
+            return ConstrainedAttackerVerdict(
+                finding_id=trace.finding_id,
+                status="REJECTED_INCOMPLETE_TRACE",
+                exploitable=False,
+                reason="Missing required 4-tuple exploit trace element (external_input, entrypoint_symbol, data_flow_hop_chain, sink_operation).",
+            )
+
+        reachability = self.compute_external_reachability(nodes, edges, entrypoints=entrypoints)
+        reachable_names = {nodes[nid].name: nid for nid in reachability.reachable_unit_ids if nid in nodes}
+        entrypoint_match = None
+        if trace.entrypoint_symbol in reachability.entrypoint_ids:
+            entrypoint_match = trace.entrypoint_symbol
+        else:
+            for eid in reachability.entrypoint_ids:
+                if nodes[eid].name == trace.entrypoint_symbol:
+                    entrypoint_match = eid
+                    break
+
+        if entrypoint_match is None:
+            return ConstrainedAttackerVerdict(
+                finding_id=trace.finding_id,
+                status="REJECTED_UNREACHABLE",
+                exploitable=False,
+                reason=f"Entrypoint '{trace.entrypoint_symbol}' is not an externally reachable entrypoint in the AST call graph.",
+            )
+
+        # Verify hop chain symbols are reachable
+        for hop in trace.data_flow_hop_chain:
+            if hop not in reachability.reachable_unit_ids and hop not in reachable_names:
+                return ConstrainedAttackerVerdict(
+                    finding_id=trace.finding_id,
+                    status="REJECTED_UNREACHABLE",
+                    exploitable=False,
+                    reason=f"Intermediate hop '{hop}' is pruned/unreachable from entrypoint '{entrypoint_match}'.",
+                    verified_entrypoint_id=entrypoint_match,
+                )
+
+        return ConstrainedAttackerVerdict(
+            finding_id=trace.finding_id,
+            status="CONFIRMED_EXPLOITABLE",
+            exploitable=True,
+            reason=f"Verified external data-flow trace from '{entrypoint_match}' across {len(trace.data_flow_hop_chain)} hop(s) to sink '{trace.sink_operation}'.",
+            verified_entrypoint_id=entrypoint_match,
+            hop_count=len(trace.data_flow_hop_chain),
         )
 
 

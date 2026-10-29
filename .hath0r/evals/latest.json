@@ -1,13 +1,13 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261029-115634-0c3c9a",
-  "task_id": "release-v1-10-0",
+  "eval_id": "eval-20261029-124643-9679e0",
+  "task_id": "task-hath0r-framework",
   "issue_number": null,
   "repo_name": "hath0r-framework",
   "branch": "development",
-  "evaluated_at": "2026-10-29T11:56:34.064284+00:00",
-  "duration_ms": 262.43,
+  "evaluated_at": "2026-10-29T12:46:43.046710+00:00",
+  "duration_ms": 316.62,
   "passed_gate": true,
   "r_task": 1.0,
   "min_reward_threshold": 0.8,
@@ -32,7 +32,7 @@
       "checks": {
         "version_valid": {
           "passed": true,
-          "version": "1.10.0",
+          "version": "1.11.0",
           "error": null
         },
         "agentgraph_valid": {
@@ -42,7 +42,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 45,
+          "compounded_nodes_count": 46,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -63,14 +63,14 @@
       "max_tokens": 50000,
       "estimated_usd": 0.0,
       "max_usd": 0.25,
-      "session_id": "sess-20261029-113359-dc0a52",
-      "session_reads": 9,
-      "session_writes": 13,
-      "session_bytes": 1825,
+      "session_id": "sess-20261029-124639-9ab484",
+      "session_reads": 1,
+      "session_writes": 3,
+      "session_bytes": 1816,
       "within_capsule_budget": true,
-      "latency_ms": 103.55,
+      "latency_ms": 102.91,
       "taguchi_quality_loss": 0.0001,
-      "snr_db": 25.72
+      "snr_db": 25.77
     },
     "adversarial": {
       "score": 1.0,
@@ -85,18 +85,48 @@
     "goal_alignment": {
       "score": 1.0,
       "passed": true,
-      "task_id": "release-v1-10-0",
+      "task_id": "task-hath0r-framework",
       "issue_number": null,
-      "active_focus": "Orienting repository hath0r-framework",
-      "compounded_nodes_count": 45,
+      "active_focus": "Implement OpenAnt static call-graph reachability and constrained attacker persona (#309)",
+      "compounded_nodes_count": 46,
       "consensus_score": 1.0
+    }
+  },
+  "evidence_trust_report": {
+    "schema": "hath0r.security.evidence_trust_report/1",
+    "tiers": {
+      "VERIFIED_EXECUTION": [
+        ".hath0r/evals/latest.json"
+      ],
+      "STATIC_AST_ANALYSIS": [
+        "src/hath0r_engine/__init__.py",
+        "src/hath0r_engine/analysis/__init__.py",
+        "src/hath0r_engine/analysis/ast_gnn.py",
+        "tests/test_ast_gnn_reachability.py",
+        ".hath0r/agentgraph/snapshot.json",
+        ".hath0r/memory/graph.json",
+        ".hath0r/memory/hashes.json",
+        ".hath0r/memory/sessions/current.json",
+        ".hath0r/memory/sessions/latest.json",
+        "CHANGELOG.md",
+        "pyproject.toml",
+        ".hath0r/memory/sessions/sess-20261029-124639-9ab484.json"
+      ],
+      "UNVERIFIED_FILE_PRESENCE": [
+        "VERSION"
+      ]
+    },
+    "counts": {
+      "VERIFIED_EXECUTION": 1,
+      "STATIC_AST_ANALYSIS": 12,
+      "UNVERIFIED_FILE_PRESENCE": 1
     }
   },
   "blocking_reasons": [],
   "observability_sync": {
     "mode": "live_synced",
     "phoenix_logged": true,
-    "mlflow_run_id": "fdbb242912f1472890bcee1afa16ae13"
+    "mlflow_run_id": "4a9768f84d1241f2b95d9e9eaf9b771f"
   },
-  "content_hash": "sha256:0e6e6cca8efa7870251e9c22c2aba8bc25ecb362c6bd82f669dd7fd26c4322a1"
+  "content_hash": "sha256:e4e63694fe39602a7e379c6e208ee5695c7f826641d1104564816f3bcee6d064"
 }

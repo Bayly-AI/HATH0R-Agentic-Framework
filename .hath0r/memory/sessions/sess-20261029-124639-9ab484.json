@@ -1,0 +1,51 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261029-124639-9ab484",
+  "prior_session_id": "sess-20261029-113359-dc0a52",
+  "parent_session_id": "sess-20261029-113359-dc0a52",
+  "revision": 4,
+  "content_hash": "sha256:e2f3966f7d16f1f7afc32769f2e504e36da29f87a6e0a80c82004199be11dd70",
+  "base_graph_hash": "sha256:d7f91b9e0587b34feef7c1d9a81b8153ee5c6d8702ebfb4675ee9e7d2c6f2256",
+  "task_id": "309",
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "active",
+  "started_at": "2026-10-29T12:46:39.656592+00:00",
+  "updated_at": "2026-10-29T12:46:43.872198+00:00",
+  "ended_at": null,
+  "read_count": 1,
+  "write_count": 4,
+  "last_read_at": "2026-10-29T12:46:39.656592+00:00",
+  "last_write_at": "2026-10-29T12:46:43.872198+00:00",
+  "active_focus": "Implement OpenAnt static call-graph reachability and constrained attacker persona (#309)",
+  "prior_summary": "ted session focus: Implement OpenAnt; Added ReachabilityPruneReport, Constrain; Compounded fact:openant-reachability-309",
+  "recalled_nodes": [
+    {
+      "id": "episode:issue-287-memorygraph-compounding",
+      "type": "episode",
+      "label": "Enforce CR-MEMORY-COMPOUND-001 & Suite-Wide .hath0r/memory",
+      "snippet": "Provisioned .hath0r/memory/graph.json across all 31 active repositories in ~/Development, "
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-29T12:46:43.872198+00:00",
+      "kind": "compound",
+      "summary": "Compounded eval:task-hath0r-framework: Task Evaluation task-hath0r-framework (R=1.00, PASS)",
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "task-hath0r-framework",
+        "passed",
+        "compounded"
+      ],
+      "node_id": "eval:task-hath0r-framework"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "fact:openant-reachability-309",
+    "eval:task-hath0r-framework"
+  ],
+  "capsule_bytes": 1899
+}
