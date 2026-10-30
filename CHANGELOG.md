@@ -5,6 +5,11 @@ All notable changes to **HATH0R-Agentic-Framework** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.2] - 2026-10-30
+
+### Fixed
+- **`CICCCDTelemetryHook` crashed on import from a read-only working directory**: the module-level `agent_metrics_bot` singleton created `.hath0r/` under `Path.cwd()` at construction, so `hath0r mcp serve` launched by Claude (cwd `/`) died with `OSError: [Errno 30] Read-only file system: '/.hath0r'`. The state directory is now created lazily in `_save_state`, matching `TokenTelemetryLedger`.
+
 ## [1.11.1] - 2026-10-29
 
 ### Changed
