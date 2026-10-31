@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 from pathlib import Path
-import pytest
 
-from hath0r_engine.telemetry.otel_tracer import AgentObservabilityBot
 from hath0r_engine.telemetry.observation_charts import ObservationChartsEngine
+from hath0r_engine.telemetry.otel_tracer import AgentObservabilityBot
 from hath0r_engine.telemetry.token_telemetry import TokenTelemetryRecord
 
 

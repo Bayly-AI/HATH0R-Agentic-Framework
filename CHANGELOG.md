@@ -5,6 +5,16 @@ All notable changes to **HATH0R-Agentic-Framework** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.12.0] - 2026-10-31
+
+### Added
+- **Workflow-First & Service-Bot Contracts (`CR-FEATURE-WORKFLOW-STANDARD-001`), Level 1/2 `AgentGraph` Routing, 4-Hour `CalibrationGateStage`, `SuperSqueezeStage`, and `IterationCascadeContract` (`hath0r_engine.pipeline.stages`)** (#313):
+  - Added `ServiceBotContract`, `WorkflowFirstContract`, `MissingWorkflowOffer`, and `WorkflowFirstGateStage` enforcing that every engine feature/stage is a Service run by `>= 1` Bot in `BotRegistry` and binds to a declarative workflow on `AgentGraph` (or generates a `MissingWorkflowOffer` using the input prompt as its acceptance test).
+  - Added `CalibrationGateStage` enforcing a 4-hour automated pre-task agent calibration check (`max_age_hours = 4.0`) against `.hath0r/cccd_state.json` and logging to `Hathor-MLFLOW`.
+  - Added `SuperSqueezeStage` compressing RAG/CAG/MCP context before LLM invocation and emitting OpenInference `RETRIEVER` span metadata to `Hath0r-phoenix` (`http://localhost:38000/phoenix`).
+  - Added `TwoLevelAgentGraphRouter` and `IterationCascadeContract` enforcing `Stage 1: Task -> Stage 2: Hath0r-CLI (Level 2) ⇄ Hath0r-MCP (Level 1) on AgentGraph + SuperSqueeze -> Stage 3: Computer -> Stage 4: Web`.
+  - Aligned `cfg/observability/otel.json` with `http://localhost:38000/phoenix`, `Hathor-MLFLOW` (`:35000`), and `Hath0r-Cruise-Control` (`:38090`).
+
 ## [1.11.1] - 2026-10-29
 
 ### Changed

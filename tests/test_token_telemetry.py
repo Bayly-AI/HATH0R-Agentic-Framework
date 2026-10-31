@@ -1,19 +1,17 @@
 """Comprehensive Tests for FinOps Token Telemetry and Histogram Analytics."""
 
-import json
 from pathlib import Path
 
 import pytest
 
 from hath0r_engine.gateway.base import (
-    ComplexityTier,
     CompletionRequest,
+    ComplexityTier,
     GatewayConfig,
     ModelProvider,
 )
 from hath0r_engine.gateway.client import AIGatewayClient
 from hath0r_engine.telemetry.token_telemetry import (
-    HistogramBin,
     TokenHistogramBot,
     TokenTelemetryBot,
     TokenTelemetryLedger,

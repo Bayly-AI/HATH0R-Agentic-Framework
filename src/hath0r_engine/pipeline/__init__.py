@@ -19,6 +19,16 @@ from hath0r_engine.pipeline.signature import (
     Prediction,
     Signature,
 )
+from hath0r_engine.pipeline.stages import (
+    CalibrationGateStage,
+    IterationCascadeContract,
+    MissingWorkflowOffer,
+    ServiceBotContract,
+    SuperSqueezeStage,
+    TwoLevelAgentGraphRouter,
+    WorkflowFirstContract,
+    WorkflowFirstGateStage,
+)
 from hath0r_engine.pipeline.teleprompter import BootstrapFewShotCompiler
 
 __all__ = [
@@ -36,4 +46,12 @@ __all__ = [
     "Predictor",
     "ChainOfThought",
     "BootstrapFewShotCompiler",
+    "ServiceBotContract",
+    "MissingWorkflowOffer",
+    "WorkflowFirstContract",
+    "WorkflowFirstGateStage",
+    "CalibrationGateStage",
+    "SuperSqueezeStage",
+    "TwoLevelAgentGraphRouter",
+    "IterationCascadeContract",
 ]

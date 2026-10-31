@@ -1,0 +1,47 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261031-121626-465fc8",
+  "prior_session_id": "sess-20261029-132709-9b90f1",
+  "repo_name": "hath0r-framework",
+  "status": "completed",
+  "started_at": "2026-10-31T12:16:26.605804+00:00",
+  "updated_at": "2026-10-31T14:27:14.954925+00:00",
+  "ended_at": "2026-10-31T12:19:38.813304+00:00",
+  "read_count": 6,
+  "write_count": 9,
+  "revision": 15,
+  "content_hash": "sha256:4554b99efc816a30a48ec14aa06a122e11e43d13a8852d096e3572c75806ede5",
+  "base_graph_hash": "sha256:ddf8eef45693b158c0bd5d58b6c2cec3c5f73fe4ffd6f5eb2e7db71c4377c457",
+  "last_read_at": "2026-10-31T12:20:48.329316+00:00",
+  "last_write_at": "2026-10-31T14:27:14.954925+00:00",
+  "active_focus": "Orienting repository hath0r-framework",
+  "prior_summary": "leted AgentGraph orientation for hat; Completed AgentGraph orientation for hat; Completed AgentGraph orientation for hat",
+  "recalled_nodes": [
+    {
+      "id": "episode:issue-313-engine-workflow-first-calibration-supersqueeze",
+      "type": "episode",
+      "label": "Issue #313: Engine Workflow-First, 4h Calibration, SuperSque",
+      "snippet": "Implemented ServiceBotContract, WorkflowFirstGateStage, CalibrationGateStage (4.0h), Super"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-31T14:27:14.954925+00:00",
+      "kind": "compound",
+      "summary": "Compounded knowledge:suite-arch-and-local-qgates-20261031: Suite MCP-Central Architecture & Local Quality Gates (CR-LOCAL-QGATES-001)",
+      "tags": [
+        "concept",
+        "compounded"
+      ],
+      "node_id": "knowledge:suite-arch-and-local-qgates-20261031"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:issue-313-engine-workflow-first-calibration-supersqueeze",
+    "eval:issue-313",
+    "knowledge:suite-arch-and-local-qgates-20261031"
+  ],
+  "parent_session_id": "sess-20261029-132709-9b90f1",
+  "capsule_bytes": 1934
+}

@@ -6,13 +6,13 @@ and dynamic LLM reasoning escalation based on code churn. Conforms to CR-CICCCD-
 
 from __future__ import annotations
 
+import ast
 import collections
 import datetime
 import json
 import logging
 import shutil
 import subprocess
-import ast
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 

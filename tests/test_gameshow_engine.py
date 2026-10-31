@@ -2,12 +2,10 @@
 
 import os
 import tempfile
-import pytest
 
 from hath0r_engine.calibration.cag_registry import CAGCalibrationRegistry
 from hath0r_engine.training.gameshow_judge import GameshowJudge
 from hath0r_engine.training.gameshow_models import (
-    CardAttempt,
     EvaluationCard,
     TournamentDeckState,
 )

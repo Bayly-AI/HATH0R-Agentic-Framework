@@ -1,55 +1,47 @@
 {
   "schema_version": "hath0r.micro_session/1",
-  "session_id": "sess-20261029-132709-9b90f1",
-  "prior_session_id": "sess-20261029-124639-9ab484",
-  "parent_session_id": "sess-20261029-124639-9ab484",
-  "revision": 14,
-  "content_hash": "sha256:07bef0e930a568db52e34161269af0f91e50231c037d47ed7f088acf61bafae8",
-  "base_graph_hash": "sha256:0ae1e30fd92222a5b0750a02e560985b114fc14b66e286f7c7dc48e4ae913d8e",
-  "task_id": "rule-sync-and-workflow-upgrade",
-  "role": null,
+  "session_id": "sess-20261031-121626-465fc8",
+  "prior_session_id": "sess-20261029-132709-9b90f1",
   "repo_name": "hath0r-framework",
   "status": "completed",
-  "started_at": "2026-10-29T13:27:09.564483+00:00",
-  "updated_at": "2026-10-29T14:32:03.306826+00:00",
-  "ended_at": "2026-10-29T14:17:11.630428+00:00",
-  "read_count": 4,
-  "write_count": 10,
-  "last_read_at": "2026-10-29T14:17:11.448382+00:00",
-  "last_write_at": "2026-10-29T14:32:03.306826+00:00",
-  "active_focus": "Provisioning CR-TASK-EVAL-001 for hath0r-framework",
-  "prior_summary": "ounded episode:clean-repo-hath0r-fra; Clean Repo Lifecycle completed for hath0; Compounded eval:clean-repo-hath0r-framew",
+  "started_at": "2026-10-31T12:16:26.605804+00:00",
+  "updated_at": "2026-10-31T14:27:14.954925+00:00",
+  "ended_at": "2026-10-31T12:19:38.813304+00:00",
+  "read_count": 6,
+  "write_count": 9,
+  "revision": 15,
+  "content_hash": "sha256:4554b99efc816a30a48ec14aa06a122e11e43d13a8852d096e3572c75806ede5",
+  "base_graph_hash": "sha256:ddf8eef45693b158c0bd5d58b6c2cec3c5f73fe4ffd6f5eb2e7db71c4377c457",
+  "last_read_at": "2026-10-31T12:20:48.329316+00:00",
+  "last_write_at": "2026-10-31T14:27:14.954925+00:00",
+  "active_focus": "Orienting repository hath0r-framework",
+  "prior_summary": "leted AgentGraph orientation for hat; Completed AgentGraph orientation for hat; Completed AgentGraph orientation for hat",
   "recalled_nodes": [
     {
-      "id": "insight:hath0r-framework",
-      "type": "insight",
-      "label": "Synthesized Insight on hath0r-framework",
-      "snippet": "Consolidated from 2 memory nodes tagged 'hath0r-framework'. Recurring themes: framework, h"
+      "id": "episode:issue-313-engine-workflow-first-calibration-supersqueeze",
+      "type": "episode",
+      "label": "Issue #313: Engine Workflow-First, 4h Calibration, SuperSque",
+      "snippet": "Implemented ServiceBotContract, WorkflowFirstGateStage, CalibrationGateStage (4.0h), Super"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-10-29T14:32:03.306826+00:00",
+      "timestamp": "2026-10-31T14:27:14.954925+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:release-v1-11-1: Task Evaluation release-v1.11.1 (R=1.00, PASS)",
+      "summary": "Compounded knowledge:suite-arch-and-local-qgates-20261031: Suite MCP-Central Architecture & Local Quality Gates (CR-LOCAL-QGATES-001)",
       "tags": [
-        "eval",
-        "cr-task-eval-001",
-        "release-v1-11-1",
-        "passed",
+        "concept",
         "compounded"
       ],
-      "node_id": "eval:release-v1-11-1"
+      "node_id": "knowledge:suite-arch-and-local-qgates-20261031"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "eval:task-hath0r-framework",
-    "rule:cr-task-eval-001",
-    "eval:eval-baseline-hath0r-framework",
-    "episode:clean-repo-hath0r-framework",
-    "eval:clean-repo-hath0r-framework",
-    "eval:release-v1-11-1"
+    "episode:issue-313-engine-workflow-first-calibration-supersqueeze",
+    "eval:issue-313",
+    "knowledge:suite-arch-and-local-qgates-20261031"
   ],
-  "capsule_bytes": 2009
+  "parent_session_id": "sess-20261029-132709-9b90f1",
+  "capsule_bytes": 1934
 }

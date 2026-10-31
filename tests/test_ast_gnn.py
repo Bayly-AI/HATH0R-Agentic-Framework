@@ -1,12 +1,12 @@
 """Unit tests for AST Graph Neural Network (GNN) and Predictive Test Selection."""
 
 from pathlib import Path
+
 from hath0r_engine.analysis.ast_gnn import (
     ASTGNNEdge,
     ASTGNNNode,
     ASTGraphNeuralNetwork,
     PredictiveTestSelectionReport,
-    ast_gnn_engine,
 )
 
 

@@ -8,17 +8,19 @@ and pluggable file/modality adapters.
 
 from __future__ import annotations
 
-import ast
 import datetime
 import json
 import math
 import re
 from collections import Counter, defaultdict
-from dataclasses import asdict, dataclass, field
-from enum import Enum
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 
+from .adapters import (
+    ASTCodeAdapter,
+    BaseGraphAdapter,
+    MarkdownDocAdapter,
+)
 from .models import (
     RULES_MD_FILENAME,
     AgentGraphEdge,
@@ -31,13 +33,6 @@ from .models import (
     RuleCycleError,
     RulePriority,
     SearchResult,
-)
-
-
-from .adapters import (
-    ASTCodeAdapter,
-    BaseGraphAdapter,
-    MarkdownDocAdapter,
 )
 
 __all__ = [

@@ -9,7 +9,7 @@ import time
 from collections import Counter
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Union
 
 from hath0r_engine.gateway.base import CompletionResponse
 
@@ -24,7 +24,7 @@ class CacheEmbeddingMode(str, Enum):
 
 class DenseBiEncoder:
     """Lightweight 384-dimensional dense bi-encoder for semantic prompt embeddings.
-    
+
     Operates with sub-millisecond latency on CPU/MPS, projecting semantic tokens
     and n-gram shingles into a normalized continuous vector space. Clustered semantic
     anchors ensure high cosine similarity for paraphrased prompts.
