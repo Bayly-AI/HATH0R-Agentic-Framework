@@ -1,467 +1,361 @@
 {
   "schema_version": "hath0r.memory_hashes/1",
   "repo_name": "hath0r-framework",
-  "revision": 435,
-  "updated_at": "2026-10-29T14:32:03.335542+00:00",
-  "files": {
-    ".hath0r/memory/architecture.md": {
+  "revision": 465,
+  "updated_at": "2026-10-31T12:20:48.427371+00:00",
+  "manifest_hash": "sha256:e3054fcd993e0fefa081f8e3f4f032e10281ec806a7f63128614b2ace2ca3ee5",
+  "memory_files": {
+    "architecture.md": {
       "sha256": "sha256:4f4b1ebf9b1c02fc834dda27bf4964ac35f7c5997ed08c195891c2ffc37595a4",
-      "content_hash": "sha256:4f4b1ebf9b1c02fc834dda27bf4964ac35f7c5997ed08c195891c2ffc37595a4",
-      "revision": 1,
-      "byte_size": 332,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "bytes": 332
     },
-    ".hath0r/memory/core_rules.md": {
+    "core_rules.md": {
       "sha256": "sha256:a38deda7ad37f4afd010ea32d39d64d3142df11dd47330531175b7a3286e9749",
-      "content_hash": "sha256:a38deda7ad37f4afd010ea32d39d64d3142df11dd47330531175b7a3286e9749",
-      "revision": 1,
-      "byte_size": 630,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "bytes": 630
     },
-    ".hath0r/memory/graph.json": {
-      "sha256": "sha256:959741f7a086d03d325fc3b6982d878a706c92f21e58c6e9afbcf52c1837be40",
-      "content_hash": "sha256:75120a11da3d215f80f8af4490fa2268861b9795273fb9b5dcab137c67a4eef5",
-      "revision": 335,
-      "byte_size": 123404,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+    "graph.json": {
+      "sha256": "sha256:9d0f8a699ac38d6d3cf57cf51a38066342611b9db01d3cb4512c47c0b2ed88a0",
+      "bytes": 129835,
+      "content_hash": "sha256:ed3c703438b59c7dfc60ee1e11c48c9da605fcfb95f186764699a9e539344590",
+      "revision": 359
     },
-    ".hath0r/memory/sessions/current.json": {
-      "sha256": "sha256:fa7b46c05a4ce75ab24b1915c9e742bf996b34cf60ccf8285679ba0f29e4cdb4",
-      "content_hash": "sha256:07bef0e930a568db52e34161269af0f91e50231c037d47ed7f088acf61bafae8",
-      "revision": 41,
-      "byte_size": 2009,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+    "sessions/current.json": {
+      "sha256": "sha256:05688f63494722dec85e5024328dff42684abeae89bbaed030e5eb7a5021e003",
+      "bytes": 1976,
+      "content_hash": "sha256:2b9dfb22fbc728b983d672a4671d8ab1655ef88a4a53a66bc935c217d8f0ded2",
+      "revision": 14
     },
-    ".hath0r/memory/sessions/latest.json": {
-      "sha256": "sha256:fa7b46c05a4ce75ab24b1915c9e742bf996b34cf60ccf8285679ba0f29e4cdb4",
-      "content_hash": "sha256:07bef0e930a568db52e34161269af0f91e50231c037d47ed7f088acf61bafae8",
-      "revision": 41,
-      "byte_size": 2009,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+    "sessions/latest.json": {
+      "sha256": "sha256:05688f63494722dec85e5024328dff42684abeae89bbaed030e5eb7a5021e003",
+      "bytes": 1976,
+      "content_hash": "sha256:2b9dfb22fbc728b983d672a4671d8ab1655ef88a4a53a66bc935c217d8f0ded2",
+      "revision": 14
     },
-    ".hath0r/memory/sessions/sess-20261016-123220-0c5ded.json": {
+    "sessions/sess-20261016-123220-0c5ded.json": {
       "sha256": "sha256:b6249c7d070d79e08167928cbbb501e1cf2e98dc4bd4908553d2fa0fe2605f0a",
-      "content_hash": "sha256:b6249c7d070d79e08167928cbbb501e1cf2e98dc4bd4908553d2fa0fe2605f0a",
-      "revision": 1,
-      "byte_size": 2015,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "bytes": 2015
     },
-    ".hath0r/memory/sessions/sess-20261016-123301-4eeed3.json": {
+    "sessions/sess-20261016-123301-4eeed3.json": {
       "sha256": "sha256:bd3d4ebeda7eecfc12b1b40d86dc56958c2a0d247546043db5c851bd0f5b0a1e",
-      "content_hash": "sha256:bd3d4ebeda7eecfc12b1b40d86dc56958c2a0d247546043db5c851bd0f5b0a1e",
-      "revision": 1,
-      "byte_size": 1984,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "bytes": 1984
     },
-    ".hath0r/memory/sessions/sess-20261016-140212-0e5df6.json": {
+    "sessions/sess-20261016-140212-0e5df6.json": {
       "sha256": "sha256:595edfd39655146bc2bbec0aff3443568daea1035fcff3717eecb61f16e8b086",
+      "bytes": 1870,
       "content_hash": "sha256:45659e2a48de150368d6cdaaf985723aac6adf3b5ff80e2ed64128b7d7c9863c",
-      "revision": 2,
-      "byte_size": 1870,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 2
     },
-    ".hath0r/memory/sessions/sess-20261016-142431-e261a7.json": {
+    "sessions/sess-20261016-142431-e261a7.json": {
       "sha256": "sha256:b2a8c293fd994f5ee6dc9fc44edaa848bf4c81681bcaf091da9749a8bfa47f69",
+      "bytes": 1834,
       "content_hash": "sha256:7a532a1cf5ccf141bc97457917bf29caffb87e3d97da976c90a1acfecbe40256",
-      "revision": 11,
-      "byte_size": 1834,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 11
     },
-    ".hath0r/memory/sessions/sess-20261016-150732-e076f6.json": {
+    "sessions/sess-20261016-150732-e076f6.json": {
       "sha256": "sha256:3491f31f13389f5101e64927bfffea902c79abf0c617624d622c0ea4af109aa5",
+      "bytes": 1792,
       "content_hash": "sha256:ecdb7f2b7e88cfb58d763a0156224b4e25dd9cebe09e513baf449dd56f0d7044",
-      "revision": 8,
-      "byte_size": 1792,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 8
     },
-    ".hath0r/memory/sessions/sess-20261016-154415-ac4723.json": {
+    "sessions/sess-20261016-154415-ac4723.json": {
       "sha256": "sha256:10dfcf7eba5ea09e1e70e783faee9f6c4e1e0e71950567b20c393533f9b210f4",
+      "bytes": 1727,
       "content_hash": "sha256:94786bca771c17fb4b16f05f1f6f625c0e41b5767e68856f800c0f5ad3438a51",
-      "revision": 5,
-      "byte_size": 1727,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 5
     },
-    ".hath0r/memory/sessions/sess-20261017-143629-12806b.json": {
+    "sessions/sess-20261017-143629-12806b.json": {
       "sha256": "sha256:0fc68f7345cbb45d154a30f362092c9e3152ea0edc011de946ff9621a158961d",
+      "bytes": 1830,
       "content_hash": "sha256:ca99f48b4b9e2fd8fc21acfb3bb85739ac6170ff6a99fcec0c5465555e925fa2",
-      "revision": 7,
-      "byte_size": 1830,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 7
     },
-    ".hath0r/memory/sessions/sess-20261019-133028-ced485.json": {
+    "sessions/sess-20261019-133028-ced485.json": {
       "sha256": "sha256:ee2a69e232c55cdbf0a98e7636fe17f262ab4870e787b361b43c2b0719129c5d",
+      "bytes": 1953,
       "content_hash": "sha256:1e18a958bc6cd4671cc297783d72779f2bb5232e138d0fcb133420ac18747302",
-      "revision": 3,
-      "byte_size": 1953,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 3
     },
-    ".hath0r/memory/sessions/sess-20261019-134349-422c73.json": {
+    "sessions/sess-20261019-134349-422c73.json": {
       "sha256": "sha256:d454d14d4f4e69f0b441b0bf3be91c0a4455f4ed37067e031c1c4ae46932e8ed",
+      "bytes": 1973,
       "content_hash": "sha256:435b95199bbfff367b4e8a831d88d90cee9549e992c1ef3581e6df21e9215be3",
-      "revision": 3,
-      "byte_size": 1973,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 3
     },
-    ".hath0r/memory/sessions/sess-20261019-135254-efd803.json": {
+    "sessions/sess-20261019-135254-efd803.json": {
       "sha256": "sha256:92eddd701fff4d5c3d929bb6e6cd29eb5fb08610440f9474efc3583be5b64909",
+      "bytes": 1827,
       "content_hash": "sha256:149c9a699c8e17dddd405820470a80f437ecb32b9cae23ff196887d80f7fe39c",
-      "revision": 9,
-      "byte_size": 1827,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 9
     },
-    ".hath0r/memory/sessions/sess-20261019-153438-5462a2.json": {
+    "sessions/sess-20261019-153438-5462a2.json": {
       "sha256": "sha256:48eb1e2f0f76cd790721e96e6fa9bb1ff1a644f8895f8c648703bffb959cfa58",
+      "bytes": 1900,
       "content_hash": "sha256:c6e23c88d938e6a5896fc8008e8e9866ffaea75a3ecb700065c6481d6dc15ff7",
-      "revision": 11,
-      "byte_size": 1900,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 11
     },
-    ".hath0r/memory/sessions/sess-20261025-103209-75ce1a.json": {
+    "sessions/sess-20261025-103209-75ce1a.json": {
       "sha256": "sha256:f4641843665466deb290b33dc1dce38b5e13ab0ade23381acaf02ac883db5c52",
+      "bytes": 1940,
       "content_hash": "sha256:d909c990b92fe81924ab5c3c8123b1b8ca37d2c824fa5147e5b4df3f2ea344d7",
-      "revision": 4,
-      "byte_size": 1940,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 4
     },
-    ".hath0r/memory/sessions/sess-20261025-110550-f2f7c3.json": {
+    "sessions/sess-20261025-110550-f2f7c3.json": {
       "sha256": "sha256:c393f7f2d427cc4cf63e2ce309023d7bfa0d4aa1f8689bb25a0d4c3925434922",
+      "bytes": 1709,
       "content_hash": "sha256:1f7405f34e146fd87208dc20332078ff4bf48dd9d8f89794bea26dbe435288aa",
-      "revision": 4,
-      "byte_size": 1709,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 4
     },
-    ".hath0r/memory/sessions/sess-20261025-123630-516ab2.json": {
+    "sessions/sess-20261025-123630-516ab2.json": {
       "sha256": "sha256:e113d9a3fb92e9caa0887d8d35830fa30953b60e339a6725bf24fcd711a250f3",
+      "bytes": 1829,
       "content_hash": "sha256:67f8e198fb516e48960caf616f9b52c5f98cca3e29917d55dd02bfa3922f9b73",
-      "revision": 4,
-      "byte_size": 1829,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 4
     },
-    ".hath0r/memory/sessions/sess-20261025-124900-9c69d0.json": {
+    "sessions/sess-20261025-124900-9c69d0.json": {
       "sha256": "sha256:422f41180f76e860b253e2b88e76afe74b3b0e535ebf0b225fdcbc5247ecce01",
+      "bytes": 1706,
       "content_hash": "sha256:70bb2bd3554357b2696f47acae87af639d5d07761493c06bb80cbbc6e30560da",
-      "revision": 4,
-      "byte_size": 1706,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 4
     },
-    ".hath0r/memory/sessions/sess-20261025-125225-a5a8cc.json": {
+    "sessions/sess-20261025-125225-a5a8cc.json": {
       "sha256": "sha256:b95dc74ec1bae48b8ebd449d30261d8c2eda7b96771c29efc5e5a8231f4cb7a3",
+      "bytes": 1937,
       "content_hash": "sha256:9934759b13259a0a62c60f878eb9c9c6bc92e05f57709c3fc857dc1bd8993762",
-      "revision": 21,
-      "byte_size": 1937,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 21
     },
-    ".hath0r/memory/sessions/sess-20261028-133324-403b2a.json": {
+    "sessions/sess-20261028-133324-403b2a.json": {
       "sha256": "sha256:7a61a0e67fd542af5f9f81537bd4ccb9c93cd4450d24c1d8b8ac57de3487a86b",
+      "bytes": 2020,
       "content_hash": "sha256:9941a66a9883053ed3d69a2f2ae4087e08136fa6fce4a8c14543902c59726665",
-      "revision": 29,
-      "byte_size": 2020,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 29
     },
-    ".hath0r/memory/sessions/sess-20261029-113359-dc0a52.json": {
+    "sessions/sess-20261029-113359-dc0a52.json": {
       "sha256": "sha256:a9564b4ae963cb3331154ce89f43cbc5df2e478b4cd4798eb054da8464a55caf",
+      "bytes": 1825,
       "content_hash": "sha256:eec7114a63467c2c446beaefbf8befbe386ce04c785751795dc2657ff4f4554d",
-      "revision": 23,
-      "byte_size": 1825,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 23
     },
-    ".hath0r/memory/sessions/sess-20261029-124639-9ab484.json": {
+    "sessions/sess-20261029-124639-9ab484.json": {
       "sha256": "sha256:bc63f14d3ca207c2949ae1f9cc032731b3b3cb55ad3270f1210e975893f7f4fb",
+      "bytes": 1899,
       "content_hash": "sha256:e2f3966f7d16f1f7afc32769f2e504e36da29f87a6e0a80c82004199be11dd70",
-      "revision": 4,
-      "byte_size": 1899,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 4
     },
-    ".hath0r/memory/sessions/sess-20261029-132709-9b90f1.json": {
+    "sessions/sess-20261029-132709-9b90f1.json": {
       "sha256": "sha256:fa7b46c05a4ce75ab24b1915c9e742bf996b34cf60ccf8285679ba0f29e4cdb4",
+      "bytes": 2009,
       "content_hash": "sha256:07bef0e930a568db52e34161269af0f91e50231c037d47ed7f088acf61bafae8",
-      "revision": 14,
-      "byte_size": 2009,
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      "revision": 14
+    },
+    "sessions/sess-20261031-121626-465fc8.json": {
+      "sha256": "sha256:05688f63494722dec85e5024328dff42684abeae89bbaed030e5eb7a5021e003",
+      "bytes": 1976,
+      "content_hash": "sha256:2b9dfb22fbc728b983d672a4671d8ab1655ef88a4a53a66bc935c217d8f0ded2",
+      "revision": 14
     }
   },
   "source_files": {
     ".gitignore": {
       "sha256": "sha256:4a9ab63ed02531a98188071625f4be0158c7248157ee59c8899017711a522217",
-      "revision": 2,
-      "byte_size": 5846,
-      "exists": true,
+      "bytes": 5846,
       "referenced_by": [
         "episode:issue-293-unignore-graph-folders"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     ".hath0r/evals/latest.json": {
-      "sha256": "sha256:e21413c7d5b5b3023c7d9109df5893123616e0e6b4cc1349bc9cb1ce0c7af0a4",
-      "revision": 9,
-      "byte_size": 3431,
-      "exists": true,
+      "sha256": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545",
+      "bytes": 4909,
       "referenced_by": [
         "eval:clean-repo-hath0r-framework",
         "eval:eval-baseline-hath0r-archive",
         "eval:eval-baseline-hath0r-framework",
         "eval:issue-307",
+        "eval:issue-313",
         "eval:pr-308",
         "eval:pr-308-merged",
         "eval:release-v1-10-0",
         "eval:release-v1-11-1",
         "eval:sft-lora-peft-evals",
         "eval:task-hath0r-framework"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     ".hath0r/mcp.json": {
       "sha256": "sha256:b4a41a28f16020500053d215c329da0a8e78bd49579ed28516381cd4283b6d3b",
-      "revision": 1,
-      "byte_size": 3407,
-      "exists": true,
+      "bytes": 3407,
       "referenced_by": [
         "episode:issue-295-default-hath0r-mcp-json"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "CHANGELOG.md": {
-      "sha256": "sha256:1ca7985004470d2c4a8ebb6e3b885a8602382287dd82a2eef1b893c9c99a28a9",
-      "revision": 3,
-      "byte_size": 4072,
-      "exists": true,
+      "sha256": "sha256:29615bad885fbefc5941cdaaaf13891561e907a30e09b51f42386d95ed01dd6a",
+      "bytes": 5434,
       "referenced_by": [
         "release-v1.10.0"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "VERSION": {
-      "sha256": "sha256:4f9416d650bd28343244b868dfebdb11e70d7b32423536cb87b8c31fde62f993",
-      "revision": 3,
-      "byte_size": 7,
-      "exists": true,
+      "sha256": "sha256:c92df6bdde330be219d62f48ec6490b01889436f2f59027aab200e74de619168",
+      "bytes": 7,
       "referenced_by": [
         "release-v1.10.0"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "cfg/gateway.yaml": {
       "sha256": "sha256:bad6544f9abf8326ae0d00d729f9f8be424f5bade9993db0a642367b4a9a1f18",
-      "revision": 1,
-      "byte_size": 811,
-      "exists": true,
+      "bytes": 811,
       "referenced_by": [
         "decision:pagedattention-chunk-boundary-kv-eviction-implem"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "cfg/mcp.servers.json": {
       "sha256": "sha256:25037f27b199280ac54da9fa81be741435f7ded8e50a1e0b5b6c3692b1c42621",
-      "revision": 1,
-      "byte_size": 3314,
-      "exists": true,
+      "bytes": 3314,
       "referenced_by": [
         "episode:issue-295-default-hath0r-mcp-json"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "contracts/hath0r-mcp-servers-v1.schema.json": {
       "sha256": "sha256:6ce5de551c0b6c954338260808b9fe56f9dcb3623879fabd664273c44dd22cb0",
-      "revision": 1,
-      "byte_size": 3076,
-      "exists": true,
+      "bytes": 3076,
       "referenced_by": [
         "episode:issue-295-default-hath0r-mcp-json"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "docs/governance/mcp-configuration.md": {
       "sha256": "sha256:5405d043e6a63a40bc6ab32584eb23884ec6953a3731963432719bed06fab80b",
-      "revision": 1,
-      "byte_size": 3957,
-      "exists": true,
+      "bytes": 3957,
       "referenced_by": [
         "episode:issue-295-default-hath0r-mcp-json"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "docs/governance/playbooks/vllm-deployment-runbook.md": {
       "sha256": "sha256:c83c2f83fe0b55caf4678a8b0bf43b3b45e4b79438d893c241349603d1f8f42f",
-      "revision": 1,
-      "byte_size": 7858,
-      "exists": true,
+      "bytes": 7858,
       "referenced_by": [
         "decision:pagedattention-chunk-boundary-kv-eviction-implem"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "docs/governance/rules/cr-memory-compound-001.md": {
       "sha256": "sha256:daebfa120009ea99a336eca94cf92870c9941478d305c9c96cd58ade5c4f9aa4",
-      "revision": 1,
-      "byte_size": 9078,
-      "exists": true,
+      "bytes": 9078,
       "referenced_by": [
         "episode:issue-291-memory-file-hashing"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "docs/governance/strategies/pagedattention-chunk-boundary-eviction-strategy.md": {
       "sha256": "sha256:25a23fa1420380a875d5266c65e4f84d779261b39620ffdb5a2a2a11ed804ecc",
-      "revision": 1,
-      "byte_size": 4482,
-      "exists": true,
+      "bytes": 4482,
       "referenced_by": [
         "decision:pagedattention-chunk-boundary-kv-eviction-implem"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "pyproject.toml": {
-      "sha256": "sha256:ef45e0829ee426af68ffa90abfdaffe10bc6a7c89e5d50491f05722da7b57ea5",
-      "revision": 3,
-      "byte_size": 1429,
-      "exists": true,
+      "sha256": "sha256:992790dc554e5d3f478c76fa2f790cc03a5d38bb6a8f25180d1226a2c7af48ae",
+      "bytes": 1429,
       "referenced_by": [
         "release-v1.10.0"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "release/AGENTS.md": {
       "sha256": "sha256:d334e0fb73dfd22376129cd971d28b87bbaceb7847287f5ca3b6a7c2321a0ee8",
-      "revision": 1,
-      "byte_size": 5780,
-      "exists": true,
+      "bytes": 5780,
       "referenced_by": [
         "decision:release-directory-curated-triad"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "release/install.sh": {
       "sha256": "sha256:391e1b6821c54b8eff7901e44929a90fd2428aac13e21e7dc3b059d24f7b1767",
-      "revision": 1,
-      "byte_size": 24698,
-      "exists": true,
+      "bytes": 24698,
       "referenced_by": [
         "episode:release-installer-and-prompts-scaffold",
         "rule:dependency-operator-approval-gate"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "release/prompts/README.md": {
       "sha256": "sha256:08b904ee9fe022aa4db1b2cefef1906cf920f3ee34b3f0d4d13e69c0c39c5091",
-      "revision": 1,
-      "byte_size": 6415,
-      "exists": true,
+      "bytes": 6415,
       "referenced_by": [
         "concept:self-contained-release-prompts-and-knowledge"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "src/hath0r_engine/__init__.py": {
-      "sha256": "sha256:977b7b1370ae43f3336d7fbb8842c77b530d93e3541786a835119ead85fe0c1e",
-      "revision": 3,
-      "byte_size": 10886,
-      "exists": true,
+      "sha256": "sha256:afc358ca4fd617a84301a56d27a69a2018f736beaef1da9c0647a3cb8c867152",
+      "bytes": 11376,
       "referenced_by": [
         "release-v1.10.0"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "src/hath0r_engine/analysis/ast_gnn.py": {
       "sha256": "sha256:81f2762dae5a5d001d11cbb9593995afed3d9a91e5aab0642032003397a4a15f",
-      "revision": 1,
-      "byte_size": 23488,
-      "exists": true,
+      "bytes": 23488,
       "referenced_by": [
         "fact:openant-reachability-309"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "src/hath0r_engine/gateway/base.py": {
       "sha256": "sha256:89568389a825ae9e56e6029b0f35a5093bf1a1612a13112d9984b8efe17caa19",
-      "revision": 1,
-      "byte_size": 5597,
-      "exists": true,
+      "bytes": 5597,
       "referenced_by": [
         "decision:pagedattention-chunk-boundary-kv-eviction-implem"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "src/hath0r_engine/gateway/cache.py": {
       "sha256": "sha256:900475e31d207535d307400f194951922d76ba34ab5e574a4e74b4f838e862ec",
-      "revision": 1,
-      "byte_size": 19683,
-      "exists": true,
+      "bytes": 19683,
       "referenced_by": [
         "decision:pagedattention-chunk-boundary-kv-eviction-implem"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "src/hath0r_engine/memory/memory_graph.py": {
       "sha256": "sha256:f80819ae8d08e7bbed5fa3d47d3e29d8f48a2f5479775e10ad85b882dbd610ca",
-      "revision": 1,
-      "byte_size": 81749,
-      "exists": true,
+      "bytes": 81749,
       "referenced_by": [
         "episode:issue-291-memory-file-hashing",
         "episode:issue-293-unignore-graph-folders",
         "episode:issue-295-default-hath0r-mcp-json"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "src/hath0r_engine/memory/memory_tools.py": {
       "sha256": "sha256:3704d1c778edee9b5d7d79c24ef45c18fe28eed90305ee1e2d2fd9e3fdb5f35f",
-      "revision": 1,
-      "byte_size": 9142,
-      "exists": true,
+      "bytes": 9142,
       "referenced_by": [
         "decision:pagedattention-chunk-boundary-kv-eviction-implem"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "src/hath0r_engine/training/model_evaluator.py": {
       "sha256": "sha256:085a23eda42de9261486514258a396ef954173966a6a55f27569849740cf6e54",
-      "revision": 1,
-      "byte_size": 8010,
-      "exists": true,
+      "bytes": 8010,
       "referenced_by": [
         "episode:sft-lora-peft-evals"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "src/hath0r_engine/training/peft_lora_sft.py": {
       "sha256": "sha256:7a1a2fa385745cb01b974cdc60864b5325554fee6c4fee1d046181ecb6706b56",
-      "revision": 1,
-      "byte_size": 26251,
-      "exists": true,
+      "bytes": 26251,
       "referenced_by": [
         "episode:sft-lora-peft-evals"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "src/hath0r_engine/training/training_pipeline.py": {
       "sha256": "sha256:68c5e67f317af9ab04dd4d6b7bc3a18be7ad8c1f98c2170cff41e534b2c96bbc",
-      "revision": 1,
-      "byte_size": 9655,
-      "exists": true,
+      "bytes": 9655,
       "referenced_by": [
         "episode:sft-lora-peft-evals"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "tests/test_ast_gnn_reachability.py": {
       "sha256": "sha256:fe08193d90863cf2bec78fb0cae9379f03d313adc085b7c59df18b96262f08ba",
-      "revision": 1,
-      "byte_size": 4346,
-      "exists": true,
+      "bytes": 4346,
       "referenced_by": [
         "fact:openant-reachability-309"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     },
     "tests/test_cicccdct_engine.py": {
       "sha256": "sha256:586c0fb48710f85753a23a58d502e5a71992469a89bd4dc9b210ad119db71931",
-      "revision": 1,
-      "byte_size": 8996,
-      "exists": true,
+      "bytes": 8996,
       "referenced_by": [
         "episode:sft-lora-peft-evals"
-      ],
-      "updated_at": "2026-10-29T14:32:03.335542+00:00"
+      ]
     }
   }
 }

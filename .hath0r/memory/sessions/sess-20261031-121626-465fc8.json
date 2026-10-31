@@ -1,0 +1,54 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261031-121626-465fc8",
+  "prior_session_id": "sess-20261029-132709-9b90f1",
+  "repo_name": "hath0r-framework",
+  "status": "completed",
+  "started_at": "2026-10-31T12:16:26.605804+00:00",
+  "updated_at": "2026-10-31T12:20:48.375807+00:00",
+  "ended_at": "2026-10-31T12:19:38.813304+00:00",
+  "read_count": 6,
+  "write_count": 8,
+  "revision": 14,
+  "content_hash": "sha256:2b9dfb22fbc728b983d672a4671d8ab1655ef88a4a53a66bc935c217d8f0ded2",
+  "base_graph_hash": "sha256:ddf8eef45693b158c0bd5d58b6c2cec3c5f73fe4ffd6f5eb2e7db71c4377c457",
+  "last_read_at": "2026-10-31T12:20:48.329316+00:00",
+  "last_write_at": "2026-10-31T12:20:48.375807+00:00",
+  "active_focus": "Orienting repository hath0r-framework",
+  "prior_summary": "ounded eval:issue-313: Task Evaluati; Completed AgentGraph orientation for hat; Completed AgentGraph orientation for hat",
+  "recalled_nodes": [
+    {
+      "id": "episode:issue-313-engine-workflow-first-calibration-supersqueeze",
+      "type": "episode",
+      "label": "Issue #313: Engine Workflow-First, 4h Calibration, SuperSque",
+      "snippet": "Implemented ServiceBotContract, WorkflowFirstGateStage, CalibrationGateStage (4.0h), Super"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-31T12:20:44.728223+00:00",
+      "kind": "observation",
+      "summary": "Completed AgentGraph orientation for hath0r-framework (2 roles, 28 rules)",
+      "tags": [
+        "orient",
+        "agentgraph"
+      ],
+      "node_id": null
+    },
+    {
+      "timestamp": "2026-10-31T12:20:48.375807+00:00",
+      "kind": "observation",
+      "summary": "Completed AgentGraph orientation for hath0r-framework (2 roles, 28 rules)",
+      "tags": [
+        "orient",
+        "agentgraph"
+      ],
+      "node_id": null
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:issue-313-engine-workflow-first-calibration-supersqueeze",
+    "eval:issue-313"
+  ]
+}
