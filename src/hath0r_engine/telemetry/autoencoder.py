@@ -111,7 +111,7 @@ class TelemetryAutoencoder:
         """Decode 2D latent representation back to reconstructed normalized features."""
         h1 = []
         for i in range(self.HIDDEN_DIM):
-            z = sum(w * l for w, l in zip(self.w_dec1[i], latent)) + self.b_dec1[i]
+            z = sum(w * lv for w, lv in zip(self.w_dec1[i], latent)) + self.b_dec1[i]
             h1.append(_relu(z))
 
         recon = []
@@ -181,7 +181,7 @@ class TelemetryAutoencoder:
             losses.append(loss)
 
         mean_loss = sum(losses) / n
-        std_loss = math.sqrt(sum((l - mean_loss) ** 2 for l in losses) / max(1, n - 1))
+        std_loss = math.sqrt(sum((lv - mean_loss) ** 2 for lv in losses) / max(1, n - 1))
         self.threshold = round(mean_loss + 3.0 * std_loss, 4)
 
     def detect_anomalies(self, spans: List[Dict[str, Any]]) -> AnomalyDetectionReport:

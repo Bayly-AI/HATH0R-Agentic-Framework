@@ -4,8 +4,6 @@ from pathlib import Path
 
 import pytest
 
-Image = pytest.importorskip("PIL.Image")
-
 from hath0r_engine.testing.models import (
     PlaywrightBrowserType,
     PlaywrightStep,
@@ -16,6 +14,8 @@ from hath0r_engine.testing.runner import PlaywrightTestRunner
 from hath0r_engine.vision.document_parser import DocumentLayoutParser
 from hath0r_engine.vision.engine import VisionEngine
 from hath0r_engine.vision.grounding import VisualGroundingEngine
+
+Image = pytest.importorskip("PIL.Image")
 
 
 @pytest.fixture

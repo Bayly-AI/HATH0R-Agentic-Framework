@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 360,
+  "revision": 361,
   "content_hash": "sha256:dcad886c2f477f7da1ec9632f913d79edbb36ec49a63deed0028ecc706301502",
-  "updated_at": "2026-10-31T13:38:47.336082+00:00",
+  "updated_at": "2026-10-31T14:09:43.153376+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -556,7 +556,7 @@
       "updated_at": "2026-10-17T14:51:21.142784+00:00",
       "metadata": {
         "source_files": {
-          "src/hath0r_engine/gateway/cache.py": "sha256:a529b73861ac1294ad6a8c5089e14d30fb6c8592b2ad1a51013185ceff1a38a8",
+          "src/hath0r_engine/gateway/cache.py": "sha256:9b45af9b5befd9dd1c92eb31103528c4fbfff99281c660416b78138cdf9e138d",
           "src/hath0r_engine/gateway/base.py": "sha256:89568389a825ae9e56e6029b0f35a5093bf1a1612a13112d9984b8efe17caa19",
           "src/hath0r_engine/memory/memory_tools.py": "sha256:3704d1c778edee9b5d7d79c24ef45c18fe28eed90305ee1e2d2fd9e3fdb5f35f",
           "cfg/gateway.yaml": "sha256:bad6544f9abf8326ae0d00d729f9f8be424f5bade9993db0a642367b4a9a1f18",

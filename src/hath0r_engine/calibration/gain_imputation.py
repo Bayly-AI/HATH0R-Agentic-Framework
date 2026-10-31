@@ -32,7 +32,7 @@ def _relu(x: float) -> float:
 @dataclass
 class GAINGenerator:
     """Generator MLP for tabular telemetry imputation.
-    
+
     Architecture: Input [X_tilde, M] (2*Dim) -> Hidden (16) -> Output (Dim).
     """
 
@@ -82,7 +82,7 @@ class GAINGenerator:
 @dataclass
 class GAINDiscriminator:
     """Discriminator MLP for detecting observed vs imputed components with hint matrix.
-    
+
     Architecture: Input [X_hat, H] (2*Dim) -> Hidden (16) -> Output (Dim probabilities).
     """
 
