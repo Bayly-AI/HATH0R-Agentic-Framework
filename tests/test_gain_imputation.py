@@ -1,7 +1,8 @@
 """Unit tests for GAIN Telemetry Imputation & Taguchi Calibration Substrate."""
 
 import datetime
-from hath0r_engine.calibration.gain_imputation import GainImputationEngine, gain_imputation_engine
+
+from hath0r_engine.calibration.gain_imputation import GainImputationEngine
 
 
 def test_impute_span_telemetry():
@@ -39,7 +40,7 @@ def test_evaluate_calibration_freshness():
 
 
 def test_gain_architecture_generator_discriminator():
-    from hath0r_engine.calibration.gain_imputation import GAINGenerator, GAINDiscriminator
+    from hath0r_engine.calibration.gain_imputation import GAINDiscriminator, GAINGenerator
 
     gen = GAINGenerator(dim=3, hidden_dim=16)
     disc = GAINDiscriminator(dim=3, hidden_dim=16)

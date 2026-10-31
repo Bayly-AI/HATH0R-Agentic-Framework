@@ -149,7 +149,7 @@ def test_ai_gateway_client_end_to_end_and_finops():
 
 
 def test_dense_bi_encoder_embeddings_and_paraphrasing():
-    from hath0r_engine.gateway.cache import CacheEmbeddingMode, DenseBiEncoder
+    from hath0r_engine.gateway.cache import DenseBiEncoder
 
     encoder = DenseBiEncoder()
     assert encoder.dimensions == 384

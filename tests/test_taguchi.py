@@ -4,11 +4,7 @@ import pytest
 
 from hath0r_engine.optimization import (
     ArrayType,
-    ExperimentMatrix,
-    ExperimentRun,
     Factor,
-    FactorAnalysis,
-    FactorLevelEffect,
     SNRType,
     TaguchiAnalysisResult,
     TaguchiEngine,

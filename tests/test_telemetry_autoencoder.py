@@ -3,7 +3,6 @@
 from hath0r_engine.telemetry.autoencoder import (
     AnomalyDetectionReport,
     TelemetryAutoencoder,
-    telemetry_autoencoder,
 )
 
 

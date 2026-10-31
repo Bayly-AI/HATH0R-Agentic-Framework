@@ -33,7 +33,6 @@ from hath0r_engine.gateway.base import (
 )
 from hath0r_engine.gateway.cache import (
     CacheEmbeddingMode,
-    CacheEntry,
     ChunkAlignedKVEvictionPolicy,
     DenseBiEncoder,
     KVBlockChunk,
@@ -183,6 +182,19 @@ from hath0r_engine.testing.models import (
     PlaywrightTestSuite,
 )
 from hath0r_engine.testing.runner import PlaywrightTestRunner
+from hath0r_engine.training import (
+    CandidateModelEvaluator,
+    ContinuousTrainingPipeline,
+    DatasetCurator,
+    LoRAConfig,
+    LoRALinearAdapter,
+    NF4Quantizer,
+    PEFTConfig,
+    PEFTMethod,
+    SFTDatasetFormatter,
+    SFTLoRATrainer,
+    SFTTrainingResult,
+)
 from hath0r_engine.ui.components import UIComponentBuilder
 from hath0r_engine.ui.crypto_signoff import generate_cryptographic_signature
 from hath0r_engine.ui.protocol import (
@@ -203,19 +215,6 @@ from hath0r_engine.vision import (
     VisionEngine,
     VisionResult,
     VisualGroundingEngine,
-)
-from hath0r_engine.training import (
-    CandidateModelEvaluator,
-    ContinuousTrainingPipeline,
-    DatasetCurator,
-    LoRAConfig,
-    LoRALinearAdapter,
-    NF4Quantizer,
-    PEFTConfig,
-    PEFTMethod,
-    SFTDatasetFormatter,
-    SFTLoRATrainer,
-    SFTTrainingResult,
 )
 from hath0r_engine.voice.voice_config import VoiceConfig
 from hath0r_engine.voice.voice_engine import VoiceEngine

@@ -1,12 +1,12 @@
 """Unit and integration tests for Pixel-Native 2D Document Parsing and DOM-Independent Playwright Grounding."""
 
-import pytest
 from pathlib import Path
+
+import pytest
 
 Image = pytest.importorskip("PIL.Image")
 
 from hath0r_engine.testing.models import (
-    PlaywrightActionType,
     PlaywrightBrowserType,
     PlaywrightStep,
     PlaywrightTestCase,

@@ -1,9 +1,8 @@
 """Unit tests for AgentMetricsBot substrate."""
 
 from pathlib import Path
-import pytest
 
-from hath0r_engine.bots.agent_metrics_bot import AgentMetricsBot, agent_metrics_bot
+from hath0r_engine.bots.agent_metrics_bot import AgentMetricsBot
 from hath0r_engine.graph.agent_graph import AgentGraphEngine
 from hath0r_engine.pipeline.assertions import validate_json_contract
 

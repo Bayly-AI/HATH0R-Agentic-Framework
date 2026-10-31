@@ -1,9 +1,8 @@
 """Unit tests for PmatStatsEngine substrate."""
 
 from pathlib import Path
-import pytest
 
-from hath0r_engine.analysis.pmat_stats_engine import PmatStatsEngine, pmat_stats_engine
+from hath0r_engine.analysis.pmat_stats_engine import PmatStatsEngine
 from hath0r_engine.graph.agent_graph import AgentGraphEngine
 
 
