@@ -24,7 +24,6 @@ class CICCCDTelemetryHook:
         self.workspace_root = self.workspace_root.resolve()
         file_name = Path(self.state_file).name if self.state_file else CCCD_STATE_FILE
         self.state_file = (self.workspace_root / HATH0R_DIR / file_name).resolve()
-        self.state_file.parent.mkdir(parents=True, exist_ok=True)
 
     def record_calibration_telemetry(
         self,
@@ -172,6 +171,7 @@ class CICCCDTelemetryHook:
             target_path = os.path.realpath(str(self.state_file))
             if not (target_path.startswith(base_dir + os.sep) or target_path == base_dir):
                 raise ValueError("State file path escapes workspace root")
+            os.makedirs(os.path.dirname(target_path), exist_ok=True)
             with open(target_path, "w", encoding="utf-8") as f:
                 f.write(json.dumps(state, indent=2))
 
