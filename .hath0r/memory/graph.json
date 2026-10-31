@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 364,
-  "content_hash": "sha256:24e9e8ee1e0a7e6dcb99ba39a98a94bcd6b6bc5a3303f49f0bd5b6d4029d9411",
-  "updated_at": "2026-10-31T14:27:14.964835+00:00",
+  "revision": 374,
+  "content_hash": "sha256:32b3b11df2c2e612bb646da4c93f8f98835b37087f75b15256ce1d5181ea029a",
+  "updated_at": "2026-10-31T16:17:06.945402+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -457,11 +457,11 @@
         "episode",
         "compounded"
       ],
-      "valid_from": "2026-10-29T14:17:11.494606+00:00",
+      "valid_from": "2026-10-31T16:17:00.547067+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-16T15:48:19.256379+00:00",
-      "updated_at": "2026-10-29T14:17:11.494606+00:00",
+      "updated_at": "2026-10-31T16:17:00.547067+00:00",
       "metadata": {}
     },
     {
@@ -1213,7 +1213,7 @@
       "updated_at": "2026-10-28T13:35:38.020196+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
@@ -1237,7 +1237,7 @@
       "updated_at": "2026-10-28T13:53:23.673169+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
@@ -1346,7 +1346,7 @@
       "updated_at": "2026-10-28T13:53:30.607564+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
@@ -1391,7 +1391,7 @@
       "updated_at": "2026-10-29T13:58:52.417648+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
@@ -1415,15 +1415,15 @@
       "updated_at": "2026-10-28T17:45:19.958282+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
     {
       "id": "eval:clean-repo-hath0r-framework",
       "type": "eval",
-      "label": "Task Evaluation clean-repo-hath0r-framework (R=1.00, PASS)",
-      "content": "4-Tier Task Evaluation for clean-repo-hath0r-framework on branch development: R_task=1.0000 (det=1.00, traj=1.00, adv=1.00, goal=1.00). Gate=PASSED.",
+      "label": "Task Evaluation clean-repo-hath0r-framework (R=0.93, PASS)",
+      "content": "4-Tier Task Evaluation for clean-repo-hath0r-framework on branch development: R_task=0.9255 (det=0.95, traj=0.92, adv=0.88, goal=0.93). Gate=PASSED.",
       "importance": 0.85,
       "tags": [
         "eval",
@@ -1432,14 +1432,14 @@
         "passed",
         "compounded"
       ],
-      "valid_from": "2026-10-29T14:17:16.791231+00:00",
+      "valid_from": "2026-10-31T16:17:06.721686+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T18:13:25.112709+00:00",
-      "updated_at": "2026-10-29T14:17:16.791231+00:00",
+      "updated_at": "2026-10-31T16:17:06.721686+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
@@ -1519,7 +1519,7 @@
       "updated_at": "2026-10-29T11:48:57.187163+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
@@ -1567,7 +1567,7 @@
       "updated_at": "2026-10-29T11:56:34.661577+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
@@ -1639,7 +1639,7 @@
       "updated_at": "2026-10-29T13:27:13.043564+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
@@ -1689,7 +1689,7 @@
       "updated_at": "2026-10-29T14:32:03.258880+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
@@ -1756,7 +1756,7 @@
       "updated_at": "2026-10-31T12:19:42.354593+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:275c48420c4a94bdfbb3400fdf1c3aab7367df80c28699e9ddad33067c7c2545"
+          ".hath0r/evals/latest.json": "sha256:770e6ef5a69c5e24363218cf3f590ac7d7486c0683947961cdf9d32ef4a16454"
         }
       }
     },
@@ -1801,6 +1801,32 @@
         "write_count": 9,
         "status": "completed",
         "byte_size": 1934
+      }
+    },
+    {
+      "id": "session:sess-20261031-161700-ecddad",
+      "type": "session",
+      "label": "Micro Session sess-20261031-161700-ecddad",
+      "content": "Micro Session sess-20261031-161700-ecddad [completed] | Focus: clean-repo-hath0r-framework | Reads: 2, Writes: 4 | Entries: Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=0.93, PASS)",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "completed"
+      ],
+      "valid_from": "2026-10-31T16:17:00.461778+00:00",
+      "valid_to": "2026-10-31T16:17:00.638117+00:00",
+      "is_current": true,
+      "created_at": "2026-10-31T16:17:00.461778+00:00",
+      "updated_at": "2026-10-31T16:17:06.788439+00:00",
+      "metadata": {
+        "session_id": "sess-20261031-161700-ecddad",
+        "prior_session_id": "sess-20261031-121626-465fc8",
+        "parent_session_id": "sess-20261031-121626-465fc8",
+        "read_count": 2,
+        "write_count": 4,
+        "status": "completed",
+        "byte_size": 1870
       }
     }
   ],
@@ -3789,6 +3815,46 @@
       "relation": "DERIVES_FROM",
       "weight": 1.0,
       "valid_from": "2026-10-31T14:27:14.959643+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261031-121626-465fc8",
+      "target": "session:sess-20261031-161700-ecddad",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T16:17:00.470356+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261031-161700-ecddad",
+      "target": "concept:tri-graph",
+      "relation": "RELATES_TO",
+      "weight": 0.8,
+      "valid_from": "2026-10-31T16:17:00.470356+00:00",
+      "is_current": true
+    },
+    {
+      "source": "episode:clean-repo-hath0r-framework",
+      "target": "session:sess-20261031-161700-ecddad",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T16:17:00.600245+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-framework",
+      "target": "session:sess-20261031-161700-ecddad",
+      "relation": "EVALUATES",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T16:17:06.721686+00:00",
+      "is_current": true
+    },
+    {
+      "source": "eval:clean-repo-hath0r-framework",
+      "target": "session:sess-20261031-161700-ecddad",
+      "relation": "DERIVES_FROM",
+      "weight": 1.0,
+      "valid_from": "2026-10-31T16:17:06.790693+00:00",
       "is_current": true
     }
   ]

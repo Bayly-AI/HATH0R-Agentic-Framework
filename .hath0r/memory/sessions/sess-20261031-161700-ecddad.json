@@ -1,0 +1,51 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261031-161700-ecddad",
+  "prior_session_id": "sess-20261031-121626-465fc8",
+  "parent_session_id": "sess-20261031-121626-465fc8",
+  "revision": 5,
+  "content_hash": "sha256:23d8fdd51e36287eacb65d20a2b26fd0cccb2763dbbfee2a07c6b28516bd4b3b",
+  "base_graph_hash": "sha256:5eef211b5610cff48055a693b0970bd69dc7d70355ad5c34e9c6913a28776ceb",
+  "task_id": null,
+  "role": null,
+  "repo_name": "hath0r-framework",
+  "status": "completed",
+  "started_at": "2026-10-31T16:17:00.461778+00:00",
+  "updated_at": "2026-10-31T16:17:06.788439+00:00",
+  "ended_at": "2026-10-31T16:17:00.638117+00:00",
+  "read_count": 2,
+  "write_count": 4,
+  "last_read_at": "2026-10-31T16:17:00.513353+00:00",
+  "last_write_at": "2026-10-31T16:17:06.788439+00:00",
+  "active_focus": "clean-repo-hath0r-framework",
+  "prior_summary": "ted session focus: clean-repo-hath0r; Compounded episode:clean-repo-hath0r-fra; Clean Repo Lifecycle completed for hath0",
+  "recalled_nodes": [
+    {
+      "id": "insight:hath0r-framework",
+      "type": "insight",
+      "label": "Synthesized Insight on hath0r-framework",
+      "snippet": "Consolidated from 2 memory nodes tagged 'hath0r-framework'. Recurring themes: framework, h"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-10-31T16:17:06.788439+00:00",
+      "kind": "compound",
+      "summary": "Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=0.93, PASS)",
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "clean-repo-hath0r-framework",
+        "passed",
+        "compounded"
+      ],
+      "node_id": "eval:clean-repo-hath0r-framework"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:clean-repo-hath0r-framework",
+    "eval:clean-repo-hath0r-framework"
+  ],
+  "capsule_bytes": 1870
+}
