@@ -1,15 +1,15 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261101-154348-e0e9ba",
+  "eval_id": "eval-20261101-175301-757170",
   "task_id": "eval-baseline-hath0r-agentic-framework",
   "issue_number": null,
   "repo_name": "HATH0R-Agentic-Framework",
   "branch": "development",
-  "evaluated_at": "2026-11-01T15:43:48.982315+00:00",
-  "duration_ms": 515.0,
-  "passed_gate": false,
-  "r_task": 0.8561,
+  "evaluated_at": "2026-11-01T17:53:01.407036+00:00",
+  "duration_ms": 1156.0,
+  "passed_gate": true,
+  "r_task": 0.9376,
   "min_reward_threshold": 0.8,
   "weights": {
     "deterministic": 0.4,
@@ -18,21 +18,21 @@
     "goal_alignment": 0.15
   },
   "tier_scores": {
-    "deterministic": 0.7451,
-    "trajectory": 0.9263,
+    "deterministic": 0.9411,
+    "trajectory": 0.9416,
     "adversarial": 0.9341,
     "goal_alignment": 0.9287
   },
   "tiers": {
     "deterministic": {
-      "score": 0.7451,
-      "passed": false,
-      "passed_checks": 5,
+      "score": 0.9411,
+      "passed": true,
+      "passed_checks": 6,
       "total_checks": 6,
       "sub_scores": {
         "version_valid": 1.0,
         "agentgraph_valid": 1.0,
-        "memory_compounded": 0.0,
+        "memory_compounded": 0.98,
         "test_suite": 0.88,
         "calibration_4h": 0.82,
         "local_quality_gates": 0.9617
@@ -51,13 +51,13 @@
           "claude_md_synced": true
         },
         "memory_compounded": {
-          "passed": false,
-          "compounded_nodes_count": 54,
+          "passed": true,
+          "compounded_nodes_count": 56,
           "session_read_verified": true,
           "session_write_verified": true,
-          "hashes_verified": false,
+          "hashes_verified": true,
           "graphs_not_ignored": true,
-          "error": "CR-MEMORY-COMPOUND-001: Memory file hash verification failed (mismatched=1, missing=0, stale_source_files=0). Run 'hath0r memory hash --sync' or re-compound stale knowledge nodes."
+          "error": null
         },
         "test_suite": {
           "passed": true,
@@ -362,22 +362,22 @@
       }
     },
     "trajectory": {
-      "score": 0.9263,
+      "score": 0.9416,
       "passed": true,
-      "tokens_used": 666,
+      "tokens_used": 49,
       "max_tokens": 50000,
-      "estimated_usd": 0.001998,
+      "estimated_usd": 0.000147,
       "max_usd": 0.25,
       "session_id": "sess-20261031-161700-ecddad",
-      "session_reads": 3,
-      "session_writes": 6,
-      "session_bytes": 2000,
-      "capsule_fill_ratio": 0.9766,
+      "session_reads": 7,
+      "session_writes": 13,
+      "session_bytes": 1785,
+      "capsule_fill_ratio": 0.8716,
       "within_capsule_budget": true,
-      "latency_ms": 500.0,
-      "taguchi_quality_loss": 0.0037,
-      "taguchi_score": 0.9708,
-      "snr_db": 12.04
+      "latency_ms": 703.0,
+      "taguchi_quality_loss": 0.0074,
+      "taguchi_score": 0.9615,
+      "snr_db": 9.08
     },
     "adversarial": {
       "score": 0.9341,
@@ -407,7 +407,7 @@
       "active_focus": "Provisioning CR-TASK-EVAL-001 for HATH0R-Agentic-Framework",
       "goal_keywords_count": 6,
       "goal_overlap_score": 0.98,
-      "compounded_nodes_count": 54,
+      "compounded_nodes_count": 56,
       "consensus_score": 0.826
     }
   },
@@ -569,20 +569,27 @@
       "VERIFIED_EXECUTION": [
         ".hath0r/evals/latest.json"
       ],
-      "STATIC_AST_ANALYSIS": [],
+      "STATIC_AST_ANALYSIS": [
+        ".hath0r/agentgraph/snapshot.json",
+        ".hath0r/evals/history/eval-eval-baseline-hath0r-agentic-framework.json",
+        ".hath0r/evals/latest.json",
+        ".hath0r/memory/graph.json",
+        ".hath0r/memory/hashes.json",
+        ".hath0r/memory/sessions/current.json",
+        ".hath0r/memory/sessions/latest.json",
+        ".hath0r/memory/sessions/sess-20261031-161700-ecddad.json"
+      ],
       "UNVERIFIED_FILE_PRESENCE": []
     },
     "counts": {
       "VERIFIED_EXECUTION": 1,
-      "STATIC_AST_ANALYSIS": 0,
+      "STATIC_AST_ANALYSIS": 8,
       "UNVERIFIED_FILE_PRESENCE": 0
     }
   },
-  "blocking_reasons": [
-    "Tier 1 deterministic gate failed: memory_compounded"
-  ],
+  "blocking_reasons": [],
   "observability_sync": {
     "mode": "pending"
   },
-  "content_hash": "sha256:13aa33aef1c8d2661b8b0f6c9f2a93ca2108d6a8307eec3428355cf18e1fc8e6"
+  "content_hash": "sha256:05abaedcf4b7f019b514a7e11487da52e86c9d130607484bd8d0d29359b265c9"
 }

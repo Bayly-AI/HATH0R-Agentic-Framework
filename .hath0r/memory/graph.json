@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 393,
-  "content_hash": "sha256:2f7aa62b68a75f2ea17239f4d695397d4636375949cac79f39c2995c2562af20",
-  "updated_at": "2026-11-01T17:26:06.281346+00:00",
+  "revision": 419,
+  "content_hash": "sha256:c8a008e7f848e6c188d189a924b4bbf5d2f0585edd09ffb5dc2e2b35e5da364c",
+  "updated_at": "2026-11-01T17:53:02.909223+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -1213,7 +1213,7 @@
       "updated_at": "2026-10-28T13:35:38.020196+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1237,7 +1237,7 @@
       "updated_at": "2026-10-28T13:53:23.673169+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1346,7 +1346,7 @@
       "updated_at": "2026-10-28T13:53:30.607564+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1364,11 +1364,11 @@
         "scorecard",
         "compounded"
       ],
-      "valid_from": "2026-11-01T15:43:48.698101+00:00",
+      "valid_from": "2026-11-01T17:53:01.080948+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-10-28T14:21:12.347805+00:00",
-      "updated_at": "2026-11-01T15:43:48.698101+00:00",
+      "updated_at": "2026-11-01T17:53:01.080948+00:00",
       "metadata": {}
     },
     {
@@ -1391,7 +1391,7 @@
       "updated_at": "2026-10-29T13:58:52.417648+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1415,7 +1415,7 @@
       "updated_at": "2026-10-28T17:45:19.958282+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1439,7 +1439,7 @@
       "updated_at": "2026-10-31T16:17:06.721686+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1519,7 +1519,7 @@
       "updated_at": "2026-10-29T11:48:57.187163+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1567,7 +1567,7 @@
       "updated_at": "2026-10-29T11:56:34.661577+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1639,7 +1639,7 @@
       "updated_at": "2026-10-29T13:27:13.043564+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1689,7 +1689,7 @@
       "updated_at": "2026-10-29T14:32:03.258880+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1756,7 +1756,7 @@
       "updated_at": "2026-10-31T12:19:42.354593+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1817,11 +1817,11 @@
         "fact",
         "compounded"
       ],
-      "valid_from": "2026-11-01T15:43:44.185383+00:00",
+      "valid_from": "2026-11-01T17:53:00.680252+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-11-01T15:43:44.185383+00:00",
-      "updated_at": "2026-11-01T15:43:44.185383+00:00",
+      "updated_at": "2026-11-01T17:53:00.680252+00:00",
       "metadata": {}
     },
     {
@@ -1869,24 +1869,24 @@
     {
       "id": "eval:eval-baseline-hath0r-agentic-framework",
       "type": "eval",
-      "label": "Task Evaluation eval-baseline-hath0r-agentic-framework (R=0.86, FAIL)",
-      "content": "4-Tier Task Evaluation for eval-baseline-hath0r-agentic-framework on branch development: R_task=0.8561 (det=0.75, traj=0.93, adv=0.93, goal=0.93). Gate=FAILED.",
+      "label": "Task Evaluation eval-baseline-hath0r-agentic-framework (R=0.94, PASS)",
+      "content": "4-Tier Task Evaluation for eval-baseline-hath0r-agentic-framework on branch development: R_task=0.9376 (det=0.94, traj=0.94, adv=0.93, goal=0.93). Gate=PASSED.",
       "importance": 0.85,
       "tags": [
         "eval",
         "cr-task-eval-001",
         "eval-baseline-hath0r-agentic-framework",
-        "failed",
+        "passed",
         "compounded"
       ],
-      "valid_from": "2026-11-01T15:43:49.505017+00:00",
+      "valid_from": "2026-11-01T17:53:02.577934+00:00",
       "valid_to": null,
       "is_current": true,
       "created_at": "2026-11-01T15:43:49.505017+00:00",
-      "updated_at": "2026-11-01T15:43:49.505017+00:00",
+      "updated_at": "2026-11-01T17:53:02.577934+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1910,7 +1910,7 @@
       "updated_at": "2026-11-01T17:26:01.066439+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:0203f7e9edff040200bef52b0d21106d456f29db26a0d9176a18b66cffcd5e19"
         }
       }
     },
@@ -1918,7 +1918,7 @@
       "id": "session:sess-20261031-161700-ecddad",
       "type": "session",
       "label": "Micro Session sess-20261031-161700-ecddad",
-      "content": "Micro Session sess-20261031-161700-ecddad [completed] | Focus: Repository orientation verified for HATH0R-Agentic-Framework | Reads: 4, Writes: 8 | Entries: Compounded eval:task-HATH0R-Agentic-Framework: Task Evaluation task-HATH0R-Agentic-Framework (R=0.92, PASS)",
+      "content": "Micro Session sess-20261031-161700-ecddad [completed] | Focus: Repository orientation verified for HATH0R-Agentic-Framework | Reads: 8, Writes: 14 | Entries: Compounded eval:eval-baseline-hath0r-agentic-framework: Task Evaluation eval-baseline-hath0r-agentic-framework (R=0.94, PASS)",
       "importance": 0.75,
       "tags": [
         "session",
@@ -1929,15 +1929,15 @@
       "valid_to": "2026-10-31T16:17:00.638117+00:00",
       "is_current": true,
       "created_at": "2026-10-31T16:17:00.461778+00:00",
-      "updated_at": "2026-11-01T17:26:01.219355+00:00",
+      "updated_at": "2026-11-01T17:53:02.886666+00:00",
       "metadata": {
         "session_id": "sess-20261031-161700-ecddad",
         "prior_session_id": "sess-20261031-121626-465fc8",
         "parent_session_id": "sess-20261031-121626-465fc8",
-        "read_count": 4,
-        "write_count": 8,
+        "read_count": 8,
+        "write_count": 14,
         "status": "completed",
-        "byte_size": 2040
+        "byte_size": 2035
       }
     }
   ],
