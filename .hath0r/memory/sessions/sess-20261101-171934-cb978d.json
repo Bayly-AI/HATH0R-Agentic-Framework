@@ -1,0 +1,50 @@
+{
+  "schema_version": "hath0r.micro_session/1",
+  "session_id": "sess-20261101-171934-cb978d",
+  "prior_session_id": "sess-20261031-161700-ecddad",
+  "repo_name": "hath0r-framework",
+  "status": "active",
+  "started_at": "2026-11-01T17:19:34.385271+00:00",
+  "updated_at": "2026-11-01T18:13:51.466385+00:00",
+  "ended_at": null,
+  "read_count": 6,
+  "write_count": 14,
+  "revision": 20,
+  "content_hash": "sha256:5eae82b5a53bf894fc909a691c100570937521b00a6f59a75d4656bec03e30bb",
+  "base_graph_hash": "sha256:550017c61a5694b37a0e88c4e12ab1b50919fcb785e0726c394f2606b12dd479",
+  "last_read_at": "2026-11-01T18:08:00.726022+00:00",
+  "last_write_at": "2026-11-01T18:13:51.466385+00:00",
+  "active_focus": "Orienting repository HATH0R-Agentic-Framework",
+  "prior_summary": "leted AgentGraph orientation for HAT; Completed AgentGraph orientation for HAT; Completed AgentGraph orientation for HAT",
+  "recalled_nodes": [
+    {
+      "id": "insight:orientation",
+      "type": "insight",
+      "label": "Synthesized Insight on orientation",
+      "snippet": "Consolidated from 2 memory nodes tagged 'orientation'. Recurring themes: framework, hathor"
+    }
+  ],
+  "micro_entries": [
+    {
+      "timestamp": "2026-11-01T18:13:51.466385+00:00",
+      "kind": "compound",
+      "summary": "Compounded eval:task-HATH0R-Agentic-Framework: Task Evaluation task-HATH0R-Agentic-Framework (R=0.77, FAIL)",
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "task-hath0r-agentic-framework",
+        "failed",
+        "compounded"
+      ],
+      "node_id": "eval:task-HATH0R-Agentic-Framework"
+    }
+  ],
+  "next_steps": [],
+  "compounded_node_ids": [
+    "episode:issue-315-release-rotation",
+    "eval:issue-315",
+    "eval:task-HATH0R-Agentic-Framework"
+  ],
+  "parent_session_id": "sess-20261031-161700-ecddad",
+  "capsule_bytes": 1843
+}
