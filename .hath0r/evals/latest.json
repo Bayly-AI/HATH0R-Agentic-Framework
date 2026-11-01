@@ -1,15 +1,15 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261101-154348-e0e9ba",
-  "task_id": "eval-baseline-hath0r-agentic-framework",
+  "eval_id": "eval-20261101-172557-89195e",
+  "task_id": "task-HATH0R-Agentic-Framework",
   "issue_number": null,
   "repo_name": "HATH0R-Agentic-Framework",
   "branch": "development",
-  "evaluated_at": "2026-11-01T15:43:48.982315+00:00",
-  "duration_ms": 515.0,
-  "passed_gate": false,
-  "r_task": 0.8561,
+  "evaluated_at": "2026-11-01T17:25:57.935199+00:00",
+  "duration_ms": 3125.0,
+  "passed_gate": true,
+  "r_task": 0.9242,
   "min_reward_threshold": 0.8,
   "weights": {
     "deterministic": 0.4,
@@ -18,21 +18,21 @@
     "goal_alignment": 0.15
   },
   "tier_scores": {
-    "deterministic": 0.7451,
-    "trajectory": 0.9263,
-    "adversarial": 0.9341,
+    "deterministic": 0.9411,
+    "trajectory": 0.8795,
+    "adversarial": 0.9301,
     "goal_alignment": 0.9287
   },
   "tiers": {
     "deterministic": {
-      "score": 0.7451,
-      "passed": false,
-      "passed_checks": 5,
+      "score": 0.9411,
+      "passed": true,
+      "passed_checks": 6,
       "total_checks": 6,
       "sub_scores": {
         "version_valid": 1.0,
         "agentgraph_valid": 1.0,
-        "memory_compounded": 0.0,
+        "memory_compounded": 0.98,
         "test_suite": 0.88,
         "calibration_4h": 0.82,
         "local_quality_gates": 0.9617
@@ -51,13 +51,13 @@
           "claude_md_synced": true
         },
         "memory_compounded": {
-          "passed": false,
-          "compounded_nodes_count": 54,
+          "passed": true,
+          "compounded_nodes_count": 55,
           "session_read_verified": true,
           "session_write_verified": true,
-          "hashes_verified": false,
+          "hashes_verified": true,
           "graphs_not_ignored": true,
-          "error": "CR-MEMORY-COMPOUND-001: Memory file hash verification failed (mismatched=1, missing=0, stale_source_files=0). Run 'hath0r memory hash --sync' or re-compound stale knowledge nodes."
+          "error": null
         },
         "test_suite": {
           "passed": true,
@@ -362,25 +362,25 @@
       }
     },
     "trajectory": {
-      "score": 0.9263,
+      "score": 0.8795,
       "passed": true,
-      "tokens_used": 666,
+      "tokens_used": 21,
       "max_tokens": 50000,
-      "estimated_usd": 0.001998,
+      "estimated_usd": 6.3e-05,
       "max_usd": 0.25,
       "session_id": "sess-20261031-161700-ecddad",
-      "session_reads": 3,
-      "session_writes": 6,
-      "session_bytes": 2000,
-      "capsule_fill_ratio": 0.9766,
+      "session_reads": 4,
+      "session_writes": 7,
+      "session_bytes": 1992,
+      "capsule_fill_ratio": 0.9727,
       "within_capsule_budget": true,
-      "latency_ms": 500.0,
-      "taguchi_quality_loss": 0.0037,
-      "taguchi_score": 0.9708,
-      "snr_db": 12.04
+      "latency_ms": 2625.0,
+      "taguchi_quality_loss": 0.1034,
+      "taguchi_score": 0.7215,
+      "snr_db": -2.36
     },
     "adversarial": {
-      "score": 0.9341,
+      "score": 0.9301,
       "passed": true,
       "adversarial_flaws_count": 0,
       "adversarial_flaws": [],
@@ -390,24 +390,26 @@
         "Cognitive complexity hotspot observed (avg 4.88, max 84, -0.0400)",
         "Repeated code blocks detected (0.59%, -0.0059)"
       ],
-      "added_lines_count": 0,
+      "added_lines_count": 19,
       "change_categories": {
         "ui": [],
         "script": [],
-        "text": [],
+        "text": [
+          "cfg/mcp.servers.json"
+        ],
         "other": []
       },
-      "changed_files_count": 0
+      "changed_files_count": 1
     },
     "goal_alignment": {
       "score": 0.9287,
       "passed": true,
-      "task_id": "eval-baseline-hath0r-agentic-framework",
+      "task_id": "task-HATH0R-Agentic-Framework",
       "issue_number": null,
-      "active_focus": "Provisioning CR-TASK-EVAL-001 for HATH0R-Agentic-Framework",
-      "goal_keywords_count": 6,
+      "active_focus": "Repository orientation verified for HATH0R-Agentic-Framework",
+      "goal_keywords_count": 5,
       "goal_overlap_score": 0.98,
-      "compounded_nodes_count": 54,
+      "compounded_nodes_count": 55,
       "consensus_score": 0.826
     }
   },
@@ -578,11 +580,9 @@
       "UNVERIFIED_FILE_PRESENCE": 0
     }
   },
-  "blocking_reasons": [
-    "Tier 1 deterministic gate failed: memory_compounded"
-  ],
+  "blocking_reasons": [],
   "observability_sync": {
     "mode": "pending"
   },
-  "content_hash": "sha256:13aa33aef1c8d2661b8b0f6c9f2a93ca2108d6a8307eec3428355cf18e1fc8e6"
+  "content_hash": "sha256:7dac2e8576b4aece27f728b8329a1a677a52b86a28d8b1f5031ebfbbb65179fb"
 }
