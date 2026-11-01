@@ -89,11 +89,11 @@
             "coverage": {
               "gate": "coverage",
               "passed": true,
-              "actual_coverage_pct": 97.5,
+              "actual_coverage_pct": 95.37,
               "min_coverage_pct": 80.0,
               "comparator": ">=",
               "source": "test_suite_symbol_verification",
-              "score": 0.9763
+              "score": 0.9645
             },
             "complexity": {
               "gate": "complexity",
@@ -109,7 +109,7 @@
             "duplication": {
               "gate": "duplication",
               "passed": true,
-              "duplicated_lines_pct": 0.0,
+              "duplicated_lines_pct": 0.59,
               "max_duplicated_lines_pct": 3.0,
               "comparator": "<=",
               "duplicated_lines": 0,
@@ -122,9 +122,9 @@
             "success": true,
             "passed": true,
             "rule_id": "CR-LOCAL-QGATES-001",
-            "repo_name": "hath0r-framework",
+            "repo_name": "HATH0R-Agentic-Framework",
             "technology": "python",
-            "thresholds_file": "/Users/raybayly/Development/OpenSource/hath0r-framework/thresholds.json",
+            "thresholds_file": "C:\\Users\\RaymondBayly\\Documents\\HATH0R-Agentic-Framework\\thresholds.json",
             "thresholds_file_exists": true,
             "thresholds": {
               "max_errors": 0,
@@ -152,11 +152,11 @@
               "coverage": {
                 "gate": "coverage",
                 "passed": true,
-                "actual_coverage_pct": 97.5,
+                "actual_coverage_pct": 95.37,
                 "min_coverage_pct": 80.0,
                 "comparator": ">=",
                 "source": "test_suite_symbol_verification",
-                "score": 0.9763
+                "score": 0.9645
               },
               "complexity": {
                 "gate": "complexity",
@@ -172,7 +172,7 @@
               "duplication": {
                 "gate": "duplication",
                 "passed": true,
-                "duplicated_lines_pct": 0.0,
+                "duplicated_lines_pct": 0.59,
                 "max_duplicated_lines_pct": 3.0,
                 "comparator": "<=",
                 "duplicated_lines": 0,
@@ -211,7 +211,8 @@
       "tech_debts_count": 0,
       "auto_created_issues": [],
       "minor_findings": [
-        "Modified script/source files without co-changing test files (-0.06)"
+        "Cognitive complexity hotspot observed (avg 4.88, max 84, -0.0400)",
+        "Repeated code blocks detected (0.59%, -0.0059)"
       ],
       "added_lines_count": 1,
       "change_categories": {
@@ -240,9 +241,9 @@
     "success": true,
     "passed": true,
     "rule_id": "CR-LOCAL-QGATES-001",
-    "repo_name": "hath0r-framework",
+    "repo_name": "HATH0R-Agentic-Framework",
     "technology": "python",
-    "thresholds_file": "/Users/raybayly/Development/OpenSource/hath0r-framework/thresholds.json",
+    "thresholds_file": "C:\\Users\\RaymondBayly\\Documents\\HATH0R-Agentic-Framework\\thresholds.json",
     "thresholds_file_exists": true,
     "thresholds": {
       "max_errors": 0,
@@ -270,11 +271,11 @@
       "coverage": {
         "gate": "coverage",
         "passed": true,
-        "actual_coverage_pct": 97.5,
+        "actual_coverage_pct": 95.37,
         "min_coverage_pct": 80.0,
         "comparator": ">=",
         "source": "test_suite_symbol_verification",
-        "score": 0.9763
+        "score": 0.9645
       },
       "complexity": {
         "gate": "complexity",
@@ -290,7 +291,7 @@
       "duplication": {
         "gate": "duplication",
         "passed": true,
-        "duplicated_lines_pct": 0.0,
+        "duplicated_lines_pct": 0.59,
         "max_duplicated_lines_pct": 3.0,
         "comparator": "<=",
         "duplicated_lines": 0,
