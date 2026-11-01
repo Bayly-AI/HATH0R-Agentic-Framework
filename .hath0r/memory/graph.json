@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
   "graph_id": "canonical-memory-space",
-  "revision": 393,
-  "content_hash": "sha256:2f7aa62b68a75f2ea17239f4d695397d4636375949cac79f39c2995c2562af20",
-  "updated_at": "2026-11-01T17:26:06.281346+00:00",
+  "revision": 411,
+  "content_hash": "sha256:8df5552d7b59b5e01943ff5330ddc04d5c6cd0e7483d69d0fca2024804079b48",
+  "updated_at": "2026-11-01T17:30:43.278747+00:00",
   "metadata": {},
   "nodes": [
     {
@@ -308,8 +308,8 @@
       "updated_at": "2026-10-16T14:24:35.715647+00:00",
       "metadata": {
         "source_files": {
-          "src/hath0r_engine/memory/memory_graph.py": "sha256:b20a9d37305b31eea06bd2f372fbd995d2108f344f474c075b9980a877a757d7",
-          "docs/governance/rules/cr-memory-compound-001.md": "sha256:e282f2098a923485716f8b50180903f34ac8f49919a887cfe5c56b4fc0007c10"
+          "src/hath0r_engine/memory/memory_graph.py": "sha256:f80819ae8d08e7bbed5fa3d47d3e29d8f48a2f5479775e10ad85b882dbd610ca",
+          "docs/governance/rules/cr-memory-compound-001.md": "sha256:daebfa120009ea99a336eca94cf92870c9941478d305c9c96cd58ade5c4f9aa4"
         }
       }
     },
@@ -335,8 +335,8 @@
       "updated_at": "2026-10-16T14:55:49.718785+00:00",
       "metadata": {
         "source_files": {
-          "src/hath0r_engine/memory/memory_graph.py": "sha256:b20a9d37305b31eea06bd2f372fbd995d2108f344f474c075b9980a877a757d7",
-          ".gitignore": "sha256:2ffdffb632151f661844a3ae5c785ac1ab2d3df62ab3e36adf6c0c0ca95c0e2c"
+          "src/hath0r_engine/memory/memory_graph.py": "sha256:f80819ae8d08e7bbed5fa3d47d3e29d8f48a2f5479775e10ad85b882dbd610ca",
+          ".gitignore": "sha256:4a9ab63ed02531a98188071625f4be0158c7248157ee59c8899017711a522217"
         }
       }
     },
@@ -410,11 +410,11 @@
       "updated_at": "2026-10-16T15:26:57.120396+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/mcp.json": "sha256:4d9f483d3ccb6b74cf1f204d0d986b6f37618d5b84ffb55f69958ec4fce1e346",
-          "cfg/mcp.servers.json": "sha256:56e1ce6c53a2d00df01757254cfbb93a51dd3be1a8b3b045d065afbb6db13513",
-          "contracts/hath0r-mcp-servers-v1.schema.json": "sha256:b403affcb2dc4d033e7919288b5adbb84cbebabe083e476a4e0d2485e898f76f",
-          "docs/governance/mcp-configuration.md": "sha256:fd7b70afbb091c3e7570ff2dc86a562569b0ff2894ce501f48b9be4772a77023",
-          "src/hath0r_engine/memory/memory_graph.py": "sha256:b20a9d37305b31eea06bd2f372fbd995d2108f344f474c075b9980a877a757d7"
+          ".hath0r/mcp.json": "sha256:79bf4dc411c484bda1c5bba2556f52e7dafee52693273186c98160d7daa4548e",
+          "cfg/mcp.servers.json": "sha256:6b9d9a67a0e66d2c0e02d6bd99c1672ae28ff34ea6825636617429d665cee33b",
+          "contracts/hath0r-mcp-servers-v1.schema.json": "sha256:6ce5de551c0b6c954338260808b9fe56f9dcb3623879fabd664273c44dd22cb0",
+          "docs/governance/mcp-configuration.md": "sha256:5405d043e6a63a40bc6ab32584eb23884ec6953a3731963432719bed06fab80b",
+          "src/hath0r_engine/memory/memory_graph.py": "sha256:f80819ae8d08e7bbed5fa3d47d3e29d8f48a2f5479775e10ad85b882dbd610ca"
         }
       }
     },
@@ -556,12 +556,12 @@
       "updated_at": "2026-10-17T14:51:21.142784+00:00",
       "metadata": {
         "source_files": {
-          "src/hath0r_engine/gateway/cache.py": "sha256:a6cd0e8118365bb22a5abb942305685818ebfcb9c18408146c0495651c804a05",
-          "src/hath0r_engine/gateway/base.py": "sha256:ac0a52ed9569e167fcdd97a0e7339b7bf30afdd546d345c7210fd075850d8e18",
-          "src/hath0r_engine/memory/memory_tools.py": "sha256:973e13b91db450d817d440265571c583d11ec84e497d239b4fe49f3b4520c76e",
-          "cfg/gateway.yaml": "sha256:ec23fac058879b507d2ac5cbfa249de79afd430a2180502f20e8aab7c9145c2b",
-          "docs/governance/playbooks/vllm-deployment-runbook.md": "sha256:b4374dd1cdfdbd1a3504eac05e6eb19a7495474c9ca5e0ac5a9dc349c12965e4",
-          "docs/governance/strategies/pagedattention-chunk-boundary-eviction-strategy.md": "sha256:a0f10cf77927b363df97f7e9c4ff0cca2965ac76c8440091e5869e6cbb8e9ab8"
+          "src/hath0r_engine/gateway/cache.py": "sha256:9b45af9b5befd9dd1c92eb31103528c4fbfff99281c660416b78138cdf9e138d",
+          "src/hath0r_engine/gateway/base.py": "sha256:89568389a825ae9e56e6029b0f35a5093bf1a1612a13112d9984b8efe17caa19",
+          "src/hath0r_engine/memory/memory_tools.py": "sha256:3704d1c778edee9b5d7d79c24ef45c18fe28eed90305ee1e2d2fd9e3fdb5f35f",
+          "cfg/gateway.yaml": "sha256:bad6544f9abf8326ae0d00d729f9f8be424f5bade9993db0a642367b4a9a1f18",
+          "docs/governance/playbooks/vllm-deployment-runbook.md": "sha256:c83c2f83fe0b55caf4678a8b0bf43b3b45e4b79438d893c241349603d1f8f42f",
+          "docs/governance/strategies/pagedattention-chunk-boundary-eviction-strategy.md": "sha256:25a23fa1420380a875d5266c65e4f84d779261b39620ffdb5a2a2a11ed804ecc"
         }
       }
     },
@@ -616,7 +616,7 @@
       "updated_at": "2026-10-19T13:59:26.038138+00:00",
       "metadata": {
         "source_files": {
-          "release/install.sh": "sha256:b7523f74de4e6a2b5c4377ca172d003eb26a94ed377ffba8cc0a628053d523b4"
+          "release/previous/1.7.0/install.sh": "sha256:391e1b6821c54b8eff7901e44929a90fd2428aac13e21e7dc3b059d24f7b1767"
         }
       }
     },
@@ -693,7 +693,7 @@
       "updated_at": "2026-10-19T13:46:42.218363+00:00",
       "metadata": {
         "source_files": {
-          "release/prompts/README.md": "sha256:9b78593ff147b8b8649bbecedc6924772fe44e0afb1bcf1585af27b4aef50901"
+          "release/prompts/README.md": "sha256:08b904ee9fe022aa4db1b2cefef1906cf920f3ee34b3f0d4d13e69c0c39c5091"
         }
       }
     },
@@ -746,7 +746,7 @@
       "updated_at": "2026-10-19T13:59:27.000528+00:00",
       "metadata": {
         "source_files": {
-          "release/install.sh": "sha256:b7523f74de4e6a2b5c4377ca172d003eb26a94ed377ffba8cc0a628053d523b4"
+          "release/previous/1.7.0/install.sh": "sha256:391e1b6821c54b8eff7901e44929a90fd2428aac13e21e7dc3b059d24f7b1767"
         }
       }
     },
@@ -774,7 +774,7 @@
       "updated_at": "2026-10-19T13:58:56.341961+00:00",
       "metadata": {
         "source_files": {
-          "release/AGENTS.md": "sha256:b8c4fc578b495ce132d182a88f617968a4b59916ae34135d93e08991f6c384f5"
+          "release/AGENTS.md": "sha256:d334e0fb73dfd22376129cd971d28b87bbaceb7847287f5ca3b6a7c2321a0ee8"
         }
       }
     },
@@ -1213,7 +1213,7 @@
       "updated_at": "2026-10-28T13:35:38.020196+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1237,7 +1237,7 @@
       "updated_at": "2026-10-28T13:53:23.673169+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1346,7 +1346,7 @@
       "updated_at": "2026-10-28T13:53:30.607564+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1391,7 +1391,7 @@
       "updated_at": "2026-10-29T13:58:52.417648+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1415,7 +1415,7 @@
       "updated_at": "2026-10-28T17:45:19.958282+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1439,7 +1439,7 @@
       "updated_at": "2026-10-31T16:17:06.721686+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1492,10 +1492,10 @@
       "updated_at": "2026-10-29T11:48:21.153739+00:00",
       "metadata": {
         "source_files": {
-          "src/hath0r_engine/training/peft_lora_sft.py": "sha256:f60ba9c2ba0a62cf6d57ad65e618d9fe45b8b5fdfb1ab0ccb57b641788f46ef8",
-          "src/hath0r_engine/training/training_pipeline.py": "sha256:cc304f6bc5323dc3e3f0fabe5fe2be0c1477323dc7d6b84d33e1e9302118b5db",
-          "src/hath0r_engine/training/model_evaluator.py": "sha256:73d1321594b33f7cfeb88c6fde56d583c1217b5a43659e27eba40ad2a9d8a566",
-          "tests/test_cicccdct_engine.py": "sha256:e54eba9550bb7c9cd2ec893eb7622ce453e8f74f4514aae71aff89f1fcbd147c"
+          "src/hath0r_engine/training/peft_lora_sft.py": "sha256:7a1a2fa385745cb01b974cdc60864b5325554fee6c4fee1d046181ecb6706b56",
+          "src/hath0r_engine/training/training_pipeline.py": "sha256:68c5e67f317af9ab04dd4d6b7bc3a18be7ad8c1f98c2170cff41e534b2c96bbc",
+          "src/hath0r_engine/training/model_evaluator.py": "sha256:085a23eda42de9261486514258a396ef954173966a6a55f27569849740cf6e54",
+          "tests/test_cicccdct_engine.py": "sha256:586c0fb48710f85753a23a58d502e5a71992469a89bd4dc9b210ad119db71931"
         }
       }
     },
@@ -1519,7 +1519,7 @@
       "updated_at": "2026-10-29T11:48:57.187163+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1540,10 +1540,10 @@
       "updated_at": "2026-10-29T11:56:21.973456+00:00",
       "metadata": {
         "source_files": {
-          "VERSION": "sha256:80821deafae40caf653ac638fb6eecb9c5879eea9e0724448ec77dd5685434af",
-          "pyproject.toml": "sha256:a3fae3f44c4f3198b9c1c6d7e6641a1955b083bd48cdfd0a2eca8267f15c2e54",
-          "CHANGELOG.md": "sha256:e1865b84e990b8bbd77e06d87dace6c245abf1a995de0157e65e17a758abfcfe",
-          "src/hath0r_engine/__init__.py": "sha256:6ea0d53982f70e864846000ed4d6b3f24dcfbebf167ff07a401cd65e5ac64503"
+          "VERSION": "sha256:d723798f2436b46872ee9a012632d6f5602ab9297be05780a79ba29733f8a532",
+          "pyproject.toml": "sha256:1b4f2dc1381958033f1a2e54f339e1ad07f2407cd7fbe3171e6fc7fa47799cae",
+          "CHANGELOG.md": "sha256:e8b0e96cfb216335816782fc4089a40d80055eccb468f039190773b0ca9c7de9",
+          "src/hath0r_engine/__init__.py": "sha256:96fb253cc5adfbaaae046a0eb7a14edeafff5930b18af198ef7ea5cb2651d1d1"
         }
       }
     },
@@ -1567,7 +1567,7 @@
       "updated_at": "2026-10-29T11:56:34.661577+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1614,8 +1614,8 @@
       "updated_at": "2026-10-29T12:46:41.238362+00:00",
       "metadata": {
         "source_files": {
-          "src/hath0r_engine/analysis/ast_gnn.py": "sha256:57d92abfcdbd9fce61097bc5dc209a06e0fdc604ebb754ef10783886fc46b1b8",
-          "tests/test_ast_gnn_reachability.py": "sha256:fb4686cd924f101d2729322b9d8d4754e0af85d93d1c3cc73d68d125b47f274d"
+          "src/hath0r_engine/analysis/ast_gnn.py": "sha256:81f2762dae5a5d001d11cbb9593995afed3d9a91e5aab0642032003397a4a15f",
+          "tests/test_ast_gnn_reachability.py": "sha256:fe08193d90863cf2bec78fb0cae9379f03d313adc085b7c59df18b96262f08ba"
         }
       }
     },
@@ -1639,7 +1639,7 @@
       "updated_at": "2026-10-29T13:27:13.043564+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1689,7 +1689,7 @@
       "updated_at": "2026-10-29T14:32:03.258880+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1756,7 +1756,7 @@
       "updated_at": "2026-10-31T12:19:42.354593+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1886,7 +1886,7 @@
       "updated_at": "2026-11-01T15:43:49.505017+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1910,7 +1910,7 @@
       "updated_at": "2026-11-01T17:26:01.066439+00:00",
       "metadata": {
         "source_files": {
-          ".hath0r/evals/latest.json": "sha256:77594ce72f428283ac7b6af90983d845a074ccd39d8ffffbe4f3e2917aad495d"
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
         }
       }
     },
@@ -1938,6 +1938,73 @@
         "write_count": 8,
         "status": "completed",
         "byte_size": 2040
+      }
+    },
+    {
+      "id": "episode:issue-315-release-rotation",
+      "type": "episode",
+      "label": "Issue #315 Release Folder Rotation Sync",
+      "content": "Synchronized release/mac, release/windows, release/vscode, and release/previous/<version>/ archives with HATH0R-CLI v1.22.0 under CR-RELEASE-ROTATION-001.",
+      "importance": 0.8,
+      "tags": [
+        "episode",
+        "compounded"
+      ],
+      "valid_from": "2026-11-01T17:19:36.635509+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-11-01T17:19:36.635509+00:00",
+      "updated_at": "2026-11-01T17:19:36.635509+00:00",
+      "metadata": {}
+    },
+    {
+      "id": "eval:issue-315",
+      "type": "eval",
+      "label": "Task Evaluation issue-315 (R=0.94, PASS)",
+      "content": "4-Tier Task Evaluation for issue-315 on branch chore/315-release-folder-rotation: R_task=0.9424 (det=0.97, traj=0.94, adv=0.92, goal=0.93). Gate=PASSED.",
+      "importance": 0.85,
+      "tags": [
+        "eval",
+        "cr-task-eval-001",
+        "issue-315",
+        "passed",
+        "compounded"
+      ],
+      "valid_from": "2026-11-01T17:28:48.694470+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-11-01T17:19:41.431407+00:00",
+      "updated_at": "2026-11-01T17:28:48.694470+00:00",
+      "metadata": {
+        "source_files": {
+          ".hath0r/evals/latest.json": "sha256:42b511e8e5b0befa93f00077c0989d1e7602fe090cebd6aae743208f950837ef"
+        }
+      }
+    },
+    {
+      "id": "session:sess-20261101-171934-cb978d",
+      "type": "session",
+      "label": "Micro Session sess-20261101-171934-cb978d",
+      "content": "Micro Session sess-20261101-171934-cb978d [active] | Focus: Active working session in hath0r-framework | Reads: 2, Writes: 9 | Entries: Compounded eval:issue-315: Task Evaluation issue-315 (R=0.94, PASS)",
+      "importance": 0.75,
+      "tags": [
+        "session",
+        "micro-session",
+        "active"
+      ],
+      "valid_from": "2026-11-01T17:19:34.385271+00:00",
+      "valid_to": null,
+      "is_current": true,
+      "created_at": "2026-11-01T17:19:34.385271+00:00",
+      "updated_at": "2026-11-01T17:28:48.848709+00:00",
+      "metadata": {
+        "session_id": "sess-20261101-171934-cb978d",
+        "prior_session_id": "sess-20261031-161700-ecddad",
+        "parent_session_id": "sess-20261031-161700-ecddad",
+        "read_count": 2,
+        "write_count": 9,
+        "status": "active",
+        "byte_size": 1805
       }
     }
   ],
@@ -3969,131 +4036,67 @@
       "is_current": true
     },
     {
-      "source": "fact:repo-hath0r-agentic-framework-orientation",
+      "source": "session:sess-20261031-161700-ecddad",
+      "target": "session:sess-20261101-171934-cb978d",
+      "relation": "PRECEDES",
+      "weight": 1.0,
+      "valid_from": "2026-11-01T17:19:34.394044+00:00",
+      "is_current": true
+    },
+    {
+      "source": "session:sess-20261101-171934-cb978d",
       "target": "concept:tri-graph",
       "relation": "RELATES_TO",
-      "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:44.185383+00:00",
+      "weight": 0.8,
+      "valid_from": "2026-11-01T17:19:34.394044+00:00",
       "is_current": true
     },
     {
-      "source": "fact:repo-hath0r-agentic-framework-orientation",
-      "target": "rule:cr-memory-compound-001",
-      "relation": "RELATES_TO",
-      "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:44.185383+00:00",
-      "is_current": true
-    },
-    {
-      "source": "fact:repo-hath0r-agentic-framework-orientation",
-      "target": "session:sess-20261031-161700-ecddad",
+      "source": "episode:issue-315-release-rotation",
+      "target": "concept:tri-graph",
       "relation": "DERIVES_FROM",
       "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:44.774806+00:00",
+      "valid_from": "2026-11-01T17:19:36.635509+00:00",
       "is_current": true
     },
     {
-      "source": "insight:orientation",
-      "target": "fact:repo-hath0r-framework-orientation",
+      "source": "episode:issue-315-release-rotation",
+      "target": "session:sess-20261101-171934-cb978d",
       "relation": "DERIVES_FROM",
       "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:44.836315+00:00",
+      "valid_from": "2026-11-01T17:19:36.700562+00:00",
       "is_current": true
     },
     {
-      "source": "insight:orientation",
-      "target": "fact:repo-hath0r-agentic-framework-orientation",
-      "relation": "DERIVES_FROM",
-      "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:44.836315+00:00",
-      "is_current": true
-    },
-    {
-      "source": "insight:repository",
-      "target": "fact:repo-hath0r-framework-orientation",
-      "relation": "DERIVES_FROM",
-      "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:44.836315+00:00",
-      "is_current": true
-    },
-    {
-      "source": "insight:repository",
-      "target": "fact:repo-hath0r-agentic-framework-orientation",
-      "relation": "DERIVES_FROM",
-      "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:44.836315+00:00",
-      "is_current": true
-    },
-    {
-      "source": "rule:cr-task-eval-001",
-      "target": "session:sess-20261031-161700-ecddad",
-      "relation": "DERIVES_FROM",
-      "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:48.791002+00:00",
-      "is_current": true
-    },
-    {
-      "source": "eval:eval-baseline-hath0r-agentic-framework",
+      "source": "eval:issue-315",
       "target": "concept:tri-graph",
       "relation": "EVALUATES",
       "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:49.505017+00:00",
+      "valid_from": "2026-11-01T17:19:41.431407+00:00",
       "is_current": true
     },
     {
-      "source": "eval:eval-baseline-hath0r-agentic-framework",
+      "source": "eval:issue-315",
       "target": "rule:cr-memory-compound-001",
       "relation": "EVALUATES",
       "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:49.505017+00:00",
+      "valid_from": "2026-11-01T17:19:41.431407+00:00",
       "is_current": true
     },
     {
-      "source": "eval:eval-baseline-hath0r-agentic-framework",
-      "target": "session:sess-20261031-161700-ecddad",
+      "source": "eval:issue-315",
+      "target": "session:sess-20261101-171934-cb978d",
       "relation": "EVALUATES",
       "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:49.505017+00:00",
+      "valid_from": "2026-11-01T17:19:41.431407+00:00",
       "is_current": true
     },
     {
-      "source": "eval:eval-baseline-hath0r-agentic-framework",
-      "target": "session:sess-20261031-161700-ecddad",
+      "source": "eval:issue-315",
+      "target": "session:sess-20261101-171934-cb978d",
       "relation": "DERIVES_FROM",
       "weight": 1.0,
-      "valid_from": "2026-11-01T15:43:49.596582+00:00",
-      "is_current": true
-    },
-    {
-      "source": "eval:task-HATH0R-Agentic-Framework",
-      "target": "concept:tri-graph",
-      "relation": "EVALUATES",
-      "weight": 1.0,
-      "valid_from": "2026-11-01T17:26:01.066439+00:00",
-      "is_current": true
-    },
-    {
-      "source": "eval:task-HATH0R-Agentic-Framework",
-      "target": "rule:cr-memory-compound-001",
-      "relation": "EVALUATES",
-      "weight": 1.0,
-      "valid_from": "2026-11-01T17:26:01.066439+00:00",
-      "is_current": true
-    },
-    {
-      "source": "eval:task-HATH0R-Agentic-Framework",
-      "target": "session:sess-20261031-161700-ecddad",
-      "relation": "EVALUATES",
-      "weight": 1.0,
-      "valid_from": "2026-11-01T17:26:01.066439+00:00",
-      "is_current": true
-    },
-    {
-      "source": "eval:task-HATH0R-Agentic-Framework",
-      "target": "session:sess-20261031-161700-ecddad",
-      "relation": "DERIVES_FROM",
-      "weight": 1.0,
-      "valid_from": "2026-11-01T17:26:01.224307+00:00",
+      "valid_from": "2026-11-01T17:19:41.497807+00:00",
       "is_current": true
     }
   ]
