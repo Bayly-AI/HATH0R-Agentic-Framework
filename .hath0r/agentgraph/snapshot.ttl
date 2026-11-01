@@ -1682,6 +1682,11 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:episode:issue-315-release-rotation> a hath0r:Plane ;
+    rdfs:label "Issue #315 Release Folder Rotation Sync" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#memory:episode:pr-308> a hath0r:Plane ;
     rdfs:label "PR #308 Merged: CR-TASK-EVAL-001 Automatic Task Evals" ;
     hath0r:inPlane "memory" ;
@@ -1703,7 +1708,7 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
 <https://hath0r.dev/ontology/v1#memory:eval:clean-repo-hath0r-framework> a hath0r:Plane ;
-    rdfs:label "Task Evaluation clean-repo-hath0r-framework (R=1.00, PASS)" ;
+    rdfs:label "Task Evaluation clean-repo-hath0r-framework (R=0.93, PASS)" ;
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
@@ -1842,6 +1847,11 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:knowledge:suite-arch-and-local-qgates-20261031> a hath0r:Plane ;
+    rdfs:label "Suite MCP-Central Architecture & Local Quality Gates (CR-LOCAL-QGATES-001)" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#memory:release-v1.10.0> a hath0r:Plane ;
     rdfs:label "Release HATH0R-Agentic-Framework v1.10.0 with SFT, LoRA, QLoRA, PEFT & Evals" ;
     hath0r:inPlane "memory" ;
@@ -1974,6 +1984,16 @@ hath0r:informs a owl:ObjectProperty .
     hath0r:inPlane "memory" ;
     hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
 
+<https://hath0r.dev/ontology/v1#memory:session:sess-20261031-161700-ecddad> a hath0r:Plane ;
+    rdfs:label "Micro Session sess-20261031-161700-ecddad" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
+<https://hath0r.dev/ontology/v1#memory:session:sess-20261101-171934-cb978d> a hath0r:Plane ;
+    rdfs:label "Micro Session sess-20261101-171934-cb978d" ;
+    hath0r:inPlane "memory" ;
+    hath0r:informs <https://hath0r.dev/ontology/v1#role:developer> .
+
 <https://hath0r.dev/ontology/v1#role:reader> a hath0r:AgentRole ;
     rdfs:label "Read-Only Agent" ;
     hath0r:inPlane "rules" .
@@ -2020,6 +2040,11 @@ hath0r:informs a owl:ObjectProperty .
 
 <https://hath0r.dev/ontology/v1#rule:cr-cli-feature-standard-001> a hath0r:Plane ;
     rdfs:label "Rule CR-CLI-FEATURE-STANDARD-001" ;
+    hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
+    hath0r:inPlane "rules" .
+
+<https://hath0r.dev/ontology/v1#rule:cr-cli-first-001> a hath0r:Plane ;
+    rdfs:label "Rule CR-CLI-FIRST-001" ;
     hath0r:governs <https://hath0r.dev/ontology/v1#role:developer> ;
     hath0r:inPlane "rules" .
 
