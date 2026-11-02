@@ -5,17 +5,17 @@
   "repo_name": "hath0r-framework",
   "status": "active",
   "started_at": "2026-11-01T17:19:34.385271+00:00",
-  "updated_at": "2026-11-01T18:24:48.445012+00:00",
+  "updated_at": "2026-11-02T16:42:52.569099+00:00",
   "ended_at": null,
-  "read_count": 8,
-  "write_count": 18,
-  "revision": 26,
-  "content_hash": "sha256:f518cdd60ea63371998052727e90495e55425a41c5d437a8053f455d5fa43755",
-  "base_graph_hash": "sha256:43ec0006682178d66b2d9052e3260ee873bfeb04b7e3f8df800e5a3b09484f15",
-  "last_read_at": "2026-11-01T18:24:43.857139+00:00",
-  "last_write_at": "2026-11-01T18:24:48.445012+00:00",
-  "active_focus": "Orienting repository HATH0R-Agentic-Framework",
-  "prior_summary": "ounded episode:conflict-resolution-d; Resolved conflicts, synced AgentGraph an; Compounded episode:conflict-resolution-d",
+  "read_count": 10,
+  "write_count": 21,
+  "revision": 31,
+  "content_hash": "sha256:cb31c975388766fa57790db5261e51126fdac3894351870cad4838fdadb40cda",
+  "base_graph_hash": "sha256:48193d08817c03d855104ae74ddfe4e6253852b6e51e17de5ad58f0da01e5c5a",
+  "last_read_at": "2026-11-02T16:42:52.569099+00:00",
+  "last_write_at": "2026-11-02T16:42:51.327581+00:00",
+  "active_focus": "Repository orientation verified for hath0r-framework",
+  "prior_summary": "ounded eval:task-HATH0R-Agentic-Fram; Compounded fact:repo-hath0r-framework-or; Compounded rule:cr-task-eval-001: Automa",
   "recalled_nodes": [
     {
       "id": "insight:orientation",
@@ -26,26 +26,28 @@
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-11-01T18:24:48.445012+00:00",
+      "timestamp": "2026-11-02T16:42:51.327581+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:task-HATH0R-Agentic-Framework: Task Evaluation task-HATH0R-Agentic-Framework (R=0.94, PASS)",
+      "summary": "Compounded eval:eval-baseline-hath0r-framework: Task Evaluation eval-baseline-hath0r-framework (R=0.92, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "task-hath0r-agentic-framework",
+        "eval-baseline-hath0r-framework",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:task-HATH0R-Agentic-Framework"
+      "node_id": "eval:eval-baseline-hath0r-framework"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "episode:issue-315-release-rotation",
     "eval:issue-315",
     "eval:task-HATH0R-Agentic-Framework",
-    "episode:conflict-resolution-development-sync"
+    "episode:conflict-resolution-development-sync",
+    "fact:repo-hath0r-framework-orientation",
+    "rule:cr-task-eval-001",
+    "eval:eval-baseline-hath0r-framework"
   ],
   "parent_session_id": "sess-20261031-161700-ecddad",
-  "capsule_bytes": 1895
+  "capsule_bytes": 1983
 }
