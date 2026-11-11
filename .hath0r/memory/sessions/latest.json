@@ -1,53 +1,51 @@
 {
   "schema_version": "hath0r.micro_session/1",
-  "session_id": "sess-20261101-171934-cb978d",
-  "prior_session_id": "sess-20261031-161700-ecddad",
+  "session_id": "sess-20261107-182427-d05051",
+  "prior_session_id": "sess-20261101-171934-cb978d",
+  "parent_session_id": "sess-20261101-171934-cb978d",
+  "revision": 5,
+  "content_hash": "sha256:bbd461f3c8a87982446d0c9f76a24047487d162c0148b673d64f0826ade44244",
+  "base_graph_hash": "sha256:7ae3665292de44185c85f40dea4445f2209ec08e1505229714f32ea871599392",
+  "task_id": null,
+  "role": null,
   "repo_name": "hath0r-framework",
-  "status": "active",
-  "started_at": "2026-11-01T17:19:34.385271+00:00",
-  "updated_at": "2026-11-02T16:42:52.569099+00:00",
-  "ended_at": null,
-  "read_count": 10,
-  "write_count": 21,
-  "revision": 31,
-  "content_hash": "sha256:cb31c975388766fa57790db5261e51126fdac3894351870cad4838fdadb40cda",
-  "base_graph_hash": "sha256:48193d08817c03d855104ae74ddfe4e6253852b6e51e17de5ad58f0da01e5c5a",
-  "last_read_at": "2026-11-02T16:42:52.569099+00:00",
-  "last_write_at": "2026-11-02T16:42:51.327581+00:00",
-  "active_focus": "Repository orientation verified for hath0r-framework",
-  "prior_summary": "ounded eval:task-HATH0R-Agentic-Fram; Compounded fact:repo-hath0r-framework-or; Compounded rule:cr-task-eval-001: Automa",
+  "status": "completed",
+  "started_at": "2026-11-07T18:24:27.993094+00:00",
+  "updated_at": "2026-11-07T18:24:34.239628+00:00",
+  "ended_at": "2026-11-07T18:24:28.221486+00:00",
+  "read_count": 2,
+  "write_count": 4,
+  "last_read_at": "2026-11-07T18:24:28.059988+00:00",
+  "last_write_at": "2026-11-07T18:24:34.239628+00:00",
+  "active_focus": "clean-repo-hath0r-framework",
+  "prior_summary": "ted session focus: clean-repo-hath0r; Compounded episode:clean-repo-hath0r-fra; Clean Repo Lifecycle completed for hath0",
   "recalled_nodes": [
     {
-      "id": "insight:orientation",
+      "id": "insight:hath0r-framework",
       "type": "insight",
-      "label": "Synthesized Insight on orientation",
-      "snippet": "Consolidated from 2 memory nodes tagged 'orientation'. Recurring themes: framework, hathor"
+      "label": "Synthesized Insight on hath0r-framework",
+      "snippet": "Consolidated from 2 memory nodes tagged 'hath0r-framework'. Recurring themes: framework, h"
     }
   ],
   "micro_entries": [
     {
-      "timestamp": "2026-11-02T16:42:51.327581+00:00",
+      "timestamp": "2026-11-07T18:24:34.239628+00:00",
       "kind": "compound",
-      "summary": "Compounded eval:eval-baseline-hath0r-framework: Task Evaluation eval-baseline-hath0r-framework (R=0.92, PASS)",
+      "summary": "Compounded eval:clean-repo-hath0r-framework: Task Evaluation clean-repo-hath0r-framework (R=0.93, PASS)",
       "tags": [
         "eval",
         "cr-task-eval-001",
-        "eval-baseline-hath0r-framework",
+        "clean-repo-hath0r-framework",
         "passed",
         "compounded"
       ],
-      "node_id": "eval:eval-baseline-hath0r-framework"
+      "node_id": "eval:clean-repo-hath0r-framework"
     }
   ],
   "next_steps": [],
   "compounded_node_ids": [
-    "eval:issue-315",
-    "eval:task-HATH0R-Agentic-Framework",
-    "episode:conflict-resolution-development-sync",
-    "fact:repo-hath0r-framework-orientation",
-    "rule:cr-task-eval-001",
-    "eval:eval-baseline-hath0r-framework"
+    "episode:clean-repo-hath0r-framework",
+    "eval:clean-repo-hath0r-framework"
   ],
-  "parent_session_id": "sess-20261031-161700-ecddad",
-  "capsule_bytes": 1983
+  "capsule_bytes": 1870
 }
