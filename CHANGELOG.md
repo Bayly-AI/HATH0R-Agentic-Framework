@@ -5,6 +5,20 @@ All notable changes to **HATH0R-Agentic-Framework** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.12.3] - 2026-11-11
+
+### Changed
+- **Archive 1.22.0 to 1.25.0 releases in Git LFS** (`CR-RELEASE-ROTATION-001`). `release/previous/` now holds the HATH0R-CLI 1.23.0, 1.23.1, 1.24.0 and 1.25.0 releases, mirrored from HATH0R-CLI `development` at `57780e4` (Bayly-AI/HATH0R-CLI#602). The 1.22.0 Mac binaries move into Git LFS. `release/{mac,windows,vscode}` stay empty apart from `CHECKSUMS.sha256`, so `hath0r release validate` stays green. The current 1.26.0 artifacts ship from HATH0R-CLI.
+- `src/hath0r_engine/__init__.py` `__version__` now matches `VERSION`. It was still 1.12.1, which failed `tests/test_engine_package.py`.
+
+### Added
+- **`.gitattributes` stores the Mac binaries in Git LFS.** They are about 40 to 60 MB each, near or over GitHub's 50 MB warning. It tracks `release/mac/hath0r-darwin-*` and `release/previous/*/mac/hath0r-darwin-*`.
+
+## [1.12.2] - 2026-11-07
+
+### Added
+- **`CR-CONTEXT-SQUEEZE-001` (Compress Context with SuperSqueeze — CANONICAL)** in `AGENTS.md`: agents compress bulky context through SuperSqueeze (`hath0r squeeze` / `SuperSqueezeBot`) before it enters a context window or prompt. Rotated stale 1.22.0 release artifacts into `release/previous/1.22.0/`.
+
 ## [1.12.1] - 2026-11-01
 
 ### Changed
