@@ -1,15 +1,15 @@
 {
   "schema_version": "hath0r.evals.scorecard/v1",
   "rule_id": "CR-TASK-EVAL-001",
-  "eval_id": "eval-20261031-161705-49048c",
+  "eval_id": "eval-20261107-182432-6d7888",
   "task_id": "clean-repo-hath0r-framework",
   "issue_number": null,
   "repo_name": "hath0r-framework",
   "branch": "development",
-  "evaluated_at": "2026-10-31T16:17:05.304587+00:00",
-  "duration_ms": 1392.79,
+  "evaluated_at": "2026-11-07T18:24:32.349164+00:00",
+  "duration_ms": 1732.3,
   "passed_gate": true,
-  "r_task": 0.9255,
+  "r_task": 0.9327,
   "min_reward_threshold": 0.8,
   "weights": {
     "deterministic": 0.4,
@@ -18,14 +18,14 @@
     "goal_alignment": 0.15
   },
   "tier_scores": {
-    "deterministic": 0.9541,
-    "trajectory": 0.9228,
-    "adversarial": 0.88,
+    "deterministic": 0.9411,
+    "trajectory": 0.9171,
+    "adversarial": 0.9341,
     "goal_alignment": 0.9287
   },
   "tiers": {
     "deterministic": {
-      "score": 0.9541,
+      "score": 0.9411,
       "passed": true,
       "passed_checks": 6,
       "total_checks": 6,
@@ -34,13 +34,13 @@
         "agentgraph_valid": 1.0,
         "memory_compounded": 0.98,
         "test_suite": 0.88,
-        "calibration_4h": 0.8915,
-        "local_quality_gates": 0.986
+        "calibration_4h": 0.82,
+        "local_quality_gates": 0.9617
       },
       "checks": {
         "version_valid": {
           "passed": true,
-          "version": "1.12.0",
+          "version": "1.12.1",
           "changelog_aligned": true,
           "error": null
         },
@@ -52,7 +52,7 @@
         },
         "memory_compounded": {
           "passed": true,
-          "compounded_nodes_count": 51,
+          "compounded_nodes_count": 59,
           "session_read_verified": true,
           "session_write_verified": true,
           "hashes_verified": true,
@@ -66,15 +66,15 @@
         },
         "calibration_4h": {
           "passed": true,
-          "is_fresh": true,
-          "age_hours": 3.94,
+          "is_fresh": false,
+          "age_hours": 145.08,
           "max_age_hours": 4.0
         },
         "local_quality_gates": {
           "passed": true,
           "technology": "python",
           "thresholds_file": "/Users/raybayly/Development/OpenSource/hath0r-framework/thresholds.json",
-          "qgate_score": 0.986,
+          "qgate_score": 0.9617,
           "failing_gates": [],
           "gates": {
             "errors": {
@@ -89,33 +89,121 @@
             "coverage": {
               "gate": "coverage",
               "passed": true,
-              "actual_coverage_pct": 97.5,
+              "actual_coverage_pct": 95.37,
               "min_coverage_pct": 80.0,
               "comparator": ">=",
               "source": "test_suite_symbol_verification",
-              "score": 0.9763
+              "score": 0.9645
             },
             "complexity": {
               "gate": "complexity",
               "passed": true,
-              "max_observed_complexity": 6,
-              "avg_complexity": 2.14,
+              "max_observed_complexity": 84,
+              "avg_complexity": 4.88,
               "max_complexity": 15,
               "comparator": "<=",
-              "functions_scanned": 7,
-              "offending_functions": [],
-              "score": 0.9757
+              "functions_scanned": 603,
+              "offending_functions": [
+                {
+                  "function": "src/hath0r_engine/analysis/ast_gnn.py:_extract_ast_nodes_from_file",
+                  "line": 155,
+                  "complexity": 51
+                },
+                {
+                  "function": "src/hath0r_engine/analysis/ast_gnn.py:build_graph_from_directory",
+                  "line": 243,
+                  "complexity": 26
+                },
+                {
+                  "function": "src/hath0r_engine/analysis/ast_gnn.py:forward",
+                  "line": 300,
+                  "complexity": 20
+                },
+                {
+                  "function": "src/hath0r_engine/analysis/ast_gnn.py:compute_external_reachability",
+                  "line": 453,
+                  "complexity": 21
+                },
+                {
+                  "function": "src/hath0r_engine/analysis/ast_gnn.py:verify_constrained_exploit_trace",
+                  "line": 520,
+                  "complexity": 17
+                },
+                {
+                  "function": "src/hath0r_engine/analysis/pmat_adapter.py:_estimate_file_complexity",
+                  "line": 320,
+                  "complexity": 21
+                },
+                {
+                  "function": "src/hath0r_engine/analysis/pmat_stats_engine.py:calculate_ast_complexity",
+                  "line": 85,
+                  "complexity": 28
+                },
+                {
+                  "function": "src/hath0r_engine/analysis/pmat_stats_engine.py:calculate_provability_score",
+                  "line": 218,
+                  "complexity": 20
+                },
+                {
+                  "function": "src/hath0r_engine/bots/orient_bot.py:read_agentgraph",
+                  "line": 87,
+                  "complexity": 35
+                },
+                {
+                  "function": "src/hath0r_engine/bots/orient_bot.py:read_readme",
+                  "line": 224,
+                  "complexity": 27
+                }
+              ],
+              "score": 0.8775
             },
             "duplication": {
               "gate": "duplication",
               "passed": true,
-              "duplicated_lines_pct": 0.0,
+              "duplicated_lines_pct": 0.59,
               "max_duplicated_lines_pct": 3.0,
               "comparator": "<=",
-              "duplicated_lines": 0,
-              "total_analyzed_lines": 155,
-              "duplicated_blocks": [],
-              "score": 0.99
+              "duplicated_lines": 90,
+              "total_analyzed_lines": 15343,
+              "duplicated_blocks": [
+                {
+                  "first": "src/hath0r_engine/calibration/gain_imputation.py:20",
+                  "duplicate": "src/hath0r_engine/calibration/gain_imputation.py:49"
+                },
+                {
+                  "first": "src/hath0r_engine/gateway/client.py:45",
+                  "duplicate": "src/hath0r_engine/gateway/client.py:108"
+                },
+                {
+                  "first": "src/hath0r_engine/graph/knowledge_graph.py:10",
+                  "duplicate": "src/hath0r_engine/graph/models.py:40"
+                },
+                {
+                  "first": "src/hath0r_engine/graph/knowledge_graph.py:10",
+                  "duplicate": "src/hath0r_engine/memory/memory_graph.py:49"
+                },
+                {
+                  "first": "src/hath0r_engine/memory/memory_graph.py:769",
+                  "duplicate": "src/hath0r_engine/memory/memory_graph.py:844"
+                },
+                {
+                  "first": "src/hath0r_engine/memory/memory_graph.py:779",
+                  "duplicate": "src/hath0r_engine/memory/memory_graph.py:854"
+                },
+                {
+                  "first": "src/hath0r_engine/__init__.py:37",
+                  "duplicate": "src/hath0r_engine/pipeline/__init__.py:1"
+                },
+                {
+                  "first": "src/hath0r_engine/sandbox/daytona_provider.py:26",
+                  "duplicate": "src/hath0r_engine/sandbox/e2b_provider.py:35"
+                },
+                {
+                  "first": "src/hath0r_engine/sandbox/daytona_provider.py:26",
+                  "duplicate": "src/hath0r_engine/sandbox/local_provider.py:36"
+                }
+              ],
+              "score": 0.9841
             }
           },
           "report": {
@@ -136,8 +224,8 @@
               "new_maintainability_rating": 1,
               "min_security_hotspots_reviewed_pct": 100.0
             },
-            "files_analyzed": 1,
-            "qgate_score": 0.986,
+            "files_analyzed": 80,
+            "qgate_score": 0.9617,
             "failing_gates": [],
             "gates": {
               "errors": {
@@ -152,33 +240,121 @@
               "coverage": {
                 "gate": "coverage",
                 "passed": true,
-                "actual_coverage_pct": 97.5,
+                "actual_coverage_pct": 95.37,
                 "min_coverage_pct": 80.0,
                 "comparator": ">=",
                 "source": "test_suite_symbol_verification",
-                "score": 0.9763
+                "score": 0.9645
               },
               "complexity": {
                 "gate": "complexity",
                 "passed": true,
-                "max_observed_complexity": 6,
-                "avg_complexity": 2.14,
+                "max_observed_complexity": 84,
+                "avg_complexity": 4.88,
                 "max_complexity": 15,
                 "comparator": "<=",
-                "functions_scanned": 7,
-                "offending_functions": [],
-                "score": 0.9757
+                "functions_scanned": 603,
+                "offending_functions": [
+                  {
+                    "function": "src/hath0r_engine/analysis/ast_gnn.py:_extract_ast_nodes_from_file",
+                    "line": 155,
+                    "complexity": 51
+                  },
+                  {
+                    "function": "src/hath0r_engine/analysis/ast_gnn.py:build_graph_from_directory",
+                    "line": 243,
+                    "complexity": 26
+                  },
+                  {
+                    "function": "src/hath0r_engine/analysis/ast_gnn.py:forward",
+                    "line": 300,
+                    "complexity": 20
+                  },
+                  {
+                    "function": "src/hath0r_engine/analysis/ast_gnn.py:compute_external_reachability",
+                    "line": 453,
+                    "complexity": 21
+                  },
+                  {
+                    "function": "src/hath0r_engine/analysis/ast_gnn.py:verify_constrained_exploit_trace",
+                    "line": 520,
+                    "complexity": 17
+                  },
+                  {
+                    "function": "src/hath0r_engine/analysis/pmat_adapter.py:_estimate_file_complexity",
+                    "line": 320,
+                    "complexity": 21
+                  },
+                  {
+                    "function": "src/hath0r_engine/analysis/pmat_stats_engine.py:calculate_ast_complexity",
+                    "line": 85,
+                    "complexity": 28
+                  },
+                  {
+                    "function": "src/hath0r_engine/analysis/pmat_stats_engine.py:calculate_provability_score",
+                    "line": 218,
+                    "complexity": 20
+                  },
+                  {
+                    "function": "src/hath0r_engine/bots/orient_bot.py:read_agentgraph",
+                    "line": 87,
+                    "complexity": 35
+                  },
+                  {
+                    "function": "src/hath0r_engine/bots/orient_bot.py:read_readme",
+                    "line": 224,
+                    "complexity": 27
+                  }
+                ],
+                "score": 0.8775
               },
               "duplication": {
                 "gate": "duplication",
                 "passed": true,
-                "duplicated_lines_pct": 0.0,
+                "duplicated_lines_pct": 0.59,
                 "max_duplicated_lines_pct": 3.0,
                 "comparator": "<=",
-                "duplicated_lines": 0,
-                "total_analyzed_lines": 155,
-                "duplicated_blocks": [],
-                "score": 0.99
+                "duplicated_lines": 90,
+                "total_analyzed_lines": 15343,
+                "duplicated_blocks": [
+                  {
+                    "first": "src/hath0r_engine/calibration/gain_imputation.py:20",
+                    "duplicate": "src/hath0r_engine/calibration/gain_imputation.py:49"
+                  },
+                  {
+                    "first": "src/hath0r_engine/gateway/client.py:45",
+                    "duplicate": "src/hath0r_engine/gateway/client.py:108"
+                  },
+                  {
+                    "first": "src/hath0r_engine/graph/knowledge_graph.py:10",
+                    "duplicate": "src/hath0r_engine/graph/models.py:40"
+                  },
+                  {
+                    "first": "src/hath0r_engine/graph/knowledge_graph.py:10",
+                    "duplicate": "src/hath0r_engine/memory/memory_graph.py:49"
+                  },
+                  {
+                    "first": "src/hath0r_engine/memory/memory_graph.py:769",
+                    "duplicate": "src/hath0r_engine/memory/memory_graph.py:844"
+                  },
+                  {
+                    "first": "src/hath0r_engine/memory/memory_graph.py:779",
+                    "duplicate": "src/hath0r_engine/memory/memory_graph.py:854"
+                  },
+                  {
+                    "first": "src/hath0r_engine/__init__.py:37",
+                    "duplicate": "src/hath0r_engine/pipeline/__init__.py:1"
+                  },
+                  {
+                    "first": "src/hath0r_engine/sandbox/daytona_provider.py:26",
+                    "duplicate": "src/hath0r_engine/sandbox/e2b_provider.py:35"
+                  },
+                  {
+                    "first": "src/hath0r_engine/sandbox/daytona_provider.py:26",
+                    "duplicate": "src/hath0r_engine/sandbox/local_provider.py:36"
+                  }
+                ],
+                "score": 0.9841
               }
             }
           }
@@ -186,59 +362,42 @@
       }
     },
     "trajectory": {
-      "score": 0.9228,
+      "score": 0.9171,
       "passed": true,
-      "tokens_used": 1100,
+      "tokens_used": 141,
       "max_tokens": 50000,
-      "estimated_usd": 0.005379,
+      "estimated_usd": 0.000423,
       "max_usd": 0.25,
-      "session_id": "sess-20261031-161700-ecddad",
+      "session_id": "sess-20261107-182427-d05051",
       "session_reads": 2,
       "session_writes": 3,
       "session_bytes": 2041,
       "capsule_fill_ratio": 0.9966,
       "within_capsule_budget": true,
-      "latency_ms": 179.09,
-      "taguchi_quality_loss": 0.0005,
-      "taguchi_score": 0.9788,
-      "snr_db": 20.96
+      "latency_ms": 1172.48,
+      "taguchi_quality_loss": 0.0206,
+      "taguchi_score": 0.9285,
+      "snr_db": 4.64
     },
     "adversarial": {
-      "score": 0.88,
+      "score": 0.9341,
       "passed": true,
       "adversarial_flaws_count": 0,
       "adversarial_flaws": [],
       "tech_debts_count": 0,
       "auto_created_issues": [],
       "minor_findings": [
-        "Modified script/source files without co-changing test files (-0.06)"
+        "Cognitive complexity hotspot observed (avg 4.88, max 84, -0.0400)",
+        "Repeated code blocks detected (0.59%, -0.0059)"
       ],
-      "added_lines_count": 18,
+      "added_lines_count": 0,
       "change_categories": {
         "ui": [],
-        "script": [
-          "src/hath0r_engine/telemetry/cicccd_telemetry.py"
-        ],
+        "script": [],
         "text": [],
-        "other": [
-          "release/CHECKSUMS.sha256",
-          "release/hath0r-darwin-arm64",
-          "release/hath0r-darwin-x86_64",
-          "release/hath0r-fileset-1.21.0.tar.gz",
-          "release/hath0r-fileset-1.21.0.tar.gz.sha256",
-          "release/hath0r-linux-arm64",
-          "release/hath0r-linux-x86_64",
-          "release/previous/1.15.2/CHECKSUMS.sha256",
-          "release/previous/1.15.2/hath0r-darwin-arm64",
-          "release/previous/1.15.2/hath0r-darwin-x86_64",
-          "release/previous/1.15.2/hath0r-fileset-1.15.2.tar.gz",
-          "release/previous/1.15.2/hath0r-fileset-1.15.2.tar.gz.sha256",
-          "release/previous/1.15.2/hath0r-linux-arm64",
-          "release/previous/1.15.2/hath0r-linux-x86_64",
-          "release/previous/1.15.2/hath0r-windows-x64.cmd"
-        ]
+        "other": []
       },
-      "changed_files_count": 16
+      "changed_files_count": 0
     },
     "goal_alignment": {
       "score": 0.9287,
@@ -248,7 +407,7 @@
       "active_focus": "clean-repo-hath0r-framework",
       "goal_keywords_count": 4,
       "goal_overlap_score": 0.98,
-      "compounded_nodes_count": 51,
+      "compounded_nodes_count": 59,
       "consensus_score": 0.826
     }
   },
@@ -270,8 +429,8 @@
       "new_maintainability_rating": 1,
       "min_security_hotspots_reviewed_pct": 100.0
     },
-    "files_analyzed": 1,
-    "qgate_score": 0.986,
+    "files_analyzed": 80,
+    "qgate_score": 0.9617,
     "failing_gates": [],
     "gates": {
       "errors": {
@@ -286,33 +445,121 @@
       "coverage": {
         "gate": "coverage",
         "passed": true,
-        "actual_coverage_pct": 97.5,
+        "actual_coverage_pct": 95.37,
         "min_coverage_pct": 80.0,
         "comparator": ">=",
         "source": "test_suite_symbol_verification",
-        "score": 0.9763
+        "score": 0.9645
       },
       "complexity": {
         "gate": "complexity",
         "passed": true,
-        "max_observed_complexity": 6,
-        "avg_complexity": 2.14,
+        "max_observed_complexity": 84,
+        "avg_complexity": 4.88,
         "max_complexity": 15,
         "comparator": "<=",
-        "functions_scanned": 7,
-        "offending_functions": [],
-        "score": 0.9757
+        "functions_scanned": 603,
+        "offending_functions": [
+          {
+            "function": "src/hath0r_engine/analysis/ast_gnn.py:_extract_ast_nodes_from_file",
+            "line": 155,
+            "complexity": 51
+          },
+          {
+            "function": "src/hath0r_engine/analysis/ast_gnn.py:build_graph_from_directory",
+            "line": 243,
+            "complexity": 26
+          },
+          {
+            "function": "src/hath0r_engine/analysis/ast_gnn.py:forward",
+            "line": 300,
+            "complexity": 20
+          },
+          {
+            "function": "src/hath0r_engine/analysis/ast_gnn.py:compute_external_reachability",
+            "line": 453,
+            "complexity": 21
+          },
+          {
+            "function": "src/hath0r_engine/analysis/ast_gnn.py:verify_constrained_exploit_trace",
+            "line": 520,
+            "complexity": 17
+          },
+          {
+            "function": "src/hath0r_engine/analysis/pmat_adapter.py:_estimate_file_complexity",
+            "line": 320,
+            "complexity": 21
+          },
+          {
+            "function": "src/hath0r_engine/analysis/pmat_stats_engine.py:calculate_ast_complexity",
+            "line": 85,
+            "complexity": 28
+          },
+          {
+            "function": "src/hath0r_engine/analysis/pmat_stats_engine.py:calculate_provability_score",
+            "line": 218,
+            "complexity": 20
+          },
+          {
+            "function": "src/hath0r_engine/bots/orient_bot.py:read_agentgraph",
+            "line": 87,
+            "complexity": 35
+          },
+          {
+            "function": "src/hath0r_engine/bots/orient_bot.py:read_readme",
+            "line": 224,
+            "complexity": 27
+          }
+        ],
+        "score": 0.8775
       },
       "duplication": {
         "gate": "duplication",
         "passed": true,
-        "duplicated_lines_pct": 0.0,
+        "duplicated_lines_pct": 0.59,
         "max_duplicated_lines_pct": 3.0,
         "comparator": "<=",
-        "duplicated_lines": 0,
-        "total_analyzed_lines": 155,
-        "duplicated_blocks": [],
-        "score": 0.99
+        "duplicated_lines": 90,
+        "total_analyzed_lines": 15343,
+        "duplicated_blocks": [
+          {
+            "first": "src/hath0r_engine/calibration/gain_imputation.py:20",
+            "duplicate": "src/hath0r_engine/calibration/gain_imputation.py:49"
+          },
+          {
+            "first": "src/hath0r_engine/gateway/client.py:45",
+            "duplicate": "src/hath0r_engine/gateway/client.py:108"
+          },
+          {
+            "first": "src/hath0r_engine/graph/knowledge_graph.py:10",
+            "duplicate": "src/hath0r_engine/graph/models.py:40"
+          },
+          {
+            "first": "src/hath0r_engine/graph/knowledge_graph.py:10",
+            "duplicate": "src/hath0r_engine/memory/memory_graph.py:49"
+          },
+          {
+            "first": "src/hath0r_engine/memory/memory_graph.py:769",
+            "duplicate": "src/hath0r_engine/memory/memory_graph.py:844"
+          },
+          {
+            "first": "src/hath0r_engine/memory/memory_graph.py:779",
+            "duplicate": "src/hath0r_engine/memory/memory_graph.py:854"
+          },
+          {
+            "first": "src/hath0r_engine/__init__.py:37",
+            "duplicate": "src/hath0r_engine/pipeline/__init__.py:1"
+          },
+          {
+            "first": "src/hath0r_engine/sandbox/daytona_provider.py:26",
+            "duplicate": "src/hath0r_engine/sandbox/e2b_provider.py:35"
+          },
+          {
+            "first": "src/hath0r_engine/sandbox/daytona_provider.py:26",
+            "duplicate": "src/hath0r_engine/sandbox/local_provider.py:36"
+          }
+        ],
+        "score": 0.9841
       }
     }
   },
@@ -328,7 +575,7 @@
         ".hath0r/memory/hashes.json",
         ".hath0r/memory/sessions/current.json",
         ".hath0r/memory/sessions/latest.json",
-        ".hath0r/memory/sessions/sess-20261031-161700-ecddad.json"
+        ".hath0r/memory/sessions/sess-20261107-182427-d05051.json"
       ],
       "UNVERIFIED_FILE_PRESENCE": []
     },
@@ -342,5 +589,5 @@
   "observability_sync": {
     "mode": "pending"
   },
-  "content_hash": "sha256:23f4680c50831a5e922e19ddb5cb40ee97be2712b3bc90125e06f5b05b02d5e0"
+  "content_hash": "sha256:39bb8050b33427115fbf48002079a103a344ca29fa67a4a047bcad24f6a58376"
 }
